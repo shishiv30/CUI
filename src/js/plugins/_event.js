@@ -23,7 +23,7 @@
                 var $ele = $(this);
                 $ele.data('_touchStart', null);
                 $ele.data('_touchEnd', null);
-                return false;
+                return true;
             });
             $this.off('touchmove.cui').on('touchmove.cui', $.throttle(function(e) {
                 var $ele = $(this);
@@ -36,12 +36,12 @@
                     }
                 }
                 if ($ele.data('_touchStart').touches.length == 2 && event.touches.length == 1) {
-                    return;
+                    return true;
                 } else {
                     $ele.data('_touchEnd', event);
                 }
                 $ele.trigger('moving', [$ele.data('_touchStart'), event]);
-                return false;
+                return true;
             }, 100));
 
             $this.off('touchend.cui').on('touchend.cui', function() {
@@ -80,7 +80,7 @@
                         }
                     }
                 }
-                return false;
+                return true;
             });
         },
         teardown: function() {
