@@ -1,0 +1,227 @@
+@mixin responsive-visibility($parent) {
+    #{$parent} {
+        display: block !important;
+    }
+
+    table#{$parent} {
+        display: table;
+    }
+
+    tr#{$parent} {
+        display: table-row !important;
+    }
+
+    th#{$parent},
+    td#{$parent} {
+        display: table-cell !important;
+    }
+}
+
+@mixin responsive-invisibility($parent) {
+    #{$parent} {
+        display: none !important;
+    }
+}
+
+@mixin unselect {
+    moz-user-select: -moz-none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+//Opacity
+@mixin opacity($opacity) {
+    opacity: $opacity;
+
+    // IE8 filter
+    @if $support-destop {
+        $opacity-ie: $opacity * 100;
+
+        filter: #{alpha(opacity = $opacity-ie)};
+    }
+}
+
+//Box shadow
+@mixin box-shadow($shadow...) {
+    -webkit-box-shadow: $shadow;
+
+    // iOS <4.3 & Android <4.1
+    box-shadow: $shadow;
+}
+
+// Box sizing
+@mixin box-sizing($boxmodel) {
+    -webkit-box-sizing: $boxmodel;
+    -moz-box-sizing: $boxmodel;
+    box-sizing: $boxmodel;
+}
+
+//Text shadow
+@mixin text-shadow($shadow...) {
+    -webkit-text-shadow: $shadow;
+
+    // iOS <4.3 & Android <4.1
+    text-shadow: $shadow;
+}
+
+// Placeholder text
+@mixin placeholder($color: $color-placeholder) {
+    // Firefox
+    &::-moz-placeholder {
+        color: $color;
+        opacity: 1;
+
+        // See https://github.com/twbs/bootstrap/pull/11526
+
+    }
+
+    &:-ms-input-placeholder {
+        color: $color;
+    }
+
+    // Internet Explorer 10+
+    &::-webkit-input-placeholder {
+        color: $color;
+    }
+
+    // Safari and Chrome
+}
+
+//appearance
+@mixin appearance($type) {
+    -webkit-appearance: $type;
+    -moz-appearance: $type;
+    appearance: $type;
+}
+
+//Tranform
+@mixin transform($value) {
+    -webkit-transform: $value;
+    -ms-transform: $value;
+    transform: $value;
+}
+
+//Clear fix
+@mixin clearfix {
+    @if $support-destop {
+        *zoom: 1;
+    }
+
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+        overflow: hidden;
+    }
+}
+
+//Border radius
+
+@mixin border-radius($radius) {
+    border-radius: $radius;
+}
+
+@mixin border-top-radius($radius) {
+    border-top-right-radius: $radius;
+    border-top-left-radius: $radius;
+}
+
+@mixin border-bottom-right-radius($radius) {
+    border-bottom-right-radius: $radius;
+}
+
+@mixin border-right-radius($radius) {
+    border-bottom-right-radius: $radius;
+    border-top-right-radius: $radius;
+}
+
+@mixin border-bottom-radius($radius) {
+    border-bottom-right-radius: $radius;
+    border-bottom-left-radius: $radius;
+}
+
+@mixin border-left-radius($radius) {
+    border-bottom-left-radius: $radius;
+    border-top-left-radius: $radius;
+}
+
+// inline-block
+@mixin inline-block($alignment: $inline-block-alignment) {
+    display: inline-block;
+
+    @if $alignment and $alignment != none {
+        vertical-align: $alignment;
+    }
+
+    @if $support-destop {
+        *vertical-align: auto;
+        zoom: 1;
+        *display: inline;
+    }
+}
+
+//column-count
+@mixin column-count($count) {
+    -moz-column-count: $count;
+    -webkit-column-count: $count;
+    column-count: $count;
+}
+
+@mixin singleline($width: false) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @if $width {
+        width: $width;
+    }
+}
+
+//transition
+@mixin transition($action) {
+    transition: $action;
+    -moz-transition: $action;
+    -webkit-transition: $action;
+}
+
+@mixin text-icon($iconSize: 18px, $fontSize: $font-size-5) {
+    .text, i {
+        vertical-align: middle;
+        line-height: 1;
+    }
+
+    .text {
+        font-size: $fontSize;
+    }
+
+    i {
+        padding: 0 3px;
+        vertical-align: middle;
+        font-size: $iconSize;
+    }
+}
+
+//arrows
+@mixin arrow-down($size, $color) {
+    width: 0;
+    height: 0;
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-top: $size solid $color;
+}
+
+@mixin arrow-up($size, $color) {
+    width: 0;
+    height: 0;
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
+}

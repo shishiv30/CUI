@@ -1,0 +1,12 @@
+@import "compass/utilities/sprites";
+
+$s-img-layout: smart;
+$s-img-sprite-dimensions: true;
+
+@import "s-img/*.png";
+
+@include all-s-img-sprites;
+
+[class^="s-img-"], [class*=" s-img-"] {
+    display: inline-block;
+}

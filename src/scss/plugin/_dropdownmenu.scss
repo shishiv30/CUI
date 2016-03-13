@@ -1,0 +1,104 @@
+.dropdown-menu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 196;
+    background: $color-e;
+    height: 40px;
+    & > .caret {
+        z-index: 1;
+        position: absolute;
+        display: block;
+        top: 0;
+        right: 0;
+        i {
+            line-height: 40px;
+            width: 40px;
+            height: 40px;
+            font-size: 25px;
+            transition: transform 0.5s;
+            display: block;
+            &:before {
+                @extend %icon;
+                @extend .icon-chevron-circle-down;
+                vertical-align: baseline;
+            }
+        }
+    }
+    .dropdown-item {
+        max-height: 40px;
+        transition: max-height 0.5s ease-out;
+        overflow: hidden;
+        @extend %clearfix;
+        li {
+            background-color: $color-e;
+            text-align: left;
+            display: block;
+            float: left;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 40px 0 15px;
+            a {
+                height: 40px;
+                line-height: 40px;
+                display: block;
+            }
+            &.on {
+                a {
+                    @extend %text-bold;
+                }
+            }
+            &.fullline {
+                float: right;
+                width: 200px;
+                clear: both;
+                border-left: 1px solid $color-a;
+                border-bottom: 1px solid $color-a;
+                border-right: 1px solid $color-a;
+                &.first {
+                    margin-top: 2px;
+                }
+            }
+        }
+    }
+    &.active {
+        .dropdown-item {
+            max-height: 350px;
+        }
+        & > .caret {
+            i {
+                transform: rotate(-180deg);
+            }
+        }
+    }
+}
+
+@media (max-width: $screen-sm-max) {
+    .dropdown-item {
+        text-align: left;
+        ul {
+            box-shadow: 0 1px 1px $color-c;
+        }
+        li {
+            &.fullline {
+                border-left: none;
+                border-right: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 420px) {
+    .dropdown-item {
+        text-align: center !important;
+        li {
+            width: 100% !important;
+        }
+    }
+}
+
+@media (min-width: $screen-md-min) {
+    .dropdown-item {
+        text-align: center;
+    }
+}

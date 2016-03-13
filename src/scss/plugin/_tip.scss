@@ -1,0 +1,216 @@
+.tooltip {
+    position: absolute;
+    z-index: $ui-tip-index;
+    display: block;
+    font-size: $font-size-7;
+    font-weight: normal;
+    line-height: 1.5;
+    opacity: 0;
+    filter: alpha(opacity = 0);
+    min-width: 80px;
+    max-width: 400px;
+    &.in {
+        opacity: 1;
+        filter: alpha(opacity = 100);
+    }
+    &.top {
+        margin-top: -3px;
+        padding: 5px 0;
+    }
+    &.right {
+        margin-left: 3px;
+        padding: 0 5px;
+    }
+    &.bottom {
+        margin-top: 3px;
+        padding: 5px 0;
+    }
+    &.left {
+        margin-left: -3px;
+        padding: 0 5px;
+    }
+}
+
+.tooltip-inner {
+    padding: 10px;
+    color: $color-3;
+    text-align: center;
+    text-decoration: none;
+    background-color: $color-f;
+    border-radius: 4px;
+    @include box-shadow(0 0 10px $color-b);
+}
+
+.tooltip-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+}
+
+.tooltip.top .tooltip-arrow {
+    bottom: 0;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px 5px 0;
+    border-top-color: $color-f;
+}
+
+.tooltip.top-left .tooltip-arrow {
+    bottom: 0;
+    right: 5px;
+    margin-bottom: -5px;
+    border-width: 5px 5px 0;
+    border-top-color: $color-f;
+}
+
+.tooltip.top-right .tooltip-arrow {
+    bottom: 0;
+    left: 5px;
+    margin-bottom: -5px;
+    border-width: 5px 5px 0;
+    border-top-color: $color-f;
+}
+
+.tooltip.right .tooltip-arrow {
+    top: 50%;
+    left: 0;
+    margin-top: -5px;
+    border-width: 5px 5px 5px 0;
+    border-right-color: $color-f;
+}
+
+.tooltip.left .tooltip-arrow {
+    top: 50%;
+    right: 0;
+    margin-top: -5px;
+    border-width: 5px 0 5px 5px;
+    border-left-color: $color-f;
+}
+
+.tooltip.bottom .tooltip-arrow {
+    top: 0;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 0 5px 5px;
+    border-bottom-color: $color-f;
+}
+
+.tooltip.bottom-left .tooltip-arrow {
+    top: 0;
+    right: 5px;
+    margin-top: -5px;
+    border-width: 0 5px 5px;
+    border-bottom-color: $color-f;
+}
+
+.tooltip.bottom-right .tooltip-arrow {
+    top: 0;
+    left: 5px;
+    margin-top: -5px;
+    border-width: 0 5px 5px;
+    border-bottom-color: $color-f;
+}
+
+.tooltip.info {
+    left: 0;
+    right: 0;
+    min-width: 0;
+    max-width: none;
+    transition: all .5s;
+    z-index: 201;
+    .tooltip-inner {
+        color: $color-7;
+        background-color: $color-e;
+        border-radius: 0;
+        padding: 2px 5px;
+        text-align: left;
+        border: 1px solid $color-border;
+        &:before {
+            @extend %icon;
+            @extend .icon-info-circle;
+            display: inline-block;
+            padding: 0 3px;
+        }
+        @include border-bottom-radius(2px);
+        @include box-shadow(none);
+    }
+    &.top {
+        margin-top: -5px;
+        padding: 0px;
+    }
+    .tooltip-arrow {
+        display: none;
+    }
+}
+
+.tooltip.warning {
+    left: 0;
+    right: 0;
+    min-width: 0;
+    max-width: none;
+    transition: all .5s;
+    .tooltip-inner {
+        color: $color-warning-l2;
+        background-color: $color-warning-l3;
+        border-radius: 0;
+        padding: 2px 5px;
+        text-align: left;
+        border: 1px solid $color-warning;
+        &:before {
+            @extend %icon;
+            @extend .icon-warning;
+            display: inline-block;
+            padding: 0 3px;
+        }
+        @include border-bottom-radius(2px);
+        @include box-shadow(none);
+    }
+    &.top {
+        margin-top: -5px;
+        padding: 0px;
+    }
+    .tooltip-arrow {
+        display: none;
+    }
+}
+
+.tooltip.error {
+    left: 0;
+    right: 0;
+    min-width: 0;
+    max-width: none;
+    transition: all .5s;
+    .tooltip-inner {
+        color: $color-danger-l2;
+        background-color: $color-danger-l3;
+        border-radius: 0;
+        padding: 2px 5px;
+        text-align: left;
+        border: 1px solid $color-danger;
+        border-top: none;
+        &:before {
+            @extend %icon;
+            @extend .icon-warning;
+            display: inline-block;
+            padding: 0 3px;
+        }
+        @extend %singleline;
+        @include border-bottom-radius(2px);
+        @include box-shadow(none);
+    }
+    &.bottom {
+        margin-top: -5px;
+        padding: 0px;
+    }
+    .tooltip-arrow {
+        display: none;
+    }
+}
+
+.plaintext {
+    .tooltip {
+        left: 0 !important;
+    }
+}

@@ -1,0 +1,193 @@
+.btn {
+  @include singleline();
+  height: 35px;
+  margin: 5px auto;
+  display: block;
+  text-align: center;
+  vertical-align: middle;
+  background-color: $color-c;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  transition: opacity .5s;
+  & > *{
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 32px;
+  }
+  &:link,
+  &:visited {
+    color: $color-1;
+  }
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    opacity: 0.8;
+    color: $color-1;
+  }
+  &.white {
+    background-color: $color-f;
+    color: $color-3;
+    border-color: $color-3;
+    &:link,
+    &:visited {
+      color: $color-3;
+    }
+    &:hover,
+    &:focus {
+      color: $color-3;
+    }
+  }
+  &.orange {
+    background-color: $color-warning;
+    &:link,
+    &:visited {
+      color: $color-f;
+    }
+    &:hover,
+    &:focus {
+      color: $color-f;
+    }
+  }
+  &.yellow {
+    background-color: $color-tip;
+    &:link,
+    &:visited {
+      color: $color-0;
+    }
+    &:hover,
+    &:focus {
+      color: $color-0;
+    }
+  }
+  &.blue {
+    background-color: $color-blue;
+    &:link,
+    &:visited {
+      color: $color-f;
+    }
+    &:hover,
+    &:focus {
+      color: $color-f;
+    }
+  }
+  &.gray {
+    background-color: $color-9;
+    &:link,
+    &:visited {
+      color: $color-f;
+    }
+    &:hover,
+    &:focus {
+      color: $color-f;
+    }
+  }
+  &.black {
+    background-color: $color-3;
+    &:link,
+    &:visited {
+      color: $color-f;
+    }
+    &:hover,
+    &:focus {
+      color: $color-f;
+    }
+  }
+  &.red {
+    background-color: $color-danger;
+    &:link,
+    &:visited {
+      color: $color-f;
+    }
+    &:hover,
+    &:focus {
+      color: $color-f;
+    }
+  }
+  &.green {
+    background-color: $color-safe;
+    &:link,
+    &:visited {
+      color: $color-f;
+    }
+    &:hover,
+    &:focus {
+      color: $color-f;
+    }
+  }
+  &.ghost-white {
+    border-color: $color-f;
+    background-color: transparent;
+    &:link,
+    &:visited {
+      color: $color-f;
+    }
+    &:hover,
+    &:focus {
+      color: $color-f;
+    }
+  }
+  &.ghost-black {
+    border-color: $color-3;
+    background-color: transparent;
+    &:link,
+    &:visited {
+      color: $color-3;
+    }
+    &:hover,
+    &:focus {
+      color: $color-3;
+    }
+  }
+  &.ghost-blue {
+    border-color: $color-blue;
+    background-color: transparent;
+    &:link,
+    &:visited {
+      color: $color-blue;
+    }
+    &:hover,
+    &:focus {
+      color: $color-blue;
+    }
+  }
+
+  &.circle{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    line-height: 38px;
+    border-radius: 100%;
+    font-size: 17px;
+    &.blue {
+      background-color: $color-blue;
+      &:link,
+      &:visited {
+        color: $color-f;
+      }
+      &:hover,
+      &:focus {
+        color: $color-f;
+      }
+    }
+  }
+
+  &.large {
+    height: 50px;
+    line-height: 48px;
+    font-size: $font-size-4;
+    border-radius:6px;
+  }
+  &.small {
+    height: 25px;
+    line-height: 23px;
+    border-radius: 4px;
+  }
+  &[disabled] {
+    background-color: $color-c !important;
+    color: $color-7 !important;
+    cursor: wait !important;
+    &:hover {
+      background-color: $color-c !important;
+    }
+  }
+}

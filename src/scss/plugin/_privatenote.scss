@@ -1,0 +1,31 @@
+.privateNoteWrapper {
+    background: $color-tip-l3;
+    border-radius: 2px;
+	border: 1px solid #d7d7d7;
+	height: 100px;
+	overflow: hidden;
+    @include box-shadow((-1px) 1px 3px rgba(0, 0, 0, 0.5));
+    @include transition(height 0.3s);
+}
+
+#btPrivatenote input{
+	cursor: default;
+}
+
+.privateNoteWrapper > textarea{
+	border: none;
+	background-color: transparent;
+	overflow-x: hidden;
+}
+
+.privateNoteRemains{
+	display: none;
+	float: right;
+	margin: 5px;
+	font-size: 14px;
+	color: #999999;
+}
+
+.privateNoteError{
+	color: #ff0000;
+}

@@ -1,0 +1,189 @@
+.allphoto-show {
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+}
+
+.showallphoto {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: $ui-showallphotos-index;
+    color: $color-f;
+    padding: 0 15px;
+    a.bt {
+        color: $color-d;
+        &:hover, &:active {
+            color: $color-f;
+        }
+    }
+    .address, .properties {
+        padding-top: 5px;
+        line-height: 24px;
+    }
+    .address {
+        margin-right: 20px;
+    }
+    .toolbar {
+        margin-top: 5px;
+        td {
+            padding-left: 20px;
+        }
+        .btn.border {
+            border: 1px solid $color-d;
+            background-color: transparent;
+            &:hover, &:active {
+                border: 1px solid $color-f;
+            }
+        }
+    }
+    .options {
+        position: relative;
+        ul {
+            position: absolute;
+            left: 0;
+            width: 185px;
+            background: $color-f;
+            z-index: 10;
+            @include box-shadow(0 1px 3px #666);
+            a {
+                display: block;
+                padding: 5px 10px;
+                border-bottom: 1px solid $color-e;
+            }
+        }
+    }
+    .asideInfo {
+        margin: 0 15px;
+    }
+    .photoItemsField {
+        position: absolute;
+        top: 75px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: auto;
+        .img-item {
+            display: block;
+            border: 5px solid transparent;
+            height: 200px;
+            overflow: hidden;
+        }
+    }
+    .photoGalleryField {
+        .slider {
+            position: absolute;
+            top: 115px;
+            bottom: 140px;
+            left: 40px;
+            right: 40px;
+            width: auto;
+            .prev, .next {
+                font-size: 50px;
+            }
+        }
+        li {
+            position: relative;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+        .thumbs {
+            position: absolute;
+            left: 130px;
+            right: 130px;
+            bottom: 20px;
+            overflow: hidden;
+            white-space: nowrap;
+            @include transition(all 0.3);
+            li {
+                position: relative;
+                display: inline-block;
+                overflow: hidden;
+                width: 77px;
+                height: 54px;
+                line-height: 50px;
+                vertical-align: middle;
+                border: 2px solid $color-d;
+                margin: 0 4px;
+                @include box-shadow(0 0 1px $color-main-l3);
+                &.active {
+                    border-color: $color-main;
+                }
+            }
+            .icon-movoto {
+                color: $color-tip;
+                line-height: 50px;
+            }
+        }
+        .bt.prev, .bt.next {
+            position: absolute;
+            bottom: 33px;
+            color: $color-6;
+            &:hover, &:active {
+                color: $color-f;
+            }
+        }
+        .bt.prev {
+            left: 100px;
+        }
+        .bt.next {
+            right: 100px;
+        }
+    }
+    .agentfield {
+        text-align: center;
+        table {
+            width: auto;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .btn {
+            display: inline-block;
+        }
+    }
+}
+
+@media (max-width: $screen-xs-max) {
+    .showallphoto {
+        .photoItemsField {
+            padding-right: 0;
+        }
+        .asideInfo {
+            position: static;
+            margin: 15px;
+        }
+    }
+}
+
+@media (min-width: $screen-sm-min) {
+    .showallphoto {
+        .photoItemsField {
+            padding-right: 320px;
+        }
+        .asideInfo {
+            position: absolute;
+            right: 0;
+            top: 0px;
+            width: 300px;
+        }
+    }
+}
+
+@media (min-width: 1367px) {
+    .showallphoto {
+        .agentfield {
+            margin: 10% auto 0 auto;
+        }
+    }
+}
+
+@media (max-width: 1367px) {
+    .showallphoto {
+        .agentfield {
+            margin: 1% auto 0 auto;
+        }
+    }
+}

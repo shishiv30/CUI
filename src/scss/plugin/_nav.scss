@@ -1,0 +1,136 @@
+.nav {
+    width: 100%;
+    display: block;
+    font-size: $font-size-7;
+
+    .arrow1 {
+        height: 0;
+        width: 0;
+        border-style: dashed dashed solid dashed;
+        border-width: 0 11px 13px 11px;
+        position: absolute;
+        left: 12px;
+        top: -14px;
+        border-color: transparent transparent $color-border transparent;
+    }
+
+    .arrow2 {
+        height: 0;
+        width: 0;
+        border-style: dashed dashed solid dashed;
+        border-width: 0 11px 13px 11px;
+        position: absolute;
+        left: 12px;
+        border-color: transparent transparent $color-f transparent;
+        top: -12px;
+    }
+
+    @extend %clearfix;
+
+    > ul {
+        float: left;
+
+        &.right {
+            > li {
+                padding: 0 5px;
+            }
+
+            float: right;
+        }
+
+        & > li {
+            display: inline-block;
+        }
+    }
+
+    .crumbs {
+        position: relative;
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        & > li {
+            color: $color-6;
+            margin-right: $margin-small;
+
+            &:after {
+                content: "\00bb";
+                margin-left: 5px;
+            }
+
+            & > ul {
+                @include box-shadow(0 6px 12px rgba(0, 0, 0, 0.175));
+
+                z-index: $ui-menu-index;
+                background-color: $color-f;
+                min-width: 200px;
+                border: 1px solid $color-border;
+                position: absolute;
+                padding: 8px 10px;
+                display: none;
+
+                @include clearfix;
+
+                top: 25px;
+
+                .title {
+                    color: $color-0;
+                    font-weight: bold;
+                    float: none;
+                }
+
+                & > li {
+                    float: left;
+                    width: 50%;
+                }
+            }
+        }
+
+        & > li:hover {
+            & > ul {
+                display: block;
+            }
+        }
+
+        & > li:last-of-type {
+            &:after {
+                content: none;
+            }
+        }
+
+        &.invert {
+            & > li {
+                color: $color-f;
+            }
+
+            a {
+                color: $color-f;
+            }
+        }
+    }
+
+    .switch {
+        font-size: $font-size-4;
+        float: none;
+        text-align: center;
+
+        .active {
+            border-bottom: 5px solid #2759a4;
+        }
+
+        & > li {
+            display: inline-block;
+        }
+
+        & > li > a {
+            padding: 10px 10px 5px;
+            display: inline-block;
+            color: #2759a4;
+        }
+
+        & > li > a:hover {
+            color: #2759a4;
+        }
+    }
+}

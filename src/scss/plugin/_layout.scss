@@ -1,0 +1,24 @@
+/*frame layout*/
+html, body {
+    height: 100%;
+}
+
+body {
+    min-width: $screen-xs-min;
+    overflow-x: hidden;
+    padding-top: 50px;
+}
+
+#aside {
+    min-height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: $aside-width;
+    z-index: $aside-index;
+    left: -$aside-width;
+}
+
+#container {
+    min-height: 100%;
+}

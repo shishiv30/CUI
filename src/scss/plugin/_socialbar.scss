@@ -1,0 +1,308 @@
+$socialbar-txt: #fff !default;
+$socialbar-email: #0a88ff !default;
+$socialbar-facebook: #306199 !default;
+$socialbar-tumblr: #32506d !default;
+$socialbar-linkedin: #007bb6 !default;
+$socialbar-twitter: #26c4f1 !default;
+$socialbar-googleplus: #e93f2e !default;
+$socialbar-reddit: #8bbbe3 !default;
+$socialbar-youtube: #df1c31 !default;
+$socialbar-pinterest: #b81621 !default;
+$socialbar-pocket: #ed4054 !default;
+$socialbar-github: #444 !default;
+$socialbar-instagram: #517fa4 !default;
+$socialbar-hackernews: #ff6600 !default;
+$socialbar-delicious: #0B79E5 !default;
+$socialbar-vk: #4d71a9 !default;
+
+$social-list: socialbar-email $socialbar-email, socialbar-facebook $socialbar-facebook, socialbar-tumblr $socialbar-tumblr, socialbar-linkedin $socialbar-linkedin, socialbar-twitter $socialbar-twitter, socialbar-googleplus $socialbar-googleplus, socialbar-youtube $socialbar-youtube, socialbar-reddit $socialbar-reddit, socialbar-pinterest $socialbar-pinterest, socialbar-pocket $socialbar-pocket, socialbar-github $socialbar-github, socialbar-instagram $socialbar-instagram, socialbar-delicious $socialbar-delicious, socialbar-vk $socialbar-vk, socialbar-hackernews $socialbar-hackernews;
+
+.socialbar {
+    padding: 7px;
+    background-color: $color-3;
+    min-width: 180px;
+}
+
+.socialbar-buttons {
+    box-sizing: border-box;
+    height: 36px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    @extend %clearfix;
+
+    li {
+        float: left;
+        height: 100%;
+        line-height: 13px;
+        list-style: none;
+        margin: 0;
+        padding: 0 2px;
+
+        @each $s-name in $social-list {
+            &.#{nth($s-name, 1)} {
+                a {
+                    background-color: nth($s-name, 2);
+
+                    &:hover {
+                        background-color: darken(nth($s-name, 2), 10%);
+                    }
+                }
+            }
+        }
+
+        // end @each directive
+
+        a {
+            @extend %text-bold;
+
+            background-color: $color-c;
+            border-radius: 2px;
+            display: block;
+            font-size: $font-size-5;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            height: 100%;
+            padding: 11px 7px 12px 27px;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color .2s ease-in-out;
+            width: 100%;
+
+            .socialbar-icon {
+                display: block;
+                left: 10px;
+                padding-top: 9px;
+                position: absolute;
+                top: 0;
+                width: 10%;
+
+                svg {
+                    height: 17px;
+                    width: 17px;
+
+                    path {
+                        fill: $socialbar-txt;
+                    }
+                }
+            }
+
+            .socialbar-text {
+                color: $socialbar-txt;
+            }
+
+            &:active {
+                box-shadow: inset 1px 3px 15px 0 rgba(22, 0, 0, 0.25);
+            }
+        }
+
+        &.small {
+            a {
+                padding: 0;
+
+                .socialbar-icon {
+                    left: auto;
+                    margin: 0 auto;
+                    overflow: hidden;
+                    position: relative;
+                    top: auto;
+                    width: 100%;
+                }
+
+                .socialbar-text {
+                    visibility: hidden;
+                }
+            }
+        }
+    }
+
+    &.large-format {
+        height: auto;
+
+        li {
+            height: auto;
+
+            // Determine font-size based on number of siblings
+            &:first-child:nth-last-child(1) {
+                a {
+                    font-size: 20px;
+                }
+            }
+
+            &:first-child:nth-last-child(2),
+            &:first-child:nth-last-child(2) ~ li {
+                a {
+                    font-size: 16px;
+                }
+            }
+
+            &:first-child:nth-last-child(3),
+            &:first-child:nth-last-child(3) ~ li {
+                a {
+                    font-size: 14px;
+                }
+            }
+
+            &:first-child:nth-last-child(4),
+            &:first-child:nth-last-child(4) ~ li {
+                a {
+                    font-size: 14px;
+                }
+            }
+
+            &:first-child:nth-last-child(5),
+            &:first-child:nth-last-child(5) ~ li {
+                a {
+                    font-size: 14px;
+                }
+            }
+
+            &:first-child:nth-last-child(6),
+            &:first-child:nth-last-child(6) ~ li {
+                a {
+                    font-size: 14px;
+                }
+            }
+
+            &:first-child:nth-last-child(7),
+            &:first-child:nth-last-child(7) ~ li {
+                a {
+                    font-size: 14px;
+                }
+            }
+
+            &:first-child:nth-last-child(8),
+            &:first-child:nth-last-child(8) ~ li {
+                a {
+                    font-size: 14px;
+                }
+            }
+
+            &:first-child:nth-last-child(9),
+            &:first-child:nth-last-child(9) ~ li {
+                a {
+                    font-size: 14px;
+                }
+            }
+
+            &:first-child:nth-last-child(10),
+            &:first-child:nth-last-child(10) ~ li {
+                a {
+                    font-size: 14px;
+
+                    //fallback
+                    font-size: .6vw;
+                }
+            }
+
+            &:first-child:nth-last-child(11),
+            &:first-child:nth-last-child(11) ~ li {
+                a {
+                    font-size: 14px;
+                }
+            }
+
+            a {
+                backface-visibility: hidden;
+                border-radius: .2em;
+
+                .socialbar-icon {
+                    height: 100%;
+                    left: 7%;
+                    padding-top: 0;
+                    width: 12%;
+
+                    svg {
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        width: 100%;
+                    }
+                }
+
+                .socialbar-text {
+                    backface-visibility: hidden;
+                }
+            }
+        }
+    }
+
+    &.small-format {
+        padding-top: 5px;
+
+        li {
+            height: 80%;
+            padding: 0 1px;
+
+            a {
+                .socialbar-icon {
+                    height: 100%;
+                    padding-top: 0;
+
+                    svg {
+                        height: 48%;
+                        position: relative;
+                        top: 6px;
+                        width: 80%;
+                    }
+                }
+            }
+        }
+    }
+
+    &.tiny-format {
+        height: 22px;
+        position: relative;
+
+        li {
+            padding-right: 7px;
+
+            a {
+                background-color: transparent;
+                padding: 0;
+
+                .socialbar-icon {
+                    svg {
+                        height: 70%;
+                        width: 100%;
+                    }
+                }
+
+                &:hover,
+                &:active {
+                    background-color: transparent;
+                }
+            }
+
+            // This generates individual button classes for each item in social list on line 39.
+            @each $s-name in $social-list {
+                &.#{nth($s-name, 1)} {
+                    a {
+                        .socialbar-icon {
+                            svg {
+                                path {
+                                    fill: nth($s-name, 2);
+                                }
+                            }
+
+                            &:hover {
+                                .socialbar-icon {
+                                    svg {
+                                        path {
+                                            fill: darken(nth($s-name, 2), 20%);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // end @each directive
+       
+        }
+    }
+}

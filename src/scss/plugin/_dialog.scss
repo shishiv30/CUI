@@ -1,0 +1,134 @@
+.dialog-show {
+    overflow-y: hidden!important;
+    overflow-x: hidden!important;
+}
+.dialog {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: $ui-dialog-index;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-width: $screen-xs-min;
+    .dialog-panel {
+        z-index: $ui-dialog-index;
+        position: relative;
+        padding: 0;
+        border: 3px solid rgba(255,255,255,0.2);
+        transition: margin-top 0.5s;
+        &:before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: $color-f;
+            border-radius: 3px;
+        }
+    }
+    .dialog-header {
+        position: relative;
+        z-inde: 1;
+        display: block;
+        height: 20px;
+        line-height: 20px;
+        padding: 0px 55px 0 15px;
+        color: $color-0;
+        @include border-top-radius(3px);
+        a.dialog-header-close {
+            display: block;
+            background-color: $color-f;
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            height: 40px;
+            line-height: 36px;
+            width: 40px;
+            box-shadow: 0 0 1px $color-c;
+            font-size:21px;
+            text-align: center;
+            vertical-align: middle;
+            border-radius:100%;
+            color: $color-warning;
+            &:hover {
+                color:$color-warning;
+            }
+        }
+    }
+    .dialog-body {
+        position: relative;
+        z-index: 1;
+        padding: 0 15px 20px 15px;
+        color: $color-0;
+    }
+    &.dialog-dropdown {
+        .dialog-body{
+            padding:0;
+            &>div{
+                padding:0 20px 10px 20px;
+            }
+        }
+
+         ul {
+            margin:0;
+            padding:0;
+            background: $color-f;
+            z-index: 10;
+            border-top: 1px solid $color-e;
+            &>li{
+                margin:0;
+                padding:0;
+                text-align: left;
+                font-size:$font-size-4;
+                a {
+                    &>i{
+                        float: left;
+                        margin-right:10px;
+                        font-size:$font-size-3;
+                    }
+                    display: block;
+                    padding: 15px 20px;
+                    border-bottom: 1px solid $color-e;
+                }
+            }
+        }
+    }
+}
+@media (max-width: $screen-xs-max) {
+    .dialog {
+        .dialog-panel {
+            margin: 0 15px;
+            min-height: 30%;
+        }
+    }
+}
+@media (min-width: $screen-sm-min) {
+    .dialog {
+        .dialog-panel {
+            border-radius: 5px;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: $screen-xs-max;
+        }
+    }
+}
+@media (min-width: $screen-md-min) {
+    .dialog {
+        .dialog-panel {}
+    }
+}
+.dialog-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $dialog-overlay-color;
+    opacity: 0.6;
+    z-index: $ui-dialog-overlay;
+}

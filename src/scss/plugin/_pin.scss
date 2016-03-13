@@ -1,0 +1,7 @@
+.pin {
+    z-index: $ui-pin-index;
+}
+
+[data-pin] {
+    position: relative;
+}

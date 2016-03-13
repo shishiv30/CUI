@@ -1,0 +1,52 @@
+.shown {
+    &.icon-plus-square-o:before, & > .icon-plus-square-o:before {
+        @extend .icon-minus-square-o;
+    }
+
+    &.icon-angle-down:before, & > .icon-angle-down:before {
+        @extend .icon-angle-up;
+    }
+
+    &.icon-angle-down-small:before {
+        @extend .icon-angle-up-small;
+    }
+
+    & > .icon-angle-down-small:before {
+        @extend .icon-angle-up-small;
+    }
+
+    &.icon-arrow-circle-up:before {
+        @extend .icon-arrow-circle-down;
+    }
+
+    & > .icon-arrow-circle-down:before {
+        @extend .icon-arrow-circle-up;
+    }
+
+    &.icon-eye:before {
+        @extend .icon-eye-slash;
+    }
+
+    & > .icon-eye:before {
+        @extend .icon-eye-slash;
+    }
+
+    &.icon-caret-right:before {
+        @extend .icon-sort-desc;
+    }
+
+    .icon-caret-right:before {
+        @extend .icon-sort-desc;
+    }
+}
+
+.collapse-appear {}
+
+.collapse-expand {
+    height: auto !important;
+    max-height: 999999px !important;
+}
+
+[data-collapse='expand'] {
+    visibility: hidden;
+}

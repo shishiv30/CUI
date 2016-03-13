@@ -1,0 +1,74 @@
+.shifter {
+    overflow: hidden;
+    position: relative;
+
+    .wrap {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling:touch;
+        & > ul {
+            overflow: hidden;
+
+            & > li {
+                float: left;
+                overflow: hidden;
+                position: relative;
+            }
+        }
+    }
+
+    .prev, .next {
+        z-index: 2;
+        display: block;
+        position: absolute;
+        top: 50%;
+        margin-top: -20px;
+        font-size: 40px;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: $color-e;
+        opacity: .6;
+        i{
+            vertical-align: baseline;
+        }
+        &:hover {
+            color: $color-f;
+        }
+    }
+
+    .prev {
+        left: 5px;
+
+        @include transition(left 0.5s);
+        transition-timing-function: ease;
+
+        i {
+            @include text-shadow($color-3 1px 0px 2px);
+        }
+    }
+
+    .next {
+        right: 5px;
+
+        @include transition(right 0.5s);
+        transition-timing-function: ease;
+
+        i {
+            @include text-shadow($color-3 -1px 0px 2px);
+        }
+    }
+
+    &:hover {
+        .prev {
+            left: 0;
+            opacity: 1;
+        }
+
+        .next {
+            opacity: 1;
+            right: 0;
+        }
+    }
+}

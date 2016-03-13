@@ -1,0 +1,206 @@
+$cdnUrl: "%cdnUrl%";
+$staticUrl: "%staticUrl%";
+
+//supprot destop
+$support-destop: true;
+$support-hover: $support-destop;
+$support-focus: $support-destop;
+
+// very small screen / phone
+$screen-xs: 320px;
+$screen-xs-min: 320px;
+$screen-phone: $screen-xs-min;
+
+// Small screen / tablet
+$screen-sm: 640px;
+$screen-sm-min: $screen-sm;
+$screen-tablet: $screen-sm-min;
+
+// Medium screen / desktop
+$screen-md: 992px;
+$screen-md-min: $screen-md;
+$screen-desktop: $screen-md-min;
+
+// Large screen / wide desktop
+$screen-lg: 1200px;
+$screen-lg-min: $screen-lg;
+$screen-lg-desktop: $screen-lg-min;
+
+$screen-xs-max: $screen-sm-min - 1;
+$screen-sm-max: $screen-md-min - 1;
+$screen-md-max: $screen-lg-min - 1;
+
+//grid
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+
+//only ossne font in movoto
+$font-bolder: 'robotoblack';
+$font-bold: 'robotobold';
+$font: 'robotoregular';
+$font-light: 'robotolight';
+$font-lighter: 'robotothin';
+
+//legacy main
+$color-main: #78004E;
+$color-main-l1: #980063;
+$color-main-l2: #C82D92;
+$color-main-l3: #D352A6;
+
+//blue
+$color-blue: #29318a;
+$color-blue-l1: #4f58ca;
+$color-blue-l2: #8c8ec9;
+
+
+//lake
+$color-info: #005757;
+$color-info-l1: #269191;
+$color-info-l2: #76b7b7;
+
+
+//orange
+$color-warning: #f37300;
+$color-warning-l1: #ffa250;
+$color-warning-l2: #ffd99a;
+
+//lime
+$color-tip: #ffcd1c;
+$color-tip-l1: #fce175;
+$color-tip-l2: #fff4d0;
+
+//green
+$color-safe: #aaf026;
+$color-safe-l1: #cdef4f;
+$color-safe-l2: #e6f5ad;
+
+//color for error
+$color-danger: #f71736;
+$color-danger-l1: #ff7a70;
+$color-danger-l2: #ffdad4;
+
+
+//gray level
+$color-0: black;
+$color-1: #111111;
+$color-2: #222222;
+$color-3: #333333;
+$color-4: #444444;
+$color-5: #555555;
+$color-6: #666666;
+$color-7: #777777;
+$color-8: #888888;
+$color-9: #999999;
+$color-a: #a0a0a0;
+$color-b: #b0b0b0;
+$color-c: #c3c3c3;
+$color-d: #dfdfdf;
+$color-e: #fefefe;
+$color-f: white;
+
+//reference color
+//color for textbox place holder
+$color-placeholder: $color-9;
+
+//color for link
+$color-link-default: $color-blue;
+$color-link-default-hover: $color-warning;
+
+//color for disable
+$color-disable: $color-b;
+
+//color for background
+$color-bg: $color-e;
+
+//color for border
+$color-border: $color-d;
+
+//font line-height
+$font-size-base: 16px;
+
+$font-size-header:16px;
+$font-size-header-xs: 14px;
+
+//36px
+$font-size-0: 2.25 rem;
+
+//30px
+$font-size-1: 1.875 rem;
+
+//24px
+$font-size-2: 1.5 rem;
+
+//20px
+$font-size-3:  1.25 rem;
+
+//16px
+$font-size-4: 1 rem;
+
+//14px
+$font-size-5: 14px;
+
+//12px
+$font-size-6: 12px;
+
+//11px
+$font-size-7: 11px;
+
+//header
+$header-height: 45px;
+$menu-height: $header-height;
+$menu-bg-color: $color-main;
+$menu-padding: 8px;
+$menu-text-color: $color-f;
+$menu-icon-link-size: 18px;
+
+//$search bar color
+$header-search-bg-color: #3c5b85;
+
+//aside
+$aside-bg-color: $color-main;
+$aside-width: 300px;
+$aside-header-padding: 10px 0 20px 10px;
+$aside-body-margin: 30px;
+$aside-list-item-padding: 14px;
+$aside-list-item-font: 13px;
+$aside-list-item-color: $color-9;
+$aside-list-item-border: solid 1px $color-e;
+$aside-footer-margin: 10px;
+
+//dialog
+$dialog-overlay-color: $color-3;
+$menu-link-height: 40px;
+$menu-link-padding: 10px;
+$menu-link-color-hover: $color-main-l2;
+$menu-link-color-hover-bg: $color-main-l3;
+$menu-list-min-width: 160px;
+
+//z-index
+$main-index: 1;
+$footer-index: 100;
+$ui-navbar-menu: 170;
+$ui-tip-index: 180;
+$ui-popover-index: 185;
+$map-morefilters: 190;
+$ui-pin-index: 193;
+$ui-pin-hover-index: 194;
+$ui-map-popover: 195;
+$ui-sticky-submenu-index: 195;
+$ui-stick-index: 196;
+$header-overlay: 199;
+$header-index: 200;
+$ui-socialbar-index: 201;
+$header-list-index: 201;
+$header-logo-index: 202;
+$ui-showallphotos-index: 205;
+$ui-datepicker-index: 210;
+$ui-gautocomplete-index: 300;
+$ui-dropdown-index: 310;
+$ui-menu-index: 320;
+$aside-index: 400;
+$modal-index: 500;
+$mask-index: 900;
+$ui-dialog-overlay: 1000;
+$ui-dialog-index: 1001;
+$ui-messagebox-index: 1100;
+$ui-loading-index: 2000;

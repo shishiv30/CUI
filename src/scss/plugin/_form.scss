@@ -1,0 +1,509 @@
+input[type='text'], input[type='password'], input[type='email'], select {
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+
+    @include border-radius(2px);
+
+    border: 1px solid $color-border;
+}
+
+input[type='text'], input[type='password'], input[type='email'] {
+    padding: 5px;
+}
+
+input[type='text']::-ms-clear {
+    width: 0;
+    height: 0;
+}
+
+select {
+    height: 30px;
+    background: $color-f;
+
+    &.large {
+        height: 36px;
+        line-height: 34px;
+    }
+
+    &.xlarge {
+        height: 60px;
+        line-height: 58px;
+    }
+}
+
+textarea {
+    width: 100%;
+    resize: none;
+    padding: $padding-small;
+
+    @include border-radius(2px);
+
+    border: 1px solid $color-border;
+    min-height: 70px;
+    overflow-y: auto;
+}
+
+.textarea {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form {
+    label {
+        color: $color-7;
+    }
+
+    .input {
+        width: 100%;
+    }
+
+    [class^="col-"], [class*=" col-"] {
+        padding: 0 5px;
+    }
+}
+
+.input {
+    position: relative;
+    display: inline-block;
+    width: 165px;
+    margin-bottom: 20px;
+
+    > input {
+        height: 30px;
+        line-height: 28px;
+        padding: 0 5px;
+        transition: border-color .5s;
+    }
+
+    > i {
+        color: $color-a;
+    }
+
+    > .btn {
+        height: 30px;
+        line-height: 24px;
+    }
+
+    > label, > a, > i {
+        height: 30px;
+        line-height: 30px;
+        top: 0px;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    > i, > label, > .btn, > a {
+        position: absolute;
+        vertical-align: middle;
+        text-align: center;
+        width: 30px;
+    }
+
+    &.right {
+        > input {
+            padding-right: 30px;
+        }
+
+        > i, > label, > .btn, > a {
+            right: 0;
+            left: auto;
+
+            @include border-right-radius(2px);
+
+            @include border-left-radius(0px);
+        }
+    }
+
+    &.left {
+        > input {
+            padding-left: 30px;
+        }
+
+        > i, > label, > .btn, > a {
+            left: 0;
+            right: auto;
+
+            @include border-left-radius(2px);
+
+            @include border-right-radius(0px);
+        }
+
+        &.right {
+            i, label, .btn, a {
+                &:last-of-type {
+                    right: 0;
+                    left: auto;
+
+                    @include border-right-radius(2px);
+
+                    @include border-left-radius(0px);
+                }
+            }
+        }
+    }
+
+    &.select {
+        &.right {
+            > input {
+                padding-right: 130px;
+                padding-left: 5px;
+            }
+
+            > select {
+                right: 30px;
+            }
+        }
+
+        &.left {
+            > input {
+                padding-left: 130px;
+                padding-right: 5px;
+            }
+
+            > select {
+                left: 30px;
+            }
+        }
+
+        > select {
+            width: 100px;
+            position: absolute;
+            top: 0;
+        }
+    }
+
+    &.large {
+
+
+        > input {
+            height: 36px;
+            line-height: 34px;
+        }
+
+        > i, > label, > .btn, > a {
+            height: 36px;
+            line-height: 36px;
+            width: 30px;
+        }
+
+        &.right {
+            > input {
+                padding-right: 30px;
+            }
+        }
+
+        &.left {
+            > input {
+                padding-left: 30px;
+            }
+        }
+
+        &.select {
+            &.right {
+                > input {
+                    padding-right: 150px;
+                    padding-left: 5px;
+                }
+
+                > select {
+                    right: 50px;
+                }
+            }
+
+            &.left {
+                > input {
+                    padding-left: 150px;
+                    padding-right: 5px;
+                }
+
+                > select {
+                    left: 50px;
+                }
+            }
+        }
+    }
+
+    &.xlarge {
+
+
+        > input {
+            @include border-radius(5px);
+            height: 60px;
+            line-height: 58px;
+            padding: 0 20px;
+        }
+
+        i, > label, > .btn, > a {
+            height: 60px;
+            line-height: 60px;
+        }
+
+        i {
+            font-size: 30px;
+        }
+
+        > i, > label, > .btn, > a {
+            width: 70px;
+        }
+        &.right {
+            > input {
+                padding-left: 20px;
+                padding-right: 80px;
+            }
+            > i, > label, > .btn, > a {
+                @include border-left-radius(0px);
+
+                @include border-right-radius(5px);
+            }
+        }
+
+        &.left {
+            > input {
+                padding-left: 80px;
+                padding-right: 20px;
+            }
+            > i, > label, > .btn, > a {
+                @include border-left-radius(5px);
+
+                @include border-right-radius(0px);
+            }
+        }
+
+        &.select {
+            &.right {
+                > input {
+                    padding-right: 170px;
+                    padding-left: 5px;
+                }
+
+                > select {
+                    right: 70px;
+                }
+            }
+
+            &.left {
+                > input {
+                    padding-left: 170px;
+                    padding-right: 5px;
+                }
+
+                > select {
+                    left: 70px;
+                }
+            }
+        }
+    }
+
+    &.plaintext {
+        > input {
+            background-color: transparent !important;
+            border-color: transparent !important;
+            line-height: 14px;
+            display: inline-block;
+        }
+
+        > i {
+            color: $color-3 !important;
+        }
+    }
+
+    &.has-success {
+        > input, > select {
+            border-color: $color-safe;
+        }
+
+        > i {
+            color: $color-safe;
+        }
+    }
+
+    &.has-warning {
+        > input, > select {
+            border-color: $color-warning;
+        }
+
+        > i {
+            color: $color-warning;
+        }
+    }
+
+    &.has-error {
+        > input, > select {
+            border-color: $color-danger;
+        }
+
+        > i {
+            color: $color-danger;
+        }
+    }
+
+    &.has-info {
+        > input, > select {
+            border-color: $color-info-l3;
+        }
+
+        > i {
+            color: $color-info-l3;
+        }
+    }
+}
+
+//checkbox radio
+.checkbox, .radio, .checkbox2, .radio2 {
+    display: inline-block;
+
+    label {
+        cursor: pointer;
+
+        @include unselect;
+
+        padding: 0px;
+
+        > input {
+            display: none;
+        }
+
+        > i, > span {
+            vertical-align: middle;
+        }
+
+        > i {
+            @extend %icon;
+
+            display: inline-block;
+            width: 18px;
+            font-size: $font-size-5;
+            color: $color-8;
+        }
+
+        input:checked + i {
+            color: $color-blue-l1;
+        }
+
+        input:disabled + i {
+            color: $color-disable;
+        }
+    }
+}
+
+.checkbox {
+    input + i:before {
+        vertical-align: middle;
+
+        @extend .icon-square-o;
+    }
+
+    input:checked + i:before {
+        @extend .icon-check-square;
+    }
+}
+
+.radio {
+    input + i:before {
+        vertical-align: middle;
+
+        @extend .icon-circle-thin;
+    }
+
+    input:checked + i:before {
+        @extend .icon-check-circle;
+    }
+}
+
+.checkbox2 {
+    input + i:before {
+        vertical-align: middle;
+
+        @extend .icon-square-o;
+    }
+
+    input:checked + i:before {
+        @extend .icon-check-square-o;
+    }
+}
+
+.radio2 {
+    input + i:before {
+        vertical-align: middle;
+
+        @extend .icon-circle-thin;
+    }
+
+    input:checked + i:before {
+        @extend .icon-dot-circle-o;
+    }
+}
+
+.radio.sort {
+    input + i.up:before {
+        vertical-align: middle;
+
+        @extend .icon-indicate-o-up;
+    }
+
+    input + i.down:before {
+        vertical-align: middle;
+
+        @extend .icon-indicate-o-down;
+    }
+
+    input:checked + i.up:before {
+        @extend .icon-indicate-up;
+    }
+
+    input:checked + i.down:before {
+        @extend .icon-indicate-down;
+    }
+}
+
+.error-text {
+    color: $color-danger !important;
+}
+
+.group-btn {
+    @include border-radius(5px);
+
+    border: 1px solid $color-blue-l1;
+    margin: 0;
+    overflow: hidden;
+
+    > div {
+        margin: -1px;
+        overflow: hidden;
+    }
+
+    input {
+        display: none;
+    }
+
+    label {
+        padding: 0;
+        margin: 0;
+        height: 32px;
+        line-height: 32px;
+        background: $color-f;
+        color: $color-blue-l1;
+        text-align: center;
+        display: block;
+        overflow: hidden;
+        cursor: pointer;
+        border-right: 1px dotted $color-blue-l1;
+        border-top: 1px dotted $color-blue-l1;
+        border-bottom: 1px dotted $color-blue-l1;
+        margin-top: -1px;
+    }
+
+    input:checked + label {
+        background: $color-blue-l1;
+        color: $color-f;
+    }
+
+    &.large {
+        label {
+            height: 40px;
+            line-height: 40px;
+        }
+    }
+}

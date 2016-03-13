@@ -1,0 +1,63 @@
+.pagination {
+    .info {
+        text-align: center;
+        font-size: $font-size-4;
+    }
+
+    .paging {
+        text-align: center;
+        font-size: $font-size-6;
+
+        a {
+            display: inline-block;
+            border: solid 1px $color-blue-l1;
+            width: 45px;
+            height: 45px;
+            line-height: 43px;
+            text-align: center;
+            margin-bottom: 3px;
+            vertical-align: middle;
+        }
+
+        a.selected, a.prev, a.next {
+            background-color: $color-blue-l1;
+            color: $color-f;
+        }
+
+        a.selected {
+            cursor: default;
+        }
+
+        a.disabled {
+            opacity: 0.5;
+            cursor: default;
+        }
+
+        a.prev, a.next {
+            @extend %icon;
+
+            line-height: 43px;
+        }
+
+        a.prev:before {
+            @extend .icon-angle-left;
+        }
+
+        a.next:before {
+            @extend .icon-angle-right;
+        }
+    }
+}
+
+.pageIndex {
+    margin: 0 auto;
+    line-height: 20px;
+    height: 20px;
+    text-align: center;
+
+    & > a, & > span {
+        display: inline-block;
+        margin-left: 5px !important;
+        margin-right: 5px !important;
+    }
+}
