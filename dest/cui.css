@@ -115,11 +115,11 @@ a {
 
 a,
 a:visited {
-  color: #29318a; }
+  color: #27428a; }
 
 a:hover,
 a:active {
-  color: #f37300;
+  color: #c05b00;
   text-decoration: none; }
 
 .link:hover, .link:active {
@@ -198,16 +198,16 @@ b,
   color: #a0a0a0; }
 
 .text-green {
-  color: #aaf026; }
+  color: #357935; }
 
 .text-orange {
-  color: #f37300; }
+  color: #c05b00; }
 
 .text-red {
-  color: #f71736; }
+  color: #a02622; }
 
 .text-blue {
-  color: #29318a; }
+  color: #27428a; }
 
 .text-main {
   color: #78004E; }
@@ -3242,19 +3242,31 @@ b,
     .btn.white:hover, .btn.white:focus {
       color: #333333; }
   .btn.orange {
-    background-color: #f37300; }
+    background-color: #c05b00; }
     .btn.orange:link, .btn.orange:visited {
       color: white; }
     .btn.orange:hover, .btn.orange:focus {
       color: white; }
   .btn.yellow {
-    background-color: #ffcd1c; }
+    background-color: #cccc00; }
     .btn.yellow:link, .btn.yellow:visited {
       color: black; }
     .btn.yellow:hover, .btn.yellow:focus {
       color: black; }
+  .btn.cyan {
+    background-color: #008dbd; }
+    .btn.cyan:link, .btn.cyan:visited {
+      color: white; }
+    .btn.cyan:hover, .btn.cyan:focus {
+      color: white; }
+  .btn.pink {
+    background-color: #78004E; }
+    .btn.pink:link, .btn.pink:visited {
+      color: white; }
+    .btn.pink:hover, .btn.pink:focus {
+      color: white; }
   .btn.blue {
-    background-color: #29318a; }
+    background-color: #27428a; }
     .btn.blue:link, .btn.blue:visited {
       color: white; }
     .btn.blue:hover, .btn.blue:focus {
@@ -3272,13 +3284,13 @@ b,
     .btn.black:hover, .btn.black:focus {
       color: white; }
   .btn.red {
-    background-color: #f71736; }
+    background-color: #a02622; }
     .btn.red:link, .btn.red:visited {
       color: white; }
     .btn.red:hover, .btn.red:focus {
       color: white; }
   .btn.green {
-    background-color: #aaf026; }
+    background-color: #357935; }
     .btn.green:link, .btn.green:visited {
       color: white; }
     .btn.green:hover, .btn.green:focus {
@@ -3291,19 +3303,61 @@ b,
     .btn.ghost-white:hover, .btn.ghost-white:focus {
       color: white; }
   .btn.ghost-black {
-    border-color: #333333;
+    border-color: #111111;
     background-color: transparent; }
     .btn.ghost-black:link, .btn.ghost-black:visited {
-      color: #333333; }
+      color: #111111; }
     .btn.ghost-black:hover, .btn.ghost-black:focus {
-      color: #333333; }
+      color: #111111; }
+  .btn.ghost-red {
+    border-color: #a02622;
+    background-color: transparent; }
+    .btn.ghost-red:link, .btn.ghost-red:visited {
+      color: #a02622; }
+    .btn.ghost-red:hover, .btn.ghost-red:focus {
+      color: #a02622; }
+  .btn.ghost-yellow {
+    border-color: #cccc00;
+    background-color: transparent; }
+    .btn.ghost-yellow:link, .btn.ghost-yellow:visited {
+      color: #cccc00; }
+    .btn.ghost-yellow:hover, .btn.ghost-yellow:focus {
+      color: #cccc00; }
+  .btn.ghost-cyan {
+    border-color: #008dbd;
+    background-color: transparent; }
+    .btn.ghost-cyan:link, .btn.ghost-cyan:visited {
+      color: #008dbd; }
+    .btn.ghost-cyan:hover, .btn.ghost-cyan:focus {
+      color: #008dbd; }
+  .btn.ghost-orange {
+    border-color: #c05b00;
+    background-color: transparent; }
+    .btn.ghost-orange:link, .btn.ghost-orange:visited {
+      color: #c05b00; }
+    .btn.ghost-orange:hover, .btn.ghost-orange:focus {
+      color: #c05b00; }
+  .btn.ghost-pink {
+    border-color: #78004E;
+    background-color: transparent; }
+    .btn.ghost-pink:link, .btn.ghost-pink:visited {
+      color: #78004E; }
+    .btn.ghost-pink:hover, .btn.ghost-pink:focus {
+      color: #78004E; }
+  .btn.ghost-green {
+    border-color: #357935;
+    background-color: transparent; }
+    .btn.ghost-green:link, .btn.ghost-green:visited {
+      color: #357935; }
+    .btn.ghost-green:hover, .btn.ghost-green:focus {
+      color: #357935; }
   .btn.ghost-blue {
-    border-color: #29318a;
+    border-color: #27428a;
     background-color: transparent; }
     .btn.ghost-blue:link, .btn.ghost-blue:visited {
-      color: #29318a; }
+      color: #27428a; }
     .btn.ghost-blue:hover, .btn.ghost-blue:focus {
-      color: #29318a; }
+      color: #27428a; }
   .btn.circle {
     display: inline-block;
     height: 40px;
@@ -3312,7 +3366,7 @@ b,
     border-radius: 100%;
     font-size: 17px; }
     .btn.circle.blue {
-      background-color: #29318a; }
+      background-color: #27428a; }
       .btn.circle.blue:link, .btn.circle.blue:visited {
         color: white; }
       .btn.circle.blue:hover, .btn.circle.blue:focus {

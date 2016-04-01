@@ -59,6 +59,28 @@
       color: $color-0;
     }
   }
+  &.cyan {
+    background-color: $color-info;
+    &:link,
+    &:visited {
+      color: $color-f;
+    }
+    &:hover,
+    &:focus {
+      color: $color-f;
+    }
+  }
+  &.pink {
+    background-color: $color-pink;
+    &:link,
+    &:visited {
+      color: $color-f;
+    }
+    &:hover,
+    &:focus {
+      color: $color-f;
+    }
+  }
   &.blue {
     background-color: $color-blue;
     &:link,
@@ -127,15 +149,87 @@
     }
   }
   &.ghost-black {
-    border-color: $color-3;
+    border-color: $color-1;
     background-color: transparent;
     &:link,
     &:visited {
-      color: $color-3;
+      color: $color-1;
     }
     &:hover,
     &:focus {
-      color: $color-3;
+      color: $color-1;
+    }
+  }
+  &.ghost-red {
+    border-color: $color-danger;
+    background-color: transparent;
+    &:link,
+    &:visited {
+      color: $color-danger;
+    }
+    &:hover,
+    &:focus {
+      color: $color-danger;
+    }
+  }
+  &.ghost-yellow {
+    border-color: $color-tip;
+    background-color: transparent;
+    &:link,
+    &:visited {
+      color: $color-tip;
+    }
+    &:hover,
+    &:focus {
+      color: $color-tip;
+    }
+  }
+  &.ghost-cyan {
+    border-color: $color-info;
+    background-color: transparent;
+    &:link,
+    &:visited {
+      color: $color-info;
+    }
+    &:hover,
+    &:focus {
+      color: $color-info;
+    }
+  }
+  &.ghost-orange {
+    border-color: $color-warning;
+    background-color: transparent;
+    &:link,
+    &:visited {
+      color: $color-warning;
+    }
+    &:hover,
+    &:focus {
+      color: $color-warning;
+    }
+  }
+  &.ghost-pink {
+    border-color: $color-pink;
+    background-color: transparent;
+    &:link,
+    &:visited {
+      color: $color-pink;
+    }
+    &:hover,
+    &:focus {
+      color: $color-pink;
+    }
+  }
+  &.ghost-green {
+    border-color: $color-safe;
+    background-color: transparent;
+    &:link,
+    &:visited {
+      color: $color-safe;
+    }
+    &:hover,
+    &:focus {
+      color: $color-safe;
     }
   }
   &.ghost-blue {

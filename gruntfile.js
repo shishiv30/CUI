@@ -40,11 +40,11 @@ module.exports = function (grunt) {
     watch: {
       script:{
         files: ['src/js/**/*.js'],
-        task: ['sass:dist']
+        tasks: ['concat:dist']
       },
-      style: {
+      css: {
         files: ['src/scss/*.scss', 'src/scss/**/*.scss'],
-        task: ['sass:dist']
+        tasks: ['sass:dist']
       }
     }
   });
