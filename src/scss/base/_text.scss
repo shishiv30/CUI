@@ -1,0 +1,155 @@
+.h0,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: $font-bold;
+  font-weight: normal;
+  line-height: 1em;
+}
+.h0 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.h1 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.h2,
+.h3,
+.h4 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.h5,
+.h6 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.h0,
+.f0 {
+  font-size: $font-size-0;
+}
+.h1,
+.f1 {
+  font-size: $font-size-1;
+}
+.h2,
+.f2 {
+  font-size: $font-size-2;
+}
+.h3,
+.f3 {
+  font-size: $font-size-3;
+}
+.h4,
+.f4 {
+  font-size: $font-size-4;
+}
+.h5,
+.f5 {
+  font-size: $font-size-5;
+}
+.h6,
+.f6 {
+  font-size: $font-size-6;
+}
+.f7 {
+  font-size: $font-size-7;
+}
+@media (max-width: $screen-xs-max) {
+  .h0,
+  .f0 {
+    font-size: $font-size-0-small;
+  }
+  .h1,
+  .f1 {
+    font-size: $font-size-1-small;
+  }
+  .h2,
+  .f2 {
+    font-size: $font-size-2-small;
+  }
+  .h3,
+  .f3 {
+    font-size: $font-size-3-small;
+  }
+  .h4,
+  .f4 {
+    font-size: $font-size-4-small;
+  }
+  .h5,
+  .f5 {
+    font-size: $font-size-5-small;
+  }
+  .h6,
+  .f6 {
+    font-size: $font-size-6-small;
+  }
+  .f7 {
+    font-size: $font-size-7-small;
+  }
+}
+.text-normal {
+  font-family: $font !important;
+}
+.text-bolder {
+  font-family: $font-bolder;
+}
+b,
+.text-bold {
+  font-family: $font-bold;
+}
+.text-light {
+  font-family: $font-light;
+}
+.text-lighter {
+  font-family: $font-lighter;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+.text-shadow {
+  @include text-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
+}
+.text-white {
+  color: $color-f;
+}
+.text-gray {
+  color: $color-7;
+}
+.text-lightgray {
+  color: $color-a;
+}
+.text-green {
+  color: $color-safe;
+}
+.text-orange {
+  color: $color-warning;
+}
+.text-red {
+  color: $color-danger;
+}
+.text-blue {
+  color: $color-blue;
+}
+.text-main {
+  color: $color-main;
+}
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-lowercase {
+  text-transform: lowercase;
+}
+.text-capitalize {
+  text-transform: capitalize;
+}
