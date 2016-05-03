@@ -1,7 +1,8 @@
 .btn {
   @include singleline();
-  height: 35px;
-  margin: 5px auto;
+  height: $form-size-normal;
+  line-height: $form-size-normal - 2;
+  padding: 0 10px;
   display: block;
   text-align: center;
   vertical-align: middle;
@@ -12,7 +13,7 @@
   & > *{
     display: inline-block;
     vertical-align: middle;
-    line-height: 32px;
+    line-height: $form-size-normal - 2;
   }
   &:link,
   &:visited {
@@ -266,15 +267,17 @@
   }
 
   &.large {
-    height: 50px;
-    line-height: 48px;
+    height: $form-size-large;
+    line-height: $form-size-large - 2;
     font-size: $font-size-4;
+    padding: 0 20px;
     border-radius:6px;
   }
   &.small {
-    height: 25px;
-    line-height: 23px;
-    border-radius: 4px;
+    height: $form-size-small;
+    line-height: $form-size-small - 2;
+    padding: 0 8px;
+    @include border-radius(4px);
   }
   &[disabled] {
     background-color: $color-c !important;

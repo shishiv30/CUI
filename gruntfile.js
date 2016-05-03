@@ -8,7 +8,7 @@ module.exports = function (grunt) {
       },
       dist: {
         files: [{
-          src: ['src/js/libs/jquery.js', 'src/js/plugins/*.js'],
+          src: ['src/js/plugins/*.js'],
           dest: 'dest/<%= pkg.name %>.js'
         }]
       }

@@ -1,75 +1,75 @@
-body, h1, h2, h3, h4, h5, h6, hr, p, blockquote,
-dl, dt, dd, ul, ol, li,
-pre,
-fieldset, legend, button, input, textarea,
-th, td, figure {
+* {
     margin: 0;
     padding: 0;
-}
-
-address, cite, dfn, em, var {
+    font-family: $font, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: $font-size-5;
     font-style: normal;
+    box-sizing: border-box;
 }
-
-ul, ol {
+ol,
+ul {
     list-style: none;
 }
-
-a {
-    text-decoration: none;
-}
-
 i {
     text-align: center;
 }
 
-a:hover {
-    text-decoration: underline;
-}
-
-abbr[title], acronym[title] {
+abbr[title],
+acronym[title] {
     border-bottom: 1px dotted;
     cursor: help;
 }
-
-q:before, q:after {
+q:after,
+q:before {
     content: '';
 }
-
 legend {
-    color: #000;
+    color: $color-0;
 }
-
-a, select, input, button, textarea {
+a,
+button,
+input,
+select,
+textarea {
     outline: none;
 }
-
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
     font-size: 100%;
 }
-
 table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-
 hr {
     border: none;
     height: 1px;
 }
-
 fieldset {
     padding: 0;
     margin: 0;
     border: 0;
 }
-
-input, select, textarea {
+input,
+select,
+textarea {
     &:focus {
         outline: none;
     }
 }
-
 img {
     border: 0;
+}
+body,
+html {
+    min-height: 100%;
+    overflow-x: hidden;
+}
+label[for] {
+  cursor: pointer;
+}
+[readonly] {
+  cursor: not-allowed;
 }

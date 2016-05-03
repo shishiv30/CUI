@@ -1,31 +1,53 @@
 <html>
-  <head>
-    <link href="dest/cui.css" type="text/css" rel="stylesheet"/>
-  </head>
-  <body>
-      <div>
-        <a href="" class="btn blue"><i class="icon-plus"></i> <span>0</span></a>
-      </div>
-      <div>
-        <a href="" class="btn red"><i class="icon-plus"></i> <span>0</span></a>
-      </div>
-      <div>
-        <a href="" class="btn green"><i class="icon-plus"></i> <span>0</span></a>
-      </div>
-      <div>
-        <a href="" class="btn orange"><i class="icon-plus"></i> <span>0</span></a>
-      </div>
-      <div>
-        <a href="" class="btn cyan"><i class="icon-plus"></i> <span>0</span></a>
-      </div>
-      <div>
-        <a href="" class="btn yellow"><i class="icon-plus"></i> <span>0</span></a>
-      </div>
-      <div>
-        <a href="" class="btn pink"><i class="icon-plus"></i> <span>0</span></a>
-      </div>
-      <div>
-        <a href="" class="btn ghost"><i class="icon-plus"></i> <span>0</span></a>
-      </div>
-  </body>
+
+<head>
+    <link href="dest/cui.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="gs-fixed">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel">
+                    <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#buttonPanel">buttons <span class="subtitle">clickable</span> <i class="icon-angle-down right"></i></a>
+                    <div id="buttonPanel" class="row">
+                        <div class="col-xs-6 col-sm-4">
+                            <a href="" class="btn blue"><i class="icon-plus"></i> <span>0</span></a>
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <a href="" class="btn red"><i class="icon-plus"></i> <span>0</span></a>
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <a href="" class="btn green"><i class="icon-plus"></i> <span>0</span></a>
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <a href="" class="btn orange"><i class="icon-plus"></i> <span>0</span></a>
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <a href="" class="btn cyan"><i class="icon-plus"></i> <span>0</span></a>
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <a href="" class="btn yellow"><i class="icon-plus"></i> <span>0</span></a>
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <a href="" class="btn pink"><i class="icon-plus"></i> <span>0</span></a>
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <a href="" class="btn ghost"><i class="icon-plus"></i> <span>0</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+<script src="dest/cui.js" type="text/javascript"></script>
+<script>
+  window.context = {};
+  $(document).ready(function(){
+    $(document).trigger('dom.load');
+  });
+</script>
+
 </html>

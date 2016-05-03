@@ -2,6 +2,11 @@
 .hide {
   display: none !important;
 }
+//help
+.help {
+  border-bottom: dashed 1px $color-6;
+  cursor: help;
+}
 //blank space
 .blank-xs {
   height: 5px;

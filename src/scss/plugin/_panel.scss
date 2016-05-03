@@ -1,0 +1,76 @@
+.panel {
+    position: relative;
+    padding-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .h1, .h2, .h3, .h4, .h5 {
+        color: $color-3;
+        padding-bottom: 8px;
+        position: relative;
+        border-bottom: solid 1px $color-d;
+        margin-bottom: 10px;
+        display: block;
+        @extend %clearfix;
+
+        > span {
+            margin-right: 5px;
+            &.h5{
+                margin-top:2px;
+            }
+        }
+        > sub {
+            position: absolute;
+            text-align: right;
+            left: 0;
+            right: 0;
+            bottom: -20px;
+            line-height: 20px;
+            font-size: $font-size-7;
+
+            @extend %singleline;
+        }
+
+        .subtitle {
+            font-size: $font-size-5;
+            color: $color-7;
+        }
+
+        &.noborder {
+            border-bottom: none;
+            line-height: 1em;
+            padding-bottom: 0;
+            margin-bottom:0;
+        }
+
+        &.addition {
+            padding-right: 25px;
+            .right{
+                display: block;
+                position: absolute;
+                right: 0;
+                width: 25px;
+                text-align: center;
+                bottom: 8px;
+                font-size: $font-size-3;
+                line-height: 20px;
+            }
+        }
+    }
+    .h4,  .h5 {
+        &.addition {
+            .right {
+                right: 4px;
+            }
+        }
+    }
+    .footer{
+        color:$color-7;
+        font-size: $font-size-6;
+        text-align: right;
+        height: 16px;
+        line-height: 16px;
+        @include singleline;
+    }
+
+}

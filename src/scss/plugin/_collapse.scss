@@ -3,16 +3,12 @@
         @extend .icon-minus-square-o;
     }
 
+    &.icon-angle-up:before, & > .icon-angle-up:before {
+        @extend .icon-angle-down;
+    }
+
     &.icon-angle-down:before, & > .icon-angle-down:before {
         @extend .icon-angle-up;
-    }
-
-    &.icon-angle-down-small:before {
-        @extend .icon-angle-up-small;
-    }
-
-    & > .icon-angle-down-small:before {
-        @extend .icon-angle-up-small;
     }
 
     &.icon-arrow-circle-up:before {
