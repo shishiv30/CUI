@@ -1,290 +1,295 @@
 .btn {
-  @include singleline();
-  height: $form-size-normal;
-  line-height: $form-size-normal - 2;
-  padding: 0 10px;
-  display: block;
-  text-align: center;
-  vertical-align: middle;
-  background-color: $color-c;
-  border: 1px solid transparent;
-  border-radius: 5px;
-  transition: opacity .5s;
-  & > *{
-    display: inline-block;
-    vertical-align: middle;
+    @include singleline();
+    height: $form-size-normal;
     line-height: $form-size-normal - 2;
-  }
-  &:link,
-  &:visited {
-    color: $color-1;
-  }
-  &:hover,
-  &:focus {
-    text-decoration: none;
-    opacity: 0.8;
-    color: $color-1;
-  }
-  &.white {
-    background-color: $color-f;
-    color: $color-3;
-    border-color: $color-3;
+    padding: 0 10px;
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+    background-color: $color-c;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    transition: opacity 0.5s;
+    & > * {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: $form-size-normal - 2;
+    }
     &:link,
     &:visited {
-      color: $color-3;
+        color: $color-1;
     }
-    &:hover,
-    &:focus {
-      color: $color-3;
-    }
-  }
-  &.orange {
-    background-color: $color-warning;
-    &:link,
-    &:visited {
-      color: $color-f;
-    }
-    &:hover,
-    &:focus {
-      color: $color-f;
-    }
-  }
-  &.yellow {
-    background-color: $color-tip;
-    &:link,
-    &:visited {
-      color: $color-0;
-    }
-    &:hover,
-    &:focus {
-      color: $color-0;
-    }
-  }
-  &.cyan {
-    background-color: $color-info;
-    &:link,
-    &:visited {
-      color: $color-f;
-    }
-    &:hover,
-    &:focus {
-      color: $color-f;
-    }
-  }
-  &.pink {
-    background-color: $color-pink;
-    &:link,
-    &:visited {
-      color: $color-f;
-    }
-    &:hover,
-    &:focus {
-      color: $color-f;
-    }
-  }
-  &.blue {
-    background-color: $color-blue;
-    &:link,
-    &:visited {
-      color: $color-f;
-    }
-    &:hover,
-    &:focus {
-      color: $color-f;
-    }
-  }
-  &.gray {
-    background-color: $color-9;
-    &:link,
-    &:visited {
-      color: $color-f;
-    }
-    &:hover,
-    &:focus {
-      color: $color-f;
-    }
-  }
-  &.black {
-    background-color: $color-3;
-    &:link,
-    &:visited {
-      color: $color-f;
-    }
-    &:hover,
-    &:focus {
-      color: $color-f;
-    }
-  }
-  &.red {
-    background-color: $color-danger;
-    &:link,
-    &:visited {
-      color: $color-f;
-    }
-    &:hover,
-    &:focus {
-      color: $color-f;
-    }
-  }
-  &.green {
-    background-color: $color-safe;
-    &:link,
-    &:visited {
-      color: $color-f;
-    }
-    &:hover,
-    &:focus {
-      color: $color-f;
-    }
-  }
-  &.ghost-white {
-    border-color: $color-f;
-    background-color: transparent;
-    &:link,
-    &:visited {
-      color: $color-f;
-    }
-    &:hover,
-    &:focus {
-      color: $color-f;
-    }
-  }
-  &.ghost-black {
-    border-color: $color-1;
-    background-color: transparent;
-    &:link,
-    &:visited {
-      color: $color-1;
-    }
-    &:hover,
-    &:focus {
-      color: $color-1;
-    }
-  }
-  &.ghost-red {
-    border-color: $color-danger;
-    background-color: transparent;
-    &:link,
-    &:visited {
-      color: $color-danger;
-    }
-    &:hover,
-    &:focus {
-      color: $color-danger;
-    }
-  }
-  &.ghost-yellow {
-    border-color: $color-tip;
-    background-color: transparent;
-    &:link,
-    &:visited {
-      color: $color-tip;
-    }
-    &:hover,
-    &:focus {
-      color: $color-tip;
-    }
-  }
-  &.ghost-cyan {
-    border-color: $color-info;
-    background-color: transparent;
-    &:link,
-    &:visited {
-      color: $color-info;
-    }
-    &:hover,
-    &:focus {
-      color: $color-info;
-    }
-  }
-  &.ghost-orange {
-    border-color: $color-warning;
-    background-color: transparent;
-    &:link,
-    &:visited {
-      color: $color-warning;
-    }
-    &:hover,
-    &:focus {
-      color: $color-warning;
-    }
-  }
-  &.ghost-pink {
-    border-color: $color-pink;
-    background-color: transparent;
-    &:link,
-    &:visited {
-      color: $color-pink;
-    }
-    &:hover,
-    &:focus {
-      color: $color-pink;
-    }
-  }
-  &.ghost-green {
-    border-color: $color-safe;
-    background-color: transparent;
-    &:link,
-    &:visited {
-      color: $color-safe;
-    }
-    &:hover,
-    &:focus {
-      color: $color-safe;
-    }
-  }
-  &.ghost-blue {
-    border-color: $color-blue;
-    background-color: transparent;
-    &:link,
-    &:visited {
-      color: $color-blue;
-    }
-    &:hover,
-    &:focus {
-      color: $color-blue;
-    }
-  }
-
-  &.circle{
-    display: inline-block;
-    height: 40px;
-    width: 40px;
-    line-height: 38px;
-    border-radius: 100%;
-    font-size: 17px;
-    &.blue {
-      background-color: $color-blue;
-      &:link,
-      &:visited {
-        color: $color-f;
-      }
-      &:hover,
-      &:focus {
-        color: $color-f;
-      }
-    }
-  }
-
-  &.large {
-    height: $form-size-large;
-    line-height: $form-size-large - 2;
-    font-size: $font-size-4;
-    padding: 0 20px;
-    border-radius:6px;
-  }
-  &.small {
-    height: $form-size-small;
-    line-height: $form-size-small - 2;
-    padding: 0 8px;
-    @include border-radius(4px);
-  }
-  &[disabled] {
-    background-color: $color-c !important;
-    color: $color-7 !important;
-    cursor: wait !important;
+    &:focus,
     &:hover {
-      background-color: $color-c !important;
+        text-decoration: none;
+        opacity: 0.8;
+        color: $color-1;
     }
-  }
+    &.white {
+        background-color: $color-f;
+        color: $color-3;
+        border-color: $color-3;
+        &:link,
+        &:visited {
+            color: $color-3;
+        }
+        &:focus,
+        &:hover {
+            color: $color-3;
+        }
+    }
+    &.orange {
+        background-color: $color-warning-l1;
+        &:link,
+        &:visited {
+            color: $color-f;
+        }
+        &:focus,
+        &:hover {
+            color: $color-f;
+        }
+    }
+    &.yellow {
+        background-color: $color-tip-l1;
+        &:link,
+        &:visited {
+            color: $color-0;
+        }
+        &:focus,
+        &:hover {
+            color: $color-0;
+        }
+    }
+    &.cyan {
+        background-color: $color-info-l1;
+        &:link,
+        &:visited {
+            color: $color-f;
+        }
+        &:focus,
+        &:hover {
+            color: $color-f;
+        }
+    }
+    &.pink {
+        background-color: $color-pink-l1;
+        &:link,
+        &:visited {
+            color: $color-f;
+        }
+        &:focus,
+        &:hover {
+            color: $color-f;
+        }
+    }
+    &.blue {
+        background-color: $color-blue-l1;
+        &:link,
+        &:visited {
+            color: $color-f;
+        }
+        &:focus,
+        &:hover {
+            color: $color-f;
+        }
+    }
+    &.gray {
+        background-color: $color-9;
+        &:link,
+        &:visited {
+            color: $color-f;
+        }
+        &:focus,
+        &:hover {
+            color: $color-f;
+        }
+    }
+    &.black {
+        background-color: $color-3;
+        &:link,
+        &:visited {
+            color: $color-f;
+        }
+        &:focus,
+        &:hover {
+            color: $color-f;
+        }
+    }
+    &.red {
+        background-color: $color-danger-l1;
+        &:link,
+        &:visited {
+            color: $color-f;
+        }
+        &:focus,
+        &:hover {
+            color: $color-f;
+        }
+    }
+    &.green {
+        background-color: $color-safe-l1;
+        &:link,
+        &:visited {
+            color: $color-f;
+        }
+        &:focus,
+        &:hover {
+            color: $color-f;
+        }
+    }
+    &.ghost-white {
+        border-color: $color-f;
+        background-color: transparent;
+        &:link,
+        &:visited {
+            color: $color-f;
+        }
+        &:focus,
+        &:hover {
+            color: $color-f;
+        }
+    }
+    &.ghost-black {
+        border-color: $color-1;
+        background-color: transparent;
+        &:link,
+        &:visited {
+            color: $color-1;
+        }
+        &:focus,
+        &:hover {
+            color: $color-1;
+        }
+    }
+    &.ghost-red {
+        border-color: $color-danger;
+        background-color: transparent;
+        &:link,
+        &:visited {
+            color: $color-danger;
+        }
+        &:focus,
+        &:hover {
+            color: $color-danger;
+        }
+    }
+    &.ghost-yellow {
+        border-color: $color-tip;
+        background-color: transparent;
+        &:link,
+        &:visited {
+            color: $color-tip;
+        }
+        &:focus,
+        &:hover {
+            color: $color-tip;
+        }
+    }
+    &.ghost-cyan {
+        border-color: $color-info;
+        background-color: transparent;
+        &:link,
+        &:visited {
+            color: $color-info;
+        }
+        &:focus,
+        &:hover {
+            color: $color-info;
+        }
+    }
+    &.ghost-orange {
+        border-color: $color-warning;
+        background-color: transparent;
+        &:link,
+        &:visited {
+            color: $color-warning;
+        }
+        &:focus,
+        &:hover {
+            color: $color-warning;
+        }
+    }
+    &.ghost-pink {
+        border-color: $color-pink;
+        background-color: transparent;
+        &:link,
+        &:visited {
+            color: $color-pink;
+        }
+        &:focus,
+        &:hover {
+            color: $color-pink;
+        }
+    }
+    &.ghost-green {
+        border-color: $color-safe;
+        background-color: transparent;
+        &:link,
+        &:visited {
+            color: $color-safe;
+        }
+        &:focus,
+        &:hover {
+            color: $color-safe;
+        }
+    }
+    &.ghost-blue {
+        border-color: $color-blue;
+        background-color: transparent;
+        &:link,
+        &:visited {
+            color: $color-blue;
+        }
+        &:focus,
+        &:hover {
+            color: $color-blue;
+        }
+    }
+    &.circle {
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        line-height: 38px;
+        border-radius: 100%;
+        font-size: 17px;
+        &.blue {
+            background-color: $color-blue;
+            &:link,
+            &:visited {
+                color: $color-f;
+            }
+            &:focus,
+            &:hover {
+                color: $color-f;
+            }
+        }
+    }
+    &.large {
+        height: $form-size-large;
+        line-height: $form-size-large - 2;
+        font-size: $font-size-4;
+        padding: 0 20px;
+        border-radius: 6px;
+        & > * {
+            line-height: $form-size-large - 2;
+        }
+    }
+    &.small {
+        height: $form-size-small;
+        line-height: $form-size-small - 2;
+        padding: 0 8px;
+        @include border-radius(4px);
+        & > * {
+            line-height: $form-size-small - 2;
+        }
+    }
+    &[disabled] {
+        background-color: $color-c !important;
+        border-color: $color-7 !important;
+        color: $color-7 !important;
+        cursor: wait !important;
+        &:hover {
+            background-color: $color-c !important;
+        }
+    }
 }

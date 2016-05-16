@@ -133,13 +133,13 @@ b,
 .text-lightgray {
   color: $color-a;
 }
-.text-green {
+.text-green,.text-safe {
   color: $color-safe;
 }
-.text-orange {
+.text-orange,  .text-warning{
   color: $color-warning;
 }
-.text-red {
+.text-red, .text-error {
   color: $color-danger;
 }
 .text-blue {

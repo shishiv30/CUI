@@ -1,0 +1,50 @@
+.group-btn {
+    @include border-radius(5px);
+
+    border: 1px solid $color-blue-l1;
+    margin: 0;
+    overflow: hidden;
+
+    > div {
+        margin: -1px;
+        overflow: hidden;
+    }
+
+    input {
+        display: none;
+    }
+
+    label {
+        padding: 0;
+        margin: 0;
+        height: $form-size-normal;
+        line-height: $form-size-normal -2;
+        background: $color-f;
+        color: $color-blue-l1;
+        text-align: center;
+        display: block;
+        overflow: hidden;
+        cursor: pointer;
+        border-right: 1px dotted $color-blue-l1;
+        border-top: 1px dotted $color-blue-l1;
+        border-bottom: 1px dotted $color-blue-l1;
+        margin-top: -1px;
+    }
+
+    input:checked + label {
+        background: $color-blue-l1;
+        color: $color-f;
+    }
+    &.small {
+        label {
+            height: $form-size-small;
+            line-height: $form-size-small - 2;
+        }
+    }
+    &.large {
+        label {
+            height: $form-size-large;
+            line-height: $form-size-large - 2;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+select {
+    height: $form-size-normal;
+    background: $color-f;
+    cursor: pointer;
+    &.small {
+        height: $form-size-small;
+    }
+    &.large {
+        height: $form-size-normal;
+    }
+}

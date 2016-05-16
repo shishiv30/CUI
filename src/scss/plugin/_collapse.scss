@@ -7,31 +7,15 @@
         @extend .icon-angle-down;
     }
 
-    &.icon-angle-down:before, & > .icon-angle-down:before {
-        @extend .icon-angle-up;
-    }
-
-    &.icon-arrow-circle-up:before {
+    &.icon-arrow-circle-up:before , & > .icon-arrow-circle-up:before {
         @extend .icon-arrow-circle-down;
     }
 
-    & > .icon-arrow-circle-down:before {
-        @extend .icon-arrow-circle-up;
-    }
-
-    &.icon-eye:before {
+    &.icon-eye:before , & > .icon-eye:before {
         @extend .icon-eye-slash;
     }
 
-    & > .icon-eye:before {
-        @extend .icon-eye-slash;
-    }
-
-    &.icon-caret-right:before {
-        @extend .icon-sort-desc;
-    }
-
-    .icon-caret-right:before {
+    &.icon-caret-right:before , & > .icon-caret-right:before {
         @extend .icon-sort-desc;
     }
 }

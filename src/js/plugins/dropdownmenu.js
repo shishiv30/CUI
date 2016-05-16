@@ -1,5 +1,4 @@
 (function($) {
-
     $.fn.dropdownmenu = function() {
         var $this = $(this);
         var $link = $(this).find('.caret');

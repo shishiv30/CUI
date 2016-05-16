@@ -1,0 +1,178 @@
+input[type='text'], input[type='password'], input[type='email'], select {
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+    @include border-radius(2px);
+    border: 1px solid $color-border;
+}
+
+input[type='text']::-ms-clear {
+    width: 0;
+    height: 0;
+}
+
+.input {
+    position: relative;
+    display: inline-block;
+    width: 165px;
+    > input {
+        height: $form-size-normal;
+        line-height: $form-size-normal - 2;
+        padding: 0 5px;
+        transition: border-color .5s;
+        @include border-radius(3px);
+    }
+    > .btn {
+        margin: 0;
+        padding: 0;
+    }
+    > label{
+      color:$color-7;
+    }
+    > i, > label, > .btn, > a {
+        top: 0px;
+        position: absolute;
+        vertical-align: middle;
+        text-align: center;
+        width: $form-size-normal;
+        height: $form-size-normal;
+        line-height: $form-size-normal;
+        @include singleline();
+    }
+    &.right {
+        > input {
+            padding-right: $form-size-normal;
+        }
+        > i, > label, > .btn, > a {
+            right: 0;
+            left: auto;
+            @include border-left-radius(0px);
+            @include border-right-radius(3px);
+        }
+    }
+    &.left {
+        > input {
+            padding-left: $form-size-normal;
+        }
+        > i, > label, > .btn, > a {
+            left: 0;
+            right: auto;
+            @include border-left-radius(3px);
+            @include border-right-radius(0px);
+        }
+        &.right {
+            >i, >label, >.btn, >a {
+                &:last-of-type {
+                    right: 0;
+                    left: auto;
+                    @include border-right-radius(3px);
+                    @include border-left-radius(0px);
+                }
+            }
+        }
+    }
+    &.small {
+        > input {
+            height: $form-size-small;
+            line-height: $form-size-small - 2;
+        }
+        > i, > label, > .btn, > a {
+            height: $form-size-small;
+            line-height: $form-size-small;
+            width: $form-size-small;
+        }
+        &.right {
+            > input {
+                padding-right: $form-size-small;
+            }
+        }
+        &.left {
+            > input {
+                padding-left: $form-size-small;
+            }
+        }
+    }
+    &.large {
+        > input {
+            @include border-radius(5px);
+            height: $form-size-large;
+            line-height: $form-size-large - 2;
+            padding: 0 20px;
+        }
+        > i, > label, > .btn, > a {
+            height: $form-size-large;
+            line-height: $form-size-large;
+            width: $form-size-large;
+        }
+        &.right {
+            > input {
+                padding-left: 20px;
+                padding-right: $form-size-large + 20;
+            }
+            > i, > label, > .btn, > a {
+                @include border-left-radius(0px);
+                @include border-right-radius(5px);
+            }
+        }
+        &.left {
+            > input {
+                padding-left: $form-size-large + 20;
+                padding-right: 20px;
+            }
+            > i, > label, > .btn, > a {
+                @include border-left-radius(5px);
+                @include border-right-radius(0px);
+            }
+            &.right {
+                >i, >label, >.btn, >a {
+                    &:last-of-type {
+                        @include border-right-radius(5px);
+                        @include border-left-radius(0px);
+                    }
+                }
+            }
+        }
+    }
+    &.plaintext {
+        > input {
+            background-color: transparent !important;
+            border-color: transparent !important;
+            display: inline-block;
+        }
+        > i {
+            color: $color-3 !important;
+        }
+    }
+    &.has-success {
+        > input, > select {
+            border-color: $color-safe-l1;
+        }
+        > i {
+            color: $color-safe-l1;
+        }
+    }
+    &.has-warning {
+        > input, > select {
+            border-color: $color-warning-l1;
+        }
+        > i {
+            color: $color-warning-l1;
+        }
+    }
+    &.has-error {
+        > input, > select {
+            border-color: $color-danger-l1;
+        }
+        > i {
+            color: $color-danger-l1;
+        }
+    }
+    &.has-info {
+        > input, > select {
+            border-color: $color-info-l1;
+        }
+        > i {
+            color: $color-info-l1;
+        }
+    }
+}
