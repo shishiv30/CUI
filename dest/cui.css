@@ -4274,4 +4274,115 @@ textarea {
 [data-collapse='expand'] {
   visibility: hidden; }
 
+.slider {
+  display: block;
+  position: relative;
+  width: 100%;
+  overflow: hidden; }
+  .slider > .slider-list {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    overflow: hidden; }
+    .slider > .slider-list > li {
+      width: 50%;
+      height: 100%;
+      float: left;
+      overflow: hidden;
+      position: relative; }
+  .slider .prev, .slider .next {
+    z-index: 2;
+    display: block;
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fefefe;
+    opacity: .6; }
+    .slider .prev:hover, .slider .next:hover {
+      color: white; }
+  .slider .prev {
+    left: 5px;
+    transition: left 0.5s;
+    -moz-transition: left 0.5s;
+    -webkit-transition: left 0.5s;
+    transition-timing-function: ease; }
+    .slider .prev i {
+      -webkit-text-shadow: #333333 1px 0px 2px;
+      text-shadow: #333333 1px 0px 2px; }
+  .slider .next {
+    right: 5px;
+    transition: right 0.5s;
+    -moz-transition: right 0.5s;
+    -webkit-transition: right 0.5s;
+    transition-timing-function: ease; }
+    .slider .next i {
+      -webkit-text-shadow: #333333 -1px 0px 2px;
+      text-shadow: #333333 -1px 0px 2px; }
+  .slider:hover .prev {
+    left: 0;
+    opacity: 1; }
+  .slider:hover .next {
+    right: 0;
+    opacity: 1; }
+
+.shifter {
+  overflow: hidden;
+  position: relative; }
+  .shifter .wrap {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch; }
+    .shifter .wrap > ul {
+      overflow: hidden; }
+      .shifter .wrap > ul > li {
+        float: left;
+        overflow: hidden;
+        position: relative; }
+  .shifter .prev, .shifter .next {
+    z-index: 2;
+    display: block;
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fefefe;
+    opacity: .6; }
+    .shifter .prev i, .shifter .next i {
+      vertical-align: baseline; }
+    .shifter .prev:hover, .shifter .next:hover {
+      color: white; }
+  .shifter .prev {
+    left: 5px;
+    transition: left 0.5s;
+    -moz-transition: left 0.5s;
+    -webkit-transition: left 0.5s;
+    transition-timing-function: ease; }
+    .shifter .prev i {
+      -webkit-text-shadow: #333333 1px 0px 2px;
+      text-shadow: #333333 1px 0px 2px; }
+  .shifter .next {
+    right: 5px;
+    transition: right 0.5s;
+    -moz-transition: right 0.5s;
+    -webkit-transition: right 0.5s;
+    transition-timing-function: ease; }
+    .shifter .next i {
+      -webkit-text-shadow: #333333 -1px 0px 2px;
+      text-shadow: #333333 -1px 0px 2px; }
+  .shifter:hover .prev {
+    left: 0;
+    opacity: 1; }
+  .shifter:hover .next {
+    opacity: 1;
+    right: 0; }
+
 /*# sourceMappingURL=cui.css.map */

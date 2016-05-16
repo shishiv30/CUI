@@ -6,11 +6,13 @@
             height: 200,
             width: 300,
             clickable: false,
-            lazingload: true
+            lazingload: true,
+            autoscroll: 0
         };
 
         var $this = $(this);
-
+        var sign_isAuto = false;
+        var lastScrollLeft = 0;
         var opt = $.extend({}, defaultOpt, options);
         var height = opt.height * 1;
         var timer = null;
@@ -23,14 +25,16 @@
         var shift = 0;
         var maxOffsetX = 0;
         var pagesize = 1;
+        var autoTimer = null;
 
-        if (opt.lazingload) {
-            $items.each(function(index, item) {
+        $items.each(function(index, item) {
+            $(item).attr('shift-index', index);
+            if (opt.lazingload) {
                 var img = $(item).find('img[src]');
                 img.data('src', img.attr("src"));
-                img.removeAttr('src');
-            });
-        }
+                img.attr('src', 'data:image/gif;base64,R0lGODlhAQABAJEAAAAAAP///////wAAACH5BAEAAAIALAAAAAABAAEAAAICVAEAOw==');
+            }
+        });
 
         var prevLink = $('<a href="javascript:;" class="prev"><i class="icon-angle-left"></i></a>');
         var nextLink = $('<a href="javascript:;" class="next"><i class="icon-angle-right"></i></a>');
@@ -91,6 +95,16 @@
                     list[1].element.addClass("active");
                 }
             }
+            if (opt.onChange && lastScrollLeft !== $wrap.scrollLeft()) {
+                var isNext = lastScrollLeft < $wrap.scrollLeft();
+                if ($.isFunction(opt.onChange)) {
+                    opt.onChange($list.find('.active'), sign_isAuto, isNext);
+                } else {
+                    $(document).trigger(opt.onChange, [$list.find('.active'), sign_isAuto, isNext]);
+                }
+                lastScrollLeft = $wrap.scrollLeft();
+                sign_isAuto = false;
+            }
         }
         var _scroll = function() {
             _markActive();
@@ -113,64 +127,75 @@
                 $wrap.stop().animate({
                     "scrollLeft": left
                 }, opt.animationTime);
-                return;
+                return index;
             } else {
                 if (index) {
                     var begin = $wrap.scrollLeft();
                     var end = $wrap.outerWidth();
+                    var ismove = false;
                     $items.each(function(j, item) {
                         var left = $(item).position().left;
                         var width = $(item).outerWidth();
                         if (left > 0 && left < end && (left + width) > end) {
+                            ismove = true;
                             $wrap.stop().animate({
                                 "scrollLeft": begin + $(item).position().left
                             }, opt.animationTime);
                             return false;
                         }
                     });
-                    return;
+                    return ismove;
                 } else {
-
                     var begin = $wrap.scrollLeft();
                     var end = $wrap.outerWidth();
+                    var ismove = false;
                     $items.each(function(j, item) {
                         var left = $(item).position().left;
                         var width = $(item).outerWidth();
                         if (left <= 0 && (left + width) > 0) {
+                            var ismove = true;
                             $wrap.stop().animate({
                                 "scrollLeft": begin - end + ($(item).width() + $(item).position().left)
                             }, opt.animationTime);
-                            return false;
+                            return true;
                         }
                     });
-                    return;
+                    return ismove;
                 }
             }
         }
 
         var _prev = function() {
-            _shift(false);
+            return _shift(false);
         };
         var _next = function() {
-            _shift(true);
+            return _shift(true);
         };
 
         var _go = function(index) {
-            _shift(index);
+            return _shift(index);
         };
+
 
         var init = function() {
             var obj = {
                 prev: function() {
-                    _prev();
+                    return _prev();
                 },
                 next: function() {
-                    _next();
+                    return _next();
                 },
                 go: function(index) {
-                    _go(index);
+                    return _go(index);
                 }
             };
+
+            if (opt.autoscroll&& $.isNumeric(opt.autoscroll)) {
+                autoTimer = setInterval(function() {
+                    obj.next();
+                    sign_isAuto = true;
+                }, opt.autoscroll * 1);
+            }
             $this.css("height", opt.height);
             $wrap.css("height", opt.height + 21);
 
@@ -194,8 +219,8 @@
                     });
                 }
             });
-            prevLink.click(obj.prev);
-            nextLink.click(obj.next);
+            prevLink.click(function(e){obj.prev();return e.preventDefault();});
+            nextLink.click(function(e){obj.next();return e.preventDefault();});
 
             $(document).on("dom.resize", function() {
                 _resize();
@@ -224,11 +249,11 @@
                 var $this = $(this);
                 var opt = {
                     animationTime: $this.attr("data-time") * 1 || 300,
-                    hideNav: $this.attr('data-hideNav'),
                     onChange: $this.attr('data-onChange'),
                     height: $this.attr('data-height') * 1 || 200,
                     width: $this.attr('data-width') * 1 || 300,
-                    lazingload: $this.attr('data-lazingload') != "false"
+                    lazingload: $this.attr('data-lazingload') != "false",
+                    autoscroll: $this.attr('data-autoscroll')
                 };
                 $this.shifter(opt);
                 $this.removeAttr('data-shifter');

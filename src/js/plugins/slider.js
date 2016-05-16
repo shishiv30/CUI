@@ -4,16 +4,16 @@
         var defaultOpt = {
             loop: true,
             index: 0,
-            hideNav: false,
             onChange: null,
-            lazingload: true
+            lazingload: true,
+            autoscroll: 0
         };
         var opt = $.extend({}, defaultOpt, options);
         var $this = $(this);
         var $list = $this.find('.slider-list');
         var $item = $list.find('li');
         var length = $item.length;
-
+       var sign_isAuto = false;
 
 
         if (length > 1) {
@@ -26,7 +26,7 @@
                     if(index>=2){
                         var img = $(li).find('img[src]');
                         img.data('src', img.attr("src"));
-                        img.removeAttr('src');
+                        img.attr('src', 'data:image/gif;base64,R0lGODlhAQABAJEAAAAAAP///////wAAACH5BAEAAAIALAAAAAABAAEAAAICVAEAOw==');
                     }
                 });
             }
@@ -99,10 +99,10 @@
                 currentItem.removeClass('active');
                 nextItem.addClass('active');
                 if (opt.onChange) {
-                    if ($.isFunction(opt.onChange)) {
+                    if ($.isFunction(opt.onChange,sign_isAuto)) {
                         opt.onChange(index);
                     } else {
-                        $(document).trigger(opt.onChange, [index]);
+                        $(document).trigger(opt.onChange, [index , sign_isAuto]);
                     }
                 }
             };
@@ -132,6 +132,12 @@
                     }
                 }
             };
+            if (opt.autoscroll && $.isNumeric(opt.autoscroll)) {
+                autoTimer = setInterval(function() {
+                    obj.next();
+                    sign_isAuto = true;
+                }, opt.autoscroll * 1);
+            }
             $(document).on("dom.keydown", function(ctx, e) {
                 var tagName = $(":focus").length > 0 ? $(":focus")[0].tagName : '';
                 if (tagName !== "INPUT" && tagName !== "TEXTAREA") {
@@ -148,13 +154,10 @@
             });
             $this.on('swipeleft', obj.next);
             $this.on('swiperight', obj.prev);
-            if (!opt.hideNav) {
-                var prevLink = $('<a href="javascript:void(0)" class="prev"><i class="icon-angle-left"></i></a>').click(obj.prev);
-                var nextLink = $('<a href="javascript:void(0)" class="next"><i class="icon-angle-right"></i></a>').click(obj.next);
-                $this.append(prevLink);
-                $this.append(nextLink);
-            }
-
+            var prevLink = $('<a href="javascript:void(0)" class="prev"><i class="icon-angle-left"></i></a>').click(function(e){obj.prev();return e.preventDefault();});
+            var nextLink = $('<a href="javascript:void(0)" class="next"><i class="icon-angle-right"></i></a>').click(function(e){obj.next();return e.preventDefault();});
+            $this.append(prevLink);
+            $this.append(nextLink);
             $this.data('slider', obj);
             $this.attr('role','Slider');
             return obj;
@@ -170,8 +173,9 @@
                 var opt = {
                     loop: $this.attr('data-loop'),
                     index: $this.attr('data-index'),
-                    hideNav: $this.attr('data-hideNav'),
-                    onChange: $this.attr('data-onChange')
+                    onChange: $this.attr('data-onchange'),
+                    lazingload: $this.attr('data-lazingload'),
+                    autoscroll: $this.attr('data-autoscroll')
                 };
                 $this.slide(opt);
                 $this.removeAttr('data-slider');
