@@ -93,13 +93,10 @@
 }
 //font icon define
 %icon {
-  font-family: 'icomoon';
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: inherit;
+  display: inline-block;
+  font: normal normal normal 14px/1 fonticon;
+  font-size: inherit;
+  text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   &:before {
