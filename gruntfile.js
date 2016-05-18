@@ -13,6 +13,16 @@ module.exports = function (grunt) {
         }]
       }
     },
+    copy: {
+      dist: {
+        files: [{
+            expand: true,
+            cwd: 'src/',
+            src: ['fonts/*.*'],
+            dest: 'dest/'
+        }]
+      }
+    },
     sass: {
       dist: {
         files: [{
@@ -54,7 +64,8 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch')
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
-  grunt.registerTask('default', ['concat', 'sass', 'cssmin', 'uglify']);
-  grunt.registerTask('dev', ['concat', 'sass', 'cssmin', 'watch'])
+  grunt.registerTask('default', ['concat', 'sass', 'cssmin','copy', 'uglify']);
+  grunt.registerTask('dev', ['concat', 'sass', 'cssmin', 'copy','watch'])
 };

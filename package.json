@@ -31,5 +31,8 @@
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "^1.0.0",
     "grunt-contrib-watch": "^0.6.1"
+  },
+  "dependencies": {
+    "grunt-contrib-copy": "^1.0.0"
   }
 }
