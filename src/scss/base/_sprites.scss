@@ -3,7 +3,7 @@
 $s-img-layout: smart;
 $s-img-sprite-dimensions: true;
 
-@import "s-img/*.png";
+@import "*.png";
 
 @include all-s-img-sprites;
 

@@ -18,19 +18,23 @@ module.exports = function (grunt) {
         files: [{
             expand: true,
             cwd: 'src/',
-            src: ['fonts/*.*'],
+            src: ['fonts/*.*','img/*.*'],
             dest: 'dest/'
         }]
       }
     },
-    sass: {
-      dist: {
-        files: [{
-          src: ['src/scss/<%= pkg.name %>.scss'],
-          dest: 'dest/<%= pkg.name %>.css',
-        }]
-      }
+    compass: {
+        dist: {
+            options: {
+                sassDir: 'src/scss/',
+                cssDir: 'dest/',
+                imagesDir: "../img/s-img/",
+                generatedImagesDir: "dest/img/s-img/",
+                httpGeneratedImagesPath: "img/s-img/"
+            }
+        }
     },
+
     cssmin: {
       dist: {
         files: [{
@@ -61,11 +65,11 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-contrib-copy');
 
-  grunt.registerTask('default', ['concat', 'sass', 'cssmin','copy', 'uglify']);
-  grunt.registerTask('dev', ['concat', 'sass', 'cssmin', 'copy','watch'])
+  grunt.registerTask('default', ['copy','concat','compass', 'cssmin', 'uglify']);
+  grunt.registerTask('dev', ['copy','concat', 'compass', 'cssmin', 'watch'])
 };
