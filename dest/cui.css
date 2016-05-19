@@ -284,111 +284,111 @@ html {
     font-size: 11px;
   }
 }
-/* line 99, ../src/scss/base/_text.scss */
+/* line 102, ../src/scss/base/_text.scss */
 .text-normal {
   font-family: "robotoregular" !important;
 }
 
-/* line 102, ../src/scss/base/_text.scss */
+/* line 105, ../src/scss/base/_text.scss */
 .text-bolder {
   font-family: "robotoblack";
 }
 
-/* line 105, ../src/scss/base/_text.scss */
+/* line 111, ../src/scss/base/_text.scss */
 b,
-.text-bold {
+.text-bold, .dropdown-menu .dropdown-item li.on a {
   font-family: "robotobold";
 }
 
-/* line 109, ../src/scss/base/_text.scss */
+/* line 118, ../src/scss/base/_text.scss */
 .text-light {
   font-family: "robotolight";
 }
 
-/* line 112, ../src/scss/base/_text.scss */
+/* line 124, ../src/scss/base/_text.scss */
 .text-lighter {
   font-family: "robotothin";
 }
 
-/* line 115, ../src/scss/base/_text.scss */
+/* line 130, ../src/scss/base/_text.scss */
 .text-left {
   text-align: left;
 }
 
-/* line 118, ../src/scss/base/_text.scss */
+/* line 133, ../src/scss/base/_text.scss */
 .text-right {
   text-align: right;
 }
 
-/* line 121, ../src/scss/base/_text.scss */
+/* line 136, ../src/scss/base/_text.scss */
 .text-center {
   text-align: center;
 }
 
-/* line 124, ../src/scss/base/_text.scss */
+/* line 139, ../src/scss/base/_text.scss */
 .text-shadow {
   -webkit-text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-/* line 127, ../src/scss/base/_text.scss */
+/* line 142, ../src/scss/base/_text.scss */
 .text-white {
   color: white;
 }
 
-/* line 130, ../src/scss/base/_text.scss */
+/* line 145, ../src/scss/base/_text.scss */
 .text-gray {
   color: #777777;
 }
 
-/* line 133, ../src/scss/base/_text.scss */
+/* line 148, ../src/scss/base/_text.scss */
 .text-lightgray {
   color: #a0a0a0;
 }
 
-/* line 136, ../src/scss/base/_text.scss */
+/* line 151, ../src/scss/base/_text.scss */
 .text-green, .text-safe {
   color: #357935;
 }
 
-/* line 139, ../src/scss/base/_text.scss */
+/* line 154, ../src/scss/base/_text.scss */
 .text-orange, .text-warning {
   color: #c05b00;
 }
 
-/* line 142, ../src/scss/base/_text.scss */
+/* line 157, ../src/scss/base/_text.scss */
 .text-red, .text-error {
   color: #a02622;
 }
 
-/* line 145, ../src/scss/base/_text.scss */
+/* line 160, ../src/scss/base/_text.scss */
 .text-blue {
   color: #27428a;
 }
 
-/* line 148, ../src/scss/base/_text.scss */
+/* line 163, ../src/scss/base/_text.scss */
 .text-main {
   color: #78004E;
 }
 
-/* line 151, ../src/scss/base/_text.scss */
+/* line 166, ../src/scss/base/_text.scss */
 .text-uppercase {
   text-transform: uppercase;
 }
 
-/* line 154, ../src/scss/base/_text.scss */
+/* line 169, ../src/scss/base/_text.scss */
 .text-lowercase {
   text-transform: lowercase;
 }
 
-/* line 157, ../src/scss/base/_text.scss */
+/* line 172, ../src/scss/base/_text.scss */
 .text-capitalize {
   text-transform: capitalize;
 }
 
 /* line 2, ../src/scss/base/_utilities.scss */
 .hide {
-  display: none;
+  display: none !important;
 }
 
 /* line 6, ../src/scss/base/_utilities.scss */
@@ -468,16 +468,16 @@ b,
 }
 
 /* line 71, ../src/scss/base/_utilities.scss */
-.clearfix, .panel .h1, .panel .h2, .panel .h3, .panel .h4, .panel .h5 {
+.clearfix, .form, .panel .h1, .panel .h2, .panel .h3, .panel .h4, .panel .h5, .dropdown-menu .dropdown-item {
   *zoom: 1;
 }
 /* line 114, ../src/scss/base/_mixins.scss */
-.clearfix:before, .panel .h1:before, .panel .h2:before, .panel .h3:before, .panel .h4:before, .panel .h5:before, .clearfix:after, .panel .h1:after, .panel .h2:after, .panel .h3:after, .panel .h4:after, .panel .h5:after {
+.clearfix:before, .form:before, .panel .h1:before, .panel .h2:before, .panel .h3:before, .panel .h4:before, .panel .h5:before, .dropdown-menu .dropdown-item:before, .clearfix:after, .form:after, .panel .h1:after, .panel .h2:after, .panel .h3:after, .panel .h4:after, .panel .h5:after, .dropdown-menu .dropdown-item:after {
   content: "";
   display: table;
 }
 /* line 120, ../src/scss/base/_mixins.scss */
-.clearfix:after, .panel .h1:after, .panel .h2:after, .panel .h3:after, .panel .h4:after, .panel .h5:after {
+.clearfix:after, .form:after, .panel .h1:after, .panel .h2:after, .panel .h3:after, .panel .h4:after, .panel .h5:after, .dropdown-menu .dropdown-item:after {
   clear: both;
   overflow: hidden;
 }
@@ -507,7 +507,7 @@ b,
 
 /* line 95, ../src/scss/base/_utilities.scss */
 [class^="icon-"],
-[class*=" icon-"], .checkbox label > i, .radio label > i, .tooltip.info .tooltip-inner:before, .tooltip.warning .tooltip-inner:before, .tooltip.error .tooltip-inner:before {
+[class*=" icon-"], .checkbox label > i, .radio label > i, .tooltip.info .tooltip-inner:before, .tooltip.warning .tooltip-inner:before, .tooltip.error .tooltip-inner:before, .dropdown-menu > .caret i:before {
   display: inline-block;
   font: normal normal normal 14px/1 fonticon;
   font-size: inherit;
@@ -517,7 +517,7 @@ b,
 }
 /* line 102, ../src/scss/base/_utilities.scss */
 [class^="icon-"]:before,
-[class*=" icon-"]:before, .checkbox label > i:before, .radio label > i:before, .tooltip.info .tooltip-inner:before, .tooltip.warning .tooltip-inner:before, .tooltip.error .tooltip-inner:before {
+[class*=" icon-"]:before, .checkbox label > i:before, .radio label > i:before, .tooltip.info .tooltip-inner:before, .tooltip.warning .tooltip-inner:before, .tooltip.error .tooltip-inner:before, .dropdown-menu > .caret i:before {
   text-align: center;
   font-style: normal;
 }
@@ -3325,7 +3325,7 @@ b,
 }
 
 /* line 881, ../src/scss/base/_icon.scss */
-.icon-chevron-circle-down:before {
+.icon-chevron-circle-down:before, .dropdown-menu > .caret i:before {
   content: "\f13a";
 }
 
@@ -5555,16 +5555,16 @@ a.link:hover, a.link:active {
   background-color: #c3c3c3 !important;
 }
 
-/* line 2, ../src/scss/plugin/_form.scss */
+/* line 3, ../src/scss/plugin/_form.scss */
 .form .input {
   width: 100%;
   margin-bottom: 20px;
 }
-/* line 6, ../src/scss/plugin/_form.scss */
+/* line 7, ../src/scss/plugin/_form.scss */
 .form .radio, .form .checkbox {
   margin-bottom: 20px;
 }
-/* line 9, ../src/scss/plugin/_form.scss */
+/* line 10, ../src/scss/plugin/_form.scss */
 .form [class^="col-"], .form [class*=" col-"] {
   padding: 0 5px;
 }
@@ -6866,4 +6866,110 @@ textarea {
 .shifter:hover .next {
   opacity: 1;
   right: 0;
+}
+
+/* line 1, ../src/scss/plugin/_dropdownmenu.scss */
+.dropdown-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 196;
+  background: #fefefe;
+  height: 40px;
+}
+/* line 8, ../src/scss/plugin/_dropdownmenu.scss */
+.dropdown-menu > .caret {
+  z-index: 1;
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+}
+/* line 14, ../src/scss/plugin/_dropdownmenu.scss */
+.dropdown-menu > .caret i {
+  line-height: 40px;
+  width: 40px;
+  height: 40px;
+  font-size: 25px;
+  transition: transform 0.5s;
+  display: block;
+}
+/* line 21, ../src/scss/plugin/_dropdownmenu.scss */
+.dropdown-menu > .caret i:before {
+  vertical-align: baseline;
+}
+/* line 28, ../src/scss/plugin/_dropdownmenu.scss */
+.dropdown-menu .dropdown-item {
+  max-height: 40px;
+  transition: max-height 0.5s ease-out;
+  overflow: hidden;
+}
+/* line 33, ../src/scss/plugin/_dropdownmenu.scss */
+.dropdown-menu .dropdown-item li {
+  background-color: #fefefe;
+  text-align: left;
+  display: block;
+  float: left;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 40px 0 15px;
+}
+/* line 41, ../src/scss/plugin/_dropdownmenu.scss */
+.dropdown-menu .dropdown-item li a {
+  height: 40px;
+  line-height: 40px;
+  display: block;
+}
+/* line 51, ../src/scss/plugin/_dropdownmenu.scss */
+.dropdown-menu .dropdown-item li.fullline {
+  float: right;
+  width: 200px;
+  clear: both;
+  border-left: 1px solid #a0a0a0;
+  border-bottom: 1px solid #a0a0a0;
+  border-right: 1px solid #a0a0a0;
+}
+/* line 58, ../src/scss/plugin/_dropdownmenu.scss */
+.dropdown-menu .dropdown-item li.fullline.first {
+  margin-top: 2px;
+}
+/* line 65, ../src/scss/plugin/_dropdownmenu.scss */
+.dropdown-menu.active .dropdown-item {
+  max-height: 350px;
+}
+/* line 69, ../src/scss/plugin/_dropdownmenu.scss */
+.dropdown-menu.active > .caret i {
+  transform: rotate(-180deg);
+}
+
+@media (max-width: 991px) {
+  /* line 77, ../src/scss/plugin/_dropdownmenu.scss */
+  .dropdown-item {
+    text-align: left;
+  }
+  /* line 79, ../src/scss/plugin/_dropdownmenu.scss */
+  .dropdown-item ul {
+    box-shadow: 0 1px 1px #c3c3c3;
+  }
+  /* line 83, ../src/scss/plugin/_dropdownmenu.scss */
+  .dropdown-item li.fullline {
+    border-left: none;
+    border-right: none;
+  }
+}
+@media (max-width: 420px) {
+  /* line 92, ../src/scss/plugin/_dropdownmenu.scss */
+  .dropdown-item {
+    text-align: center !important;
+  }
+  /* line 94, ../src/scss/plugin/_dropdownmenu.scss */
+  .dropdown-item li {
+    width: 100% !important;
+  }
+}
+@media (min-width: 992px) {
+  /* line 101, ../src/scss/plugin/_dropdownmenu.scss */
+  .dropdown-item {
+    text-align: center;
+  }
 }

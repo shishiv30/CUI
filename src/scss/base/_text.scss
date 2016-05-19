@@ -96,21 +96,36 @@ html {
     font-size: $font-size-7-small;
   }
 }
-.text-normal {
+%text-normal{
   font-family: $font !important;
 }
-.text-bolder {
+.text-normal {
+    @extend
+}
+%text-bolder{
   font-family: $font-bolder;
+}
+.text-bolder {
+    @extend %text-bolder;
+}
+%text-bold{
+  font-family: $font-bold;
 }
 b,
 .text-bold {
-  font-family: $font-bold;
+  @extend %text-bold;
 }
-.text-light {
+%text-light{
   font-family: $font-light;
 }
-.text-lighter {
+.text-light {
+    @extend %text-light;
+}
+%text-lighter{
   font-family: $font-lighter;
+}
+.text-lighter {
+    @extend %text-lighter;
 }
 .text-left {
   text-align: left;
