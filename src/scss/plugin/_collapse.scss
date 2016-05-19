@@ -11,22 +11,42 @@
         @extend .icon-arrow-circle-down;
     }
 
-    &.icon-eye:before , & > .icon-eye:before {
-        @extend .icon-eye-slash;
+    &.icon-eye-slash:before , & > .icon-eye-slash:before {
+        @extend .icon-eye;
     }
 
     &.icon-caret-right:before , & > .icon-caret-right:before {
         @extend .icon-sort-desc;
     }
 }
-
-.collapse-appear {}
-
 .collapse-expand {
     height: auto !important;
     max-height: 999999px !important;
 }
 
-[data-collapse='expand'] {
+.collapse-menu{
+  display: none;
+  position:absolute;
+  z-index:$ui-dropdown-index;
+  left:0;
+  right:0;
+  padding: 5px;
+  border:1px solid $color-d;
+  background:#fff;
+  box-shadow: 1px 1px 1px $color-d;
+}
+
+.collapse-more{
+  position:absolute;
+  padding-left:12px;
+  right:0;
+  bottom:0;
+  background:#fff;
+  &:before{
+    content:"..."
+  }
+}
+
+[data-collapse] {
     visibility: hidden;
 }

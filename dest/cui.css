@@ -388,7 +388,7 @@ b,
 
 /* line 2, ../src/scss/base/_utilities.scss */
 .hide {
-  display: none !important;
+  display: none;
 }
 
 /* line 6, ../src/scss/base/_utilities.scss */
@@ -2412,12 +2412,12 @@ b,
 }
 
 /* line 324, ../src/scss/base/_icon.scss */
-.icon-eye:before {
+.icon-eye:before, .shown.icon-eye-slash:before, .shown > .icon-eye-slash:before {
   content: "\f06e";
 }
 
 /* line 327, ../src/scss/base/_icon.scss */
-.icon-eye-slash:before, .shown.icon-eye:before, .shown > .icon-eye:before {
+.icon-eye-slash:before {
   content: "\f070";
 }
 
@@ -5895,7 +5895,7 @@ textarea {
 /* line 1, ../src/scss/plugin/_tip.scss */
 .tooltip {
   position: absolute;
-  z-index: 180;
+  z-index: 1800;
   display: block;
   font-size: 11px;
   font-weight: normal;
@@ -6221,7 +6221,7 @@ textarea {
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: 210;
+  z-index: 2100;
   display: none;
   float: left;
   min-width: 160px;
@@ -6672,14 +6672,40 @@ textarea {
   padding: 4px 5px;
 }
 
-/* line 25, ../src/scss/plugin/_collapse.scss */
+/* line 22, ../src/scss/plugin/_collapse.scss */
 .collapse-expand {
   height: auto !important;
   max-height: 999999px !important;
 }
 
-/* line 30, ../src/scss/plugin/_collapse.scss */
-[data-collapse='expand'] {
+/* line 27, ../src/scss/plugin/_collapse.scss */
+.collapse-menu {
+  display: none;
+  position: absolute;
+  z-index: 3100;
+  left: 0;
+  right: 0;
+  padding: 5px;
+  border: 1px solid #dfdfdf;
+  background: #fff;
+  box-shadow: 1px 1px 1px #dfdfdf;
+}
+
+/* line 39, ../src/scss/plugin/_collapse.scss */
+.collapse-more {
+  position: absolute;
+  padding-left: 12px;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+}
+/* line 45, ../src/scss/plugin/_collapse.scss */
+.collapse-more:before {
+  content: "...";
+}
+
+/* line 50, ../src/scss/plugin/_collapse.scss */
+[data-collapse] {
   visibility: hidden;
 }
 

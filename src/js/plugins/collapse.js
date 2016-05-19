@@ -1,58 +1,59 @@
 //collapse
 (function($) {
     $.fn.collapse = function(options) {
-        //appear & expand
         var defaultOpt = {
-            type: "appear",
-            showText: null,
-            hideText: null,
-            autoClose: false,
-            offsetTop: null,
+            showtext: null,
+            hidetext: null,
+            once:false,
+            isexpand:false,
         };
         var opt = $.extend({}, defaultOpt, options);
         var $this = $(this);
         var $target = $(opt.target);
 
-        var hide = function() {
+        var _showtext = function() {
+            if(opt.once){
+              $this.hide();
+              return;
+            }
+            if (opt.showtext) {
+                if ($this.find("span").length > 0) {
+                    $this.find("span").text(opt.showtext);
+                } else {
+                    $this.text(opt.showtext);
+                }
+            }
+        };
+        var _hidetext = function() {
+            if (opt.hidetext) {
+              if ($this.find("span").length > 0) {
+                  $this.find("span").text(opt.hidetext);
+              } else {
+                  $this.text(opt.hidetext);
+              }
+            }
+        };
+        var _hide = function() {
             var height
             if ($target.offset().top < $this.offset().top) {
-
                 height = $target.height();
             }
-
             if (height) {
                 height = $(document).scrollTop() - height;
                 $(document).scrollTop(height);
             }
-
             $this.removeClass("shown");
-            $target.removeClass("collapse-appear");
             $target.hide();
         };
-        var show = function() {
+        var _show = function() {
             $this.addClass("shown");
-            $target.addClass("collapse-appear");
             $target.show();
-            if (opt.autoClose) {
-                $(document).off("mouseup").one("mouseup", function(e) {
-                    hide();
-                });
-            }
         };
-        if (opt.autoClose) {
-            $this.mouseup(function() {
-                return false;
-            });
-            $target.mouseup(function() {
-                return false;
-            });
-        }
-
-        var more = function() {
+        var _more = function() {
             $this.addClass("shown");
             $target.addClass("collapse-expand");
         };
-        var less = function() {
+        var _less = function() {
             var height
             if ($target.offset().top < $this.offset().top) {
                 height = $target.height();
@@ -65,69 +66,43 @@
                 $(document).scrollTop(height);
             }
         };
-
-        var showText = function() {
-            if (opt.showText) {
-                if ($this.find("span").length > 0) {
-                    $this.find("span").text(opt.showText);
-                } else {
-                    $this.text(opt.showText);
-                }
-            }
-        };
-
-        var hideText = function() {
-            if (opt.hideText) {
-                if ($this.find("span").length > 0) {
-                    $this.find("span").text(opt.hideText);
-                } else {
-                    $this.text(opt.hideText);
-                }
-            }
-        };
-
-        var appear = function() {
-            if ($this.hasClass("shown")) {
-                hide();
-                hideText();
-            } else {
-                show();
-                showText();
-            }
-        };
-
-        var expand = function() {
-            if ($this.hasClass("shown")) {
-                less();
-                hideText();
-            } else {
-                more();
-                showText();
-            }
-        };
-        var resetForExpand = function() {
+        var _resetForExpand = function() {
             if ($target.prop('scrollHeight') > $target.prop('offsetHeight')) {
                 $this.css('visibility', 'visible');
             } else {
                 $this.css('visibility', 'hidden');
             }
         }
-
-        var obj = {};
-        switch (opt.type) {
-            case "expand":
-                $this.click(expand);
-                obj.toggle = expand;
-                $(document).on("dom.resize", resetForExpand);
-                resetForExpand();
-                break;
-            default:
-                $this.click(appear);
-                obj.toggle = appear;
-                break;
+        var toggle =null;
+        if(opt.isexpand){
+            _toggle = function() {
+              if ($this.hasClass("shown")) {
+                  _less();
+                  _hidetext();
+              } else {
+                  _more();
+                  _showtext();
+              }
+            };
+            $(document).on("dom.resize", _resetForExpand);
+            _resetForExpand();
+        }else{
+          _toggle= function() {
+              if ($this.hasClass("shown")) {
+                  _hide();
+                  _hidetext();
+              } else {
+                  _show();
+                  _showtext();
+              }
+          };
         }
+        var obj = {
+          toggle:_toggle
+        };
+        $this.click(obj.toggle);
         $this.data('collapse', obj);
-        $this.attr('role','Collapse'+opt.type);
+        $this.attr('role','Collapse');
         return obj;
     };
 
@@ -135,12 +110,11 @@
         $("[data-collapse]").each(function(index, item) {
             var $this = $(item);
             $this.collapse({
-                type: $this.attr("data-collapse"),
-                showText: $this.attr("data-showtext"),
-                hideText: $this.attr("data-hidetext"),
+                once: $this.attr("data-once"),
+                showtext: $this.attr("data-showtext"),
+                hidetext: $this.attr("data-hidetext"),
                 target: $this.attr("data-target"),
-                autoClose: $this.attr("data-autoclose"),
-                offsetTop: $this.attr("data-offsettop")
+                isexpand:$this.attr("data-isexpand"),
             });
             $this.removeAttr('data-collapse');
         });
