@@ -28,7 +28,7 @@ module.exports = function (grunt) {
             options: {
                 sassDir: 'src/scss/',
                 cssDir: 'dest/',
-                imagesDir: "../img/s-img/",
+                imagesDir: "src/img/",
                 generatedImagesDir: "dest/img/s-img/",
                 httpGeneratedImagesPath: "img/s-img/"
             }
@@ -63,12 +63,12 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch')
-  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('default', ['copy','concat','compass', 'cssmin', 'uglify']);
   grunt.registerTask('dev', ['copy','concat', 'compass', 'cssmin', 'watch'])
