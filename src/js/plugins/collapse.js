@@ -12,10 +12,6 @@
         var $target = $(opt.target);
 
         var _showtext = function() {
-            if(opt.once){
-              $this.hide();
-              return;
-            }
             if (opt.showtext) {
                 if ($this.find("span").length > 0) {
                     $this.find("span").text(opt.showtext);
@@ -82,6 +78,10 @@
               } else {
                   _more();
                   _showtext();
+                  if(opt.once){
+                    $this.hide();
+                    return;
+                  }
               }
             };
             $(document).on("dom.resize", _resetForExpand);
@@ -94,6 +94,10 @@
               } else {
                   _show();
                   _showtext();
+                  if(opt.once){
+                    $this.hide();
+                    return;
+                  }
               }
           };
         }

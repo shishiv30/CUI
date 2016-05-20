@@ -100,7 +100,7 @@ html {
   font-family: $font !important;
 }
 .text-normal {
-    @extend
+    @extend %text-normal;
 }
 %text-bolder{
   font-family: $font-bolder;

@@ -3,20 +3,20 @@
         @extend .icon-minus-square-o;
     }
 
-    &.icon-angle-up:before, & > .icon-angle-up:before {
-        @extend .icon-angle-down;
+    &.icon-angle-up, & > .icon-angle-up {
+        transform: rotate(180deg);
     }
 
-    &.icon-arrow-circle-up:before , & > .icon-arrow-circle-up:before {
-        @extend .icon-arrow-circle-down;
+    &.icon-arrow-circle-up , & > .icon-arrow-circle-up {
+        transform: rotate(180deg);
     }
 
     &.icon-eye-slash:before , & > .icon-eye-slash:before {
         @extend .icon-eye;
     }
 
-    &.icon-caret-right:before , & > .icon-caret-right:before {
-        @extend .icon-sort-desc;
+    &.icon-caret-right , & > .icon-caret-right {
+        transform: rotate(90deg);
     }
 }
 .collapse-expand {
