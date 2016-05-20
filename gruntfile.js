@@ -58,7 +58,7 @@ module.exports = function (grunt) {
       },
       css: {
         files: ['src/scss/*.scss', 'src/scss/**/*.scss'],
-        tasks: ['sass:dist']
+        tasks: ['compass:dist']
       }
     }
   });

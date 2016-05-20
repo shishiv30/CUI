@@ -5,12 +5,38 @@
 </head>
 
 <body>
+    <div data-header class="header">
+        <div class="header-form">
+            <a class="header-form-logo" href="javascript:;"> <i class="icon-plus"></i></a>
+            <a class="header-form-btn" href="javascript:;" id="menuButton"><i class="icon-bars"></i></a>
+        </div>
+        <div class="header-menu-list right">
+            <div class="header-menu-list-wrap">
+                <div class="header-menu-item">
+                    <a href="javascript:;">Home</a>
+                </div>
+                <div class="header-menu-item right" data-menu="expand">
+                    <a href="javascript:;" data-tab data-target="#tpl">About US <i class="caret"></i></a>
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0)">Team</a>
+                            <a href="javascript:void(0)">Product</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="header-menu-item right">
+                    <a href="javascript:;" data-tab data-target="#js">Setting</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="height:50px;"></div>
     <div class="gs-fixed">
         <div class="row">
             <div class="col-xs-12">
                 <div class="panel">
-                    <a href="javascript:;" class="h3 addition" data-collapse data-target="#buttonPanel">buttons <span class="subtitle">the basic button style</span> <i class="icon-angle-up right"></i></a>
-                    <div id="buttonPanel" class="row" style="display:none;">
+                    <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#buttonPanel">buttons <span class="subtitle">the basic button style</span> <i class="icon-angle-up right"></i></a>
+                    <div id="buttonPanel" class="row" >
                         <div class="col-xs-6 col-sm-3">
                             <a href="javascript:;" class="btn ghost-green small"><i class="icon-check"></i> <span>small</span></a>
                             <div class="blank-xs"></div>
@@ -51,8 +77,8 @@
         <div class="row">
             <div class="col-xs-12">
               <div class="panel">
-                  <a href="javascript:;" class="h3 addition" data-collapse data-target="#formPanel">forms <span class="subtitle">the form style</span> <i class="icon-angle-up right"></i></a>
-                  <div id="formPanel" style="display: none;">
+                  <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#formPanel">forms <span class="subtitle">the form style</span> <i class="icon-angle-up right"></i></a>
+                  <div id="formPanel">
                     <div id="form" class="form" data-form>
                           <div class="col-xs-12 col-sm-6">
                               <label for="txtReq">Required Box</label>
@@ -150,8 +176,8 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="panel">
-              <a href="javascript:;" class="h3 addition" data-collapse data-target="#collapsePanel">collapse <span class="subtitle">the collapse plugin</span> <i class="icon-angle-up right"></i></a>
-              <div id="collapsePanel" style="display:none;">
+              <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#collapsePanel">collapse <span class="subtitle">the collapse plugin</span> <i class="icon-angle-up right"></i></a>
+              <div id="collapsePanel">
                 <div class="col-xs-3">
                   <dl style="position:relative;">
                       <dt data-isexpand="true"><a href="javascript:void(0)" data-collapse data-isexpand="true" data-target="#plusPanel" data-once="true" class="collapse-more"> <span>show more</span> </a></dt>
@@ -186,53 +212,10 @@
         <div class="row">
             <div class="col-xs-12">
               <div class="panel">
-                  <a href="javascript:;" class="h3 addition" data-collapse data-target="#sliderPanel">slider <span class="subtitle">the slider plugin</span> <i class="icon-angle-up right"></i></a>
-                  <div id="sliderPanel" class="slider" data-slider style="height:300px; display: none;" >
-                      <ul class="slider-list">
-                        <li>
-                            <img src="src/img/01.jpg" width="100%" alt="This is a image.">
-                        </li>
-                        <li>
-                            <img src="src/img/02.jpg" width="100%" alt="This is a image.">
-                        </li>
-                        <li>
-                            <img src="src/img/03.jpg" width="100%" alt="This is a image.">
-                        </li>
-                        <li>
-                            <img src="src/img/04.jpg" width="100%" alt="This is a image.">
-                        </li>
-                        <li>
-                            <img src="src/img/05.jpg" width="100%" alt="This is a image.">
-                        </li>
-                        <li>
-                            <img src="src/img/06.jpg" width="100%" alt="This is a image.">
-                        </li>
-                        <li>
-                            <img src="src/img/07.jpg" width="100%" alt="This is a image.">
-                        </li>
-                      </ul>
-                  </div>
-              </div>
-            </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="panel">
-              <a href="javascript:;" class="h3 addition" data-collapse data-target="#spritesImage">sprites css<span class="subtitle">merge images in one image with css</span><i class="icon-angle-up right"></i></a>
-              <div id="spritesImage" style="display:none;">
-                  <div class="s-img-cn"></div>
-                  <div class="s-img-jp"></div>
-                  <div class="s-img-us"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-              <div class="panel">
-                  <a href="javascript:;" class="h3 addition" data-collapse data-target="#shifterPanel">shifter <span class="subtitle">the shifter plugin</span> <i class="icon-angle-up right"></i></a>
-                  <div id="shifterPanel" class="shifter" data-shifter style="display:none;">
-                      <ul class="slider-list">
+                  <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#sliderPanel">slider <span class="subtitle">the slider plugin</span> <i class="icon-angle-up right"></i></a>
+                  <div id="sliderPanel">
+                      <div class="slider" data-slider style="height:300px;" >
+                        <ul class="slider-list">
                           <li>
                               <img src="src/img/01.jpg" width="100%" alt="This is a image.">
                           </li>
@@ -254,19 +237,62 @@
                           <li>
                               <img src="src/img/07.jpg" width="100%" alt="This is a image.">
                           </li>
-                      </ul>
+                        </ul>
+                      </div>
                   </div>
               </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+              <div class="panel">
+                  <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#shifterPanel">shifter <span class="subtitle">the shifter plugin</span> <i class="icon-angle-up right"></i></a>
+                  <div id="shifterPanel">
+                    <div class="shifter" data-shifter>
+                        <ul class="slider-list">
+                            <li>
+                                <img src="src/img/01.jpg" width="100%" alt="This is a image.">
+                            </li>
+                            <li>
+                                <img src="src/img/02.jpg" width="100%" alt="This is a image.">
+                            </li>
+                            <li>
+                                <img src="src/img/03.jpg" width="100%" alt="This is a image.">
+                            </li>
+                            <li>
+                                <img src="src/img/04.jpg" width="100%" alt="This is a image.">
+                            </li>
+                            <li>
+                                <img src="src/img/05.jpg" width="100%" alt="This is a image.">
+                            </li>
+                            <li>
+                                <img src="src/img/06.jpg" width="100%" alt="This is a image.">
+                            </li>
+                            <li>
+                                <img src="src/img/07.jpg" width="100%" alt="This is a image.">
+                            </li>
+                        </ul>
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="panel">
+              <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#spritesImage">sprites css<span class="subtitle">merge images in one image with css</span><i class="icon-angle-up right"></i></a>
+              <div id="spritesImage">
+                  <div class="s-img-cn"></div>
+                  <div class="s-img-jp"></div>
+                  <div class="s-img-us"></div>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
 </body>
 <script src="dest/cui.js" type="text/javascript"></script>
 <script>
-    window.context = {};
-    $(document).ready(function() {
-        $(document).trigger('dom.load');
-    });
     function submitForm() {
         var msg = "error!";
         if ($('#form').isValid()) {
