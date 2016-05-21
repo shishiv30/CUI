@@ -1,25 +1,27 @@
 table.gridtable {
     width: 100%;
     border-collapse: collapse;
-    tr:nth-of-type(odd) {
-        background: #fcfcfc;
-    }
     th {
         background-color:$color-main-l1;
         color:$color-f;
         font-weight: bold;
+        text-align: left;
     }
-    td,
-    th {
-        padding: 6px;
-        border: 1px solid $color-c;
+    td, th {
         text-align: left;
     }
 }
 @media (min-width:$screen-sm-min) {
     table.gridtable {
         font-size: $font-size-6;
+        td, th {
+            border: 1px solid $color-c;
+            padding:6px !important;
+        }
         tbody {
+            tr:nth-of-type(odd) {
+                background: #fafafa;
+            }
             td:before {
                 content: none!important;
             }
@@ -45,22 +47,23 @@ table.gridtable {
             z-index: -1;
         }
         tr {
-            border: 1px solid $color-border;
+            padding:5px 0;
+            border-bottom: dashed 1px $color-border;
         }
-        td {
-            border: none;
-            border-bottom: 1px solid $color-e;
-            position: relative;
-            padding-left: 50%;
+        tr:last-child{
+          border-bottom:none;
         }
         tbody {
+            td {
+                border: none;
+                position: relative;
+                padding-top:2px;
+                padding-bottom:2px;
+            }
             td:before {
                 position: absolute;
-                top: 6px;
                 left: 6px;
-                width: 45%;
-                padding-right: 10px;
-                white-space: nowrap;
+                @include singleline();
             }
         }
     }
