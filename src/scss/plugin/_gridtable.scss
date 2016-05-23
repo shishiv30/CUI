@@ -2,23 +2,32 @@ table.gridtable {
     width: 100%;
     border-collapse: collapse;
     th {
-        background-color:$color-main-l1;
-        color:$color-f;
+        background-color: $color-main-l1;
+        color: $color-f;
         font-weight: bold;
         text-align: left;
     }
-    td, th {
+    td,
+    th {
         text-align: left;
+    }
+    tbody tr {
+        transition: 0.5s max-height;
+        max-height: 500px;
     }
 }
 @media (min-width:$screen-sm-min) {
     table.gridtable {
         font-size: $font-size-6;
-        td, th {
+        td,
+        th {
             border: 1px solid $color-c;
-            padding:6px !important;
+            padding: 6px !important;
         }
         tbody {
+            tr {
+                height: auto !important;
+            }
             tr:nth-of-type(odd) {
                 background: #fafafa;
             }
@@ -33,10 +42,10 @@ table.gridtable {
         font-size: $font-size-5;
         display: block;
         position: relative;
-        thead,
         tbody,
-        th,
         td,
+        th,
+        thead,
         tr {
             display: block;
         }
@@ -47,23 +56,67 @@ table.gridtable {
             z-index: -1;
         }
         tr {
-            padding:5px 0;
+            padding: 5px 0;
             border-bottom: dashed 1px $color-border;
-        }
-        tr:last-child{
-          border-bottom:none;
+            overflow: hidden;
+            @inlcude clearfix();
+            td {
+                float: left;
+                width: 140px;
+                margin-right: 10px;
+                word-break: break-word;
+            }
+            &.open {
+                background-color: #eee;
+            }
+            &.close {
+                position: relative;
+                padding-right: 50px;
+                cursor: pointer;
+                &:hover {
+                    background-color: #eee;
+                    &:after {
+                        color: $color-link-default-hover;
+                    }
+                }
+                &:after {
+                    transition: 0.5s color;
+                    content: "all";
+                    position: absolute;
+                    top: 6px;
+                    right: 2px;
+                }
+                td {
+                    @include singleline();
+                }
+            }
+            &:last-child {
+                border-bottom: none;
+            }
         }
         tbody {
             td {
                 border: none;
                 position: relative;
-                padding-top:2px;
-                padding-bottom:2px;
+                padding-top: 2px;
+                padding-bottom: 2px;
             }
             td:before {
                 position: absolute;
                 left: 6px;
+                color: $color-5;
+                font-family: $font-bold;
                 @include singleline();
+            }
+        }
+    }
+}
+//no-warp for open item
+@media (max-width: 379px) {
+    table.gridtable {
+        tr {
+            td {
+                width: 100%;
             }
         }
     }
