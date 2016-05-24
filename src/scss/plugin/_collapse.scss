@@ -7,7 +7,15 @@
         transform: rotate(180deg);
     }
 
+    &.icon-angle-down, & > .icon-angle-down {
+        transform: rotate(180deg);
+    }
+
     &.icon-arrow-circle-up , & > .icon-arrow-circle-up {
+        transform: rotate(180deg);
+    }
+    
+    &.icon-arrow-circle-down , & > .icon-arrow-circle-down {
         transform: rotate(180deg);
     }
 
