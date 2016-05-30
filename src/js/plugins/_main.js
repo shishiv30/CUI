@@ -3,6 +3,12 @@ window.context = {};
 //initial event
 (function($) {
     $(document).ready(function($) {
+        //ismobile
+        if($.isMobile()){
+          $("#body").addClass('mobile');
+        }else{
+          $("#body").addClass('desktop');
+        }
         //dom scroll
         var scrollTimer;
         var initTop = 0;

@@ -225,3 +225,20 @@
     border-right: $size solid transparent;
     border-bottom: $size solid $color;
 }
+
+
+@mixin only-mobile(){
+  #body {
+    &.mobile{
+      @content;
+    }
+  }
+}
+
+@mixin only-desktop(){
+  #body {
+    &.desktop{
+      @content;
+    }
+  }
+}

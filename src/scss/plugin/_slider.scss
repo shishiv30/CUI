@@ -71,4 +71,7 @@
             opacity: 1;
         }
     }
+    .img-loading{
+      @extend %img-loading;
+    }
 }

@@ -71,4 +71,7 @@
             right: 0;
         }
     }
+    .img-loading{
+      @extend %img-loading;
+    }
 }

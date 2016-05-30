@@ -100,3 +100,15 @@
 @media (min-width: $screen-lg-min) {
   @include responsive-invisibility('.hidden-lg');
 }
+
+@include only-mobile(){
+  .hidden-mobile {
+      display: none;
+  }
+}
+
+@include only-desktop(){
+  .hidden-desktop {
+      display: none; 
+  }
+}

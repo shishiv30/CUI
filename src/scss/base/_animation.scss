@@ -1,3 +1,17 @@
+@keyframes iconZoom {
+  0% {
+    font-size: 21px;
+  }
+  30% {
+    font-size: 27px;
+  }
+  75% {
+    font-size: 27px;
+  }
+  100% {
+    font-size: 21px;
+  }
+}
 @keyframes imageZoom {
   0% {
     transform: scale(1);
@@ -15,7 +29,7 @@
 }
 
 .animation-zoom {
-  @extend .animation-zoom;
+  @extend %animation-zoom;
 }
 
 %animation-img-hover {
@@ -50,17 +64,31 @@
   transform: none !important;
   transform-style: flat !important;
 }
-@keyframes iconZoom {
+
+
+
+@keyframes rotate {
   0% {
-    font-size: 21px;
-  }
-  30% {
-    font-size: 27px;
-  }
-  75% {
-    font-size: 27px;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-    font-size: 21px;
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+%img-loading {
+  position: relative;
+  &:before{
+    @extend %icon;
+    @extend .icon-spinner;
+    font-size: $font-size-3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    transition: transform 0.5s;
+    animation: rotate 1s infinite steps(8);
   }
 }
