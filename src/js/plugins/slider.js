@@ -27,7 +27,7 @@
                         var img = $(li).find('img[src]');
                         img.data('src', img.attr("src"));
                         img.attr('src', 'data:image/gif;base64,R0lGODlhAQABAJEAAAAAAP///////wAAACH5BAEAAAIALAAAAAABAAEAAAICVAEAOw==');
-                        img.addClass('img-loading');
+                        $(li).addClass('img-loading');
                     }
                 });
             }
@@ -85,10 +85,11 @@
                     currentItem.find("img").each(function(index, img) {
                         if ($(img).data("src")) {
                             $(img).attr("src", $(img).data("src"));
-                            $(img).removeClass('img-loading');
                             $(img).data("src", null);
                         }
                     });
+                    currentItem.removeClass('img-loading');
+
                     nextItem.find("img").each(function(index, img) {
                         if ($(img).data("src")) {
                             $(img).attr("src", $(img).data("src"));
@@ -96,6 +97,7 @@
                             $(img).data("src", null);
                         }
                     });
+                    nextItem.removeClass('img-loading');
                 }
 
                 opt.index = index;

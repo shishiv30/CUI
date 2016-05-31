@@ -83,7 +83,7 @@
   &:before{
     @extend %icon;
     @extend .icon-spinner;
-    font-size: $font-size-3;
+    font-size: 50px;
     position: absolute;
     top: 50%;
     left: 50%;

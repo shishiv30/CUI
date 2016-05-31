@@ -33,6 +33,7 @@
                 var img = $(item).find('img[src]');
                 img.data('src', img.attr("src"));
                 img.attr('src', 'data:image/gif;base64,R0lGODlhAQABAJEAAAAAAP///////wAAACH5BAEAAAIALAAAAAABAAEAAAICVAEAOw==');
+                $(item).addClass('img-loading');
             }
         });
 
@@ -71,6 +72,7 @@
                                 $(img).data("src", null);
                             }
                         });
+                        $item.removeClass('img-loading');
                     }
                     list.push({
                         isFull: left >= 0 && right <= maxwidth,

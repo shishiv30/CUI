@@ -2,8 +2,7 @@ table.gridtable {
     width: 100%;
     border-collapse: collapse;
     th {
-        background-color: $color-main-l1;
-        color: $color-f;
+        background-color: #eee;
         font-weight: bold;
         text-align: left;
     }
@@ -37,7 +36,7 @@ table.gridtable {
             tr {
                 height: auto !important;
             }
-            tr:nth-of-type(odd) {
+            tr:nth-of-type(even) {
                 background: #fafafa;
             }
             td:before {
@@ -91,9 +90,6 @@ table.gridtable {
                 }
                 &:hover {
                     background-color: #eee;
-                    &:after {
-                        color: $color-link-default-hover;
-                    }
                 }
                 td {
                     @include singleline();
