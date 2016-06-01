@@ -3,7 +3,7 @@
         var defaultOpt = {
             duration: 300,
             height: 200,
-            width: 300,
+            width: 375,
             clickable: true,
             lazingload: true,
             autoscroll: 0,
@@ -29,6 +29,17 @@
         var _resize = function () {
             innerW = 0;
             $items.each(function (i, item) {
+                var screenwidth = $this.width();
+                var height = opt.height;
+                var width = screenwidth > opt.width? opt.width : screenwidth-2;
+                $(item).css({
+                    width: width,
+                    height: opt.height
+                });
+                $(item).children().css({
+                    width: width,
+                    height: opt.height,
+                });
                 innerW += $(item).outerWidth();
             });
             $list.width(innerW);
@@ -107,7 +118,7 @@
         };
         var _shift = function (index) {
             if ($.isInt(index)) {
-                var item = $items.eq(index);
+                var item = $items.eq(index-1);
                 var offset = ($wrap.outerWidth() - item.outerWidth()) / 2;
                 var left = $wrap.scrollLeft() + $(item).position().left - offset;
                 $wrap.stop().animate({
@@ -171,15 +182,6 @@
             $items = $list.find("li");
             $items.each(function (index, item) {
                 $(item).attr('shift-index', index);
-                $(item).css({
-                    width: opt.width,
-                    height: opt.height
-                });
-                $(item).children().css({
-                    width: opt.width,
-                    height: opt.height,
-                    display: 'block'
-                });
                 if (opt.clickable) {
                     var i = index + 1;
                     $(item).click(function () {
