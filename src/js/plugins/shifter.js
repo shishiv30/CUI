@@ -1,52 +1,37 @@
-(function($) {
-    $.fn.shifter = function(options) {
+(function ($) {
+    $.fn.shifter = function (options) {
         var defaultOpt = {
-            animationTime: 300,
-            onChange: null,
+            duration: 300,
             height: 200,
             width: 300,
-            clickable: false,
+            clickable: true,
             lazingload: true,
-            autoscroll: 0
+            autoscroll: 0,
+            onchange: null,
+            onbefore: null,
+            onafter: null,
         };
-
         var $this = $(this);
+        var obj;
         var sign_isAuto = false;
         var lastScrollLeft = 0;
         var opt = $.extend({}, defaultOpt, options);
-        var height = opt.height * 1;
         var timer = null;
-        var $list = $this.find("ul");
-        $list.wrap('<div class="wrap"></div>');
-        var $wrap = $(this).find(".wrap");
-        var $items = $list.find("li");
-        var amount = $items.length;
+        var $list;
+        var $wrap;
+        var $items;
         var innerW = 0;
         var shift = 0;
         var maxOffsetX = 0;
-        var pagesize = 1;
         var autoTimer = null;
-
-        $items.each(function(index, item) {
-            $(item).attr('shift-index', index);
-            if (opt.lazingload) {
-                var img = $(item).find('img[src]');
-                img.data('src', img.attr("src"));
-                img.attr('src', 'data:image/gif;base64,R0lGODlhAQABAJEAAAAAAP///////wAAACH5BAEAAAIALAAAAAABAAEAAAICVAEAOw==');
-                $(item).addClass('img-loading');
-            }
-        });
-
         var prevLink = $('<a href="javascript:;" class="prev"><i class="icon-angle-left"></i></a>');
         var nextLink = $('<a href="javascript:;" class="next"><i class="icon-angle-right"></i></a>');
-        var _resize = function() {
+        var _resize = function () {
             innerW = 0;
-            $items.each(function(i, item) {
+            $items.each(function (i, item) {
                 innerW += $(item).outerWidth();
             });
             $list.width(innerW);
-            pagesize = Math.ceil(innerW / $wrap.outerWidth());
-
             maxOffsetX = $wrap.prop('scrollWidth') - $wrap.width();
             if (maxOffsetX <= 0) {
                 prevLink.css("visibility", "hidden");
@@ -56,23 +41,22 @@
                 nextLink.css("visibility", "visible");
             }
         };
-        var _markActive = function() {
+        var _markActive = function () {
             var list = [];
             var maxwidth = $wrap.outerWidth();
-            $items.each(function(index, item) {
+            $items.each(function (index, item) {
                 var $item = $(item);
                 $item.removeClass("active");
                 var left = $item.position().left;
                 var right = left + $item.outerWidth();
                 if (left >= 0 && left <= maxwidth || right >= 0 && right <= maxwidth) {
                     if (opt.lazingload) {
-                        $item.find("img").each(function(index, img) {
+                        $item.find("img").each(function (index, img) {
                             if ($(img).data("src")) {
                                 $(img).attr("src", $(img).data("src"));
                                 $(img).data("src", null);
                             }
                         });
-                        $item.removeClass('img-loading');
                     }
                     list.push({
                         isFull: left >= 0 && right <= maxwidth,
@@ -97,18 +81,18 @@
                     list[1].element.addClass("active");
                 }
             }
-            if (opt.onChange && lastScrollLeft !== $wrap.scrollLeft()) {
+            if (opt.onchange && lastScrollLeft !== $wrap.scrollLeft()) {
                 var isNext = lastScrollLeft < $wrap.scrollLeft();
-                if ($.isFunction(opt.onChange)) {
-                    opt.onChange($list.find('.active'), sign_isAuto, isNext);
+                if ($.isFunction(opt.onchange)) {
+                    opt.onchange($list.find('.active'), sign_isAuto, isNext);
                 } else {
-                    $(document).trigger(opt.onChange, [$list.find('.active'), sign_isAuto, isNext]);
+                    $(document).trigger(opt.onchange, [$list.find('.active'), sign_isAuto, isNext]);
                 }
                 lastScrollLeft = $wrap.scrollLeft();
                 sign_isAuto = false;
             }
-        }
-        var _scroll = function() {
+        };
+        var _scroll = function () {
             _markActive();
             if ($wrap.scrollLeft() == 0) {
                 prevLink.hide();
@@ -120,29 +104,29 @@
                 prevLink.show();
                 nextLink.show();
             }
-        }
-        var _shift = function(index) {
+        };
+        var _shift = function (index) {
             if ($.isInt(index)) {
                 var item = $items.eq(index);
                 var offset = ($wrap.outerWidth() - item.outerWidth()) / 2;
                 var left = $wrap.scrollLeft() + $(item).position().left - offset;
                 $wrap.stop().animate({
                     "scrollLeft": left
-                }, opt.animationTime);
+                }, opt.duration);
                 return index;
             } else {
                 if (index) {
                     var begin = $wrap.scrollLeft();
                     var end = $wrap.outerWidth();
                     var ismove = false;
-                    $items.each(function(j, item) {
+                    $items.each(function (j, item) {
                         var left = $(item).position().left;
                         var width = $(item).outerWidth();
                         if (left > 0 && left < end && (left + width) > end) {
                             ismove = true;
                             $wrap.stop().animate({
                                 "scrollLeft": begin + $(item).position().left
-                            }, opt.animationTime);
+                            }, opt.duration);
                             return false;
                         }
                     });
@@ -151,60 +135,42 @@
                     var begin = $wrap.scrollLeft();
                     var end = $wrap.outerWidth();
                     var ismove = false;
-                    $items.each(function(j, item) {
+                    $items.each(function (j, item) {
                         var left = $(item).position().left;
                         var width = $(item).outerWidth();
                         if (left <= 0 && (left + width) > 0) {
                             var ismove = true;
                             $wrap.stop().animate({
                                 "scrollLeft": begin - end + ($(item).width() + $(item).position().left)
-                            }, opt.animationTime);
+                            }, opt.duration);
                             return true;
                         }
                     });
                     return ismove;
                 }
             }
-        }
-
-        var _prev = function() {
+        };
+        var _prev = function () {
             return _shift(false);
         };
-        var _next = function() {
+        var _next = function () {
             return _shift(true);
         };
-
-        var _go = function(index) {
+        var _go = function (index) {
             return _shift(index);
         };
-
-
-        var init = function() {
-            var obj = {
-                prev: function() {
-                    return _prev();
-                },
-                next: function() {
-                    return _next();
-                },
-                go: function(index) {
-                    return _go(index);
-                }
-            };
-
-            if (opt.autoscroll&& $.isNumeric(opt.autoscroll)) {
-                autoTimer = setInterval(function() {
-                    obj.next();
-                    sign_isAuto = true;
-                }, opt.autoscroll * 1);
-            }
-            $this.css("height", opt.height);
-            $wrap.css("height", opt.height + 21);
-
-            $this.append(prevLink);
-            $this.append(nextLink);
-
-            $items.each(function(index, item) {
+        var _option = function (option) {
+            opt = $.extend(opt, options);
+            return opt;
+        };
+        var _init = function () {
+            $this.css('height',opt.height);
+            $list = $this.find("ul");
+            $list.wrap('<div class="wrap"></div>');
+            $wrap = $this.find(".wrap");
+            $items = $list.find("li");
+            $items.each(function (index, item) {
+                $(item).attr('shift-index', index);
                 $(item).css({
                     width: opt.width,
                     height: opt.height
@@ -216,53 +182,95 @@
                 });
                 if (opt.clickable) {
                     var i = index + 1;
-                    $(item).click(function() {
+                    $(item).click(function () {
                         obj.go(i);
                     });
                 }
+                if (opt.lazingload) {
+                    var img = $(item).find('img[src]');
+                    img.data('src', img.attr("src"));
+                    img.attr('src', 'data:image/gif;base64,R0lGODlhAQABAJEAAAAAAP///////wAAACH5BAEAAAIALAAAAAABAAEAAAICVAEAOw==');
+                    $(item).addClass('img-loading');
+                    img.on('load', function () {
+                        if (img.data("src") == null) {
+                            $(item).removeClass('img-loading');
+                        } else {
+                            $(item).addClass('img-loading');
+                        }
+                    });
+                }
             });
-            prevLink.click(function(e){obj.prev();return e.preventDefault();});
-            nextLink.click(function(e){obj.next();return e.preventDefault();});
-
-            $(document).on("dom.resize", function() {
+            if (opt.autoscroll && $.isNumeric(opt.autoscroll)) {
+                autoTimer = setInterval(function () {
+                    obj.next();
+                    sign_isAuto = true;
+                }, opt.autoscroll * 1);
+            }
+            $this.css("height", opt.height);
+            $wrap.css("height", opt.height + 21);
+            prevLink.click(function (e) {
+                obj.prev();
+                return false;
+            });
+            nextLink.click(function (e) {
+                obj.next();
+                return false;
+            });
+            $this.append(prevLink);
+            $this.append(nextLink);
+            obj = {
+                prev: function () {
+                    return _prev();
+                },
+                next: function () {
+                    return _next();
+                },
+                go: function (index) {
+                    return _go(index);
+                },
+                option: _option
+            };
+            $this.attr('role', 'Shifter');
+            $this.data("shifter", obj);
+            $(document).on("dom.resize.shifter", function () {
                 _resize();
                 _scroll();
             });
-
-            $wrap.on("scroll", function() {
+            $wrap.on("scroll", function () {
                 if (timer) {
                     clearTimeout(timer);
                 }
-                timer = setTimeout(_scroll, 200);
+                timer = setTimeout(_scroll, 500);
             });
             _resize();
             _scroll();
-            $this.attr('role', 'Shifter');
-            $this.data("shifter", obj);
+        };
+        var init = function () {
+            if(opt.onbefore){
+              if ($.isFunction(opt.onbefore)) {
+                  opt.onbefore($this);
+              } else {
+                  $(document).trigger(opt.onbefore, [$this]);
+              }
+            }
+            _init();
+            if(opt.onafter){
+              if ($.isFunction(opt.onafter)) {
+                  opt.onchange($this);
+              } else {
+                  $(document).trigger(opt.onafter, [$this]);
+              }
+            }
             return obj;
         }
-
         return init();
     };
 
-    $(document).on("dom.load.shifter", function() {
-        var inital = function() {
-            $("[data-shifter]").each(function() {
-                var $this = $(this);
-                var opt = {
-                    animationTime: $this.attr("data-time") * 1 || 300,
-                    onChange: $this.attr('data-onChange'),
-                    height: $this.attr('data-height') * 1 || 200,
-                    width: $this.attr('data-width') * 1 || 300,
-                    lazingload: $this.attr('data-lazingload') != "false",
-                    autoscroll: $this.attr('data-autoscroll')
-                };
-                $this.shifter(opt);
-                $this.removeAttr('data-shifter');
-            });
-        };
-        if ($("[data-shifter]").length) {
-            inital();
-        }
+    $(document).on("dom.load.shifter", function () {
+        $("[data-shifter]").each(function () {
+            var $this = $(this);
+            $this.shifter($this.data());
+            $this.removeAttr('data-shifter');
+        });
     });
 })(jQuery);
