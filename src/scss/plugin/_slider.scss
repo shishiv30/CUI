@@ -3,77 +3,66 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-
     > .slider-list {
         position: absolute;
         width: 200%;
         height: 100%;
         overflow: hidden;
-
         & > li {
             width: 50%;
             height: 100%;
             float: left;
             overflow: hidden;
             position: relative;
-            transition: opacity 1s .5s;
+            transition: opacity 1s 0.5s;
         }
     }
-
-    .prev, .next {
+    .next,
+    .prev {
         z-index: 2;
         display: block;
         position: absolute;
         top: 50%;
-        margin-top: -20px;
+        transform: translateY(-50%);
         font-size: 40px;
         width: 40px;
         height: 40px;
         line-height: 40px;
         text-align: center;
         color: $color-e;
-        opacity: .6;
-
+        opacity: 0.6;
+        background-color: $color-3;
+        border-radius: 100%;
         &:hover {
             color: $color-f;
         }
     }
-
     .prev {
-        left: 5px;
-
-        @include transition(left 0.5s);
-        transition-timing-function: ease;
-
-        i {
-            @include text-shadow($color-0 0px 0px 3px);
+        left: 15px;
+        transition: left 0.5s ease;
+        i{
+          margin-left:-5px;
         }
     }
-
     .next {
-        right: 5px;
-
-        @include transition(right 0.5s);
-        transition-timing-function: ease;
-
-        i {
-            @include text-shadow($color-0 0px 0px 3px);
+        right: 15px;
+        transition: right 0.5s ease;
+        i{
+          margin-left:5px;
         }
     }
-
     &:hover {
         .prev {
-            left: 0;
+            left: 5px;
             opacity: 1;
         }
-
         .next {
-            right: 0;
+            right: 5px;
             opacity: 1;
         }
     }
-    .img-loading{
-      @extend %img-loading;
-      opacity: .5;
+    .img-loading {
+        @extend %img-loading;
+        opacity: 0.5;
     }
 }

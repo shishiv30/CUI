@@ -29,7 +29,10 @@ window.context = {};
         });
         //keydown
         $(window).on("keydown", function(e) {
-            $(document).trigger('dom.keydown', [e]);
+            var tagName = $(":focus").length > 0 ? $(":focus")[0].tagName : '';
+            if (tagName !== "INPUT" && tagName !== "TEXTAREA") {
+              $(document).trigger('dom.keydown', [e]);
+            }
         });
         //resize
         var resizeTimer;

@@ -1,207 +1,145 @@
 //dialog plugin
-(function($) {
+(function ($) {
 
-    $.fn.dialog = function(opt) {
+    $.fn.dialog = function (option) {
         var $this = $(this);
-
-        if ($this.data('dialog')) {
+        if($this.data('dialog')){
+            $this.data('dialog').option(option);
             return $this.data('dialog');
         }
         var defaultOpt = {
-            onShow: null,
-            onHide: null,
-            autoClose: true,
+            onshow: null,
+            onhide: null,
+            onbefore: null,
+            onafter: null,
+            autoclose: true,
             cache: false,
-            before: null,
-            theme: '',
-            html: '',
+            theme: 'default',
+            id: +new Date(),
+            trigger: null,
         };
-
-        opt = $.extend({}, defaultOpt, opt);
-
-        if (opt.before) {
-            if ($.isFunction(opt.before)) {
-                opt.before();
-            } else {
-                $(document).trigger(opt.before);
-            }
-        }
-        // before && $.isFunction(before) && before();
-
-        var dialogHeader = $('<div class="dialog-header"> <a class="dialog-header-close" href="javascript:;"><i class="icon-remove"></i></a></div>');
-        var dialogBody = $('<div class="dialog-body" utmsection="popup"></div>');
-        if (opt.cache) {
-            dialogBody.append(opt.html || $this.html());
-        }
-        var dialogPanel = $('<div class="dialog-panel"></div>').append(dialogHeader).append(dialogBody);
-        var dialogOverLay = $('<div class="dialog-overlay"></div>').hide();
-
-        var dialog = $('<div class="dialog ' + opt.theme + '" tabIndex="-1"></div>');
-        dialog.prepend(dialogOverLay);
-        dialog.append(dialogPanel).hide();
-        $('body').append(dialog);
-
-        function reposition() {
-            var height = $(window).height() - dialogPanel.outerHeight();
+        var opt = $.extend({}, defaultOpt, option);
+        var $dialog = $('<div class="dialog ' + opt.theme + '" tabIndex="-1"></div>');
+        var $dialogPanel = $('<div class="dialog-panel"></div>')
+        var $dialogHeader = $('<div class="dialog-header"> <a class="dialog-header-close" href="javascript:;"><i class="icon-remove"></i></a></div>');
+        var $dialogBody = $('<div class="dialog-body"></div>');
+        var $dialogOverLay = $('<div class="dialog-overlay"></div>');
+        var _reposition = function () {
+            var height = $dialog.height() - $dialogPanel.outerHeight();
             if (height > 0) {
-                dialogPanel.css({
+                $dialogPanel.css({
                     marginTop: height / 2 + 'px'
                 });
             } else {
-                dialogPanel.css({
+                $dialogPanel.css({
                     marginTop: 20
                 });
             }
         }
-
-        function beforeshow() {
-            //hide other dialog
-            $('.dialog-overlay').hide();
-            $('.dialog').each(function() {
-                if (this !== dialog.get(0))
-                    $(this).data('dialog').close();
-            });
-
-            if (opt.before) {
-                if ($.isFunction(opt.before)) {
-                    opt.before();
+        var _show = function () {
+            $(document).trigger('dialog.hidden.except', [opt.id]);
+            if (opt.onbefore) {
+                if ($.isFunction(opt.onbefore)) {
+                    opt.onbefore();
                 } else {
-                    $(document).trigger(opt.before, [opt.trigger]);
+                    $(document).trigger(opt.onbefore, [opt.trigger]);
                 }
             }
-        }
-
-        function show() {
-            beforeshow();
-            if (!opt.cache) {
-                dialog.find('.dialog-body').html(opt.html || $this.html());
-                $(document).trigger('dom.load');
+            if (!opt.cache || !$dialogBody.html()) {
+                $dialogBody.html($this.html());
             }
-            if (opt.onShow) {
-                if ($.isFunction(opt.onShow)) {
-                    opt.onShow();
+            if (opt.onafter) {
+                if ($.isFunction(opt.onafter)) {
+                    opt.onafter();
                 } else {
-                    $(document).trigger(opt.onShow, [opt.trigger]);
+                    $(document).trigger(opt.onafter, [opt.trigger]);
                 }
             }
-
-            $('body').addClass('dialog-show');
-            dialog.fadeIn(300);
-            dialogOverLay.fadeIn(300);
-            setTimeout(function() {
-                reposition();
+            $(document).trigger('dom.load');
+            if (opt.onshow) {
+                if ($.isFunction(opt.onshow)) {
+                    opt.onshow();
+                } else {
+                    $(document).trigger(opt.onshow, [opt.trigger]);
+                }
+            }
+            $('html').addClass('model-dialog');
+            $dialog.addClass('dialog-active');
+            setTimeout(function () {
+                _reposition();
             }, 50);
         }
-
-        function hide() {
-            $('body').removeClass('dialog-show');
-
-            dialog.fadeOut(300);
-            dialogOverLay.fadeOut(300);
-            if (opt.onHide) {
-                if ($.isFunction(opt.onHide)) {
-                    opt.onHide();
+        var _hide = function () {
+            $('html').removeClass('model-dialog');
+            $dialog.removeClass('dialog-active');
+            $dialogPanel.css({marginTop:'auto'});
+            if (opt.onhide) {
+                if ($.isFunction(opt.onhide)) {
+                    opt.onhide();
                 } else {
-                    $(document).trigger(opt.onHide, [opt.trigger]);
+                    $(document).trigger(opt.onhide, [opt.trigger]);
                 }
             }
-            if (!opt.cache) {
-                destroy();
-            }
         }
-        dialog.on('keydown', function(event) {
-            if (event.which == 27) {
-                hide();
-            }
-        });
-
-        function destroy() {
-            $this.data('dialog', null);
-            dialog.remove();
-            dialogOverLay.remove();
-        }
-        var dialogObj = {
-            open: show,
-            close: hide,
-            destroy: destroy,
-            setHtml: function(htmlStr) {
-                opt.html = htmlStr;
-            },
-            setOption: function(key, value) {
-                if (typeof key === 'string') {
-                    opt[key] = value;
-                } else {
-                    opt = $.extend(opt, key);
-                }
-            }
+        var _option = function (option) {
+            opt = $.extend(opt, option);
+            return opt;
         };
-        $this.data('dialog', dialogObj);
-        dialog.data('dialog', dialogObj);
-
-        dialogHeader.on('click', function() {
-            hide();
-        });
-        // if(opt.theme="dialog-dropdown") {
-        // @conjee, do you mean "=="?
-        if (opt.theme == "dialog-dropdown") {
-            dialogBody.on('click', "a", function() {
-                setTimeout(function() {
-                    hide();
-                }, 10);
+        var _init = function () {
+            $dialogPanel.append($dialogHeader).append($dialogBody);
+            $dialog.append($dialogPanel);
+            $dialog.prepend($dialogOverLay);
+            $('body').append($dialog);
+            $dialogHeader.on('click', function () {
+                _hide();
             });
-        }
-
-        if (opt.autoClose) {
-            dialogOverLay.click(hide);
-        }
-        $(document).on('dom.resize', function() {
-            reposition();
-        });
-        $this.attr('role', 'Dialog');
-        return $this.data('dialog');
-    };
-
-    $(document).on('click.dialog', '[data-dialog]', function() {
-        var dialog = initBtn(this);
-        $(this).removeAttr('data-dialog');
-        dialog.setOption('trigger', $(this));
-        return dialog.open();
-    });
-
-    $.fn.btnDialog = function() {
-        return initBtn(this);
-    };
-
-    function initBtn(that) {
-        var $this = $(that);
-        var target = $this.attr('data-target') || {};
-        var canCache = $this.attr('data-cache');
-        var onShow = $this.attr('data-onshow');
-        var onHide = $this.attr('data-onhide');
-        var before = $this.attr('data-before');
-        var theme = $this.attr('data-theme');
-        var dialog = $(target).dialog({
-            cache: canCache,
-            onShow: onShow,
-            onHide: onHide,
-            before: before,
-            theme: theme
-        });
-        $this.click(function() {
-            var tmp = $(target).data('dialog');
-            if (!tmp) {
-                tmp = $(target).dialog({
-                    cache: canCache,
-                    onShow: onShow,
-                    onHide: onHide,
-                    before: before,
-                    theme: theme
+            if (opt.theme == "dropdown") {
+                $dialogBody.on('click', "a", function () {
+                    setTimeout(function () {
+                        _hide();
+                    }, 10);
                 });
             }
-            tmp.setOption('trigger', $(this));
-            tmp.open();
-            return false;
+            if (opt.autoclose) {
+                $dialogOverLay.click(_hide);
+            }
+            $(document).on('dialog.hidden.except', function (e,id) {
+                if (id != opt.id) {
+                    _hide();
+                }
+            });
+            $(document).on('dom.resize', function () {
+                _reposition();
+            });
+            var obj = {
+                show: _show,
+                hide: _hide,
+                option: _option
+            };
+            $this.data('dialog', obj);
+            $dialog.attr('role', 'Dialog');
+            return obj;
+        }
+        return _init();
+    };
+
+    $(document).on('dom.keydown', function (ctx, e) {
+        if (e.which == 27) {
+            $(document).trigger('dialog.hidden.except', [-1]);
+        }
+    });
+
+    $(document).on('dom.load.dialog', function () {
+        $('[data-dialog]').each(function () {
+            $(this).click(function () {
+                var $this = $(this);
+                var data = $this.data();
+                data.trigger = $this;
+                var $target = $(data.target);
+                $target.dialog(data).show();
+                return false;
+            });
+            $(this).removeAttr('data-dialog');
         });
-        return dialog;
-    }
+    });
 })(jQuery);

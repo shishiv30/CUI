@@ -31,7 +31,7 @@
             $items.each(function (i, item) {
                 var screenwidth = $this.width();
                 var height = opt.height;
-                var width = screenwidth > opt.width? opt.width : screenwidth-2;
+                var width = screenwidth > opt.width ? opt.width : screenwidth - 2;
                 $(item).css({
                     width: width,
                     height: opt.height
@@ -43,14 +43,6 @@
                 innerW += $(item).outerWidth();
             });
             $list.width(innerW);
-            maxOffsetX = $wrap.prop('scrollWidth') - $wrap.width();
-            if (maxOffsetX <= 0) {
-                prevLink.css("visibility", "hidden");
-                nextLink.css("visibility", "hidden");
-            } else {
-                prevLink.css("visibility", "visible");
-                nextLink.css("visibility", "visible");
-            }
         };
         var _markActive = function () {
             var list = [];
@@ -105,20 +97,21 @@
         };
         var _scroll = function () {
             _markActive();
-            if ($wrap.scrollLeft() == 0) {
-                prevLink.hide();
-                nextLink.show();
+            maxOffsetX = $wrap.prop('scrollWidth') - $wrap.width();
+            if ($wrap.scrollLeft() <= 0) {
+                prevLink.addClass('disable');
+                nextLink.removeClass('disable');
             } else if (($wrap.scrollLeft() - maxOffsetX) <= 3 && ($wrap.scrollLeft() - maxOffsetX) >= -3) {
-                prevLink.show();
-                nextLink.hide();
+                prevLink.removeClass('disable');
+                nextLink.addClass('disable');
             } else {
-                prevLink.show();
-                nextLink.show();
+                prevLink.removeClass('disable');
+                nextLink.removeClass('disable');
             }
         };
         var _shift = function (index) {
             if ($.isInt(index)) {
-                var item = $items.eq(index-1);
+                var item = $items.eq(index - 1);
                 var offset = ($wrap.outerWidth() - item.outerWidth()) / 2;
                 var left = $wrap.scrollLeft() + $(item).position().left - offset;
                 $wrap.stop().animate({
@@ -171,11 +164,18 @@
             return _shift(index);
         };
         var _option = function (option) {
-            opt = $.extend(opt, options);
+            opt = $.extend(opt, option);
             return opt;
         };
         var _init = function () {
-            $this.css('height',opt.height);
+            if (opt.onbefore) {
+                if ($.isFunction(opt.onbefore)) {
+                    opt.onbefore($this);
+                } else {
+                    $(document).trigger(opt.onbefore, [$this]);
+                }
+            }
+            $this.css('height', opt.height);
             $list = $this.find("ul");
             $list.wrap('<div class="wrap"></div>');
             $wrap = $this.find(".wrap");
@@ -232,8 +232,6 @@
                 },
                 option: _option
             };
-            $this.attr('role', 'Shifter');
-            $this.data("shifter", obj);
             $(document).on("dom.resize.shifter", function () {
                 _resize();
                 _scroll();
@@ -244,28 +242,28 @@
                 }
                 timer = setTimeout(_scroll, 500);
             });
+            $(document).on("dom.keydown", function (ctx, e) {
+                if (e.keyCode == '37') {
+                    obj.prev();
+                }
+                if (e.keyCode == '39') {
+                    obj.next();
+                }
+            });
             _resize();
             _scroll();
-        };
-        var init = function () {
-            if(opt.onbefore){
-              if ($.isFunction(opt.onbefore)) {
-                  opt.onbefore($this);
-              } else {
-                  $(document).trigger(opt.onbefore, [$this]);
-              }
-            }
-            _init();
-            if(opt.onafter){
-              if ($.isFunction(opt.onafter)) {
-                  opt.onchange($this);
-              } else {
-                  $(document).trigger(opt.onafter, [$this]);
-              }
+            $this.data("shifter", obj);
+            $this.attr('role', 'Shifter');
+            if (opt.onafter) {
+                if ($.isFunction(opt.onafter)) {
+                    opt.onchange($this);
+                } else {
+                    $(document).trigger(opt.onafter, [$this]);
+                }
             }
             return obj;
-        }
-        return init();
+        };
+        return _init();
     };
 
     $(document).on("dom.load.shifter", function () {

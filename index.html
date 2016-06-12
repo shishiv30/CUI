@@ -36,7 +36,7 @@
             <div class="col-xs-12">
                 <div class="panel">
                     <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#buttonPanel">buttons <span class="subtitle">the basic button style</span> <i class="icon-angle-down right"></i></a>
-                    <div id="buttonPanel" class="row" >
+                    <div id="buttonPanel" class="row">
                         <div class="col-xs-6 col-sm-3">
                             <a href="javascript:;" class="btn ghost-green small"><i class="icon-check"></i> <span>small</span></a>
                             <div class="blank-xs"></div>
@@ -76,262 +76,285 @@
         </div>
         <div class="row">
             <div class="col-xs-12">
-              <div class="panel">
-                  <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#formPanel">forms <span class="subtitle">the form style</span> <i class="icon-angle-down right"></i></a>
-                  <div id="formPanel">
-                    <div id="form" class="form" data-form>
-                          <div class="col-xs-12 col-sm-6">
-                              <label for="txtReq">Required Box</label>
-                              <div class="input left right">
-                                  <i class="icon-user"></i>
-                                  <input type="text" id="txtReq" name='name' placeholder="name" data-validate='required'>
-                                  <i class="icon-asterisk"></i>
-                              </div>
-                          </div>
-                          <div class="col-xs-12 col-sm-6">
-                              <label for="txtMail">Mail Box</label>
-                              <div class="input right">
-                                  <i class="icon-envelope"></i>
-                                  <input type="text" id="txtMail" name='email' placeholder="email" data-validate='email'>
-                              </div>
-                          </div>
-                          <div class="col-xs-12 col-sm-6">
-                              <label for="txtPhone">Phone Box</label>
-                              <div class="input left right">
-                                  <i class="icon-phone"></i>
-                                  <input type="text" id="txtPhone" name='phone' data-validate='required,phone'>
-                                  <i class="icon-asterisk"></i>
-                              </div>
-                          </div>
-                          <div class="col-xs-12 col-sm-6">
-                              <label for="ddlFequence">Fequence</label>
-                              <div class="input">
-                                  <select id="ddlFequence" name="fequence" data-validate="required">
-                                      <option value="" selected disabled>select a fequence</option>
-                                      <option value="Weekly">Weekly</option>
-                                      <option value="Daily">Daily</option>
-                                      <option value="Monthly">Monthly</option>
-                                  </select>
-                              </div>
-                          </div>
-                          <div class="col-xs-12 col-sm-6">
-                              <label for="date">Date picker</label>
-                              <div class="input right">
-                                  <input type="text" id="date" name='date' data-picker="date" readonly data-validate="required">
-                                  <label for="date" class="icon-calendar"></label>
-                              </div>
-                          </div>
-                          <div class="col-xs-12 col-sm-6">
-                              <label for="time">Time picker</label>
-                              <div class="input right">
-                                  <input type="text" id="time" name='date' data-picker="time" readonly data-validate="required">
-                                  <label for="time" class="icon-clock-o"></label>
-                              </div>
-                          </div>
-                          <div class="col-xs-12 col-sm-6">
-                              <label>Select Gender</label>
-                              <div class="radio">
-                                  <label for="chMale">
-                                      <input id="chMale" name="gender" type="radio" checked value="Male">
-                                      <i></i>
-                                      <span>Male</span>
-                                  </label>
-                                  <label for="chkFemal">
-                                      <input id="chkFemal" name="gender" type="radio" value="Female">
-                                      <i></i>
-                                      <span>Female</span>
-                                  </label>
-                              </div>
-                          </div>
-                          <div class="col-xs-12 col-sm-6">
-                              <label>Select Favor</label>
-                              <div class="checkbox">
-                                  <label for="rbtnFavor1">
-                                      <input id="rbtnFavor1" name="favor" checked type="checkbox" value="Dance">
-                                      <i></i>
-                                      <span>Dance</span>
-                                  </label>
+                <div class="panel">
+                    <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#formPanel">forms <span class="subtitle">the form style</span> <i class="icon-angle-down right"></i></a>
+                    <div id="formPanel">
+                        <div id="form" class="form" data-form>
+                            <div class="col-xs-12 col-sm-6">
+                                <label for="txtReq">Required Box</label>
+                                <div class="input left right">
+                                    <i class="icon-user"></i>
+                                    <input type="text" id="txtReq" name='name' placeholder="name" data-validate='required'>
+                                    <i class="icon-asterisk"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label for="txtMail">Mail Box</label>
+                                <div class="input right">
+                                    <i class="icon-envelope"></i>
+                                    <input type="text" id="txtMail" name='email' placeholder="email" data-validate='email'>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label for="txtPhone">Phone Box</label>
+                                <div class="input left right">
+                                    <i class="icon-phone"></i>
+                                    <input type="text" id="txtPhone" name='phone' data-validate='required,phone'>
+                                    <i class="icon-asterisk"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label for="ddlFequence">Fequence</label>
+                                <div class="input">
+                                    <select id="ddlFequence" name="fequence" data-validate="required">
+                                        <option value="" selected disabled>select a fequence</option>
+                                        <option value="Weekly">Weekly</option>
+                                        <option value="Daily">Daily</option>
+                                        <option value="Monthly">Monthly</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label for="date">Date picker</label>
+                                <div class="input right">
+                                    <input type="text" id="date" name='date' data-picker="date" readonly data-validate="required">
+                                    <label for="date" class="icon-calendar"></label>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label for="time">Time picker</label>
+                                <div class="input right">
+                                    <input type="text" id="time" name='date' data-picker="time" readonly data-validate="required">
+                                    <label for="time" class="icon-clock-o"></label>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Select Gender</label>
+                                <div class="radio">
+                                    <label for="chMale">
+                                        <input id="chMale" name="gender" type="radio" checked value="Male">
+                                        <i></i>
+                                        <span>Male</span>
+                                    </label>
+                                    <label for="chkFemal">
+                                        <input id="chkFemal" name="gender" type="radio" value="Female">
+                                        <i></i>
+                                        <span>Female</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Select Favor</label>
+                                <div class="checkbox">
+                                    <label for="rbtnFavor1">
+                                        <input id="rbtnFavor1" name="favor" checked type="checkbox" value="Dance">
+                                        <i></i>
+                                        <span>Dance</span>
+                                    </label>
 
-                                  <label for="rbtnFavor2">
-                                      <input id="rbtnFavor2" name="favor" type="checkbox" value="Sing">
-                                      <i></i>
-                                      <span>Sing</span>
-                                  </label>
+                                    <label for="rbtnFavor2">
+                                        <input id="rbtnFavor2" name="favor" type="checkbox" value="Sing">
+                                        <i></i>
+                                        <span>Sing</span>
+                                    </label>
 
-                                  <label for="rbtnFavor3">
-                                      <input id="rbtnFavor3" name="favor" type="checkbox" value="Paint">
-                                      <i></i>
-                                      <span>Paint</span>
-                                  </label>
-                              </div>
-                          </div>
-                          <div class="col-xs-12">
-                              <a class="btn black" href="javascript:;" onclick="submitForm()">Submit</a>
-                          </div>
+                                    <label for="rbtnFavor3">
+                                        <input id="rbtnFavor3" name="favor" type="checkbox" value="Paint">
+                                        <i></i>
+                                        <span>Paint</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <a class="btn black" href="javascript:;" onclick="submitForm()">Submit</a>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-              </div>
-            </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="panel">
-              <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#collapsePanel">collapse <span class="subtitle">the collapse plugin</span> <i class="icon-angle-down right"></i></a>
-              <div id="collapsePanel">
-                <div class="col-xs-3">
-                  <dl style="position:relative;">
-                      <dt data-isexpand="true"><a href="javascript:void(0)" data-collapse data-isexpand="true" data-target="#plusPanel" data-once="true" class="collapse-more"> <span>show more</span> </a></dt>
-                      <dd id="plusPanel" style="height: 40px; overflow: hidden;">
-                          jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.
-                      </dd>
-                  </dl>
                 </div>
-                <div class="col-xs-3">
-                  <dl>
-                      <dt><a href="javascript:;"  data-collapse data-target="#anglePanel" data-isexpand="true" data-showtext="open" data-hidetext="collapsed"><i class="icon-angle-down"></i> <span>collapsed</span> </a></dt>
-                      <dd id="anglePanel" style="height: 40px; overflow: hidden;">jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.</dd>
-                  </dl>
-                </div>
-                <div class="col-xs-3">
-                  <dl>
-                      <dt><a href="javascript:;" data-collapse data-target="#eyePanel" data-isexpand="true" data-showtext="shown" data-hidetext="hidden"><i class="icon-eye-slash"></i> <span>hidden</span></a></dt>
-                      <dd id="eyePanel" style="height: 0px; overflow: hidden;" >jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.</dd>
-                  </dl>
-                </div>
-                <div class="col-xs-3">
-                  <dl style="position:relative;">
-                      <dt><a href="javascript:;" data-collapse data-target="#caretPanel"><span>dropdown menu</span> <i class="icon-caret-right"></i></a></dt>
-                      <dd  id="caretPanel" class="collapse-menu">jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.</dd>
-                  </dl>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="panel">
-              <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#gridtablePanel">GridTable <span class="subtitle">switch table layout to key-value grid when screen is smaller</span> <i class="icon-angle-down right"></i></a>
-              <div id="gridtablePanel">
-                  <table class="gridtable" data-gridtable >
-                    <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Email</th>
-                        <th>Sex</th>
-                        <th>Phone</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Conjee</td>
-                        <td>30</td>
-                        <td>shishiv30@live.cn</td>
-                        <td>Male</td>
-                        <td>18049****48</td>
-                      </tr>
-
-                      <tr>
-                        <td>Tom</td>
-                        <td>28</td>
-                        <td>Tom@gmail.com</td>
-                        <td>Male</td>
-                        <td>13696****93</td>
-                      </tr>
-                      <tr>
-                        <td>Lily</td>
-                        <td>25</td>
-                        <td>Lily@gmail.com</td>
-                        <td>Female</td>
-                        <td>16934****26</td>
-                      </tr>
-                    </tbody>
-                  </table>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-              <div class="panel">
-                  <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#sliderPanel">slider <span class="subtitle">the slider plugin</span> <i class="icon-angle-down right"></i></a>
-                  <div id="sliderPanel">
-                      <div class="slider" data-slider>
-                        <ul class="slider-list">
-                          <li>
-                              <img src="src/img/01.jpg" width="100%" alt="This is a image.">
-                          </li>
-                          <li>
-                              <img src="src/img/02.jpg" width="100%" alt="This is a image.">
-                          </li>
-                          <li>
-                              <img src="src/img/03.jpg" width="100%" alt="This is a image.">
-                          </li>
-                          <li>
-                              <img src="src/img/04.jpg" width="100%" alt="This is a image.">
-                          </li>
-                          <li>
-                              <img src="src/img/05.jpg" width="100%" alt="This is a image.">
-                          </li>
-                          <li>
-                              <img src="src/img/06.jpg" width="100%" alt="This is a image.">
-                          </li>
-                          <li>
-                              <img src="src/img/07.jpg" width="100%" alt="This is a image.">
-                          </li>
-                        </ul>
-                      </div>
-                  </div>
-              </div>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12">
-              <div class="panel">
-                  <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#shifterPanel">shifter <span class="subtitle">the shifter plugin</span> <i class="icon-angle-down right"></i></a>
-                  <div id="shifterPanel">
-                    <div class="shifter" data-shifter>
-                        <ul class="slider-list">
-                            <li>
-                                <img src="src/img/01.jpg" width="100%" alt="This is a image.">
-                            </li>
-                            <li>
-                                <img src="src/img/02.jpg" width="100%" alt="This is a image.">
-                            </li>
-                            <li>
-                                <img src="src/img/03.jpg" width="100%" alt="This is a image.">
-                            </li>
-                            <li>
-                                <img src="src/img/04.jpg" width="100%" alt="This is a image.">
-                            </li>
-                            <li>
-                                <img src="src/img/05.jpg" width="100%" alt="This is a image.">
-                            </li>
-                            <li>
-                                <img src="src/img/06.jpg" width="100%" alt="This is a image.">
-                            </li>
-                            <li>
-                                <img src="src/img/07.jpg" width="100%" alt="This is a image.">
-                            </li>
-                        </ul>
+                <div class="panel">
+                    <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#dialogPanel">dialog <span class="subtitle">the dialog plugin</span> <i class="icon-angle-down right"></i></a>
+                    <div id="dialogPanel">
+                        <a href="javascript:void(0)" data-dialog data-target="#popupPanel" data-theme="dropdown">open dialog</a>
+                        <script id="popupPanel" type="text/template">
+                          <div class="f3 text-light">Hello World!</div>
+                          <div class="blank-xs"></div>
+                          <ul>
+                            <li><a href="javascript:;">Apple</a></li>
+                            <li><a href="javascript:;">Banana</a></li>
+                            <li><a href="javascript:;">Cat</a></li>
+                          </ul>
+                        </script>
                     </div>
-                  </div>
-              </div>
+                </div>
             </div>
         </div>
         <div class="row">
-          <div class="col-xs-12">
-            <div class="panel">
-              <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#spritesImage">sprites css<span class="subtitle">merge images in one image with css</span><i class="icon-angle-down right"></i></a>
-              <div id="spritesImage">
-                  <div class="s-img-cn"></div>
-                  <div class="s-img-jp"></div>
-                  <div class="s-img-us"></div>
-              </div>
+            <div class="col-xs-12">
+                <div class="panel">
+                    <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#collapsePanel">collapse <span class="subtitle">the collapse plugin</span> <i class="icon-angle-down right"></i></a>
+                    <div id="collapsePanel">
+                        <div class="col-xs-3">
+                            <dl style="position:relative;">
+                                <dt data-isexpand="true"><a href="javascript:void(0)" data-collapse data-isexpand="true" data-target="#plusPanel" data-once="true" class="collapse-more"> <span>show more</span> </a></dt>
+                                <dd id="plusPanel" style="height: 40px; overflow: hidden;">
+                                    jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination
+                                    of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="col-xs-3">
+                            <dl>
+                                <dt><a href="javascript:;"  data-collapse data-target="#anglePanel" data-isexpand="true" data-showtext="open" data-hidetext="collapsed"><i class="icon-angle-down"></i> <span>collapsed</span> </a></dt>
+                                <dd id="anglePanel" style="height: 40px; overflow: hidden;">jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude
+                                    of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.</dd>
+                            </dl>
+                        </div>
+                        <div class="col-xs-3">
+                            <dl>
+                                <dt><a href="javascript:;" data-collapse data-target="#eyePanel" data-isexpand="true" data-showtext="shown" data-hidetext="hidden"><i class="icon-eye-slash"></i> <span>hidden</span></a></dt>
+                                <dd id="eyePanel" style="height: 0px; overflow: hidden;">jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude
+                                    of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.</dd>
+                            </dl>
+                        </div>
+                        <div class="col-xs-3">
+                            <dl style="position:relative;">
+                                <dt><a href="javascript:;" data-collapse data-target="#caretPanel"><span>dropdown menu</span> <i class="icon-caret-right"></i></a></dt>
+                                <dd id="caretPanel" class="collapse-menu">jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude
+                                    of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel">
+                    <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#gridtablePanel">GridTable <span class="subtitle">switch table layout to key-value grid when screen is smaller</span> <i class="icon-angle-down right"></i></a>
+                    <div id="gridtablePanel">
+                        <table class="gridtable" data-gridtable>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Age</th>
+                                    <th>Email</th>
+                                    <th>Sex</th>
+                                    <th>Phone</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Conjee</td>
+                                    <td>30</td>
+                                    <td>shishiv30@live.cn</td>
+                                    <td>Male</td>
+                                    <td>18049****48</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Tom</td>
+                                    <td>28</td>
+                                    <td>Tom@gmail.com</td>
+                                    <td>Male</td>
+                                    <td>13696****93</td>
+                                </tr>
+                                <tr>
+                                    <td>Lily</td>
+                                    <td>25</td>
+                                    <td>Lily@gmail.com</td>
+                                    <td>Female</td>
+                                    <td>16934****26</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel">
+                    <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#sliderPanel">slider <span class="subtitle">the slider plugin</span> <i class="icon-angle-down right"></i></a>
+                    <div id="sliderPanel">
+                        <div class="slider" data-slider>
+                            <ul class="slider-list">
+                                <li>
+                                    <img src="src/img/01.jpg" width="100%" alt="This is a image.">
+                                </li>
+                                <li>
+                                    <img src="src/img/02.jpg" width="100%" alt="This is a image.">
+                                </li>
+                                <li>
+                                    <img src="src/img/03.jpg" width="100%" alt="This is a image.">
+                                </li>
+                                <li>
+                                    <img src="src/img/04.jpg" width="100%" alt="This is a image.">
+                                </li>
+                                <li>
+                                    <img src="src/img/05.jpg" width="100%" alt="This is a image.">
+                                </li>
+                                <li>
+                                    <img src="src/img/06.jpg" width="100%" alt="This is a image.">
+                                </li>
+                                <li>
+                                    <img src="src/img/07.jpg" width="100%" alt="This is a image.">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel">
+                    <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#shifterPanel">shifter <span class="subtitle">the shifter plugin</span> <i class="icon-angle-down right"></i></a>
+                    <div id="shifterPanel">
+                        <div class="shifter" data-shifter>
+                            <ul class="slider-list">
+                                <li>
+                                    <img src="src/img/01.jpg" width="100%" alt="This is a image.">
+                                </li>
+                                <li>
+                                    <img src="src/img/02.jpg" width="100%" alt="This is a image.">
+                                </li>
+                                <li>
+                                    <img src="src/img/03.jpg" width="100%" alt="This is a image.">
+                                </li>
+                                <li>
+                                    <img src="src/img/04.jpg" width="100%" alt="This is a image.">
+                                </li>
+                                <li>
+                                    <img src="src/img/05.jpg" width="100%" alt="This is a image.">
+                                </li>
+                                <li>
+                                    <img src="src/img/06.jpg" width="100%" alt="This is a image.">
+                                </li>
+                                <li>
+                                    <img src="src/img/07.jpg" width="100%" alt="This is a image.">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel">
+                    <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#spritesImage">sprites css<span class="subtitle">merge images in one image with css</span><i class="icon-angle-down right"></i></a>
+                    <div id="spritesImage">
+                        <div class="s-img-cn"></div>
+                        <div class="s-img-jp"></div>
+                        <div class="s-img-us"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
