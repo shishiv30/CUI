@@ -72,7 +72,7 @@
         var _hide = function () {
             $('html').removeClass('model-dialog');
             $dialog.removeClass('dialog-active');
-            $dialogPanel.css({marginTop:'auto'});
+            $dialogPanel.css({marginTop:'0'});
             if (opt.onhide) {
                 if ($.isFunction(opt.onhide)) {
                     opt.onhide();
