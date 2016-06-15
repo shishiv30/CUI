@@ -212,7 +212,7 @@
         },
         isPrice: function(str) {
             var reg = /^(([$])?((([0-9]{1,3},)+([0-9]{3},)*[0-9]{3})|[0-9]+)(\.[0-9]+)?)$/;
-            return reg.test(str);
+            return reg.test(str);price
         }
     });
     $.fn.extend({
@@ -222,6 +222,16 @@
                 if (validateText.indexOf('phone') >= 0) {
                     $(item).inputformat({
                         type: "phone"
+                    });
+                }else if (validateText.indexOf('price') >= 0) {
+                    $(item).inputformat({
+                        type: "price"
+                    });
+                } else if (validateText.indexOf('rate') >= 0) {
+                    var fraction = parseInt($(item).attr("data-fraction"));
+                    $(item).inputformat({
+                        type: "rate",
+                        fraction: fraction
                     });
                 }
                 $(item).change(function() {

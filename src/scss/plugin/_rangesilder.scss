@@ -1,0 +1,63 @@
+.rangeslider {
+  position: relative;
+}
+.rangeslider-handle {
+  cursor: pointer;
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  background-color: $color-main-l1;
+  border-radius: 100%;
+}
+.rangeslider-disabled {
+  opacity: 0.4;
+}
+.rangeslider-fill {
+  background: $color-main-l2;
+  position: absolute;
+}
+.rangeslider-bg{
+  position: absolute;
+  background: $color-d;
+}
+.rangeslider-horizontal {
+  height: $form-size-normal;
+  width: 100%;
+  .rangeslider-bg{
+    top: 20px;
+    height: 2px;
+    left: 0;
+    right: 0;
+  }
+  .rangeslider-fill {
+    top: 20px;
+    height: 2px;
+  }
+  .rangeslider-handle {
+    top: 4px;
+    touch-action: pan-y;
+    -ms-touch-action: pan-y;
+  }
+}
+.rangeslider-vertical {
+  width: $form-size-normal;
+  min-height: 150px;
+  max-height: 100%;
+  .rangeslider-bg{
+    left: 20px;
+    width: 2px;
+    top:0;
+    bottom:0;
+  }
+  .rangeslider-fill {
+    left: 20px;
+    width: 2px;
+    bottom: 0px;
+  }
+  .rangeslider-handle {
+    left: 4px;
+    touch-action: pan-x;
+    -ms-touch-action: pan-x;
+  }
+}
