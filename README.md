@@ -10,5 +10,8 @@ The framework belong two parts.
 How to Use?
 
 git clone https://github.com/shishiv30/CUI.git
+
 npm install
+
 grunt dev
+
