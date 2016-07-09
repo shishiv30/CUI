@@ -1,8 +1,7 @@
-
 //base on bs datetimepicker
-(function($) {
-    var inital = function() {
-        $("[data-picker]").each(function() {
+(function ($) {
+    var inital = function () {
+        $("[data-picker]").each(function () {
             var $this = $(this);
             var type = $this.attr('data-picker');
             var opt = {
@@ -38,11 +37,11 @@
             }
             $this.datetimepicker(opt);
             $this.removeAttr('data-picker');
-            $this.attr('role','Datepicker')
+            $this.attr('role', 'Datepicker')
         });
     };
 
-    $(document).on('focus','[data-picker]', function() {
+    $(document).on('focus', '[data-picker]', function () {
         inital();
     });
 })(jQuery);

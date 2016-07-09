@@ -1,9 +1,9 @@
-(function($) {
-    $(document).on("dom.load", function() {
-        $.csv = function() {
+(function ($) {
+    $(document).on("dom.load", function () {
+        $.csv = function () {
             var namespace = {};
 
-            namespace.getDataFromTable = function(id) {
+            namespace.getDataFromTable = function (id) {
                 var trList = $("#" + id).find("tr");
                 var array = [];
                 for (var i = 0; i < trList.length; i++) {
@@ -16,7 +16,7 @@
                 }
                 return array;
             };
-            namespace.get = function(array, fileName) {
+            namespace.get = function (array) {
                 var str = "";
                 for (var i = 0; i < array.length; i++) {
                     if (array[i].length > 0) {
@@ -27,7 +27,7 @@
             };
             return namespace;
         }();
-        $.ics = function() {
+        $.ics = function () {
             var namespace = {};
             if (!$("#sendICSForm").length) {
                 var form = $('<form method="post" action="' + context.appUrl + 'getics" name="sendICSForm"  id="sendICSForm"></form>');
@@ -35,7 +35,7 @@
                 form.append($('<input type="hidden" name="icsFileName" id="icsFileName">'));
                 $("body").append(form);
             }
-            namespace.get = function(content, fileName) {
+            namespace.get = function (content, fileName) {
                 if (content) {
                     $("#icsStr").val(JSON.stringify(content));
                     $('#icsFileName').val(fileName ? fileName : "");
@@ -48,14 +48,14 @@
     });
 
 
-    $.fn.csv = function(option) {
+    $.fn.csv = function (option) {
         var defaultOpt = {
             data: null,
             name: ''
         };
         var opt = $.extend({}, defaultOpt, option);
         var $this = $(this);
-        var _download = function() {
+        var _download = function () {
             var content;
             if (typeof opt.data === 'string') {
                 content = $.csv.get($.call(opt.data), opt.name);
@@ -74,7 +74,7 @@
             } else {
                 link[0].click();
             }
-            setTimeout(function() {
+            setTimeout(function () {
                 link.remove();
             });
         };
@@ -83,11 +83,11 @@
             download: _download
         };
         $this.data("csv", namespace);
-        $this.attr('role','ExportCSV');
+        $this.attr('role', 'ExportCSV');
         return namespace;
     };
 
-    $.fn.ics = function(option) {
+    $.fn.ics = function (option) {
         var defaultOpt = {
             data: '',
             name: ''
@@ -95,7 +95,7 @@
         var opt = $.extend({}, defaultOpt, option);
         var $this = $(this);
 
-        var _download = function() {
+        var _download = function () {
             var content;
             if (typeof opt.data === 'string') {
                 content = $.ics.get($.call(opt.data), opt.name);
@@ -114,7 +114,7 @@
             } else {
                 link[0].click();
             }
-            setTimeout(function() {
+            setTimeout(function () {
                 link.remove();
             });
         };
@@ -124,11 +124,11 @@
             download: _download
         };
         $this.data("ics", namespace);
-        $this.attr('role','ExportICS');
+        $this.attr('role', 'ExportICS');
         return namespace;
     };
 
-    $(document).on('click', '[data-export]', function() {
+    $(document).on('click', '[data-export]', function () {
         var $this = $(this);
         var type = $this.attr('data-export');
         $this[type]({

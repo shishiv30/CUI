@@ -1,15 +1,20 @@
+html {
+    font-size: $font-size-base;
+    font-family: $font, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
-    font-family: $font, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: $font-size-5;
-    font-style: normal;
     box-sizing: border-box;
 }
+
 ol,
 ul {
     list-style: none;
 }
+
 i {
     text-align: center;
 }
@@ -19,13 +24,16 @@ acronym[title] {
     border-bottom: 1px dotted;
     cursor: help;
 }
+
 q:after,
 q:before {
     content: '';
 }
+
 legend {
     color: $color-0;
 }
+
 a,
 button,
 input,
@@ -33,25 +41,30 @@ select,
 textarea {
     outline: none;
 }
+
 button,
 input,
 select,
 textarea {
     font-size: 100%;
 }
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
 hr {
     border: none;
     height: 1px;
 }
+
 fieldset {
     padding: 0;
     margin: 0;
     border: 0;
 }
+
 input,
 select,
 textarea {
@@ -59,17 +72,34 @@ textarea {
         outline: none;
     }
 }
+
 img {
     border: 0;
 }
+
 body,
 html {
     min-height: 100%;
     overflow-x: hidden;
 }
+
 label[for] {
-  cursor: pointer;
+    cursor: pointer;
 }
+
 [readonly] {
-  cursor: not-allowed;
+    cursor: not-allowed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    line-height: 1em;
+    font-weight: normal;
+    font-family: $font;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
 }

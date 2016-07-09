@@ -23,89 +23,6 @@
     }
 }
 
-@mixin unselect {
-    moz-user-select: -moz-none;
-    -moz-user-select: none;
-    -o-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-//Opacity
-@mixin opacity($opacity) {
-    opacity: $opacity;
-
-    // IE8 filter
-    @if $support-destop {
-        $opacity-ie: $opacity * 100;
-
-        filter: #{alpha(opacity = $opacity-ie)};
-    }
-}
-
-//Box shadow
-@mixin box-shadow($shadow...) {
-    -webkit-box-shadow: $shadow;
-
-    // iOS <4.3 & Android <4.1
-    box-shadow: $shadow;
-}
-
-// Box sizing
-@mixin box-sizing($boxmodel) {
-    -webkit-box-sizing: $boxmodel;
-    -moz-box-sizing: $boxmodel;
-    box-sizing: $boxmodel;
-}
-
-//Text shadow
-@mixin text-shadow($shadow...) {
-    -webkit-text-shadow: $shadow;
-
-    // iOS <4.3 & Android <4.1
-    text-shadow: $shadow;
-}
-
-// Placeholder text
-@mixin placeholder($color: $color-placeholder) {
-    // Firefox
-    &::-moz-placeholder {
-        color: $color;
-        opacity: 1;
-
-        // See https://github.com/twbs/bootstrap/pull/11526
-
-    }
-
-    &:-ms-input-placeholder {
-        color: $color;
-    }
-
-    // Internet Explorer 10+
-    &::-webkit-input-placeholder {
-        color: $color;
-    }
-
-    // Safari and Chrome
-}
-
-//appearance
-@mixin appearance($type) {
-    -webkit-appearance: $type;
-    -moz-appearance: $type;
-    appearance: $type;
-}
-
-//Tranform
-@mixin transform($value) {
-    -webkit-transform: $value;
-    -ms-transform: $value;
-    transform: $value;
-}
-
-//Clear fix
 @mixin clearfix {
     @if $support-destop {
         *zoom: 1;
@@ -153,28 +70,6 @@
     border-top-left-radius: $radius;
 }
 
-// inline-block
-@mixin inline-block($alignment: $inline-block-alignment) {
-    display: inline-block;
-
-    @if $alignment and $alignment != none {
-        vertical-align: $alignment;
-    }
-
-    @if $support-destop {
-        *vertical-align: auto;
-        zoom: 1;
-        *display: inline;
-    }
-}
-
-//column-count
-@mixin column-count($count) {
-    -moz-column-count: $count;
-    -webkit-column-count: $count;
-    column-count: $count;
-}
-
 @mixin singleline($width: false) {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -183,13 +78,6 @@
     @if $width {
         width: $width;
     }
-}
-
-//transition
-@mixin transition($action) {
-    transition: $action;
-    -moz-transition: $action;
-    -webkit-transition: $action;
 }
 
 @mixin text-icon($iconSize: 18px, $fontSize: $font-size-5) {
@@ -209,7 +97,6 @@
     }
 }
 
-//arrows
 @mixin arrow-down($size, $color) {
     width: 0;
     height: 0;
@@ -226,19 +113,101 @@
     border-bottom: $size solid $color;
 }
 
-
-@mixin only-mobile(){
-  #body {
-    &.mobile{
-      @content;
+@mixin only-mobile() {
+    #body {
+        &.mobile {
+            @content;
+        }
     }
-  }
 }
 
-@mixin only-desktop(){
-  #body {
-    &.desktop{
-      @content;
+@mixin only-desktop() {
+    #body {
+        &.desktop {
+            @content;
+        }
     }
-  }
+}
+
+// Framework grid generation
+@mixin make-grid-columns($i: 1, $list: ".col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}") {
+    @for $i from 1 + 1 through $grid-columns {
+        $list: "#{$list}, .col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}";
+    }
+    #{$list} {
+        position: relative;
+        min-height: 1px;
+        padding-left: $grid-gutter-width / 2;
+        padding-right: $grid-gutter-width / 2;
+    }
+}
+
+@mixin float-grid-columns($class, $i: 1, $list: ".col-#{$class}-#{$i}") {
+    @for $i from 1 + 1 through $grid-columns {
+        $list: "#{$list}, .col-#{$class}-#{$i}";
+    }
+    #{$list} {
+        float: left;
+    }
+}
+
+@mixin calc-grid-column($index, $class, $type) {
+    @if $type == width and $index > 0 {
+        .col-#{$class}-#{$index} {
+            width: percentage($index / $grid-columns);
+        }
+    }
+    @if $type == push and $index > 0 {
+        .col-#{$class}-push-#{$index} {
+            left: percentage($index / $grid-columns);
+        }
+    }
+    @if $type == push and $index == 0 {
+        .col-#{$class}-push-0 {
+            left: auto;
+        }
+    }
+    @if $type == pull and $index > 0 {
+        .col-#{$class}-pull-#{$index} {
+            right: percentage($index / $grid-columns);
+        }
+    }
+    @if $type == pull and $index == 0 {
+        .col-#{$class}-pull-0 {
+            right: auto;
+        }
+    }
+    @if $type == offset {
+        .col-#{$class}-offset-#{$index} {
+            margin-left: percentage($index / $grid-columns);
+        }
+    }
+}
+
+@mixin loop-grid-columns($columns, $class, $type) {
+    @for $i from 0 through $columns {
+        @include calc-grid-column($i, $class, $type);
+    }
+}
+
+@mixin make-grid($class) {
+    @include float-grid-columns($class);
+    @include loop-grid-columns($grid-columns, $class, width);
+    @include loop-grid-columns($grid-columns, $class, pull);
+    @include loop-grid-columns($grid-columns, $class, push);
+    @include loop-grid-columns($grid-columns, $class, offset);
+}
+
+@mixin container-fixed($gutter: $grid-gutter-width) {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: $gutter / 2;
+    padding-right: $gutter / 2;
+    @include clearfix;
+}
+
+@mixin make-row($gutter: $grid-gutter-width) {
+    margin-left: $gutter / -2;
+    margin-right: $gutter / -2;
+    @include clearfix;
 }

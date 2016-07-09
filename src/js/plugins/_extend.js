@@ -10,7 +10,8 @@ var tmpdiv = null;
 (function ($) {
     $.extend({
         getTextWidth: function (text, fontsize) {
-            fontSize = fontsize || $('body').css('fontSize').replace(/[a-z]/g,'') * 1;
+           var $body = $('body');
+            fontSize = fontsize || $body.css('fontSize').replace(/[a-z]/g, '') * 1;
             if (!tmpdiv) {
                 tmpdiv = $("<div></div>").css({
                     position: 'absolute',
@@ -19,9 +20,9 @@ var tmpdiv = null;
                     width: 'auto',
                     whiteSpace: 'nowrap'
                 });
-                $('body').append(tmpdiv);
+                $body.append(tmpdiv);
             }
-            tmpdiv.css('fontSize',fontsize);
+            tmpdiv.css('fontSize', fontsize);
             tmpdiv.text(text);
             return tmpdiv.width();
         },
@@ -51,11 +52,7 @@ var tmpdiv = null;
             }
         },
         isMobile: function () {
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                return true;
-            } else {
-                return false;
-            }
+            return !!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         }
     });
 })(jQuery);

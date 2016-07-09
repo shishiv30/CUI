@@ -191,9 +191,6 @@ $social-list: socialbar-email $socialbar-email, socialbar-facebook $socialbar-fa
             &:first-child:nth-last-child(10) ~ li {
                 a {
                     font-size: 14px;
-
-                    //fallback
-                    font-size: .6vw;
                 }
             }
 
@@ -302,7 +299,7 @@ $social-list: socialbar-email $socialbar-email, socialbar-facebook $socialbar-fa
             }
 
             // end @each directive
-       
+
         }
     }
 }

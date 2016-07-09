@@ -1,7 +1,7 @@
-(function() {
+(function () {
     'use strict';
 
-    var getPosition = function(alert, element, relativePosition) {
+    var getPosition = function (alert, element, relativePosition) {
         var alertWidth = alert.outerWidth();
         var alertHeight = alert.outerHeight();
         if (!element) {
@@ -15,14 +15,13 @@
         var offset = $(element).offset();
         var height = $(element).outerHeight();
         var width = $(element).outerWidth();
-        var pos = {
+        return {
             top: relativePosition === 'bottom' ? (offset.top + height + 20) + 'px' : (offset.top - alertHeight - 20) + 'px',
             left: alertHeight <= width ? (offset.left + (width / 2 - alertWidth / 2)) + 'px' : (offset.left - (alertWidth / 2 - width / 2)) + 'px'
         };
-        return pos;
     };
 
-    $.alert = function(options) {
+    $.alert = function (options) {
         var defaultOpt = {
             text: '',
             target: null,
@@ -59,14 +58,14 @@
         }
         alert.css('opacity', '1');
         if (opt.autoClose === true) {
-            setTimeout(function() {
+            setTimeout(function () {
                 alert.remove();
             }, opt.timeout);
         }
         return alert;
     };
 
-    $.fn.alert = function(options) {
+    $.fn.alert = function (options) {
         var $this = $(this);
         var defaultOpt = {
             text: '',
@@ -91,7 +90,7 @@
             trigger: opt.trigger,
             placement: opt.placement
         });
-        opt.forceDestroy && $this.on('shown.bs.popover', function() {
+        opt.forceDestroy && $this.on('shown.bs.popover', function () {
             if (opt.onShow) {
                 if ($.isFunction(opt.onShow)) {
                     opt.onShow($this);
@@ -99,12 +98,12 @@
                     $(document).trigger(opt.onShow, [$this]);
                 }
             }
-            $(document).one('click', function() {
+            $(document).one('click', function () {
                 $this.popover('destroy');
             });
-        })
+        });
         if (opt.onHide) {
-            $this.on('hidden.bs.popover', function() {
+            $this.on('hidden.bs.popover', function () {
                 if ($.isFunction(opt.onHide)) {
                     opt.onHide($this);
                 } else {

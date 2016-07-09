@@ -3,7 +3,7 @@
 
     $.fn.dialog = function (option) {
         var $this = $(this);
-        if($this.data('dialog')){
+        if ($this.data('dialog')) {
             $this.data('dialog').option(option);
             return $this.data('dialog');
         }
@@ -20,7 +20,7 @@
         };
         var opt = $.extend({}, defaultOpt, option);
         var $dialog = $('<div class="dialog ' + opt.theme + '" tabIndex="-1"></div>');
-        var $dialogPanel = $('<div class="dialog-panel"></div>')
+        var $dialogPanel = $('<div class="dialog-panel"></div>');
         var $dialogHeader = $('<div class="dialog-header"> <a class="dialog-header-close" href="javascript:;"><i class="icon-remove"></i></a></div>');
         var $dialogBody = $('<div class="dialog-body"></div>');
         var $dialogOverLay = $('<div class="dialog-overlay"></div>');
@@ -35,7 +35,7 @@
                     marginTop: 20
                 });
             }
-        }
+        };
         var _show = function () {
             $(document).trigger('dialog.hidden.except', [opt.id]);
             if (opt.onbefore) {
@@ -68,11 +68,11 @@
             setTimeout(function () {
                 _reposition();
             }, 50);
-        }
+        };
         var _hide = function () {
             $('html').removeClass('model-dialog');
             $dialog.removeClass('dialog-active');
-            $dialogPanel.css({marginTop:'0'});
+            $dialogPanel.css({marginTop: '0'});
             if (opt.onhide) {
                 if ($.isFunction(opt.onhide)) {
                     opt.onhide();
@@ -80,7 +80,7 @@
                     $(document).trigger(opt.onhide, [opt.trigger]);
                 }
             }
-        }
+        };
         var _option = function (option) {
             opt = $.extend(opt, option);
             return opt;
@@ -103,7 +103,7 @@
             if (opt.autoclose) {
                 $dialogOverLay.click(_hide);
             }
-            $(document).on('dialog.hidden.except', function (e,id) {
+            $(document).on('dialog.hidden.except', function (e, id) {
                 if (id != opt.id) {
                     _hide();
                 }
@@ -119,7 +119,7 @@
             $this.data('dialog', obj);
             $dialog.attr('role', 'Dialog');
             return obj;
-        }
+        };
         return _init();
     };
 

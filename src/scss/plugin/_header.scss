@@ -59,7 +59,7 @@
         width: 12px;
         height: 12px;
         &:before {
-           @extend .icon-caret-down;
+            @extend .icon-caret-down;
         }
 
     }
@@ -70,7 +70,7 @@
         height: 24px;
         width: 24px;
         vertical-align: middle;
-        @include border-radius(100%);
+        border-radius: 100%;
     }
     > a {
         height: 50px;
@@ -94,9 +94,9 @@
         }
     }
     .active {
-      .caret{
-        transform: rotate(180deg);
-      }
+        .caret {
+            transform: rotate(180deg);
+        }
     }
 }
 
@@ -140,7 +140,7 @@
             overflow-x: hidden;
         }
     }
-    .header-overlay{
+    .header-overlay {
         display: none;
         position: fixed;
         top: 50px;
@@ -233,7 +233,7 @@
                 text-align: right;
                 a {
                     display: inline-block;
-                    margin: 0px 20px;
+                    margin: 0 20px;
                 }
             }
         }

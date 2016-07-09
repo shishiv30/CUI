@@ -27,16 +27,16 @@
         padding: 0;
         margin-top: 0;
         transition: margin-top 0.5s;
-        &:before{
-          content:'';
-          display: block;
-          position: absolute;
-          top:0;
-          bottom:0;
-          left:0;
-          right:0;
-          background-color: $color-f;
-          border-radius: 5px;
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: $color-f;
+            border-radius: 5px;
         }
     }
     .dialog-body {
@@ -51,28 +51,28 @@
             opacity: 0.6;
         }
     }
-    &.default{
-      padding-top: 20px;
-      .dialog-header {
-          position: absolute;
-          z-index: 1;
-          right: 0;
-          top: 0;
-          a.dialog-header-close {
-              display: block;
-              height: 21px;
-              line-height: 21px;
-              width: 21px;
-              font-size: 21px;
-              text-align: center;
-              vertical-align: middle;
-              color: $color-link-default;
-          }
-      }
+    &.default {
+        padding-top: 20px;
+        .dialog-header {
+            position: absolute;
+            z-index: 1;
+            right: 0;
+            top: 0;
+            a.dialog-header-close {
+                display: block;
+                height: 21px;
+                line-height: 21px;
+                width: 21px;
+                font-size: 21px;
+                text-align: center;
+                vertical-align: middle;
+                color: $color-link-default;
+            }
+        }
     }
     &.dropdown {
         .dialog-header {
-          display: none;
+            display: none;
         }
         .dialog-body {
             margin: 0;
@@ -103,14 +103,16 @@
         }
     }
 }
+
 .model-dialog {
-    overflow-y: hidden!important;
-    overflow-x: hidden!important;
-    body{
-      overflow-y: hidden!important;
-      overflow-x: hidden!important;
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+    body {
+        overflow-y: hidden !important;
+        overflow-x: hidden !important;
     }
 }
+
 @media (max-width: $screen-xs-max) {
     .dialog {
         .dialog-panel {
@@ -118,6 +120,7 @@
         }
     }
 }
+
 @media (min-width: $screen-sm-min) {
     .dialog {
         .dialog-panel {

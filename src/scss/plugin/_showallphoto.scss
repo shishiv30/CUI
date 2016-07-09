@@ -47,7 +47,7 @@
             width: 185px;
             background: $color-f;
             z-index: 10;
-            @include box-shadow(0 1px 3px #666);
+            box-shadow: 0 1px 3px #666;
             a {
                 display: block;
                 padding: 5px 10px;
@@ -97,7 +97,7 @@
             bottom: 20px;
             overflow: hidden;
             white-space: nowrap;
-            @include transition(all 0.3);
+            transition: all 0.3s;
             li {
                 position: relative;
                 display: inline-block;
@@ -108,7 +108,7 @@
                 vertical-align: middle;
                 border: 2px solid $color-d;
                 margin: 0 4px;
-                @include box-shadow(0 0 1px $color-main-l3);
+                box-shadow: 0 0 1px $color-main-l3;
                 &.active {
                     border-color: $color-main;
                 }
@@ -166,7 +166,7 @@
         .asideInfo {
             position: absolute;
             right: 0;
-            top: 0px;
+            top: 0;
             width: 300px;
         }
     }

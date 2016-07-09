@@ -1,6 +1,6 @@
 //tip
-(function($) {
-    $.fn.tip = function(option) {
+(function ($) {
+    $.fn.tip = function (option) {
         var opt = $.extend({}, option);
         var type = option.type || 'normal';
         delete option.type;
@@ -33,8 +33,8 @@
 
         $(this).tooltip(opt);
     };
-    var inital = function(type) {
-        $("[data-tip]").each(function() {
+    var inital = function () {
+        $("[data-tip]").each(function () {
             $(this).tip({
                 type: $(this).attr('data-tip'),
                 position: $(this).attr('data-position')
@@ -43,7 +43,7 @@
             $(this).attr('role', 'Tip');
         });
     };
-    $(document).on('dom.load', function() {
+    $(document).on('dom.load', function () {
         inital();
     });
 })(jQuery);

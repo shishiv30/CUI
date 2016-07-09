@@ -5,7 +5,7 @@
     .wrap {
         overflow-x: scroll;
         overflow-y: hidden;
-        -webkit-overflow-scrolling:touch;
+        -webkit-overflow-scrolling: touch;
         & > ul {
             overflow: hidden;
 
@@ -15,7 +15,7 @@
                 position: relative;
                 transition: opacity 1s .5s;
                 & > * {
-                  display: 'block';
+                    display: block;
                 }
             }
         }
@@ -40,23 +40,23 @@
         &:hover {
             color: $color-f;
         }
-        &.disable{
-          opacity: 0!important;
-          pointer-events: none;
+        &.disable {
+            opacity: 0 !important;
+            pointer-events: none;
         }
     }
     .prev {
         left: 15px;
-        transition: opacity,left 0.5s ease;
-        i{
-          margin-left:-5px;
+        transition: opacity, left 0.5s ease;
+        i {
+            margin-left: -5px;
         }
     }
     .next {
         right: 15px;
-        transition: opacity,right 0.5s ease;
-        i{
-          margin-left:5px;
+        transition: opacity, right 0.5s ease;
+        i {
+            margin-left: 5px;
         }
     }
     &:hover {
@@ -69,8 +69,8 @@
             opacity: 1;
         }
     }
-    .img-loading{
-      @extend %img-loading;
-      opacity:.5;
+    .img-loading {
+        @extend %img-loading;
+        opacity: .5;
     }
 }

@@ -1,6 +1,6 @@
 //pin
-(function($) {
-    $.fn.pin = function(option) {
+(function ($) {
+    $.fn.pin = function (option) {
         var defaultOpt = {
             top: 50,
             bottom: 0,
@@ -15,18 +15,18 @@
 
         var offsetTop = 0;
         var offsetBottom = 0;
-        var reposition = function() {
+        var reposition = function () {
             offsetTop = $this.offset().top - opt.top;
             offsetBottom = offsetTop + $this.height() - $target.height() - opt.bottom;
         };
-        var pin = function() {
+        var pin = function () {
             $target.css({
                 position: 'fixed',
                 'top': opt.top,
                 bottom: 'auto'
             });
         };
-        var unpin = function(isTop) {
+        var unpin = function (isTop) {
             if (isTop) {
                 $target.css({
                     position: 'absolute',
@@ -41,7 +41,7 @@
                 });
             }
         };
-        var setpin = function(scrollTop, isReposition) {
+        var setpin = function (scrollTop, isReposition) {
             if (isReposition) {
                 reposition();
             }
@@ -60,7 +60,7 @@
             unpin: unpin,
             setpin: setpin
         });
-        $target.attr('role','PinPanel');
+        $target.attr('role', 'PinPanel');
         return $this.data('pin');
     };
 
@@ -68,7 +68,7 @@
     function initial(isReposition) {
         var scrollTop = $(window).scrollTop();
 
-        $('[data-pin]').each(function() {
+        $('[data-pin]').each(function () {
             if ($(this).data('pin') && $(this).data('pin').setpin) {
                 $(this).data('pin').setpin(scrollTop, isReposition);
             } else {
@@ -81,10 +81,10 @@
         });
     }
 
-    $(window).on('scroll', function(e) {
+    $(window).on('scroll', function () {
         initial(false);
     });
-    $(window).on('dom.resize', function(e) {
+    $(window).on('dom.resize', function () {
         initial(true);
     });
 

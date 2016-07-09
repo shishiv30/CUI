@@ -1,8 +1,9 @@
-.checkbox, .radio{
+.checkbox, .radio {
     display: inline-block;
     label {
         cursor: pointer;
-        padding: 0px;
+        padding: 0;
+        user-select: none;
 
         > input {
             display: none;
@@ -28,8 +29,6 @@
         input:disabled + i {
             color: $color-disable;
         }
-
-        @include unselect;
     }
 }
 

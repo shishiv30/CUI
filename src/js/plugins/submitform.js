@@ -1,6 +1,6 @@
 //form submit
-(function($) {
-    $.fn.submitForm = function(options) {
+(function ($) {
+    $.fn.submitForm = function (options) {
         var $this = $(this);
         var defaultOpt = {
             target: "",
@@ -8,7 +8,7 @@
         };
         var opt = $.extend({}, defaultOpt, options);
         var obj = {
-            send: function() {
+            send: function () {
                 if ($this.is("[disabled]")) {
                     return false;
                 }
@@ -36,25 +36,25 @@
                     commonService[methodName](params);
                 }
             },
-            setOption: function(key, value) {
+            setOption: function (key, value) {
                 opt[key] = value;
             },
-            setOptions: function(options) {
+            setOptions: function (options) {
                 $.extend(opt, options);
             }
         };
 
         $this.click(obj.send);
         $this.data("submit", obj);
-        $this.attr('role','SubmitForm');
+        $this.attr('role', 'SubmitForm');
         return obj;
     };
-    $(document).on('dom.load.submit', function() {
-        $('[data-submit]').each(function() {
+    $(document).on('dom.load.submit', function () {
+        $('[data-submit]').each(function () {
             var $this = $(this);
             if ($this.attr("data-target")) {
                 var $form = $($this.attr("data-target"));
-                $form.on('keyup', function(e) {
+                $form.on('keyup', function (e) {
                     if (e.keyCode === 13) {
                         //when focus on textarea will not auto submit
                         if ($("textarea:focus").length === 0) {
@@ -65,8 +65,8 @@
             }
         });
     });
-    $(document).on('click.submit', '[data-submit]', function() {
-        var $this =$(this);
+    $(document).on('click.submit', '[data-submit]', function () {
+        var $this = $(this);
         var methodName = $this.attr('data-submit');
         if (methodName) {
             var opt = {

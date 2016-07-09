@@ -5,7 +5,7 @@ textarea {
     border: 1px solid $color-border;
     min-height: 70px;
     overflow-y: auto;
-    @include border-radius(2px);
+    border-radius: 2px;
 }
 
 .textarea {

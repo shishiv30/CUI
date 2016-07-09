@@ -1,8 +1,9 @@
 .btn {
     @include singleline();
     height: $form-size-normal;
-    line-height: $form-size-normal - 2;
-    padding: 0 10px;
+    line-height: $font-size-4;
+    font-size: $font-size-4-small;
+    padding: 8px 10px;
     display: block;
     text-align: center;
     vertical-align: middle;
@@ -10,10 +11,9 @@
     border: 1px solid transparent;
     border-radius: 5px;
     transition: opacity 0.5s;
+    opacity: 1;
     & > * {
-        display: inline-block;
-        vertical-align: middle;
-        line-height: $form-size-normal - 2;
+        display: inline;
     }
     &:link,
     &:visited {
@@ -24,6 +24,23 @@
         text-decoration: none;
         opacity: 0.8;
         color: $color-1;
+    }
+    &.large {
+        height: $form-size-large;
+        line-height: $font-size-3;
+        font-size: $font-size-3-small;
+        padding: 8px 20px;
+        border-radius: 6px;
+    }
+    &.small {
+        height: $form-size-small;
+        line-height: $font-size-5;
+        font-size: $font-size-5;
+        padding: 0 8px;
+        border-radius: 4px;
+        & > * {
+            line-height: $form-size-small - 2;
+        }
     }
     &.white {
         background-color: $color-f;
@@ -264,32 +281,18 @@
             }
         }
     }
-    &.large {
-        height: $form-size-large;
-        line-height: $form-size-large - 2;
-        font-size: $font-size-4;
-        padding: 0 20px;
-        border-radius: 6px;
-        & > * {
-            line-height: $form-size-large - 2;
-        }
-    }
-    &.small {
-        height: $form-size-small;
-        line-height: $form-size-small - 2;
-        padding: 0 8px;
-        @include border-radius(4px);
-        & > * {
-            line-height: $form-size-small - 2;
-        }
-    }
+
     &[disabled] {
         background-color: $color-c !important;
         border-color: $color-7 !important;
         color: $color-7 !important;
-        cursor: wait !important;
+        cursor: not-allowed !important;
         &:hover {
             background-color: $color-c !important;
         }
+    }
+    &.loading {
+        opacity: .5 !important;
+        cursor: wait !important;
     }
 }

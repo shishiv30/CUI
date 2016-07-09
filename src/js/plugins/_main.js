@@ -3,59 +3,68 @@ window.context = {};
 //initial event
 (function ($) {
     $(document).ready(function ($) {
-        //ismobile
-        if ($.isMobile()) {
-            $("#body").addClass('mobile');
-        } else {
-            $("#body").addClass('desktop');
-        }
 
-        //keydown
-        $(window).on("keydown", function (e) {
-            var tagName = $(":focus").length > 0 ? $(":focus")[0].tagName : '';
-            if (tagName !== "INPUT" && tagName !== "TEXTAREA") {
-                $(document).trigger('dom.keydown', [e]);
+        var _isMobile = function () {
+            //ismobile
+            if ($.isMobile()) {
+                $("#body").addClass('mobile');
+            } else {
+                $("#body").addClass('desktop');
             }
-        });
+        };
 
-        //dom scroll
+        var _eventKeyDownListener = function () {
+            $(window).on("keydown", function (e) {
+                var $focus = $(":focus");
+                var tagName = $focus.length > 0 ? $focus.tagName : '';
+                if (tagName !== "INPUT" && tagName !== "TEXTAREA") {
+                    $(document).trigger('dom.keydown', [e]);
+                }
+            });
+        };
+
         var scrollTimer;
-        var initTop = 0;
-        var scrollTrigger = function (e) {
+        var originalScrollTop = 0;
+        var isScrollDown;
+        var _scrollTrigger = function (e) {
             //in mobile device the scroll will cause by focus in input
             var causeByKeyboard = $('input, select, textarea').is(":focus");
-            var scrollTop = $(document).scrollTop();
-            var isDown = false;
-            if (scrollTop > initTop) {
-                isDown = true;
+            var currentScrollTop = $(document).scrollTop();
+            if (currentScrollTop > originalScrollTop) {
+                isScrollDown = true;
             }
-            initTop = scrollTop;
-            $(document).trigger('dom.scroll', [e, isDown, initTop, causeByKeyboard]);
-        }
-        $(window).on("scroll", function (e) {
-            if (scrollTimer) {
-                clearTimeout(scrollTimer);
-            } else {
-                scrollTrigger(e);
-            }
-            scrollTimer = setTimeout(scrollTrigger, 100);
-        });
+            originalScrollTop = currentScrollTop;
+            $(document).trigger('dom.scroll', [e, isScrollDown, originalScrollTop, causeByKeyboard]);
+        };
+        var _eventScrollListener = function () {
+            $(window).on("scroll", function (e) {
+                scrollTimer && clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(function () {
+                    _scrollTrigger(e);
+                }, 100);
+            });
+        };
 
-        //resize
         var resizeTimer;
-        var resizeTrigger = function (e) {
+        var _oringaWindowWidth = $(window).width();
+        var _resizeTrigger = function (e) {
+            var isWidthChange = _oringaWindowWidth != $(window).width();
             var causeByKeyboard = $('input, select, textarea').is(":focus");
-            $(document).trigger('dom.resize', [e, causeByKeyboard]);
-        }
-        $(window).on("resize", function (e) {
-            if (resizeTimer) {
-                clearTimeout(resizeTimer);
-            } else {
-                resizeTrigger(e);
-            }
-            resizeTimer = setTimeout(resizeTrigger, 100);
-        });
+            $(document).trigger('dom.resize', [e, causeByKeyboard, isWidthChange]);
+        };
+        var _eventResizeListener = function () {
+            $(window).on("resize", function (e) {
+                resizeTimer && clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function () {
+                    _resizeTrigger(e);
+                }, 100);
+            });
+        };
         //dom load
+        _isMobile();
+        _eventKeyDownListener();
+        _eventScrollListener();
+        _eventResizeListener();
         $(document).trigger('dom.load');
     });
 })(jQuery);

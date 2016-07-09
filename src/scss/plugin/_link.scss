@@ -1,22 +1,22 @@
 a {
-  outline: none;
-  text-decoration: none;
-  cursor: pointer;
-  color: $color-link-default;
-  opacity: 0.95;
-  &:hover,
-  &:active {
-    opacity: 1;
-    color: $color-link-default-hover;
+    outline: none;
     text-decoration: none;
-  }
-  &:visited {
+    cursor: pointer;
     color: $color-link-default;
-  }
-  &.link {
+    opacity: 0.95;
     &:hover,
     &:active {
-      text-decoration: underline;
+        opacity: 1;
+        color: $color-link-default-hover;
+        text-decoration: none;
     }
-  }
+    &:visited {
+        color: $color-link-default;
+    }
+    &.link {
+        &:hover,
+        &:active {
+            text-decoration: underline;
+        }
+    }
 }

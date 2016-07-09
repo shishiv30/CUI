@@ -1,46 +1,46 @@
 //popover
-(function($) {
-    $.fn.tippopover = function(option){
+(function ($) {
+    $.fn.tippopover = function (option) {
         var $this = $(this);
-        var defaultOption ={
-            title:'',
-            content:'',
+        var defaultOption = {
+            title: '',
+            content: '',
             html: true,
-            placement:'bottom'
+            placement: 'bottom'
         };
-        var opt = $.extend({},defaultOption,option);
+        var opt = $.extend({}, defaultOption, option);
         var popover = $this.popover(opt);
 
         var namespace = {
-            show: function() {
+            show: function () {
                 $this.popover('show');
             },
-            hide: function() {
+            hide: function () {
                 $this.popover('hide');
             },
-            toggle: function() {
+            toggle: function () {
                 $this.popover('toggle');
             }
         };
 
         $this.data('popover', namespace);
-        $this.on('shown.bs.popover', function() {
-            $(document).one('mouseup.popover', function() {
-                setTimeout(function() {
+        $this.on('shown.bs.popover', function () {
+            $(document).one('mouseup.popover', function () {
+                setTimeout(function () {
                     $this.popover('hide');
                 }, 100);
             });
         });
-        $this.attr('role','Popover');
+        $this.attr('role', 'Popover');
         return namespace;
-    }
+    };
 
-    $(document).on('click.popover', "[data-popover]", function() {
-        var $this =$(this);
+    $(document).on('click.popover', "[data-popover]", function () {
+        var $this = $(this);
         var tippopover = $this.tippopover({
             title: $this.attr('data-popover'),
-             content: $this.attr('data-content'),
-             placement: $this.attr('data-placement')
+            content: $this.attr('data-content'),
+            placement: $this.attr('data-placement')
         });
         tippopover.show();
         $this.removeAttr("data-popover");

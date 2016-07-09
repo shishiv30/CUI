@@ -1,72 +1,88 @@
-.rangeSelect-left-wrapper, .rangeSelect-right-wrapper{
-  /*float: left;*/
-  position: relative;
-  background-color: white;
+.rangeSelect-left-wrapper, .rangeSelect-right-wrapper {
+    /*float: left;*/
+    position: relative;
+    background-color: white;
 }
-.rangeSelect-right-wrapper{
-  /*float: right;*/
-  position: absolute;
-  top: 0;
-  right: 0;
-  text-align: right;
+
+.rangeSelect-right-wrapper {
+    /*float: right;*/
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: right;
 }
-.rangeSelect-left-wrapper ul, .rangeSelect-right-wrapper ul{
-  position: relative;
-  top: 0;
+
+.rangeSelect-left-wrapper ul, .rangeSelect-right-wrapper ul {
+    position: relative;
+    top: 0;
 }
-.rangeSelect-up, .rangeSelect-down{
-  position: absolute;
-  width: 100%;
-  background-color: white;
-  text-align: center;
-  color: #2759a4;
+
+.rangeSelect-up, .rangeSelect-down {
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    color: #2759a4;
 }
-.rangeSelect-left-wrapper, .rangeSelect-right-wrapper, .rangeSelect-up, .rangeSelect-down{
-  text-align: center;
+
+.rangeSelect-left-wrapper, .rangeSelect-right-wrapper, .rangeSelect-up, .rangeSelect-down {
+    text-align: center;
 }
-.rangeSelect-right-wrapper{
-  /*display: none;*/
+
+.rangeSelect-right-wrapper {
+    /*display: none;*/
 }
-.rangeSelect-up, .rangeSelect-down, .rangeSelect-left li, .rangeSelect-right li{
-  border-left: 1px solid #2759a4;
-  border-right: 1px solid #2759a4;
+
+.rangeSelect-up, .rangeSelect-down, .rangeSelect-left li, .rangeSelect-right li {
+    border-left: 1px solid #2759a4;
+    border-right: 1px solid #2759a4;
 }
+
 /**/
-.rangeSelect-up-right, .rangeSelect-down-right, .rangeSelect-right li{
-  border-left: none;
+.rangeSelect-up-right, .rangeSelect-down-right, .rangeSelect-right li {
+    border-left: none;
 }
+
 /**/
-.rangeSelect-down{
-  border-top: 1px solid #2759a4;
-  border-bottom: 1px solid #2759a4;
+.rangeSelect-down {
+    border-top: 1px solid #2759a4;
+    border-bottom: 1px solid #2759a4;
 }
-.rangeSelect-up{
-  border-bottom: 1px solid #2759a4;
+
+.rangeSelect-up {
+    border-bottom: 1px solid #2759a4;
 }
-.rangeSelect-up i, .rangeSelect-down i{
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+
+.rangeSelect-up i, .rangeSelect-down i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
-.rangeSelect-left li, .rangeSelect-right li{
-  border-bottom: 1px dotted #2759a4;
+
+.rangeSelect-left li, .rangeSelect-right li {
+    border-bottom: 1px dotted #2759a4;
 }
-.rangeSelect-left li, .rangeSelect-right li{
-  color: #2759a4;
+
+.rangeSelect-left li, .rangeSelect-right li {
+    color: #2759a4;
 }
-.rangeSelect-left .active, .rangeSelect-right .active{
-  background-color: #2759a4;
+
+.rangeSelect-left .active, .rangeSelect-right .active {
+    background-color: #2759a4;
 }
-.rangeSelect-left .active, .rangeSelect-right .active{
-  color: white;
+
+.rangeSelect-left .active, .rangeSelect-right .active {
+    color: white;
 }
-.rangeSelect-left .active:hover, .rangeSelect-right .active:hover{
-  background-color: #2759a4;
+
+.rangeSelect-left .active:hover, .rangeSelect-right .active:hover {
+    background-color: #2759a4;
 }
+
 .rangeSelect-up i .disabled,
 .rangeSelect-down i .disabled,
-li .disabled{
-  color: #ccc;
-  cursor: default;
+li .disabled {
+    color: #ccc;
+    cursor: default;
 }

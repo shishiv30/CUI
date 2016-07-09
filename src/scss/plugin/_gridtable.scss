@@ -15,7 +15,7 @@ table.gridtable {
         max-height: 500px;
         &:after {
             @extend %icon;
-            content:'\f0d7';
+            content: '\f0d7';
             transition: 0.5s color;
             position: absolute;
             top: 10px;
@@ -24,7 +24,8 @@ table.gridtable {
         }
     }
 }
-@media (min-width:$screen-sm-min) {
+
+@media (min-width: $screen-sm-min) {
     table.gridtable {
         font-size: $font-size-6;
         td,
@@ -40,11 +41,12 @@ table.gridtable {
                 background: #fafafa;
             }
             td:before {
-                content: none!important;
+                content: none !important;
             }
         }
     }
 }
+
 @media (max-width: $screen-xs-max) {
     table.gridtable {
         font-size: $font-size-5;
@@ -72,21 +74,21 @@ table.gridtable {
                 float: left;
                 width: 33%;
                 padding-right: 15px;
-                word-break: break-word;
+                word-break: break-all;
             }
             &.open {
                 position: relative;
                 background-color: #eee;
                 &:after {
-                  display: inline-block;
-                  transform: rotate(90deg);
+                    display: inline-block;
+                    transform: rotate(90deg);
                 }
             }
             &.close {
                 position: relative;
                 cursor: pointer;
                 &:after {
-                  display: inline-block;
+                    display: inline-block;
                 }
                 &:hover {
                     background-color: #eee;
@@ -116,6 +118,7 @@ table.gridtable {
         }
     }
 }
+
 //no-warp for open item
 @media (max-width: 379px) {
     table.gridtable {

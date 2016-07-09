@@ -11,11 +11,8 @@
     background-color: $color-f;
     color: $color-3;
     border: 1px solid $color-border;
-
-    @include border-radius(6px);
-
-    @include box-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
-
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     font-size: $font-size-7;
     line-height: 14px;
     white-space: normal;
@@ -202,7 +199,7 @@
                 margin-left: -10px;
                 border-top-width: 0;
                 border-bottom-color: $color-f;
-                left: 0px;
+                left: 0;
                 bottom: 0;
                 border-left-width: 11px;
                 border-right-color: transparent;
@@ -221,7 +218,7 @@
             border-top-color: rgba(0, 0, 0, 0.25);
             bottom: -11px;
             top: initial;
-            margin-top: 0px;
+            margin-top: 0;
             border-left-width: 11px;
             border-right-color: transparent;
 
@@ -231,7 +228,7 @@
                 margin-left: -10px;
                 border-bottom-width: 0;
                 border-top-color: $color-f;
-                left: 0px;
+                left: 0;
                 border-left-width: 11px;
                 border-right-color: transparent;
             }
@@ -246,10 +243,9 @@
             right: 5px;
             margin-left: -11px;
             border-width: 0 11px 11px 11px;
-            border-color: transparent transparent #999999 transparent;
             border-color: transparent transparent rgba(0, 0, 0, 0.25) transparent;
             top: -11px;
-            margin-top: 0px;
+            margin-top: 0;
 
             &:after {
                 content: " ";
@@ -260,7 +256,7 @@
                 right: auto;
                 border-right-width: 11px;
                 border-left-color: transparent;
-                bottom: 0px;
+                bottom: 0
             }
         }
     }
@@ -272,8 +268,7 @@
             left: auto;
             right: 5px;
             margin-left: -11px;
-            border-width: 11px 11px 0px 11px;
-            border-color: #999999 transparent transparent transparent;
+            border-width: 11px 11px 0 11px;
             border-color: rgba(0, 0, 0, 0.25) transparent transparent transparent;
             bottom: -11px;
             top: initial;
@@ -293,14 +288,14 @@
 }
 
 .popover-title {
-    padding:5px 30px 5px 5px;
+    padding: 5px 30px 5px 5px;
     margin: 0;
     min-height: 17px;
 }
 
 .popover-close {
     position: absolute;
-    top:5px!important;
+    top: 5px !important;
     right: 10px !important;
 }
 
@@ -310,9 +305,9 @@
 
 @media (max-width: $screen-sm-max) {
     .popover {
-        margin-left: 0!important;
+        margin-left: 0 !important;
         left: 0 !important;
-        right:0 !important;
+        right: 0 !important;
         max-width: none !important;
     }
 }

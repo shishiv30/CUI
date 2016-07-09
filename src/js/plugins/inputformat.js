@@ -35,23 +35,23 @@
                     }
                     break;
                 case 'price':
-                    var arr = value.toString().split('.');
-                    formatString = arr[0].replace(/[^0-9]/g,'');
+                    var arrPrice = value.toString().split('.');
+                    formatString = arrPrice[0].replace(/[^0-9]/g, '');
                     var pattern = /(-?\d+)(\d{3})/;
                     while (pattern.test(formatString))
                         formatString = formatString.replace(pattern, "$1,$2");
                     break;
                 case 'rate':
                     var fraction = $.isInt(opt.fraction) ? opt.fraction : 2;
-                    var arr = value.toString().split('.');
-                    formatString = arr[0].replace(/[^0-9]/g, '');
-                    if (fraction > 0 && arr.length > 1) {
-                        var decimals = arr[1].length > fraction ? arr[1].substring(0, fraction) : arr[1];
-                        decimals = decimals.replace(/[^0-9]/g,'');
-                        if(decimals){
-                          formatString += '.' + decimals;
-                        }else{
-                          formatString += '.';
+                    var arrRate = value.toString().split('.');
+                    formatString = arrRate[0].replace(/[^0-9]/g, '');
+                    if (fraction > 0 && arrRate.length > 1) {
+                        var decimals = arrRate[1].length > fraction ? arrRate[1].substring(0, fraction) : arrRate[1];
+                        decimals = decimals.replace(/[^0-9]/g, '');
+                        if (decimals) {
+                            formatString += '.' + decimals;
+                        } else {
+                            formatString += '.';
                         }
                     }
                     break;
@@ -60,9 +60,9 @@
                     break;
             }
             $this.val(formatString);
-            $this.prop('rawValue', value)
-            if(!programmatic){
-              $this.trigger('formatinput',[formatString,value]);
+            $this.prop('rawValue', value);
+            if (!programmatic) {
+                $this.trigger('formatinput', [formatString, value]);
             }
         };
 
@@ -70,14 +70,14 @@
             _set();
         }
 
-        $this.on('keyup input change', function (e,programmatic) {
+        $this.on('keyup input change', function (e, programmatic) {
             var $this = $(this);
             if (timer) {
                 clearTimeout(timer);
             }
             if ($this.prop('rawValue') !== _get()) {
-                timer = setTimeout(function(){
-                    _set(programmatic===true);
+                timer = setTimeout(function () {
+                    _set(programmatic === true);
                 }, 10);
             }
         });

@@ -4,8 +4,8 @@
     // Polyfill Number.isNaN(value)
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN
     Number.isNaN = Number.isNaN || function (value) {
-        return typeof value === 'number' && value !== value;
-    };
+            return typeof value === 'number' && value !== value;
+        };
     var pluginName = 'rangeslider',
         pluginIdentifier = 0,
         constants = {
@@ -316,17 +316,17 @@
             }
             // Set the new value and fire the `input` event
             $this.val(value)
-                .trigger('input', {
-                    origin: identifier
-                });
+            .trigger('input', {
+                origin: identifier
+            });
         };
 
         var destroy = function () {
             $document.off('.' + identifier);
             $window.off('.' + identifier);
             $this.off('.' + identifier)
-                .removeAttr('style')
-                .removeData('plugin_' + pluginName);
+            .removeAttr('style')
+            .removeData('plugin_' + pluginName);
             // Remove the generated markup
             if ($range && $range.length) {
                 $range[0].parentNode.removeChild($range[0]);
@@ -340,8 +340,8 @@
         handleEnd = $.proxy(handleEnd, this);
 
         init();
-        $document.on('dom.resize', function(){
-          update(false);
+        $document.on('dom.resize', function () {
+            update(false);
         });
 
         $document.on(startEvent, '#' + identifier + ':not(.' + opt.disabledClass + ')', handleDown);

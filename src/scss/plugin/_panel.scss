@@ -15,8 +15,8 @@
 
         > span {
             margin-right: 5px;
-            &.h5{
-                margin-top:2px;
+            &.h5 {
+                margin-top: 2px;
             }
         }
         > sub {
@@ -40,12 +40,12 @@
             border-bottom: none;
             line-height: 1em;
             padding-bottom: 0;
-            margin-bottom:0;
+            margin-bottom: 0;
         }
 
         &.addition {
             padding-right: 25px;
-            .right{
+            .right {
                 display: block;
                 position: absolute;
                 right: 0;
@@ -57,15 +57,15 @@
             }
         }
     }
-    .h4,  .h5 {
+    .h4, .h5 {
         &.addition {
             .right {
                 right: 4px;
             }
         }
     }
-    .footer{
-        color:$color-7;
+    .footer {
+        color: $color-7;
         font-size: $font-size-6;
         text-align: right;
         height: 16px;

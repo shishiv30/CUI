@@ -1,6 +1,5 @@
 .group-btn {
-    @include border-radius(5px);
-
+    border-radius: 5px;
     border: 1px solid $color-blue-l1;
     margin: 0;
     overflow: hidden;

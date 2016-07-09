@@ -1,110 +1,138 @@
 //hide
 #body .hide {
-  display: none;
+    display: none;
 }
+
 //help
 .help {
-  border-bottom: dashed 1px $color-6;
-  cursor: help;
+    border-bottom: dashed 1px $color-6;
+    cursor: help;
 }
+
 //blank space
 .blank-xs {
-  height: 5px;
+    height: 5px;
 }
+
 .blank-s {
-  height: 10px;
+    height: 10px;
 }
+
 .blank-m {
-  height: 15px;
+    height: 15px;
 }
+
 .blank-l {
-  height: 20px;
+    height: 20px;
 }
+
 .blank-xl {
-  height: 25px;
+    height: 25px;
 }
+
 .padding-clear {
-  padding: 0 !important;
+    padding: 0 !important;
 }
+
 .margin-clear {
-  margin: 0 !important;
+    margin: 0 !important;
 }
+
 //make element  center & middel
 %block-center {
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%);
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
 }
+
 .block-center {
-  @extend %block-center;
+    @extend %block-center;
 }
+
 %img-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%);
-  max-width: 100%;
-  max-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    max-width: 100%;
+    max-height: 100%;
 }
+
 .img-center {
-  @extend %img-center;
+    @extend %img-center;
 }
+
 .img-center-cover-x {
-  width: 100%!important;
-  height: auto!important;
-  max-width: 999px!important;
-  max-height: 999px!important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 999px !important;
+    max-height: 999px !important;
 }
+
 .img-center-cover-y {
-  width: auto!important;
-  height: 100%!important;
-  max-width: 999px!important;
-  max-height: 999px!important;
+    width: auto !important;
+    height: 100% !important;
+    max-width: 999px !important;
+    max-height: 999px !important;
 }
+
 //make input select or textarea look like a plain text
 %appearance {
-  @include appearance(none);
+    appearance: none;
 }
+
 //float layout
 %clearfix {
-  @include clearfix;
+    @include clearfix;
 }
+
 .clearfix {
-  @extend %clearfix;
+    @extend %clearfix;
 }
+
 .pull-left {
-  float: left !important;
+    float: left !important;
 }
+
 .pull-right {
-  float: right !important;
+    float: right !important;
 }
+
 //singline
 %singleline {
-  @include singleline(100%);
+    @include singleline(100%);
 }
+
 .singleline {
-  @extend %singleline;
+    @extend %singleline;
 }
+
 //list disc
 .list-disc {
-  list-style: square inside disc;
+    list-style: disc inside;
 }
+
 //font icon define
 %icon {
-  display: inline-block;
-  font: normal normal normal 14px/1 fonticon;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  &:before {
-    text-align: center;
-    font-style: normal;
-  }
+    display: inline-block;
+    font: normal normal normal 14px/1 fonticon;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    &:before {
+        text-align: center;
+        font-style: normal;
+    }
 }
+
 [class^="icon-"],
 [class*=" icon-"] {
-  @extend %icon;
+    @extend %icon;
+}
+
+[disabled] {
+    pointer-events: none;
 }

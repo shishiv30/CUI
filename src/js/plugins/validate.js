@@ -1,29 +1,29 @@
 //validate for form submit
-(function($) {
+(function ($) {
     //customer validate
     var customValidate = {
-        max: function($element) {
+        max: function ($element) {
             var value = $element.val();
             var max = $element.attr("data-max");
             var a = $.isNumeric(value) ? value : Date.parse(value);
             var b = $.isNumeric(max) ? max : Date.parse(max);
             return (a - b) <= 0;
         },
-        less: function($element) {
+        less: function ($element) {
             var value = $element.val();
             var less = $element.attr("data-less");
             var a = $.isNumeric(value) ? value : Date.parse(value);
             var b = $.isNumeric(less) ? less : Date.parse(less);
             return (a - b) < 0;
         },
-        min: function($element) {
+        min: function ($element) {
             var value = $element.val();
             var min = $element.attr("data-min");
             var a = $.isNumeric(value) ? value : Date.parse(value);
             var b = $.isNumeric(min) ? min : Date.parse(min);
             return (a - b) >= 0;
         },
-        greater: function($element) {
+        greater: function ($element) {
             var value = $element.val();
             var greater = $element.attr("data-greater");
             var a = $.isNumeric(value) ? value : Date.parse(value);
@@ -31,7 +31,7 @@
             return (a - b) > 0;
         }
     };
-    var _showValidate = function($element, message) {
+    var _showValidate = function ($element, message) {
         $element.closest(".input").removeClass("has-success");
         $element.closest(".input").addClass("has-error");
         if ($element.is('[id]')) {
@@ -40,11 +40,11 @@
         $element.attr('title', message);
         $element.tooltip('destroy');
         $element.tip({
-             type:'error'
+            type: 'error'
         });
         $element.tooltip('show');
     };
-    var _passValidate = function($element, isRequried) {
+    var _passValidate = function ($element, isRequried) {
         $element.closest(".input").removeClass("has-error");
         $element.tooltip('hide');
         if ($element.is('[id]')) {
@@ -58,7 +58,7 @@
             $element.closest(".input").removeClass("has-success");
         }
     };
-    var _validate = function($element) {
+    var _validate = function ($element) {
         var type = $element.attr("data-validate") ? $element.attr("data-validate").split(',') : [];
         var name = $element.attr("name");
         var value = $.trim($element.val());
@@ -181,49 +181,47 @@
         return true;
     };
     $.extend({
-        isNotEmpty: function(str) {
-            if (str === '' || str === null || str === "undefined")
-                return false;
-            return true;
+        isNotEmpty: function (str) {
+            return !(str === '' || str === null || str === "undefined");
         },
-        isEmail: function(str) {
+        isEmail: function (str) {
             var reg = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
             return reg.test(str);
         },
-        isEmails: function(str) {
+        isEmails: function (str) {
             var reg = /^[\.a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+(\s*,\s*[\.a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+)*$/;
             return reg.test(str);
         },
-        isFloat: function(str) {
+        isFloat: function (str) {
             var reg = /^([-]){0,1}([0-9]){1,}([.]){0,1}([0-9]){0,}$/;
             return reg.test(str);
         },
-        isInt: function(str) {
+        isInt: function (str) {
             var reg = /^-?\d+$/;
             return reg.test(str);
         },
-        isPhone: function(str) {
+        isPhone: function (str) {
             var reg = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/im;
             return reg.test(str);
         },
-        isZipCode: function(str) {
+        isZipCode: function (str) {
             var reg = /^([0-9]){5}$/;
             return reg.test(str);
         },
-        isPrice: function(str) {
+        isPrice: function (str) {
             var reg = /^(([$])?((([0-9]{1,3},)+([0-9]{3},)*[0-9]{3})|[0-9]+)(\.[0-9]+)?)$/;
-            return reg.test(str);price
+            return reg.test(str);
         }
     });
     $.fn.extend({
-        validate: function() {
-            $(this).find("[data-validate]").each(function(index, item) {
+        validate: function () {
+            $(this).find("[data-validate]").each(function (index, item) {
                 var validateText = $(item).attr("data-validate");
                 if (validateText.indexOf('phone') >= 0) {
                     $(item).inputformat({
                         type: "phone"
                     });
-                }else if (validateText.indexOf('price') >= 0) {
+                } else if (validateText.indexOf('price') >= 0) {
                     $(item).inputformat({
                         type: "price"
                     });
@@ -234,15 +232,15 @@
                         fraction: fraction
                     });
                 }
-                $(item).change(function() {
+                $(item).change(function () {
                     _validate($(item));
                 });
             });
         },
-        formValue: function() {
+        formValue: function () {
             var $element = $(this);
             var obj = {};
-            $element.find(":text").each(function(index, item) {
+            $element.find(":text").each(function (index, item) {
                 var name = $(item).attr("name");
                 if (name) {
                     obj[name] = $(item).prop("rawValue") || $(item).val();
@@ -252,36 +250,39 @@
                     obj[$(item).attr('googleAutomcomplete')] = data ? data.value : null;
                 }
             });
-            $element.find(":password").each(function(index, item) {
+            $element.find(":password").each(function (index, item) {
                 var name = $(item).attr("name");
                 if (name) {
                     obj[name] = $(item).val();
                 }
             });
-            $element.find(":hidden").each(function(index, item) {
+            $element.find(":hidden").each(function (index, item) {
                 var name = $(item).attr("name");
                 if (name) {
                     obj[name] = $(item).val();
                 }
             });
-            $element.find("textarea").each(function(index, item) {
+            $element.find("textarea").each(function (index, item) {
                 var name = $(item).attr("name");
                 if (name) {
                     obj[name] = $(item).val();
                 }
             });
-            $element.find("select").each(function(index, item) {
+            $element.find("select").each(function (index, item) {
                 var name = $(item).attr("name");
                 if (name) {
                     obj[name] = $(item).val();
                 }
             });
-            $element.find(".checkbox").each(function(index, item) {
+            $element.find(".checkbox").each(function (index, item) {
+                var name;
+                var checkbox;
+                var checkboxList;
                 if ($(item).data("type") == "single") {
-                    var checkbox = $(item).find(":checkbox").eq(0);
+                    checkbox = $(item).find(":checkbox").eq(0);
                     if (checkbox.length) {
 
-                        var name = checkbox.attr("name");
+                        name = checkbox.attr("name");
                         if (checkbox.is(":checked")) {
                             obj[name] = checkbox.attr("value") ? checkbox.attr("value") : true;
                         } else {
@@ -289,17 +290,16 @@
                         }
                     }
                 } else {
-
-                    var checkboxList = $(item).find(":checkbox:checked");
-                    var name = checkboxList.attr("name");
+                    checkboxList = $(item).find(":checkbox:checked");
+                    name = checkboxList.attr("name");
                     if (name) {
-                        obj[name] = $.map(checkboxList, function(item) {
+                        obj[name] = $.map(checkboxList, function (item) {
                             return $(item).val();
                         });
                     }
                 }
             });
-            $element.find(".radio").each(function(index, item) {
+            $element.find(".radio").each(function (index, item) {
                 var radioItem = $(item).find(":radio:checked");
                 var name = radioItem.attr("name");
                 if (name) {
@@ -308,11 +308,11 @@
             });
             return obj;
         },
-        isValid: function() {
+        isValid: function () {
             var foucsElement = null;
             var $element = $(this);
             var isPassed = true;
-            $element.find("[data-validate]").each(function(index, item) {
+            $element.find("[data-validate]").each(function (index, item) {
                 if (!_validate($(item))) {
                     isPassed = false;
                     if (!foucsElement) {
@@ -326,8 +326,8 @@
             return isPassed;
         }
     });
-    $(document).on("dom.load", function() {
-        $("[data-form]").each(function(index, item) {
+    $(document).on("dom.load", function () {
+        $("[data-form]").each(function (index, item) {
             $(item).validate();
             $(item).removeAttr("data-form");
         });
