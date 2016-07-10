@@ -10,7 +10,7 @@ var tmpdiv = null;
 (function ($) {
     $.extend({
         getTextWidth: function (text, fontsize) {
-           var $body = $('body');
+            var $body = $('body');
             fontSize = fontsize || $body.css('fontSize').replace(/[a-z]/g, '') * 1;
             if (!tmpdiv) {
                 tmpdiv = $("<div></div>").css({
@@ -55,4 +55,5 @@ var tmpdiv = null;
             return !!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         }
     });
+    
 })(jQuery);

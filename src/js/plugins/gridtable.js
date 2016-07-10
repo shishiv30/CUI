@@ -3,7 +3,7 @@
         var defaultOption = {
             limitwidth: 150,
             key: 'thead th',
-            limitheight: 28
+            limitheight: 40
         };
         var opt = $.extend({}, defaultOption, option);
         var $this = $(this);
@@ -40,7 +40,7 @@
             }
             $list.addClass('close');
             return classname;
-        }
+        };
         $list.each(function (index, item) {
             $(item).click(function () {
                 if (!$(this).hasClass('open')) {
@@ -48,7 +48,7 @@
                     $(this).addClass('open').removeClass('close');
                 }
             })
-        })
+        });
 
         $this.addClass(inital());
         $this.attr('role', 'grid table');

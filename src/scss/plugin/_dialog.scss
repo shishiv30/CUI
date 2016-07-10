@@ -8,16 +8,15 @@
     overflow-x: hidden;
     overflow-y: auto;
     min-width: $screen-xs-min;
-    display: none;
+    opacity: 0;
+    transition: opacity .5s;
     .dialog-overlay {
-        opacity: 0;
-        transition: opacity .5s;
         position: fixed;
         top: 0;
         bottom: 0;
         left: 0;
         right: 0;
-        background-color: $dialog-overlay-color;
+        background-color: rgba(0, 0, 0, 0.75);
         z-index: $ui-dialog-overlay;
     }
     .dialog-panel {
@@ -46,31 +45,55 @@
         color: $color-0;
     }
     &.dialog-active {
-        display: block;
-        .dialog-overlay {
-            opacity: 0.6;
-        }
+        opacity: 1;
     }
-    &.default {
+    &.dialog-default {
         padding-top: 20px;
-        .dialog-header {
-            position: absolute;
-            z-index: 1;
-            right: 0;
-            top: 0;
-            a.dialog-header-close {
-                display: block;
-                height: 21px;
-                line-height: 21px;
-                width: 21px;
+        .dialog-title {
+            @extend %text-light;
+            @extend .f1;
+            @extend %singleline;
+            position: relative;
+            padding-right: 30px;
+            .dialog-title-close {
+                position: absolute;
                 font-size: 21px;
-                text-align: center;
-                vertical-align: middle;
-                color: $color-link-default;
+                color: $color-c;
+                right: 0;
             }
         }
+        .dialog-body {
+            padding: 20px 0;
+        }
     }
-    &.dropdown {
+    &.dialog-fullscreen {
+        &.dialog-active {
+            .dialog-panel {
+                opacity: 1;
+            }
+        }
+        .dialog-body{
+            margin:0!important;
+            min-height: 100%;
+            min-width: 100%!important;
+            padding: 0 !important;
+        }
+        .dialog-panel {
+            &:before {
+                background: transparent;
+            }
+            min-width: 100%!important;
+            color: $color-f;
+            border: none;
+            min-height: 100%!important;
+            padding: 0 !important;
+            margin: 0 auto!important;
+        }
+        .dialog-overlay {
+            opacity: .8;
+        }
+    }
+    &.dialog-dropdown {
         .dialog-header {
             display: none;
         }
@@ -116,7 +139,7 @@
 @media (max-width: $screen-xs-max) {
     .dialog {
         .dialog-panel {
-            margin: 0 15px;
+            margin: 0 5px;
         }
     }
 }

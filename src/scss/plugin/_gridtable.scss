@@ -11,14 +11,12 @@ table.gridtable {
         text-align: left;
     }
     tbody tr {
-        transition: 0.5s max-height;
         max-height: 500px;
-        &:after {
+        &:before {
             @extend %icon;
-            content: '\f0d7';
-            transition: 0.5s color;
+            @extend .icon-caret-left;
             position: absolute;
-            top: 10px;
+            top: 16px;
             right: 2px;
             display: none;
         }
@@ -31,7 +29,7 @@ table.gridtable {
         td,
         th {
             border: 1px solid $color-c;
-            padding: 6px !important;
+            padding: 10px !important;
         }
         tbody {
             tr {
@@ -66,7 +64,7 @@ table.gridtable {
             z-index: -1;
         }
         tr {
-            padding: 5px 0;
+            padding: 10px 0;
             border-bottom: dashed 1px $color-border;
             overflow: hidden;
             @inlcude clearfix();
@@ -78,20 +76,25 @@ table.gridtable {
             }
             &.open {
                 position: relative;
-                background-color: #eee;
-                &:after {
+                &:before {
                     display: inline-block;
-                    transform: rotate(90deg);
+                    transform: rotate(-90deg);
                 }
             }
             &.close {
                 position: relative;
                 cursor: pointer;
-                &:after {
+                &:before {
                     display: inline-block;
                 }
+                td {
+                    opacity: .3;
+                }
                 &:hover {
-                    background-color: #eee;
+                    background-color: $color-e;
+                    td {
+                        opacity: .8;
+                    }
                 }
                 td {
                     @include singleline();
@@ -105,8 +108,8 @@ table.gridtable {
             td {
                 border: none;
                 position: relative;
-                padding-top: 2px;
-                padding-bottom: 2px;
+                padding-top: 3px;
+                padding-bottom: 3px;
             }
             td:before {
                 position: absolute;

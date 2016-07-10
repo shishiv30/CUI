@@ -1,5 +1,5 @@
-(function($) {
-    $.scrollTo = function($target, $scroll, offsettop, time) {
+(function ($) {
+    $.scrollTo = function ($target, $scroll, offsettop, time) {
         if (offsettop && offsettop.indexOf('#') >= 0) {
             offsettop = $(offsettop).height() + $("#header").height();
         } else {
@@ -10,7 +10,7 @@
             scrollTop: $target.offset().top - offsettop - 10
         }, time >= 0 ? time : 200);
     };
-    $.fn.scrollTo = function(option) {
+    $.fn.scrollTo = function (option) {
         var $this = $(this);
         var defaultOption = {
             target: $this,
@@ -19,7 +19,7 @@
         var opt = $.extend({}, defaultOption, option);
 
         if ($this.is("select")) {
-            $this.change(function() {
+            $this.change(function () {
                 var $item = $("option:selected", $this);
                 if (opt.onscroll) {
                     if ($.isFunction(opt.onscroll)) {
@@ -32,7 +32,7 @@
                 $.scrollTo($($item.data("target")), opt.onscroll, opt.offsettop);
             });
         } else {
-            $this.click(function() {
+            $this.click(function () {
                 if (opt.onscroll) {
                     if ($.isFunction(opt.onscroll)) {
                         opt.onscroll($this);
@@ -43,13 +43,13 @@
                 $.scrollTo(opt.target, opt.onscroll, opt.offsettop);
             });
         }
-        $this.attr('role','ScrollTo');
+        $this.attr('role', 'ScrollTo');
     };
 
-    $(document).on('dom.load.scrollTo', function() {
+    $(document).on('dom.load.scrollTo', function () {
         if ($('[data-scrollspy]').length > 0) {
-            $(document).on('dom.scroll.scrollSpy', function(e, t, isDown, initTop) {
-                $('[data-scrollspy]').each(function(index) {
+            $(document).on('dom.scroll.scrollSpy', function (e, t, isDown, initTop) {
+                $('[data-scrollspy]').each(function () {
                     var offset = $($(this).attr("data-offsettop"));
                     var target = $($(this).data("target"));
                     var top = offset ? (initTop + offset.height()) : initTop;
@@ -65,7 +65,7 @@
             });
         }
 
-        $('[data-scrollTo]').each(function() {
+        $('[data-scrollTo]').each(function () {
             $(this).scrollTo({
                 target: $($(this).data("target")),
                 scroll: $(this).data("scroll"),
