@@ -4,7 +4,8 @@
   "description": "A responsive ui framework",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "run": "grunt",
+    "dev": "grunt dev"
   },
   "repository": {
     "type": "git",

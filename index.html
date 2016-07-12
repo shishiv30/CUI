@@ -256,13 +256,13 @@
                 <div id="dialogPanel">
 
                     <p>
-                        <a href="javascript:void(0)" data-dialog data-target="#popupPanel1" >open dialog as default</a>
+                        <a href="javascript:void(0)" data-dialog data-target="#popupPanel1">open dialog as default</a>
                     </p>
                     <script id="popupPanel1" type="text/template">
-                            <div class="dialog-title">Welcome to CUI!</div>
-                            <p>
-                                A modal dialog is a window that forces the user to interact with it before they can go back to using the parent application.
-                            </p>
+                        <div class="dialog-title">Welcome to CUI!</div>
+                        <p>
+                            A modal dialog is a window that forces the user to interact with it before they can go back to using the parent application.
+                        </p>
                     </script>
                     <p>
                         <a href="javascript:void(0)" data-dialog data-target="#popupPanel0" data-theme="fullscreen">open dialog as fullscreen</a>
@@ -494,6 +494,18 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="panel">
+                <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#dataTable">data table<span class="subtitle">the table
+                    render by standard data</span><i
+                    class="icon-angle-down right"></i></a>
+                <div id="dataTable">
+                    <div data-datatable data-onbefore="datatable.inital"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel">
                 <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#spritesImage">sprites css<span class="subtitle">merge images in one image with css</span><i
                     class="icon-angle-down right"></i></a>
                 <div id="spritesImage">
@@ -516,6 +528,35 @@
             alert(msg);
         }
     }
+    $(document).one('datatable.inital', function (e, obj) {
+        obj.option({
+            columns: [{
+                key: 'name',
+                type: 'string',
+                display: 'Name'
+            }, {
+                key: 'age',
+                type: 'number',
+                display: 'Age',
+                sortable: true
+            }, {
+                key: 'birthday',
+                type: 'date',
+                format: 'm/d/Y',
+                display: 'Birthday',
+                sortable: true
+            }],
+            data: [{
+                name: 'Conjee',
+                age: '30',
+                birthday: '09/05/1986'
+            }, {
+                name: 'Steven',
+                age: '18',
+                birthday: '09/05/2001'
+            }]
+        })
+    });
 </script>
 
 </html>

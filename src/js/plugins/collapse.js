@@ -112,13 +112,8 @@
     $(document).on('dom.load.collapse', function () {
         $("[data-collapse]").each(function (index, item) {
             var $this = $(item);
-            $this.collapse({
-                once: $this.attr("data-once"),
-                showtext: $this.attr("data-showtext"),
-                hidetext: $this.attr("data-hidetext"),
-                target: $this.attr("data-target"),
-                isexpand: $this.attr("data-isexpand"),
-            });
+            var data = $this.data();
+            $this.collapse(data);
             $this.removeAttr('data-collapse');
         });
     });

@@ -1,14 +1,16 @@
-if (!String.prototype.format) {
-    String.prototype.format = function () {
-        var args = arguments;
-        return this.replace(/{(\d+)}/g, function (match, number) {
-            return typeof args[number] != 'undefined' ? args[number] : match;
-        });
-    };
-}
 var tmpdiv = null;
 (function ($) {
     $.extend({
+        htmlencode: function (s) {
+            var div = document.createElement('div');
+            div.appendChild(document.createTextNode(s));
+            return div.innerHTML;
+        },
+        htmldecode: function (s) {
+            var div = document.createElement('div');
+            div.innerHTML = s;
+            return div.innerText || div.textContent;
+        },
         getTextWidth: function (text, fontsize) {
             var $body = $('body');
             fontSize = fontsize || $body.css('fontSize').replace(/[a-z]/g, '') * 1;
@@ -55,5 +57,5 @@ var tmpdiv = null;
             return !!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         }
     });
-    
+
 })(jQuery);
