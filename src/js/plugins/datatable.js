@@ -1,5 +1,4 @@
 (function ($) {
-    var dataType = ['string', 'number', 'date'];
     $.fn.datatable = function (option) {
         var $this = $(this);
         var defaultOption = {
@@ -39,6 +38,9 @@
                     return value;
             }
         };
+        var _getRenderHtml = function (template, data) {
+            return Mustache.render(template, data);
+        };
         var _getColumnByKey = function (key) {
             return opt.columns.reduce(function (pre, next) {
                 if (!pre && next.key === key) {
@@ -58,7 +60,7 @@
                     });
                 }
             }
-            _initalTable();
+            _initalTable(false);
         };
         var _initalThead = function () {
             $thead.empty();
@@ -66,8 +68,7 @@
                 var $tr = $('<tr></tr>');
                 for (var j = 0; j < opt.columns.length; j++) {
                     var column = opt.columns[j];
-                    var type = column.type;
-                    var display = column.display || column.name;
+                    var display = column.display !== undefined ? column.display : column.key;
                     var $td = $('<td></td>');
                     if (column.sortable) {
                         var $link = $('<a href="javascript:;" class="datatable-sort">' + display + '</a>');
@@ -99,7 +100,11 @@
                     for (var j = 0; j < opt.columns.length; j++) {
                         var column = opt.columns[j];
                         var value = rowData[column.key];
-                        value = _getDisplayText(value, column);
+                        if (!column.template) {
+                            value = _getDisplayText(value, column);
+                        } else {
+                            value = _getRenderHtml(column.template, rowData);
+                        }
                         $tr.append('<td>' + value + '</td>')
                     }
                     $tbody.append($tr);

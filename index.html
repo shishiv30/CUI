@@ -545,15 +545,27 @@
                 format: 'm/d/Y',
                 display: 'Birthday',
                 sortable: true
+            }, {
+                key: 'id',
+                type: 'number',
+                display: 'Description',
+                sortable: true,
+                template:'Salary ${{salary}} per day. {{name}} is {{position}}'
             }],
             data: [{
+                id:'1',
                 name: 'Conjee',
                 age: '30',
-                birthday: '09/05/1986'
+                birthday: '09/05/1986',
+                salary:'80',
+                position:'Designer'
             }, {
+                id:'2',
                 name: 'Steven',
                 age: '18',
-                birthday: '09/05/2001'
+                birthday: '09/05/2001',
+                salary:'50',
+                position:'Engieener'
             }]
         })
     });
