@@ -11,6 +11,8 @@ How to Use?
 
 git clone https://github.com/shishiv30/CUI.git
 
+cd CUI
+
 npm install
 
 grunt dev
