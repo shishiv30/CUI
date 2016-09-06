@@ -18,7 +18,7 @@
     white-space: normal;
 
     &.error {
-        border-color: $color-danger-l3;
+        border-color: $color-danger-l1;
 
         .popover-title {
             padding: 5px 10px;
@@ -34,7 +34,7 @@
 
         &.top {
             & > .arrow {
-                border-top-color: $color-danger-l3;
+                border-top-color: $color-danger-l1;
 
                 &:after {
                     border-top-color: $color-f;
@@ -44,7 +44,7 @@
 
         &.bottom {
             & > .arrow {
-                border-bottom-color: $color-danger-l3;
+                border-bottom-color: $color-danger-l1;
 
                 &:after {
                     border-bottom-color: $color-f;
@@ -54,7 +54,7 @@
 
         &.left {
             & > .arrow {
-                border-left-color: $color-danger-l3;
+                border-left-color: $color-danger-l1;
 
                 &:after {
                     border-left-color: $color-f;
@@ -64,7 +64,7 @@
 
         &.right {
             & > .arrow {
-                border-right-color: $color-danger-l3;
+                border-right-color: $color-danger-l1;
 
                 &:after {
                     border-right-color: $color-f;

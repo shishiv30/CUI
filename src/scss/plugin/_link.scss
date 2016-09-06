@@ -1,5 +1,4 @@
 a {
-    outline: none;
     text-decoration: none;
     cursor: pointer;
     color: $color-link-default;
@@ -18,5 +17,9 @@ a {
         &:active {
             text-decoration: underline;
         }
+    }
+    [disable]{
+        color:$color-disable;
+        pointer-events: none;
     }
 }

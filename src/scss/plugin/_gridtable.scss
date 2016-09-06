@@ -25,7 +25,6 @@ table.gridtable {
 
 @media (min-width: $screen-sm-min) {
     table.gridtable {
-        font-size: $font-size-6;
         td,
         th {
             border: 1px solid $color-c;
@@ -47,7 +46,6 @@ table.gridtable {
 
 @media (max-width: $screen-xs-max) {
     table.gridtable {
-        font-size: $font-size-5;
         display: block;
         position: relative;
         tbody,
@@ -115,7 +113,6 @@ table.gridtable {
                 position: absolute;
                 left: 6px;
                 color: $color-5;
-                font-family: $font-bold;
                 @include singleline();
             }
         }
