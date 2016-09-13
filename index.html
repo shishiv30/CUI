@@ -498,7 +498,7 @@
                     render by standard data</span><i
                     class="icon-angle-down right"></i></a>
                 <div id="dataTable">
-                    <div data-datatable data-onbefore="datatable.inital"></div>
+                    <div data-datatable data-onbefore="datatable.inital" data-maxcount="2"></div>
                 </div>
             </div>
         </div>
@@ -542,7 +542,7 @@
             }, {
                 key: 'birthday',
                 type: 'date',
-                format: 'm/d/Y',
+                format: 'm/d/yyyy',
                 display: 'Birthday',
                 sortable: true
             }, {
@@ -566,6 +566,13 @@
                 birthday: '09/05/2001',
                 salary:'50',
                 position:'Engieener'
+            }, {
+                id:'3',
+                name: 'Shadow',
+                age: '33',
+                birthday: '09/05/1983',
+                salary:'100',
+                position:'S Engieener'
             }]
         })
     });

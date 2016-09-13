@@ -1,10 +1,12 @@
 table.gridtable {
     width: 100%;
     border-collapse: collapse;
+    border:1px solid $color-border;
     th {
-        background-color: #eee;
+        background-color: #333;
         font-weight: bold;
         text-align: left;
+        color:$color-f;
     }
     td,
     th {
@@ -12,14 +14,6 @@ table.gridtable {
     }
     tbody tr {
         max-height: 500px;
-        &:before {
-            @extend %icon;
-            @extend .icon-caret-left;
-            position: absolute;
-            top: 16px;
-            right: 2px;
-            display: none;
-        }
     }
 }
 
@@ -36,9 +30,6 @@ table.gridtable {
             }
             tr:nth-of-type(even) {
                 background: #fafafa;
-            }
-            td:before {
-                content: none !important;
             }
         }
     }
@@ -68,13 +59,22 @@ table.gridtable {
             @inlcude clearfix();
             td {
                 float: left;
-                width: 33%;
+                width: 50%;
                 padding-right: 15px;
                 word-break: break-all;
+
             }
             &.open {
                 position: relative;
+                background-color: $color-5;
+                td{
+                    color:$color-f;
+                    &:before {
+                        color:$color-a;
+                    }
+                }
                 &:before {
+                    color:$color-main;
                     display: inline-block;
                     transform: rotate(-90deg);
                 }
@@ -85,13 +85,14 @@ table.gridtable {
                 &:before {
                     display: inline-block;
                 }
-                td {
-                    opacity: .3;
-                }
                 &:hover {
-                    background-color: $color-e;
-                    td {
-                        opacity: .8;
+                    opacity: .8;
+                    background-color: $color-5;
+                    td{
+                         color:$color-f;
+                        &:before {
+                            color:$color-a;
+                        }
                     }
                 }
                 td {

@@ -286,8 +286,7 @@
         background-color: $color-c !important;
         border-color: $color-7 !important;
         color: $color-7 !important;
-        cursor: not-allowed !important;
-        pointer-events: none;
+        pointer-events: none!important;
     }
     &.loading {
         opacity: .5 !important;
