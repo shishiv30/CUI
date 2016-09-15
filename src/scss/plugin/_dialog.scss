@@ -130,9 +130,13 @@
 .model-dialog {
     overflow-y: hidden !important;
     overflow-x: hidden !important;
+
     body {
         overflow-y: hidden !important;
         overflow-x: hidden !important;
+        position: fixed;
+        left: 0;
+        right: 0;
     }
 }
 

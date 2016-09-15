@@ -5,7 +5,7 @@
 .h4,
 .h5,
 .h6 {
-    font-family: $font-bold;
+    font-weight: bold;
     line-height: 1em;
 }
 
@@ -32,46 +32,72 @@
     margin-bottom: 5px;
 }
 
-%f0,
-.h0,
-.f0 {
+%f0 {
     font-size: $font-size-0;
 }
 
-%f1,
-.h1,
-.f1 {
+.h0,
+.f0 {
+    @extend %f0;
+}
+
+%f1 {
     font-size: $font-size-1;
 }
 
-%f2,
-.h2,
-.f2 {
+h1,
+.h1,
+.f1 {
+    @extend %f1;
+}
+
+%f2 {
     font-size: $font-size-2;
 }
 
-%f3,
-.h3,
-.f3 {
+h2,
+.h2,
+.f2 {
+    @extend %f2;
+}
+
+%f3 {
     font-size: $font-size-3;
 }
 
-%f4,
-.h4,
-.f4 {
+h3,
+.h3,
+.f3 {
+    @extend %f3;
+}
+
+%f4 {
     font-size: $font-size-4;
 }
 
-%f5,
-.h5,
-.f5 {
+h4,
+.h4,
+.f4 {
+    @extend %f4;
+}
+
+%f5 {
     font-size: $font-size-5;
 }
 
-%f6,
+h5,
+.h5,
+.f5 {
+    @extend %f5;
+}
+
+%f6{
+    font-size: $font-size-6;
+}
+h6,
 .h6,
 .f6 {
-    font-size: $font-size-6;
+     @extend %f6;
 }
 
 %f7
@@ -84,26 +110,32 @@
     .f0 {
         font-size: $font-size-0-small;
     }
+    h1
     .h1,
     .f1 {
         font-size: $font-size-1-small;
     }
+    h2
     .h2,
     .f2 {
         font-size: $font-size-2-small;
     }
+    h3,
     .h3,
     .f3 {
         font-size: $font-size-3-small;
     }
+    h4,
     .h4,
     .f4 {
         font-size: $font-size-4-small;
     }
+    h5,
     .h5,
     .f5 {
         font-size: $font-size-5-small;
     }
+    h6,
     .h6,
     .f6 {
         font-size: $font-size-6-small;
@@ -122,18 +154,8 @@
     @extend %text-normal;
 }
 
-%text-bolder {
-    font-weight: normal;
-    font-family: $font-bolder;
-}
-
-.text-bolder {
-    @extend %text-bolder;
-}
-
 %text-bold {
-    font-weight: normal;
-    font-family: $font-bold;
+    font-weight: bold;
 }
 
 b,
@@ -148,15 +170,6 @@ b,
 
 .text-light {
     @extend %text-light;
-}
-
-%text-lighter {
-    font-weight: normal;
-    font-family: $font-lighter;
-}
-
-.text-lighter {
-    @extend %text-lighter;
 }
 
 .text-left {

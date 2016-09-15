@@ -35,11 +35,9 @@ $grid-columns: 12;
 $grid-gutter-width: 30px;
 
 //only ossne font in movoto
-$font-bolder: 'robotoblack';
 $font-bold: 'robotobold';
 $font: 'robotoregular';
 $font-light: 'robotolight';
-$font-lighter: 'robotothin';
 
 //legacy main
 $color-main: #78004E;
@@ -52,7 +50,7 @@ $color-pink-l1: lighten($color-pink, 15%);
 $color-pink-l2: lighten($color-pink, 30%);
 $color-pink-l3: lighten($color-pink, 60%);
 //blue
-$color-blue: #27428a;
+$color-blue: #0b0dad;
 $color-blue-l1: lighten($color-blue, 15%);
 $color-blue-l2: lighten($color-blue, 30%);
 $color-blue-l3: lighten($color-blue, 50%);

@@ -126,7 +126,7 @@
         border-radius: 0;
         padding: 2px 5px;
         text-align: left;
-        border: 1px solid $color-border;
+        border: 1px solid $color-7;
         &:before {
             @extend %icon;
             @extend .icon-info-circle;
@@ -152,12 +152,12 @@
     max-width: none;
     transition: all .5s;
     .tooltip-inner {
-        color: $color-warning-l2;
+        color: $color-warning-l1;
         background-color: $color-warning-l3;
         border-radius: 0;
         padding: 2px 5px;
         text-align: left;
-        border: 1px solid $color-warning;
+        border: 1px solid $color-warning-l1;
         &:before {
             @extend %icon;
             @extend .icon-warning;
@@ -183,12 +183,12 @@
     max-width: none;
     transition: all .5s;
     .tooltip-inner {
-        color: $color-danger-l2;
+        color: $color-danger-l1;
         background-color: $color-danger-l3;
         border-radius: 0;
         padding: 2px 5px;
         text-align: left;
-        border: 1px solid $color-danger;
+        border: 1px solid $color-danger-l1;
         border-top: none;
         &:before {
             @extend %icon;

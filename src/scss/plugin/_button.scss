@@ -286,10 +286,7 @@
         background-color: $color-c !important;
         border-color: $color-7 !important;
         color: $color-7 !important;
-        cursor: not-allowed !important;
-        &:hover {
-            background-color: $color-c !important;
-        }
+        pointer-events: none!important;
     }
     &.loading {
         opacity: .5 !important;

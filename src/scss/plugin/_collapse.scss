@@ -47,13 +47,11 @@
 
 .collapse-more {
     position: absolute;
-    padding-left: 12px;
+    padding-left: 30px;
     right: 0;
     bottom: 0;
-    background: #fff;
-    &:before {
-        content: "..."
-    }
+    background: linear-gradient(to right, transparent -10%, white 20%);
+    opacity: 1;
 }
 
 [data-collapse] {

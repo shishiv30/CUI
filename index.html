@@ -296,12 +296,12 @@
                 <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#collapsePanel">collapse <span
                     class="subtitle">the collapse plugin</span>
                     <i class="icon-angle-down right"></i></a>
-                <div id="collapsePanel">
+                <div id="collapsePanel" class="row">
                     <div class="col-xs-3">
                         <dl style="position:relative;">
                             <dt data-isexpand="true"><a href="javascript:void(0)" data-collapse data-isexpand="true" data-target="#plusPanel" data-once="true"
                                                         class="collapse-more"> <span>show more</span> </a></dt>
-                            <dd id="plusPanel" style="height: 40px; overflow: hidden;">
+                            <dd id="plusPanel" style="height: 44px; overflow: hidden;">
                                 jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation,
                                 event handling,
                                 animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination
@@ -498,7 +498,7 @@
                     render by standard data</span><i
                     class="icon-angle-down right"></i></a>
                 <div id="dataTable">
-                    <div data-datatable data-onbefore="datatable.inital"></div>
+                    <div data-datatable data-onbefore="datatable.inital" data-maxcount="2"></div>
                 </div>
             </div>
         </div>
@@ -542,18 +542,37 @@
             }, {
                 key: 'birthday',
                 type: 'date',
-                format: 'm/d/Y',
+                format: 'm/d/yyyy',
                 display: 'Birthday',
                 sortable: true
+            }, {
+                key: 'id',
+                type: 'number',
+                display: 'Description',
+                sortable: true,
+                template:'Salary ${{salary}} per day. {{name}} is {{position}}'
             }],
             data: [{
+                id:'1',
                 name: 'Conjee',
                 age: '30',
-                birthday: '09/05/1986'
+                birthday: '09/05/1986',
+                salary:'80',
+                position:'Designer'
             }, {
+                id:'2',
                 name: 'Steven',
                 age: '18',
-                birthday: '09/05/2001'
+                birthday: '09/05/2001',
+                salary:'50',
+                position:'Engieener'
+            }, {
+                id:'3',
+                name: 'Shadow',
+                age: '33',
+                birthday: '09/05/1983',
+                salary:'100',
+                position:'S Engieener'
             }]
         })
     });
