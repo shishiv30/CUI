@@ -9,7 +9,7 @@ module.exports = function(grunt) {
             dist: {
                 files: [{
                     src: ['src/js/libs/*.js', 'src/js/plugins/*.js'],
-                    dest: 'dest/<%= pkg.name %>.js'
+                    dest: 'dist/<%= pkg.name %>.js'
                 }]
             }
         },
@@ -19,7 +19,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'src/',
                     src: ['img/*.*', 'fonts/*.*'],
-                    dest: 'dest/'
+                    dest: 'dist/'
                 }]
             }
         },
@@ -28,9 +28,9 @@ module.exports = function(grunt) {
             dist: {
                 options: {
                     sassDir: 'src/scss/',
-                    cssDir: 'dest/',
+                    cssDir: 'dist/',
                     imagesDir: "src/img/",
-                    generatedImagesDir: "dest/img/s-img/",
+                    generatedImagesDir: "dist/img/s-img/",
                     httpGeneratedImagesPath: "img/s-img/"
                 }
             }
@@ -38,23 +38,23 @@ module.exports = function(grunt) {
         autoprefixer: {
             dist: {
                 files: {
-                    'dest/<%= pkg.name %>.css': 'dest/<%= pkg.name %>.css'
+                    'dist/<%= pkg.name %>.css': 'dist/<%= pkg.name %>.css'
                 }
             }
         },
         cssmin: {
             dist: {
                 files: [{
-                    src: ['dest/<%= pkg.name %>.css'],
-                    dest: 'dest/<%= pkg.name %>.min.css'
+                    src: ['dist/<%= pkg.name %>.css'],
+                    dest: 'dist/<%= pkg.name %>.min.css'
                 }]
             }
         },
         uglify: {
             dist: {
                 files: [{
-                    src: ['dest/<%= pkg.name %>.js'],
-                    dest: 'dest/<%= pkg.name %>.min.js'
+                    src: ['dist/<%= pkg.name %>.js'],
+                    dest: 'dist/<%= pkg.name %>.min.js'
                 }]
             }
         },
@@ -79,5 +79,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-autoprefixer');
 
     grunt.registerTask('default', ['copy', 'concat', 'compass', 'autoprefixer', 'cssmin', 'uglify']);
-    grunt.registerTask('dev', ['copy', 'concat', 'compass', 'autoprefixer', 'cssmin', 'watch'])
+    grunt.registerTask('dev', ['copy', 'concat', 'compass', 'autoprefixer', 'cssmin', 'watch']);
 };
