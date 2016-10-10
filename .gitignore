@@ -2,5 +2,5 @@ node_modules/
 .sass-cache/
 .vscode/
 .idea/
-dest/
+dist/
 npm-debug.log
