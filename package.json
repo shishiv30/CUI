@@ -1,42 +1,44 @@
 {
-  "name": "cui",
-  "version": "1.0.0",
-  "description": "A responsive ui framework",
-  "main": "index.js",
-  "scripts": {
-    "run": "grunt",
-    "dev": "grunt dev"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shishiv30/CUI.git"
-  },
-  "keywords": [
-    "UI",
-    "Responsive",
-    "Jquery",
-    "Scss"
-  ],
-  "author": "Conjee",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/shishiv30/CUI/issues"
-  },
-  "homepage": "https://github.com/shishiv30/CUI#readme",
-  "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-compass": "^1.1.1",
-    "grunt-contrib-concat": "^1.0.0",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-cssmin": "^1.0.0",
-    "grunt-contrib-jshint": "^1.0.0",
-    "grunt-contrib-uglify": "^1.0.0",
-    "grunt-contrib-watch": "^0.6.1"
-  },
-  "dependencies": {
-    "grunt-autoprefixer": "^3.0.4",
-    "grunt-cli": "^1.2.0",
-    "grunt-contrib-compass": "^1.1.1",
-    "grunt-contrib-copy": "^1.0.0"
-  }
+    "name": "cui",
+    "version": "1.0.0",
+    "description": "A responsive ui framework",
+    "main": "index.js",
+    "scripts": {
+        "run": "grunt",
+        "dev": "grunt dev",
+        "deploy": "node build/publish.js "
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/shishiv30/CUI.git"
+    },
+    "keywords": [
+        "UI",
+        "Responsive",
+        "Jquery",
+        "Scss"
+    ],
+    "author": "Conjee",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/shishiv30/CUI/issues"
+    },
+    "homepage": "https://github.com/shishiv30/CUI#readme",
+    "devDependencies": {
+        "gh-pages": "^0.11.0",
+        "grunt": "^0.4.5",
+        "grunt-contrib-compass": "^1.1.1",
+        "grunt-contrib-concat": "^1.0.0",
+        "grunt-contrib-copy": "^1.0.0",
+        "grunt-contrib-cssmin": "^1.0.0",
+        "grunt-contrib-jshint": "^1.0.0",
+        "grunt-contrib-uglify": "^1.0.0",
+        "grunt-contrib-watch": "^0.6.1"
+    },
+    "dependencies": {
+        "grunt-autoprefixer": "^3.0.4",
+        "grunt-cli": "^1.2.0",
+        "grunt-contrib-compass": "^1.1.1",
+        "grunt-contrib-copy": "^1.0.0"
+    }
 }
