@@ -132,10 +132,8 @@
             $dialog.attr('role', 'Dialog');
             return obj;
         };
-
         return _init();
     };
-
 
     $(document).on('dom.load.dialog', function () {
         $('[data-dialog]').each(function () {

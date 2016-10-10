@@ -55,6 +55,38 @@ var tmpdiv = null;
         },
         isMobile: function () {
             return !!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        },
+        throttle: function (fn, delay, scope) {
+            delay || (delay = 250);
+            var last,
+                timer;
+            return function () {
+                var context = scope || this;
+
+                var now = +new Date(),
+                    args = arguments;
+                if (last && now - last + delay < 0) {
+                    // hold on to it
+                    clearTimeout(deferTimer);
+                    timer = setTimeout(function () {
+                        last = now;
+                        fn.apply(context, args);
+                    }, delay);
+                } else {
+                    last = now;
+                    fn.apply(context, args);
+                }
+            };
+        },
+        debounce: function (fn, delay) {
+            var timer = null;
+            return function () {
+                var context = this, args = arguments;
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    fn.apply(context, args);
+                }, delay);
+            };
         }
     });
 
