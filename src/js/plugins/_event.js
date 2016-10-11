@@ -12,6 +12,7 @@
             $this.off("touchstart.cui").on("touchstart.cui", function (e) {
                 $this.data('_touchStart', null);
                 $this.data('_touchEnd', null);
+                return false;
             });
             $this.off("touchmove.cui").on('touchmove.cui', $.throttle(function (e) {
                 var event = e.originalEvent;
@@ -28,7 +29,7 @@
                     $this.data('_touchEnd', event);
                 }
                 $this.trigger('moving', [$this.data('_touchStart'), event]);
-                e.preventDefault();
+                return false;
             }, 50));
 
             $this.off("touchend.cui").on("touchend.cui", function (e) {
@@ -65,6 +66,7 @@
                         }
                     }
                 }
+                return false;
             });
 
         },
