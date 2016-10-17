@@ -19,7 +19,7 @@
     var eventSetting = {
         setup: function () {
             var $this = $(this);
-            $this.off("touchstart.cui").on("touchstart.cui", function (e) {
+            $this.off("touchstart.cui").on("touchstart.cui", function () {
                 var $ele = $(this);
                 $ele.data('_touchStart', null);
                 $ele.data('_touchEnd', null);
@@ -44,7 +44,7 @@
                 return false;
             }, 100));
 
-            $this.off("touchend.cui").on("touchend.cui", function (e) {
+            $this.off("touchend.cui").on("touchend.cui", function () {
                 var $ele = $(this);
                 var start = $ele.data('_touchStart');
                 var end = $ele.data('_touchEnd');
@@ -61,7 +61,7 @@
                     } else if (start.touches.length == 1) {
                         var xDistance = start.touches[0].pageX - end.touches[0].pageX;
                         var yDistance = start.touches[0].pageY - end.touches[0].pageY;
-                        if (Math.abs(xDistance) > Math.abs(yDistance)) {
+                        if (Math.abs(xDistance) > Math.abs(yDistance) * 5) {
                             if (xDistance !== 0) {
                                 if (xDistance > 0) {
                                     $ele.trigger('swipeleft', [start, end]);
@@ -69,7 +69,7 @@
                                     $ele.trigger('swiperight', [start, end]);
                                 }
                             }
-                        } else {
+                        } else if (Math.abs(xDistance) * 5 < Math.abs(yDistance)) {
                             if (yDistance !== 0) {
                                 if (yDistance > 0) {
                                     $ele.trigger('swipedown', [start, end]);
