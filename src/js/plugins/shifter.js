@@ -30,7 +30,6 @@
             innerW = 0;
             $items.each(function (i, item) {
                 var screenwidth = $this.width();
-                var height = opt.height;
                 var width = screenwidth > opt.width ? opt.width : screenwidth - 2;
                 $(item).css({
                     width: width,
@@ -110,22 +109,24 @@
             }
         };
         var _shift = function (index) {
+            var left;
+            var ismove = false;
             if ($.isInt(index)) {
                 var item = $items.eq(index - 1);
                 var offset = ($wrap.outerWidth() - item.outerWidth()) / 2;
-                var left = $wrap.scrollLeft() + $(item).position().left - offset;
+                left = $wrap.scrollLeft() + $(item).position().left - offset;
                 $wrap.stop().animate({
                     "scrollLeft": left
                 }, opt.duration);
                 return index;
             } else {
+                var begin = $wrap.scrollLeft();
+                var end = $wrap.outerWidth();
+                var width;
                 if (index) {
-                    var begin = $wrap.scrollLeft();
-                    var end = $wrap.outerWidth();
-                    var ismove = false;
                     $items.each(function (j, item) {
-                        var left = $(item).position().left;
-                        var width = $(item).outerWidth();
+                        left = $(item).position().left;
+                        width = $(item).outerWidth();
                         if (left > 0 && left < end && (left + width) > end) {
                             ismove = true;
                             $wrap.stop().animate({
@@ -136,14 +137,10 @@
                     });
                     return ismove;
                 } else {
-                    var begin = $wrap.scrollLeft();
-                    var end = $wrap.outerWidth();
-                    var ismove = false;
                     $items.each(function (j, item) {
-                        var left = $(item).position().left;
-                        var width = $(item).outerWidth();
+                        left = $(item).position().left;
+                        width = $(item).outerWidth();
                         if (left <= 0 && (left + width) > 0) {
-                            var ismove = true;
                             $wrap.stop().animate({
                                 "scrollLeft": begin - end + ($(item).width() + $(item).position().left)
                             }, opt.duration);
@@ -168,6 +165,18 @@
             return opt;
         };
         var _init = function () {
+            obj = {
+                prev: function () {
+                    return _prev();
+                },
+                next: function () {
+                    return _next();
+                },
+                go: function (index) {
+                    return _go(index);
+                },
+                option: _option
+            };
             if (opt.onbefore) {
                 if ($.isFunction(opt.onbefore)) {
                     opt.onbefore($this);
@@ -206,32 +215,24 @@
                 autoTimer = setInterval(function () {
                     obj.next();
                     sign_isAuto = true;
-                }, opt.autoscroll * 1);
+                }, opt.autoscroll);
             }
             $this.css("height", opt.height);
             $wrap.css("height", opt.height + 21);
-            prevLink.click(function (e) {
+            prevLink.click(function () {
                 obj.prev();
                 return false;
             });
-            nextLink.click(function (e) {
+            nextLink.click(function () {
                 obj.next();
                 return false;
             });
             $this.append(prevLink);
             $this.append(nextLink);
-            obj = {
-                prev: function () {
-                    return _prev();
-                },
-                next: function () {
-                    return _next();
-                },
-                go: function (index) {
-                    return _go(index);
-                },
-                option: _option
-            };
+            if ($.isMobile()) {
+                $list.on('swipeleft', obj.next);
+                $list.on('swiperight', obj.prev);
+            }
             $(document).on("dom.resize.shifter", function () {
                 _resize();
                 _scroll();

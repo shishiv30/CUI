@@ -1,4 +1,4 @@
-"use strict";
+
 window.context = {};
 //initial event
 (function ($) {

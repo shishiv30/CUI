@@ -8,7 +8,7 @@
             onbefore: null,
             onafter: null,
             defaultTemplate: null,
-            hideText:'See More',
+            hideText: 'See More',
         };
         var opt = $.extend({}, defaultOption, option);
         var $thead = $('<thead></thead>');
@@ -24,7 +24,7 @@
                     if (value.replace) {
                         value = value.replace(/,|\s/g, '');
                     }
-                    return Number.parseFloat(value || 0);
+                    return value * 1 || 0;
                 default:
                     return value;
             }
@@ -33,7 +33,7 @@
             switch (column.type) {
                 case 'number':
                     if ($.isNumeric(value)) {
-                        return column.format ? Number.parseFloat(value).toFixed(column.format * 1) : Number.parseFloat(value);
+                        return column.format ? value.toFixed(column.format * 1) : value;
                     } else {
                         return ''
                     }
@@ -49,13 +49,7 @@
         var _getRenderHtml = function (template, data) {
             return Mustache.render(template, data);
         };
-        var _getColumnByKey = function (key) {
-            return opt.columns.reduce(function (pre, next) {
-                if (!pre && next.key === key) {
-                    return next;
-                }
-            }, null);
-        };
+
         var _sort = function (column, isDesc) {
             if (opt.data && opt.data.length) {
                 if (isDesc) {
@@ -138,19 +132,19 @@
         };
         var _initalTfoot = function () {
             $tfoot.empty();
-            if (opt.maxcount >0 && opt.data.length > opt.maxcount) {
+            if (opt.maxcount > 0 && opt.data.length > opt.maxcount) {
                 var $tr = $('<tr></tr>');
-                var $link = $('<td colspan="' + opt.columns.length + '"><a href="javascript:;" class="btn blue" >'+opt.hideText+'</a></td>');
-                $tbody.find('tr').eq(opt.maxcount-1).nextAll().hide();
+                var $link = $('<td colspan="' + opt.columns.length + '"><a href="javascript:;" class="btn blue" >' + opt.hideText + '</a></td>');
+                $tbody.find('tr').eq(opt.maxcount - 1).nextAll().hide();
                 $link.click(function () {
-                    $tbody.find('tr').eq(opt.maxcount-1).nextAll().show();
+                    $tbody.find('tr').eq(opt.maxcount - 1).nextAll().show();
                     $(this).hide();
                 });
                 $tr.append($link);
                 $tfoot.append($tr);
             }
             return $tfoot;
-        }
+        };
         var _initalTable = function (isInital) {
             if (isInital) {
                 $table = $('<table class="datatable"></table>');
@@ -195,7 +189,7 @@
         }
         $this.data('datatable', obj);
         return obj;
-    }
+    };
     $(document).on('dom.load.datatable', function () {
         $('[data-datatable]').each(function () {
             var $this = $(this);

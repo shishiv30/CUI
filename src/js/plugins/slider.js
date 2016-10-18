@@ -146,8 +146,10 @@
                     sign_isAuto = true;
                 }, opt.autoscroll);
             }
-            $list.on('swipeleft', obj.next);
-            $list.on('swiperight', obj.prev);
+            if ($.isMobile()) {
+                $list.on('swipeleft', obj.next);
+                $list.on('swiperight', obj.prev);
+            }
             prevLink.click(function () {
                 obj.prev();
                 return false;

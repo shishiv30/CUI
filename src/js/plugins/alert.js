@@ -1,6 +1,4 @@
-(function () {
-    'use strict';
-
+(function ($) {
     var getPosition = function (alert, element, relativePosition) {
         var alertWidth = alert.outerWidth();
         var alertHeight = alert.outerHeight();
