@@ -9,7 +9,7 @@ module.exports = function (grunt) {
             dist: {
                 files: [{
                     src: ['src/js/libs/*.js', 'src/js/plugins/*.js'],
-                    dest: 'dist/src/<%= pkg.name %>.js'
+                    dest: 'public/dist/src/<%= pkg.name %>.js'
                 }]
             }
         },
@@ -19,10 +19,7 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: 'src/',
                     src: ['img/*.*', 'fonts/*.*'],
-                    dest: 'dist/src/'
-                },{
-                    src: ['index.html'],
-                    dest: 'dist/'
+                    dest: 'public/dist/src/'
                 }]
             }
         },
@@ -31,9 +28,9 @@ module.exports = function (grunt) {
             dist: {
                 options: {
                     sassDir: 'src/scss/',
-                    cssDir: 'dist/src/',
+                    cssDir: 'public/dist/src/',
                     imagesDir: "src/img/",
-                    generatedImagesDir: "dist/src/img/s-img/",
+                    generatedImagesDir: "public/dist/src/img/s-img/",
                     httpGeneratedImagesPath: "img/s-img/"
                 }
             }
@@ -41,23 +38,23 @@ module.exports = function (grunt) {
         autoprefixer: {
             dist: {
                 files: {
-                    'dist/src/<%= pkg.name %>.css': 'dist/src/<%= pkg.name %>.css'
+                    'public/dist/src/<%= pkg.name %>.css': 'public/dist/src/<%= pkg.name %>.css'
                 }
             }
         },
         cssmin: {
             dist: {
                 files: [{
-                    src: ['dist/src/<%= pkg.name %>.css'],
-                    dest: 'dist/src/<%= pkg.name %>.min.css'
+                    src: ['public/dist/src/<%= pkg.name %>.css'],
+                    dest: 'public/dist/src/<%= pkg.name %>.min.css'
                 }]
             }
         },
         uglify: {
             dist: {
                 files: [{
-                    src: ['dist/src/<%= pkg.name %>.js'],
-                    dest: 'dist/src/<%= pkg.name %>.min.js'
+                    src: ['public/dist/src/<%= pkg.name %>.js'],
+                    dest: 'public/dist/src/<%= pkg.name %>.min.js'
                 }]
             }
         },
