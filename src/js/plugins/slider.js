@@ -23,8 +23,6 @@
             return opt;
         };
         var _slide = function (index, animated) {
-            var firstItem = null;
-            var secondItem = null;
             var currentItem = $list.find('li.active');
             if (!currentItem.length) {
                 currentItem = $list.find('li:first-child');
@@ -146,15 +144,15 @@
                 autoTimer = setInterval(function () {
                     obj.next();
                     sign_isAuto = true;
-                }, opt.autoscroll * 1);
+                }, opt.autoscroll);
             }
-            $this.on('swipeleft', obj.next);
-            $this.on('swiperight', obj.prev);
-            prevLink.click(function (e) {
+            $list.on('swipeleft', obj.next);
+            $list.on('swiperight', obj.prev);
+            prevLink.click(function () {
                 obj.prev();
                 return false;
             });
-            nextLink.click(function (e) {
+            nextLink.click(function () {
                 obj.next();
                 return false;
             });
@@ -178,7 +176,7 @@
                 }
             }
             return obj;
-        }
+        };
         return _init();
     };
 
