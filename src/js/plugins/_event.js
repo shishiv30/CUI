@@ -61,7 +61,7 @@
                     } else if (start.touches.length == 1) {
                         var xDistance = start.touches[0].pageX - end.touches[0].pageX;
                         var yDistance = start.touches[0].pageY - end.touches[0].pageY;
-                        if (Math.abs(xDistance) > Math.abs(yDistance) * 5) {
+                        if (Math.abs(xDistance) > Math.abs(yDistance) * 2) {
                             if (xDistance !== 0) {
                                 if (xDistance > 0) {
                                     $ele.trigger('swipeleft', [start, end]);
@@ -69,7 +69,7 @@
                                     $ele.trigger('swiperight', [start, end]);
                                 }
                             }
-                        } else if (Math.abs(xDistance) * 5 < Math.abs(yDistance)) {
+                        } else if (Math.abs(xDistance) * 2 < Math.abs(yDistance)) {
                             if (yDistance !== 0) {
                                 if (yDistance > 0) {
                                     $ele.trigger('swipedown', [start, end]);

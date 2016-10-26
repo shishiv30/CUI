@@ -250,6 +250,32 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="panel">
+                <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#texboxPanel">Textbox <span class="subtitle">New textbox style</span> <i
+                    class="icon-angle-down right"></i></a>
+                <div id="texboxPanel" class="form" data-form>
+                    <div class="col-xs-12 col-sm-6">
+                        <div data-textbox>
+                            <label for="txtReq1">Required Box</label>
+                            <div class="input large">
+                                <input type="text" id="txtReq1" name='name' placeholder="name" data-validate='required'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div data-textbox>
+                            <label for="txtMail1">Mail Box</label>
+                            <div class="input large">
+                                <input type="text" id="txtMail1" name='email' placeholder="email" data-validate='email'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel">
                 <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#dialogPanel">dialog <span class="subtitle">the dialog plugin</span>
                     <i
                         class="icon-angle-down right"></i></a>
@@ -517,13 +543,17 @@
             </div>
         </div>
     </div>
-    <div class="panel">
-        <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#eventPanel">Touch Event
-            <span class="subtitle">The extension of event</span><i class="icon-angle-down right"></i></a>
-        <div id="eventPanel" class="row">
-            <div class="col-xs-12">
-                <div id="eventDiv" style="height:300px;padding:100px 50px; text-align:center;background-color:#ddd;">
-                    try to move on the panel with your finger.
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel">
+                <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#eventPanel">Touch Event
+                    <span class="subtitle">The extension of event</span><i class="icon-angle-down right"></i></a>
+                <div id="eventPanel" class="row">
+                    <div class="col-xs-12">
+                        <div id="eventDiv" style="height:300px;padding:100px 50px; text-align:center;background-color:#ddd;">
+                            try to move on the panel with your finger.
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
