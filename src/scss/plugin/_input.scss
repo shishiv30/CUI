@@ -182,14 +182,15 @@ input[type='text']::-ms-clear {
     label[for] {
         position: absolute;
         left: 20px;
-        top: 10px;
+        top: 30%;
+        transform: translateY(-50%);
         right: auto;
         z-index: 1;
         padding: 0;
         font-size: $font-size-5;
         color: $color-9;
         transition: all .3s;
-        padding: 2px;
+        padding: 0 2px;
         background: $color-f;
     }
 
@@ -211,8 +212,7 @@ input[type='text']::-ms-clear {
 
     &.focus {
         label[for] {
-            left: 5px;
-            top: -12px;
+            top: -20%;
             right: auto;
             color: $color-a;
             transform: scale(0.8);

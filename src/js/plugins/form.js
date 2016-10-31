@@ -343,6 +343,12 @@
                 $this.removeClass('focus');
             }
         });
+
+        if ($input.val()) {
+            $this.addClass('focus');
+        } else {
+            $this.removeClass('focus');
+        }
     }
     $(document).on('dom.load', function () {
         $("[data-textbox]").each(function (index, item) {
@@ -350,5 +356,5 @@
             $(item).attr('data-textbox-load', '');
             $(item).removeAttr("data-textbox")
         });
-    })
+    });
 })(jQuery);
