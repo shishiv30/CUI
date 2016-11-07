@@ -20,7 +20,6 @@
                 font-weight: 700;
             }
         }
-
     </style>
 </head>
 
@@ -250,7 +249,8 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="panel">
-                <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#texboxPanel">Textbox <span class="subtitle">New textbox style</span> <i
+                <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#texboxPanel">Textbox <span
+                    class="subtitle">New textbox style</span> <i
                     class="icon-angle-down right"></i></a>
                 <div id="texboxPanel" class="form" data-form>
                     <div class="col-xs-12 col-sm-6">
@@ -489,7 +489,7 @@
                     class="subtitle">the shifter plugin</span> <i
                     class="icon-angle-down right"></i></a>
                 <div id="shifterPanel">
-                    <div class="shifter" data-shifter>
+                    <div class="shifter" data-shifter data-index="2">
                         <ul class="slider-list">
                             <li>
                                 <img src="dist/src/img/01.jpg" height="100%" alt="This is a image.">
@@ -570,48 +570,48 @@
             alert(msg);
         }
     }
-    var getMoveText = function (startPoint, endPoint) {
+    var getMoveText = function(startPoint, endPoint) {
         var str1;
         var str2;
         if (startPoint.touches.length) {
             var start = Array.prototype.slice.call(startPoint.touches);
-            str1 = start.reduce(function (pre, next, index) {
+            str1 = start.reduce(function(pre, next, index) {
 
                 return pre + 'Y:' + next.pageY + 'X:' + next.pageX + ' ';
             }, '(Start) ');
         }
         if (endPoint.touches.length) {
             var end = Array.prototype.slice.call(endPoint.touches);
-            str2 = end.reduce(function (pre, next, index) {
+            str2 = end.reduce(function(pre, next, index) {
                 return pre + 'Y:' + next.pageY + 'X:' + next.pageX + ' ';
             }, '(End) - ');
         }
 
         return str1 + '<br>' + str2;
     };
-    $("#eventDiv").on('moving', function (t, start, end) {
+    $("#eventDiv").on('moving', function(t, start, end) {
         $(this).html('moving... <br>' + getMoveText(start, end));
     });
-    $("#eventDiv").on('pinchin', function (t, start, end) {
+    $("#eventDiv").on('pinchin', function(t, start, end) {
         $(this).html('pinchin <br>' + getMoveText(start, end));
     });
-    $("#eventDiv").on('pinchout', function (t, start, end) {
+    $("#eventDiv").on('pinchout', function(t, start, end) {
         $(this).html('pinchout <br>' + getMoveText(start, end));
     });
-    $("#eventDiv").on('swipeleft', function (t, start, end) {
+    $("#eventDiv").on('swipeleft', function(t, start, end) {
         $(this).html('swipeleft <br>' + getMoveText(start, end));
     });
-    $("#eventDiv").on('swiperight', function (t, start, end) {
+    $("#eventDiv").on('swiperight', function(t, start, end) {
         $(this).html('swiperight <br>' + getMoveText(start, end));
     });
-    $("#eventDiv").on('swipedown', function (t, start, end) {
+    $("#eventDiv").on('swipedown', function(t, start, end) {
         $(this).html('swipedown <br>' + getMoveText(start, end));
     });
-    $("#eventDiv").on('swipeup', function (t, start, end) {
+    $("#eventDiv").on('swipeup', function(t, start, end) {
         $(this).html('swipeup <br>' + getMoveText(start, end));
     });
 
-    $(document).one('datatable.inital', function (e, obj) {
+    $(document).one('datatable.inital', function(e, obj) {
         obj.option({
             columns: [{
                 key: 'name',

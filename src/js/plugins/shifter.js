@@ -1,15 +1,16 @@
-(function ($) {
-    $.fn.shifter = function (options) {
+(function($) {
+    $.fn.shifter = function(options) {
         var defaultOpt = {
             duration: 300,
-            height: 200,
-            width: 375,
+            height: 300,
+            width: 425,
             clickable: true,
             lazingload: true,
             autoscroll: 0,
             onchange: null,
             onbefore: null,
             onafter: null,
+            index: 1,
         };
         var $this = $(this);
         var obj;
@@ -26,34 +27,51 @@
         var autoTimer = null;
         var prevLink = $('<a href="javascript:;" class="prev"><i class="icon-angle-left"></i></a>');
         var nextLink = $('<a href="javascript:;" class="next"><i class="icon-angle-right"></i></a>');
-        var _resize = function () {
+        var ratio = opt.height / opt.width;
+
+        var _getImageSize = function() {
+            var maxHeight = $(window).height() - 100;
+            var screenheight = opt.height > maxHeight ? maxHeight : opt.height;
+            var screenwidth = $this.width();
+            var tmpWidth = screenwidth > opt.width ? opt.width : screenwidth - 2;
+            var tmpHeight = tmpWidth * ratio;
+            tmpHeight = screenheight > tmpHeight ? tmpHeight : screenheight;
+            return {
+                width: tmpWidth,
+                height: tmpHeight
+            }
+        }
+        var _resize = function() {
             innerW = 0;
-            $items.each(function (i, item) {
-                var screenwidth = $this.width();
-                var width = screenwidth > opt.width ? opt.width : screenwidth - 2;
+            var perIndex = opt.index;
+            var sizeInfo = _getImageSize();
+            $this.css("height", sizeInfo.height);
+            $wrap.css("height", sizeInfo.height + 21);
+            $items.each(function(i, item) {
                 $(item).css({
-                    width: width,
-                    height: opt.height
+                    width: sizeInfo.width,
+                    height: sizeInfo.height
                 });
                 $(item).children().css({
-                    width: width,
-                    height: opt.height,
+                    width: sizeInfo.width,
+                    height: sizeInfo.height,
                 });
                 innerW += $(item).outerWidth();
             });
             $list.width(innerW);
+            _shift(perIndex, true);
         };
-        var _markActive = function () {
+        var _markActive = function() {
             var list = [];
             var maxwidth = $wrap.outerWidth();
-            $items.each(function (index, item) {
+            $items.each(function(index, item) {
                 var $item = $(item);
                 $item.removeClass("active");
                 var left = $item.position().left;
                 var right = left + $item.outerWidth();
                 if (left >= 0 && left <= maxwidth || right >= 0 && right <= maxwidth) {
                     if (opt.lazingload) {
-                        $item.find("img").each(function (index, img) {
+                        $item.find("img").each(function(index, img) {
                             if ($(img).data("src")) {
                                 $(img).attr("src", $(img).data("src"));
                                 $(img).data("src", null);
@@ -93,8 +111,9 @@
                 lastScrollLeft = $wrap.scrollLeft();
                 sign_isAuto = false;
             }
+            opt.index = $list.find('.active').attr('shift-index');
         };
-        var _scroll = function () {
+        var _scroll = function() {
             _markActive();
             maxOffsetX = $wrap.prop('scrollWidth') - $wrap.width();
             if ($wrap.scrollLeft() <= 0) {
@@ -108,42 +127,43 @@
                 nextLink.removeClass('disable');
             }
         };
-        var _shift = function (index) {
+        var _shift = function(index, disableAnimation) {
             var left;
             var ismove = false;
+            var timer = disableAnimation ? 0 : opt.duration;
             if ($.isInt(index)) {
                 var item = $items.eq(index - 1);
                 var offset = ($wrap.outerWidth() - item.outerWidth()) / 2;
                 left = $wrap.scrollLeft() + $(item).position().left - offset;
                 $wrap.stop().animate({
                     "scrollLeft": left
-                }, opt.duration);
+                }, timer);
                 return index;
             } else {
                 var begin = $wrap.scrollLeft();
                 var end = $wrap.outerWidth();
                 var width;
                 if (index) {
-                    $items.each(function (j, item) {
+                    $items.each(function(j, item) {
                         left = $(item).position().left;
                         width = $(item).outerWidth();
                         if (left > 0 && left < end && (left + width) > end) {
                             ismove = true;
                             $wrap.stop().animate({
                                 "scrollLeft": begin + $(item).position().left
-                            }, opt.duration);
+                            }, timer);
                             return false;
                         }
                     });
                     return ismove;
                 } else {
-                    $items.each(function (j, item) {
+                    $items.each(function(j, item) {
                         left = $(item).position().left;
                         width = $(item).outerWidth();
                         if (left <= 0 && (left + width) > 0) {
                             $wrap.stop().animate({
                                 "scrollLeft": begin - end + ($(item).width() + $(item).position().left)
-                            }, opt.duration);
+                            }, timer);
                             return true;
                         }
                     });
@@ -151,28 +171,28 @@
                 }
             }
         };
-        var _prev = function () {
+        var _prev = function() {
             return _shift(false);
         };
-        var _next = function () {
+        var _next = function() {
             return _shift(true);
         };
-        var _go = function (index) {
+        var _go = function(index) {
             return _shift(index);
         };
-        var _option = function (option) {
+        var _option = function(option) {
             opt = $.extend(opt, option);
             return opt;
         };
-        var _init = function () {
+        var _init = function() {
             obj = {
-                prev: function () {
+                prev: function() {
                     return _prev();
                 },
-                next: function () {
+                next: function() {
                     return _next();
                 },
-                go: function (index) {
+                go: function(index) {
                     return _go(index);
                 },
                 option: _option
@@ -184,16 +204,15 @@
                     $(document).trigger(opt.onbefore, [$this]);
                 }
             }
-            $this.css('height', opt.height);
             $list = $this.find("ul");
             $list.wrap('<div class="wrap"></div>');
             $wrap = $this.find(".wrap");
             $items = $list.find("li");
-            $items.each(function (index, item) {
-                $(item).attr('shift-index', index);
+            $items.each(function(index, item) {
+                $(item).attr('shift-index', index + 1);
                 if (opt.clickable) {
-                    var i = index + 1;
-                    $(item).click(function () {
+                    var i = index + 2;
+                    $(item).click(function() {
                         obj.go(i);
                     });
                 }
@@ -202,7 +221,7 @@
                     img.data('src', img.attr("src"));
                     img.attr('src', 'data:image/gif;base64,R0lGODlhAQABAJEAAAAAAP///////wAAACH5BAEAAAIALAAAAAABAAEAAAICVAEAOw==');
                     $(item).addClass('img-loading');
-                    img.on('load', function () {
+                    img.on('load', function() {
                         if (img.data("src") == null) {
                             $(item).removeClass('img-loading');
                         } else {
@@ -212,18 +231,19 @@
                 }
             });
             if (opt.autoscroll && $.isNumeric(opt.autoscroll)) {
-                autoTimer = setInterval(function () {
+                autoTimer = setInterval(function() {
                     obj.next();
                     sign_isAuto = true;
                 }, opt.autoscroll);
             }
-            $this.css("height", opt.height);
-            $wrap.css("height", opt.height + 21);
-            prevLink.click(function () {
+            var sizeInfo = _getImageSize();
+            $this.css("height", sizeInfo.height);
+            $wrap.css("height", sizeInfo.height + 21);
+            prevLink.click(function() {
                 obj.prev();
                 return false;
             });
-            nextLink.click(function () {
+            nextLink.click(function() {
                 obj.next();
                 return false;
             });
@@ -233,17 +253,17 @@
                 $list.on('swipeleft', obj.next);
                 $list.on('swiperight', obj.prev);
             }
-            $(document).on("dom.resize.shifter", function () {
+            $(document).on("dom.resize.shifter", function() {
                 _resize();
                 _scroll();
             });
-            $wrap.on("scroll", function () {
+            $wrap.on("scroll", function() {
                 if (timer) {
                     clearTimeout(timer);
                 }
                 timer = setTimeout(_scroll, 500);
             });
-            $(document).on("dom.keydown", function (ctx, e) {
+            $(document).on("dom.keydown", function(ctx, e) {
                 if (e.keyCode == '37') {
                     obj.prev();
                 }
@@ -267,8 +287,8 @@
         return _init();
     };
 
-    $(document).on("dom.load.shifter", function () {
-        $("[data-shifter]").each(function () {
+    $(document).on("dom.load.shifter", function() {
+        $("[data-shifter]").each(function() {
             var $this = $(this);
             $this.shifter($this.data());
             $this.removeAttr('data-shifter');
