@@ -1,9 +1,9 @@
-(function ($) {
-    $.fn.facebooklink = function () {
+(function($) {
+    $.fn.facebooklink = function() {
         var $this = $(this);
         var namespace = {
-            go: function () {
-                var keyword = $this.data("keyword");
+            go: function() {
+                var keyword = $this.data('keyword');
                 var url = encodeURIComponent(location.href);
                 if (keyword)
                     url = url + '&t=' + encodeURIComponent(keyword);
@@ -15,10 +15,10 @@
         $this.attr('role', 'Facebooklink');
         return namespace;
     };
-    $.fn.googlepluslink = function () {
+    $.fn.googlepluslink = function() {
         var $this = $(this);
         var namespace = {
-            go: function () {
+            go: function() {
                 window.open('https://plus.google.com/share?url=' + encodeURIComponent(location.href), 'googlesharer', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
             }
         };
@@ -26,10 +26,10 @@
         $this.attr('role', 'Googlepluslink');
         return namespace;
     };
-    $.fn.twitterlink = function () {
+    $.fn.twitterlink = function() {
         var $this = $(this);
         var namespace = {
-            go: function () {
+            go: function() {
                 window.open('http://twitter.com/share?text=Check out this house I found on @MovotoRealEstate&url=' + encodeURIComponent(location.href));
             }
         };
@@ -38,12 +38,12 @@
         $this.attr('role', 'Twitterlink');
         return namespace;
     };
-    $.fn.phonecall = function () {
+    $.fn.phonecall = function() {
         var $this = $(this);
-        var number = $this.data("phonecall");
+        var number = $this.data('phonecall');
         var namespace = {
-            go: function () {
-                window.location.href = "tel:1" + number;
+            go: function() {
+                window.location.href = 'tel:1' + number;
             }
         };
         $this.click(namespace.go);
@@ -51,15 +51,15 @@
         $this.attr('role', 'Phonecall');
         return namespace;
     };
-    $.fn.mailto = function () {
+    $.fn.mailto = function() {
         var $this = $(this);
-        var mail = $this.data("mailto");
-        var params = $this.data("params");
+        var mail = $this.data('mailto');
+        var params = $this.data('params');
         var namespace = {
-            go: function () {
-                var link = "mailto:" + mail;
+            go: function() {
+                var link = 'mailto:' + mail;
                 if (params) {
-                    link = link + "?" + params;
+                    link = link + '?' + params;
                 }
                 window.location.href = link;
             }
@@ -69,13 +69,12 @@
         $this.attr('role', 'Mailto');
         return namespace;
     };
-    $.fn.msgto = function () {
+    $.fn.msgto = function() {
         var $this = $(this);
-        var text = $this.data("msgto");
-
-        var smsChar = (browser && browser.versions.ios) ? '&' : '?';
+        var text = $this.data('msgto');
+        var smsChar = (browser && browser.versions && browser.versions.ios) ? '&' : '?';
         var namespace = {
-            go: function () {
+            go: function() {
                 window.location.href = 'sms:' + smsChar + 'body=' + text;
             }
         };
@@ -84,7 +83,7 @@
         $this.attr('role', 'Msgto');
         return namespace;
     };
-    $(document).on("click", '[data-link]', function () {
+    $(document).on('click', '[data-link]', function() {
         var $this = $(this);
         var type = $this.attr('data-link');
         var target = $this.attr('data-target');
@@ -108,14 +107,14 @@
                 $this.msgto().go();
                 break;
             case 'focuson':
-                var timer = setTimeout(function () {
+                var timer = setTimeout(function() {
                     $(target).focus();
                 }, 100);
-                $this.on("click", function () {
+                $this.on('click', function() {
                     if (timer) {
                         clearTimeout(timer);
                     }
-                    timer = setTimeout(function () {
+                    timer = setTimeout(function() {
                         $(target).focus();
                     }, 100);
                 });
@@ -123,11 +122,11 @@
             case 'utm':
                 $this.utmlink().go();
                 return false;
-                break;
             default:
-                $.sendRequest($this.attr("href"), {
-                    type: "redirect"
+                $.sendRequest($this.attr('href'), {
+                    type: 'redirect'
                 });
+                break;
         }
         $this.removeAttr('data-link');
     });

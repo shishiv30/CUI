@@ -1,5 +1,5 @@
-(function ($) {
-    $.fn.datatable = function (option) {
+(function($) {
+    $.fn.datatable = function(option) {
         var $this = $(this);
         var defaultOption = {
             columns: [],
@@ -16,7 +16,7 @@
         var $tbody = $('<tbody></tbody>');
         var $tfoot = $('<tfoot></tfoot>');
         var $table;
-        var _getRawValue = function (value, column) {
+        var _getRawValue = function(value, column) {
             switch (column.type) {
                 case 'date':
                     return +new Date(value) || 0;
@@ -29,13 +29,13 @@
                     return value;
             }
         };
-        var _getDisplayText = function (value, column) {
+        var _getDisplayText = function(value, column) {
             switch (column.type) {
                 case 'number':
                     if ($.isNumeric(value)) {
                         return column.format ? value.toFixed(column.format * 1) : value;
                     } else {
-                        return ''
+                        return '';
                     }
                 case 'string':
                     return $.htmlencode(value);
@@ -46,18 +46,18 @@
                     return value;
             }
         };
-        var _getRenderHtml = function (template, data) {
+        var _getRenderHtml = function(template, data) {
             return Mustache.render(template, data);
         };
 
-        var _sort = function (column, isDesc) {
+        var _sort = function(column, isDesc) {
             if (opt.data && opt.data.length) {
                 if (isDesc) {
-                    opt.data = opt.data.sort(function (a, b) {
+                    opt.data = opt.data.sort(function(a, b) {
                         return _getRawValue(a[column.key], column) > _getRawValue(b[column.key], column) ? 1 : -1;
                     });
                 } else {
-                    opt.data = opt.data.sort(function (a, b) {
+                    opt.data = opt.data.sort(function(a, b) {
                         return _getRawValue(a[column.key], column) < _getRawValue(b[column.key], column) ? 1 : -1;
                     });
                 }
@@ -68,7 +68,7 @@
             }
 
         };
-        var _initalThead = function () {
+        var _initalThead = function() {
             $thead.empty();
             $colgroup.empty();
             if (opt.columns && opt.columns.length) {
@@ -81,7 +81,7 @@
                     if (column.sortable) {
                         var $link = $('<a href="javascript:void(0)" class="datatable-sort">' + display + '</a>');
                         $link.data('column', column);
-                        $link.on('click', function () {
+                        $link.on('click', function() {
                             var $this = $(this);
                             var isDesc = $this.hasClass('desc');
                             _sort($this.data('column'), isDesc);
@@ -104,7 +104,7 @@
             }
             return [$colgroup, $thead];
         };
-        var _initalTbody = function () {
+        var _initalTbody = function() {
             $tbody.empty();
             if (opt.data && opt.data.length) {
                 for (var i = 0; i < opt.data.length; i++) {
@@ -130,13 +130,13 @@
             }
             return $tbody;
         };
-        var _initalTfoot = function () {
+        var _initalTfoot = function() {
             $tfoot.empty();
             if (opt.maxcount > 0 && opt.data.length > opt.maxcount) {
                 var $tr = $('<tr></tr>');
                 var $link = $('<td colspan="' + opt.columns.length + '"><a href="javascript:;" class="btn blue" >' + opt.hideText + '</a></td>');
                 $tbody.find('tr').eq(opt.maxcount - 1).nextAll().hide();
-                $link.click(function () {
+                $link.click(function() {
                     $tbody.find('tr').eq(opt.maxcount - 1).nextAll().show();
                     $(this).hide();
                 });
@@ -145,7 +145,7 @@
             }
             return $tfoot;
         };
-        var _initalTable = function (isInital) {
+        var _initalTable = function(isInital) {
             if (isInital) {
                 $table = $('<table class="datatable"></table>');
                 $table.append(_initalThead());
@@ -157,17 +157,17 @@
                 _initalTfoot();
             }
         };
-        var _option = function (option) {
+        var _option = function(option) {
             opt = $.extend(opt, option);
             return opt;
         };
         var obj = {
             option: _option,
-            refresh: function (option) {
+            refresh: function(option) {
                 _option(option);
                 _initalTable(false);
             },
-            getData: function () {
+            getData: function() {
                 return opt.data;
             }
         };
@@ -190,8 +190,8 @@
         $this.data('datatable', obj);
         return obj;
     };
-    $(document).on('dom.load.datatable', function () {
-        $('[data-datatable]').each(function () {
+    $(document).on('dom.load.datatable', function() {
+        $('[data-datatable]').each(function() {
             var $this = $(this);
             var data = $this.data();
             $this.datatable(data);

@@ -1,5 +1,5 @@
-(function ($) {
-    $.fn.gridtable = function (option) {
+(function($) {
+    $.fn.gridtable = function(option) {
         var defaultOption = {
             limitwidth: 150,
             key: 'thead th',
@@ -9,12 +9,12 @@
         var $this = $(this);
         var $key = $this.find(opt.key);
         var $list = $this.find('tbody tr');
-        var inital = function () {
+        var inital = function() {
             var classname = 'table-' + +new Date();
             var colIndex = 0;
             var fontsize = $key.css('fontSize').replace(/[a-z]/g, '');
             var keymaxwidth = 0;
-            var columns = $key.map(function (index, item) {
+            var columns = $key.map(function(index, item) {
                 return {
                     text: $(item).text() || '',
                     colspan: $(item).attr('colspan') * 1 || 1
@@ -41,21 +41,21 @@
             $list.addClass('close');
             return classname;
         };
-        $list.each(function (index, item) {
-            $(item).click(function () {
+        $list.each(function(index, item) {
+            $(item).click(function() {
                 if (!$(this).hasClass('open')) {
                     $list.filter('.open').removeClass('open').addClass('close');
                     $(this).addClass('open').removeClass('close');
                 }
-            })
+            });
         });
 
         $this.addClass(inital());
         $this.attr('role', 'grid table');
     };
 
-    $(document).on('dom.load', function () {
-        $("[data-gridtable]").each(function (index, item) {
+    $(document).on('dom.load', function() {
+        $('[data-gridtable]').each(function(index, item) {
             $(item).gridtable({
                 limitwidth: $(item).attr('data-limitwidth'),
                 key: $(item).attr('data-key'),

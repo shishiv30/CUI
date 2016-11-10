@@ -1,27 +1,27 @@
 //form submit
-(function ($) {
-    $.fn.submitForm = function (options) {
+(function($) {
+    $.fn.submitForm = function(options) {
         var $this = $(this);
         var defaultOpt = {
-            target: "",
+            target: '',
+            type: null,
+            beforesend: null,
+            onsuccess: null,
+            onerror: null,
+            datatype: null,
             lock: 1,
         };
         var opt = $.extend({}, defaultOpt, options);
         var obj = {
-            send: function () {
-                if ($this.is("[disabled]")) {
+            send: function() {
+                if ($this.is('[disabled]')) {
                     return false;
                 }
                 var params = {
                     type: opt.type,
-                    beforeSend: opt.beforeSend,
-                    success: opt.success,
-                    error: opt.error,
-                    dataType: opt.dataType,
-                    trigger: $this,
+                    dataType: opt.datatype,
                     lock: opt.lock
                 };
-                var methodName = opt.methodName;
 
                 if (opt.target) {
                     var $target = $(opt.target);
@@ -32,32 +32,51 @@
                     }
                 }
 
-                if ($.isFunction(commonService[methodName])) {
-                    commonService[methodName](params);
-                }
+                params.beforeSend = function() {
+                    if ($.isFunction(opt.beforesend)) {
+                        opt.beforesend(opt);
+                    } else {
+                        $(document).trigger(opt.beforesend, [opt]);
+                    }
+                };
+                params.success = function() {
+                    if ($.isFunction(opt.onsuccess)) {
+                        opt.onsuccess(opt);
+                    } else {
+                        $(document).trigger(opt.onsuccess, [$this, opt]);
+                    }
+                };
+                params.error = function() {
+                    if ($.isFunction(opt.onerror)) {
+                        opt.onerror(opt);
+                    } else {
+                        $(document).trigger(opt.onerror, [$this, opt]);
+                    }
+                };
+                $.ajax(params);
             },
-            setOption: function (key, value) {
+            setOption: function(key, value) {
                 opt[key] = value;
             },
-            setOptions: function (options) {
+            setOptions: function(options) {
                 $.extend(opt, options);
             }
         };
 
         $this.click(obj.send);
-        $this.data("submit", obj);
+        $this.data('submit', obj);
         $this.attr('role', 'SubmitForm');
         return obj;
     };
-    $(document).on('dom.load.submit', function () {
-        $('[data-submit]').each(function () {
+    $(document).on('dom.load.submit', function() {
+        $('[data-submit]').each(function() {
             var $this = $(this);
-            if ($this.attr("data-target")) {
-                var $form = $($this.attr("data-target"));
-                $form.on('keyup', function (e) {
+            if ($this.attr('data-target')) {
+                var $form = $($this.attr('data-target'));
+                $form.on('keyup', function(e) {
                     if (e.keyCode === 13) {
                         //when focus on textarea will not auto submit
-                        if ($("textarea:focus").length === 0) {
+                        if ($('textarea:focus').length === 0) {
                             $this.click();
                         }
                     }
@@ -65,31 +84,12 @@
             }
         });
     });
-    $(document).on('click.submit', '[data-submit]', function () {
-        var $this = $(this);
-        var methodName = $this.attr('data-submit');
-        if (methodName) {
-            var opt = {
-                methodName: methodName,
-                target: $this.attr('data-target'),
-                type: $this.attr('data-type'),
-                dataType: $this.attr('data-dataType'),
-                beforeSend: $this.attr('data-beforeSend'),
-                success: $this.attr('data-success'),
-                error: $this.attr('data-error'),
-                lock: $this.attr('data-lock'),
-            };
 
-            if (!opt.success) {
-                opt.success = feedback(methodName);
-            }
-
-            var obj = $this.submitForm(opt);
-            $this.removeAttr('data-submit');
-
-            if (obj) {
-                obj.send();
-            }
-        }
+    $(document).on('dom.load', function() {
+        $('[data-submit]').each(function(index, item) {
+            var $item = item;
+            $item.submitForm($item.data());
+            $item.removeAttr('data-submit');
+        });
     });
 })(jQuery);

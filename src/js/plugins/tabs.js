@@ -6,7 +6,7 @@
         function toggle($item) {
             //hide all
             var item = $this.find('[data-tab]');
-            item.removeClass("active");
+            item.removeClass('active');
             item.each(function (index, item) {
                 var target = $(item).attr('data-target');
                 $(target).hide();
@@ -19,7 +19,7 @@
 
         $this.find('[data-tab]').each(function (index, item) {
             var $item = $(item);
-            if ($($item.attr("data-target")).length > 0) {
+            if ($($item.attr('data-target')).length > 0) {
 
                 if ($item.hasClass('active')) {
                     toggle($item);

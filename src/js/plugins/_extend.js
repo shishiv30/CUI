@@ -1,21 +1,21 @@
-var tmpdiv = null;
-(function ($) {
+(function($) {
+    var tmpdiv = null;
     $.extend({
-        htmlencode: function (s) {
+        htmlencode: function(s) {
             var div = document.createElement('div');
             div.appendChild(document.createTextNode(s));
             return div.innerHTML;
         },
-        htmldecode: function (s) {
+        htmldecode: function(s) {
             var div = document.createElement('div');
             div.innerHTML = s;
             return div.innerText || div.textContent;
         },
-        getTextWidth: function (text, fontsize) {
+        getTextWidth: function(text, fontsize) {
             var $body = $('body');
-            fontSize = fontsize || $body.css('fontSize').replace(/[a-z]/g, '') * 1;
+            fontsize = fontsize || $body.css('fontSize').replace(/[a-z]/g, '') * 1;
             if (!tmpdiv) {
-                tmpdiv = $("<div></div>").css({
+                tmpdiv = $('<div></div>').css({
                     position: 'absolute',
                     visibility: 'hidden',
                     height: 'auto',
@@ -28,7 +28,7 @@ var tmpdiv = null;
             tmpdiv.text(text);
             return tmpdiv.width();
         },
-        insertCSS: function (selector, rules, contxt) {
+        insertCSS: function(selector, rules, contxt) {
             var context = contxt || document,
                 stylesheet;
 
@@ -53,22 +53,22 @@ var tmpdiv = null;
                 }
             }
         },
-        isMobile: function () {
+        isMobile: function() {
             return !!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         },
-        throttle: function (fn, delay, scope) {
+        throttle: function(fn, delay, scope) {
             delay || (delay = 250);
             var last,
                 timer;
-            return function () {
+            return function() {
                 var context = scope || this;
 
                 var now = +new Date(),
                     args = arguments;
                 if (last && now - last + delay < 0) {
                     // hold on to it
-                    clearTimeout(deferTimer);
-                    timer = setTimeout(function () {
+                    clearTimeout(timer);
+                    timer = setTimeout(function() {
                         last = now;
                         fn.apply(context, args);
                     }, delay);
@@ -78,12 +78,12 @@ var tmpdiv = null;
                 }
             };
         },
-        debounce: function (fn, delay) {
+        debounce: function(fn, delay) {
             var timer = null;
-            return function () {
+            return function() {
                 var context = this, args = arguments;
                 clearTimeout(timer);
-                timer = setTimeout(function () {
+                timer = setTimeout(function() {
                     fn.apply(context, args);
                 }, delay);
             };

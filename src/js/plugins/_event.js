@@ -1,14 +1,14 @@
 //Extend touch event
-(function ($) {
-    var _getDist = function (eventInfo) {
+(function($) {
+    var _getDist = function(eventInfo) {
         var x = (eventInfo.touches[0].pageX - eventInfo.touches[1].pageX);
         var y = (eventInfo.touches[0].pageY - eventInfo.touches[1].pageY);
         return Math.sqrt(x * x + y * y);
     };
-    var _getInfo = function (eventInfo) {
-        var arry = Array.prototype.slice.call(eventInfo.touches);
+    var _getInfo = function(eventInfo) {
+        var tmpEventInfo = Array.prototype.slice.call(eventInfo.touches);
         return {
-            touches: arry.map(function (e) {
+            touches: tmpEventInfo.map(function(e) {
                 return {
                     pageX: e.pageX,
                     pageY: e.pageY
@@ -17,15 +17,15 @@
         };
     };
     var eventSetting = {
-        setup: function () {
+        setup: function() {
             var $this = $(this);
-            $this.off("touchstart.cui").on("touchstart.cui", function () {
+            $this.off('touchstart.cui').on('touchstart.cui', function() {
                 var $ele = $(this);
                 $ele.data('_touchStart', null);
                 $ele.data('_touchEnd', null);
                 return false;
             });
-            $this.off("touchmove.cui").on('touchmove.cui', $.throttle(function (e) {
+            $this.off('touchmove.cui').on('touchmove.cui', $.throttle(function(e) {
                 var $ele = $(this);
                 var event = _getInfo(e.originalEvent);
                 if (!$ele.data('_touchStart')) {
@@ -44,7 +44,7 @@
                 return false;
             }, 100));
 
-            $this.off("touchend.cui").on("touchend.cui", function () {
+            $this.off('touchend.cui').on('touchend.cui', function() {
                 var $ele = $(this);
                 var start = $ele.data('_touchStart');
                 var end = $ele.data('_touchEnd');
@@ -83,7 +83,7 @@
                 return false;
             });
         },
-        teardown: function () {
+        teardown: function() {
             var $this = $(this);
             $this.off('touchstart.cui');
             $this.off('touchmove.cui');
@@ -97,5 +97,5 @@
                 $.event.special.swipedown =
                     $.event.special.moving =
                         $.event.special.pinchin =
-                            $.event.special.pinchout = eventSetting
+                            $.event.special.pinchout = eventSetting;
 })(jQuery);

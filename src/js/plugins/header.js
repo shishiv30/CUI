@@ -11,20 +11,20 @@
         var $menu = $this.find(opt.menu);
         var $overlay = $('<div class="header-overlay"></div>');
         var _show = function () {
-            $button.addClass("shown");
+            $button.addClass('shown');
             $overlay.show();
-            $menu.addClass("active");
-            $("body,html").css("overflowY", "hidden");
+            $menu.addClass('active');
+            $('body,html').css('overflowY', 'hidden');
         };
         var _hide = function () {
-            $("body,html").css("overflowY", "auto");
-            $button.removeClass("shown");
-            $menu.removeClass("active");
+            $('body,html').css('overflowY', 'auto');
+            $button.removeClass('shown');
+            $menu.removeClass('active');
             $overlay.hide();
         };
         $this.prepend($overlay);
         $button.on('click', function () {
-            if ($menu.hasClass("active")) {
+            if ($menu.hasClass('active')) {
                 _hide();
             } else {
                 _show();
@@ -35,14 +35,14 @@
             show: _show,
             hide: _hide
         });
-        $(document).on("dom.resize", function () {
-            if ($menu.hasClass("active")) {
+        $(document).on('dom.resize', function () {
+            if ($menu.hasClass('active')) {
                 _hide();
             }
         });
     };
     $(document).on('dom.load', function () {
-        $("[data-header]").each(function () {
+        $('[data-header]').each(function () {
             $(this).header({
                 button: $(this).attr('data-button'),
                 menu: $(this).attr('data-menu')

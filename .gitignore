@@ -2,7 +2,6 @@ node_modules/
 .sass-cache/
 .vscode/
 .idea/
-dist/
 npm-debug.log
 public/dist
 public/web.config

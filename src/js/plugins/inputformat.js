@@ -1,12 +1,12 @@
-(function ($) {
-    $.fn.inputformat = function (option) {
+(function($) {
+    $.fn.inputformat = function(option) {
         var $this = $(this);
         var defaultOpt = {
             type: 'phone'
         };
         var opt = $.extend(defaultOpt, option);
         var timer = null;
-        var _get = function () {
+        var _get = function() {
             var value = $this.val();
             switch (opt.type) {
                 case 'phone':
@@ -17,7 +17,7 @@
                     return value;
             }
         };
-        var _set = function (programmatic) {
+        var _set = function(programmatic) {
             var value = _get();
             var formatString = '';
             switch (opt.type) {
@@ -39,7 +39,7 @@
                     formatString = arrPrice[0].replace(/[^0-9]/g, '');
                     var pattern = /(-?\d+)(\d{3})/;
                     while (pattern.test(formatString))
-                        formatString = formatString.replace(pattern, "$1,$2");
+                        formatString = formatString.replace(pattern, '$1,$2');
                     break;
                 case 'rate':
                     var fraction = $.isInt(opt.fraction) ? opt.fraction : 2;
@@ -70,16 +70,16 @@
             _set();
         }
 
-        $this.on('keyup input change', function (e, programmatic) {
+        $this.on('keyup input change', function(e, programmatic) {
             var $this = $(this);
             if (timer) {
                 clearTimeout(timer);
             }
             if ($this.prop('rawValue') !== _get()) {
-                timer = setTimeout(function () {
+                timer = setTimeout(function() {
                     _set(programmatic === true);
                 }, 10);
             }
         });
-    }
+    };
 })(jQuery);

@@ -1,7 +1,7 @@
 //base on bs datetimepicker
-(function ($) {
-    var inital = function () {
-        $("[data-picker]").each(function () {
+(function($) {
+    var inital = function() {
+        $('[data-picker]').each(function() {
             var $this = $(this);
             var type = $this.attr('data-picker');
             var opt = {
@@ -11,18 +11,18 @@
                 viewSelect: 4
             };
             switch (type) {
-                case "date":
+                case 'date':
                     $.extend(opt, {
-                        format: "yyyy-mm-dd",
+                        format: 'yyyy-mm-dd',
                         startView: 2,
                         minView: 2,
                         maxView: 4
                     });
                     break;
-                case "time":
+                case 'time':
                     $.extend(opt, {
                         showMeridian: true,
-                        format: "hh:ii",
+                        format: 'hh:ii',
                         startView: 1,
                         minView: 0,
                         maxView: 1,
@@ -31,17 +31,17 @@
                     break;
                 default:
                     $.extend(opt, {
-                        format: "yyyy-mm-dd hh:ii",
+                        format: 'yyyy-mm-dd hh:ii',
                     });
                     break;
             }
             $this.datetimepicker(opt);
             $this.removeAttr('data-picker');
-            $this.attr('role', 'Datepicker')
+            $this.attr('role', 'Datepicker');
         });
     };
 
-    $(document).on('focus', '[data-picker]', function () {
+    $(document).on('focus', '[data-picker]', function() {
         inital();
     });
 })(jQuery);

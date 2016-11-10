@@ -6,9 +6,9 @@
             $this.wrap('<div class="video-wrap"></div>');
         }
     };
-    $(document).on("dom.load", function () {
-        $("[data-fulidvideo]").each(function () {
-            $(this).find("iframe").each(function (index, item) {
+    $(document).on('dom.load', function () {
+        $('[data-fulidvideo]').each(function () {
+            $(this).find('iframe').each(function (index, item) {
                 $(item).fulidvideo();
             });
             $(this).removeAttr('data-fulidvideo');

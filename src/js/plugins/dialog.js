@@ -1,7 +1,7 @@
 //dialog plugin
-(function ($) {
+(function($) {
 
-    $.fn.dialog = function (option) {
+    $.fn.dialog = function(option) {
         var $this = $(this);
         if ($this.data('dialog')) {
             $this.data('dialog').option(option);
@@ -24,7 +24,7 @@
         var $dialogPanel = $('<div class="dialog-panel"></div>');
         var $dialogBody = $('<div class="dialog-body"></div>');
         var $dialogOverLay = $('<div class="dialog-overlay"></div>');
-        var _reposition = function () {
+        var _reposition = function() {
             var height = $dialog.height() - $dialogPanel.outerHeight();
             if (height > 0) {
                 $dialogPanel.css({
@@ -36,15 +36,15 @@
                 });
             }
         };
-        var _addCloseButton = function () {
+        var _addCloseButton = function() {
             if ($dialogBody && $dialogBody.find('.dialog-title') && $dialogBody.find('.dialog-title').length) {
                 $dialogBody.find('.dialog-title').append($dialogCloseButton);
             }
-            $dialogBody.on('click', '[dialog-close]', function () {
+            $dialogBody.on('click', '[dialog-close]', function() {
                 _hide();
             });
         };
-        var _show = function () {
+        var _show = function() {
             $(document).trigger('dialog.hidden.except', [opt.id]);
             if (opt.onbefore) {
                 if ($.isFunction(opt.onbefore)) {
@@ -68,7 +68,7 @@
 
             $('html').addClass('model-dialog');
             $dialog.show();
-            setTimeout(function () {
+            setTimeout(function() {
                 $dialog.addClass('dialog-active');
                 _reposition();
                 if (opt.onshow) {
@@ -80,11 +80,11 @@
                 }
             }, 50);
         };
-        var _hide = function () {
+        var _hide = function() {
             $('html').removeClass('model-dialog');
             $dialog.removeClass('dialog-active');
             $dialogPanel.css({marginTop: '0'});
-            setTimeout(function () {
+            setTimeout(function() {
                 $dialog.hide();
                 if (opt.onhide) {
                     if ($.isFunction(opt.onhide)) {
@@ -93,21 +93,21 @@
                         $(document).trigger(opt.onhide, [opt.trigger]);
                     }
                 }
-            },500);
+            }, 500);
         };
-        var _option = function (option) {
+        var _option = function(option) {
             opt = $.extend(opt, option);
             return opt;
         };
-        var _init = function () {
+        var _init = function() {
             $dialogPanel.append($dialogBody);
             $dialog.append($dialogPanel);
             $dialog.prepend($dialogOverLay);
             $('body').append($dialog);
 
-            if (opt.theme == "dropdown") {
-                $dialogBody.on('click', "a", function () {
-                    setTimeout(function () {
+            if (opt.theme == 'dropdown') {
+                $dialogBody.on('click', 'a', function() {
+                    setTimeout(function() {
                         _hide();
                     }, 10);
                 });
@@ -115,12 +115,12 @@
             if (opt.autoclose) {
                 $dialogOverLay.click(_hide);
             }
-            $(document).on('dialog.hidden.except', function (e, id) {
+            $(document).on('dialog.hidden.except', function(e, id) {
                 if (id != opt.id) {
                     _hide();
                 }
             });
-            $(document).on('dom.resize', function () {
+            $(document).on('dom.resize', function() {
                 _reposition();
             });
             var obj = {
@@ -135,9 +135,9 @@
         return _init();
     };
 
-    $(document).on('dom.load.dialog', function () {
-        $('[data-dialog]').each(function () {
-            $(this).click(function () {
+    $(document).on('dom.load.dialog', function() {
+        $('[data-dialog]').each(function() {
+            $(this).click(function() {
                 var $this = $(this);
                 var data = $this.data();
                 data.trigger = $this;

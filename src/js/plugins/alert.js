@@ -1,5 +1,5 @@
-(function ($) {
-    var getPosition = function (alert, element, relativePosition) {
+(function($) {
+    var getPosition = function(alert, element, relativePosition) {
         var alertWidth = alert.outerWidth();
         var alertHeight = alert.outerHeight();
         if (!element) {
@@ -19,7 +19,7 @@
         };
     };
 
-    $.alert = function (options) {
+    $.alert = function(options) {
         var defaultOpt = {
             text: '',
             target: null,
@@ -32,17 +32,15 @@
             width: 'auto'
         };
         var height = 0;
-        var width = 0;
         var opt = $.extend({}, defaultOpt, options);
         var target = opt.target ? $(opt.target) : $('body');
-        var alert = $('<div class="alert ' + opt.style + '" style="width:' + opt.witdh + '">' + opt.text + '</div>');
+        var alert = $('<div class="alert ' + opt.style + '" style="width:' + opt.width + '">' + opt.text + '</div>');
         target.after(alert);
 
         var pos = getPosition(alert, opt.relative, opt.relativePosition);
 
         if (opt.target) {
             height = target.height();
-            width = target.width();
             alert.css({
                 position: 'absolute',
                 top: opt.top + height,
@@ -56,22 +54,22 @@
         }
         alert.css('opacity', '1');
         if (opt.autoClose === true) {
-            setTimeout(function () {
+            setTimeout(function() {
                 alert.remove();
             }, opt.timeout);
         }
         return alert;
     };
 
-    $.fn.alert = function (options) {
+    $.fn.alert = function(options) {
         var $this = $(this);
         var defaultOpt = {
             text: '',
             title: '<i class="icon-warning"></i> Error',
             html: true,
-            theme: "error",
-            trigger: "manual",
-            placement: "bottom",
+            theme: 'error',
+            trigger: 'manual',
+            placement: 'bottom',
             showFirst: true,
             forceDestroy: true,
             onHide: null,
@@ -88,7 +86,7 @@
             trigger: opt.trigger,
             placement: opt.placement
         });
-        opt.forceDestroy && $this.on('shown.bs.popover', function () {
+        opt.forceDestroy && $this.on('shown.bs.popover', function() {
             if (opt.onShow) {
                 if ($.isFunction(opt.onShow)) {
                     opt.onShow($this);
@@ -96,12 +94,12 @@
                     $(document).trigger(opt.onShow, [$this]);
                 }
             }
-            $(document).one('click', function () {
+            $(document).one('click', function() {
                 $this.popover('destroy');
             });
         });
         if (opt.onHide) {
-            $this.on('hidden.bs.popover', function () {
+            $this.on('hidden.bs.popover', function() {
                 if ($.isFunction(opt.onHide)) {
                     opt.onHide($this);
                 } else {
@@ -111,5 +109,5 @@
         }
 
         opt.showFirst && $this.popover('show');
-    }
+    };
 })(jQuery);
