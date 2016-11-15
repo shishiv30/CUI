@@ -83,8 +83,8 @@
             currentItem.removeClass('active');
             nextItem.addClass('active');
             if (opt.onchange) {
-                if ($.isFunction(opt.onchange, sign_isAuto)) {
-                    opt.onchange(index);
+                if ($.isFunction(opt.onchange)) {
+                    opt.onchange(index, sign_isAuto);
                 } else {
                     $(document).trigger(opt.onchange, [index, sign_isAuto]);
                 }

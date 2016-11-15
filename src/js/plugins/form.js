@@ -37,16 +37,15 @@
         if ($element.is('[id]')) {
             $('[for=' + $element.attr('id') + ']').addClass('error-text');
         }
-        $element.attr('title', message);
-        $element.tooltip('destroy');
         $element.tip({
-            type: 'error'
-        });
-        $element.tooltip('show');
+            type: 'error',
+            content: message,
+            trigger: null
+        }).show();
     };
     var _passValidate = function($element, isRequried) {
         $element.closest('.input').removeClass('has-error');
-        $element.tooltip('hide');
+        $element.tip().hide();
         if ($element.is('[id]')) {
             $('[for=' + $element.attr('id') + ']').removeClass('error-text');
         }
