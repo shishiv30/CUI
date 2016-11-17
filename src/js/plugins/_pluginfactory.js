@@ -1,88 +1,123 @@
 (function($) {
     $.CUI = {
         defaultContext: {
-            name: '',
             $element: null,
-            target: null,
-            $trigger: null,
+            name: '',
             init: null,
             destroy: null,
-            method: [],
-            resetOptionsBefore: null,
-            resetOptionsAfter: null,
+            defaultOpt: null,
+            options: null,
+            exports: {},
+            setOptionsBefore: null,
+            setOptionsAfter: null,
             initBefore: null,
             initAfter: null,
-            showBefore: null,
-            showAfter: null,
-            hideBefore: null,
-            hideAfter: null,
             destroyBefore: null,
         },
-        create: function(name, plugin) {
-            //initial context of plugin
-            var context = $.extend({
-                name: name,
-                $element: plugin.$element || $(window),
-                $trigger: plugin.$trigger || plugin.$element
-            }, $.CUI.defaultContext);
+        plugin: function(pluginContext) {
+            var name = pluginContext.name;
+            if ($.fn[name]) {
+                window.console.log('the plugin name is duplicate: ' + name);
+                return null;
+            }
 
+            $.fn[name] = function(options) {
+                var $this = $(this);
+                if (name && $this.data(name)) {
+                    if (options) {
+                        $this.data(name).setOptions(options);
+                    }
+                    return $this.data(name);
+                }
+
+                //initial context of plugin
+                var context = $.extend(true, {
+                    $element: $this,
+                }, $.CUI.defaultContext, pluginContext);
+
+                context.options = options;
+                context.$element = $this;
+
+                var obj = $.proxy($.CUI.create, this)(context);
+
+                $this.data(name, obj);
+
+                return obj;
+            };
+        },
+        create: function(context) {
+            var that = this;
             //initial export options of plugin
-            $.CUI.handleOptions.apply(context);
+            context.opt = $.extend(true, {}, context.defaultOpt, context.option);
 
             //handle the initial step
-            $.CUI.handleInit.apply(context);
+            $.proxy($.CUI.handleInit, that)(context);
 
-            //add methods for the plugin
-            $.CUI.handleMethod.apply(context);
+            //add exports for the plugin
+            $.proxy($.CUI.handleExports, that)(context);
 
-            //destroy method for the plugin
-            $.CUI.handleDestroy.apply(context);
+            //initial export options of plugin
+            context.exports.setOptions = $.proxy($.CUI.handleOptions, that)(context);
 
-            return context;
+            //destroy export for the plugin
+            context.exports.destroy = $.proxy($.CUI.handleDestroy, that)(context);
+
+            return context.exports;
         },
         handleOptions: function(context) {
-            context.opt = $.extend(true, {}, context.defaultOpt, context.option);
-            context.setOptions = function(options) {
-                context.resetOptionsBefore(options, context);
+            var that = this;
+            return function(options) {
+                //before set options
+                $.proxy(context.setOptionsBefore, that)(context, options);
+
                 context.opt = $.extend(true, {}, context.opt, options);
-                context.resetOptionsAfter(options, context);
+
+                //after set options
+                $.proxy(context.setOptionsAfter, that)(context, options);
             };
         },
         handleInit: function(context) {
-            context.init = function() {
-                //before plugin initial event
-                $.CUI.addEvent('cui.init.before.' + name, [context]);
+            var that = this;
+            var opt = context.opt;
+            //before plugin initial event
+            $.CUI.addEvent('cui.init.before.' + context.name, context);
+            opt.initBefore && $.CUI.addEvent(opt.initBefore, context);
+            //before plugin initial custom event
+            context.initBefore && $.CUI.addEvent(context.initBefore, context);
 
-                //before plugin initial custom event
-                context.initBefore && $.CUI.addEvent(context.initBefore, [context]);
+            context.init && $.proxy(context.init, that)(context);
 
-                context.init && context.init.apply(context);
+            //after plugin initial custom event
+            context.initAfter && $.proxy(context.initAfter, that)(context);
+            opt.initAfter && $.CUI.addEvent(opt.initAfter, context);
 
-                //after plugin initial custom event
-                context.initalAfter && $.CUI.addEvent(context.initalAfter, [context]);
-
-                //after plugin initial event
-                $.CUI.addEvent('cui.init.after.' + name, [context]);
-            };
+            //after plugin initial event
+            $.CUI.addEvent('cui.init.after.' + context.name, context);
         },
         handleDestroy: function(context) {
-            context.destroy = function() {
+            return function() {
                 //before plugin destroy event
-                $.CUI.addEvent('cui.before.destroy.' + name, [context]);
+                $.CUI.addEvent('cui.before.destroy.' + context.name, context);
                 //before plugin destroy custom event
-                context.destroyBefore && $.CUI.addEvent(context.destroyBefore, [context]);
+                context.destroyBefore && $.CUI.addEvent(context.destroyBefore, context);
                 context.$element.data(name, null);
             };
         },
-        handleMethod: function(context) {
-            if (context.method && context.method.length) {
+        handleExports: function(context) {
+            var that = this;
+            if (context.exports) {
                 var obj = {};
-                $.each(context.method, function(key, value) {
+                $.each(context.exports, function(key, value) {
                     if ($.isFunction(value)) {
-                        obj[key, $.proxy(value, context)];
+                        //export method for the plugin
+                        obj[key] = function() {
+                            var params = Array.prototype.slice.call(arguments);
+                            params.push(context);
+                            $.proxy(value, that).apply(that, params);
+                        };
                     }
                 });
-                context.export = obj;
+                context.exports = obj;
             }
         },
         addEvent: function(name, context) {
@@ -94,19 +129,3 @@
         }
     };
 })(jQuery);
-
-
-// var y= function (call){
-//     var self = this;
-//     var context = {
-//         name: "conjee"
-//     };
-//     var call2 = function(){
-//         call.apply(self ,[2]);
-//         alert(3);
-//     }
-//     return call2;
-// }
-//
-// var x =  y(function(e){alert(this.name); alert(e)});
-// x();

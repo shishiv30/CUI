@@ -1,6 +1,7 @@
 //tip
 (function($) {
-    var Tip = {
+    var tipConfig = {
+        name: 'tip',
         defaultOpt: {
             traget: null,
             height: 50,
@@ -9,151 +10,90 @@
             placement: 'top',
             trigger: 'click',
             html: true,
-            beforeshow: null,
-            onshow: null,
-            beforehide: null,
-            onhide: null,
+            showBefore: null,
+            showAfter: null,
+            hideBefore: null,
+            hideAfter: null,
         },
-
-        opt: null,
-        create: function(element, option) {
-            var tip = {};
-            var opt = $.extend({}, Tip.defaultOpt, option);
+        init: function(context) {
+            var opt = context.opt;
+            var $this = context.$element;
             var $container = $('<div class="tooltip ' + opt.theme + ' ' + opt.placement + '" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>');
-            var $element = $(element);
             $container.hide();
-            $element.after($container);
-            return {
-
-                $element: $(element),
+            $this.after($container);
+            context.$container = $container;
+        },
+        destroy: null,
+        exports: {
+            show: function(context) {
+                var opt = context.opt;
+                var $this = context.$element;
+                var $container = context.$container;
+                if (opt.showBefore) {
+                    $.CUI.addEvent(opt.showBefore, $this);
+                }
+                $container.find('.tooltip-inner').html(opt.content);
+                $container.show();
+                if (opt.showAfter) {
+                    $.CUI.addEvent(opt.showAfter, $this);
+                }
+            },
+            hide: function(context) {
+                var opt = context.opt;
+                var $this = context.$element;
+                var $container = context.$container;
+                if (opt.hideBefore) {
+                    $.CUI.addEvent(opt.hideBefore, $this);
+                }
+                $container.hide();
+                if (opt.hideAfter) {
+                    $.CUI.addEvent(opt.hideAfter, $this);
+                }
             }
         },
-
-    };
-
-    tip.prototype._show = function() {
-        if (opt.beforeshow) {
-            if ($.isFunction(opt.beforeshow)) {
-                opt.beforeshow($this);
-            } else {
-                $(document).trigger(opt.beforeshow, [$this]);
-            }
-        }
-        if (opt.content) {
+        setOptionsBefore: null,
+        setOptionsAfter: function(context) {
+            var opt = context.opt;
+            var $container = context.$container;
             $container.find('.tooltip-inner').html(opt.content);
-        }
-        $container.show();
-        if (opt.onshow) {
-            if ($.isFunction(opt.onshow)) {
-                opt.onshow($this);
-            } else {
-                $(document).trigger(opt.onshow, [$this]);
+        },
+        initBefore: null,
+        initAfter: function(context) {
+            var opt = context.opt;
+            var $this = context.$element;
+            var exports = context.exports;
+            switch (opt.trigger) {
+                case 'click' :
+                    $this.on('click.' + exports.name, exports.show);
+                    break;
+                case 'focus' :
+                    $this.on('focusin.' + exports.name, exports.show);
+                    $this.on('focusout.' + exports.name, exports.hide);
+                    break;
+                case 'hover' :
+                    $this.on('mouseenter.' + exports.name, exports.show);
+                    $this.on('mouseleave.' + exports.name, exports.hide);
+                    break;
             }
-        }
+        },
+        destroyBefore: function(context) {
+            var exports = context.exports;
+            var $this = $(this);
+            $this.off('click.' + exports.name);
+            $this.off('focusin.' + exports.name);
+            $this.off('focusout.' + exports.name);
+            $this.off('mouseenter.' + exports.name);
+            $this.off('mouseleave.' + exports.name);
+            context.$container.remove();
+        },
     };
-    tip.prototype._hide = function() {
-        if (opt.beforehide) {
-            if ($.isFunction(opt.beforehide)) {
-                opt.beforehide($this);
-            } else {
-                $(document).trigger(opt.beforehide, [$this]);
-            }
-        }
-        $container.hide();
-        if (opt.onhide) {
-            if ($.isFunction(opt.onhide)) {
-                opt.onhide($this);
-            } else {
-                $(document).trigger(opt.onhide, [$this]);
-            }
-        }
-    };
-    tip.prototype._destroy = function() {
-        $container.remove();
-        $this.data('tip', null);
-    };
-    tip.prototype._toggle = function() {
-        if ($container.is(':hidden')) {
-            _show();
-        } else {
-            _hide();
-        }
-    };
-    tip.prototype._setOptions = function(option) {
-        opt = $.extend(opt, option);
-    };
-    tip.prototype.init = function() {
-        switch (opt.trigger) {
-            case 'click' :
-                $this.on('click', function() {
-                    _toggle();
-                });
-                break;
-            case 'hover' :
-                $this.on('hover', function() {
-                    _show();
-                }, function() {
-                    _hide();
-                });
-                break;
-        }
-    };
-    $.fn.tip = function(option) {
-        var $this = $(this);
-
-        if ($this.data('tip')) {
-            if (option) {
-                _setOptions(option);
-            }
-            return $this.data('tip');
-        }
-
-        var obj = {
-            hide: _hide,
-            show: _show,
-            toggle: _toggle,
-            destroy: _destroy,
-            setOptions: _setOptions
-        }
-        $this.data('tip', obj);
-        return obj;
-        // var config = {
-        //     normal: {
-        //         placement: option.position || 'top',
-        //         trigger: 'hover focus'
-        //     },
-        //     error: {
-        //         placement: option.position || 'bottom',
-        //         template: '<div class="tooltip error" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
-        //         trigger: 'manual',
-        //         html: true,
-        //     },
-        //     warning: {
-        //         placement: option.position || 'top',
-        //         template: '<div class="tooltip warning" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
-        //         trigger: 'manual',
-        //         html: true,
-        //     },
-        //     info: {
-        //         placement: option.position || 'top',
-        //         template: '<div class="tooltip info" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
-        //         trigger: 'manual',
-        //         html: true,
-        //     },
-        // };
-        // opt = $.extend(opt, config[type]);
-    };
-    var inital = function() {
+    $.CUI.plugin(tipConfig);
+    $(document).on('dom.load.tip', function() {
         $('[data-tip]').each(function() {
-            $(this).tip({
-                type: $(this).attr('data-tip'),
-                position: $(this).attr('data-position')
-            });
+            var options = $(this).data();
+            $(this).tip(options);
             $(this).removeAttr('data-tip');
             $(this).attr('role', 'Tip');
         });
-    };
-    $(document).on('dom.load', function() {
-        inital();
     });
 })(jQuery);
