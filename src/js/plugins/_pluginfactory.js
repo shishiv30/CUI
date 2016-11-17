@@ -48,19 +48,9 @@
         create: function(context) {
             var that = this;
             //initial export options of plugin
-            context.opt = $.extend(true, {}, context.defaultOpt, context.option);
-
+            context.opt = $.extend(true, {}, context.defaultOpt, context.options);
             //handle the initial step
             $.proxy($.CUI.handleInit, that)(context);
-
-            //add exports for the plugin
-            $.proxy($.CUI.handleExports, that)(context);
-
-            //initial export options of plugin
-            context.exports.setOptions = $.proxy($.CUI.handleOptions, that)(context);
-
-            //destroy export for the plugin
-            context.exports.destroy = $.proxy($.CUI.handleDestroy, that)(context);
 
             return context.exports;
         },
@@ -82,10 +72,20 @@
             //before plugin initial event
             $.CUI.addEvent('cui.init.before.' + context.name, context);
             opt.initBefore && $.CUI.addEvent(opt.initBefore, context);
+
             //before plugin initial custom event
             context.initBefore && $.CUI.addEvent(context.initBefore, context);
 
             context.init && $.proxy(context.init, that)(context);
+
+            //add exports for the plugin
+            $.proxy($.CUI.handleExports, that)(context);
+
+            //initial export options of plugin
+            context.exports.setOptions = $.proxy($.CUI.handleOptions, that)(context);
+
+            //destroy export for the plugin
+            context.exports.destroy = $.proxy($.CUI.handleDestroy, that)(context);
 
             //after plugin initial custom event
             context.initAfter && $.proxy(context.initAfter, that)(context);
@@ -110,11 +110,7 @@
                 $.each(context.exports, function(key, value) {
                     if ($.isFunction(value)) {
                         //export method for the plugin
-                        obj[key] = function() {
-                            var params = Array.prototype.slice.call(arguments);
-                            params.push(context);
-                            $.proxy(value, that).apply(that, params);
-                        };
+                        obj[key] = $.proxy(value, context);
                     }
                 });
                 context.exports = obj;

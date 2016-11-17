@@ -7,7 +7,7 @@
     line-height: 1.5;
     opacity: 0;
     filter: alpha(opacity=0);
-    min-width: 80px;
+    min-width: 120px;
     max-width: 400px;
     &.in {
         opacity: 1;
@@ -32,7 +32,7 @@
 }
 
 .tooltip-inner {
-    padding: 10px;
+    padding: 5px;
     color: $color-3;
     text-align: center;
     text-decoration: none;
