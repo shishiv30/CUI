@@ -104,7 +104,6 @@
             };
         },
         handleExports: function(context) {
-            var that = this;
             if (context.exports) {
                 var obj = {};
                 $.each(context.exports, function(key, value) {

@@ -21,6 +21,9 @@
             var $container = $('<div class="tooltip ' + opt.theme + '" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>');
             $this.css({position: 'relative'});
             $this.append($container);
+            $container.click(function(e) {
+                e.stopPropagation();
+            });
             context.$container = $container;
         },
         destroy: null,
@@ -40,81 +43,54 @@
                 var offset = $this.offset();
                 var x = 0;
                 var y = 0;
+                var css = {};
+                $container.addClass('in');
                 switch (opt.placement) {
                     case 'top':
-                        $container.removeClass('top top-left top-right');
-                        y = cHeight + 2;
-                        x = (Math.abs(tWidth - cWidth) / 2);
-                        if (x > offset.left) {
-                            $container.css({
-                                top: -1 * y,
-                                left: 0,
-                                right: ''
-                            });
-                            $container.addClass('top-right');
-                        } else if ((offset.left + (tWidth + cWidth) / 2) > $(window).width()) {
-                            $container.css({
-                                top: -1 * y,
-                                right: 0,
-                                left: ''
-                            });
-                            $container.addClass('top-left');
-                        } else {
-                            $container.css({
-                                top: -1 * y,
-                                left: -1 * x
-                            });
-                            $container.addClass('top');
-                        }
-                        break;
                     case 'bottom':
-                        $container.removeClass('bottom bottom-left bottom-right');
-                        y = cHeight + 5;
+                        $container.removeClass('{0} {0}-left {0}-right'.format(opt.placement));
+                        y = cHeight + 3;
                         x = (Math.abs(tWidth - cWidth) / 2);
                         if (x > offset.left) {
-                            $container.css({
-                                bottom: -1 * y,
+                            css = {
                                 left: 0,
                                 right: ''
-                            });
-                            $container.addClass('bottom-right');
+                            };
+                            $container.addClass('{0}-right'.format(opt.placement));
                         } else if ((offset.left + (tWidth + cWidth) / 2) > $(window).width()) {
-                            $container.css({
-                                bottom: -1 * y,
-                                right: 0,
-                                left: ''
-                            });
-                            $container.addClass('bottom-left');
+                            css = {
+                                left: '',
+                                right: 0
+                            };
+                            $container.addClass('{0}-left'.format(opt.placement));
                         } else {
-                            $container.css({
-                                bottom: -1 * y,
+                            css = {
                                 left: -1 * x
-                            });
-                            $container.addClass('bottom');
+                            };
+                            $container.addClass(opt.placement);
                         }
+                        css[opt.placement] = -1 * y;
+                        $container.css(css);
                         break;
                     case 'left':
-                        x = tWidth;
-                        y = (Math.abs(tHeight - cHeight) / 2);
-                        $container.css({
-                            top: -1 * y,
-                            left: tWidth
-                        });
-                        $container.addClass('right');
-                        break;
                     case 'right':
+                        $container.removeClass(opt.placement);
                         x = tWidth;
                         y = (Math.abs(tHeight - cHeight) / 2);
-                        $container.css({
-                            top: -1 * y,
-                            right:  tWidth
-                        });
-                        $container.addClass('left');
+                        css = {
+                            top: -1 * y
+                        };
+                        if (opt.placement === 'left') {
+                            css['right'] = tWidth;
+                            css['left'] = '';
+                        } else {
+                            css['left'] = tWidth;
+                            css['right'] = '';
+                        }
+                        $container.css(css);
+                        $container.addClass(opt.placement);
                         break;
                 }
-
-                $container.addClass('in');
-
                 if (opt.showAfter) {
                     $.CUI.addEvent(opt.showAfter, $this);
                 }
@@ -145,7 +121,11 @@
             var exports = context.exports;
             switch (opt.trigger) {
                 case 'click' :
-                    $this.on('click.' + exports.name, exports.show);
+                    $this.on('click.' + exports.name, function() {
+                        exports.show();
+                        $(document).one('click', exports.hide);
+                        return false;
+                    });
                     break;
                 case 'focus' :
                     $this.on('focusin.' + exports.name, exports.show);

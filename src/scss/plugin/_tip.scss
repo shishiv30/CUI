@@ -33,12 +33,12 @@
 
 .tooltip-inner {
     padding: 5px;
-    color: $color-3;
+    color: $color-f;
     text-align: center;
     text-decoration: none;
-    background-color: $color-f;
+    background-color: $color-5;
     border-radius: 4px;
-    box-shadow: 0 0 10px $color-b;
+    box-shadow: 0 0 2px $color-0;
 }
 
 .tooltip-arrow {
@@ -54,7 +54,7 @@
     left: 50%;
     margin-left: -5px;
     border-width: 5px 5px 0;
-    border-top-color: $color-f;
+    border-top-color: $color-5;
 }
 
 .tooltip.top-left .tooltip-arrow {
@@ -62,7 +62,7 @@
     right: 5px;
     margin-bottom: -5px;
     border-width: 5px 5px 0;
-    border-top-color: $color-f;
+    border-top-color: $color-5;
 }
 
 .tooltip.top-right .tooltip-arrow {
@@ -70,7 +70,7 @@
     left: 5px;
     margin-bottom: -5px;
     border-width: 5px 5px 0;
-    border-top-color: $color-f;
+    border-top-color: $color-5;
 }
 
 .tooltip.right .tooltip-arrow {
@@ -78,7 +78,7 @@
     left: 0;
     margin-top: -5px;
     border-width: 5px 5px 5px 0;
-    border-right-color: $color-f;
+    border-right-color: $color-5;
 }
 
 .tooltip.left .tooltip-arrow {
@@ -86,7 +86,7 @@
     right: 0;
     margin-top: -5px;
     border-width: 5px 0 5px 5px;
-    border-left-color: $color-f;
+    border-left-color: $color-5;
 }
 
 .tooltip.bottom .tooltip-arrow {
@@ -94,7 +94,7 @@
     left: 50%;
     margin-left: -5px;
     border-width: 0 5px 5px;
-    border-bottom-color: $color-f;
+    border-bottom-color: $color-5;
 }
 
 .tooltip.bottom-left .tooltip-arrow {
@@ -102,7 +102,7 @@
     right: 5px;
     margin-top: -5px;
     border-width: 0 5px 5px;
-    border-bottom-color: $color-f;
+    border-bottom-color: $color-5;
 }
 
 .tooltip.bottom-right .tooltip-arrow {
@@ -110,7 +110,7 @@
     left: 5px;
     margin-top: -5px;
     border-width: 0 5px 5px;
-    border-bottom-color: $color-f;
+    border-bottom-color: $color-5;
 }
 
 .tooltip.info {
