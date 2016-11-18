@@ -2,7 +2,6 @@ node_modules/
 .sass-cache/
 .vscode/
 .idea/
-.eslintrc.js
 npm-debug.log
 public/dist
 public/web.config
