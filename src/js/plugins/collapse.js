@@ -1,121 +1,146 @@
 //collapse
 (function($) {
-    $.fn.collapse = function(options) {
-        var defaultOpt = {
+    var collapseConfig = {
+        name: 'collapse',
+        defaultOpt: {
             showtext: null,
             hidetext: null,
             once: false,
             isexpand: false,
-        };
-        var opt = $.extend({}, defaultOpt, options);
-        var $this = $(this);
-        var $target = $(opt.target);
+            showbefore: null,
+            showafter: null,
+            hidebefore: null,
+            hideafter: null
+        },
+        init: function(context) {
+            var opt = context.opt;
+            var $this = context.$element;
+            var $target = context.$target = $(opt.target);
 
-        var _showtext = function() {
-            if (opt.showtext) {
-                if ($this.find('span').length > 0) {
-                    $this.find('span').text(opt.showtext);
-                } else {
-                    $this.text(opt.showtext);
-                }
-            }
-        };
-        var _hidetext = function() {
-            if (opt.hidetext) {
-                if ($this.find('span').length > 0) {
-                    $this.find('span').text(opt.hidetext);
-                } else {
-                    $this.text(opt.hidetext);
-                }
-            }
-        };
-        var _hide = function() {
+            //record the traget's height
             var height;
             if ($target.offset().top < $this.offset().top) {
                 height = $target.height();
             }
-            if (height) {
-                height = $(document).scrollTop() - height;
-                $(document).scrollTop(height);
-            }
-            $this.removeClass('shown');
-            $target.hide();
-        };
-        var _show = function() {
-            $this.addClass('shown');
-            $target.show();
-        };
-        var _more = function() {
-            $this.addClass('shown');
-            $target.addClass('collapse-expand');
-        };
-        var _less = function() {
-            var height;
-            if ($target.offset().top < $this.offset().top) {
-                height = $target.height();
-            }
-            $this.removeClass('shown');
-            $target.removeClass('collapse-expand');
 
-            if (height) {
-                height = $(document).scrollTop() + $target.height() - height;
-                $(document).scrollTop(height);
-            }
-        };
-        var _resetForExpand = function() {
-            if ($target.prop('scrollHeight') > $target.prop('offsetHeight')) {
-                $this.css('visibility', 'visible');
+            var _showtext = function() {
+                if (opt.showtext) {
+                    if ($this.find('span').length > 0) {
+                        $this.find('span').text(opt.showtext);
+                    } else {
+                        $this.text(opt.showtext);
+                    }
+                }
+            };
+            var _hidetext = function() {
+                if (opt.hidetext) {
+                    if ($this.find('span').length > 0) {
+                        $this.find('span').text(opt.hidetext);
+                    } else {
+                        $this.text(opt.hidetext);
+                    }
+                }
+                if (opt.once) {
+                    $this.hide();
+                }
+            };
+            if (opt.isexpand) {
+                context._show = function() {
+                    $this.addClass('shown');
+                    $target.addClass('collapse-expand');
+                    _showtext();
+                };
+                context._hide = function() {
+                    $this.removeClass('shown');
+                    $target.removeClass('collapse-expand');
+                    if (height && height > 0) {
+                        $(document).scrollTop($(document).scrollTop() - $target.prop('scrollHeight') + height);
+                    }
+                    _hidetext();
+                };
             } else {
-                $this.css('visibility', 'hidden');
+                context._show = function() {
+                    $this.addClass('shown');
+                    $target.show();
+                    _showtext();
+                };
+                context._hide = function() {
+                    $this.removeClass('shown');
+                    $target.hide();
+                    if (height && height > 0) {
+                        $(document).scrollTop($(document).scrollTop() - height);
+                    }
+                    _hidetext();
+                };
             }
-        };
-        var _toggle;
-        if (opt.isexpand) {
-            _toggle = function() {
-                if ($this.hasClass('shown')) {
-                    _less();
-                    _hidetext();
+        },
+        exports: {
+            show: function() {
+                var opt = this.opt;
+                var $this = this.$element;
+                if (opt.showBefore) {
+                    $.CUI.addEvent(opt.showBefore, $this);
+                }
+                this._show();
+                if (opt.showAfter) {
+                    $.CUI.addEvent(opt.showAfter, $this);
+                }
+            },
+            hide: function() {
+                var opt = this.opt;
+                var $this = this.$element;
+                if (opt.hideBefore) {
+                    $.CUI.addEvent(opt.hideBefore, $this);
+                }
+                this._hide();
+                if (opt.hideAfter) {
+                    $.CUI.addEvent(opt.hideAfter, $this);
+                }
+            },
+            toggle: function() {
+                if (this.$element.hasClass('shown')) {
+                    this._hide();
                 } else {
-                    _more();
-                    _showtext();
-                    if (opt.once) {
-                        $this.hide();
-                        return;
+                    this._show();
+                }
+            }
+        },
+        setOptionsBefore: null,
+        setOptionsAfter: null,
+        initBefore: null,
+        initAfter: function(context) {
+            var $this = context.$element;
+            var $target = context.$target;
+            var opt = context.opt;
+            var exports = context.exports;
+            var _resetForExpand = function() {
+                if (!$this.hasClass('shown')) {
+                    if ($target.prop('scrollHeight') > $target.prop('offsetHeight')) {
+                        $this.css('visibility', 'visible');
+                    } else {
+                        $this.css('visibility', 'hidden');
                     }
                 }
             };
-            $(document).on('dom.resize', _resetForExpand);
-            _resetForExpand();
-        } else {
-            _toggle = function() {
-                if ($this.hasClass('shown')) {
-                    _hide();
-                    _hidetext();
-                } else {
-                    _show();
-                    _showtext();
-                    if (opt.once) {
-                        $this.hide();
-                        return;
-                    }
-                }
-            };
+            if (opt.isexpand) {
+                $(document).on('dom.resize.collapse', _resetForExpand);
+                _resetForExpand();
+            }
+            $this.on('click.collapse', exports.toggle);
+        },
+        destroyBefore: function(context) {
+            var $this = context.$element;
+            $this.off('click.collapse');
         }
-        var obj = {
-            toggle: _toggle
-        };
-        $this.click(obj.toggle);
-        $this.data('collapse', obj);
-        $this.attr('role', 'Collapse');
-        return obj;
     };
-
+    $.CUI.plugin(collapseConfig);
     $(document).on('dom.load.collapse', function() {
         $('[data-collapse]').each(function(index, item) {
             var $this = $(item);
             var data = $this.data();
             $this.collapse(data);
             $this.removeAttr('data-collapse');
+            $this.attr('role', 'Collapse');
         });
     });
 })(jQuery);

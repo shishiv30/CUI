@@ -3,16 +3,14 @@
         defaultContext: {
             $element: null,
             name: '',
-            init: null,
-            destroy: null,
             defaultOpt: null,
-            options: null,
+            initBefore: null,
+            init: null,
             exports: {},
             setOptionsBefore: null,
             setOptionsAfter: null,
-            initBefore: null,
-            initAfter: null,
             destroyBefore: null,
+            initAfter: null,
         },
         plugin: function(pluginContext) {
             var name = pluginContext.name;
