@@ -56,12 +56,12 @@
             var that = this;
             return function(options) {
                 //before set options
-                $.proxy(context.setOptionsBefore, that)(context, options);
+                context.setOptionsBefore && $.proxy(context.setOptionsBefore, that)(context, options);
 
-                context.opt = $.extend(true, {}, context.opt, options);
+                context.opt = $.extend(context.opt, options);
 
                 //after set options
-                $.proxy(context.setOptionsAfter, that)(context, options);
+                context.setOptionsAfter && $.proxy(context.setOptionsAfter, that)(context, options);
             };
         },
         handleInit: function(context) {
@@ -69,7 +69,7 @@
             var opt = context.opt;
             //before plugin initial event
             $.CUI.addEvent('cui.init.before.' + context.name, context);
-            opt.initBefore && $.CUI.addEvent(opt.initBefore, context);
+            opt.initbefore && $.CUI.addEvent(opt.initbefore, context);
 
             //before plugin initial custom event
             context.initBefore && $.CUI.addEvent(context.initBefore, context);
@@ -79,7 +79,12 @@
             //add exports for the plugin
             $.proxy($.CUI.handleExports, that)(context);
 
-            //initial export options of plugin
+            //initial get options of plugin
+            context.exports.getOptions = function() {
+                return context.opt;
+            };
+
+            //initial set options of plugin
             context.exports.setOptions = $.proxy($.CUI.handleOptions, that)(context);
 
             //destroy export for the plugin
@@ -87,7 +92,7 @@
 
             //after plugin initial custom event
             context.initAfter && $.proxy(context.initAfter, that)(context);
-            opt.initAfter && $.CUI.addEvent(opt.initAfter, context);
+            opt.initafter && $.CUI.addEvent(opt.initafter, context);
 
             //after plugin initial event
             $.CUI.addEvent('cui.init.after.' + context.name, context);
@@ -115,9 +120,9 @@
         },
         addEvent: function(name, context) {
             if ($.isFunction(name)) {
-                name.apply(this, context.$element, context.opt);
+                name.apply(this, [context.$element, context.exports]);
             } else {
-                $(document).trigger(name, [context.$element, context.opt]);
+                $(document).trigger(name, [context.$element, context.exports]);
             }
         }
     };

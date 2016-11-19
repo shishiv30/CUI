@@ -545,7 +545,7 @@
                     render by standard data</span><i
                     class="icon-angle-down right"></i></a>
                 <div id="dataTable">
-                    <div data-datatable data-onbefore="datatable.inital" data-maxcount="2"></div>
+                    <div data-datatable data-initafter="datatable.inital" data-maxcount="2"></div>
                 </div>
             </div>
         </div>
@@ -631,8 +631,8 @@
         $(this).html('swipeup <br>' + getMoveText(start, end));
     });
 
-    $(document).one('datatable.inital', function(e, obj) {
-        obj.option({
+    $(document).one('datatable.inital', function(e, element, obj) {
+        obj.setOptions({
             columns: [{
                 key: 'name',
                 type: 'string',
