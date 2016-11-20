@@ -1,17 +1,5 @@
 (function($) {
     $.CUI = {
-        defaultContext: {
-            $element: null,
-            name: '',
-            defaultOpt: null,
-            initBefore: null,
-            init: null,
-            exports: {},
-            setOptionsBefore: null,
-            setOptionsAfter: null,
-            destroyBefore: null,
-            initAfter: null,
-        },
         plugin: function(pluginContext) {
             var name = pluginContext.name;
             if ($.fn[name]) {
@@ -21,17 +9,28 @@
 
             $.fn[name] = function(options) {
                 var $this = $(this);
-                if (name && $this.data(name)) {
+                var cache = $this.data(name);
+                if (cache && typeof (cache) !== 'string') {
                     if (options) {
-                        $this.data(name).setOptions(options);
+                        cache.setOptions && cache.setOptions(options);
                     }
-                    return $this.data(name);
+                    return cache;
                 }
 
                 //initial context of plugin
-                var context = $.extend(true, {
+                var context = $.extend({
                     $element: $this,
-                }, $.CUI.defaultContext, pluginContext);
+                    name: '',
+                    defaultOpt: null,
+                    initBefore: null,
+                    init: null,
+                    exports: {},
+                    setOptionsBefore: null,
+                    setOptionsAfter: null,
+                    destroyBefore: null,
+                    initAfter: null,
+                    isThirdPart: false,
+                }, pluginContext);
 
                 context.options = options;
                 context.$element = $this;
@@ -67,6 +66,7 @@
         handleInit: function(context) {
             var that = this;
             var opt = context.opt;
+            var exports = context.exports;
             //before plugin initial event
             $.CUI.addEvent('cui.init.before.' + context.name, context);
             opt.initbefore && $.CUI.addEvent(opt.initbefore, context);
@@ -76,20 +76,24 @@
 
             context.init && $.proxy(context.init, that)(context);
 
-            //add exports for the plugin
-            $.proxy($.CUI.handleExports, that)(context);
+            //is third part plugin
+            if (context.isThirdPart && context.exports.original) {
+                context.exports.original = $.isFunction(context.exports.original) ? $.proxy(context.exports.original, context)() : context.exports.original;
+            } else {
+                //add exports for the plugin
+                $.proxy($.CUI.handleExports, that)(context);
+                //initial get options of plugin
+                context.exports.getOptions = function() {
+                    return opt;
+                };
 
-            //initial get options of plugin
-            context.exports.getOptions = function() {
-                return context.opt;
-            };
+                //initial set options of plugin
+                context.exports.setOptions = $.proxy($.CUI.handleOptions, that)(context);
 
-            //initial set options of plugin
-            context.exports.setOptions = $.proxy($.CUI.handleOptions, that)(context);
-
-            //destroy export for the plugin
-            context.exports.destroy = $.proxy($.CUI.handleDestroy, that)(context);
-
+                //destroy export for the plugin
+                context.exports.destroy = $.proxy($.CUI.handleDestroy, that)(context);
+            }
+            console.log(context.name);
             //after plugin initial custom event
             context.initAfter && $.proxy(context.initAfter, that)(context);
             opt.initafter && $.CUI.addEvent(opt.initafter, context);
@@ -124,6 +128,9 @@
             } else {
                 $(document).trigger(name, [context.$element, context.exports]);
             }
+        },
+        loadJs: function() {
+
         }
     };
 })(jQuery);

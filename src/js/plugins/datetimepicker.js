@@ -1,14 +1,18 @@
 //base on bs datetimepicker
 (function($) {
-    var inital = function() {
-        $('[data-picker]').each(function() {
-            var $this = $(this);
-            var type = $this.attr('data-picker');
+    var pickerContext = {
+        $element: null,
+        name: 'picker',
+        defaultOpt: null,
+        initBefore: null,
+        init: function(context) {
+            var $this = context.$element;
+            var type = context.opt.picker;
             var opt = {
                 todayBtn: true,
                 autoclose: true,
                 todayHighlight: true,
-                viewSelect: 4
+                viewSelect: 4,
             };
             switch (type) {
                 case 'date':
@@ -36,12 +40,24 @@
                     break;
             }
             $this.datetimepicker(opt);
-            $this.removeAttr('data-picker');
-            $this.attr('role', 'Datepicker');
-        });
+        },
+        exports: {
+            original: function() {
+                return this.$element.data('datetimepicker');
+            }
+        },
+        isThirdPart: true,
+        setOptionsBefore: null,
+        setOptionsAfter: null,
+        destroyBefore: null,
+        initAfter: null,
     };
-
+    $.CUI.plugin(pickerContext);
     $(document).on('focus', '[data-picker]', function() {
-        inital();
+        var $this = $(this);
+        var opt = $this.data();
+        $this.picker(opt);
+        $this.removeAttr('data-picker');
+        $this.attr('role', 'Datepicker');
     });
 })(jQuery);
