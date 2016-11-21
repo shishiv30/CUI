@@ -10,10 +10,10 @@
             placement: 'top',
             trigger: 'click',
             html: true,
-            showBefore: null,
-            showAfter: null,
-            hideBefore: null,
-            hideAfter: null
+            showbefore: null,
+            showafter: null,
+            hidebefore: null,
+            hideafter: null
         },
         init: function(context) {
             var opt = context.opt;
@@ -32,8 +32,8 @@
                 var opt = this.opt;
                 var $this = this.$element;
                 var $container = this.$container;
-                if (opt.showBefore) {
-                    $.CUI.addEvent(opt.showBefore, $this);
+                if (opt.showbefore) {
+                    $.CUI.addEvent(opt.showbefore, $this);
                 }
                 $container.find('.tooltip-inner').html(opt.content);
                 var cWidth = $container.width() + 10;
@@ -91,20 +91,20 @@
                         $container.addClass(opt.placement);
                         break;
                 }
-                if (opt.showAfter) {
-                    $.CUI.addEvent(opt.showAfter, $this);
+                if (opt.showafter) {
+                    $.CUI.addEvent(opt.showafter, $this);
                 }
             },
             hide: function() {
                 var opt = this.opt;
                 var $this = this.$element;
                 var $container = this.$container;
-                if (opt.hideBefore) {
-                    $.CUI.addEvent(opt.hideBefore, $this);
+                if (opt.hidebefore) {
+                    $.CUI.addEvent(opt.hidebefore, $this);
                 }
                 $container.removeClass('in');
-                if (opt.hideAfter) {
-                    $.CUI.addEvent(opt.hideAfter, $this);
+                if (opt.hideafter) {
+                    $.CUI.addEvent(opt.hideafter, $this);
                 }
             }
         },

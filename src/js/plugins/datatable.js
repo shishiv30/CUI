@@ -8,7 +8,7 @@
             maxcount: -1,
             onbefore: null,
             onafter: null,
-            defaultTemplate: null,
+            defaulttemplate: null,
             hideText: 'See More'
         },
         initBefore: null,
@@ -126,8 +126,8 @@
                         $tbody.append($tr);
                     }
                 } else {
-                    if (opt.defaultTemplate) {
-                        var tmpRow = $('<tr class="no-result"><td colspan="' + opt.columns.length + '">' + opt.defaultTemplate + '</td></tr>');
+                    if (opt.defaulttemplate) {
+                        var tmpRow = $('<tr class="no-result"><td colspan="' + opt.columns.length + '">' + opt.defaulttemplate + '</td></tr>');
                         $tbody.append(tmpRow);
                     }
                 }
