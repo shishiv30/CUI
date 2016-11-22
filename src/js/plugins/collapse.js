@@ -77,24 +77,22 @@
         exports: {
             show: function() {
                 var opt = this.opt;
-                var $this = this.$element;
                 if (opt.showBefore) {
-                    $.CUI.addEvent(opt.showBefore, $this);
+                    $.CUI.addEvent(opt.showBefore, this);
                 }
                 this._show();
                 if (opt.showAfter) {
-                    $.CUI.addEvent(opt.showAfter, $this);
+                    $.CUI.addEvent(opt.showAfter, this);
                 }
             },
             hide: function() {
                 var opt = this.opt;
-                var $this = this.$element;
                 if (opt.hideBefore) {
-                    $.CUI.addEvent(opt.hideBefore, $this);
+                    $.CUI.addEvent(opt.hideBefore, this);
                 }
                 this._hide();
                 if (opt.hideAfter) {
-                    $.CUI.addEvent(opt.hideAfter, $this);
+                    $.CUI.addEvent(opt.hideAfter, this);
                 }
             },
             toggle: function() {

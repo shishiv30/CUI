@@ -33,7 +33,7 @@
                 var $this = this.$element;
                 var $container = this.$container;
                 if (opt.showbefore) {
-                    $.CUI.addEvent(opt.showbefore, $this);
+                    $.CUI.addEvent(opt.showbefore, this);
                 }
                 $container.find('.tooltip-inner').html(opt.content);
                 var cWidth = $container.width() + 10;
@@ -92,19 +92,18 @@
                         break;
                 }
                 if (opt.showafter) {
-                    $.CUI.addEvent(opt.showafter, $this);
+                    $.CUI.addEvent(opt.showafter, this);
                 }
             },
             hide: function() {
                 var opt = this.opt;
-                var $this = this.$element;
                 var $container = this.$container;
                 if (opt.hidebefore) {
-                    $.CUI.addEvent(opt.hidebefore, $this);
+                    $.CUI.addEvent(opt.hidebefore, this);
                 }
                 $container.removeClass('in');
                 if (opt.hideafter) {
-                    $.CUI.addEvent(opt.hideafter, $this);
+                    $.CUI.addEvent(opt.hideafter, this);
                 }
             }
         },
