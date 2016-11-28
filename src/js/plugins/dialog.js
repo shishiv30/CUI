@@ -37,15 +37,21 @@
                 }
             };
             context._show = function() {
-                //todo improve hide & show
+                if (opt.showbefore) {
+                    if ($.isFunction(opt.showbefore)) {
+                        opt.showbefore();
+                    } else {
+                        $(document).trigger(opt.showbefore, [opt.trigger]);
+                    }
+                }
                 if (!opt.cache || !$dialogBody.html()) {
                     $dialogBody.html($this.html());
                     _addCloseButton();
                 }
                 $(document).trigger('dom.load');
+                $('html').addClass('model-dialog');
                 $dialog.show();
                 setTimeout(function() {
-                    $('html').addClass('model-dialog');
                     $dialog.addClass('dialog-active');
                     _reposition();
                     if (opt.showafter) {
@@ -54,19 +60,28 @@
                 }, 50);
             };
             var _hide = context._hide = function() {
-                $dialog.removeClass('dialog-active');
-                $dialogPanel.css({marginTop: '0'});
-                setTimeout(function() {
-                    $('html').removeClass('model-dialog');
-                    $dialog.hide();
-                    if (opt.hideafter) {
-                        if ($.isFunction(opt.hideafter)) {
-                            opt.hideafter();
+                if ($dialog.hasClass('dialog-active')) {
+                    if (opt.hidebefore) {
+                        if ($.isFunction(opt.hidebefore)) {
+                            opt.hidebefore();
                         } else {
-                            $(document).trigger(opt.hideafter, [opt.trigger]);
+                            $(document).trigger(opt.hidebefore, [opt.trigger]);
                         }
                     }
-                }, 500);
+                    $dialog.removeClass('dialog-active');
+                    $dialogPanel.css({marginTop: '0'});
+                    setTimeout(function() {
+                        $dialog.hide();
+                        $('html').removeClass('model-dialog');
+                        if (opt.hideafter) {
+                            if ($.isFunction(opt.hideafter)) {
+                                opt.hideafter();
+                            } else {
+                                $(document).trigger(opt.hideafter, [opt.trigger]);
+                            }
+                        }
+                    }, 500);
+                }
             };
             var _addCloseButton = function() {
                 if ($dialogBody && $dialogBody.find('.dialog-title') && $dialogBody.find('.dialog-title').length) {
@@ -99,23 +114,10 @@
             show: function() {
                 var opt = this.opt;
                 $(document).trigger('dialog.hidden.except', [opt.id]);
-                if (opt.showBefore) {
-                    $.CUI.addEvent(opt.showBefore, this);
-                }
                 this._show();
-                if (opt.showAfter) {
-                    $.CUI.addEvent(opt.showAfter, this);
-                }
             },
             hide: function() {
-                var opt = this.opt;
-                if (opt.hideBefore) {
-                    $.CUI.addEvent(opt.hideBefore, this);
-                }
                 this._hide();
-                if (opt.hideAfter) {
-                    $.CUI.addEvent(opt.hideAfter, this);
-                }
             }
 
         },

@@ -127,10 +127,10 @@
 .model-dialog {
     overflow-y: hidden !important;
     overflow-x: hidden !important;
-
     body {
         overflow-y: hidden !important;
         overflow-x: hidden !important;
+        padding-right: 17px !important;
         pointer-events: none !important;;
     }
 }

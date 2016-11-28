@@ -3,7 +3,9 @@
     var pickerContext = {
         $element: null,
         name: 'picker',
-        defaultOpt: null,
+        defaultOpt: {
+            picker: null
+        },
         initBefore: null,
         init: function(context) {
             var $this = context.$element;

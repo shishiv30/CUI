@@ -6,9 +6,7 @@
             columns: [],
             data: null,
             maxcount: -1,
-            onbefore: null,
-            onafter: null,
-            defaulttemplate: null,
+            nodatatemplate: null,
             hideText: 'See More'
         },
         initBefore: null,
@@ -126,8 +124,8 @@
                         $tbody.append($tr);
                     }
                 } else {
-                    if (opt.defaulttemplate) {
-                        var tmpRow = $('<tr class="no-result"><td colspan="' + opt.columns.length + '">' + opt.defaulttemplate + '</td></tr>');
+                    if (opt.nodatatemplate) {
+                        var tmpRow = $('<tr class="no-result"><td colspan="' + opt.columns.length + '">' + opt.nodatatemplate + '</td></tr>');
                         $tbody.append(tmpRow);
                     }
                 }
