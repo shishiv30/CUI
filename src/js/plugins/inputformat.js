@@ -2,7 +2,8 @@
     $.fn.inputformat = function(option) {
         var $this = $(this);
         var defaultOpt = {
-            type: 'phone'
+            type: 'phone',
+            fraction: ''
         };
         var opt = $.extend(defaultOpt, option);
         var timer = null;
@@ -82,4 +83,12 @@
             }
         });
     };
+    $(document).on('dom.load.inputformat', function() {
+        $('[data-inputformat]').each(function(index, item) {
+            var $this = $(item);
+            $this.inputformat($this.data());
+            $this.removeAttr('data-inputformat');
+        });
+
+    });
 })(jQuery);

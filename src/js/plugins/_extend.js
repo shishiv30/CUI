@@ -87,6 +87,33 @@
                     fn.apply(context, args);
                 }, delay);
             };
+        },
+        isNotEmpty: function(str) {
+            return !(str === '' || str === null || str === 'undefined');
+        },
+        isEmail: function(str) {
+            var reg = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
+            return reg.test(str);
+        },
+        isFloat: function(str) {
+            var reg = /^([-]){0,1}([0-9]){1,}([.]){0,1}([0-9]){0,}$/;
+            return reg.test(str);
+        },
+        isInt: function(str) {
+            var reg = /^-?\d+$/;
+            return reg.test(str);
+        },
+        isPhone: function(str) {
+            var reg = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/im;
+            return reg.test(str);
+        },
+        isZipCode: function(str) {
+            var reg = /^([0-9]){5}$/;
+            return reg.test(str);
+        },
+        isPrice: function(str) {
+            var reg = /^(([$])?((([0-9]{1,3},)+([0-9]{3},)*[0-9]{3})|[0-9]+)(\.[0-9]+)?)$/;
+            return reg.test(str);
         }
     });
 
