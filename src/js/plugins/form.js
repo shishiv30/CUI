@@ -6,8 +6,27 @@
         initBefore: null,
         init: null,
         exports: {
+            isValid: function() {
+                var $this = this.$element;
+                var foucsElement = null;
+                var isPassed = true;
+                $this.find('[data-validate-load]').each(function(index, item) {
+                    var isValide = $(item).data('validate').isValid();
+                    if (!isValide) {
+                        isPassed = false;
+                        if (!foucsElement) {
+                            foucsElement = $(item);
+                        }
+                        return false;
+                    }
+                });
+                if (foucsElement) {
+                    foucsElement.focus();
+                }
+                return isPassed;
+            },
             getValue: function() {
-                var $this = this.context.$element;
+                var $this = this.$element;
                 var obj = {};
                 $this.find(':text').each(function(index, item) {
                     var name = $(item).attr('name');
@@ -86,6 +105,7 @@
             var $this = $(item);
             $this.form();
             $this.removeAttr('data-form');
+            $this.attr('data-form-load', '');
             $this.attr('role', 'Form');
         });
     });

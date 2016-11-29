@@ -176,6 +176,8 @@
             var data = $this.data();
             $this.datatable(data);
             $this.removeAttr('data-datatable');
+            $this.attr('data-datatable-load', '');
+            $this.attr('role', 'Datatable');
         });
     });
 })(jQuery);

@@ -150,6 +150,7 @@
                 return false;
             });
             $this.removeAttr('data-dialog');
+            $this.attr('data-dialog-load', '');
             $this.attr('role', 'Dialog');
         });
     });

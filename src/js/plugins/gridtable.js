@@ -62,6 +62,8 @@
                 limitheight: $(item).attr('data-limitheight'),
             });
             $(item).removeAttr('data-gridtable');
+            $(item).attr('data-gridtable-load', '');
+            $(item).attr('role', 'Gridtable');
         });
     });
 })(jQuery);

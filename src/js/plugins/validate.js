@@ -133,6 +133,7 @@
         init: function(context) {
             var $this = context.$element;
             var opt = context.opt;
+            opt.validate = opt.validate ? opt.validate.split(',') : [];
             $this.on('change.validate', function() {
                 _validate($this, opt.validate, opt.errortext, opt.addition);
             });
@@ -145,7 +146,7 @@
             }
         },
         setOptionsBefore: function(e, context, options) {
-            options.type = options.type ? options.type.split(',') : [];
+            options.validate = options.validate ? options.validate.split(',') : [];
         },
         setOptionsAfter: function(context) {
             var $this = context.$element;
@@ -167,6 +168,7 @@
             var $item = $(item);
             $item.validate($item.data());
             $item.removeAttr('data-validate');
+            $item.attr('data-validate-load', '');
         });
     });
 })(jQuery);

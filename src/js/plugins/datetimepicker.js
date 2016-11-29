@@ -60,6 +60,7 @@
         var opt = $this.data();
         $this.picker(opt);
         $this.removeAttr('data-picker');
+        $this.attr('data-picker-load', '');
         $this.attr('role', 'Datepicker');
     });
 })(jQuery);

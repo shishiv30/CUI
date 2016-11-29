@@ -19,8 +19,8 @@
     $(document).on('dom.load', function() {
         $('[data-textbox]').each(function(index, item) {
             $(item).textbox();
-            $(item).attr('data-textbox-load', '');
             $(item).removeAttr('data-textbox');
+            $(item).attr('data-textbox-load', '');
         });
     });
 })(jQuery);

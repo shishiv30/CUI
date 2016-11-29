@@ -88,6 +88,7 @@
             var $this = $(item);
             $this.inputformat($this.data());
             $this.removeAttr('data-inputformat');
+            $this.removeAttr('data-inputformat-load', '');
         });
 
     });

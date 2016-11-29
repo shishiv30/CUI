@@ -217,7 +217,7 @@
                         <div class="col-xs-12 col-sm-6">
                             <label for="time">Time picker</label>
                             <div class="input right">
-                                <input type="text" id="time" name='date' data-picker="time" readonly data-validate="required">
+                                <input type="text" id="time" name='time' data-picker="time" readonly data-validate="required">
                                 <label for="time" class="icon-clock-o"></label>
                             </div>
                         </div>
@@ -598,9 +598,9 @@
 <script>
     function submitForm() {
         var msg = "error!";
-        var $form = $('#form');
+        var $form = $('#form').data('form');
         if ($form.isValid()) {
-            msg = JSON.stringify($form.formValue());
+            msg = JSON.stringify($form.getValue());
             alert(msg);
         }
     }
