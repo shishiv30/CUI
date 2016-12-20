@@ -37,29 +37,26 @@
                 $list.prepend(nextItem);
                 $list.prepend(currentItem);
                 $list.css({
-                    'right': '-' + $items.width() + 'px',
-                    'left': 'auto'
+                    'marginLeft': '0'
                 });
                 if (animated == false) {
-                    $list.css('right', 0);
+                    $list.css('marginLeft', '-' + $items.width() + 'px');
                 } else {
-
                     $list.stop().animate({
-                        'right': 0
+                        'marginLeft': '-' + $items.width() + 'px'
                     });
                 }
             } else {
                 $list.prepend(currentItem);
                 $list.prepend(nextItem);
                 $list.css({
-                    'left': '-' + $items.width() + 'px',
-                    'right': 'auto'
+                    'marginLeft': '-' + $items.width() + 'px',
                 });
                 if (animated == false) {
-                    $list.css('left', 0);
+                    $list.css('marginLeft', 0);
                 } else {
                     $list.stop().animate({
-                        'left': 0
+                        'marginLeft': 0
                     });
                 }
             }
