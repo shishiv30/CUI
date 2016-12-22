@@ -118,7 +118,7 @@
     right: 0;
     min-width: 0;
     max-width: none;
-    transition: all .5s;
+    transition: opacity .5s;
     z-index: 201;
     .tooltip-inner {
         color: $color-7;
@@ -150,7 +150,7 @@
     right: 0;
     min-width: 0;
     max-width: none;
-    transition: all .5s;
+    transition: opacity .5s;
     .tooltip-inner {
         color: $color-warning-l1;
         background-color: $color-warning-l3;
@@ -181,7 +181,7 @@
     right: 0;
     min-width: 0;
     max-width: none;
-    transition: all .5s;
+    transition: opacity .5s;
     .tooltip-inner {
         color: $color-danger-l1;
         background-color: $color-danger-l3;
@@ -189,18 +189,16 @@
         padding: 2px 5px;
         text-align: left;
         border: 1px solid $color-danger-l1;
-        border-top: none;
         &:before {
             @extend %icon;
             @extend .icon-warning;
             display: inline-block;
             padding: 0 3px;
         }
-        @extend %singleline;
         @include border-bottom-radius(2px);
         box-shadow: none;
     }
-    &.bottom {
+    &.top {
         margin-top: -5px;
         padding: 0;
     }

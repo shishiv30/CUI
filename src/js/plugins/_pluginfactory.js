@@ -102,12 +102,13 @@
             $.CUI.addEvent('cui.init.after.' + context.name, context);
         },
         handleDestroy: function(context) {
+            var that = this;
             return function() {
                 //before plugin destroy event
                 $.CUI.addEvent('cui.before.destroy.' + context.name, context);
                 //before plugin destroy custom event
-                context.destroyBefore && $.CUI.addEvent(context.destroyBefore, context);
-                context.$element.data(name, null);
+                $.proxy(context.destroyBefore, that)(context);
+                context.$element.data(context.name, null);
             };
         },
         handleExports: function(context) {
@@ -119,6 +120,7 @@
                         obj[key] = $.proxy(value, context);
                     }
                 });
+                obj.name = context.name;
                 context.exports = obj;
             }
         },

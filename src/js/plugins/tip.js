@@ -1,12 +1,13 @@
 //tip
 (function($) {
+    var animationDuration = 500;
     var tipConfig = {
         name: 'tip',
         defaultOpt: {
             traget: null,
             height: 50,
             width: 320,
-            theme: 'normal',
+            type: 'normal',
             placement: 'top',
             trigger: 'click',
             html: true,
@@ -18,13 +19,14 @@
         init: function(context) {
             var opt = context.opt;
             var $this = context.$element;
-            var $container = $('<div class="tooltip ' + opt.theme + '" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>');
+            var $container = $('<div class="tooltip ' + opt.type + '" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>');
             $this.css({position: 'relative'});
-            $this.append($container);
+            $this.after($container);
             $container.click(function(e) {
                 e.stopPropagation();
             });
             context.$container = $container;
+            $container.hide();
         },
         destroy: null,
         exports: {
@@ -44,6 +46,7 @@
                 var x = 0;
                 var y = 0;
                 var css = {};
+                $container.show();
                 $container.addClass('in');
                 switch (opt.placement) {
                     case 'top':
@@ -97,14 +100,18 @@
             },
             hide: function() {
                 var opt = this.opt;
+                var that = this;
                 var $container = this.$container;
                 if (opt.hidebefore) {
                     $.CUI.addEvent(opt.hidebefore, this);
                 }
                 $container.removeClass('in');
-                if (opt.hideafter) {
-                    $.CUI.addEvent(opt.hideafter, this);
-                }
+                setTimeout(function() {
+                    $container.hide();
+                    if (opt.hideafter) {
+                        $.CUI.addEvent(opt.hideafter, that);
+                    }
+                }, animationDuration + 1);
             }
         },
         setOptionsBefore: null,

@@ -99,3 +99,21 @@
                         $.event.special.pinchin =
                             $.event.special.pinchout = eventSetting;
 })(jQuery);
+
+//Extend transistion event
+(function($) {
+    var eventSetting = {
+        setup: function() {
+            var $this = $(this);
+            $this.off('webkitTransitionEnd.cui otransitionend.cui oTransitionEnd.cui msTransitionEnd.cui transitionend.cui')
+            .on('webkitTransitionEnd.cui otransitionend.cui oTransitionEnd.cui msTransitionEnd.cui transitionend.cui', function() {
+                $this.trigger('transitionend', []);
+            });
+        },
+        teardown: function() {
+            var $this = $(this);
+            $this.off('webkitTransitionEnd.cui otransitionend.cui oTransitionEnd.cui msTransitionEnd.cui transitionend.cui');
+        }
+    }
+    $.event.special.transitionend = eventSetting;
+}(jQuery));
