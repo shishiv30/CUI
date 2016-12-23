@@ -38,11 +38,12 @@
                     $.CUI.addEvent(opt.showbefore, this);
                 }
                 $container.find('.tooltip-inner').html(opt.content);
-                var cWidth = $container.width() + 10;
+                var cWidth = $container.width();
                 var cHeight = $container.height();
                 var tWidth = $this.width();
                 var tHeight = $this.height();
                 var offset = $this.offset();
+                var position = $this.position();
                 var x = 0;
                 var y = 0;
                 var css = {};
@@ -52,7 +53,7 @@
                     case 'top':
                     case 'bottom':
                         $container.removeClass('{0} {0}-left {0}-right'.format(opt.placement));
-                        y = cHeight + 3;
+                        y = cHeight ;
                         x = (Math.abs(tWidth - cWidth) / 2);
                         if (x > offset.left) {
                             css = {
@@ -67,6 +68,7 @@
                             };
                             $container.addClass('{0}-left'.format(opt.placement));
                         } else {
+                            x = x - position.left;
                             css = {
                                 left: -1 * x
                             };
@@ -78,18 +80,18 @@
                     case 'left':
                     case 'right':
                         $container.removeClass(opt.placement);
-                        x = tWidth;
+
+                        if (opt.placement === 'left') {
+                            x = cWidth * -1 + position.left - 5;
+                        } else {
+                            x = tWidth + position.left + 5;
+                        }
                         y = (Math.abs(tHeight - cHeight) / 2);
                         css = {
-                            top: -1 * y
+                            top: -1 * y,
+                            left: x,
+                            right: ''
                         };
-                        if (opt.placement === 'left') {
-                            css['right'] = tWidth;
-                            css['left'] = '';
-                        } else {
-                            css['left'] = tWidth;
-                            css['right'] = '';
-                        }
                         $container.css(css);
                         $container.addClass(opt.placement);
                         break;
@@ -136,10 +138,6 @@
                 case 'focus' :
                     $this.on('focusin.' + exports.name, exports.show);
                     $this.on('focusout.' + exports.name, exports.hide);
-                    break;
-                case 'hover' :
-                    $this.on('mouseenter.' + exports.name, exports.show);
-                    $this.on('mouseleave.' + exports.name, exports.hide);
                     break;
             }
         },
