@@ -8,6 +8,7 @@
             traget: null,
             height: 50,
             width: 320,
+            type: '',
             placement: 'top',
             trigger: 'focus',
             html: true,
@@ -20,7 +21,7 @@
         init: function(context) {
             var opt = context.opt;
             var $this = context.$element;
-            var $container = $('<div class="tooltip ' + opt.placement + '" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>');
+            var $container = $('<div class="tooltip ' + opt.type + ' ' + opt.placement + '" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>');
             $this.parent().css({position: 'relative'});
             $this.after($container);
             $container.click(function(e) {

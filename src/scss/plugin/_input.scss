@@ -6,6 +6,10 @@ input[type='text'], input[type='password'], input[type='email'], input[type='tel
     border: 1px solid $color-border;
 }
 
+select {
+    padding: 0 5px;
+}
+
 input[type='text']::-ms-clear {
     width: 0;
     height: 0;
@@ -29,7 +33,7 @@ input[type='text']::-ms-clear {
     > label {
         color: $color-7;
     }
-    > i, > label, > .btn, > a {
+    > label, > i, > a {
         top: 0;
         position: absolute;
         z-index: 1;
@@ -44,7 +48,7 @@ input[type='text']::-ms-clear {
         > input {
             padding-right: $form-size-normal;
         }
-        > i, > label, > .btn, > a {
+        > label, > i, > a {
             right: 0;
             left: auto;
             @include border-left-radius(0px);
@@ -55,14 +59,14 @@ input[type='text']::-ms-clear {
         > input {
             padding-left: $form-size-normal;
         }
-        > i, > label, > .btn, > a {
+        > label, > i, > a {
             left: 0;
             right: auto;
             @include border-left-radius(3px);
             @include border-right-radius(0px);
         }
         &.right {
-            > i, > label, > .btn, > a {
+            > label, > i, > a {
                 &:last-of-type {
                     right: 0;
                     left: auto;
@@ -77,7 +81,7 @@ input[type='text']::-ms-clear {
             height: $form-size-small;
             line-height: $form-size-small - 2;
         }
-        > i, > label, > .btn, > a {
+        > label, > i, > a {
             height: $form-size-small;
             line-height: $form-size-small;
             width: $form-size-small;
@@ -98,34 +102,34 @@ input[type='text']::-ms-clear {
             border-radius: 5px;
             height: $form-size-large;
             line-height: $form-size-large - 2;
-            padding: 0 20px;
+            padding: 0 10px;
         }
-        > i, > label, > .btn, > a {
+        > label, > i, > a {
             height: $form-size-large;
             line-height: $form-size-large;
             width: $form-size-large;
         }
         &.right {
             > input {
-                padding-left: 20px;
-                padding-right: $form-size-large + 20;
+                padding-left: 10px;
+                padding-right: $form-size-large + 10;
             }
-            > i, > label, > .btn, > a {
+            > label, > i, > a {
                 @include border-left-radius(0px);
                 @include border-right-radius(5px);
             }
         }
         &.left {
             > input {
-                padding-left: $form-size-large + 20;
-                padding-right: 20px;
+                padding-left: $form-size-large + 10;
+                padding-right: 10px;
             }
-            > i, > label, > .btn, > a {
+            > label, > i, > a {
                 @include border-left-radius(5px);
                 @include border-right-radius(0px);
             }
             &.right {
-                > i, > label, > .btn, > a {
+                > label, > i, > a {
                     &:last-of-type {
                         @include border-right-radius(5px);
                         @include border-left-radius(0px);
@@ -167,7 +171,7 @@ input[type='text']::-ms-clear {
         > i {
             color: $color-danger-l1;
         }
-        label[for] {
+        label {
             color: $color-danger-l1;
         }
     }
@@ -177,80 +181,6 @@ input[type='text']::-ms-clear {
         }
         > i {
             color: $color-info-l1;
-        }
-    }
-}
-
-[data-textbox], [data-textbox-load] {
-    position: relative;
-    label[for] {
-        position: absolute;
-        left: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        right: auto;
-        z-index: 1;
-        padding: 0;
-        font-size: $font-size-5;
-        color: $color-9;
-        transition: all .3s;
-        padding: 0 2px;
-    }
-
-    input::-webkit-input-placeholder {
-        color: transparent;
-    }
-
-    input:-moz-placeholder {
-        color: transparent;
-    }
-
-    input::-moz-placeholder {
-        color: transparent;
-    }
-
-    input:-ms-input-placeholder {
-        color: transparent;
-    }
-
-    &.focus {
-        label[for] {
-            top: -15%;
-            right: auto;
-            color: $color-a;
-            transform: scale(0.8);
-        }
-    }
-
-    .tooltip.error {
-        margin-top: 0 !important;
-        .tooltip-inner {
-            background: transparent !important;
-            border: none !important;
-        }
-    }
-}
-
-@include only-mobile {
-    [data-textbox], [data-textbox-load] {
-        .textarea {
-            .tooltip.error {
-                top: auto !important;
-            }
-        }
-    }
-    [data-textbox], [data-textbox-load] {
-        .input {
-            margin-bottom: -1px;
-            input {
-                border-color: $color-border !important;
-                border-radius: 0;
-            }
-        }
-        .tooltip.error {
-            right: 0 !important;
-            left: auto !important;
-            top: 3px !important;
         }
     }
 }

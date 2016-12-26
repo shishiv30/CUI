@@ -1,0 +1,144 @@
+
+[data-textbox], [data-textbox-load] {
+    position: relative;
+    input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+        color: transparent;
+    }
+    input:-moz-placeholder, textarea:-moz-placeholder {
+        color: transparent;
+    }
+    input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+        color: transparent;
+    }
+    .input, .textarea {
+        > label[for] {
+            position: absolute;
+            line-height: 20px;
+            width: auto;
+            height: 20px;
+            transform: translateY(-50%);
+            padding: 0 2px;
+            border: none;
+            color: $color-7;
+            font-size: $font-size-5;
+            transition: all .3s;
+            z-index: 1;
+
+        }
+    }
+    .input {
+        > label[for] {
+            left: 10px;
+            right: auto;
+            top: 50%;
+
+        }
+        input {
+            padding: 15px 10px 0 10px;
+        }
+        &.large {
+            > label[for] {
+                left: 10px;
+                right: auto;
+                top: 50%;
+            }
+            input {
+                padding: 15px 10px 0 10px;
+            }
+        }
+        &.small {
+            > label[for] {
+                left: 10px;
+                right: auto;
+                top: 50%;
+            }
+            input {
+                padding: 15px 10px 0 10px;
+            }
+        }
+    }
+    .textarea {
+        background-color: $color-f;
+        border: 1px solid $color-border;
+        label[for] {
+            top: 12px;
+        }
+        textarea {
+            border: none;
+            margin: 19px 0 10px 0;
+            padding: 0 10px 0 10px;
+            min-height: 40px;
+        }
+    }
+    &.focus {
+        .input {
+            > label[for] {
+                top: 0px;
+                left: 11px;
+                right: auto;
+                transform: scale(0.8) translateY(0);
+                transform-origin: left;
+            }
+
+            &.large {
+                > label[for] {
+                    top: 5px;
+                    left: 11px;
+                    right: auto;
+                    transform: scale(0.8) translateY(0);
+                    transform-origin: left;
+                }
+
+            }
+            &.small {
+                > label[for] {
+                    top: 5px;
+                    left: 11px;
+                    right: auto;
+                    transform: scale(0.8) translateY(0);
+                    transform-origin: left;
+                }
+            }
+        }
+    }
+
+    .tooltip.error {
+        margin-top: 0 !important;
+        .tooltip-inner {
+            background: transparent !important;
+            border: none !important;
+        }
+    }
+    .tooltip.error {
+        margin-top: -1px !important;
+        .tooltip-inner {
+            background: transparent !important;
+            border: none !important;
+        }
+    }
+}
+
+@include only-mobile {
+    [data-textbox], [data-textbox-load] {
+        .textarea {
+            .tooltip.error {
+                top: auto !important;
+            }
+        }
+    }
+    [data-textbox], [data-textbox-load] {
+        .input {
+            margin-bottom: -1px;
+            input {
+                border-color: $color-border !important;
+                border-radius: 0;
+            }
+        }
+        .tooltip.error {
+            right: 0 !important;
+            left: auto !important;
+            top: 3px !important;
+        }
+    }
+}
+
