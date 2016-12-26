@@ -7,28 +7,139 @@
     line-height: 1.5;
     opacity: 0;
     filter: alpha(opacity=0);
-    min-width: 120px;
-    max-width: 400px;
+    min-width: 150px;
+    max-width: 320px;
     transition: opacity .5s;
     &.in {
         opacity: 1;
         filter: alpha(opacity=100);
     }
     &.top {
-        margin-top: -3px;
         padding: 5px 0;
+        transform: translateY(-100%);
+        top: 3px;
+        .tooltip-arrow {
+            bottom: 0;
+            left: 50%;
+            border-width: 5px 5px 0;
+            border-top-color: $color-5;
+        }
     }
-    &.right {
-        margin-left: 3px;
-        padding: 0 5px;
+    &.top-left {
+        .tooltip-arrow {
+            right: 5px;
+            left: auto;
+            margin-right: 5px;
+        }
+    }
+    &.top-right {
+        .tooltip-arrow {
+            left: 5px;
+            right: auto;
+            margin-left: 5px;
+        }
     }
     &.bottom {
-        margin-top: 3px;
         padding: 5px 0;
+        transform: translateY(100%);
+        bottom: 3px;
+        .tooltip-arrow {
+            top: 0;
+            left: 50%;
+            border-width: 0 5px 5px;
+            border-bottom-color: $color-5;
+        }
+    }
+    &.bottom-left {
+        .tooltip-arrow {
+            left: auto;
+            right: 5px;
+            margin-right: 5px;
+        }
+    }
+    &.bottom-right {
+        .tooltip-arrow {
+            left: 5px;
+            right: auto;
+            margin-left: 5px;
+        }
     }
     &.left {
-        margin-left: -3px;
         padding: 0 5px;
+        .tooltip-arrow {
+            top: 50%;
+            right: 0;
+            margin-top: -5px;
+            border-width: 5px 0 5px 5px;
+            border-left-color: $color-5;
+        }
+    }
+    &.right {
+        padding: 0 5px;
+        .tooltip-arrow {
+            top: 50%;
+            left: 0;
+            margin-top: -5px;
+            border-width: 5px 5px 5px 0;
+            border-right-color: $color-5;
+        }
+    }
+    &.info {
+        .tooltip-inner {
+            color: $color-7;
+            background-color: $color-e;
+            text-align: left;
+            border: 1px solid $color-7;
+            @include border-bottom-radius(2px);
+            box-shadow: none;
+            &:before {
+                @extend %icon;
+                @extend .icon-info-circle;
+                display: inline-block;
+                padding: 0 3px;
+            }
+        }
+        .tooltip-arrow {
+            display: none;
+        }
+    }
+    &.warning {
+        .tooltip-inner {
+            color: $color-warning-l1;
+            background-color: $color-warning-l3;
+            text-align: left;
+            border: 1px solid $color-warning-l1;
+            @include border-bottom-radius(2px);
+            box-shadow: none;
+            &:before {
+                @extend %icon;
+                @extend .icon-warning;
+                display: inline-block;
+                padding: 0 3px;
+            }
+        }
+        .tooltip-arrow {
+            display: none;
+        }
+    }
+    &.error {
+        .tooltip-inner {
+            color: $color-danger-l1;
+            background-color: $color-danger-l3;
+            text-align: left;
+            border: 1px solid $color-danger-l1;
+            @include border-bottom-radius(2px);
+            box-shadow: none;
+            &:before {
+                @extend %icon;
+                @extend .icon-warning;
+                display: inline-block;
+                padding: 0 3px;
+            }
+        }
+        .tooltip-arrow {
+            display: none;
+        }
     }
 }
 
@@ -48,128 +159,4 @@
     height: 0;
     border-color: transparent;
     border-style: solid;
-}
-
-.tooltip.top .tooltip-arrow {
-    bottom: 0;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px 5px 0;
-    border-top-color: $color-5;
-}
-
-.tooltip.top-left .tooltip-arrow {
-    bottom: 0;
-    right: 5px;
-    margin-bottom: -5px;
-    border-width: 5px 5px 0;
-    border-top-color: $color-5;
-}
-
-.tooltip.top-right .tooltip-arrow {
-    bottom: 0;
-    left: 5px;
-    margin-bottom: -5px;
-    border-width: 5px 5px 0;
-    border-top-color: $color-5;
-}
-
-.tooltip.right .tooltip-arrow {
-    top: 50%;
-    left: 0;
-    margin-top: -5px;
-    border-width: 5px 5px 5px 0;
-    border-right-color: $color-5;
-}
-
-.tooltip.left .tooltip-arrow {
-    top: 50%;
-    right: 0;
-    margin-top: -5px;
-    border-width: 5px 0 5px 5px;
-    border-left-color: $color-5;
-}
-
-.tooltip.bottom .tooltip-arrow {
-    top: 0;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 0 5px 5px;
-    border-bottom-color: $color-5;
-}
-
-.tooltip.bottom-left .tooltip-arrow {
-    top: 0;
-    right: 5px;
-    margin-top: -5px;
-    border-width: 0 5px 5px;
-    border-bottom-color: $color-5;
-}
-
-.tooltip.bottom-right .tooltip-arrow {
-    top: 0;
-    left: 5px;
-    margin-top: -5px;
-    border-width: 0 5px 5px;
-    border-bottom-color: $color-5;
-}
-
-.tooltip.info {
-    .tooltip-inner {
-        color: $color-7;
-        background-color: $color-e;
-        text-align: left;
-        border: 1px solid $color-7;
-        @include border-bottom-radius(2px);
-        box-shadow: none;
-        &:before {
-            @extend %icon;
-            @extend .icon-info-circle;
-            display: inline-block;
-            padding: 0 3px;
-        }
-    }
-    .tooltip-arrow {
-        display: none;
-    }
-}
-
-.tooltip.warning {
-    .tooltip-inner {
-        color: $color-warning-l1;
-        background-color: $color-warning-l3;
-        text-align: left;
-        border: 1px solid $color-warning-l1;
-        @include border-bottom-radius(2px);
-        box-shadow: none;
-        &:before {
-            @extend %icon;
-            @extend .icon-warning;
-            display: inline-block;
-            padding: 0 3px;
-        }
-    }
-    .tooltip-arrow {
-        display: none;
-    }
-}
-
-.tooltip.error {
-    .tooltip-inner {
-        color: $color-danger-l1;
-        background-color: $color-danger-l3;
-        text-align: left;
-        border: 1px solid $color-danger-l1;
-        @include border-bottom-radius(2px);
-        box-shadow: none;
-        &:before {
-            @extend %icon;
-            @extend .icon-warning;
-            display: inline-block;
-            padding: 0 3px;
-        }
-    }
-    .tooltip-arrow {
-        display: none;
-    }
 }

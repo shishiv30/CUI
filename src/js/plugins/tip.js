@@ -1,26 +1,27 @@
 //tip
 (function($) {
     var animationDuration = 500;
+
     var tipConfig = {
         name: 'tip',
         defaultOpt: {
             traget: null,
             height: 50,
             width: 320,
-            type: 'normal',
             placement: 'top',
-            trigger: 'click',
+            trigger: 'focus',
             html: true,
             showbefore: null,
             showafter: null,
             hidebefore: null,
-            hideafter: null
+            hideafter: null,
+            _timer: null
         },
         init: function(context) {
             var opt = context.opt;
             var $this = context.$element;
-            var $container = $('<div class="tooltip ' + opt.type + '" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>');
-            $this.css({position: 'relative'});
+            var $container = $('<div class="tooltip ' + opt.placement + '" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>');
+            $this.parent().css({position: 'relative'});
             $this.after($container);
             $container.click(function(e) {
                 e.stopPropagation();
@@ -34,16 +35,18 @@
                 var opt = this.opt;
                 var $this = this.$element;
                 var $container = this.$container;
+                clearTimeout(opt._timer);
                 if (opt.showbefore) {
                     $.CUI.addEvent(opt.showbefore, this);
                 }
                 $container.find('.tooltip-inner').html(opt.content);
-                var cWidth = $container.width();
-                var cHeight = $container.height();
-                var tWidth = $this.width();
-                var tHeight = $this.height();
+                var cWidth = $container.outerWidth();
+                var cHeight = $container.outerHeight();
+                var tWidth = $this.outerWidth();
+                var tHeight = $this.outerHeight();
                 var offset = $this.offset();
                 var position = $this.position();
+                var pWidth = $this.parent().outerWidth(true);
                 var x = 0;
                 var y = 0;
                 var css = {};
@@ -52,19 +55,19 @@
                 switch (opt.placement) {
                     case 'top':
                     case 'bottom':
-                        $container.removeClass('{0} {0}-left {0}-right'.format(opt.placement));
-                        y = cHeight ;
+                        $container.removeClass('{0}-left {0}-right'.format(opt.placement));
                         x = (Math.abs(tWidth - cWidth) / 2);
                         if (x > offset.left) {
                             css = {
-                                left: 0,
+                                left: position.left,
                                 right: ''
                             };
                             $container.addClass('{0}-right'.format(opt.placement));
                         } else if ((offset.left + (tWidth + cWidth) / 2) > $(window).width()) {
+
                             css = {
                                 left: '',
-                                right: 0
+                                right: pWidth - tWidth - position.left
                             };
                             $container.addClass('{0}-left'.format(opt.placement));
                         } else {
@@ -74,13 +77,11 @@
                             };
                             $container.addClass(opt.placement);
                         }
-                        css[opt.placement] = -1 * y;
                         $container.css(css);
                         break;
                     case 'left':
                     case 'right':
                         $container.removeClass(opt.placement);
-
                         if (opt.placement === 'left') {
                             x = cWidth * -1 + position.left - 5;
                         } else {
@@ -108,7 +109,7 @@
                     $.CUI.addEvent(opt.hidebefore, this);
                 }
                 $container.removeClass('in');
-                setTimeout(function() {
+                opt._timer = setTimeout(function() {
                     $container.hide();
                     if (opt.hideafter) {
                         $.CUI.addEvent(opt.hideafter, that);
@@ -147,8 +148,6 @@
             $this.off('click.' + exports.name);
             $this.off('focusin.' + exports.name);
             $this.off('focusout.' + exports.name);
-            $this.off('mouseenter.' + exports.name);
-            $this.off('mouseleave.' + exports.name);
             context.$container.remove();
         },
     };
