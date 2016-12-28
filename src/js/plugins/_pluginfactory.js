@@ -3,7 +3,7 @@
         plugin: function(pluginContext) {
             var name = pluginContext.name;
             if ($.fn[name]) {
-                window.console.log('the plugin name is duplicate: ' + name);
+                window.console.log('the plugin is exists: ' + name);
                 return null;
             }
 

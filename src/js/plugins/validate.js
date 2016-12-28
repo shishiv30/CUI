@@ -33,18 +33,21 @@
     var _showValidate = function($element, message) {
         $element.closest('.input').removeClass('has-success');
         $element.closest('.input').addClass('has-error');
-        $element.tip({
-            type: 'error',
-            content: message,
-            trigger: null,
-            hideafter: function(e, t) {
-                t.destroy();
-            }
-        }).show();
+        if (message) {
+            $element.tip({
+                type: 'error',
+                content: message,
+                placement: 'bottom',
+                trigger: null,
+                hideafter: function(e, t) {
+                    t.destroy();
+                }
+            }).show();
+        }
     };
     var _passValidate = function($element, isRequried) {
         $element.closest('.input').removeClass('has-error');
-        $element.tip().hide();
+        $element.tip().destroy();
         if ($element.is('[id]')) {
             $('[for=' + $element.attr('id') + ']').removeClass('error-text');
         }

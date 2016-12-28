@@ -52,7 +52,9 @@
                 var y = 0;
                 var css = {};
                 $container.show();
-                $container.addClass('in');
+                setTimeout(function() {
+                    $container.addClass('in');
+                }, 10);
                 switch (opt.placement) {
                     case 'top':
                     case 'bottom':

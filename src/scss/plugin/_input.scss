@@ -174,6 +174,7 @@ input[type='text']::-ms-clear {
         label {
             color: $color-danger-l1;
         }
+
     }
     &.has-info {
         > input, > select {
@@ -182,5 +183,22 @@ input[type='text']::-ms-clear {
         > i {
             color: $color-info-l1;
         }
+    }
+    &.has-error {
+        .tooltip {
+            transition: all 1s;
+            margin-top: 0;
+            left: 0;
+            right: 0;
+            transform: translateY(50%);
+            padding: 0;
+            .tooltip-inner {
+                border-top: none;
+            }
+            &.error.in {
+                transform: translateY(100%);
+            }
+        }
+
     }
 }
