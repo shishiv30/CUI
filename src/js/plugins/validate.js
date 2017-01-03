@@ -35,19 +35,19 @@
         $element.closest('.input').addClass('has-error');
         if (message) {
             $element.tip({
+                once: true,
                 type: 'error',
                 content: message,
                 placement: 'bottom',
-                trigger: null,
-                hideafter: function(e, t) {
-                    t.destroy();
-                }
+                trigger: null
             }).show();
         }
     };
     var _passValidate = function($element, isRequried) {
         $element.closest('.input').removeClass('has-error');
-        $element.tip().destroy();
+        if ($element.data('tip')) {
+            $element.data('tip').hide();
+        }
         if ($element.is('[id]')) {
             $('[for=' + $element.attr('id') + ']').removeClass('error-text');
         }

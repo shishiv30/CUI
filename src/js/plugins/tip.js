@@ -12,6 +12,7 @@
             placement: 'top',
             trigger: 'focus',
             html: true,
+            once: false,
             showbefore: null,
             showafter: null,
             hidebefore: null,
@@ -108,6 +109,7 @@
                 var opt = this.opt;
                 var that = this;
                 var $container = this.$container;
+                var exports = this.exports;
                 if (opt.hidebefore) {
                     $.CUI.addEvent(opt.hidebefore, this);
                 }
@@ -116,6 +118,9 @@
                     $container.hide();
                     if (opt.hideafter) {
                         $.CUI.addEvent(opt.hideafter, that);
+                    }
+                    if (opt.once) {
+                        exports.destroy();
                     }
                 }, animationDuration + 1);
             }
