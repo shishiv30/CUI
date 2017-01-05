@@ -68,36 +68,17 @@
             margin: 19px 0 10px 0;
             padding: 0 10px 0 10px;
             min-height: 40px;
+            overflow: hidden;
         }
     }
     &.focus {
         .input {
             > label[for] {
-                top: 0px;
+                top: 0;
                 left: 11px;
                 right: auto;
                 transform: scale(0.8) translateY(0);
                 transform-origin: left;
-            }
-
-            &.large {
-                > label[for] {
-                    top: 5px;
-                    left: 11px;
-                    right: auto;
-                    transform: scale(0.8) translateY(0);
-                    transform-origin: left;
-                }
-
-            }
-            &.small {
-                > label[for] {
-                    top: 5px;
-                    left: 11px;
-                    right: auto;
-                    transform: scale(0.8) translateY(0);
-                    transform-origin: left;
-                }
             }
         }
     }

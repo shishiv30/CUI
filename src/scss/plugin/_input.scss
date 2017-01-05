@@ -188,8 +188,9 @@ input[type='text']::-ms-clear {
         .tooltip {
             transition: all 1s;
             margin-top: 0;
-            left: 0;
-            right: 0;
+            left: 0 !important;
+            right: 0 !important;
+            max-width: initial !important;
             transform: translateY(50%);
             padding: 0;
             .tooltip-inner {
