@@ -23,7 +23,6 @@
             font-size: $font-size-5;
             transition: all .3s;
             z-index: 1;
-
         }
     }
     .input {
@@ -41,6 +40,7 @@
                 left: 10px;
                 right: auto;
                 top: 50%;
+                font-size: 18px;
             }
             input {
                 padding: 15px 10px 0 10px;
@@ -51,9 +51,10 @@
                 left: 10px;
                 right: auto;
                 top: 50%;
+                font-size: 11px;
             }
             input {
-                padding: 15px 10px 0 10px;
+                padding: 8px 10px 0 10px
             }
         }
     }
@@ -61,37 +62,39 @@
         background-color: $color-f;
         border: 1px solid $color-border;
         label[for] {
+            left: 10px;
+            right: auto;
             top: 12px;
         }
         textarea {
             border: none;
             margin: 19px 0 10px 0;
             padding: 0 10px 0 10px;
-            min-height: 40px;
+            min-height: 2em;
             overflow: hidden;
         }
     }
     &.focus {
-        .input {
+        .input, .textarea {
             > label[for] {
                 top: 0;
-                left: 11px;
+                left: 10px;
                 right: auto;
                 transform: scale(0.8) translateY(0);
                 transform-origin: left;
             }
         }
-    }
-
-    .tooltip.error {
-        margin-top: 0 !important;
-        .tooltip-inner {
-            background: transparent !important;
-            border: none !important;
+        .input {
+            &.small {
+                > label[for] {
+                    top: -2px;
+                }
+            }
         }
     }
     .tooltip.error {
-        margin-top: -1px !important;
+        top: auto;
+        bottom: 0;
         .tooltip-inner {
             background: transparent !important;
             border: none !important;
@@ -103,7 +106,7 @@
     [data-textbox], [data-textbox-load] {
         .textarea {
             .tooltip.error {
-                top: auto !important;
+                top: 0 !important;
             }
         }
     }
@@ -115,10 +118,20 @@
                 border-radius: 0;
             }
         }
+        .textarea {
+            .tooltip.error {
+                top: -5px !important;
+            }
+        }
+        .input {
+            .tooltip.error {
+                top: 0 !important;
+            }
+        }
         .tooltip.error {
             right: 0 !important;
             left: auto !important;
-            top: 3px !important;
+            transform: translateY(0) !important;
         }
     }
 }

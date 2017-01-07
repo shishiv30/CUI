@@ -143,9 +143,9 @@ $font-size-4: $font-size-3-small;
 //16px
 $font-size-4-small: 16px;
 //14px
-$font-size-5: 14px;
+$font-size-5: $font-size-4-small;
 //14px
-$font-size-5-small: 14px;
+$font-size-5-small: $font-size-4-small;
 //12px
 $font-size-6: 12px;
 //12px
@@ -155,9 +155,9 @@ $font-size-7: 11px;
 $font-size-7-small: 11px;
 
 //button & input & select
-$form-size-small: 30px;
-$form-size-normal: 36px;
-$form-size-large: 42px;
+$form-size-small: 36px;
+$form-size-normal: 40px;
+$form-size-large: 45px;
 
 //header
 $header-height: 45px;

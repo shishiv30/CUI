@@ -1,7 +1,7 @@
 .btn {
     @include singleline();
-    height: $form-size-normal;
-    line-height: $font-size-4;
+    height: $form-size-normal - 18px;
+    line-height: $form-size-normal - 18px;
     font-size: $font-size-4-small;
     padding: 8px 10px;
     display: block;
@@ -26,15 +26,15 @@
         color: $color-1;
     }
     &.large {
-        height: $form-size-large;
-        line-height: $font-size-3;
+        height: $form-size-large - 18;
+        line-height: $form-size-large - 18;
         font-size: $font-size-3-small;
         padding: 8px 20px;
         border-radius: 6px;
     }
     &.small {
-        height: $form-size-small;
-        line-height: $font-size-5;
+        height: $form-size-small - 2;
+        line-height: $form-size-small - 2;
         font-size: $font-size-5;
         padding: 0 8px;
         border-radius: 4px;
@@ -286,7 +286,7 @@
         background-color: $color-c !important;
         border-color: $color-7 !important;
         color: $color-7 !important;
-        pointer-events: none!important;
+        pointer-events: none !important;
     }
     &.loading {
         opacity: .5 !important;
