@@ -9,7 +9,13 @@ html {
     font-style: normal;
 }
 
-input, div, span, ul, li, ol, p, select, textarea, dl, dt, dd {
+body,
+html {
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+input, div, span, ul, li, ol, p, select, textarea, dl, dt, dd, td, tr {
     margin: 0;
     padding: 0;
 }
@@ -53,11 +59,6 @@ textarea {
     font-size: 100%;
 }
 
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-
 hr {
     border: none;
     height: 1px;
@@ -81,12 +82,6 @@ img {
     border: 0;
 }
 
-body,
-html {
-    min-height: 100%;
-    overflow-x: hidden;
-}
-
 label[for] {
     cursor: pointer;
 }
@@ -104,5 +99,6 @@ h1, h2, h3, h4, h5, h6 {
 
 table {
     width: 100%;
+    border-spacing: 0;
     border-collapse: collapse;
 }
