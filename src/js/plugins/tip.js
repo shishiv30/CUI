@@ -10,7 +10,7 @@
             width: 320,
             type: '',
             placement: 'top',
-            trigger: 'focus',
+            trigger: 'click',
             html: true,
             once: false,
             showbefore: null,

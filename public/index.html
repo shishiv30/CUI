@@ -54,11 +54,10 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="panel">
-                <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#fontPanel">Font
+                <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#fontPanel">font
                     <span class="subtitle">the basic font style</span><i class="icon-angle-down right"></i></a>
                 <div id="fontPanel" class="row">
                     <div class="col-xs-12">
-                        <div class="h4">font size</div>
                         <table class="table">
                             <tr>
                                 <td class="f0">f0</td>
@@ -104,6 +103,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
             <div class="panel">
                 <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#buttonPanel">buttons <span
                     class="subtitle">the basic button style</span>
@@ -151,28 +154,29 @@
             <div class="panel">
                 <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#tipPanel">tips <span class="subtitle">the tip style</span> <i
                     class="icon-angle-down right"></i></a>
-                <div id="tipPanel">
-                    <div class="col-xs-12 col-sm-3">
+                <div id="tipPanel" class="row">
+                    <div class="col-xs-6 col-sm-3">
                         <a href="javascript:;"
                            data-tip
                            data-content="show on bottom side">
                             top</a>
                     </div>
-                    <div class="col-xs-12 col-sm-3">
-                        <a href="javascript:;"
-                           data-tip
-                           data-placement="right"
-                           data-content="show on right side">
-                            right</a></div>
-
-                    <div class="col-xs-12 col-sm-3">
+                    <div class="col-xs-6 col-sm-3 text-right">
                         <a href="javascript:;"
                            data-tip
                            data-placement="left"
                            data-content="show on left side">
                             left</a>
                     </div>
-                    <div class="col-xs-12 col-sm-3 text-right">
+                    <div class="col-xs-6 col-sm-3">
+
+                        <a href="javascript:;"
+                           data-tip
+                           data-placement="right"
+                           data-content="show on right side">
+                            right</a>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 text-right">
                         <a href="javascript:;"
                            data-tip
                            data-placement="bottom"
@@ -189,7 +193,7 @@
                 <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#formPanel">forms <span class="subtitle">the form style</span> <i
                     class="icon-angle-down right"></i></a>
                 <div id="formPanel">
-                    <div id="form" class="form" data-form>
+                    <div id="form" class="form row" data-form>
                         <div class="col-xs-12 col-sm-6">
                             <label for="txtReq">Required Box</label>
                             <div class="input left right">
@@ -289,7 +293,7 @@
                 <a href="javascript:;" class="h3 addition shown" data-collapse data-target="#texboxPanel">Textbox <span
                     class="subtitle">New textbox style</span> <i
                     class="icon-angle-down right"></i></a>
-                <div id="texboxPanel" class="form" data-form>
+                <div id="texboxPanel" class="form row" data-form>
                     <div class="col-xs-12 col-sm-6">
                         <div data-textbox>
                             <div class="input small right">
@@ -628,48 +632,48 @@
             alert(msg);
         }
     }
-    var getMoveText = function(startPoint, endPoint) {
+    var getMoveText = function (startPoint, endPoint) {
         var str1;
         var str2;
         if (startPoint.touches.length) {
             var start = Array.prototype.slice.call(startPoint.touches);
-            str1 = start.reduce(function(pre, next, index) {
+            str1 = start.reduce(function (pre, next, index) {
 
                 return pre + 'Y:' + next.pageY + 'X:' + next.pageX + ' ';
             }, '(Start) ');
         }
         if (endPoint.touches.length) {
             var end = Array.prototype.slice.call(endPoint.touches);
-            str2 = end.reduce(function(pre, next, index) {
+            str2 = end.reduce(function (pre, next, index) {
                 return pre + 'Y:' + next.pageY + 'X:' + next.pageX + ' ';
             }, '(End) - ');
         }
 
         return str1 + '<br>' + str2;
     };
-    $("#eventDiv").on('moving', function(t, start, end) {
+    $("#eventDiv").on('moving', function (t, start, end) {
         $(this).html('moving... <br>' + getMoveText(start, end));
     });
-    $("#eventDiv").on('pinchin', function(t, start, end) {
+    $("#eventDiv").on('pinchin', function (t, start, end) {
         $(this).html('pinchin <br>' + getMoveText(start, end));
     });
-    $("#eventDiv").on('pinchout', function(t, start, end) {
+    $("#eventDiv").on('pinchout', function (t, start, end) {
         $(this).html('pinchout <br>' + getMoveText(start, end));
     });
-    $("#eventDiv").on('swipeleft', function(t, start, end) {
+    $("#eventDiv").on('swipeleft', function (t, start, end) {
         $(this).html('swipeleft <br>' + getMoveText(start, end));
     });
-    $("#eventDiv").on('swiperight', function(t, start, end) {
+    $("#eventDiv").on('swiperight', function (t, start, end) {
         $(this).html('swiperight <br>' + getMoveText(start, end));
     });
-    $("#eventDiv").on('swipedown', function(t, start, end) {
+    $("#eventDiv").on('swipedown', function (t, start, end) {
         $(this).html('swipedown <br>' + getMoveText(start, end));
     });
-    $("#eventDiv").on('swipeup', function(t, start, end) {
+    $("#eventDiv").on('swipeup', function (t, start, end) {
         $(this).html('swipeup <br>' + getMoveText(start, end));
     });
 
-    $(document).one('datatable.inital', function(e, element, obj) {
+    $(document).one('datatable.inital', function (e, element, obj) {
         obj.setOptions({
             columns: [{
                 key: 'name',

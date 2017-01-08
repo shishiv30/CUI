@@ -7,7 +7,11 @@ input[type='text'], input[type='password'], input[type='email'], input[type='tel
 }
 
 select {
-    padding: 0 5px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: $color-f;
+    cursor: pointer;
 }
 
 input[type='text']::-ms-clear {
@@ -19,7 +23,7 @@ input[type='text']::-ms-clear {
     position: relative;
     display: inline-block;
     width: 165px;
-    > input {
+    > input, > select {
         height: $form-size-normal;
         line-height: $form-size-normal - 2;
         padding: 0 5px;
@@ -78,7 +82,7 @@ input[type='text']::-ms-clear {
         }
     }
     &.small {
-        > input {
+        > input, > select {
             height: $form-size-small;
             line-height: $form-size-small - 2;
             font-size: 12px;
@@ -100,7 +104,7 @@ input[type='text']::-ms-clear {
         }
     }
     &.large {
-        > input {
+        > input, > select {
             border-radius: 5px;
             height: $form-size-large;
             line-height: $form-size-large - 2;
