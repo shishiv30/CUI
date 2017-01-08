@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 html {
     font-size: $font-size-base;
     line-height: 1.2em;
@@ -8,7 +12,6 @@ html {
 input, div, span, ul, li, ol, p, select, textarea, dl, dt, dd {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 ol,
