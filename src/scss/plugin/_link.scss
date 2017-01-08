@@ -3,6 +3,7 @@ a {
     cursor: pointer;
     color: $color-link-default;
     opacity: 0.95;
+    outline: none;
     &:hover,
     &:active {
         opacity: 1;
@@ -18,8 +19,8 @@ a {
             text-decoration: underline;
         }
     }
-    [disable]{
-        color:$color-disable;
+    [disable] {
+        color: $color-disable;
         pointer-events: none;
     }
 }

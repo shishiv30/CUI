@@ -2,6 +2,16 @@
     box-sizing: border-box;
 }
 
+input, div, span, ul, li, ol, p, select, textarea, dl, dt, dd, html, body, select, form {
+    margin: 0;
+    padding: 0;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+//CUI Setting
 html {
     font-size: $font-size-base;
     line-height: 1.2em;
@@ -15,75 +25,27 @@ html {
     overflow-x: hidden;
 }
 
-input, div, span, ul, li, ol, p, select, textarea, dl, dt, dd, td, tr {
-    margin: 0;
-    padding: 0;
-}
-
-ol,
-ul {
-    list-style: none;
-}
-
-i {
-    text-align: center;
-}
-
-abbr[title],
-acronym[title] {
-    border-bottom: 1px dotted;
-    cursor: help;
-}
-
-q:after,
-q:before {
-    content: '';
-}
-
-legend {
-    color: $color-0;
-}
-
-a,
-button,
-input,
-select,
-textarea {
-    outline: none;
-}
-
-button,
-input,
-select,
-textarea {
-    font-size: 100%;
-}
-
-hr {
-    border: none;
-    height: 1px;
-}
-
 fieldset {
     padding: 0;
     margin: 0;
     border: 0;
 }
 
-input,
-select,
-textarea {
-    &:focus {
-        outline: none;
-    }
-}
-
-img {
-    border: 0;
+legend {
+    color: $color-0;
 }
 
 label[for] {
     cursor: pointer;
+}
+
+input, select, textarea, button {
+    font-size: 100%;
+    outline: none;
+}
+
+img {
+    border: 0;
 }
 
 [readonly] {
@@ -97,8 +59,15 @@ h1, h2, h3, h4, h5, h6 {
     font-family: $font;
 }
 
-table {
-    width: 100%;
-    border-spacing: 0;
-    border-collapse: collapse;
+i {
+    text-align: center;
+}
+
+abbr[title], acronym[title] {
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+q:after, q:before {
+    content: '';
 }
