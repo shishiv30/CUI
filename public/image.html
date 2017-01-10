@@ -7,16 +7,22 @@
     <title>Document</title>
     <link href="dist/src/cui.css" type="text/css" rel="stylesheet"/>
     <style>
+        body {
+            position: relative;
+            height: 700PX;
+        }
+
         .header {
             height: 50px;
             background-color: black;
         }
 
         #photoList {
-            height: 1000px;
-            overflow-x: scroll;
-            overflow-y: scroll;
-
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
         }
 
         #photoList li {
@@ -26,10 +32,6 @@
         #photoList img {
             display: inline-block;
             width: auto;
-        }
-
-        .photoview-hotlead {
-            background-color: #eeff99;
         }
     </style>
 </head>
@@ -42,100 +44,23 @@
         <i class="icon-plus"></i>
     </a>
 </div>
-<div class="photoview-body" data-dragzoom data-eventns=".dragzoom">
-    <ul id="photoList" class="list clearfix" style="transform-origin: left top;">
 
-        <li><img src="dist/src/img/01.jpg"></li>
+<ul id="photoList" class="list clearfix" data-webview>
+    <li><img src="dist/src/img/01.jpg"></li>
 
-        <li><img src="dist/src/img/02.jpg"></li>
+    <li><img src="dist/src/img/02.jpg"></li>
 
-        <li><img src="dist/src/img/03.jpg"></li>
+    <li><img src="dist/src/img/03.jpg"></li>
 
-        <li><img src="dist/src/img/04.jpg"></li>
+    <li><img src="dist/src/img/04.jpg"></li>
 
-        <li><img src="dist/src/img/05.jpg"></li>
+    <li><img src="dist/src/img/05.jpg"></li>
 
-        <li><img src="dist/src/img/06.jpg"></li>
+    <li><img src="dist/src/img/06.jpg"></li>
 
-        <li><img src="dist/src/img/07.jpg"></li>
-    </ul>
-    <div class="photoview-hotlead">
-        <div class="form gs  hotleadform" id="photoviewHotleadForm">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="f3 text-white">
-                        Schedule a Viewing
-                        <span class="f4 text-light">
-            of  17269 Luverne Pl, Encino
-                </span>
-                    </div>
-                </div>
-            </div>
-            <div class="blank20"></div>
-            <div class="row">
-                <div class="col-xs-12">
+    <li><img src="dist/src/img/07.jpg"></li>
+</ul>
 
-                    <div data-textbox-load="">
-                        <div class="input left">
-                            <label for="photoviewHotleadForm_email">Email</label>
-                            <input id="photoviewHotleadForm_email" type="email" name="email" data-validate="required,email" placeholder="Email">
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <div data-textbox-load="">
-                        <div class="input left">
-                            <label for="photoviewHotleadForm_name">Name</label>
-                            <input id="photoviewHotleadForm_name" type="text" name="name" placeholder="Name" value="" data-validate="required">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <div data-textbox-load="">
-                        <div class="input left">
-                            <label for="photoviewHotleadForm_phonenum">Phone Number</label>
-                            <input id="photoviewHotleadForm_phonenum" type="tel" name="phoneNum" autocomplete="tel" placeholder="Phone number" value=""
-                                   data-validate="required,phone">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 hidden-xs hidden-sm">
-                    <div class="focus" data-textbox-load="">
-                        <div class="textarea">
-                            <label for="photoviewHotleadForm_comments">Comments Or Questions</label>
-                            <textarea id="photoviewHotleadForm_comments" data-validate="required" name="comment" placeholder="Comments" maxlength="200">I am interested in 17269 Luverne Pl Encino, CA 91316.</textarea>
-                        </div>
-                    </div>
-                    <input name="type" type="hidden" value="All_Photos_Bottom_Active">
-                    <input name="propertyUrl" type="hidden"
-                           value="http://alpaca.san-mateo.movoto.net:3025/encino-ca/17269-luverne-pl-encino-ca-91316-207_216011416/for-sale/">
-                    <input name="listingId" type="hidden" value="165656ed-42cf-4b08-b162-c9cedb75bfab">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <a href="javascript:void(0);" class="btn responsive orange">Go</a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <p class="text-disclaimer" data-formdisclaimer="">We'll call you in 5 minutes (or next business day if after hours). Click to consent to
-                        receive text messages and/or calls (direct, autodialed, or prerecorded) from Movoto to the number entered here even if it's on the Do
-                        Not Call list. Consent is not required to receive Real Estate services.</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
 </body>
 <script src="dist/src/cui.js" type="text/javascript"></script>
 <script>
