@@ -92,7 +92,7 @@
             return !(str === '' || str === null || str === 'undefined');
         },
         isEmail: function(str) {
-            var reg = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
+            var reg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
             return reg.test(str);
         },
         isFloat: function(str) {

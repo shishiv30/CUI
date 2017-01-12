@@ -7,19 +7,19 @@
     <title>Document</title>
     <link href="dist/src/cui.css" type="text/css" rel="stylesheet"/>
     <style>
-        body {
-            position: relative;
-            height: 700PX;
-        }
 
         .header {
             height: 50px;
             background-color: black;
         }
 
+        .list {
+            height: calc(100% - 50px);
+        }
+
         #photoList {
-            position: absolute;
-            top: 0;
+            position: fixed;
+            top: 50px;
             bottom: 0;
             left: 0;
             right: 0;
@@ -43,6 +43,7 @@
     <a href="javascript:;" class="btn-circle text-white" data-imgzoom data-zoomtype="zoomin" data-target="#photoList">
         <i class="icon-plus"></i>
     </a>
+    <div id="xxx" class="text-white"></div>
 </div>
 
 <ul id="photoList" class="list clearfix" data-webview>
