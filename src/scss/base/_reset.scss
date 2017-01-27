@@ -71,3 +71,17 @@ abbr[title], acronym[title] {
 q:after, q:before {
     content: '';
 }
+
+@media screen and (max-width: $screen-sm-max) {
+    html::-webkit-scrollbar {
+        height: 0;
+        width: 0;
+    }
+}
+
+@media screen and (min-width: $screen-md-min) {
+    html {
+        margin-left: calc(100vw - 100%);
+        margin-right: 0;
+    }
+}

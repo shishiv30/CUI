@@ -51,10 +51,11 @@
         padding-top: 20px;
         .dialog-title {
             @extend %text-light;
-            @extend .f1;
+            @extend .f2;
             @extend %singleline;
             position: relative;
             padding-right: 30px;
+            margin-bottom:10px;
             .dialog-title-close {
                 position: absolute;
                 font-size: 21px;
@@ -130,8 +131,7 @@
     body {
         overflow-y: hidden !important;
         overflow-x: hidden !important;
-        padding-right: 17px !important;
-        pointer-events: none !important;;
+        -webkit-overflow-scrolling: auto !important;
     }
 }
 
