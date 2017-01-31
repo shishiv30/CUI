@@ -1,3 +1,24 @@
+//start fixed the bug of show scroll after content load
+html {
+    overflow-y: scroll;
+}
+
+:root {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+:root body {
+    position: absolute;
+}
+
+body {
+    width: 100vw;
+    overflow: hidden;
+}
+
+//end
+
 * {
     box-sizing: border-box;
 }

@@ -1,5 +1,5 @@
-(function($) {
-    $.fn.inputformat = function(option) {
+(function ($) {
+    $.fn.inputformat = function (option) {
         var $this = $(this);
         var defaultOpt = {
             type: 'phone',
@@ -7,7 +7,7 @@
         };
         var opt = $.extend(defaultOpt, option);
         var timer = null;
-        var _get = function() {
+        var _get = function () {
             var value = $this.val();
             switch (opt.type) {
                 case 'phone':
@@ -18,29 +18,25 @@
                     return value;
             }
         };
-        var _set = function(programmatic) {
+        var _set = function (programmatic) {
             var value = _get();
             var formatString = '';
             switch (opt.type) {
                 case 'phone':
-                    if (value.length >= 4) {
-                        formatString += value.slice(0, 3) + '-';
-                        if (value.length >= 7) {
-                            formatString += value.slice(3, 6) + '-';
-                            formatString += value.slice(6, value.length);
-                        } else {
-                            formatString += value.slice(3, value.length);
-                        }
-                    } else {
-                        formatString += value;
-                    }
+                    formatString = value;
+                    var pattern = /(\d{3})(\d+)/;
+                    while (pattern.test(formatString))
+                        formatString = formatString.replace(pattern, '$1-$2');
                     break;
                 case 'price':
                     var arrPrice = value.toString().split('.');
-                    formatString = arrPrice[0].replace(/[^0-9]/g, '');
-                    var pattern = /(-?\d+)(\d{3})/;
-                    while (pattern.test(formatString))
-                        formatString = formatString.replace(pattern, '$1,$2');
+                    formatString = arrPrice[0];
+                    var pricePattern = /(\d+)(\d{3})/;
+                    while (pricePattern.test(formatString))
+                        formatString = formatString.replace(pricePattern, '$1,$2');
+                    if (arrPrice.length >= 2) {
+                        formatString += ('.' + arrPrice[1]);
+                    }
                     break;
                 case 'rate':
                     var fraction = $.isInt(opt.fraction) ? opt.fraction : 2;
@@ -71,20 +67,20 @@
             _set();
         }
 
-        $this.on('keyup input change', function(e, programmatic) {
+        $this.on('keyup input change', function (e, programmatic) {
             var $this = $(this);
             if (timer) {
                 clearTimeout(timer);
             }
             if ($this.prop('rawValue') !== _get()) {
-                timer = setTimeout(function() {
+                timer = setTimeout(function () {
                     _set(programmatic === true);
                 }, 10);
             }
         });
     };
-    $(document).on('dom.load.inputformat', function() {
-        $('[data-inputformat]').each(function(index, item) {
+    $(document).on('dom.load.inputformat', function () {
+        $('[data-inputformat]').each(function (index, item) {
             var $this = $(item);
             $this.inputformat($this.data());
             $this.removeAttr('data-inputformat');
