@@ -24,7 +24,7 @@
                         return +new Date(value) || 0;
                     case 'number':
                         if (value.replace) {
-                            value = value.replace(/,|\s/g, '');
+                            value = value.replace(/[^0-9.]/g, '');
                         }
                         return value * 1 || 0;
                     default:

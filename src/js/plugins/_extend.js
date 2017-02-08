@@ -1,17 +1,17 @@
-(function($) {
+(function ($) {
     var tmpdiv = null;
     $.extend({
-        htmlencode: function(s) {
+        htmlencode: function (s) {
             var div = document.createElement('div');
             div.appendChild(document.createTextNode(s));
             return div.innerHTML;
         },
-        htmldecode: function(s) {
+        htmldecode: function (s) {
             var div = document.createElement('div');
             div.innerHTML = s;
             return div.innerText || div.textContent;
         },
-        getTextWidth: function(text, fontsize) {
+        getTextWidth: function (text, fontsize) {
             var $body = $('body');
             fontsize = fontsize || $body.css('fontSize').replace(/[a-z]/g, '') * 1;
             if (!tmpdiv) {
@@ -28,7 +28,7 @@
             tmpdiv.text(text);
             return tmpdiv.width();
         },
-        insertCSS: function(selector, rules, contxt) {
+        insertCSS: function (selector, rules, contxt) {
             var context = contxt || document,
                 stylesheet;
 
@@ -53,14 +53,14 @@
                 }
             }
         },
-        isMobile: function() {
+        isMobile: function () {
             return !!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         },
-        throttle: function(fn, delay, scope) {
+        throttle: function (fn, delay, scope) {
             delay || (delay = 250);
             var last,
                 timer;
-            return function() {
+            return function () {
                 var context = scope || this;
 
                 var now = +new Date(),
@@ -68,7 +68,7 @@
                 if (last && now - last + delay < 0) {
                     // hold on to it
                     clearTimeout(timer);
-                    timer = setTimeout(function() {
+                    timer = setTimeout(function () {
                         last = now;
                         fn.apply(context, args);
                     }, delay);
@@ -78,40 +78,40 @@
                 }
             };
         },
-        debounce: function(fn, delay) {
+        debounce: function (fn, delay) {
             var timer = null;
-            return function() {
+            return function () {
                 var context = this, args = arguments;
                 clearTimeout(timer);
-                timer = setTimeout(function() {
+                timer = setTimeout(function () {
                     fn.apply(context, args);
                 }, delay);
             };
         },
-        isNotEmpty: function(str) {
+        isNotEmpty: function (str) {
             return !(str === '' || str === null || str === 'undefined');
         },
-        isEmail: function(str) {
+        isEmail: function (str) {
             var reg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
             return reg.test(str);
         },
-        isFloat: function(str) {
+        isFloat: function (str) {
             var reg = /^([-]){0,1}([0-9]){1,}([.]){0,1}([0-9]){0,}$/;
             return reg.test(str);
         },
-        isInt: function(str) {
+        isInt: function (str) {
             var reg = /^-?\d+$/;
             return reg.test(str);
         },
-        isPhone: function(str) {
+        isPhone: function (str) {
             var reg = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/im;
             return reg.test(str);
         },
-        isZipCode: function(str) {
+        isZipCode: function (str) {
             var reg = /^([0-9]){5}$/;
             return reg.test(str);
         },
-        isPrice: function(str) {
+        isPrice: function (str) {
             var reg = /^(([$])?((([0-9]{1,3},)+([0-9]{3},)*[0-9]{3})|[0-9]+)(\.[0-9]+)?)$/;
             return reg.test(str);
         }

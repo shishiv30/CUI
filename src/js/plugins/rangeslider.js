@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
     'use strict';
     var pluginName = 'rangeslider',
         pluginIdentifier = 0,
@@ -150,7 +150,7 @@
         var grabPos;
         var position;
 
-        var init = function() {
+        var init = function () {
             update(false);
 
             if (opt.oninit && typeof opt.oninit === 'function') {
@@ -158,7 +158,7 @@
             }
         };
 
-        var update = function(triggerSlide) {
+        var update = function (triggerSlide) {
             handleDimension = getDimension($handle[0], 'offset' + ucfirst(DIMENSION));
             rangeDimension = getDimension($range[0], 'offset' + ucfirst(DIMENSION));
             maxHandlePos = rangeDimension - handleDimension;
@@ -175,7 +175,7 @@
             setPosition(position, triggerSlide);
         };
 
-        var handleDown = function(e) {
+        var handleDown = function (e) {
             $document.on(moveEvent, handleMove);
             $document.on(endEvent, handleEnd);
 
@@ -196,14 +196,14 @@
             }
         };
 
-        var handleMove = function(e) {
+        var handleMove = function (e) {
             e.preventDefault();
             var pos = getRelativePosition(e);
             var setPos = (opt.orientation === 'vertical') ? (maxHandlePos - (pos - grabPos)) : (pos - grabPos);
             setPosition(setPos);
         };
 
-        var handleEnd = function(e) {
+        var handleEnd = function (e) {
             e.preventDefault();
             $document.off(moveEvent, handleMove);
             $document.off(endEvent, handleEnd);
@@ -217,7 +217,7 @@
             }
         };
 
-        var cap = function(pos, min, max) {
+        var cap = function (pos, min, max) {
             if (pos < min) {
                 return min;
             }
@@ -227,7 +227,7 @@
             return pos;
         };
 
-        var setPosition = function(pos, triggerSlide) {
+        var setPosition = function (pos, triggerSlide, isInputFormat) {
             var value, newPos;
 
             if (triggerSlide === undefined) {
@@ -241,7 +241,9 @@
             // Update ui
             $fill[0].style[DIMENSION] = (newPos + grabPos) + 'px';
             $handle[0].style[DIRECTION_STYLE] = newPos + 'px';
-            setValue(value);
+            if (!isInputFormat) {
+                setValue(value);
+            }
             // Update globals
             position = newPos;
             opt.value = value;
@@ -251,7 +253,7 @@
         };
 
         // Returns element position relative to the parent
-        var getPositionFromNode = function(node) {
+        var getPositionFromNode = function (node) {
             var i = 0;
             while (node !== null) {
                 i += node.offsetLeft;
@@ -260,7 +262,7 @@
             return i;
         };
 
-        var getRelativePosition = function(e) {
+        var getRelativePosition = function (e) {
             // Get the offset DIRECTION relative to the viewport
             var ucCoordinate = ucfirst(COORDINATE),
                 rangePos = $range[0].getBoundingClientRect()[DIRECTION],
@@ -278,21 +280,21 @@
             return pageCoordinate - rangePos;
         };
 
-        var getPositionFromValue = function(value) {
+        var getPositionFromValue = function (value) {
             var percentage, pos;
             percentage = (value - opt.min) / (opt.max - opt.min);
             pos = (!Number.isNaN(percentage)) ? percentage * maxHandlePos : 0;
             return pos;
         };
 
-        var getValueFromPosition = function(pos) {
+        var getValueFromPosition = function (pos) {
             var percentage, value;
             percentage = ((pos) / (maxHandlePos || 1));
             value = opt.step * Math.round(percentage * (opt.max - opt.min) / opt.step) + opt.min;
             return Number((value).toFixed(_toFixed));
         };
 
-        var setValue = function(value) {
+        var setValue = function (value) {
             if (value === opt.value && $this[0].value !== '') {
                 return;
             }
@@ -310,24 +312,14 @@
         handleEnd = $.proxy(handleEnd, this);
 
         init();
-        $document.on('dom.resize', function() {
+        $document.on('dom.resize', function () {
             update(false);
         });
 
         $document.on(startEvent, '#' + identifier + ':not(.' + opt.disabledClass + ')', handleDown);
 
-        // Listen to programmatic value changes
-        $this.on('change.' + identifier, function(e, data) {
-            if (data && data.origin === identifier) {
-                return;
-            }
-            var value = e.target.value,
-                pos = getPositionFromValue(value);
-            setPosition(pos);
-        });
-
         var obj = {
-            switch: function() {
+            switch: function () {
                 var isSlider;
                 if ($container.is(':hidden')) {
                     $range.hide();
@@ -354,28 +346,38 @@
         if ($watcher.length) {
             $watcher.click(obj.switch);
         }
-        if (opt.onchange) {
-            $this.on('change input', function() {
-                var $this = $(this);
-                var timer;
-                if (timer) {
-                    clearTimeout(timer);
+
+        // Listen to programmatic value changes
+        $this.on('formatinput change.' + identifier, function (e, data) {
+            var isFormatInput = false;
+            if (e.type === 'formatinput') {
+                isFormatInput = true;
+            } else {
+                if (data && data.origin === identifier) {
+                    return;
                 }
-                timer = setTimeout(function() {
-                    if ($.isFunction(opt.onchange)) {
-                        opt.onchange($this, $this.val(), $watcher);
-                    } else {
-                        $(document).trigger(opt.onchange, [$this, $this.val(), $watcher]);
-                    }
-                }, 20);
-            });
-        }
+            }
+
+            var $target = $(e.target);
+            var value = $target.prop('rawValue') || $target.val(),
+                pos = getPositionFromValue(value);
+            setPosition(pos, true, isFormatInput);
+
+            if (opt.onchange) {
+                var $this = $(this);
+                if ($.isFunction(opt.onchange)) {
+                    opt.onchange($this, $this.prop('rawValue') || $this.val(), $watcher);
+                } else {
+                    $(document).trigger(opt.onchange, [$this, $this.prop('rawValue') || $this.val(), $watcher]);
+                }
+            }
+        });
         return obj;
     }
 
     // A really lightweight plugin wrapper around the constructor,
     // preventing against multiple instantiations
-    $.fn.rangeslider = function(options) {
+    $.fn.rangeslider = function (options) {
         var $this = $(this);
         var defaultOpt = {
             orientation: 'horizontal',
@@ -402,11 +404,11 @@
         $this.data('rangesilder', obj);
         return obj;
     };
-    $(document).on('dom.load', function() {
-        $('input[data-rangesilder]').each(function() {
+    $(document).on('dom.load', function () {
+        $('input[data-rangesilder]').each(function () {
             var $this = $(this);
             var data = $this.data();
-            data.value = $this.val() * 1;
+            data.value = ($this.prop('rawValue') || $this.val()) * 1;
             $this.rangeslider(data);
             $this.removeAttr('data-rangesilder');
         });

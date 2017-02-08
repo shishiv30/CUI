@@ -1,28 +1,28 @@
-(function($) {
+(function ($) {
     //customer validate
     var customValidate = {
-        max: function($element) {
+        max: function ($element) {
             var value = $element.val();
             var max = $element.attr('data-max');
             var a = $.isNumeric(value) ? value : Date.parse(value);
             var b = $.isNumeric(max) ? max : Date.parse(max);
             return (a - b) <= 0;
         },
-        less: function($element) {
+        less: function ($element) {
             var value = $element.val();
             var less = $element.attr('data-less');
             var a = $.isNumeric(value) ? value : Date.parse(value);
             var b = $.isNumeric(less) ? less : Date.parse(less);
             return (a - b) < 0;
         },
-        min: function($element) {
+        min: function ($element) {
             var value = $element.val();
             var min = $element.attr('data-min');
             var a = $.isNumeric(value) ? value : Date.parse(value);
             var b = $.isNumeric(min) ? min : Date.parse(min);
             return (a - b) >= 0;
         },
-        greater: function($element) {
+        greater: function ($element) {
             var value = $element.val();
             var greater = $element.attr('data-greater');
             var a = $.isNumeric(value) ? value : Date.parse(value);
@@ -30,7 +30,7 @@
             return (a - b) > 0;
         }
     };
-    var _showValidate = function($element, message) {
+    var _showValidate = function ($element, message) {
         $element.closest('.input').removeClass('has-success');
         $element.closest('.input').addClass('has-error');
         if (message) {
@@ -43,7 +43,7 @@
             }).show();
         }
     };
-    var _passValidate = function($element, isRequried) {
+    var _passValidate = function ($element, isRequried) {
         $element.closest('.input').removeClass('has-error');
         if ($element.data('tip')) {
             $element.data('tip').hide();
@@ -59,7 +59,7 @@
             $element.closest('.input').removeClass('has-success');
         }
     };
-    var _validate = function($element, type, errorText, addition) {
+    var _validate = function ($element, type, errorText, addition) {
         var value = $.trim($element.val());
         var isRequired = type.indexOf('required') >= 0;
         var message = '';
@@ -130,35 +130,36 @@
     var validateConfig = {
         name: 'validate',
         defaultOpt: {
-            errortext: 'Invalid value.'
+            errortext: 'Invalid value.',
+            addition: null
         },
         initBefore: null,
-        init: function(context) {
+        init: function (context) {
             var $this = context.$element;
             var opt = context.opt;
             opt.validate = opt.validate ? opt.validate.split(',') : [];
-            $this.on('change.validate', function() {
+            $this.on('change.validate', function () {
                 _validate($this, opt.validate, opt.errortext, opt.addition);
             });
         },
         exports: {
-            isValid: function() {
+            isValid: function () {
                 var $this = this.$element;
                 var opt = this.opt;
                 return _validate($this, opt.validate, opt.errortext, opt.addition);
             }
         },
-        setOptionsBefore: function(e, context, options) {
+        setOptionsBefore: function (e, context, options) {
             options.validate = options.validate ? options.validate.split(',') : [];
         },
-        setOptionsAfter: function(context) {
+        setOptionsAfter: function (context) {
             var $this = context.$element;
             var opt = context.opt;
-            $this.off('change.validate').on('change.validate', function() {
+            $this.off('change.validate').on('change.validate', function () {
                 _validate($this, opt.validate, opt.errortext, opt.addition);
             });
         },
-        destroyBefore: function(context) {
+        destroyBefore: function (context) {
             var $this = context.$element;
             $this.off('change.validate');
         },
@@ -166,8 +167,8 @@
         isThirdPart: false,
     };
     $.CUI.plugin(validateConfig);
-    $(document).on('dom.load.validate', function() {
-        $('[data-validate]').each(function(index, item) {
+    $(document).on('dom.load.validate', function () {
+        $('[data-validate]').each(function (index, item) {
             var $item = $(item);
             $item.validate($item.data());
             $item.removeAttr('data-validate');

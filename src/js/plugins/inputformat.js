@@ -1,84 +1,84 @@
 (function ($) {
-    $.fn.inputformat = function (option) {
-        var $this = $(this);
-        var defaultOpt = {
+    var inputformatConfig = {
+        name: 'inputformat',
+        defaultOpt: {
             type: 'phone',
-            fraction: ''
-        };
-        var opt = $.extend(defaultOpt, option);
-        var timer = null;
-        var _get = function () {
-            var value = $this.val();
-            switch (opt.type) {
-                case 'phone':
-                    return value.replace(/-/g, '');
-                case 'price':
-                    return value.replace(/,/g, '');
-                default:
-                    return value;
-            }
-        };
-        var _set = function (programmatic) {
-            var value = _get();
-            var formatString = '';
-            switch (opt.type) {
-                case 'phone':
-                    formatString = value;
-                    var pattern = /(\d{3})(\d+)/;
-                    while (pattern.test(formatString))
-                        formatString = formatString.replace(pattern, '$1-$2');
-                    break;
-                case 'price':
-                    var arrPrice = value.toString().split('.');
-                    formatString = arrPrice[0];
-                    var pricePattern = /(\d+)(\d{3})/;
-                    while (pricePattern.test(formatString))
-                        formatString = formatString.replace(pricePattern, '$1,$2');
-                    if (arrPrice.length >= 2) {
-                        formatString += ('.' + arrPrice[1]);
-                    }
-                    break;
-                case 'rate':
-                    var fraction = $.isInt(opt.fraction) ? opt.fraction : 2;
-                    var arrRate = value.toString().split('.');
-                    formatString = arrRate[0].replace(/[^0-9]/g, '');
-                    if (fraction > 0 && arrRate.length > 1) {
-                        var decimals = arrRate[1].length > fraction ? arrRate[1].substring(0, fraction) : arrRate[1];
-                        decimals = decimals.replace(/[^0-9]/g, '');
-                        if (decimals) {
-                            formatString += '.' + decimals;
+        },
+        initBefore: null,
+        init: function (context) {
+            var $this = context.$element;
+            var opt = context.opt;
+            var timer = null;
+            var _get = function () {
+                var value = $this.val();
+                switch (opt.type) {
+                    case 'phone':
+                        return value.replace(/[^0-9]/g, '');
+                    case 'price':
+                        return value.replace(/[^0-9.]/g, '');
+                    default:
+                        return value;
+                }
+            };
+            var _set = function () {
+                var value = _get();
+                var formatString = '';
+                switch (opt.type) {
+                    case 'phone':
+                        if (value.length >= 4) {
+                            formatString += value.slice(0, 3) + '-';
+                            if (value.length >= 7) {
+                                formatString += value.slice(3, 6) + '-';
+                                formatString += value.slice(6, Math.min(value.length, 11));
+                            } else {
+                                formatString += value.slice(3, value.length);
+                            }
                         } else {
-                            formatString += '.';
+                            formatString += value;
                         }
-                    }
-                    break;
-                default:
-                    formatString = value;
-                    break;
-            }
-            $this.val(formatString);
-            $this.prop('rawValue', value);
-            if (!programmatic) {
-                $this.trigger('formatinput', [formatString, value]);
-            }
-        };
+                        break;
+                    case 'price':
+                        var arrPrice = value.toString().split('.');
+                        formatString = arrPrice[0];
+                        var pricePattern = /(\d+)(\d{3})/;
+                        while (pricePattern.test(formatString))
+                            formatString = formatString.replace(pricePattern, '$1,$2');
+                        if (arrPrice.length >= 2) {
+                            formatString += ('.' + arrPrice[1]);
+                            value = arrPrice[0] + '.' + arrPrice[1];
+                        }
+                        break;
+                    default:
+                        formatString = value;
+                        break;
+                }
+                $this.val(formatString);
+                $this.prop('rawValue', value);
+                return formatString;
+            };
 
-        if ($.isInt($this.val())) {
             _set();
-        }
-
-        $this.on('keyup input change', function (e, programmatic) {
-            var $this = $(this);
-            if (timer) {
-                clearTimeout(timer);
-            }
-            if ($this.prop('rawValue') !== _get()) {
+            $this.on('input', function (e, a, b) {
+                var $this = $(this);
+                if (timer) {
+                    clearTimeout(timer);
+                }
                 timer = setTimeout(function () {
-                    _set(programmatic === true);
+                    if ($this.prop('rawValue') !== _get()) {
+                        var value = _set();
+                        $this.trigger('formatinput', [value]);
+                    }
                 }, 10);
-            }
-        });
+            });
+        },
+        exports: {},
+        setOptionsBefore: null,
+        setOptionsAfter: null,
+        destroyBefore: null,
+        initAfter: null,
+        isThirdPart: false,
     };
+    $.CUI.plugin(inputformatConfig);
     $(document).on('dom.load.inputformat', function () {
         $('[data-inputformat]').each(function (index, item) {
             var $this = $(item);
