@@ -6,14 +6,6 @@ input[type='text'], input[type='password'], input[type='email'], input[type='tel
     font-family: $font-light;
 }
 
-select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: $color-f;
-    cursor: pointer;
-}
-
 input[type='text']::-ms-clear {
     width: 0;
     height: 0;
@@ -52,12 +44,12 @@ input[type='text']::-ms-clear {
     &.right {
         > input {
             padding-right: $form-size-normal;
-        }
-        > label, > i, > a {
-            right: 0;
-            left: auto;
-            @include border-left-radius(0px);
-            @include border-right-radius(3px);
+            ~ label, ~ i, ~ a {
+                right: 0;
+                left: auto;
+                @include border-left-radius(0px);
+                @include border-right-radius(3px);
+            }
         }
     }
     &.left {
@@ -71,12 +63,14 @@ input[type='text']::-ms-clear {
             @include border-right-radius(0px);
         }
         &.right {
-            > label, > i, > a {
-                &:last-of-type {
-                    right: 0;
-                    left: auto;
-                    @include border-right-radius(3px);
-                    @include border-left-radius(0px);
+            > input {
+                ~ label, ~ i, ~ a {
+                    &:last-of-type {
+                        right: 0;
+                        left: auto;
+                        @include border-right-radius(3px);
+                        @include border-left-radius(0px);
+                    }
                 }
             }
         }
@@ -193,7 +187,6 @@ input[type='text']::-ms-clear {
     }
     &.has-error {
         .tooltip {
-            transition: all 1s;
             margin-top: 0;
             left: 0 !important;
             right: 0 !important;

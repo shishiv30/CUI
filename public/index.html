@@ -205,8 +205,8 @@
                         <div class="col-xs-12 col-sm-6">
                             <label for="txtMail">Mail Box</label>
                             <div class="input right">
-                                <i class="icon-envelope"></i>
                                 <input type="email" id="txtMail" name='email' placeholder="email" data-validate='email'>
+                                <i class="icon-envelope"></i>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-6">
@@ -296,26 +296,9 @@
                 <div id="texboxPanel" class="form row" data-form>
                     <div class="col-xs-12 col-sm-6">
                         <div data-textbox>
-                            <div class="input small right">
-                                <label for="txtReq2">Message</label>
-                                <input type="email" id="txtReq2" name='name' placeholder="name" value="" data-validate='required,email'>
-                                <i class="icon-envelope"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <div data-textbox>
-                            <div class="input right">
-                                <label for="txtReq10">Message</label>
-                                <input type="email" id="txtReq10" name='name' placeholder="name" value="" data-validate='required,email'>
-                                <i class="icon-envelope"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <div data-textbox>
-                            <div class="input large right">
+                            <div class="input small left right">
                                 <label for="txtReq1">Message</label>
+                                <i>@</i>
                                 <input type="email" id="txtReq1" name='name' placeholder="name" value="" data-validate='required,email'>
                                 <i class="icon-envelope"></i>
                             </div>
@@ -323,9 +306,29 @@
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <div data-textbox>
+                            <div class="input left right">
+                                <label for="txtReq2">Message</label>
+                                <i>@</i>
+                                <input type="email" id="txtReq2" name='name' placeholder="name" value="" data-validate='required,email'>
+                                <i class="icon-envelope"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div data-textbox>
+                            <div class="input large left right">
+                                <label for="txtReq3">Message</label>
+                                <i>@</i>
+                                <input type="email" id="txtReq3" name='name' placeholder="name" value="" data-validate='required,email'>
+                                <i class="icon-envelope"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div data-textbox>
                             <div class="textarea">
-                                <label for="txtMsg">Message</label>
-                                <textarea name="message" id="txtMsg" data-validate='required'></textarea>
+                                <label for="textReq4">Message</label>
+                                <textarea name="message" id="textReq4" data-validate='required'></textarea>
                             </div>
                         </div>
                     </div>
@@ -493,9 +496,9 @@
                     class="subtitle">the rangesilder plugin</span> <i class="icon-angle-down right"></i></a>
                 <div id="rangesilderPanel" data-form class="form">
                     <div class="row">
-                        <div class="col-xs-12">
-                            <div class="input left">
-                                <label>$</label>
+                        <div class="col-xs-12" data-textbox>
+                            <div class="input left" >
+                                <label for="txtPrice">price</label>
                                 <input type="text" id="txtPrice" name="price"
                                        data-inputformat
                                        data-type="price"

@@ -21,7 +21,6 @@
             border: none;
             color: $color-7;
             font-size: $font-size-5;
-            transition: all .3s;
             z-index: 1;
         }
     }
@@ -30,31 +29,69 @@
             left: 10px;
             right: auto;
             top: 50%;
-
         }
-        input {
+        > input {
             padding: 15px 10px 0 10px;
         }
         &.large {
             > label[for] {
-                left: 10px;
                 right: auto;
                 top: 50%;
                 font-size: 18px;
             }
-            input {
+            > input {
                 padding: 15px 10px 0 10px;
             }
         }
         &.small {
             > label[for] {
-                left: 10px;
                 right: auto;
                 top: 50%;
                 font-size: 11px;
             }
-            input {
+            > input {
                 padding: 8px 10px 0 10px
+            }
+        }
+        &.right {
+            > input {
+                padding-right: 30px;
+            }
+            > i, > a {
+                line-height: 52px;
+                width: 30px;
+            }
+            &.small {
+                > i, > a {
+                    line-height: 45px;
+                }
+            }
+            &.large {
+                > i, > a {
+                    line-height: 60px;
+                }
+            }
+        }
+        &.left {
+            > label[for] {
+                left: 30px;
+            }
+            > input {
+                padding-left: 30px;
+            }
+            > i, > a {
+                line-height: 52px;
+                width: 30px;
+            }
+            &.small {
+                > i, > a {
+                    line-height: 45px;
+                }
+            }
+            &.large {
+                > i, > a {
+                    line-height: 60px;
+                }
             }
         }
     }
