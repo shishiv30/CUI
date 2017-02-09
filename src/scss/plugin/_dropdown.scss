@@ -1,0 +1,23 @@
+.select-textbox {
+    position: relative;
+}
+
+.select-textbox label {
+    position: absolute;
+    top: 4px;
+    left: 10px;
+    color: #a4a4a4 !important;
+    font-size: 12px;
+}
+
+.select-textbox select {
+    padding: 8px 0 0 10px;
+}
+
+.select-textbox i {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 25px;
+    color: #a4a4a4;
+}

@@ -1,0 +1,12 @@
+select {
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+    border: 1px solid $color-border;
+    font-family: $font-light;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: $color-f;
+    cursor: pointer;
+}
