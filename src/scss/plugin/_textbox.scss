@@ -33,6 +33,12 @@
         > input {
             padding: 15px 10px 0 10px;
         }
+        > i {
+            line-height: 35px;
+        }
+        > a {
+            line-height: 52px;
+        }
         &.large {
             > label[for] {
                 right: auto;
@@ -41,6 +47,13 @@
             }
             > input {
                 padding: 15px 10px 0 10px;
+            }
+            > i {
+                font-size: 18px;
+                line-height: 45px;
+            }
+            > a {
+                line-height: 45px;
             }
         }
         &.small {
@@ -52,24 +65,20 @@
             > input {
                 padding: 8px 10px 0 10px
             }
+            > i {
+                font-size: 12px;
+                line-height: 35px;
+            }
+            > a {
+                line-height: 52px;
+            }
         }
         &.right {
             > input {
                 padding-right: 30px;
             }
             > i, > a {
-                line-height: 52px;
                 width: 30px;
-            }
-            &.small {
-                > i, > a {
-                    line-height: 45px;
-                }
-            }
-            &.large {
-                > i, > a {
-                    line-height: 60px;
-                }
             }
         }
         &.left {
@@ -80,26 +89,16 @@
                 padding-left: 30px;
             }
             > i, > a {
-                line-height: 52px;
                 width: 30px;
             }
-            &.small {
-                > i, > a {
-                    line-height: 45px;
-                }
-            }
-            &.large {
-                > i, > a {
-                    line-height: 60px;
-                }
-            }
+
         }
     }
     .textarea {
         background-color: $color-f;
         border: 1px solid $color-border;
         label[for] {
-            left: 10px;
+            left: 5px;
             right: auto;
             top: 12px;
         }
@@ -115,16 +114,27 @@
         .input, .textarea {
             > label[for] {
                 top: 0;
-                left: 10px;
+                left: 5px;
                 right: auto;
                 transform: scale(0.8) translateY(0);
                 transform-origin: left;
             }
         }
         .input {
+            > i {
+                line-height: 52px;
+            }
             &.small {
                 > label[for] {
                     top: -2px;
+                }
+                > i {
+                    line-height: 45px;
+                }
+            }
+            &.large {
+                > i {
+                    line-height: 60px;
                 }
             }
         }

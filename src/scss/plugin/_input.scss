@@ -15,6 +15,9 @@ input[type='text']::-ms-clear {
     position: relative;
     display: inline-block;
     width: 165px;
+    > i {
+        font-style: normal;
+    }
     > input, > select {
         height: $form-size-normal;
         line-height: $form-size-normal - 2;
