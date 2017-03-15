@@ -1,3 +1,17 @@
+@mixin hidescrollbar() {
+    scrollbar-face-color: rgba(255, 255, 255, 0);
+    scrollbar-shadow-color: rgba(255, 255, 255, 0);
+    scrollbar-highlight-color: rgba(255, 255, 255, 0);
+    scrollbar-3dlight-color: rgba(255, 255, 255, 0);
+    scrollbar-darkshadow-color: rgba(255, 255, 255, 0);
+    scrollbar-track-color: rgba(255, 255, 255, 0);
+    scrollbar-arrow-color: rgba(255, 255, 255, 0);
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+}
+
 @mixin responsive-visibility($parent) {
     #{$parent} {
         display: block !important;

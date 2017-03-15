@@ -1,52 +1,82 @@
-// simplezoomer
 (function($) {
-    $.fn.imgzoom = function(options) {
-        var defaultOpt = {
-            zoomType: 'zoomin',
-            zoomStep: 10,
+    var imgzoomConfig = {
+        name: 'imgzoom',
+        defaultOpt: {
+            step: 0,
             max: 200,
             min: 50,
+            defaultzoom: 100,
             target: '',
-            onZoom: null,
-        };
-        var opt = $.extend({}, defaultOpt, options);
-        var $this = $(this);
-        var $target = $(opt.target);
-        var _zoom = function() {
-            var currentzoom = $target.data('currentzoom');
-            if (!currentzoom) {
-                currentzoom = Math.floor($target.find('img').width() / $target.outerWidth() * 10) * 10;
+            zoombefore: null,
+            zoomafter: null
+        },
+        init: function(context) {
+            var opt = context.opt;
+            var $this = context.$element;
+            var $target = null;
+            if (opt.target) {
+                $target = context.$target = $(opt.target);
+            } else {
+                $target = $this;
             }
-            if (opt.zoomType === 'zoomin') {
-                currentzoom = Math.min(opt.max, (currentzoom + opt.zoomStep));
-            } else if (opt.zoomType === 'zoomout') {
-                currentzoom = Math.max(opt.min, (currentzoom - opt.zoomStep));
-            }
-            $target.data('currentzoom', currentzoom);
-            $target.find('img').css({'width': currentzoom + '%'});
-            if (opt.onZoom) {
-                if ($.isFunction(opt.onZoom)) {
-                    opt.onZoom(currentzoom);
-                } else {
-                    $(document).trigger(opt.onZoom, [currentzoom]);
+            context._zoom = function(tmpStep) {
+                var step = $.isNumeric(tmpStep) || opt.step;
+                var currentzoom = $target.data('currentzoom');
+                if (!currentzoom) {
+                    currentzoom = Math.floor($target.find('img').width() / $target.outerWidth() * 10) * 10;
+                }
+                if (step > 0) {
+                    currentzoom = Math.min(opt.max, (currentzoom + step));
+                } else if (step < 0) {
+                    currentzoom = Math.max(opt.min, (currentzoom + step));
+                } else if (step == 0) {
+                    currentzoom = opt.defaultzoom;
+                }
+                $target.data('currentzoom', currentzoom);
+                $target.find('img').css({'width': currentzoom + '%'});
+            };
+        },
+        exports: {
+            getZoom: function() {
+                var $target = this.$target;
+                return Math.floor($target.find('img').width() / $target.outerWidth() * 10) * 10;
+            },
+            setZoom: function(step) {
+                var opt = this.opt;
+                if (opt.zoombefore) {
+                    $.CUI.addEvent(opt.zoombefore, this);
+                }
+                this._zoom(step);
+                if (opt.zoomafter) {
+                    $.CUI.addEvent(opt.zoomafter, this);
                 }
             }
-        }
-        $this.on('click', _zoom);
-    };
-    $(document).on('dom.load.imgzoom', function() {
-        $('[data-imgzoom]').each(function() {
-            var $this = $(this);
-            $this.imgzoom({
-                zoomType: $this.attr('data-zoomtype'),
-                zoomStep: $this.attr('data-zoomstep'),
-                max: $this.attr('data-max:'),
-                min: $this.attr('data-min'),
-                target: $this.attr('data-target'),
-                onZoom: $this.attr('data-onzoom')
+        },
+        setOptionsBefore: null,
+        setOptionsAfter: null,
+        initBefore: null,
+        initAfter: function(context) {
+            var $this = context.$element;
+            var exports = context.exports;
+            exports.setZoom(0);
+            $this.on('click.imgzoom', function() {
+                exports.setZoom();
             });
+        },
+        destroyBefore: function(context) {
+            var $this = context.$element;
+            $this.off('click.imgzoom');
+        }
+    };
+    $.CUI.plugin(imgzoomConfig);
+    $(document).on('dom.load.imgzoom', function() {
+        $('[data-imgzoom]').each(function(index, item) {
+            var $this = $(item);
+            var data = $this.data();
+            $this.imgzoom(data);
             $this.removeAttr('data-imgzoom');
+            $this.attr('data-imgzoom-load', '');
+            $this.attr('role', 'Imgzoom');
         });
     });
 })(jQuery);
-
