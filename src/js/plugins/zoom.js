@@ -25,6 +25,8 @@
                 if (!currentzoom) {
                     currentzoom = Math.floor($target.find('img').width() / $target.outerWidth() * 10) * 10;
                 }
+                var scrollTop = $target.scrollTop();
+                var scrollTopRate = scrollTop / $target.prop('scrollHeight');
                 if (step > 0) {
                     currentzoom = Math.min(opt.max, (currentzoom + step));
                 } else if (step < 0) {
@@ -34,6 +36,10 @@
                 }
                 $target.data('currentzoom', currentzoom);
                 $target.find('img').css({'width': currentzoom + '%'});
+                if (scrollTop) {
+                    scrollTop = scrollTopRate * $target.prop('scrollHeight');
+                    $target.scrollTop(scrollTop);
+                }
             };
         },
         exports: {
