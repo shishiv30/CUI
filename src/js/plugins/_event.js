@@ -19,6 +19,9 @@
     var eventSetting = {
         setup: function() {
             var $this = $(this);
+            $this.off('gesturestart').on('gesturestart', function(e) {
+                e.preventDefault();
+            });
             $this.off('touchstart.cui').on('touchstart.cui', function() {
                 var $ele = $(this);
                 $ele.data('_touchStart', null);
