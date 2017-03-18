@@ -160,7 +160,7 @@
         > ul {
             transition: height 0.2s linear 0.4s;
             &.active {
-                & > li {
+                > li {
                     opacity: 1;
                 }
             }

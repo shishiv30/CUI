@@ -1,25 +1,22 @@
 .shifter {
     overflow: hidden;
     position: relative;
-
     .wrap {
         overflow-x: scroll;
         overflow-y: hidden;
-        & > ul {
+    }
+    ul {
+        overflow: hidden;
+        > li {
+            float: left;
             overflow: hidden;
-
-            & > li {
-                float: left;
-                overflow: hidden;
-                position: relative;
-                transition: opacity 1s .5s;
-                & > * {
-                    display: block;
-                }
+            position: relative;
+            transition: opacity 1s .5s;
+            > div > img {
+                @extend %block-center;
             }
         }
     }
-
     .next,
     .prev {
         z-index: 2;
@@ -71,5 +68,17 @@
     .img-loading {
         @extend %img-loading;
         opacity: .8;
+    }
+}
+
+//default slider height
+.shifter {
+    height: 300px;
+    .wrap {
+        height: 321px;
+    }
+    li {
+        height: 300px;
+        width: 425px;
     }
 }

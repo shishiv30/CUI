@@ -5,7 +5,7 @@
     z-index: 196;
     background: $color-e;
     height: 40px;
-    & > .caret {
+    > .caret {
         z-index: 1;
         position: absolute;
         display: block;
@@ -65,7 +65,7 @@
         .dropdown-item {
             max-height: 350px;
         }
-        & > .caret {
+        > .caret {
             i {
                 transform: rotate(-180deg);
             }

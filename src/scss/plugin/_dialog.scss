@@ -97,7 +97,7 @@
         }
         .dialog-body {
             margin: 0;
-            & > div {
+            > div {
                 padding: 15px 15px 0 15px;
             }
         }
@@ -105,13 +105,13 @@
             margin: 0;
             padding: 0;
             z-index: 10;
-            & > li {
+            > li {
                 margin: 0;
                 padding: 0;
                 text-align: left;
                 font-size: $font-size-4;
                 a {
-                    & > i {
+                    > i {
                         float: left;
                         margin-right: 10px;
                         font-size: $font-size-3;

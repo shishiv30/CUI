@@ -8,13 +8,17 @@
         width: 200%;
         height: 100%;
         overflow: hidden;
-        & > li {
+        > li {
             width: 50%;
             height: 100%;
             float: left;
             overflow: hidden;
             position: relative;
             transition: opacity 1s 0.5s;
+            > div, > img {
+                min-width: 100%;
+                @extend %block-center;
+            }
         }
     }
     .next,

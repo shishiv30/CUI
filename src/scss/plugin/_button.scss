@@ -12,7 +12,7 @@
     border-radius: 5px;
     transition: opacity 0.5s;
     opacity: 1;
-    & > * {
+    > * {
         display: inline;
     }
     &:link,
@@ -38,7 +38,7 @@
         font-size: $font-size-5;
         padding: 0 8px;
         border-radius: 4px;
-        & > * {
+        > * {
             line-height: $form-size-small - 2;
         }
     }

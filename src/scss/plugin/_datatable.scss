@@ -1,4 +1,5 @@
 .datatable {
+    width: 100%;
     border-collapse: collapse;
     th, td {
         padding: 10px 5px;
@@ -8,16 +9,16 @@
 }
 
 .datatable-sort {
-    position:relative;
+    position: relative;
     display: block;
     &.active:before {
         position: absolute;
-        right:5px;
-        top:4px;
+        right: 5px;
+        top: 4px;
         @extend %icon;
         @extend .icon-caret-up;
-        right:0;
-        posistion:aboslute;
+        right: 0;
+        posistion: aboslute;
         &.desc:before {
             @extend %icon;
             @extend .icon-caret-down;

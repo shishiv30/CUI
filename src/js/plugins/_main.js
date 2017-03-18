@@ -2,7 +2,6 @@ window.context = {};
 //initial event
 (function($) {
     $(document).ready(function($) {
-
         var _isMobile = function() {
             if ($.isMobile()) {
                 $('#body').addClass('mobile');
@@ -10,7 +9,6 @@ window.context = {};
                 $('#body').addClass('desktop');
             }
         };
-
         var _eventKeyDownListener = function() {
             $(window).on('keydown', function(e) {
                 var $focus = $(':focus');
@@ -20,7 +18,6 @@ window.context = {};
                 }
             });
         };
-
         var scrollTimer;
         var originalScrollTop = 0;
         var isScrollDown;
@@ -44,9 +41,9 @@ window.context = {};
         };
 
         var resizeTimer;
-        var _oringaWindowWidth = $(window).width();
+        var _oringalWindowWidth = $(window).width();
         var _resizeTrigger = function(e) {
-            var isWidthChange = _oringaWindowWidth != $(window).width();
+            var isWidthChange = _oringalWindowWidth != $(window).width();
             var causeByKeyboard = $('input, select, textarea').is(':focus');
             $(document).trigger('dom.resize', [e, causeByKeyboard, isWidthChange]);
         };

@@ -8,7 +8,7 @@
 
 .default-menu-list {
     position: relative;
-    & > ul {
+    > ul {
         position: absolute;
         left: -90px;
         top: 50px;
@@ -17,7 +17,7 @@
         z-index: 10;
         border-radius: 2px;
         box-shadow: 0 1px 3px $color-6;
-        & > li {
+        > li {
             text-align: left;
             a {
                 display: block;
