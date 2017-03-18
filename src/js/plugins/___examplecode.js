@@ -1,4 +1,6 @@
-//todo example code for create a example
+//seed code for create a plugin
+//replace all of the "example" with the plugin name. (the plugin name should be same as the js file name);
+
 // (function($) {
 //     var exampleConfig = {
 //         name: 'example',
@@ -39,7 +41,7 @@
 //             $this.example(data);
 //             $this.removeAttr('data-example');
 //             $this.attr('data-example-load', '');
-//             $this.attr('role', 'Plugin');
+//             $this.attr('role', 'example');
 //         });
 //     });
 // })(jQuery);
