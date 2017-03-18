@@ -43,7 +43,7 @@
                         return $.htmlencode(value);
                     case 'date':
                         var time = new Date(value);
-                        return time.valueOf() ? time.format(column.format || 'Y-m-d') : '';
+                        return time.valueOf() ? time.format(column.format || 'M/D/Y') : '';
                     default:
                         return value;
                 }

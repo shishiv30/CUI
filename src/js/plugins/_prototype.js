@@ -1,6 +1,6 @@
 // For use moment.js convenience
-Date.prototype.format = function(mask, utc) {
-    return moment(this, mask, utc);
+Date.prototype.format = function(mask) {
+    return moment(this).format(mask);
 };
 
 String.prototype.format = function() {
