@@ -4,6 +4,11 @@
     .wrap {
         overflow-x: scroll;
         overflow-y: hidden;
+        @include hidescrollbar();
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
     }
     ul {
         overflow: hidden;

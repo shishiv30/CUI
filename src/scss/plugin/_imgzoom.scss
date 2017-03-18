@@ -6,6 +6,10 @@
     -webkit-text-size-adjust: none;
     overflow: scroll;
     @include hidescrollbar();
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
     img {
         display: inline-block;
     }
