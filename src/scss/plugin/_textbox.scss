@@ -10,11 +10,13 @@
     input:-ms-input-placeholder, textarea:-ms-input-placeholder {
         color: transparent;
     }
+    input, textarea {
+        color: transparent;
+    }
     .input, .textarea {
         > label[for] {
             position: absolute;
             line-height: 20px;
-            width: auto;
             height: 20px;
             transform: translateY(-50%);
             padding: 0 2px;
@@ -22,6 +24,8 @@
             color: $color-7;
             font-size: $font-size-5;
             z-index: 1;
+            text-align: left;
+            @extend %singleline;
         }
     }
     .input {
@@ -29,6 +33,17 @@
             left: 10px;
             right: auto;
             top: 50%;
+            max-width: calc(100% - 10px);
+        }
+        &.right, &.left {
+            > label[for] {
+                max-width: calc(100% - 40px);
+            }
+        }
+        &.right.left {
+            > label[for] {
+                max-width: calc(100% - 70px);
+            }
         }
         > input {
             padding: 15px 10px 0 10px;
@@ -91,7 +106,6 @@
             > i, > a {
                 width: 30px;
             }
-
         }
     }
     .textarea {
@@ -111,6 +125,9 @@
         }
     }
     &.focus {
+        input, textarea {
+            color: $color-text-default;
+        }
         .input, .textarea {
             > label[for] {
                 top: 0;
@@ -118,6 +135,7 @@
                 right: auto;
                 transform: scale(0.8) translateY(0);
                 transform-origin: left;
+                max-width: 100%;
             }
         }
         .input {
@@ -178,6 +196,10 @@
         .tooltip.error {
             right: 0 !important;
             left: auto !important;
+            .tooltip-inner {
+                transform: scale(0.8) translateY(-20%);
+                text-align: right;
+            }
             transform: translateY(0) !important;
         }
     }

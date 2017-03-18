@@ -4,6 +4,9 @@ a {
     color: $color-link-default;
     opacity: 0.95;
     outline: none;
+    [href='javascript:;'] {
+        color: $color-text-default;
+    }
     &:hover,
     &:active {
         opacity: 1;

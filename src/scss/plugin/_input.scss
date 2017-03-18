@@ -19,6 +19,9 @@ input[type='text']::-ms-clear {
         font-style: normal;
     }
     > input, > select {
+        -o-text-overflow: ellipsis;
+        -ms-text-overflow: ellipsis;
+        text-overflow: ellipsis;
         height: $form-size-normal;
         line-height: $form-size-normal - 2;
         padding: 0 5px;
