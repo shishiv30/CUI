@@ -1,4 +1,4 @@
-module.exports = function (grunt) {
+module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -23,15 +23,14 @@ module.exports = function (grunt) {
                 }]
             }
         },
-
         compass: {
             dist: {
                 options: {
                     sassDir: 'src/scss/',
                     cssDir: 'public/dist/src/',
-                    imagesDir: "src/img/",
-                    generatedImagesDir: "public/dist/src/img/s-img/",
-                    httpGeneratedImagesPath: "img/s-img/"
+                    imagesDir: 'src/img/',
+                    generatedImagesDir: 'public/dist/src/img/s-img/',
+                    httpGeneratedImagesPath: 'img/s-img/'
                 }
             }
         },
