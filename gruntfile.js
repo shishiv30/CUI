@@ -63,13 +63,19 @@ module.exports = function (grunt) {
                 files: ['src/js/plugins/*.js'],
                 tasks: ['concat:dist']
             },
-            css: {
+            scss: {
                 files: ['src/scss/*.scss', 'src/scss/**/*.scss'],
                 tasks: ['compass:dist']
+            },
+            css: {
+                options: {
+                    debounceDelay: 250,
+                    livereload: true
+                },
+                files: ['public/dist/src/cui.css'],
             }
         }
     });
-
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-compass');

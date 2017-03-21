@@ -91,13 +91,14 @@ h5,
     @extend %f5;
 }
 
-%f6{
+%f6 {
     font-size: $font-size-6;
 }
+
 h6,
 .h6,
 .f6 {
-     @extend %f6;
+    @extend %f6;
 }
 
 %f7

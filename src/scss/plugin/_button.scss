@@ -134,6 +134,7 @@
     }
     &.red {
         background-color: $color-danger-l1;
+        background-color: black;
         &:link,
         &:visited {
             color: $color-f;
