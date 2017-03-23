@@ -27,6 +27,8 @@ window.context = {};
             var currentScrollTop = $(document).scrollTop();
             if (currentScrollTop > originalScrollTop) {
                 isScrollDown = true;
+            } else if (currentScrollTop < originalScrollTop) {
+                isScrollDown = false;
             }
             originalScrollTop = currentScrollTop;
             $(document).trigger('dom.scroll', [e, isScrollDown, originalScrollTop, causeByKeyboard]);

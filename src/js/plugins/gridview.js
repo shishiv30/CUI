@@ -110,18 +110,31 @@
                 height: 250,
                 width: 400
             }],
+            target: null,
+            container: null,
             template: '<img >',
-            breakpoint: [414, 992]
+            breakpoint: [414, 640, 992, 1200],
+            colCount: -1
         };
-        var $this = $(this);
         var opt = $.extend({}, defaultOpt, option);
+        var $this = opt.target ? $(opt.target) : $(this);
+        var $container = opt.container ? $(opt.container) : $(window);
+        var _getpositionInfo = function() {
+            return {
+                scrollTop: $container.scrollTop(),
+                scrollBottom: $container.scrollTop() + $container.height(),
+                offsetTop: $this.offset().top,
+                offsetBottom: $this.offset().top + $this.height()
+            };
+        };
+        var positionInfo = _getpositionInfo();
         var _getColumnByBreakPoint = function(newBreakPoint) {
             opt.breakpoint = newBreakPoint || opt.breakpoint;
             var containerWidth = $this.width();
             if (opt.breakpoint && opt.breakpoint.length) {
                 return opt.breakpoint.reduce(function(pre, next, index) {
                     if (containerWidth > next) {
-                        return index + 1;
+                        return pre + 1;
                     } else {
                         return pre;
                     }
@@ -132,28 +145,27 @@
         var _getSmallestColumn = function(array) {
             return array.reduce(function(pre, next) {
                 if (pre) {
-                    return pre.data('ratio') >= next.data('ratio') ? pre : next;
+                    return pre.data('ratio') <= next.data('ratio') ? pre : next;
                 } else {
                     return next;
                 }
             }, null);
         };
-        var colCount;
-        var _createColumns = function(colCount) {
+        var _createColumns = function(count) {
             var columns = [];
-            var columnswidth = (100 / colCount) + '%';
-            while (colCount > 0) {
-                var $ul = $('<ul></ul>').css({
+            var columnswidth = (100 / count) + '%';
+            while (count > 0) {
+                var $ul = $('<ul class="gridview-ul"></ul>').css({
                     width: columnswidth
                 });
                 $ul.data('ratio', 0);
                 columns.push($ul);
-                colCount--;
+                count--;
             }
             return columns;
         };
         var _createItemInColumns = function(item) {
-            var $tmp = $('<li>' + opt.template + '</li>');
+            var $tmp = $('<li class="gridview-li">' + opt.template + '</li>');
             var ratio = item.height / item.width;
             $tmp.data({
                 ratio: ratio,
@@ -165,29 +177,68 @@
             return $tmp;
         };
         var _loadImage = function() {
-            var $window = $(window);
-            var top = $window.scrollTop();
-            var bottom = top + $window.height();
             $this.find('li').each(function(index, item) {
                 var $item = $(item);
-                var base = $item.offset().top;
-                if (base < bottom && (base + $item.height()) > top) {
+                var offsetTop = $item.offset().top;
+                var offsetBottom = offsetTop + $item.outerHeight();
+                if (offsetTop < positionInfo.scrollBottom && offsetBottom > positionInfo.scrollTop) {
                     var src = $item.data('src');
                     var $img = $item.find('img');
                     $item.addClass('gridview-loading');
                     $img.on('load', function() {
+                        $item.removeClass('gridview-loading');
                         $item.addClass('gridview-loaded');
                     });
                     $img.on('error', function() {
+                        $item.removeClass('gridview-loading');
                         $item.addClass('gridview-error');
                     });
-                    $item.attr('src', src);
+                    $img.attr('src', src);
                 }
             });
         };
+        var _moveByScroll = function(isScrollDown) {
+            var verticalBottom = $this.hasClass('verticalBottom');
+            var heightList = $this.find('> ul').map(function(index, item) {
+                return $(item).outerHeight();
+            });
+            var needMove = false;
+            var minHeight = $this.height() - Math.min.apply(this, heightList);
+            if (isScrollDown) {
+                minHeight = !verticalBottom ? minHeight : 0;
+                if (positionInfo.scrollTop > (positionInfo.offsetTop + minHeight) && positionInfo.scrollBottom < positionInfo.offsetBottom) {
+                    needMove = true;
+                }
+            } else {
+                minHeight = verticalBottom ? minHeight : 0;
+                if (positionInfo.scrollTop > positionInfo.offsetTop && positionInfo.scrollBottom < (positionInfo.offsetBottom - minHeight)) {
+                    needMove = true;
+                }
+            }
+            if (needMove) {
+                if (isScrollDown) {
+                    $this.removeClass('scrollUP');
+                    var containerHeight = $this.height();
+                    $this.find('.gridview-ul').each(function(index, item) {
+                        var $item = $(item);
+                        var offsetY = containerHeight - $item.height();
+                        $item.css('transform', ('translateY(' + offsetY + 'px)'));
+                    });
+                    $this.addClass('verticalBottom');
+                } else {
+                    $this.addClass('scrollUP');
+                    $this.find('.gridview-ul').each(function(index, item) {
+                        var $item = $(item);
+                        $item.css('transform', ('translateY(' + 0 + ')'));
+                    });
+                    $this.removeClass('verticalBottom');
+                }
+            }
+
+        };
+
         var _render = function() {
-            var $html = $('<div class="gridview"></div>');
-            var ulList = _createColumns(colCount);
+            var ulList = _createColumns(opt.colCount);
             $.each(opt.items, function(index, item) {
                 var $li = _createItemInColumns(item);
                 var $ul = _getSmallestColumn(ulList);
@@ -195,21 +246,22 @@
                 var newRatio = $ul.data('ratio') + $li.data('ratio');
                 $ul.data('ratio', newRatio);
             });
+            $this.addClass('gridview');
+            $this.empty();
             $.each(ulList, function(index, ul) {
-                $html.append(ul);
+                $this.append(ul);
             });
-            $this.html($html);
             _loadImage();
             $(document).trigger('dom.load');
         };
         var _reload = function(force) {
             if (force) {
-                colCount = -1;
+                opt.colCount = -1;
             }
             if (opt.items && opt.items.length) {
                 var newColCount = _getColumnByBreakPoint();
-                if (colCount !== newColCount) {
-                    colCount = newColCount;
+                if (opt.colCount !== newColCount) {
+                    opt.colCount = newColCount;
                     _render();
                 }
             }
@@ -218,10 +270,15 @@
         var obj = {
             reload: _reload
         };
-        $(document).on('dom.scroll', function() {
+        $container.on('scroll', $.throttle(function() {
+            var currentPositionInfo = _getpositionInfo();
+            var isDown = positionInfo.scrollTop < currentPositionInfo.scrollTop;
+            positionInfo = currentPositionInfo;
+            _moveByScroll(isDown);
             _loadImage();
-        });
+        }));
         $(document).on('dom.resize', function() {
+            positionInfo = _getpositionInfo();
             _reload();
         });
         $this.data('gridview', obj);
@@ -229,8 +286,8 @@
     $(document).on('dom.load', function() {
         $('[data-gridview]').each(function(index, item) {
             var $item = $(item);
-            $item.gridview($item.data());
             $item.removeAttr('data-gridview');
+            $item.gridview($item.data());
             $item.attr('data-gridview-load');
             $item.attr('role', 'gridview');
         });

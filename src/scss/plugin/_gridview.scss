@@ -1,33 +1,45 @@
-.griditem {
+.gridview {
     @extend %clearfix;
-    > ul {
-        float: left;
-        > li {
-            transition: background 1s;
-            background: transparent;
-            display: block;
-            position: relative;
-            overflow: hidden;
-            img {
-                transition: all 1s;
-                position: absolute;
-                left: 0;
-                top: 0;
-                bottom: 0;
-                right: 0;
-                transform: translateY(-100%);
-            }
-            &.gridview-loading {
-                background: $color-3;
-            }
-            &.gridview-loaded {
-                img {
-                    transform: translateY(0%);
-                }
-            }
-            &.gridview-error {
+    img {
+        width: 100%;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        transition: transform .5s .5s;
+        transform: translateY(100%);
 
-            }
+    }
+    &.scrollUP {
+        img {
+            transform: translateY(-100%);
         }
     }
+
+    .gridview-loading {
+        background: $color-d;
+    }
+    .gridview-loaded {
+        img {
+            transform: translateY(0);
+        }
+    }
+    .gridview-error {
+
+    }
+}
+
+.gridview-ul {
+    float: left;
+    transition: transform .5s;
+}
+
+.gridview-li {
+    transition: background 1s;
+    background: transparent;
+    display: block;
+    position: relative;
+    overflow: hidden;
 }
