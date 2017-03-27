@@ -156,7 +156,8 @@ h6,
 }
 
 %text-bold {
-    font-weight: bold;
+    font-weight: normal;
+    font-family: $font-bold !important;
 }
 
 b,
@@ -166,7 +167,7 @@ b,
 
 %text-light {
     font-weight: normal;
-    font-family: $font-light;
+    font-family: $font-light !important;
 }
 
 .text-light {
