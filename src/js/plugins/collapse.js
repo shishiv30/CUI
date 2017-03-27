@@ -18,8 +18,8 @@
             var $target = context.$target = $(opt.target);
 
             //record the traget's height
-            var height;
-            if ($target.offset().top < $this.offset().top) {
+            var height = 0;
+            if ($target.offset() && $target.offset().top < $this.offset().top) {
                 height = $target.height();
             }
 

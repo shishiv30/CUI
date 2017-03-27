@@ -30,7 +30,7 @@
         var _getImageSize = function() {
             var maxHeight = $(window).height() - 100;
             var screenheight = opt.height > maxHeight ? maxHeight : opt.height;
-            var screenwidth = $this.width();
+            var screenwidth = $this.width() || $(window).width();
             var tmpWidth = screenwidth > opt.width ? opt.width : screenwidth - 2;
             var tmpHeight = tmpWidth * ratio;
             tmpHeight = screenheight > tmpHeight ? tmpHeight : screenheight;

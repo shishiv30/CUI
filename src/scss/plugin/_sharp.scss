@@ -1,0 +1,138 @@
+.circle-item {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: block;
+    margin: 10px auto;
+    color: $color-f;
+    line-height: 80px;
+    text-align: center;
+    @extend .text-shadow;
+    &.color-main {
+        background-color: $color-main;
+    }
+
+    &.color-main-l1 {
+        background-color: $color-main-l1;
+    }
+
+    &.color-main-l2 {
+        background-color: $color-main-l2;
+    }
+
+    &.color-main-l3 {
+        background-color: $color-main-l3;
+    }
+
+    &.color-danger {
+        background-color: $color-danger;
+    }
+
+    &.color-danger-l1 {
+        background-color: $color-danger-l1;
+    }
+
+    &.color-danger-l2 {
+        background-color: $color-danger-l2;
+    }
+
+    &.color-danger-l3 {
+        background-color: $color-danger-l3;
+    }
+
+    &.color-warning {
+        background-color: $color-warning;
+    }
+
+    &.color-warning-l1 {
+        background-color: $color-warning-l1;
+    }
+
+    &.color-warning-l2 {
+        background-color: $color-warning-l2;
+    }
+
+    &.color-warning-l3 {
+        background-color: $color-warning-l3;
+    }
+
+    &.color-tip {
+        background-color: $color-tip;
+    }
+
+    &.color-tip-l1 {
+        background-color: $color-tip-l1;
+    }
+
+    &.color-tip-l2 {
+        background-color: $color-tip-l2;
+    }
+
+    &.color-tip-l3 {
+        background-color: $color-tip-l3;
+    }
+
+    &.color-safe {
+        background-color: $color-safe;
+    }
+
+    &.color-safe-l1 {
+        background-color: $color-safe-l1;
+    }
+
+    &.color-safe-l2 {
+        background-color: $color-safe-l2;
+    }
+
+    &.color-safe-l3 {
+        background-color: $color-safe-l3;
+    }
+    &.color-0 {
+        background-color: $color-0;
+    }
+    &.color-1 {
+        background-color: $color-1;
+    }
+    &.color-2 {
+        background-color: $color-2;
+    }
+    &.color-3 {
+        background-color: $color-3;
+    }
+    &.color-4 {
+        background-color: $color-4;
+    }
+    &.color-5 {
+        background-color: $color-5;
+    }
+    &.color-6 {
+        background-color: $color-6;
+    }
+    &.color-7 {
+        background-color: $color-7;
+    }
+    &.color-8 {
+        background-color: $color-8;
+    }
+    &.color-9 {
+        background-color: $color-9;
+    }
+    &.color-a {
+        background-color: $color-a;
+    }
+    &.color-b {
+        background-color: $color-b;
+    }
+    &.color-c {
+        background-color: $color-c;
+    }
+    &.color-d {
+        background-color: $color-d;
+    }
+    &.color-e {
+        background-color: $color-e;
+    }
+    &.color-f {
+        background-color: $color-f;
+    }
+}
