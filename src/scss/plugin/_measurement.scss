@@ -1,0 +1,40 @@
+.measurement {
+    position: relative;
+    width: 100%;
+    margin: 20px 0 10px 0;
+    .measurement-line {
+        height: 40px;
+        border-bottom: 2px solid $color-d;
+    }
+    .measurement-item {
+        transform: translateX(-50%);
+        position: absolute;
+        bottom: 3px;
+        .pin {
+            width: 30px;
+            height: 40px;
+            line-height: 30px;
+            @include border-top-radius(10%);
+            @include border-bottom-radius(100%);
+            background-color: $color-3;
+            color: $color-f;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+    }
+
+    .measurement-min, .measurement-max {
+        color: $color-3;
+        font-size: 16px;
+        position: absolute;
+        bottom: 5px;
+        height: 20px;
+        line-height: 20px;
+    }
+    .measurement-min {
+        left: 0;
+    }
+    .measurement-max {
+        right: 0;
+    }
+}
