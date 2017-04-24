@@ -86,6 +86,38 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="panel">
+                <a src="javascript:;" class="h3 addition" data-collapse data-target="#pluginCaoursel">
+                    <div id="pluginCaoursel">
+                        <div class="row ">
+                            <div class="col-xs-12 f4">
+                                The responsive caoursel.
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="caoursel loading" data-caoursel>
+                                    <div class="caoursel-list">
+                                        <ul>
+                                            <li><img src="dist/src/img/01.jpg" alt=""></li>
+                                            <li><img src="dist/src/img/02.jpg" alt=""></li>
+                                            <li><img src="dist/src/img/03.jpg" alt=""></li>
+                                            <li><img src="dist/src/img/04.jpg" alt=""></li>
+                                            <li><img src="dist/src/img/05.jpg" alt=""></li>
+                                            <li><img src="dist/src/img/06.jpg" alt=""></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span>Color Solution</span>
+                    <span class="subtitle">The regular color we used.</span>
+                    <i class="icon-angle-down right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel">
                 <a src="javascript:;" class="h3 addition" data-collapse data-target="#cssColor">
                     <span>Color Solution</span>
                     <span class="subtitle">The regular color we used.</span>
@@ -1111,48 +1143,48 @@
             alert(msg);
         }
     }
-    var getMoveText = function(startPoint, endPoint) {
+    var getMoveText = function (startPoint, endPoint) {
         var str1;
         var str2;
         if (startPoint.touches.length) {
             var start = Array.prototype.slice.call(startPoint.touches);
-            str1 = start.reduce(function(pre, next, index) {
+            str1 = start.reduce(function (pre, next, index) {
 
                 return pre + 'Y:' + next.pageY + 'X:' + next.pageX + ' ';
             }, '(Start) ');
         }
         if (endPoint.touches.length) {
             var end = Array.prototype.slice.call(endPoint.touches);
-            str2 = end.reduce(function(pre, next, index) {
+            str2 = end.reduce(function (pre, next, index) {
                 return pre + 'Y:' + next.pageY + 'X:' + next.pageX + ' ';
             }, '(End) - ');
         }
 
         return str1 + '<br>' + str2;
     };
-    $("#eventDiv").on('moving', function(t, start, end) {
+    $("#eventDiv").on('moving', function (t, start, end) {
         $(this).html('moving... <br>' + getMoveText(start, end));
     });
-    $("#eventDiv").on('pinchin', function(t, start, end) {
+    $("#eventDiv").on('pinchin', function (t, start, end) {
         $(this).html('pinchin <br>' + getMoveText(start, end));
     });
-    $("#eventDiv").on('pinchout', function(t, start, end) {
+    $("#eventDiv").on('pinchout', function (t, start, end) {
         $(this).html('pinchout <br>' + getMoveText(start, end));
     });
-    $("#eventDiv").on('swipeleft', function(t, start, end) {
+    $("#eventDiv").on('swipeleft', function (t, start, end) {
         $(this).html('swipeleft <br>' + getMoveText(start, end));
     });
-    $("#eventDiv").on('swiperight', function(t, start, end) {
+    $("#eventDiv").on('swiperight', function (t, start, end) {
         $(this).html('swiperight <br>' + getMoveText(start, end));
     });
-    $("#eventDiv").on('swipedown', function(t, start, end) {
+    $("#eventDiv").on('swipedown', function (t, start, end) {
         $(this).html('swipedown <br>' + getMoveText(start, end));
     });
-    $("#eventDiv").on('swipeup', function(t, start, end) {
+    $("#eventDiv").on('swipeup', function (t, start, end) {
         $(this).html('swipeup <br>' + getMoveText(start, end));
     });
 
-    $(document).one('datatable.inital', function(e, element, obj) {
+    $(document).one('datatable.inital', function (e, element, obj) {
         obj.setOptions({
             columns: [{
                 key: 'name',
