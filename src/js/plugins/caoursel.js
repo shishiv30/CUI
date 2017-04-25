@@ -1,7 +1,9 @@
 (function ($) {
     $.fn.caoursel = function (option) {
         var $this = $(this);
-        var defaultOpt = {};
+        var defaultOpt = {
+            lazingload: true
+        }
         var opt = $.extend({}, defaultOpt, option);
         var $scroller = $this.find('.caoursel-list');
         var $ul = $this.find('ul');
@@ -16,9 +18,18 @@
         var orginalScrollLeft;
         var currentScrolLeft;
         var scrollEnd;
-        var isMoving;
         var duration = 200;
         var subduration;
+        var _lazingLoadImage = function () {
+            var currentItem = $ul.children('li:lt(' + (column + 2) + ')');
+            currentItem.find('img').each(function (index, img) {
+                if ($(img).is('[data-src]')) {
+                    $(img).attr('src', $(img).attr('data-src'));
+                    $(img).removeAttr('data-src');
+                }
+            });
+        };
+
         var _prev = function () {
             currentScrolLeft = 0;
             $scroller.stop().animate({
@@ -28,10 +39,12 @@
                 $ul.prepend($last);
                 currentScrolLeft += liWidth;
                 $scroller.scrollLeft(currentScrolLeft);
-                $scroller.animate({
+                $scroller.stop().animate({
                     scrollLeft: '-=' + offsetLeft + 'px'
                 }, subduration);
-                isMoving = false;
+                if (opt.lazingload) {
+                    _lazingLoadImage();
+                }
             });
         };
         var _next = function () {
@@ -43,33 +56,28 @@
                 $ul.append($last);
                 currentScrolLeft -= liWidth;
                 $scroller.scrollLeft(currentScrolLeft);
-                $scroller.animate({
-                    scrollLeft: currentScrolLeft + 'px'
-                }, duration);
-                $scroller.animate({
+                $scroller.stop().animate({
                     scrollLeft: '+=' + offsetLeft + 'px'
                 }, subduration);
-                isMoving = false;
+                if (opt.lazingload) {
+                    _lazingLoadImage();
+                }
             });
         };
         var _revert = function () {
             $scroller.stop().animate({
                 scrollLeft: orginalScrollLeft + 'px'
-            }, duration, function () {
-                isMoving = false;
-            });
+            }, duration);
         };
         var _autoScroll = function () {
-            isMoving = true;
             currentScrolLeft = $scroller.scrollLeft();
             var offset = orginalScrollLeft - currentScrolLeft;
-            if (Math.abs(offset) > 80) {
+            if (Math.abs(offset) > 5) {
                 if (offset > 0) {
                     _prev();
                 } else {
                     _next();
                 }
-
             } else {
                 _revert();
             }
@@ -135,9 +143,10 @@
                 _refresh();
             });
             _refresh();
+            _lazingLoadImage();
             $scroller.on('scroll', $.debounce(function () {
                 _autoScroll();
-            }, 50));
+            }, 100));
             $this.removeClass('loading');
             $this.data('data-caoursel', obj);
         };
