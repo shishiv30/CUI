@@ -1,4 +1,4 @@
-.caoursel {
+.carousel {
     display: block;
     width: 100%;
     overflow: hidden;
@@ -56,7 +56,7 @@
     }
 }
 
-.caoursel-list {
+.carousel-list {
     overflow: hidden;
     position: relative;
     overflow-x: scroll;
@@ -95,7 +95,7 @@
 
 ////3
 //@media (max-width: $screen-xs-max) {
-//    .caoursel-list {
+//    .carousel-list {
 //        > ul {
 //            width: 300%;
 //            > li {
@@ -108,7 +108,7 @@
 //
 ////4
 //@media(min-width: $screen-sm-min) and(max-width: $screen-sm-max) {
-//    .caoursel-list {
+//    .carousel-list {
 //        > ul {
 //            width: 200%;
 //            > li {
@@ -119,7 +119,7 @@
 //}
 //
 //@media(min-width: $screen-md-min) and(max-width: $screen-md-max) {
-//    .caoursel-list {
+//    .carousel-list {
 //        > ul {
 //            width: 200%;
 //            > li {
@@ -130,7 +130,7 @@
 //}
 //
 //@media(min-width: $screen-lg-min) {
-//    .caoursel-list {
+//    .carousel-list {
 //        > ul {
 //            width: 400%;
 //            > li {

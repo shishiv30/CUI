@@ -1,11 +1,11 @@
 (function ($) {
-    $.fn.caoursel = function (option) {
+    $.fn.carousel = function (option) {
         var $this = $(this);
         var defaultOpt = {
             lazingload: true
         }
         var opt = $.extend({}, defaultOpt, option);
-        var $scroller = $this.find('.caoursel-list');
+        var $scroller = $this.find('.carousel-list');
         var $ul = $this.find('ul');
         var $li = $ul.children('li');
         var prevLink = $('<a href="javascript:void(0)" class="prev"><i class="icon-angle-left"></i></a>');
@@ -124,9 +124,9 @@
             $li.each(function (index, item) {
                 var $item = $(item);
                 if (index === 0) {
-                    $item.attr('caoursel-index', $li.length);
+                    $item.attr('carousel-index', $li.length);
                 } else {
-                    $item.attr('caoursel-index', index);
+                    $item.attr('carousel-index', index);
                 }
             });
             prevLink.click(function () {
@@ -148,17 +148,17 @@
                 _autoScroll();
             }, 100));
             $this.removeClass('loading');
-            $this.data('data-caoursel', obj);
+            $this.data('data-carousel', obj);
         };
         setTimeout(function () {
             _inital();
         });
     };
     $(document).on('dom.load', function () {
-        $('[data-caoursel]').each(function (index, item) {
+        $('[data-carousel]').each(function (index, item) {
             var $item = $(item);
-            $item.caoursel($item);
-            $item.removeAttr('data-caoursel');
+            $item.carousel($item);
+            $item.removeAttr('data-carousel');
         });
     });
 })(jQuery);
