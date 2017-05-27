@@ -1,5 +1,5 @@
 //collapse
-(function($) {
+(function ($) {
     var collapseConfig = {
         name: 'collapse',
         defaultOpt: {
@@ -12,7 +12,7 @@
             hidebefore: null,
             hideafter: null
         },
-        init: function(context) {
+        init: function (context) {
             var opt = context.opt;
             var $this = context.$element;
             var $target = context.$target = $(opt.target);
@@ -23,7 +23,7 @@
                 height = $target.height();
             }
 
-            var _showtext = function() {
+            var _showtext = function () {
                 if (opt.showtext) {
                     if ($this.find('span').length > 0) {
                         $this.find('span').text(opt.showtext);
@@ -32,7 +32,7 @@
                     }
                 }
             };
-            var _hidetext = function() {
+            var _hidetext = function () {
                 if (opt.hidetext) {
                     if ($this.find('span').length > 0) {
                         $this.find('span').text(opt.hidetext);
@@ -45,12 +45,12 @@
                 }
             };
             if (opt.isexpand) {
-                context._show = function() {
+                context._show = function () {
                     $this.addClass('shown');
                     $target.addClass('collapse-expand');
                     _showtext();
                 };
-                context._hide = function() {
+                context._hide = function () {
                     $this.removeClass('shown');
                     $target.removeClass('collapse-expand');
                     if (height && height > 0) {
@@ -59,12 +59,12 @@
                     _hidetext();
                 };
             } else {
-                context._show = function() {
+                context._show = function () {
                     $this.addClass('shown');
                     $target.show();
                     _showtext();
                 };
-                context._hide = function() {
+                context._hide = function () {
                     $this.removeClass('shown');
                     $target.hide();
                     if (height && height > 0) {
@@ -75,7 +75,7 @@
             }
         },
         exports: {
-            show: function() {
+            show: function () {
                 var opt = this.opt;
                 if (opt.showBefore) {
                     $.CUI.addEvent(opt.showBefore, this);
@@ -85,7 +85,7 @@
                     $.CUI.addEvent(opt.showAfter, this);
                 }
             },
-            hide: function() {
+            hide: function () {
                 var opt = this.opt;
                 if (opt.hideBefore) {
                     $.CUI.addEvent(opt.hideBefore, this);
@@ -95,7 +95,7 @@
                     $.CUI.addEvent(opt.hideAfter, this);
                 }
             },
-            toggle: function() {
+            toggle: function () {
                 if (this.$element.hasClass('shown')) {
                     this._hide();
                 } else {
@@ -106,12 +106,12 @@
         setOptionsBefore: null,
         setOptionsAfter: null,
         initBefore: null,
-        initAfter: function(context) {
+        initAfter: function (context) {
             var $this = context.$element;
             var $target = context.$target;
             var opt = context.opt;
             var exports = context.exports;
-            var _resetForExpand = function() {
+            var _resetForExpand = function () {
                 if (!$this.hasClass('shown')) {
                     if ($target.prop('scrollHeight') > $target.prop('offsetHeight')) {
                         $this.css('visibility', 'visible');
@@ -124,16 +124,21 @@
                 $(document).on('dom.resize.collapse', _resetForExpand);
                 _resetForExpand();
             }
+            if ($target.is(':hidden')) {
+                exports.hide();
+            } else {
+                exports.show();
+            }
             $this.on('click.collapse', exports.toggle);
         },
-        destroyBefore: function(context) {
+        destroyBefore: function (context) {
             var $this = context.$element;
             $this.off('click.collapse');
         }
     };
     $.CUI.plugin(collapseConfig);
-    $(document).on('dom.load.collapse', function() {
-        $('[data-collapse]').each(function(index, item) {
+    $(document).on('dom.load.collapse', function () {
+        $('[data-collapse]').each(function (index, item) {
             var $this = $(item);
             var data = $this.data();
             $this.collapse(data);

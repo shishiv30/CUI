@@ -35,10 +35,10 @@ ol, ul {
 //CUI Setting
 html {
     font-size: $font-size-base;
-    line-height: 1.2em;
-    font-family: $font-light, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1em;
+    font-family: $font-thin, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-style: normal;
-    color:$color-text-default;
+    color: $color-text-default;
 }
 
 body,
@@ -64,7 +64,7 @@ label[for] {
 input, select, textarea, button {
     font-size: 100%;
     outline: none;
-    color:$color-text-default;
+    color: $color-text-default;
 }
 
 img {
@@ -79,7 +79,8 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
     line-height: 1em;
-    font-family: $font;
+    font-family: $font-thin;
+    font-size: 1rem;
 }
 
 i {

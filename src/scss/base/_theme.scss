@@ -34,10 +34,10 @@ $screen-md-max: $screen-lg-min - 1;
 $grid-columns: 12;
 $grid-gutter-width: 30px;
 
-$font-bold: 'robotobold';
-$font: 'robotoregular';
+$font-bold: 'robotoblack';
+$font: 'robotomedium';
 $font-light: 'robotolight';
-
+$font-thin: 'robotothin';
 //legacy main
 $color-main: #78004E;
 $color-main-l1: lighten($color-main, 15%);

@@ -221,3 +221,16 @@
     margin-right: $gutter / -2;
     @include clearfix;
 }
+
+@mixin fonticon() {
+    display: inline-block;
+    font: normal normal normal 14px/1 fonticon;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    &:before {
+        text-align: center;
+        font-style: normal;
+    }
+}

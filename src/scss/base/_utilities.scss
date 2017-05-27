@@ -116,16 +116,7 @@
 
 //font icon define
 %icon {
-    display: inline-block;
-    font: normal normal normal 14px/1 fonticon;
-    font-size: inherit;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    &:before {
-        text-align: center;
-        font-style: normal;
-    }
+    @include fonticon();
 }
 
 [class^="icon-"],
@@ -137,14 +128,13 @@
     pointer-events: none;
 }
 
-
-.gs-sin{
-    padding:0px;
-    .row{
-        margin-left:0;
-        margin-right:0;
+.gs-sin {
+    padding: 0px;
+    .row {
+        margin-left: 0;
+        margin-right: 0;
     }
     [class^="col-"], [class*=" col-"] {
-        padding:0px;
+        padding: 0px;
     }
 }
