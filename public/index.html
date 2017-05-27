@@ -5,1130 +5,826 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <link href="dist/src/cui.css" type="text/css" rel="stylesheet"/>
     <style type="text/css">
-        @media (max-width: 767px) {
-            .highlight-mobile {
-                color: #78004E;
-                font-size: 16px;
-                font-weight: 700;
-            }
+    @media (max-width: 767px) {
+        .highlight-mobile {
+            color: #78004E;
+            font-size: 16px;
+            font-weight: 700;
         }
+    }
 
-        @media (min-width: 768px) {
-            .highlight-desktop {
-                color: #78004E;
-                font-size: 16px;
-                font-weight: 700;
-            }
+    @media (min-width: 768px) {
+        .highlight-desktop {
+            color: #78004E;
+            font-size: 16px;
+            font-weight: 700;
         }
+    }
 
-        .girdSystem [class^=col-] {
-            background: #eee;
-            border: 2px solid white;
-            padding: 10px 0;
-            text-align: center
-        }
+    .girdSystem [class^=col-] {
+        background: #eee;
+        border: 2px solid white;
+        padding: 10px 0;
+        text-align: center
+    }
 
-        .table.responsive th {
-            color: #a4a4a4
-        }
+    .table.responsive th {
+        color: #a4a4a4
+    }
 
-        .table.responsive th, .table.responsive td {
-            padding: 10px 5px
-        }
+    .table.responsive th, .table.responsive td {
+        padding: 10px 5px
+    }
 
-        .table.responsive td {
-            border: solid 1px #d7d7d7
-        }
+    .table.responsive td {
+        border: solid 1px #d7d7d7
+    }
 
-        .table.responsive .is-hidden {
-            color: #666
-        }
+    .table.responsive .is-hidden {
+        color: #666
+    }
 
-        .table.responsive .is-visible {
-            background-color: #dff0d8
-        }
+    .table.responsive .is-visible {
+        background-color: #dff0d8
+    }
 
-        .table.responsive .container td {
-            background-color: #fff4d0
-        }
+    .table.responsive .container td {
+        background-color: #fff4d0
+    }
 
-    </style>
+</style>
 </head>
 
 <body id="body">
-<div data-header class="header">
-    <div class="header-form">
-        <a class="header-form-logo" href="javascript:;"> <i class="icon-plus"></i></a>
-        <a class="header-form-btn" href="javascript:;" id="menuButton"><i class="icon-bars"></i></a>
-    </div>
-    <div class="header-menu-list right">
-        <div class="header-menu-list-wrap">
-            <div class="header-menu-item">
-                <a href="javascript:;">Home</a>
-            </div>
-            <div class="header-menu-item right" data-menu="expand">
-                <a href="javascript:;" data-tab data-target="#tpl">About US <i class="caret"></i></a>
-                <ul>
-                    <li>
-                        <a href="javascript:void(0)">Team</a>
-                        <a href="javascript:void(0)">Product</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="header-menu-item right">
-                <a href="javascript:;" data-tab data-target="#js">Setting</a>
-            </div>
-        </div>
-    </div>
-</div>
-<div style="height:50px;"></div>
+
 <div class="gs-fixed">
     <div class="row">
         <div class="col-xs-12">
             <div class="panel">
-                <a src="javascript:;" class="h3 addition" data-collapse data-target="#plugincarousel">
-                    <div id="plugincarousel">
-                        <div class="row ">
-                            <div class="col-xs-12 f4">
-                                The responsive carousel.
-                            </div>
-                            <div class="col-xs-12">
-                                <div class="carousel loading" data-carousel>
-                                    <div class="carousel-list">
-                                        <ul>
-                                            <li><img data-src="dist/src/img/01.jpg" alt=""></li>
-                                            <li><img data-src="dist/src/img/02.jpg" alt=""></li>
-                                            <li><img data-src="dist/src/img/03.jpg" alt=""></li>
-                                            <li><img data-src="dist/src/img/04.jpg" alt=""></li>
-                                            <li><img data-src="dist/src/img/05.jpg" alt=""></li>
-                                            <li><img data-src="dist/src/img/06.jpg" alt=""></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+    <a src="javascript:;" class="h3 addition" data-collapse data-target="#plugincarousel">
+        <div id="plugincarousel">
+            <div class="row ">
+                <div class="col-xs-12 f4">
+                    The responsive carousel.
+                </div>
+                <div class="col-xs-12">
+                    <div class="carousel loading" data-carousel>
+                        <div class="carousel-list">
+                            <ul>
+                                <li><img data-src="dist/src/img/01.jpg" alt=""></li>
+                                <li><img data-src="dist/src/img/02.jpg" alt=""></li>
+                                <li><img data-src="dist/src/img/03.jpg" alt=""></li>
+                                <li><img data-src="dist/src/img/04.jpg" alt=""></li>
+                                <li><img data-src="dist/src/img/05.jpg" alt=""></li>
+                                <li><img data-src="dist/src/img/06.jpg" alt=""></li>
+                            </ul>
                         </div>
                     </div>
-                    <span>Color Solution</span>
-                    <span class="subtitle">The regular color we used.</span>
-                    <i class="icon-angle-down right"></i>
-                </a>
+                </div>
             </div>
+        </div>
+        <span>Color Solution</span>
+        <span class="subtitle">The regular color we used.</span>
+        <i class="icon-angle-down right"></i>
+    </a>
+</div>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
             <div class="panel">
-                <a src="javascript:;" class="h3 addition" data-collapse data-target="#cssColor">
-                    <span>Color Solution</span>
-                    <span class="subtitle">The regular color we used.</span>
-                    <i class="icon-angle-down right"></i>
-                </a>
-                <div id="cssColor" style="display: none;">
-                    <div class="row ">
-                        <div class="col-xs-12 f4">
-                            The color solution can be group by emotion.
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            the main color is pink. Use these color to make user feeling earnest. <br>
-                            Reference: link color, default button background, header background,footer background and some important case.
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-main">#78004E</div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-main-l1">#c50080</div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-main-l2">#ff12ac</div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-main-l3">#ffabe2</div>
-                        </div>
-                    </div>
-                    <div class="blank10"></div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            the warning color is orange. Use these color to make user feeling curious. <br>
-                            Reference: highlighted text, submit button, movoto listing, hover style, price reduce listing, and some special case which is
-                            outstanding.
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-warning">#c05b00</div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-warning-l1">#ff800e</div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-warning-l2">#ffa85a</div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-warning-l3">#ffd0a7</div>
-                        </div>
-                    </div>
-                    <div class="blank10"></div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            the safe color is green. Use these color to make user feeling fulfillment. <br>
-                            Reference: success info, high rank, new listing and something good to know.
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-safe">#357935</div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-safe-l1">#4cae4c</div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-safe-l2">#80c780</div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-safe-l3">#b5dfb5</div>
-                        </div>
-                    </div>
-                    <div class="blank10"></div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            the danger color is red. Use these color to make user feeling serious. <br>
-                            Reference: error info, low rank, dangerous behavior and something unexpected.
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-danger">#a02622</div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-danger-l1">#d53e39</div>
-                        </div>
+    <a src="javascript:;" class="h3 addition" data-collapse data-target="#cssColor">
+        <span>Color Solution</span>
+        <span class="subtitle">The regular color we used.</span>
+        <i class="icon-angle-down right"></i>
+    </a>
+    <div id="cssColor" style="display: none;">
+        <div class="row ">
+            <div class="col-xs-12 f4">
+                The color solution can be group by emotion.
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                the main color is pink. Use these color to make user feeling earnest. <br>
+                Reference: link color, default button background, header background,footer background and some important case.
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-main">#78004E</div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-main-l1">#c50080</div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-main-l2">#ff12ac</div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-main-l3">#ffabe2</div>
+            </div>
+        </div>
+        <div class="blank10"></div>
+        <div class="row">
+            <div class="col-xs-12">
+                the warning color is orange. Use these color to make user feeling curious. <br>
+                Reference: highlighted text, submit button, movoto listing, hover style, price reduce listing, and some special case which is
+                outstanding.
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-warning">#c05b00</div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-warning-l1">#ff800e</div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-warning-l2">#ffa85a</div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-warning-l3">#ffd0a7</div>
+            </div>
+        </div>
+        <div class="blank10"></div>
+        <div class="row">
+            <div class="col-xs-12">
+                the safe color is green. Use these color to make user feeling fulfillment. <br>
+                Reference: success info, high rank, new listing and something good to know.
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-safe">#357935</div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-safe-l1">#4cae4c</div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-safe-l2">#80c780</div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-safe-l3">#b5dfb5</div>
+            </div>
+        </div>
+        <div class="blank10"></div>
+        <div class="row">
+            <div class="col-xs-12">
+                the danger color is red. Use these color to make user feeling serious. <br>
+                Reference: error info, low rank, dangerous behavior and something unexpected.
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-danger">#a02622</div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-danger-l1">#d53e39</div>
+            </div>
 
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-danger-l2">#e27c79</div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-danger-l3">#f0b9b8</div>
-                        </div>
-                    </div>
-                    <div class="blank10"></div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            the tip color is yellow. Use these color to make user feeling never mind. <br>
-                            Reference: tip info, low level message or comment, dangerous behavior and something unexpected.
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-tip">#cccc00</div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-tip-l1">#ffff1a</div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-tip-l2">#ffff66</div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-tip-l3">#ffffb3</div>
-                        </div>
-                    </div>
-                    <div class="blank10"></div>
-                    <div class="row text-center">
-                        <div>some regular gray color:</div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-d">#dddddd</div>
-                            <div>The border color</div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-4">#444444</div>
-                            <div>The text color</div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-a">#aaaaaa</div>
-                            <div>Lightgray color</div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <div class="circle-item color-a">#777777</div>
-                            <div>the disable color</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-danger-l2">#e27c79</div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-danger-l3">#f0b9b8</div>
+            </div>
+        </div>
+        <div class="blank10"></div>
+        <div class="row">
+            <div class="col-xs-12">
+                the tip color is yellow. Use these color to make user feeling never mind. <br>
+                Reference: tip info, low level message or comment, dangerous behavior and something unexpected.
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-tip">#cccc00</div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-tip-l1">#ffff1a</div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-tip-l2">#ffff66</div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-tip-l3">#ffffb3</div>
+            </div>
+        </div>
+        <div class="blank10"></div>
+        <div class="row text-center">
+            <div>some regular gray color:</div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-d">#dddddd</div>
+                <div>The border color</div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-4">#444444</div>
+                <div>The text color</div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-a">#aaaaaa</div>
+                <div>Lightgray color</div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="circle-item color-a">#777777</div>
+                <div>the disable color</div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
-                <a href="javascript:;" class="h3 addition" data-target="#girdSystem" data-collapse>
-                    Grid system
-                    <span class="subtitle">use grid system to do layout</span>
-                    <i class="icon-angle-down right"></i>
-                </a>
-                <div id="girdSystem" class="girdSystem collapse-appear" style="display: none;">
-                    <div class="gs">
-                        <div class="row">
-                            <div class="col-xs-1">1</div>
-                            <div class="col-xs-1">1</div>
-                            <div class="col-xs-1">1</div>
-                            <div class="col-xs-2">2</div>
-                            <div class="col-xs-1">1</div>
-                            <div class="col-xs-2">2</div>
-                            <div class="col-xs-1">1</div>
-                            <div class="col-xs-3">3</div>
-                        </div>
+</div>
 
-                        <div class="row">
-                            <div class="col-xs-3">3</div>
-                            <div class="col-xs-3">3</div>
-                            <div class="col-xs-3">3</div>
-                            <div class="col-xs-3">3</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-4">4</div>
-                            <div class="col-xs-4">4</div>
-                            <div class="col-xs-4">4</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-8">8</div>
-                            <div class="col-xs-4">4</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-6">6</div>
-                            <div class="col-xs-6">6</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
             <div class="panel">
-                <a src="javascript:;" class="h3 addition" data-target="#cssResponsive" data-collapse>
-                    <span>Responsive</span>
-                    <span class="subtitle">use responsive utilities</span>
-                    <i class="icon-angle-down right"></i>
-                </a>
-                <div id="cssResponsive" class="collapse-appear" style="display: none;">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <table class="table responsive">
-                                <colgroup>
-                                    <col style="width: 135px;">
-                                    <col>
-                                    <col>
-                                    <col>
-                                    <col>
-                                </colgroup>
-                                <thead>
-                                <tr>
-                                    <th></th>
-                                    <th> Extra small
-                                        <span class="f6">Phones (&lt;640px)</span>
-                                    </th>
-                                    <th> Small
-                                        <span class="f6">Tablets (≥640px)</span>
-                                    </th>
-                                    <th> Medium
-                                        <span class="f6">Desktops (≥992px)</span>
-                                    </th>
-                                    <th> Large
-                                        <span class="f6">Desktops (≥1200px)</span>
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <th>
-                                        Device
-                                    </th>
-                                    <td>Phone</td>
-                                    <td>Pad or Landscape phone</td>
-                                    <td>Desktop or Landscape Pad</td>
-                                    <td>Large Desktop</td>
-                                </tr>
-                                <tr>
-                                    <th>Grid behavior</th>
-                                    <td>Horizontal at all times</td>
-                                    <td colspan="3">Collapsed to start, horizontal above breakpoints</td>
-                                </tr>
-                                <tr>
-                                    <th>Class prefix</th>
-                                    <td><code>.col-xs-</code></td>
-                                    <td><code>.col-sm-</code></td>
-                                    <td><code>.col-md-</code></td>
-                                    <td><code>.col-lg-</code></td>
-                                </tr>
-                                <tr>
-                                    <th># of columns</th>
-                                    <td colspan="4">12</td>
-                                </tr>
-                                </tbody>
-                                <tbody class="container">
-                                <tr>
-                                    <th><code>.gs-fixed</code></th>
-                                    <td colspan="4">Gutter width: 30px (15px on each side of a column)</td>
-                                </tr>
-                                <tr class="no-topborder">
-                                    <th></th>
-                                    <td>100%</td>
-                                    <td>100%</td>
-                                    <td>970px</td>
-                                    <td>1170px</td>
-                                </tr>
-                                <tr>
-                                    <th><code>.gs</code></th>
-                                    <td colspan="4">Gutter width: 30px (15px on each side of a column)</td>
-                                </tr>
-                                <tr class="no-topborder">
-                                    <th></th>
-                                    <td>100%</td>
-                                    <td>100%</td>
-                                    <td>100%</td>
-                                    <td>100%</td>
-                                </tr>
-                                <tr>
-                                    <th><code>.gs-sin</code></th>
-                                    <td colspan="4">Gutter width: 0</td>
-                                </tr>
-                                <tr class="no-topborder">
-                                    <th></th>
-                                    <td>100%</td>
-                                    <td>100%</td>
-                                    <td>100%</td>
-                                    <td>100%</td>
-                                </tr>
-                                </tbody>
-                                <tbody>
-                                <tr>
-                                    <th>
-                                        <code>.visible-xs-*</code>
-                                    </th>
-                                    <td class="is-visible">Visible</td>
-                                    <td class="is-hidden">Hidden</td>
-                                    <td class="is-hidden">Hidden</td>
-                                    <td class="is-hidden">Hidden</td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <code>.visible-sm-*</code>
-                                    </th>
-                                    <td class="is-hidden">Hidden</td>
-                                    <td class="is-visible">Visible</td>
-                                    <td class="is-hidden">Hidden</td>
-                                    <td class="is-hidden">Hidden</td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <code>.visible-md-*</code>
-                                    </th>
-                                    <td class="is-hidden">Hidden</td>
-                                    <td class="is-hidden">Hidden</td>
-                                    <td class="is-visible">Visible</td>
-                                    <td class="is-hidden">Hidden</td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <code>.visible-lg-*</code>
-                                    </th>
-                                    <td class="is-hidden">Hidden</td>
-                                    <td class="is-hidden">Hidden</td>
-                                    <td class="is-hidden">Hidden</td>
-                                    <td class="is-visible">Visible</td>
-                                </tr>
-                                </tbody>
-                                <tbody>
-                                <tr>
-                                    <th>
-                                        <code>.hidden-xs</code>
-                                    </th>
-                                    <td class="is-hidden">Hidden</td>
-                                    <td class="is-visible">Visible</td>
-                                    <td class="is-visible">Visible</td>
-                                    <td class="is-visible">Visible</td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <code>.hidden-sm</code>
-                                    </th>
-                                    <td class="is-visible">Visible</td>
-                                    <td class="is-hidden">Hidden</td>
-                                    <td class="is-visible">Visible</td>
-                                    <td class="is-visible">Visible</td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <code>.hidden-md</code>
-                                    </th>
-                                    <td class="is-visible">Visible</td>
-                                    <td class="is-visible">Visible</td>
-                                    <td class="is-hidden">Hidden</td>
-                                    <td class="is-visible">Visible</td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <code>.hidden-lg</code>
-                                    </th>
-                                    <td class="is-visible">Visible</td>
-                                    <td class="is-visible">Visible</td>
-                                    <td class="is-visible">Visible</td>
-                                    <td class="is-hidden">Hidden</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 f4">
-                            Responsive css defined
-                        </div>
-                        <div class="col-xs-6">
-                            <p>For all the mobile device</p>
-                            <p></p>
-                            <p>Extra small devices (phones, less than 768px)</p>
-                            <p>@media (max-width: @screen-sm-max) { ... }</p>
-                            <br>
-                            <p>Small devices (tablets, 768px and up)</p>
-                            <p>@media (min-width: @screen-sm-min) { ... }</p>
-                        </div>
-                        <div class="col-xs-6">
-                            <p>For all the PC device</p>
-                            <p></p>
-                            <p>Medium devices (desktops, 992px and up)</p>
-                            <p>@media (min-width: @screen-md-min) { ... }</p>
-                            <br>
-                            <p>Large devices (large desktops, 1200px and up)</p>
-                            <p>@media (min-width: @screen-lg-min) { ... }</p>
-                        </div>
-                    </div>
-                </div>
+    <a href="javascript:;" class="h3 addition" data-target="#girdSystem" data-collapse>
+        Grid system
+        <span class="subtitle">use grid system to do layout</span>
+        <i class="icon-angle-down right"></i>
+    </a>
+    <div id="girdSystem" class="girdSystem collapse-appear" style="display: none;">
+        <div class="gs">
+            <div class="row">
+                <div class="col-xs-1">1</div>
+                <div class="col-xs-1">1</div>
+                <div class="col-xs-1">1</div>
+                <div class="col-xs-2">2</div>
+                <div class="col-xs-1">1</div>
+                <div class="col-xs-2">2</div>
+                <div class="col-xs-1">1</div>
+                <div class="col-xs-3">3</div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
-                <a href="javascript:;" class="h3 addition" data-collapse data-target="#fontPanel">font
-                    <span class="subtitle">the basic font style</span><i class="icon-angle-down right"></i></a>
-                <div id="fontPanel" class="row" style="display: none;">
-                    <div class="col-xs-12">
-                        <table class="table">
-                            <tr>
-                                <td class="f0">f0</td>
-                                <td class="highlight-desktop">40px</td>
-                                <td class="highlight-mobile"> 32px</td>
-                            </tr>
-                            <tr>
-                                <td class="f1">f1</td>
-                                <td class="highlight-desktop">32px</td>
-                                <td class="highlight-mobile"> 26px</td>
-                            </tr>
-                            <tr>
-                                <td class="f2">f2</td>
-                                <td class="highlight-desktop">26px</td>
-                                <td class="highlight-mobile"> 22px</td>
-                            </tr>
-                            <tr>
-                                <td class="f3">f3</td>
-                                <td class="highlight-desktop">22px</td>
-                                <td class="highlight-mobile"> 18px</td>
-                            </tr>
-                            <tr>
-                                <td class="f4">f4</td>
-                                <td class="highlight-desktop">18px</td>
-                                <td class="highlight-mobile"> 16px</td>
-                            </tr>
-                            <tr>
-                                <td class="f5">f5</td>
-                                <td class="highlight-desktop">16px</td>
-                                <td class="highlight-mobile"> 16px</td>
-                            </tr>
-                            <tr>
-                                <td class="f6">f6</td>
-                                <td class="highlight-desktop">14px</td>
-                                <td class="highlight-mobile"> 12px</td>
-                            </tr>
-                            <tr>
-                                <td class="f7">f7</td>
-                                <td class="highlight-desktop">11px</td>
-                                <td class="highlight-mobile"> 11px</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
-                <a href="javascript:;" class="h3 addition" data-collapse data-target="#buttonPanel">buttons <span
-                    class="subtitle">the basic button style</span>
-                    <i class="icon-angle-down right"></i></a>
-                <div id="buttonPanel" class="row" style="display: none;">
-                    <div class="col-xs-6 col-sm-3">
-                        <a href="javascript:;" class="btn ghost-green small"><i class="icon-check"></i> <span>small</span></a>
-                        <div class="blank-xs"></div>
-                    </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <a href="javascript:;" class="btn orange small"><i class="icon-check"></i> <span>small</span></a>
-                        <div class="blank-xs"></div>
-                    </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <a href="javascript:;" class="btn ghost-blue"><i class="icon-check"></i> <span>normal</span></a>
-                        <div class="blank-xs"></div>
-                    </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <a href="javascript:;" class="btn red"><i class="icon-check"></i> <span>normal</span></a>
-                        <div class="blank-xs"></div>
-                    </div>
 
-                    <div class="col-xs-6 col-sm-3">
-                        <a href="javascript:;" class="btn ghost-cyan large"><i class="icon-check"></i> <span>large</span></a>
-                        <div class="blank-xs"></div>
-                    </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <a href="javascript:;" class="btn yellow large"><i class="icon-check"></i> <span>large</span></a>
-                        <div class="blank-xs"></div>
-                    </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <a href="javascript:;" class="btn ghost-pink loading"><i class="icon-check"></i> <span>disabled</span></a>
-                        <div class="blank-xs"></div>
-                    </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <a href="javascript:;" class="btn ghost-black" disabled><i class="icon-check"></i> <span>disabled</span></a>
-                        <div class="blank-xs"></div>
-                    </div>
-                </div>
+            <div class="row">
+                <div class="col-xs-3">3</div>
+                <div class="col-xs-3">3</div>
+                <div class="col-xs-3">3</div>
+                <div class="col-xs-3">3</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">4</div>
+                <div class="col-xs-4">4</div>
+                <div class="col-xs-4">4</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">8</div>
+                <div class="col-xs-4">4</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">6</div>
+                <div class="col-xs-6">6</div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
-                <a href="javascript:;" class="h3 addition" data-collapse data-target="#tipPanel">tips <span class="subtitle">the tip style</span> <i
-                    class="icon-angle-down right"></i></a>
-                <div id="tipPanel" class="row" style="display: none;">
-                    <div class="col-xs-6 col-sm-3">
-                        <a href="javascript:;"
-                           data-tip
-                           data-content="show on bottom side">
-                            top</a>
-                    </div>
-                    <div class="col-xs-6 col-sm-3 text-right">
-                        <a href="javascript:;"
-                           data-tip
-                           data-placement="left"
-                           data-content="show on left side">
-                            left</a>
-                    </div>
-                    <div class="col-xs-6 col-sm-3">
+</div>
 
-                        <a href="javascript:;"
-                           data-tip
-                           data-placement="right"
-                           data-content="show on right side">
-                            right</a>
-                    </div>
-                    <div class="col-xs-6 col-sm-3 text-right">
-                        <a href="javascript:;"
-                           data-tip
-                           data-placement="bottom"
-                           data-content="show on top side">
-                            bottom</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
             <div class="panel">
-                <a href="javascript:;" class="h3 addition" data-collapse data-target="#formPanel">forms <span class="subtitle">the form style</span> <i
-                    class="icon-angle-down right"></i></a>
-                <div id="formPanel" style="display: none;">
-                    <div id="form" class="form row" data-form>
-                        <div class="col-xs-12 col-sm-6">
-                            <label for="txtReq">Required Box</label>
-                            <div class="input left right">
-                                <i class="icon-user"></i>
-                                <input type="text" id="txtReq" name='name' placeholder="name" data-validate='required'>
-                                <i class="icon-asterisk"></i>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6">
-                            <label for="txtMail">Mail Box</label>
-                            <div class="input right">
-                                <input type="email" id="txtMail" name='email' placeholder="email" data-validate='email'>
-                                <i class="icon-envelope"></i>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6">
-                            <label for="txtPhone">Phone Box</label>
-                            <div class="input left right">
-                                <i class="icon-phone"></i>
-                                <input type="tel" id="txtPhone" name='phone' value="1234567890" data-validate='required,phone' data-inputformat
-                                       data-type="phone">
-                                <i class="icon-asterisk"></i>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6">
-                            <label for="ddlFequence">Fequence</label>
-                            <div class="input">
-                                <select id="ddlFequence" name="fequence" data-validate="required">
-                                    <option value="" selected disabled>select a fequence</option>
-                                    <option value="Weekly">Weekly</option>
-                                    <option value="Daily">Daily</option>
-                                    <option value="Monthly">Monthly</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6">
-                            <label for="date">Date picker</label>
-                            <div class="input right">
-                                <input type="text" id="date" name='date' data-picker="date" readonly data-validate="required">
-                                <label for="date" class="icon-calendar"></label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6">
-                            <label for="time">Time picker</label>
-                            <div class="input right">
-                                <input type="text" id="time" name='time' data-picker="time" readonly data-validate="required">
-                                <label for="time" class="icon-clock-o"></label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6">
-                            <label>Select Gender</label>
-                            <div class="radio">
-                                <label for="chMale">
-                                    <input id="chMale" name="gender" type="radio" checked value="Male">
-                                    <i></i>
-                                    <span>Male</span>
-                                </label>
-                                <label for="chkFemal">
-                                    <input id="chkFemal" name="gender" type="radio" value="Female">
-                                    <i></i>
-                                    <span>Female</span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6">
-                            <label>Select Favor</label>
-                            <div class="checkbox">
-                                <label for="rbtnFavor1">
-                                    <input id="rbtnFavor1" name="favor" checked type="checkbox" value="Dance">
-                                    <i></i>
-                                    <span>Dance</span>
-                                </label>
+    <a src="javascript:;" class="h3 addition" data-target="#cssResponsive" data-collapse>
+        <span>Responsive</span>
+        <span class="subtitle">use responsive utilities</span>
+        <i class="icon-angle-down right"></i>
+    </a>
+    <div id="cssResponsive" class="collapse-appear" style="display: none;">
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table responsive">
+                    <colgroup>
+                        <col style="width: 135px;">
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th> Extra small
+                            <span class="f6">Phones (&lt;640px)</span>
+                        </th>
+                        <th> Small
+                            <span class="f6">Tablets (≥640px)</span>
+                        </th>
+                        <th> Medium
+                            <span class="f6">Desktops (≥992px)</span>
+                        </th>
+                        <th> Large
+                            <span class="f6">Desktops (≥1200px)</span>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th>
+                            Device
+                        </th>
+                        <td>Phone</td>
+                        <td>Pad or Landscape phone</td>
+                        <td>Desktop or Landscape Pad</td>
+                        <td>Large Desktop</td>
+                    </tr>
+                    <tr>
+                        <th>Grid behavior</th>
+                        <td>Horizontal at all times</td>
+                        <td colspan="3">Collapsed to start, horizontal above breakpoints</td>
+                    </tr>
+                    <tr>
+                        <th>Class prefix</th>
+                        <td><code>.col-xs-</code></td>
+                        <td><code>.col-sm-</code></td>
+                        <td><code>.col-md-</code></td>
+                        <td><code>.col-lg-</code></td>
+                    </tr>
+                    <tr>
+                        <th># of columns</th>
+                        <td colspan="4">12</td>
+                    </tr>
+                    </tbody>
+                    <tbody class="container">
+                    <tr>
+                        <th><code>.gs-fixed</code></th>
+                        <td colspan="4">Gutter width: 30px (15px on each side of a column)</td>
+                    </tr>
+                    <tr class="no-topborder">
+                        <th></th>
+                        <td>100%</td>
+                        <td>100%</td>
+                        <td>970px</td>
+                        <td>1170px</td>
+                    </tr>
+                    <tr>
+                        <th><code>.gs</code></th>
+                        <td colspan="4">Gutter width: 30px (15px on each side of a column)</td>
+                    </tr>
+                    <tr class="no-topborder">
+                        <th></th>
+                        <td>100%</td>
+                        <td>100%</td>
+                        <td>100%</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <th><code>.gs-sin</code></th>
+                        <td colspan="4">Gutter width: 0</td>
+                    </tr>
+                    <tr class="no-topborder">
+                        <th></th>
+                        <td>100%</td>
+                        <td>100%</td>
+                        <td>100%</td>
+                        <td>100%</td>
+                    </tr>
+                    </tbody>
+                    <tbody>
+                    <tr>
+                        <th>
+                            <code>.visible-xs-*</code>
+                        </th>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <code>.visible-sm-*</code>
+                        </th>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <code>.visible-md-*</code>
+                        </th>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-hidden">Hidden</td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <code>.visible-lg-*</code>
+                        </th>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-visible">Visible</td>
+                    </tr>
+                    </tbody>
+                    <tbody>
+                    <tr>
+                        <th>
+                            <code>.hidden-xs</code>
+                        </th>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <code>.hidden-sm</code>
+                        </th>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <code>.hidden-md</code>
+                        </th>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-hidden">Hidden</td>
+                        <td class="is-visible">Visible</td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <code>.hidden-lg</code>
+                        </th>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-visible">Visible</td>
+                        <td class="is-hidden">Hidden</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 f4">
+                Responsive css defined
+            </div>
+            <div class="col-xs-6">
+                <p>For all the mobile device</p>
+                <p></p>
+                <p>Extra small devices (phones, less than 768px)</p>
+                <p>@media (max-width: @screen-sm-max) { ... }</p>
+                <br>
+                <p>Small devices (tablets, 768px and up)</p>
+                <p>@media (min-width: @screen-sm-min) { ... }</p>
+            </div>
+            <div class="col-xs-6">
+                <p>For all the PC device</p>
+                <p></p>
+                <p>Medium devices (desktops, 992px and up)</p>
+                <p>@media (min-width: @screen-md-min) { ... }</p>
+                <br>
+                <p>Large devices (large desktops, 1200px and up)</p>
+                <p>@media (min-width: @screen-lg-min) { ... }</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-                                <label for="rbtnFavor2">
-                                    <input id="rbtnFavor2" name="favor" type="checkbox" value="Sing">
-                                    <i></i>
-                                    <span>Sing</span>
-                                </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel">
+    <a href="javascript:;" class="h3 addition" data-collapse data-target="#fontPanel">font
+        <span class="subtitle">the basic font style</span><i class="icon-angle-down right"></i></a>
+    <div id="fontPanel" class="row" style="display: none;">
+        <div class="col-xs-12">
+            <table class="table">
+                <tr>
+                    <td class="f0">f0</td>
+                    <td class="highlight-desktop">40px</td>
+                    <td class="highlight-mobile"> 32px</td>
+                </tr>
+                <tr>
+                    <td class="f1">f1</td>
+                    <td class="highlight-desktop">32px</td>
+                    <td class="highlight-mobile"> 26px</td>
+                </tr>
+                <tr>
+                    <td class="f2">f2</td>
+                    <td class="highlight-desktop">26px</td>
+                    <td class="highlight-mobile"> 22px</td>
+                </tr>
+                <tr>
+                    <td class="f3">f3</td>
+                    <td class="highlight-desktop">22px</td>
+                    <td class="highlight-mobile"> 18px</td>
+                </tr>
+                <tr>
+                    <td class="f4">f4</td>
+                    <td class="highlight-desktop">18px</td>
+                    <td class="highlight-mobile"> 16px</td>
+                </tr>
+                <tr>
+                    <td class="f5">f5</td>
+                    <td class="highlight-desktop">16px</td>
+                    <td class="highlight-mobile"> 16px</td>
+                </tr>
+                <tr>
+                    <td class="f6">f6</td>
+                    <td class="highlight-desktop">14px</td>
+                    <td class="highlight-mobile"> 12px</td>
+                </tr>
+                <tr>
+                    <td class="f7">f7</td>
+                    <td class="highlight-desktop">11px</td>
+                    <td class="highlight-mobile"> 11px</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
 
-                                <label for="rbtnFavor3">
-                                    <input id="rbtnFavor3" name="favor" type="checkbox" value="Paint">
-                                    <i></i>
-                                    <span>Paint</span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12">
-                            <a class="btn black" href="javascript:;" onclick="submitForm()">Submit</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
             <div class="panel">
-                <a href="javascript:;" class="h3 addition" data-collapse data-target="#texboxPanel">Textbox <span
-                    class="subtitle">New textbox style</span> <i
-                    class="icon-angle-down right"></i></a>
-                <div id="texboxPanel" class="form row" data-form style="display: none;">
-                    <div class="col-xs-12 col-sm-6">
-                        <div data-textbox>
-                            <div class="input small left right">
-                                <label for="txtReq1">Message</label>
-                                <i>@</i>
-                                <input type="email" id="txtReq1" name='name' value="" data-validate='required,email'>
-                                <i class="icon-envelope"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <div data-textbox>
-                            <div class="input left right">
-                                <label for="txtReq2">Message</label>
-                                <i>@</i>
-                                <input type="email" id="txtReq2" name='name' value="" data-validate='required,email'>
-                                <i class="icon-envelope"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <div data-textbox>
-                            <div class="input large left right">
-                                <label for="txtReq3">Message</label>
-                                <i>@</i>
-                                <input type="email" id="txtReq3" name='name' value="" data-validate='required,email'>
-                                <i class="icon-envelope"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <div data-textbox>
-                            <div class="textarea">
-                                <label for="textReq4">Message</label>
-                                <textarea name="message" id="textReq4" data-validate='required'></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <a href="javascript:;" class="h3 addition" data-collapse data-target="#buttonPanel">buttons <span
+                class="subtitle">the basic button style</span>
+        <i class="icon-angle-down right"></i></a>
+    <div id="buttonPanel" class="row" style="display: none;">
+        <div class="col-xs-6 col-sm-3">
+            <a href="javascript:;" class="btn ghost-green small"><i class="icon-check"></i> <span>small</span></a>
+            <div class="blank-xs"></div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
-                <a href="javascript:;" class="h3 addition" data-collapse data-target="#dialogPanel">dialog <span class="subtitle">the dialog plugin</span>
-                    <i
-                        class="icon-angle-down right"></i></a>
-                <div id="dialogPanel" style="display: none;">
-                    <p>
-                        <a href="javascript:void(0)" data-dialog data-target="#popupPanel1">open dialog as default</a>
-                    </p>
-                    <script id="popupPanel1" type="text/template">
-                        <div class="dialog-title">Welcome to CUI!</div>
-                        <p>
-                            A modal dialog is a window that forces the user to interact with it before they can go back to using the parent application.
-                        </p>
-                    </script>
-                    <p>
-                        <a href="javascript:void(0)" data-dialog data-target="#popupPanel0" data-theme="fullscreen">open dialog as fullscreen</a>
-                    </p>
-                    <script id="popupPanel0" type="text/template">
-                        <div class="block-center text-center" dialog-close>
-                            <div class="text-light text-white">Welcome to CUI!</div>
-                            <p class=" text-white">A modal dialog is a window that forces the user to interact with it before they can go back to using the
-                                parent application.</p>
-                        </div>
-                    </script>
-                    <p>
-                        <a href="javascript:void(0)" data-dialog data-target="#popupPanel" data-theme="dropdown">open dialog as dropdown</a>
-                    </p>
-                    <script id="popupPanel" type="text/template">
-                        <div class="f3 text-light">Hello World!</div>
-                        <div class="blank-xs"></div>
-                        <ul>
-                            <li><a href="javascript:;">Apple</a></li>
-                            <li><a href="javascript:;">Banana</a></li>
-                            <li><a href="javascript:;">Cat</a></li>
-                        </ul>
-                    </script>
+        <div class="col-xs-6 col-sm-3">
+            <a href="javascript:;" class="btn orange small"><i class="icon-check"></i> <span>small</span></a>
+            <div class="blank-xs"></div>
+        </div>
+        <div class="col-xs-6 col-sm-3">
+            <a href="javascript:;" class="btn ghost-blue"><i class="icon-check"></i> <span>normal</span></a>
+            <div class="blank-xs"></div>
+        </div>
+        <div class="col-xs-6 col-sm-3">
+            <a href="javascript:;" class="btn red"><i class="icon-check"></i> <span>normal</span></a>
+            <div class="blank-xs"></div>
+        </div>
 
-                </div>
-            </div>
+        <div class="col-xs-6 col-sm-3">
+            <a href="javascript:;" class="btn ghost-cyan large"><i class="icon-check"></i> <span>large</span></a>
+            <div class="blank-xs"></div>
+        </div>
+        <div class="col-xs-6 col-sm-3">
+            <a href="javascript:;" class="btn yellow large"><i class="icon-check"></i> <span>large</span></a>
+            <div class="blank-xs"></div>
+        </div>
+        <div class="col-xs-6 col-sm-3">
+            <a href="javascript:;" class="btn ghost-pink loading"><i class="icon-check"></i> <span>disabled</span></a>
+            <div class="blank-xs"></div>
+        </div>
+        <div class="col-xs-6 col-sm-3">
+            <a href="javascript:;" class="btn ghost-black" disabled><i class="icon-check"></i> <span>disabled</span></a>
+            <div class="blank-xs"></div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
-                <a href="javascript:;" class="h3 addition" data-collapse data-target="#collapsePanel">collapse <span
-                    class="subtitle">the collapse plugin</span>
-                    <i class="icon-angle-down right"></i></a>
-                <div id="collapsePanel" class="row" style="display: none;">
-                    <div class="col-xs-12 col-sm-3">
-                        <dl style="position:relative;">
-                            <dt data-isexpand="true"><a href="javascript:void(0)" data-collapse data-isexpand="true" data-target="#plusPanel" data-once="true"
-                                                        class="collapse-more"> <span>show more</span> </a></dt>
-                            <dd id="plusPanel" style="height: 38px; overflow: hidden;">
-                                jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation,
-                                event handling,
-                                animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination
-                                of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.
-                            </dd>
-                        </dl>
-                    </div>
-                    <div class="col-xs-12 col-sm-3">
-                        <dl>
-                            <dd id="anglePanel" style="height: 40px; overflow: hidden;">jQuery is a fast, small, and feature-rich JavaScript library. It makes
-                                things like
-                                HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works
-                                across a multitude
-                                of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write
-                                JavaScript.
-                            </dd>
-                            <dt><a href="javascript:;" data-collapse data-target="#anglePanel" data-isexpand="true" data-showtext="open"
-                                   data-hidetext="collapsed"><i
-                                class="icon-angle-down"></i> <span>collapsed</span> </a></dt>
-                        </dl>
-                    </div>
-                    <div class="col-xs-12 col-sm-3">
-                        <dl>
-                            <dt><a href="javascript:;" data-collapse data-target="#eyePanel" data-isexpand="true" data-showtext="shown"
-                                   data-hidetext="hidden"><i
-                                class="icon-eye-slash"></i> <span>hidden</span></a></dt>
-                            <dd id="eyePanel" style="height: 0; overflow: hidden;">jQuery is a fast, small, and feature-rich JavaScript library. It makes
-                                things like HTML
-                                document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across
-                                a multitude
-                                of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write
-                                JavaScript.
-                            </dd>
-                        </dl>
-                    </div>
-                    <div class="col-xs-12 col-sm-3">
-                        <dl style="position:relative;">
-                            <dt><a href="javascript:;" data-collapse data-target="#caretPanel"><span>dropdown menu</span> <i class="icon-caret-right"></i></a>
-                            </dt>
-                            <dd id="caretPanel" class="collapse-menu">jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML
-                                document
-                                traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a
-                                multitude
-                                of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write
-                                JavaScript.
-                            </dd>
-                        </dl>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
-                <a href="javascript:;" class="h3 addition" data-collapse data-target="#gridtablePanel">grid table <span class="subtitle">switch table layout to key-value grid when screen is smaller</span>
-                    <i class="icon-angle-down right"></i></a>
-                <div id="gridtablePanel" style="display: none;">
-                    <table class="gridtable" data-gridtable>
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Age</th>
-                            <th>Email</th>
-                            <th>Sex</th>
-                            <th>Phone</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Conjee</td>
-                            <td>30</td>
-                            <td>shishiv30@live.cn</td>
-                            <td>Male</td>
-                            <td>18049****48</td>
-                        </tr>
+</div>
 
-                        <tr>
-                            <td>Tom</td>
-                            <td>28</td>
-                            <td>Tom@gmail.com</td>
-                            <td>Male</td>
-                            <td>13696****93</td>
-                        </tr>
-                        <tr>
-                            <td>Lily</td>
-                            <td>25</td>
-                            <td>Lily@gmail.com</td>
-                            <td>Female</td>
-                            <td>16934****26</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
             <div class="panel">
-                <a href="javascript:;" class="h3 addition" data-collapse data-target="#rangesilderPanel">rangesilder <span
-                    class="subtitle">the rangesilder plugin</span> <i class="icon-angle-down right"></i></a>
-                <div id="rangesilderPanel" data-form class="form" style="display: none;">
-                    <div class="row">
-                        <div class="col-xs-12" data-textbox>
-                            <div class="input left">
-                                <label for="txtPrice">price</label>
-                                <i>$</i>
-                                <input type="text" id="txtPrice" name="price"
-                                       data-inputformat
-                                       data-type="price"
-                                       data-rangesilder
-                                       data-autohide="false"
-                                       value="3000"
-                                       data-min="0"
-                                       data-step="1"
-                                       data-max="8000"
-                                       placeholder="price"
-                                       data-validate="required,price"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <a href="javascript:;" class="h3 addition" data-collapse data-target="#tipPanel">tips <span class="subtitle">the tip style</span> <i
+                class="icon-angle-down right"></i></a>
+    <div id="tipPanel" class="row" style="display: none;">
+        <div class="col-xs-6 col-sm-3">
+            <a href="javascript:;"
+               data-tip
+               data-content="show on bottom side">
+                top</a>
+        </div>
+        <div class="col-xs-6 col-sm-3 text-right">
+            <a href="javascript:;"
+               data-tip
+               data-placement="left"
+               data-content="show on left side">
+                left</a>
+        </div>
+        <div class="col-xs-6 col-sm-3">
+
+            <a href="javascript:;"
+               data-tip
+               data-placement="right"
+               data-content="show on right side">
+                right</a>
+        </div>
+        <div class="col-xs-6 col-sm-3 text-right">
+            <a href="javascript:;"
+               data-tip
+               data-placement="bottom"
+               data-content="show on top side">
+                bottom</a>
+        </div>
+    </div>
+</div>
+
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
             <div class="panel">
-                <a href="javascript:;" class="h3 addition " data-collapse data-target="#sliderPanel">slider <span class="subtitle">the slider plugin</span>
-                    <i
-                        class="icon-angle-down right"></i></a>
-                <div id="sliderPanel" style="display: none;">
-                    <div class="slider" data-slider>
-                        <ul class="slider-list">
-                            <li>
-                                <img src="dist/src/img/01.jpg" alt="This is a image.">
-                            </li>
-                            <li>
-                                <img src="dist/src/img/02.jpg" alt="This is a image.">
-                            </li>
-                            <li>
-                                <img src="dist/src/img/03.jpg" alt="This is a image.">
-                            </li>
-                            <li>
-                                <img src="dist/src/img/04.jpg" alt="This is a image.">
-                            </li>
-                            <li>
-                                <img src="dist/src/img/05.jpg" alt="This is a image.">
-                            </li>
-                            <li>
-                                <img src="dist/src/img/06.jpg" alt="This is a image.">
-                            </li>
-                            <li>
-                                <img src="dist/src/img/07.jpg" alt="This is a image.">
-                            </li>
-                        </ul>
-                    </div>
+    <a href="javascript:;" class="h3 addition" data-collapse data-target="#formPanel">forms <span class="subtitle">the form style</span> <i
+                class="icon-angle-down right"></i></a>
+    <div id="formPanel" style="display: none;">
+        <div id="form" class="form row" data-form>
+            <div class="col-xs-12 col-sm-6">
+                <label for="txtReq">Required Box</label>
+                <div class="input left right">
+                    <i class="icon-user"></i>
+                    <input type="text" id="txtReq" name='name' placeholder="name" data-validate='required'>
+                    <i class="icon-asterisk"></i>
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-6">
+                <label for="txtMail">Mail Box</label>
+                <div class="input right">
+                    <input type="email" id="txtMail" name='email' placeholder="email" data-validate='email'>
+                    <i class="icon-envelope"></i>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <label for="txtPhone">Phone Box</label>
+                <div class="input left right">
+                    <i class="icon-phone"></i>
+                    <input type="tel" id="txtPhone" name='phone' value="1234567890" data-validate='required,phone' data-inputformat
+                           data-type="phone">
+                    <i class="icon-asterisk"></i>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <label for="ddlFequence">Fequence</label>
+                <div class="input">
+                    <select id="ddlFequence" name="fequence" data-validate="required">
+                        <option value="" selected disabled>select a fequence</option>
+                        <option value="Weekly">Weekly</option>
+                        <option value="Daily">Daily</option>
+                        <option value="Monthly">Monthly</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <label for="date">Date picker</label>
+                <div class="input right">
+                    <input type="text" id="date" name='date' data-picker="date" readonly data-validate="required">
+                    <label for="date" class="icon-calendar"></label>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <label for="time">Time picker</label>
+                <div class="input right">
+                    <input type="text" id="time" name='time' data-picker="time" readonly data-validate="required">
+                    <label for="time" class="icon-clock-o"></label>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <label>Select Gender</label>
+                <div class="radio">
+                    <label for="chMale">
+                        <input id="chMale" name="gender" type="radio" checked value="Male">
+                        <i></i>
+                        <span>Male</span>
+                    </label>
+                    <label for="chkFemal">
+                        <input id="chkFemal" name="gender" type="radio" value="Female">
+                        <i></i>
+                        <span>Female</span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <label>Select Favor</label>
+                <div class="checkbox">
+                    <label for="rbtnFavor1">
+                        <input id="rbtnFavor1" name="favor" checked type="checkbox" value="Dance">
+                        <i></i>
+                        <span>Dance</span>
+                    </label>
+
+                    <label for="rbtnFavor2">
+                        <input id="rbtnFavor2" name="favor" type="checkbox" value="Sing">
+                        <i></i>
+                        <span>Sing</span>
+                    </label>
+
+                    <label for="rbtnFavor3">
+                        <input id="rbtnFavor3" name="favor" type="checkbox" value="Paint">
+                        <i></i>
+                        <span>Paint</span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <a class="btn black" href="javascript:;" onclick="submitForm()">Submit</a>
+            </div>
+        </div>
+    </div>
+</div>
+
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
             <div class="panel">
-                <a href="javascript:;" class="h3 addition" data-collapse data-target="#shifterPanel">shifter <span
-                    class="subtitle">the shifter plugin</span> <i
-                    class="icon-angle-down right"></i></a>
-                <div id="shifterPanel" style="display: none;">
-                    <div class="shifter" data-shifter data-index="2">
-                        <ul>
-                            <li>
-                                <img src="dist/src/img/01.jpg" height="100%" alt="This is a image.">
-                            </li>
-                            <li>
-                                <img src="dist/src/img/02.jpg" height="100%" alt="This is a image.">
-                            </li>
-                            <li>
-                                <img src="dist/src/img/03.jpg" height="100%" alt="This is a image.">
-                            </li>
-                            <li>
-                                <img src="dist/src/img/04.jpg" height="100%" alt="This is a image.">
-                            </li>
-                            <li>
-                                <img src="dist/src/img/05.jpg" height="100%" alt="This is a image.">
-                            </li>
-                            <li>
-                                <img src="dist/src/img/06.jpg" height="100%" alt="This is a image.">
-                            </li>
-                            <li>
-                                <img src="dist/src/img/07.jpg" height="100%" alt="This is a image.">
-                            </li>
-                        </ul>
-                    </div>
+    <a href="javascript:;" class="h3 addition" data-collapse data-target="#texboxPanel">Textbox <span
+                class="subtitle">New textbox style</span> <i
+                class="icon-angle-down right"></i></a>
+    <div id="texboxPanel" class="form row" data-form style="display: none;">
+        <div class="col-xs-12 col-sm-6">
+            <div data-textbox>
+                <div class="input small left right">
+                    <label for="txtReq1">Message</label>
+                    <i>@</i>
+                    <input type="email" id="txtReq1" name='name' value="" data-validate='required,email'>
+                    <i class="icon-envelope"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div data-textbox>
+                <div class="input left right">
+                    <label for="txtReq2">Message</label>
+                    <i>@</i>
+                    <input type="email" id="txtReq2" name='name' value="" data-validate='required,email'>
+                    <i class="icon-envelope"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div data-textbox>
+                <div class="input large left right">
+                    <label for="txtReq3">Message</label>
+                    <i>@</i>
+                    <input type="email" id="txtReq3" name='name' value="" data-validate='required,email'>
+                    <i class="icon-envelope"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div data-textbox>
+                <div class="textarea">
+                    <label for="textReq4">Message</label>
+                    <textarea name="message" id="textReq4" data-validate='required'></textarea>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
-                <a href="javascript:;" class="h3 addition" data-collapse data-target="#dataTable">data table<span class="subtitle">the table
-                    render by standard data</span><i
-                    class="icon-angle-down right"></i></a>
-                <div id="dataTable" style="display: none;">
-                    <div data-datatable data-initafter="datatable.inital" data-maxcount="2"></div>
-                </div>
-            </div>
+</div>
+
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <div class="panel">
-                <a href="javascript:;" class="h3 addition" data-collapse data-target="#spritesImage">sprites css<span class="subtitle">merge images in one image with css</span><i
-                    class="icon-angle-down right"></i></a>
-                <div id="spritesImage" style="display: none;">
-                    <div class="s-img-cn"></div>
-                    <div class="s-img-jp"></div>
-                    <div class="s-img-us"></div>
-                </div>
-            </div>
+            
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <div class="panel">
-                <a href="javascript:;" class="h3 addition" data-collapse data-target="#gridviewPanel">gridview
-                    <span class="subtitle">the  gridview for show img</span><i class="icon-angle-down right"></i></a>
-                <div id="gridviewPanel" class="row" style="display: none;">
-                    <div class="col-xs-12">
-                        <div data-gridview></div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <div class="panel">
-                <a href="javascript:;" class="h3 addition" data-collapse data-target="#imgzoomPanel">imgzoom
-                    <span class="subtitle">the plugin control img zoomin zoomout</span><i class="icon-angle-down right"></i></a>
-                <div id="imgzoomPanel" class="row" style="display: none;">
-                    <div class="col-xs-6">
-                        <a href="javascript:;" class="btn" data-imgzoom data-max="100" data-step="10" data-target="#imgzoomView"><i class="icon-plus"></i> zoom
-                            in</a>
-                    </div>
-                    <div class="col-xs-6">
-                        <a href="javascript:;" class="btn" data-imgzoom data-min="50" data-step="-10" data-target="#imgzoomView"><i class="icon-minus"> zoom
-                            out</i></a>
-                    </div>
-                    <div class="col-xs-12">
-                        <div id="imgzoomView" class="imgzoom" style="max-height:300px; overflow:scroll;">
-                            <li><img src="dist/src/img/01.jpg" alt="This is a image."></li>
-                            <li><img src="dist/src/img/02.jpg" alt="This is a image."></li>
-                            <li><img src="dist/src/img/03.jpg" alt="This is a image."></li>
-                            <li><img src="dist/src/img/04.jpg" alt="This is a image."></li>
-                            <li><img src="dist/src/img/05.jpg" alt="This is a image."></li>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <div class="panel">
-                <a href="javascript:;" class="h3 addition" data-collapse data-target="#eventPanel">Touch Event
-                    <span class="subtitle">The extension of event</span><i class="icon-angle-down right"></i></a>
-                <div id="eventPanel" class="row" style="display: none;">
-                    <div class="col-xs-12">
-                        <div id="eventDiv" style="height:300px;padding:100px 50px; text-align:center;background-color:#ddd;">
-                            try to move on the panel with your finger.
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <div class="panel">
-                <a href="javascript:;" class="h3 addition" data-target="#measurement" data-collapse>
-                    Measurement
-                    <span class="subtitle">use to compare data</span>
-                    <i class="icon-angle-down right"></i>
-                </a>
-                <div id="measurement" class=" collapse-appear" style="display: none;">
-                    <div data-measurement data-min="0" data-max="1000"></div>
-                </div>
-            </div>
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            
         </div>
     </div>
 </div>
@@ -1233,5 +929,4 @@
         })
     });
 </script>
-
 </html>

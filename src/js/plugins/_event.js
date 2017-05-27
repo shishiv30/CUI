@@ -1,14 +1,14 @@
 //Extend touch event
-(function($) {
-    var _getDist = function(eventInfo) {
+(function ($) {
+    var _getDist = function (eventInfo) {
         var x = (eventInfo.touches[0].pageX - eventInfo.touches[1].pageX);
         var y = (eventInfo.touches[0].pageY - eventInfo.touches[1].pageY);
         return Math.sqrt(x * x + y * y);
     };
-    var _getInfo = function(eventInfo) {
+    var _getInfo = function (eventInfo) {
         var tmpEventInfo = Array.prototype.slice.call(eventInfo.touches);
         return {
-            touches: tmpEventInfo.map(function(e) {
+            touches: tmpEventInfo.map(function (e) {
                 return {
                     pageX: e.pageX,
                     pageY: e.pageY
@@ -17,18 +17,18 @@
         };
     };
     var eventSetting = {
-        setup: function() {
+        setup: function () {
             var $this = $(this);
-            $this.off('gesturestart').on('gesturestart', function(e) {
+            $this.off('gesturestart').on('gesturestart', function (e) {
                 e.preventDefault();
             });
-            $this.off('touchstart.cui').on('touchstart.cui', function() {
+            $this.off('touchstart.cui.gesture').on('touchstart.cui.gesture', function () {
                 var $ele = $(this);
                 $ele.data('_touchStart', null);
                 $ele.data('_touchEnd', null);
                 return true;
             });
-            $this.off('touchmove.cui').on('touchmove.cui', $.throttle(function(e) {
+            $this.off('touchmove.cui.gesture').on('touchmove.cui.gesture', $.throttle(function (e) {
                 var $ele = $(this);
                 var event = _getInfo(e.originalEvent);
                 if (!$ele.data('_touchStart')) {
@@ -47,7 +47,7 @@
                 return true;
             }, 100));
 
-            $this.off('touchend.cui').on('touchend.cui', function() {
+            $this.off('touchend.cui.gesture').on('touchend.cui.gesture', function () {
                 var $ele = $(this);
                 var start = $ele.data('_touchStart');
                 var end = $ele.data('_touchEnd');
@@ -86,11 +86,11 @@
                 return true;
             });
         },
-        teardown: function() {
+        teardown: function () {
             var $this = $(this);
-            $this.off('touchstart.cui');
-            $this.off('touchmove.cui');
-            $this.off('touchend.cui');
+            $this.off('touchstart.cui.gesture');
+            $this.off('touchmove.cui.gesture');
+            $this.off('touchend.cui.gesture');
 
         }
     };
@@ -104,19 +104,74 @@
 })(jQuery);
 
 //Extend transistion event
-(function($) {
+(function ($) {
     var eventSetting = {
-        setup: function() {
+        setup: function () {
             var $this = $(this);
             $this.off('webkitTransitionEnd.cui otransitionend.cui oTransitionEnd.cui msTransitionEnd.cui transitionend.cui')
-            .on('webkitTransitionEnd.cui otransitionend.cui oTransitionEnd.cui msTransitionEnd.cui transitionend.cui', function() {
+            .on('webkitTransitionEnd.cui otransitionend.cui oTransitionEnd.cui msTransitionEnd.cui transitionend.cui', function () {
                 $this.trigger('transitionend', []);
             });
         },
-        teardown: function() {
+        teardown: function () {
             var $this = $(this);
             $this.off('webkitTransitionEnd.cui otransitionend.cui oTransitionEnd.cui msTransitionEnd.cui transitionend.cui');
         }
     }
     $.event.special.transitionend = eventSetting;
+}(jQuery));
+
+//draggable
+(function ($) {
+    var eventSetting = {
+        setting: function () {
+            var $this = $(this);
+            var onDragStart = function () {
+                if ($.isMobile()) {
+                    $this.on('touchend.cui.draggable', onDragEnd);
+                    $this.one('touchmove.cui.draggable', onDragMove);
+                } else {
+                    $this.on('mouseup.cui.draggable', onDragEnd);
+                    $this.one('mousemove.cui.draggable', onDragMove);
+                }
+                $this.trigger('drag');
+            };
+            var onDragMove = function () {
+                $this.one('touchmove.cui.draggable', function () {
+                    $this.trigger('dragging');
+                });
+            }
+            var onDragEnd = function () {
+                $this.trigger('dragged');
+            };
+            if ($.isMobile()) {
+                $this.on('touchstart.cui.draggable', onDragStart);
+                $this.on('touchcancel.cui.draggable', onDragEnd);
+            } else {
+                $this.on('mousedown.cui.draggable', onDragStart);
+                $this.on('dragstart.cui.draggable selectstart.cui.draggable', function () {
+                    return false
+                });
+            }
+        },
+        teardown: function () {
+            var $this = $(this);
+            if ($.isMobile()) {
+                $this.off('touchstart.cui.draggable');
+                $this.off('touchcancel.cui.draggable');
+            } else {
+                this.$this.off('mousedown.cui.draggable');
+                this.$this.off('dragstart.cui.draggable selectstart.cui.draggable', function () {
+                    return false
+                });
+            }
+            $this.off('touchstart.cui.draggable mousedown.cui.draggable');
+            $this.off('touchcancel.cui.draggable mousedown.cui.draggable');
+
+            $this.off('touchmove.cui.draggable mousemove.cui.draggable');
+            $this.off('touchend.cui.draggable mouseup.cui.draggable');
+        }
+    };
+    $.event.special.swipeleft =
+        $.event.special.swiperight = eventSetting;
 }(jQuery));

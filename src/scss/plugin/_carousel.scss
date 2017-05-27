@@ -59,10 +59,8 @@
 .carousel-list {
     overflow: hidden;
     position: relative;
-    overflow-x: scroll;
-    overflow-y: hidden;
-
-    height: calc(100% + 21px);
+    overflow: hidden;
+    height: 100%;
     > ul {
         @include clearfix;
         position: absolute;

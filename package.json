@@ -4,8 +4,8 @@
     "description": "A responsive ui framework",
     "main": "index.js",
     "scripts": {
-        "dev": "grunt watch",
-        "deploy": "grunt && node publish.js "
+        "dev": "grunt dev && node html.js && node app.js",
+        "deploy": "grunt && node html.js && node publish.js "
     },
     "repository": {
         "type": "git",
@@ -36,6 +36,7 @@
         "grunt-contrib-watch": "^0.6.1"
     },
     "dependencies": {
+        "ejs": "^2.5.6",
         "grunt-autoprefixer": "^3.0.4",
         "grunt-cli": "^1.2.0",
         "grunt-contrib-compass": "^1.1.1",
