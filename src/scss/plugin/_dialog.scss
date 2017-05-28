@@ -51,14 +51,13 @@
         padding-top: 20px;
         .dialog-title {
             @extend %text-light;
-            @extend .f2;
+            @extend .h3;
             @extend %singleline;
             position: relative;
             padding-right: 30px;
-            margin-bottom:10px;
             .dialog-title-close {
                 position: absolute;
-                font-size: 21px;
+                font-size: 25px;
                 color: $color-c;
                 right: 0;
             }

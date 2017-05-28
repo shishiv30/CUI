@@ -2,10 +2,12 @@
     @extend %clearfix;
     .input {
         width: 100%;
-        margin-bottom: 20px;
+        margin: $space-l 0;
     }
     .radio, .checkbox {
-        margin-bottom: 20px;
+        margin-bottom: $space-l;
     }
-
+    .btn {
+        margin: $space-l 0;
+    }
 }

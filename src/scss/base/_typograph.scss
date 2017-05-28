@@ -3,17 +3,16 @@ html {
 }
 
 .h0, .h1, .h2 {
-    margin: 0.309em auto;
+    margin: $space-l auto;
 }
 
 .h3, .h4 {
-    @extend %text-light;
-    margin: 0.309em auto;
+    margin: $space-l auto;
 }
 
 .h5, .h6 {
-    @extend %text-normal;
-    margin: 0.309em auto;
+    @extend %text-light;
+    margin: $space-l auto;
 }
 
 b {
@@ -25,7 +24,7 @@ p, .paragraph {
 }
 
 code {
-    @extend %text-normal;
+    @extend %text-light;
 }
 
 dt {
