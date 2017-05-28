@@ -55,8 +55,6 @@ $social-list: socialbar-email $socialbar-email, socialbar-facebook $socialbar-fa
         // end @each directive
 
         a {
-            @extend %text-bold;
-
             background-color: $color-c;
             border-radius: 2px;
             display: block;

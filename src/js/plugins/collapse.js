@@ -31,6 +31,9 @@
                         $this.text(opt.showtext);
                     }
                 }
+                if (opt.once) {
+                    $this.hide();
+                }
             };
             var _hidetext = function () {
                 if (opt.hidetext) {
@@ -39,9 +42,6 @@
                     } else {
                         $this.text(opt.hidetext);
                     }
-                }
-                if (opt.once) {
-                    $this.hide();
                 }
             };
             if (opt.isexpand) {
@@ -124,10 +124,12 @@
                 $(document).on('dom.resize.collapse', _resetForExpand);
                 _resetForExpand();
             }
-            if ($target.is(':hidden')) {
-                exports.hide();
-            } else {
-                exports.show();
+            if (!opt.isexpand) {
+                if ($target.is(':hidden')) {
+                    exports.hide();
+                } else {
+                    exports.show();
+                }
             }
             $this.on('click.collapse', exports.toggle);
         },

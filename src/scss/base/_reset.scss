@@ -38,7 +38,6 @@ html {
     line-height: 1em;
     font-family: $font-thin, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-style: normal;
-    color: $color-text-default;
 }
 
 body,
@@ -101,10 +100,6 @@ q:after, q:before {
         height: 0;
         width: 0;
     }
-}
-
-p {
-    line-height: $line-m;
 }
 
 @media screen and (min-width: $screen-md-min) {

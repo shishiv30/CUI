@@ -2,10 +2,12 @@ table {
     width: 100%;
     border-spacing: 0;
     border-collapse: collapse;
+    color: $color-3;
 }
 
-.table {
-    td, tr {
-        padding: 2px 5px;
+table {
+    td, th {
+        @extend %text-light;
+        padding: $space-m $space-s;
     }
 }

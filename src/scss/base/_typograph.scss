@@ -1,0 +1,37 @@
+html {
+    color: $color-text-default;
+}
+
+.h0, .h1, .h2 {
+    margin: 0.309em auto;
+}
+
+.h3, .h4 {
+    @extend %text-light;
+    margin: 0.309em auto;
+}
+
+.h5, .h6 {
+    @extend %text-normal;
+    margin: 0.309em auto;
+}
+
+b {
+    @extend %text-bold;
+}
+
+p, .paragraph {
+    line-height: 1.618em;
+}
+
+code {
+    @extend %text-normal;
+}
+
+dt {
+    line-height: $line-m;
+}
+
+dd {
+    line-height: $line-l;
+}

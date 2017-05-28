@@ -5,7 +5,6 @@
 .h4,
 .h5,
 .h6 {
-    font-weight: bold;
     line-height: 1em;
 }
 
@@ -91,7 +90,7 @@
     font-family: $font-bold !important;
 }
 
-b, .text-bold {
+.text-bold {
     @extend %text-bold;
 }
 

@@ -1,20 +1,26 @@
 .panel {
     position: relative;
     margin: $space-l auto;
-    .h1, .h2, .h3, .h4, .h5 {
+    > .h1, > .h2, > .h3, > .h4, > .h5 {
         position: relative;
-        border-bottom: solid 1px $color-d;
         display: block;
         .subtitle {
             font-size: $font-size-5;
             color: $color-7;
         }
+        margin: 0;
         padding-top: $space-m;
         padding-bottom: $space-m;
+        border-bottom: solid 1px $color-d;
+        @extend %singleline;
     }
-    [data-collapse], [data-collapse-load] {
+    @media(max-width: $screen-xs-max) {
+        .subtitle {
+            display: none;
+        }
+    }
+    > [data-collapse], > [data-collapse-load] {
         padding-right: $line-l;
-        margin-bottom: $space-l;
         &:before {
             position: absolute;
             right: 0;
@@ -25,6 +31,9 @@
             height: $line-l;
             line-height: $line-l;
             margin-top: $line-l/-2;
+        }
+        & + div {
+            padding-top: $space-l;
         }
     }
 }
