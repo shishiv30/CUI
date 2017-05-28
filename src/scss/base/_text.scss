@@ -77,47 +77,6 @@
     font-size: $font-size-7;
 }
 
-@media (max-width: $screen-sm-max) {
-    .h0,
-    .f0 {
-        font-size: $font-size-0-small;
-    }
-
-    .h1,
-    .f1 {
-        font-size: $font-size-1-small;
-    }
-
-    .h2,
-    .f2 {
-        font-size: $font-size-2-small;
-    }
-
-    .h3,
-    .f3 {
-        font-size: $font-size-3-small;
-    }
-
-    .h4,
-    .f4 {
-        font-size: $font-size-4-small;
-    }
-
-    .h5,
-    .f5 {
-        font-size: $font-size-5-small;
-    }
-
-    .h6,
-    .f6 {
-        font-size: $font-size-6-small;
-    }
-
-    .f7 {
-        font-size: $font-size-7-small;
-    }
-}
-
 %text-normal {
     font-weight: normal;
     font-family: $font !important;

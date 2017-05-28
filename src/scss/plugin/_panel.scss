@@ -1,8 +1,6 @@
 .panel {
     position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
+    margin: $space-l auto;
     .h1, .h2, .h3, .h4, .h5 {
         position: relative;
         border-bottom: solid 1px $color-d;
@@ -11,19 +9,22 @@
             font-size: $font-size-5;
             color: $color-7;
         }
+        padding-top: $space-m;
+        padding-bottom: $space-m;
     }
     [data-collapse], [data-collapse-load] {
-        padding-right: 30px;
+        padding-right: $line-l;
+        margin-bottom: $space-l;
         &:before {
             position: absolute;
             right: 0;
             top: 50%;
             @extend %icon;
             @extend .icon-angle-down;
-            width: 25px;
-            height: 25px;
-            line-height: 25px;
-            margin-top: -12px;
+            width: $line-l;
+            height: $line-l;
+            line-height: $line-l;
+            margin-top: $line-l/-2;
         }
     }
 }

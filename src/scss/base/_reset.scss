@@ -103,6 +103,10 @@ q:after, q:before {
     }
 }
 
+p {
+    line-height: $line-m;
+}
+
 @media screen and (min-width: $screen-md-min) {
     html {
         margin-left: calc(100vw - 100%);

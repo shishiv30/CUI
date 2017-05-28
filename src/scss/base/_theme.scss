@@ -125,42 +125,41 @@ $color-border: $color-d;
 $font-size-base: 16px;
 
 //40px
-$font-size-0: 40px;
+$font-size-0: 1.618*1.618*1.5;
 //32px
-$font-size-0-small: 32px;
 //32px
-$font-size-1: $font-size-0-small;
+$font-size-1: 1.618*1.618rem;
 //26px
-$font-size-1-small: 26px;
 //26px
-$font-size-2: $font-size-1-small;
+$font-size-2: 1.927rem;
 //22px
-$font-size-2-small: 22px;
 //22px
-$font-size-3: $font-size-2-small;
+$font-size-3: 1.618rem;
 //18px
-$font-size-3-small: 18px;
 //18px
-$font-size-4: $font-size-3-small;
+$font-size-4: 1.309rem;
 //16px
-$font-size-4-small: 16px;
 //14px
-$font-size-5: $font-size-4-small;
+$font-size-5: 1rem;
 //14px
-$font-size-5-small: $font-size-4-small;
 //12px
-$font-size-6: 12px;
+$font-size-6: 0.927rem;
 //12px
-$font-size-6-small: 12px;
 //11px
-$font-size-7: 11px;
-$font-size-7-small: 11px;
+$font-size-7: 0.618rem;
 
 //button & input & select
 $form-size-small: 36px;
 $form-size-normal: 40px;
 $form-size-large: 45px;
 
+//the basic value is 0.618
+$space-s: 0.309rem;
+$space-m: 0.618rem;
+$space-l: 0.927rem;
+$line-s: 1.309rem;
+$line-m: 1.618rem;
+$line-l: 1.927rem;
 //header
 $header-height: 45px;
 $menu-height: $header-height;
