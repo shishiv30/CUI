@@ -1,3 +1,4 @@
+
 <html>
 
 <head>
@@ -32,10 +33,6 @@
         color: #a4a4a4
     }
 
-    .table.responsive th, .table.responsive td {
-        padding: 10px 5px
-    }
-
     .table.responsive td {
         border: solid 1px #d7d7d7
     }
@@ -54,6 +51,32 @@
 
 </style>
 </head>
+<div data-header class="header">
+    <div class="header-form">
+        <a class="header-form-logo" href="javascript:;"> <i class="icon-plus"></i></a>
+        <a class="header-form-btn" href="javascript:;" id="menuButton"><i class="icon-bars"></i></a>
+    </div>
+    <div class="header-menu-list right">
+        <div class="header-menu-list-wrap">
+            <div class="header-menu-item">
+                <a href="javascript:;">Home</a>
+            </div>
+            <div class="header-menu-item right" data-menu="expand">
+                <a href="javascript:;" data-tab data-target="#tpl">About US <i class="caret"></i></a>
+                <ul>
+                    <li>
+                        <a href="javascript:void(0)">Team</a>
+                        <a href="javascript:void(0)">Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="header-menu-item right">
+                <a href="javascript:;" data-tab data-target="#js">Setting</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height:50px;"></div>
 
 <body id="body">
 
@@ -61,53 +84,27 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="panel">
-    <a src="javascript:;" class="h3 addition" data-collapse data-target="#plugincarousel">
-        <div id="plugincarousel">
-            <div class="row ">
-                <div class="col-xs-12 f4">
-                    The responsive carousel.
-                </div>
-                <div class="col-xs-12">
-                    <div class="carousel loading" data-carousel>
-                        <div class="carousel-list">
-                            <ul>
-                                <li><img data-src="dist/src/img/01.jpg" alt=""></li>
-                                <li><img data-src="dist/src/img/02.jpg" alt=""></li>
-                                <li><img data-src="dist/src/img/03.jpg" alt=""></li>
-                                <li><img data-src="dist/src/img/04.jpg" alt=""></li>
-                                <li><img data-src="dist/src/img/05.jpg" alt=""></li>
-                                <li><img data-src="dist/src/img/06.jpg" alt=""></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <span>Color Solution</span>
-        <span class="subtitle">The regular color we used.</span>
-        <i class="icon-angle-down right"></i>
+    <a href="javascript:;" class="h2" data-collapse data-target="#cssColor">
+        color solution
+        <span class="subtitle">the regular color we used.</span>
     </a>
-</div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
-    <a src="javascript:;" class="h3 addition" data-collapse data-target="#cssColor">
-        <span>Color Solution</span>
-        <span class="subtitle">The regular color we used.</span>
-        <i class="icon-angle-down right"></i>
-    </a>
-    <div id="cssColor" style="display: none;">
+    <div id="cssColor">
         <div class="row ">
-            <div class="col-xs-12 f4">
-                The color solution can be group by emotion.
+            <div class="col-xs-12">
+                <p class="f4">
+                    The color solution can be group by emotion.
+                </p>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12">
-                the main color is pink. Use these color to make user feeling earnest. <br>
-                Reference: link color, default button background, header background,footer background and some important case.
+                <p>
+                    the main color is pink. Use these color to make user feeling earnest.
+                </p>
+                <p>
+                    Reference: link color, default button background, header background,footer background and some important case.
+                </p>
+
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="circle-item color-main">#78004E</div>
@@ -122,12 +119,15 @@
                 <div class="circle-item color-main-l3">#ffabe2</div>
             </div>
         </div>
-        <div class="blank10"></div>
         <div class="row">
             <div class="col-xs-12">
-                the warning color is orange. Use these color to make user feeling curious. <br>
-                Reference: highlighted text, submit button, movoto listing, hover style, price reduce listing, and some special case which is
-                outstanding.
+                <p>
+                    the warning color is orange. Use these color to make user feeling curious.
+                </p>
+                <p>
+                    Reference: highlighted text, submit button, movoto listing, hover style, price reduce listing, and some special case which is
+                    outstanding.
+                </p>
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="circle-item color-warning">#c05b00</div>
@@ -145,8 +145,12 @@
         <div class="blank10"></div>
         <div class="row">
             <div class="col-xs-12">
-                the safe color is green. Use these color to make user feeling fulfillment. <br>
-                Reference: success info, high rank, new listing and something good to know.
+                <p>
+                    the safe color is green. Use these color to make user feeling fulfillment.
+                </p>
+                <p>
+                    Reference: success info, high rank, new listing and something good to know.
+                </p>
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="circle-item color-safe">#357935</div>
@@ -161,11 +165,14 @@
                 <div class="circle-item color-safe-l3">#b5dfb5</div>
             </div>
         </div>
-        <div class="blank10"></div>
         <div class="row">
             <div class="col-xs-12">
-                the danger color is red. Use these color to make user feeling serious. <br>
-                Reference: error info, low rank, dangerous behavior and something unexpected.
+                <p>
+                    the danger color is red. Use these color to make user feeling serious.
+                </p>
+                <p>
+                    Reference: error info, low rank, dangerous behavior and something unexpected.
+                </p>
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="circle-item color-danger">#a02622</div>
@@ -181,11 +188,14 @@
                 <div class="circle-item color-danger-l3">#f0b9b8</div>
             </div>
         </div>
-        <div class="blank10"></div>
         <div class="row">
             <div class="col-xs-12">
-                the tip color is yellow. Use these color to make user feeling never mind. <br>
-                Reference: tip info, low level message or comment, dangerous behavior and something unexpected.
+                <p>
+                    the tip color is yellow. Use these color to make user feeling never mind.
+                </p>
+                <p>
+                    Reference: tip info, low level message or comment, dangerous behavior and something unexpected.
+                </p>
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="circle-item color-tip">#cccc00</div>
@@ -200,9 +210,10 @@
                 <div class="circle-item color-tip-l3">#ffffb3</div>
             </div>
         </div>
-        <div class="blank10"></div>
-        <div class="row text-center">
-            <div>some regular gray color:</div>
+        <div class="row">
+            <div class="col-xs-12">
+                <p>some regular gray color:</p>
+            </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="circle-item color-d">#dddddd</div>
                 <div>The border color</div>
@@ -228,12 +239,72 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="panel">
-    <a href="javascript:;" class="h3 addition" data-target="#girdSystem" data-collapse>
-        Grid system
-        <span class="subtitle">use grid system to do layout</span>
-        <i class="icon-angle-down right"></i>
+    <a href="javascript:;" class="h2" data-collapse data-target="#fontPanel">
+        typograph
+        <span class="subtitle">the basic typograph</span>
     </a>
-    <div id="girdSystem" class="girdSystem collapse-appear" style="display: none;">
+    <div id="typographPanel">
+        <div class="h0">The level 0 title style</div>
+        <div class="h1">The level 1 title style</div>
+        <div class="h2">The level 2 title style</div>
+        <div class="h3">The level 3 title style</div>
+        <div class="h4">The level 4 title style</div>
+        <div class="h5">The level 5 title style</div>
+        <div class="h6">The level 6 title style</div>
+        <table class="table">
+            <tr>
+                <td class="f0">f0</td>
+                <td class="highlight-desktop">40px</td>
+                <td class="highlight-mobile"> 32px</td>
+            </tr>
+            <tr>
+                <td class="f1">f1</td>
+                <td class="highlight-desktop">32px</td>
+                <td class="highlight-mobile"> 26px</td>
+            </tr>
+            <tr>
+                <td class="f2">f2</td>
+                <td class="highlight-desktop">26px</td>
+                <td class="highlight-mobile"> 22px</td>
+            </tr>
+            <tr>
+                <td class="f3">f3</td>
+                <td class="highlight-desktop">22px</td>
+                <td class="highlight-mobile"> 18px</td>
+            </tr>
+            <tr>
+                <td class="f4">f4</td>
+                <td class="highlight-desktop">18px</td>
+                <td class="highlight-mobile"> 16px</td>
+            </tr>
+            <tr>
+                <td class="f5">f5</td>
+                <td class="highlight-desktop">16px</td>
+                <td class="highlight-mobile"> 16px</td>
+            </tr>
+            <tr>
+                <td class="f6">f6</td>
+                <td class="highlight-desktop">14px</td>
+                <td class="highlight-mobile"> 12px</td>
+            </tr>
+            <tr>
+                <td class="f7">f7</td>
+                <td class="highlight-desktop">11px</td>
+                <td class="highlight-mobile"> 11px</td>
+            </tr>
+        </table>
+    </div>
+</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel">
+    <a href="javascript:;" class="h2" data-target="#girdSystem" data-collapse>
+        grid system
+        <span class="subtitle">use grid system to do layout </span>
+    </a>
+    <div id="girdSystem" class="girdSystem collapse-appear" >
         <div class="gs">
             <div class="row">
                 <div class="col-xs-1">1</div>
@@ -274,12 +345,32 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="panel">
-    <a src="javascript:;" class="h3 addition" data-target="#cssResponsive" data-collapse>
-        <span>Responsive</span>
+    <a href="javascript:;" class="h2" data-target="#cssResponsive" data-collapse>
+        responsive
         <span class="subtitle">use responsive utilities</span>
-        <i class="icon-angle-down right"></i>
     </a>
-    <div id="cssResponsive" class="collapse-appear" style="display: none;">
+    <div id="cssResponsive" class="collapse-appear">
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="f4">
+                    Responsive css defined
+                </p>
+            </div>
+            <div class="col-xs-6">
+                <p>For all the mobile device</p>
+                <p>Extra small devices (phones, less than 768px)</p>
+                <p>@media (max-width: @screen-sm-max) { ... }</p>
+                <p>Small devices (tablets, 768px and up)</p>
+                <p>@media (min-width: @screen-sm-min) { ... }</p>
+            </div>
+            <div class="col-xs-6">
+                <p>For all the PC device</p>
+                <p>Medium devices (desktops, 992px and up)</p>
+                <p>@media (min-width: @screen-md-min) { ... }</p>
+                <p>Large devices (large desktops, 1200px and up)</p>
+                <p>@media (min-width: @screen-lg-min) { ... }</p>
+            </div>
+        </div>
         <div class="row">
             <div class="col-xs-12">
                 <table class="table responsive">
@@ -448,29 +539,6 @@
                 </table>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-12 f4">
-                Responsive css defined
-            </div>
-            <div class="col-xs-6">
-                <p>For all the mobile device</p>
-                <p></p>
-                <p>Extra small devices (phones, less than 768px)</p>
-                <p>@media (max-width: @screen-sm-max) { ... }</p>
-                <br>
-                <p>Small devices (tablets, 768px and up)</p>
-                <p>@media (min-width: @screen-sm-min) { ... }</p>
-            </div>
-            <div class="col-xs-6">
-                <p>For all the PC device</p>
-                <p></p>
-                <p>Medium devices (desktops, 992px and up)</p>
-                <p>@media (min-width: @screen-md-min) { ... }</p>
-                <br>
-                <p>Large devices (large desktops, 1200px and up)</p>
-                <p>@media (min-width: @screen-lg-min) { ... }</p>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -479,65 +547,11 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="panel">
-    <a href="javascript:;" class="h3 addition" data-collapse data-target="#fontPanel">font
-        <span class="subtitle">the basic font style</span><i class="icon-angle-down right"></i></a>
-    <div id="fontPanel" class="row" style="display: none;">
-        <div class="col-xs-12">
-            <table class="table">
-                <tr>
-                    <td class="f0">f0</td>
-                    <td class="highlight-desktop">40px</td>
-                    <td class="highlight-mobile"> 32px</td>
-                </tr>
-                <tr>
-                    <td class="f1">f1</td>
-                    <td class="highlight-desktop">32px</td>
-                    <td class="highlight-mobile"> 26px</td>
-                </tr>
-                <tr>
-                    <td class="f2">f2</td>
-                    <td class="highlight-desktop">26px</td>
-                    <td class="highlight-mobile"> 22px</td>
-                </tr>
-                <tr>
-                    <td class="f3">f3</td>
-                    <td class="highlight-desktop">22px</td>
-                    <td class="highlight-mobile"> 18px</td>
-                </tr>
-                <tr>
-                    <td class="f4">f4</td>
-                    <td class="highlight-desktop">18px</td>
-                    <td class="highlight-mobile"> 16px</td>
-                </tr>
-                <tr>
-                    <td class="f5">f5</td>
-                    <td class="highlight-desktop">16px</td>
-                    <td class="highlight-mobile"> 16px</td>
-                </tr>
-                <tr>
-                    <td class="f6">f6</td>
-                    <td class="highlight-desktop">14px</td>
-                    <td class="highlight-mobile"> 12px</td>
-                </tr>
-                <tr>
-                    <td class="f7">f7</td>
-                    <td class="highlight-desktop">11px</td>
-                    <td class="highlight-mobile"> 11px</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-</div>
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
-    <a href="javascript:;" class="h3 addition" data-collapse data-target="#buttonPanel">buttons <span
-                class="subtitle">the basic button style</span>
-        <i class="icon-angle-down right"></i></a>
-    <div id="buttonPanel" class="row" style="display: none;">
+    <a href="javascript:;" class="h2" data-collapse data-target="#buttonPanel">
+        buttons
+        <span class="subtitle">the basic button style</span>
+    </a>
+    <div id="buttonPanel" class="row" >
         <div class="col-xs-6 col-sm-3">
             <a href="javascript:;" class="btn ghost-green small"><i class="icon-check"></i> <span>small</span></a>
             <div class="blank-xs"></div>
@@ -564,7 +578,7 @@
             <div class="blank-xs"></div>
         </div>
         <div class="col-xs-6 col-sm-3">
-            <a href="javascript:;" class="btn ghost-pink loading"><i class="icon-check"></i> <span>disabled</span></a>
+            <a href="javascript:;" class="btn ghost-pink loading"><i class="icon-check"></i> <span>loading...</span></a>
             <div class="blank-xs"></div>
         </div>
         <div class="col-xs-6 col-sm-3">
@@ -579,9 +593,11 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="panel">
-    <a href="javascript:;" class="h3 addition" data-collapse data-target="#tipPanel">tips <span class="subtitle">the tip style</span> <i
-                class="icon-angle-down right"></i></a>
-    <div id="tipPanel" class="row" style="display: none;">
+    <a href="javascript:;" class="h2" data-collapse data-target="#tipPanel">
+        tips
+        <span class="subtitle">the tip style</span>
+    </a>
+    <div id="tipPanel" class="row" >
         <div class="col-xs-6 col-sm-3">
             <a href="javascript:;"
                data-tip
@@ -618,9 +634,11 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="panel">
-    <a href="javascript:;" class="h3 addition" data-collapse data-target="#formPanel">forms <span class="subtitle">the form style</span> <i
-                class="icon-angle-down right"></i></a>
-    <div id="formPanel" style="display: none;">
+    <a href="javascript:;" class="h2" data-collapse data-target="#formPanel">
+        forms
+        <span class="subtitle">the form style</span>
+    </a>
+    <div id="formPanel" >
         <div id="form" class="form row" data-form>
             <div class="col-xs-12 col-sm-6">
                 <label for="txtReq">Required Box</label>
@@ -720,10 +738,11 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="panel">
-    <a href="javascript:;" class="h3 addition" data-collapse data-target="#texboxPanel">Textbox <span
-                class="subtitle">New textbox style</span> <i
-                class="icon-angle-down right"></i></a>
-    <div id="texboxPanel" class="form row" data-form style="display: none;">
+    <a href="javascript:;" class="h2" data-collapse data-target="#texboxPanel">
+        textbox
+        <span class="subtitle">new textbox style</span>
+    </a>
+    <div id="texboxPanel" class="form row" data-form>
         <div class="col-xs-12 col-sm-6">
             <div data-textbox>
                 <div class="input small left right">
@@ -769,62 +788,414 @@
     </div>
     <div class="row">
         <div class="col-xs-12">
-            
+            <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#dialogPanel">
+        dialog
+        <span class="subtitle">the dialog plugin</span>
+    </a>
+    <div id="dialogPanel" >
+        <p>
+            <a href="javascript:void(0)" data-dialog data-target="#popupPanel1">open dialog as default</a>
+        </p>
+        <script id="popupPanel1" type="text/template">
+            <div class="dialog-title">Welcome to CUI!</div>
+            <p>
+                A modal dialog is a window that forces the user to interact with it before they can go back to using the parent application.
+            </p>
+        </script>
+        <p>
+            <a href="javascript:void(0)" data-dialog data-target="#popupPanel0" data-theme="fullscreen">open dialog as fullscreen</a>
+        </p>
+        <script id="popupPanel0" type="text/template">
+            <div class="block-center text-center" dialog-close>
+                <div class="text-light text-white">Welcome to CUI!</div>
+                <p class=" text-white">A modal dialog is a window that forces the user to interact with it before they can go back to using the
+                    parent application.</p>
+            </div>
+        </script>
+        <p>
+            <a href="javascript:void(0)" data-dialog data-target="#popupPanel" data-theme="dropdown">open dialog as dropdown</a>
+        </p>
+        <script id="popupPanel" type="text/template">
+            <div class="f3 text-light">Hello World!</div>
+            <div class="blank-xs"></div>
+            <ul>
+                <li><a href="javascript:;">Apple</a></li>
+                <li><a href="javascript:;">Banana</a></li>
+                <li><a href="javascript:;">Cat</a></li>
+            </ul>
+        </script>
+    </div>
+</div>
+
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            
+            <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#collapsePanel">
+        collapse
+        <span class="subtitle">the collapse plugin</span>
+    </a>
+    <div id="collapsePanel" class="row">
+        <div class="col-xs-12 col-sm-3">
+            <dl style="position: relative;">
+                <dt>
+                    <a href="javascript:void(0)"
+                       class="collapse-more"
+                       data-collapse
+                       data-target="#plusPanel"
+                       data-once="true"
+                       data-isexpand="true"
+                    >
+                        <span>... show more</span>
+                    </a>
+                </dt>
+                <dd id="plusPanel" style="height: 58px; overflow: hidden;">
+                    jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation,
+                    event handling,
+                    animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination
+                    of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.
+                </dd>
+            </dl>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <dl>
+                <dd id="anglePanel" style="height: 37px; overflow: hidden;">jQuery is a fast, small, and feature-rich JavaScript library. It makes
+                    things like
+                    HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works
+                    across a multitude
+                    of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write
+                    JavaScript.
+                </dd>
+                <dt><a href="javascript:;" data-collapse data-target="#anglePanel" data-isexpand="true" data-showtext="open"
+                       data-hidetext="collapsed"><i
+                                class="icon-angle-down"></i> <span>collapsed</span> </a></dt>
+            </dl>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <dl>
+                <dt><a href="javascript:;" data-collapse data-target="#eyePanel" data-isexpand="true" data-showtext="shown"
+                       data-hidetext="hidden"><i
+                                class="icon-eye-slash"></i> <span>hidden</span></a></dt>
+                <dd id="eyePanel" style="height: 0; overflow: hidden;">jQuery is a fast, small, and feature-rich JavaScript library. It makes
+                    things like HTML
+                    document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across
+                    a multitude
+                    of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write
+                    JavaScript.
+                </dd>
+            </dl>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <dl style="position: relative;">
+                <dt>
+                    <a href="javascript:;" data-collapse data-target="#caretPanel">
+                        <span>dropdown menu</span> <i class="icon-caret-right"></i>
+                    </a>
+                </dt>
+                <dd id="caretPanel" class="collapse-menu">jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML
+                    document
+                    traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a
+                    multitude
+                    of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write
+                    JavaScript.
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            
+            <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#gridtablePanel">
+        grid table
+        <span class="subtitle">switch table layout to key-value grid when screen is smaller</span>
+    </a>
+    <div id="gridtablePanel" >
+        <table class="gridtable" data-gridtable>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Sex</th>
+                <th>Phone</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Conjee</td>
+                <td>30</td>
+                <td>shishiv30@live.cn</td>
+                <td>Male</td>
+                <td>18049****48</td>
+            </tr>
+
+            <tr>
+                <td>Tom</td>
+                <td>28</td>
+                <td>Tom@gmail.com</td>
+                <td>Male</td>
+                <td>13696****93</td>
+            </tr>
+            <tr>
+                <td>Lily</td>
+                <td>25</td>
+                <td>Lily@gmail.com</td>
+                <td>Female</td>
+                <td>16934****26</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            
+            <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#rangesilderPanel">
+        rangesilder
+        <span class="subtitle">the rangesilder plugin</span>
+    </a>
+    <div id="rangesilderPanel" data-form class="form" >
+        <div class="row">
+            <div class="col-xs-12" data-textbox>
+                <div class="input left">
+                    <label for="txtPrice">price</label>
+                    <i>$</i>
+                    <input type="text" id="txtPrice" name="price"
+                           data-inputformat
+                           data-type="price"
+                           data-rangesilder
+                           data-autohide="false"
+                           value="3000"
+                           data-min="0"
+                           data-step="1"
+                           data-max="8000"
+                           placeholder="price"
+                           data-validate="required,price"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            
+            <div class="panel">
+    <a href="javascript:;" class="h2 " data-collapse data-target="#sliderPanel">
+        slider
+        <span class="subtitle">the slider plugin</span>
+    </a>
+    <div id="sliderPanel" >
+        <div class="slider" data-slider>
+            <ul class="slider-list">
+                <li>
+                    <img src="dist/src/img/01.jpg" alt="This is a image.">
+                </li>
+                <li>
+                    <img src="dist/src/img/02.jpg" alt="This is a image.">
+                </li>
+                <li>
+                    <img src="dist/src/img/03.jpg" alt="This is a image.">
+                </li>
+                <li>
+                    <img src="dist/src/img/04.jpg" alt="This is a image.">
+                </li>
+                <li>
+                    <img src="dist/src/img/05.jpg" alt="This is a image.">
+                </li>
+                <li>
+                    <img src="dist/src/img/06.jpg" alt="This is a image.">
+                </li>
+                <li>
+                    <img src="dist/src/img/07.jpg" alt="This is a image.">
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            
+            <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#shifterPanel">
+        shifter
+        <span class="subtitle">the shifter plugin</span>
+    </a>
+    <div id="shifterPanel" >
+        <div class="shifter" data-shifter data-index="2">
+            <ul>
+                <li>
+                    <img src="dist/src/img/01.jpg" height="100%" alt="This is a image.">
+                </li>
+                <li>
+                    <img src="dist/src/img/02.jpg" height="100%" alt="This is a image.">
+                </li>
+                <li>
+                    <img src="dist/src/img/03.jpg" height="100%" alt="This is a image.">
+                </li>
+                <li>
+                    <img src="dist/src/img/04.jpg" height="100%" alt="This is a image.">
+                </li>
+                <li>
+                    <img src="dist/src/img/05.jpg" height="100%" alt="This is a image.">
+                </li>
+                <li>
+                    <img src="dist/src/img/06.jpg" height="100%" alt="This is a image.">
+                </li>
+                <li>
+                    <img src="dist/src/img/07.jpg" height="100%" alt="This is a image.">
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            
+            <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#plugincarousel">
+        carousel
+        <span class="subtitle">The responsive carousel.</span>
+    </a>
+    <div id="plugincarousel">
+        <div class="row ">
+            <div class="col-xs-12">
+                <div class="carousel loading" data-carousel>
+                    <div class="carousel-list">
+                        <ul>
+                            <li><img data-src="dist/src/img/01.jpg" alt=""></li>
+                            <li><img data-src="dist/src/img/02.jpg" alt=""></li>
+                            <li><img data-src="dist/src/img/03.jpg" alt=""></li>
+                            <li><img data-src="dist/src/img/04.jpg" alt=""></li>
+                            <li><img data-src="dist/src/img/05.jpg" alt=""></li>
+                            <li><img data-src="dist/src/img/06.jpg" alt=""></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            
+            <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#dataTable">
+        data table
+        <span class="subtitle">the table render by standard data</span>
+    </a>
+    <div id="dataTable" >
+        <div data-datatable data-initafter="datatable.inital" data-maxcount="2"></div>
+    </div>
+</div>
+
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            
+            <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#spritesImage">
+        sprites css
+        <span class="subtitle">merge images in one image with css</span>
+    </a>
+    <div id="spritesImage" >
+        <div class="s-img-cn"></div>
+        <div class="s-img-jp"></div>
+        <div class="s-img-us"></div>
+    </div>
+</div>
+
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            
+            <div class="panel">
+    <a href="javascript:;" class="h2 shown" data-collapse data-target="#gridviewPanel">
+        gridview
+        <span class="subtitle">the gridview for show img</span>
+    </a>
+    <div id="gridviewPanel" class="row">
+        <div class="col-xs-12">
+            <div data-gridview></div>
+        </div>
+    </div>
+</div>
+
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            
+            <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#imgzoomPanel">
+        imgzoom
+        <span class="subtitle">the plugin control img zoomin zoomout</span>
+    </a>
+    <div id="imgzoomPanel" class="row" >
+        <div class="col-xs-6">
+            <a href="javascript:;" class="btn" data-imgzoom data-max="100" data-step="10" data-target="#imgzoomView"><i class="icon-plus"></i> zoom
+                in</a>
+        </div>
+        <div class="col-xs-6">
+            <a href="javascript:;" class="btn" data-imgzoom data-min="50" data-step="-10" data-target="#imgzoomView"><i class="icon-minus"> zoom
+                    out</i></a>
+        </div>
+        <div class="col-xs-12">
+            <div id="imgzoomView" class="imgzoom" style="max-height:300px; overflow:scroll;">
+                <li><img src="dist/src/img/01.jpg" alt="This is a image."></li>
+                <li><img src="dist/src/img/02.jpg" alt="This is a image."></li>
+                <li><img src="dist/src/img/03.jpg" alt="This is a image."></li>
+                <li><img src="dist/src/img/04.jpg" alt="This is a image."></li>
+                <li><img src="dist/src/img/05.jpg" alt="This is a image."></li>
+            </div>
+        </div>
+    </div>
+</div>
+
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            
+            <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#eventPanel">
+        touch event
+        <span class="subtitle">The extension of event</span>
+    </a>
+    <div id="eventPanel" class="row">
+        <div class="col-xs-12">
+            <div id="eventDiv" style="height:300px;padding:100px 50px; text-align:center;background-color:#ddd;">
+                try to move on the panel with your finger.
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel">
+    <a href="javascript:;" class="h2" data-target="#measurement" data-collapse>
+        measurement
+        <span class="subtitle">use to compare data</span>
+    </a>
+    <div id="measurement" class=" collapse-appear" >
+        <div data-measurement data-min="0" data-max="1000"></div>
+    </div>
+</div>
+
         </div>
     </div>
 </div>
