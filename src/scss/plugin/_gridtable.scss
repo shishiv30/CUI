@@ -1,12 +1,12 @@
 table.gridtable {
     width: 100%;
     border-collapse: collapse;
-    border:1px solid $color-border;
+    border: 1px solid $color-border;
     th {
-        background-color: #333;
+        background-color: $color-e;
         font-weight: bold;
         text-align: left;
-        color:$color-f;
+
     }
     td,
     th {
@@ -22,7 +22,7 @@ table.gridtable {
         td,
         th {
             border: 1px solid $color-c;
-            padding: 10px !important;
+            padding: $space-m !important;
         }
         tbody {
             tr {
@@ -53,47 +53,28 @@ table.gridtable {
             z-index: -1;
         }
         tr {
-            padding: 10px 0;
             border-bottom: dashed 1px $color-border;
             overflow: hidden;
             @inlcude clearfix();
             td {
-                float: left;
-                width: 50%;
-                padding-right: 15px;
+                margin: $space-m;
+                padding: 0;
                 word-break: break-all;
-
+                &:before {
+                    float: left;
+                    content: attr(data-th) ": ";
+                }
             }
             &.open {
                 position: relative;
-                background-color: $color-5;
-                td{
-                    color:$color-f;
-                    &:before {
-                        color:$color-a;
-                    }
-                }
-                &:before {
-                    color:$color-main;
-                    display: inline-block;
-                    transform: rotate(-90deg);
-                }
             }
             &.close {
+                max-height: 40px;
                 position: relative;
                 cursor: pointer;
-                &:before {
-                    display: inline-block;
-                }
+                opacity: .8;
                 &:hover {
-                    opacity: .8;
-                    background-color: $color-5;
-                    td{
-                         color:$color-f;
-                        &:before {
-                            color:$color-a;
-                        }
-                    }
+                    opacity: 1;
                 }
                 td {
                     @include singleline();
@@ -107,26 +88,14 @@ table.gridtable {
             td {
                 border: none;
                 position: relative;
-                padding-top: 3px;
-                padding-bottom: 3px;
             }
             td:before {
-                position: absolute;
-                left: 6px;
                 color: $color-5;
                 @include singleline();
+                display: inline-block;
+                width: 6.5rem;
             }
         }
     }
 }
 
-//no-warp for open item
-@media (max-width: 379px) {
-    table.gridtable {
-        tr {
-            td {
-                width: 100%;
-            }
-        }
-    }
-}
