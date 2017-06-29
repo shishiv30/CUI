@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>CUI框架</title>
+    <title>CUI 框架</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <link href="dist/src/cui.css" type="text/css" rel="stylesheet"/>
@@ -87,7 +87,7 @@
             <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#cssColor">
         配色方案
-        <span class="subtitle"> the regular color we used.</span>
+        <span class="subtitle"> 一套可扩展的标准配色法则.</span>
     </a>
     <div id="cssColor">
         <div class="row ">
@@ -241,7 +241,7 @@
             <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#typographPanel">
         文字排版
-        <span class="subtitle"> the basic typograph</span>
+        <span class="subtitle"> 文体设计,以及以标准字体为基准的排版设计</span>
     </a>
     <div id="typographPanel">
         <div class="h0">The level 0 title style</div>
@@ -302,7 +302,7 @@
             <div class="panel">
     <a href="javascript:;" class="h2" data-target="#girdSystem" data-collapse>
         栅格布局
-        <span class="subtitle"> use grid system to do layout </span>
+        <span class="subtitle"> 使用栅格布局对页面空间区域进行标准化分割</span>
     </a>
     <div id="girdSystem" class="girdSystem collapse-appear" >
         <div class="gs">
@@ -347,7 +347,7 @@
             <div class="panel">
     <a href="javascript:;" class="h2" data-target="#cssResponsive" data-collapse>
         响应式
-        <span class="subtitle"> use responsive utilities</span>
+        <span class="subtitle"> 针对不同的设备进行布局调整的辅助工具</span>
     </a>
     <div id="cssResponsive" class="collapse-appear">
         <div class="row">
@@ -549,7 +549,7 @@
             <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#buttonPanel">
         按钮
-        <span class="subtitle"> the basic button style</span>
+        <span class="subtitle"> 基本按钮风格</span>
     </a>
     <div id="buttonPanel" class="row" >
         <div class="col-xs-6 col-sm-3">
@@ -595,7 +595,7 @@
             <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#tipPanel">
         提示
-        <span class="subtitle"> the tip style</span>
+        <span class="subtitle"> 提示框风格</span>
     </a>
     <div id="tipPanel" class="row" >
         <div class="col-xs-6 col-sm-3">
@@ -636,7 +636,7 @@
             <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#formPanel">
         表单
-        <span class="subtitle"> the form style</span>
+        <span class="subtitle"> 标准的表单风格</span>
     </a>
     <div id="formPanel" >
         <div id="form" class="form row" data-form>
@@ -740,7 +740,7 @@
             <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#texboxPanel">
         输入框
-        <span class="subtitle"> new textbox style</span>
+        <span class="subtitle"> 输入框风格</span>
     </a>
     <div id="texboxPanel" class="form row" data-form>
         <div class="col-xs-12 col-sm-6">
@@ -791,7 +791,7 @@
             <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#dialogPanel">
         对话框
-        <span class="subtitle"> the dialog plugin</span>
+        <span class="subtitle"> 对话框插件</span>
     </a>
     <div id="dialogPanel" >
         <p>
@@ -835,7 +835,7 @@
             <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#collapsePanel">
         折叠
-        <span class="subtitle"> the collapse plugin</span>
+        <span class="subtitle"> 折叠插件</span>
     </a>
     <div id="collapsePanel" class="row">
         <div class="col-xs-12 col-sm-3">
@@ -913,7 +913,7 @@
             <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#gridtablePanel">
         响应式表格
-        <span class="subtitle"> switch table layout to key-value grid when screen is smaller</span>
+        <span class="subtitle"> 在小屏幕下切换到键值对列表布局</span>
     </a>
     <div id="gridtablePanel" >
         <table class="gridtable" data-gridtable>
@@ -961,30 +961,45 @@
             <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#rangesilderPanel">
         滑动条
-        <span class="subtitle"> the rangesilder plugin</span>
+        <span class="subtitle"> 滑动条插件</span>
     </a>
-    <div id="rangesilderPanel" data-form class="form" >
-        <div class="row">
-            <div class="col-xs-12" data-textbox>
+    <div id="rangesilderPanel" data-form class="form">
+        <div class="row"
+             data-ranger
+             data-max="10000"
+             data-min="100"
+             data-decimals="1"
+             data-step="100"
+             data-target="#ranger"
+             data-onupdate="ranger.update"
+             data-onchang="ranger.change">
+            <div id="ranger" class="col-xs-12"></div>
+            <div class="col-xs-6" data-textbox>
                 <div class="input left">
-                    <label for="txtPrice">price</label>
+                    <label for="txtPriceMin">Min price</label>
                     <i>$</i>
-                    <input type="text" id="txtPrice" name="price"
-                           data-inputformat
-                           data-type="price"
-                           data-rangesilder
-                           data-autohide="false"
-                           value="3000"
-                           data-min="0"
-                           data-step="1"
-                           data-max="8000"
-                           placeholder="price"
-                           data-validate="required,price"/>
+                    <input type="text"
+                           id="txtPriceMin"
+                           name="min"
+                           value="3000"/>
+                </div>
+            </div>
+            <div class="col-xs-6" data-textbox>
+                <div class="input left">
+                    <label for="txtPriceMax">Max price</label>
+                    <i>$</i>
+                    <input type="text"
+                           id="txtPriceMax"
+                           name="max"
+                           value="6000"/>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
         </div>
     </div>
     <div class="row">
@@ -992,7 +1007,7 @@
             <div class="panel">
     <a href="javascript:;" class="h2 " data-collapse data-target="#sliderPanel">
         幻灯片
-        <span class="subtitle"> the slider plugin</span>
+        <span class="subtitle"> 幻灯片插件</span>
     </a>
     <div id="sliderPanel" >
         <div class="slider" data-slider>
@@ -1030,7 +1045,7 @@
             <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#shifterPanel">
         切换廊
-        <span class="subtitle"> the shifter plugin</span>
+        <span class="subtitle"> 切换廊插件</span>
     </a>
     <div id="shifterPanel" >
         <div class="shifter" data-shifter data-index="2">
@@ -1068,7 +1083,7 @@
             <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#plugincarousel">
         走马灯
-        <span class="subtitle"> The responsive carousel.</span>
+        <span class="subtitle"> 走马灯插件</span>
     </a>
     <div id="plugincarousel">
         <div class="row ">
@@ -1096,7 +1111,7 @@
             <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#dataTable">
        数据表格
-        <span class="subtitle"> the table render by standard data</span>
+        <span class="subtitle"> 数据表单插件</span>
     </a>
     <div id="dataTable" >
         <div data-datatable data-initafter="datatable.inital" data-maxcount="2"></div>
@@ -1110,7 +1125,7 @@
             <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#spritesImage">
         雪碧图
-        <span class="subtitle"> merge images in one image with css</span>
+        <span class="subtitle"> 将多张图片合成一张图片</span>
     </a>
     <div id="spritesImage" >
         <div class="s-img-cn"></div>
@@ -1126,7 +1141,7 @@
             <div class="panel">
     <a href="javascript:;" class="h2 shown" data-collapse data-target="#gridviewPanel">
         瀑布流
-        <span class="subtitle"> the gridview for show img</span>
+        <span class="subtitle"> 适合海量图片展示的瀑布流布局</span>
     </a>
     <div id="gridviewPanel" class="row">
         <div class="col-xs-12">
@@ -1142,7 +1157,7 @@
             <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#imgzoomPanel">
         图片缩放
-        <span class="subtitle"> the plugin control img zoomin zoomout</span>
+        <span class="subtitle"> 图片缩放</span>
     </a>
     <div id="imgzoomPanel" class="row" >
         <div class="col-xs-6">
@@ -1172,7 +1187,7 @@
             <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#eventPanel">
         手势
-        <span class="subtitle"> The extension of event</span>
+        <span class="subtitle"> 扩展手势</span>
     </a>
     <div id="eventPanel" class="row">
         <div class="col-xs-12">
@@ -1189,7 +1204,7 @@
             <div class="panel">
     <a href="javascript:;" class="h2" data-target="#measurement" data-collapse>
         刻度尺
-        <span class="subtitle"> use to compare data</span>
+        <span class="subtitle"> 比较数据的刻度</span>
     </a>
     <div id="measurement" class=" collapse-appear" >
         <div data-measurement data-min="0" data-max="1000"></div>
