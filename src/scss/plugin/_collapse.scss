@@ -18,11 +18,12 @@
     &.icon-arrow-circle-down, & > .icon-arrow-circle-down {
         transform: rotate(180deg);
     }
-
+    &.icon-caret-left, & > .icon-caret-left {
+        transform: rotate(90deg);
+    }
     &.icon-eye-slash:before, & > .icon-eye-slash:before {
         @extend .icon-eye;
     }
-
     &.icon-caret-right, & > .icon-caret-right {
         transform: rotate(90deg);
     }
@@ -56,4 +57,10 @@
 
 [data-collapse] {
     visibility: hidden;
+}
+
+[data-collapse-load] {
+    &:before {
+        transition: transform ease-in-out 0.1s;
+    }
 }
