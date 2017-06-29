@@ -3,25 +3,39 @@
         <%= __('rangesilder') %>
         <span class="subtitle"> <%= __('the rangesilder plugin') %></span>
     </a>
-    <div id="rangesilderPanel" data-form class="form" >
-        <div class="row">
-            <div class="col-xs-12" data-textbox>
+    <div id="rangesilderPanel" data-form class="form">
+        <div class="row"
+             data-ranger
+             data-max="10000"
+             data-min="100"
+             data-decimals="1"
+             data-step="100"
+             data-target="#ranger"
+             data-onupdate="ranger.update"
+             data-onchang="ranger.change">
+            <div id="ranger" class="col-xs-12"></div>
+            <div class="col-xs-6" data-textbox>
                 <div class="input left">
-                    <label for="txtPrice">price</label>
+                    <label for="txtPriceMin">Min price</label>
                     <i>$</i>
-                    <input type="text" id="txtPrice" name="price"
-                           data-inputformat
-                           data-type="price"
-                           data-rangesilder
-                           data-autohide="false"
-                           value="3000"
-                           data-min="0"
-                           data-step="1"
-                           data-max="8000"
-                           placeholder="price"
-                           data-validate="required,price"/>
+                    <input type="text"
+                           id="txtPriceMin"
+                           name="min"
+                           value="3000"/>
+                </div>
+            </div>
+            <div class="col-xs-6" data-textbox>
+                <div class="input left">
+                    <label for="txtPriceMax">Max price</label>
+                    <i>$</i>
+                    <input type="text"
+                           id="txtPriceMax"
+                           name="max"
+                           value="6000"/>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+

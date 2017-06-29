@@ -77,22 +77,22 @@
         exports: {
             show: function () {
                 var opt = this.opt;
-                if (opt.showBefore) {
-                    $.CUI.addEvent(opt.showBefore, this);
+                if (opt.showbefore) {
+                    $.CUI.addEvent(opt.showbefore, this);
                 }
                 this._show();
-                if (opt.showAfter) {
-                    $.CUI.addEvent(opt.showAfter, this);
+                if (opt.showafter) {
+                    $.CUI.addEvent(opt.showafter, this);
                 }
             },
             hide: function () {
                 var opt = this.opt;
-                if (opt.hideBefore) {
-                    $.CUI.addEvent(opt.hideBefore, this);
+                if (opt.hidebefore) {
+                    $.CUI.addEvent(opt.hidebefore, this);
                 }
                 this._hide();
-                if (opt.hideAfter) {
-                    $.CUI.addEvent(opt.hideAfter, this);
+                if (opt.hideafter) {
+                    $.CUI.addEvent(opt.hideafter, this);
                 }
             },
             toggle: function () {

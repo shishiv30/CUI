@@ -125,10 +125,13 @@
             }
         },
         addEvent: function(name, context) {
+            var params = [context.$element, context.exports];
+            var array = Array.prototype.slice.call(arguments);
+            params.concat(array.slice(2, array.length));
             if ($.isFunction(name)) {
-                name.apply(this, [context.$element, context.exports]);
+                name.apply(this, params);
             } else {
-                $(document).trigger(name, [context.$element, context.exports]);
+                $(document).trigger(name, params);
             }
         },
         loadJs: function() {

@@ -10,6 +10,7 @@ module.exports = {
         "moment": true,
         "browser": true,
         "console": true,
+        "noUiSlider": true
     },
     "extends": "eslint:recommended",
     "rules": {
