@@ -55,7 +55,7 @@ table.gridtable {
         tr {
             border-bottom: dashed 1px $color-border;
             overflow: hidden;
-            @inlcude clearfix();
+            @include clearfix();
             td {
                 margin: $space-m;
                 padding: 0;
