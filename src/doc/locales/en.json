@@ -48,5 +48,16 @@
 	"Portals": "Portals",
 	"Commerce": "Commerce",
 	"Blog": "Blog",
-	"Design Document": "Design Document"
+	"Design Document": "Design Document",
+	"The color solution can be group by emotion.": "The color solution can be group by emotion.",
+	"the main color is pink. Use these color to make user feeling earnest.": "the main color is pink. Use these color to make user feeling earnest.",
+	"Reference: link color, default button background, header background,footer background and some important case.": "Reference: link color, default button background, header background,footer background and some important case.",
+	"the warning color is orange. Use these color to make user feeling curious.": "the warning color is orange. Use these color to make user feeling curious.",
+	"Reference: highlighted text, submit button, movoto listing, hover style, price reduce listing, and some special case which is outstanding.": "Reference: highlighted text, submit button, movoto listing, hover style, price reduce listing, and some special case which is outstanding.",
+	"the safe color is green.Use these color to make user feeling fulfillment.": "the safe color is green.Use these color to make user feeling fulfillment.",
+	"Reference: success info, high rank, new listing and something good to know.": "Reference: success info, high rank, new listing and something good to know.",
+	"the danger color is red.Use these color to make user feeling serious.": "the danger color is red.Use these color to make user feeling serious.",
+	"Reference: error info, low rank, dangerous behavior and something unexpected.": "Reference: error info, low rank, dangerous behavior and something unexpected.",
+	"the tip color is yellow.Use these color to make user feeling never mind.": "the tip color is yellow.Use these color to make user feeling never mind.",
+	"Reference: tip info, low level message or comment, dangerous behavior and something unexpected.": "Reference: tip info, low level message or comment, dangerous behavior and something unexpected."
 }
