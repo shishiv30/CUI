@@ -41,5 +41,12 @@
 	"touch event": "手势",
 	"The extension of event": "扩展手势",
 	"measurement": "刻度尺",
-	"use to compare data": "比较数据的刻度"
+	"use to compare data": "比较数据的刻度",
+	"API Document": "API Document",
+	"Demo": "Demo",
+	"Recommendation": "Recommendation",
+	"Portals": "Portals",
+	"Commerce": "Commerce",
+	"Blog": "Blog",
+	"Design Document": "Design Document"
 }
