@@ -59,5 +59,11 @@
 	"the danger color is red.Use these color to make user feeling serious.": "the danger color is red.Use these color to make user feeling serious.",
 	"Reference: error info, low rank, dangerous behavior and something unexpected.": "Reference: error info, low rank, dangerous behavior and something unexpected.",
 	"the tip color is yellow.Use these color to make user feeling never mind.": "the tip color is yellow.Use these color to make user feeling never mind.",
-	"Reference: tip info, low level message or comment, dangerous behavior and something unexpected.": "Reference: tip info, low level message or comment, dangerous behavior and something unexpected."
+	"Reference: tip info, low level message or comment.": "Reference: tip info, low level message or comment.",
+	"Some regular gray color": "Some regular gray color",
+	"The border color": "The border color",
+	"The text color": "The text color",
+	"Lightgray color": "Lightgray color",
+	"the disable color": "the disable color",
+	"The default web font-size is 16px, we consider <b>16px</b> as a basic measurement And we use <b>0.618</b> as the basic increase/decrease rate. font level, title level, padding, margin are all accroding to the default setting above.": "The default web font-size is 16px, we consider <b>16px</b> as a basic measurement And we use <b>0.618</b> as the basic increase/decrease rate. font level, title level, padding, margin are all accroding to the default setting above."
 }
