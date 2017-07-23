@@ -3,96 +3,98 @@
         <%= __('forms') %>
         <span class="subtitle"> <%= __('the form style') %></span>
     </a>
-    <div id="formPanel" >
-        <div id="form" class="form row" data-form>
-            <div class="col-xs-12 col-sm-6">
-                <label for="txtReq">Required Box</label>
-                <div class="input left right">
-                    <i class="icon-user"></i>
-                    <input type="text" id="txtReq" name='name' placeholder="name" data-validate='required'>
-                    <i class="icon-asterisk"></i>
+    <div id="formPanel">
+        <div id="form" data-form>
+            <div class="form row">
+                <div class="col-xs-12 col-sm-6">
+                    <label for="txtReq">Required Box</label>
+                    <div class="input left right">
+                        <i class="icon-user"></i>
+                        <input type="text" id="txtReq" name='name' placeholder="name" data-validate='required'>
+                        <i class="icon-asterisk"></i>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <label for="txtMail">Mail Box</label>
-                <div class="input right">
-                    <input type="email" id="txtMail" name='email' placeholder="email" data-validate='email'>
-                    <i class="icon-envelope"></i>
+                <div class="col-xs-12 col-sm-6">
+                    <label for="txtMail">Mail Box</label>
+                    <div class="input right">
+                        <input type="email" id="txtMail" name='email' placeholder="email" data-validate='email'>
+                        <i class="icon-envelope"></i>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <label for="txtPhone">Phone Box</label>
-                <div class="input left right">
-                    <i class="icon-phone"></i>
-                    <input type="tel" id="txtPhone" name='phone' value="1234567890" data-validate='required,phone' data-inputformat
-                           data-type="phone">
-                    <i class="icon-asterisk"></i>
+                <div class="col-xs-12 col-sm-6">
+                    <label for="txtPhone">Phone Box</label>
+                    <div class="input left right">
+                        <i class="icon-phone"></i>
+                        <input type="tel" id="txtPhone" name='phone' value="1234567890" data-validate='required,phone' data-inputformat
+                               data-type="phone">
+                        <i class="icon-asterisk"></i>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <label for="ddlFequence">Fequence</label>
-                <div class="input">
-                    <select id="ddlFequence" name="fequence" data-validate="required">
-                        <option value="" selected disabled>select a fequence</option>
-                        <option value="Weekly">Weekly</option>
-                        <option value="Daily">Daily</option>
-                        <option value="Monthly">Monthly</option>
-                    </select>
+                <div class="col-xs-12 col-sm-6">
+                    <label for="ddlFequence">Fequence</label>
+                    <div class="input">
+                        <select id="ddlFequence" name="fequence" data-validate="required">
+                            <option value="" selected disabled>select a fequence</option>
+                            <option value="Weekly">Weekly</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Monthly">Monthly</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <label for="date">Date picker</label>
-                <div class="input right">
-                    <input type="text" id="date" name='date' data-picker="date" readonly data-validate="required">
-                    <label for="date" class="icon-calendar"></label>
+                <div class="col-xs-12 col-sm-6">
+                    <label for="date">Date picker</label>
+                    <div class="input right">
+                        <input type="text" id="date" name='date' data-picker="date" readonly data-validate="required">
+                        <label for="date" class="icon-calendar"></label>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <label for="time">Time picker</label>
-                <div class="input right">
-                    <input type="text" id="time" name='time' data-picker="time" readonly data-validate="required">
-                    <label for="time" class="icon-clock-o"></label>
+                <div class="col-xs-12 col-sm-6">
+                    <label for="time">Time picker</label>
+                    <div class="input right">
+                        <input type="text" id="time" name='time' data-picker="time" readonly data-validate="required">
+                        <label for="time" class="icon-clock-o"></label>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <label>Select Gender</label>
-                <div class="radio">
-                    <label for="chMale">
-                        <input id="chMale" name="gender" type="radio" checked value="Male">
-                        <i></i>
-                        <span>Male</span>
-                    </label>
-                    <label for="chkFemal">
-                        <input id="chkFemal" name="gender" type="radio" value="Female">
-                        <i></i>
-                        <span>Female</span>
-                    </label>
+                <div class="col-xs-12 col-sm-6">
+                    <label>Select Gender</label>
+                    <div class="radio">
+                        <label for="chMale">
+                            <input id="chMale" name="gender" type="radio" checked value="Male">
+                            <i></i>
+                            <span>Male</span>
+                        </label>
+                        <label for="chkFemal">
+                            <input id="chkFemal" name="gender" type="radio" value="Female">
+                            <i></i>
+                            <span>Female</span>
+                        </label>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <label>Select Favor</label>
-                <div class="checkbox">
-                    <label for="rbtnFavor1">
-                        <input id="rbtnFavor1" name="favor" checked type="checkbox" value="Dance">
-                        <i></i>
-                        <span>Dance</span>
-                    </label>
+                <div class="col-xs-12 col-sm-6">
+                    <label>Select Favor</label>
+                    <div class="checkbox">
+                        <label for="rbtnFavor1">
+                            <input id="rbtnFavor1" name="favor" checked type="checkbox" value="Dance">
+                            <i></i>
+                            <span>Dance</span>
+                        </label>
 
-                    <label for="rbtnFavor2">
-                        <input id="rbtnFavor2" name="favor" type="checkbox" value="Sing">
-                        <i></i>
-                        <span>Sing</span>
-                    </label>
+                        <label for="rbtnFavor2">
+                            <input id="rbtnFavor2" name="favor" type="checkbox" value="Sing">
+                            <i></i>
+                            <span>Sing</span>
+                        </label>
 
-                    <label for="rbtnFavor3">
-                        <input id="rbtnFavor3" name="favor" type="checkbox" value="Paint">
-                        <i></i>
-                        <span>Paint</span>
-                    </label>
+                        <label for="rbtnFavor3">
+                            <input id="rbtnFavor3" name="favor" type="checkbox" value="Paint">
+                            <i></i>
+                            <span>Paint</span>
+                        </label>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12">
-                <a class="btn black" href="javascript:;" onclick="submitForm()">Submit</a>
+                <div class="col-xs-12">
+                    <a class="btn black" href="javascript:;" onclick="submitForm()">Submit</a>
+                </div>
             </div>
         </div>
     </div>

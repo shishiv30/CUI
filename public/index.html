@@ -10,7 +10,6 @@
     @media (max-width: 767px) {
         .highlight-mobile {
             color: #78004E;
-            font-size: 16px;
             font-weight: 700;
         }
     }
@@ -18,7 +17,6 @@
     @media (min-width: 768px) {
         .highlight-desktop {
             color: #78004E;
-            font-size: 16px;
             font-weight: 700;
         }
     }
@@ -48,10 +46,6 @@
 
     .table.responsive .container td {
         background-color: #fff4d0
-    }
-
-    #cssColor .colors {
-        margin-bottom: 1.618rem;
     }
 </style>
 </head>
@@ -88,8 +82,8 @@
 
 <div class="gs-fixed">
     <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
+    <div class="col-xs-12">
+        <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#cssColor">
         配色方案
         <span class="subtitle"> 一套可扩展的标准配色法则.</span>
@@ -253,11 +247,11 @@
     </div>
 </div>
 
-        </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#typographPanel">
         文字排版
         <span class="subtitle"> 文体设计,以及以标准字体为基准的排版设计</span>
@@ -272,13 +266,39 @@
         <div class="h4">level 4 title</div>
         <div class="h5">level 5 title</div>
         <div class="h6">level 6 title</div>
-    </div>
-</div>
+        <div class="paragraph">
+            <p>$font-size-base: 1rem;</p>
+            <p>$increse: 0.618;</p>
+            <p> $font-size-0: ($font-size-base + $increse*4);</p>
+            <p> $font-size-1: ($font-size-base + $increse*2.5);</p>
+            <p> $font-size-2: ($font-size-base + $increse*1.5);</p>
+            <p> $font-size-3: ($font-size-base + $increse);</p>
+            <p> $font-size-4: ($font-size-base + $increse/2);</p>
+            <p> $font-size-5: $font-size-base;</p>
+            <p> $font-size-6: ($font-size-base - $increse/2);</p>
+            <p> $font-size-7: $font-size-base * $increse;</p>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
+</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#layoutPanel">
+        布局
+        <span class="subtitle"> 布局规格</span>
+    </a>
+    <div id="layoutPanel">
+
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
     <a href="javascript:;" class="h2" data-target="#girdSystem" data-collapse>
         栅格布局
         <span class="subtitle"> 使用栅格布局对页面空间区域进行标准化分割</span>
@@ -319,11 +339,11 @@
     </div>
 </div>
 
-        </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
     <a href="javascript:;" class="h2" data-target="#cssResponsive" data-collapse>
         响应式
         <span class="subtitle"> 针对不同的设备进行布局调整的辅助工具</span>
@@ -521,253 +541,263 @@
     </div>
 </div>
 
-        </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#buttonPanel">
         按钮
         <span class="subtitle"> 基本按钮风格</span>
     </a>
-    <div id="buttonPanel" class="row" >
-        <div class="col-xs-6 col-sm-3">
-            <a href="javascript:;" class="btn ghost-green small"><i class="icon-check"></i> <span>small</span></a>
-            <div class="blank-xs"></div>
-        </div>
-        <div class="col-xs-6 col-sm-3">
-            <a href="javascript:;" class="btn orange small"><i class="icon-check"></i> <span>small</span></a>
-            <div class="blank-xs"></div>
-        </div>
-        <div class="col-xs-6 col-sm-3">
-            <a href="javascript:;" class="btn ghost-blue"><i class="icon-check"></i> <span>normal</span></a>
-            <div class="blank-xs"></div>
-        </div>
-        <div class="col-xs-6 col-sm-3">
-            <a href="javascript:;" class="btn red"><i class="icon-check"></i> <span>normal</span></a>
-            <div class="blank-xs"></div>
-        </div>
-
-        <div class="col-xs-6 col-sm-3">
-            <a href="javascript:;" class="btn ghost-cyan large"><i class="icon-check"></i> <span>large</span></a>
-            <div class="blank-xs"></div>
-        </div>
-        <div class="col-xs-6 col-sm-3">
-            <a href="javascript:;" class="btn yellow large"><i class="icon-check"></i> <span>large</span></a>
-            <div class="blank-xs"></div>
-        </div>
-        <div class="col-xs-6 col-sm-3">
-            <a href="javascript:;" class="btn ghost-pink loading"><i class="icon-check"></i> <span>loading...</span></a>
-            <div class="blank-xs"></div>
-        </div>
-        <div class="col-xs-6 col-sm-3">
-            <a href="javascript:;" class="btn ghost-black" disabled><i class="icon-check"></i> <span>disabled</span></a>
-            <div class="blank-xs"></div>
+    <div id="buttonPanel">
+        <div class="row">
+            <div class="col-xs-6 col-sm-3">
+                <a href="javascript:;" class="btn ghost-green small"><i class="icon-check"></i> <span>small</span></a>
+                <div class="blank-xs"></div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <a href="javascript:;" class="btn orange small"><i class="icon-check"></i> <span>small</span></a>
+                <div class="blank-xs"></div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <a href="javascript:;" class="btn ghost-blue"><i class="icon-check"></i> <span>normal</span></a>
+                <div class="blank-xs"></div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <a href="javascript:;" class="btn red"><i class="icon-check"></i> <span>normal</span></a>
+                <div class="blank-xs"></div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <a href="javascript:;" class="btn ghost-cyan large"><i class="icon-check"></i> <span>large</span></a>
+                <div class="blank-xs"></div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <a href="javascript:;" class="btn yellow large"><i class="icon-check"></i> <span>large</span></a>
+                <div class="blank-xs"></div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <a href="javascript:;" class="btn ghost-pink loading"><i class="icon-check"></i> <span>loading...</span></a>
+                <div class="blank-xs"></div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <a href="javascript:;" class="btn ghost-black" disabled><i class="icon-check"></i> <span>disabled</span></a>
+                <div class="blank-xs"></div>
+            </div>
         </div>
     </div>
 </div>
 
-        </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#tipPanel">
         提示
         <span class="subtitle"> 提示框风格</span>
     </a>
-    <div id="tipPanel" class="row" >
-        <div class="col-xs-6 col-sm-3">
-            <a href="javascript:;"
-               data-tip
-               data-content="show on bottom side">
-                top</a>
-        </div>
-        <div class="col-xs-6 col-sm-3 text-right">
-            <a href="javascript:;"
-               data-tip
-               data-placement="left"
-               data-content="show on left side">
-                left</a>
-        </div>
-        <div class="col-xs-6 col-sm-3">
+    <div id="tipPanel">
+        <div class="row">
+            <div class="col-xs-6 col-sm-3">
+                <a href="javascript:;"
+                   data-tip
+                   data-content="show on bottom side">
+                    top</a>
+            </div>
+            <div class="col-xs-6 col-sm-3 text-right">
+                <a href="javascript:;"
+                   data-tip
+                   data-placement="left"
+                   data-content="show on left side">
+                    left</a>
+            </div>
+            <div class="col-xs-6 col-sm-3">
 
-            <a href="javascript:;"
-               data-tip
-               data-placement="right"
-               data-content="show on right side">
-                right</a>
-        </div>
-        <div class="col-xs-6 col-sm-3 text-right">
-            <a href="javascript:;"
-               data-tip
-               data-placement="bottom"
-               data-content="show on top side">
-                bottom</a>
+                <a href="javascript:;"
+                   data-tip
+                   data-placement="right"
+                   data-content="show on right side">
+                    right</a>
+            </div>
+            <div class="col-xs-6 col-sm-3 text-right">
+                <a href="javascript:;"
+                   data-tip
+                   data-placement="bottom"
+                   data-content="show on top side">
+                    bottom</a>
+            </div>
         </div>
     </div>
 </div>
 
-        </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#formPanel">
         表单
         <span class="subtitle"> 标准的表单风格</span>
     </a>
-    <div id="formPanel" >
-        <div id="form" class="form row" data-form>
-            <div class="col-xs-12 col-sm-6">
-                <label for="txtReq">Required Box</label>
-                <div class="input left right">
-                    <i class="icon-user"></i>
-                    <input type="text" id="txtReq" name='name' placeholder="name" data-validate='required'>
-                    <i class="icon-asterisk"></i>
+    <div id="formPanel">
+        <div id="form" data-form>
+            <div class="form row">
+                <div class="col-xs-12 col-sm-6">
+                    <label for="txtReq">Required Box</label>
+                    <div class="input left right">
+                        <i class="icon-user"></i>
+                        <input type="text" id="txtReq" name='name' placeholder="name" data-validate='required'>
+                        <i class="icon-asterisk"></i>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <label for="txtMail">Mail Box</label>
-                <div class="input right">
-                    <input type="email" id="txtMail" name='email' placeholder="email" data-validate='email'>
-                    <i class="icon-envelope"></i>
+                <div class="col-xs-12 col-sm-6">
+                    <label for="txtMail">Mail Box</label>
+                    <div class="input right">
+                        <input type="email" id="txtMail" name='email' placeholder="email" data-validate='email'>
+                        <i class="icon-envelope"></i>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <label for="txtPhone">Phone Box</label>
-                <div class="input left right">
-                    <i class="icon-phone"></i>
-                    <input type="tel" id="txtPhone" name='phone' value="1234567890" data-validate='required,phone' data-inputformat
-                           data-type="phone">
-                    <i class="icon-asterisk"></i>
+                <div class="col-xs-12 col-sm-6">
+                    <label for="txtPhone">Phone Box</label>
+                    <div class="input left right">
+                        <i class="icon-phone"></i>
+                        <input type="tel" id="txtPhone" name='phone' value="1234567890" data-validate='required,phone' data-inputformat
+                               data-type="phone">
+                        <i class="icon-asterisk"></i>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <label for="ddlFequence">Fequence</label>
-                <div class="input">
-                    <select id="ddlFequence" name="fequence" data-validate="required">
-                        <option value="" selected disabled>select a fequence</option>
-                        <option value="Weekly">Weekly</option>
-                        <option value="Daily">Daily</option>
-                        <option value="Monthly">Monthly</option>
-                    </select>
+                <div class="col-xs-12 col-sm-6">
+                    <label for="ddlFequence">Fequence</label>
+                    <div class="input">
+                        <select id="ddlFequence" name="fequence" data-validate="required">
+                            <option value="" selected disabled>select a fequence</option>
+                            <option value="Weekly">Weekly</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Monthly">Monthly</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <label for="date">Date picker</label>
-                <div class="input right">
-                    <input type="text" id="date" name='date' data-picker="date" readonly data-validate="required">
-                    <label for="date" class="icon-calendar"></label>
+                <div class="col-xs-12 col-sm-6">
+                    <label for="date">Date picker</label>
+                    <div class="input right">
+                        <input type="text" id="date" name='date' data-picker="date" readonly data-validate="required">
+                        <label for="date" class="icon-calendar"></label>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <label for="time">Time picker</label>
-                <div class="input right">
-                    <input type="text" id="time" name='time' data-picker="time" readonly data-validate="required">
-                    <label for="time" class="icon-clock-o"></label>
+                <div class="col-xs-12 col-sm-6">
+                    <label for="time">Time picker</label>
+                    <div class="input right">
+                        <input type="text" id="time" name='time' data-picker="time" readonly data-validate="required">
+                        <label for="time" class="icon-clock-o"></label>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <label>Select Gender</label>
-                <div class="radio">
-                    <label for="chMale">
-                        <input id="chMale" name="gender" type="radio" checked value="Male">
-                        <i></i>
-                        <span>Male</span>
-                    </label>
-                    <label for="chkFemal">
-                        <input id="chkFemal" name="gender" type="radio" value="Female">
-                        <i></i>
-                        <span>Female</span>
-                    </label>
+                <div class="col-xs-12 col-sm-6">
+                    <label>Select Gender</label>
+                    <div class="radio">
+                        <label for="chMale">
+                            <input id="chMale" name="gender" type="radio" checked value="Male">
+                            <i></i>
+                            <span>Male</span>
+                        </label>
+                        <label for="chkFemal">
+                            <input id="chkFemal" name="gender" type="radio" value="Female">
+                            <i></i>
+                            <span>Female</span>
+                        </label>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <label>Select Favor</label>
-                <div class="checkbox">
-                    <label for="rbtnFavor1">
-                        <input id="rbtnFavor1" name="favor" checked type="checkbox" value="Dance">
-                        <i></i>
-                        <span>Dance</span>
-                    </label>
+                <div class="col-xs-12 col-sm-6">
+                    <label>Select Favor</label>
+                    <div class="checkbox">
+                        <label for="rbtnFavor1">
+                            <input id="rbtnFavor1" name="favor" checked type="checkbox" value="Dance">
+                            <i></i>
+                            <span>Dance</span>
+                        </label>
 
-                    <label for="rbtnFavor2">
-                        <input id="rbtnFavor2" name="favor" type="checkbox" value="Sing">
-                        <i></i>
-                        <span>Sing</span>
-                    </label>
+                        <label for="rbtnFavor2">
+                            <input id="rbtnFavor2" name="favor" type="checkbox" value="Sing">
+                            <i></i>
+                            <span>Sing</span>
+                        </label>
 
-                    <label for="rbtnFavor3">
-                        <input id="rbtnFavor3" name="favor" type="checkbox" value="Paint">
-                        <i></i>
-                        <span>Paint</span>
-                    </label>
+                        <label for="rbtnFavor3">
+                            <input id="rbtnFavor3" name="favor" type="checkbox" value="Paint">
+                            <i></i>
+                            <span>Paint</span>
+                        </label>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12">
-                <a class="btn black" href="javascript:;" onclick="submitForm()">Submit</a>
+                <div class="col-xs-12">
+                    <a class="btn black" href="javascript:;" onclick="submitForm()">Submit</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-        </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#texboxPanel">
         输入框
         <span class="subtitle"> 输入框风格</span>
     </a>
-    <div id="texboxPanel" class="form row" data-form>
-        <div class="col-xs-12 col-sm-6">
-            <div data-textbox>
-                <div class="input small left right">
-                    <label for="txtReq1">Message</label>
-                    <i>@</i>
-                    <input type="email" id="txtReq1" name='name' value="" data-validate='required,email'>
-                    <i class="icon-envelope"></i>
+    <div id="texboxPanel">
+        <div class="form row" data-form>
+            <div class="col-xs-12 col-sm-6">
+                <div data-textbox>
+                    <div class="input small left right">
+                        <label for="txtReq1">Message</label>
+                        <i>@</i>
+                        <input type="email" id="txtReq1" name='name' value="" data-validate='required,email'>
+                        <i class="icon-envelope"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-            <div data-textbox>
-                <div class="input left right">
-                    <label for="txtReq2">Message</label>
-                    <i>@</i>
-                    <input type="email" id="txtReq2" name='name' value="" data-validate='required,email'>
-                    <i class="icon-envelope"></i>
+            <div class="col-xs-12 col-sm-6">
+                <div data-textbox>
+                    <div class="input left right">
+                        <label for="txtReq2">Message</label>
+                        <i>@</i>
+                        <input type="email" id="txtReq2" name='name' value="" data-validate='required,email'>
+                        <i class="icon-envelope"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-            <div data-textbox>
-                <div class="input large left right">
-                    <label for="txtReq3">Message</label>
-                    <i>@</i>
-                    <input type="email" id="txtReq3" name='name' value="" data-validate='required,email'>
-                    <i class="icon-envelope"></i>
+            <div class="col-xs-12 col-sm-6">
+                <div data-textbox>
+                    <div class="input large left right">
+                        <label for="txtReq3">Message</label>
+                        <i>@</i>
+                        <input type="email" id="txtReq3" name='name' value="" data-validate='required,email'>
+                        <i class="icon-envelope"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-            <div data-textbox>
-                <div class="textarea">
-                    <label for="textReq4">Message</label>
-                    <textarea name="message" id="textReq4" data-validate='required'></textarea>
+            <div class="col-xs-12 col-sm-6">
+                <div data-textbox>
+                    <div class="textarea">
+                        <label for="textReq4">Message</label>
+                        <textarea name="message" id="textReq4" data-validate='required'></textarea>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-        </div>
     </div>
+</div>
+
+
+
     <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
+    <div class="col-xs-12">
+        <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#dialogPanel">
         对话框
         <span class="subtitle"> 对话框插件</span>
@@ -787,7 +817,7 @@
         </p>
         <script id="popupPanel0" type="text/template">
             <div class="block-center text-center" dialog-close>
-                <div class="text-light text-white">Welcome to CUI!</div>
+                <div class="text-white">Welcome to CUI!</div>
                 <p class=" text-white">A modal dialog is a window that forces the user to interact with it before they can go back to using the
                     parent application.</p>
             </div>
@@ -796,7 +826,7 @@
             <a href="javascript:void(0)" data-dialog data-target="#popupPanel" data-theme="dropdown">open dialog as dropdown</a>
         </p>
         <script id="popupPanel" type="text/template">
-            <div class="f3 text-light">Hello World!</div>
+            <div class="f3">Hello World!</div>
             <div class="blank-xs"></div>
             <ul>
                 <li><a href="javascript:;">Apple</a></li>
@@ -807,89 +837,91 @@
     </div>
 </div>
 
-        </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#collapsePanel">
         折叠
         <span class="subtitle"> 折叠插件</span>
     </a>
-    <div id="collapsePanel" class="row">
-        <div class="col-xs-12 col-sm-3">
-            <dl style="position: relative;">
-                <dt>
-                    <a href="javascript:void(0)"
-                       class="collapse-more"
-                       data-collapse
-                       data-target="#plusPanel"
-                       data-once="true"
-                       data-isexpand="true"
-                    >
-                        <span>... show more</span>
-                    </a>
-                </dt>
-                <dd id="plusPanel" style="height: 58px; overflow: hidden;">
-                    jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation,
-                    event handling,
-                    animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination
-                    of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.
-                </dd>
-            </dl>
-        </div>
-        <div class="col-xs-12 col-sm-3">
-            <dl>
-                <dd id="anglePanel" style="height: 37px; overflow: hidden;">jQuery is a fast, small, and feature-rich JavaScript library. It makes
-                    things like
-                    HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works
-                    across a multitude
-                    of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write
-                    JavaScript.
-                </dd>
-                <dt><a href="javascript:;" data-collapse data-target="#anglePanel" data-isexpand="true" data-showtext="open"
-                       data-hidetext="collapsed"><i
-                                class="icon-angle-down"></i> <span>collapsed</span> </a></dt>
-            </dl>
-        </div>
-        <div class="col-xs-12 col-sm-3">
-            <dl>
-                <dt><a href="javascript:;" data-collapse data-target="#eyePanel" data-isexpand="true" data-showtext="shown"
-                       data-hidetext="hidden"><i
-                                class="icon-eye-slash"></i> <span>hidden</span></a></dt>
-                <dd id="eyePanel" style="height: 0; overflow: hidden;">jQuery is a fast, small, and feature-rich JavaScript library. It makes
-                    things like HTML
-                    document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across
-                    a multitude
-                    of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write
-                    JavaScript.
-                </dd>
-            </dl>
-        </div>
-        <div class="col-xs-12 col-sm-3">
-            <dl style="position: relative;">
-                <dt>
-                    <a href="javascript:;" data-collapse data-target="#caretPanel">
-                        <span>dropdown menu</span> <i class="icon-caret-right"></i>
-                    </a>
-                </dt>
-                <dd id="caretPanel" class="collapse-menu">jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML
-                    document
-                    traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a
-                    multitude
-                    of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write
-                    JavaScript.
-                </dd>
-            </dl>
+    <div id="collapsePanel">
+        <div class="row">
+            <div class="col-xs-12 col-sm-3">
+                <dl style="position: relative;">
+                    <dt>
+                        <a href="javascript:void(0)"
+                           class="collapse-more"
+                           data-collapse
+                           data-target="#plusPanel"
+                           data-once="true"
+                           data-isexpand="true"
+                        >
+                            <span>... show more</span>
+                        </a>
+                    </dt>
+                    <dd id="plusPanel" style="height: 58px; overflow: hidden;">
+                        jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation,
+                        event handling,
+                        animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination
+                        of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <dl>
+                    <dd id="anglePanel" style="height: 37px; overflow: hidden;">jQuery is a fast, small, and feature-rich JavaScript library. It makes
+                        things like
+                        HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works
+                        across a multitude
+                        of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write
+                        JavaScript.
+                    </dd>
+                    <dt><a href="javascript:;" data-collapse data-target="#anglePanel" data-isexpand="true" data-showtext="open"
+                           data-hidetext="collapsed"><i
+                                    class="icon-angle-down"></i> <span>collapsed</span> </a></dt>
+                </dl>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <dl>
+                    <dt><a href="javascript:;" data-collapse data-target="#eyePanel" data-isexpand="true" data-showtext="shown"
+                           data-hidetext="hidden"><i
+                                    class="icon-eye-slash"></i> <span>hidden</span></a></dt>
+                    <dd id="eyePanel" style="height: 0; overflow: hidden;">jQuery is a fast, small, and feature-rich JavaScript library. It makes
+                        things like HTML
+                        document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across
+                        a multitude
+                        of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write
+                        JavaScript.
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <dl style="position: relative;">
+                    <dt>
+                        <a href="javascript:;" data-collapse data-target="#caretPanel">
+                            <span>dropdown menu</span> <i class="icon-caret-right"></i>
+                        </a>
+                    </dt>
+                    <dd id="caretPanel" class="collapse-menu">jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML
+                        document
+                        traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a
+                        multitude
+                        of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write
+                        JavaScript.
+                    </dd>
+                </dl>
+            </div>
         </div>
     </div>
 </div>
 
-        </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#gridtablePanel">
         响应式表格
         <span class="subtitle"> 在小屏幕下切换到键值对列表布局</span>
@@ -933,44 +965,46 @@
     </div>
 </div>
 
-        </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#rangesilderPanel">
         滑动条
         <span class="subtitle"> 滑动条插件</span>
     </a>
-    <div id="rangesilderPanel" data-form class="form">
-        <div class="row"
-             data-ranger
-             data-max="10000"
-             data-min="100"
-             data-decimals="1"
-             data-step="100"
-             data-target="#ranger"
-             data-onupdate="ranger.update"
-             data-onchang="ranger.change">
-            <div id="ranger" class="col-xs-12"></div>
-            <div class="col-xs-6" data-textbox>
-                <div class="input left">
-                    <label for="txtPriceMin">Min price</label>
-                    <i>$</i>
-                    <input type="text"
-                           id="txtPriceMin"
-                           name="min"
-                           value="3000"/>
+    <div id="rangesilderPanel">
+        <div class="form">
+            <div class="row"
+                 data-ranger
+                 data-max="10000"
+                 data-min="100"
+                 data-decimals="1"
+                 data-step="100"
+                 data-target="#ranger"
+                 data-onupdate="ranger.update"
+                 data-onchang="ranger.change">
+                <div id="ranger" class="col-xs-12"></div>
+                <div class="col-xs-6" data-textbox>
+                    <div class="input left">
+                        <label for="txtPriceMin">Min price</label>
+                        <i>$</i>
+                        <input type="text"
+                               id="txtPriceMin"
+                               name="min"
+                               value="3000"/>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-6" data-textbox>
-                <div class="input left">
-                    <label for="txtPriceMax">Max price</label>
-                    <i>$</i>
-                    <input type="text"
-                           id="txtPriceMax"
-                           name="max"
-                           value="6000"/>
+                <div class="col-xs-6" data-textbox>
+                    <div class="input left">
+                        <label for="txtPriceMax">Max price</label>
+                        <i>$</i>
+                        <input type="text"
+                               id="txtPriceMax"
+                               name="max"
+                               value="6000"/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -979,11 +1013,11 @@
 
 
 
-        </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
     <a href="javascript:;" class="h2 " data-collapse data-target="#sliderPanel">
         幻灯片
         <span class="subtitle"> 幻灯片插件</span>
@@ -1017,11 +1051,11 @@
     </div>
 </div>
 
-        </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#shifterPanel">
         切换廊
         <span class="subtitle"> 切换廊插件</span>
@@ -1055,11 +1089,11 @@
     </div>
 </div>
 
-        </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#plugincarousel">
         走马灯
         <span class="subtitle"> 走马灯插件</span>
@@ -1083,11 +1117,11 @@
         </div>
     </div>
 </div>
-        </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#dataTable">
        数据表格
         <span class="subtitle"> 数据表单插件</span>
@@ -1097,11 +1131,11 @@
     </div>
 </div>
 
-        </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#spritesImage">
         雪碧图
         <span class="subtitle"> 将多张图片合成一张图片</span>
@@ -1113,74 +1147,30 @@
     </div>
 </div>
 
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
-    <a href="javascript:;" class="h2 shown" data-collapse data-target="#gridviewPanel">
-        瀑布流
-        <span class="subtitle"> 适合海量图片展示的瀑布流布局</span>
-    </a>
-    <div id="gridviewPanel" class="row">
-        <div class="col-xs-12">
-            <div data-gridview></div>
-        </div>
     </div>
 </div>
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
-    <a href="javascript:;" class="h2" data-collapse data-target="#imgzoomPanel">
-        图片缩放
-        <span class="subtitle"> 图片缩放</span>
-    </a>
-    <div id="imgzoomPanel" class="row" >
-        <div class="col-xs-6">
-            <a href="javascript:;" class="btn" data-imgzoom data-max="100" data-step="10" data-target="#imgzoomView"><i class="icon-plus"></i> zoom
-                in</a>
-        </div>
-        <div class="col-xs-6">
-            <a href="javascript:;" class="btn" data-imgzoom data-min="50" data-step="-10" data-target="#imgzoomView"><i class="icon-minus"> zoom
-                    out</i></a>
-        </div>
-        <div class="col-xs-12">
-            <div id="imgzoomView" class="imgzoom" style="max-height:300px; overflow:scroll;">
-                <li><img src="dist/src/img/01.jpg" alt="This is a image."></li>
-                <li><img src="dist/src/img/02.jpg" alt="This is a image."></li>
-                <li><img src="dist/src/img/03.jpg" alt="This is a image."></li>
-                <li><img src="dist/src/img/04.jpg" alt="This is a image."></li>
-                <li><img src="dist/src/img/05.jpg" alt="This is a image."></li>
-            </div>
-        </div>
-    </div>
-</div>
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#eventPanel">
         手势
         <span class="subtitle"> 扩展手势</span>
     </a>
-    <div id="eventPanel" class="row">
-        <div class="col-xs-12">
-            <div id="eventDiv" style="height:300px;padding:100px 50px; text-align:center;background-color:#ddd;">
-                try to move on the panel with your finger.
+    <div id="eventPanel">
+        <div class="row">
+            <div class="col-xs-12">
+                <div id="eventDiv" style="height:300px;padding:100px 50px; text-align:center;background-color:#ddd;">
+                    try to move on the panel with your finger.
+                </div>
             </div>
         </div>
     </div>
 </div>
-        </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel">
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
     <a href="javascript:;" class="h2" data-target="#measurement" data-collapse>
         刻度尺
         <span class="subtitle"> 比较数据的刻度</span>
@@ -1190,8 +1180,58 @@
     </div>
 </div>
 
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#imgzoomPanel">
+        图片缩放
+        <span class="subtitle"> 图片缩放</span>
+    </a>
+    <div id="imgzoomPanel">
+        <div class="row">
+            <div class="col-xs-6">
+                <a href="javascript:;" class="btn" data-imgzoom data-max="100" data-step="10" data-target="#imgzoomView"><i class="icon-plus"></i> zoom
+                    in</a>
+            </div>
+            <div class="col-xs-6">
+                <a href="javascript:;" class="btn" data-imgzoom data-min="50" data-step="-10" data-target="#imgzoomView"><i class="icon-minus"> zoom
+                        out</i></a>
+            </div>
+            <div class="col-xs-12">
+                <div id="imgzoomView" class="imgzoom" style="max-height:300px; overflow:scroll;">
+                    <li><img src="dist/src/img/01.jpg" alt="This is a image."></li>
+                    <li><img src="dist/src/img/02.jpg" alt="This is a image."></li>
+                    <li><img src="dist/src/img/03.jpg" alt="This is a image."></li>
+                    <li><img src="dist/src/img/04.jpg" alt="This is a image."></li>
+                    <li><img src="dist/src/img/05.jpg" alt="This is a image."></li>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2 shown" data-collapse data-target="#gridviewPanel">
+        瀑布流
+        <span class="subtitle"> 适合海量图片展示的瀑布流布局</span>
+    </a>
+    <div id="gridviewPanel">
+        <div class="row">
+            <div class="col-xs-12">
+                <div data-gridview></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
 </div>
 </body>
 <script src="dist/src/cui.js" type="text/javascript"></script>

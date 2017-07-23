@@ -50,7 +50,6 @@
     &.dialog-default {
         padding-top: 20px;
         .dialog-title {
-            @extend %text-light;
             @extend .h3;
             @extend %singleline;
             position: relative;

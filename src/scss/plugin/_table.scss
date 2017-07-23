@@ -7,7 +7,6 @@ table {
 
 table {
     td, th {
-        @extend %text-light;
         padding: $space-m $space-s;
     }
 }

@@ -34,10 +34,9 @@ $screen-md-max: $screen-lg-min - 1;
 $grid-columns: 12;
 $grid-gutter-width: 30px;
 
-$font-bold: 'robotoblack';
-$font: 'robotomedium';
-$font-light: 'robotolight';
-$font-thin: 'robotothin';
+$font-bold: "robotomedium", "lantingmedium";
+$font: "robotolight", "lantinglight";
+$font-thin: "robotothin", "lantingthin";
 //legacy main
 $color-main: #78004E;
 $color-main-l1: lighten($color-main, 15%);
@@ -122,31 +121,26 @@ $color-bg: $color-e;
 $color-border: $color-d;
 
 //font line-height
-$font-size-base: 16px;
+$font-size-base: 1rem;
 
-//40px
-$font-size-0: 1.5*1.618*1.618rem;
-//32px
-//32px
-$font-size-1: 1.618rem*1.618;
-//26px
-//26px
-$font-size-2: 1.927rem;
-//22px
-//22px
-$font-size-3: 1.618rem;
-//18px
-//18px
-$font-size-4: 1.309rem;
-//16px
-//14px
-$font-size-5: 1rem;
-//14px
-//12px
-$font-size-6: 0.927rem;
-//12px
+$increse: 0.618;
+
+//4
+$font-size-0: ($font-size-base + $increse*4);
+//2.5
+$font-size-1: ($font-size-base + $increse*2.5);
+//1.5
+$font-size-2: ($font-size-base + $increse*1.5);
+//1
+$font-size-3: ($font-size-base + $increse);
+//0.5
+$font-size-4: ($font-size-base + $increse/2);
+//0
+$font-size-5: $font-size-base;
+//-0.5
+$font-size-6: ($font-size-base - $increse/2);
 //11px
-$font-size-7: 0.618rem;
+$font-size-7: $font-size-base * $increse;
 
 //button & input & select
 $form-size-small: 36px;

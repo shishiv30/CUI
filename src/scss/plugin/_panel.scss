@@ -1,6 +1,5 @@
 .panel {
     position: relative;
-    margin: $space-l auto;
     > .h1, > .h2, > .h3, > .h4, > .h5 {
         position: relative;
         display: block;
@@ -11,29 +10,35 @@
         margin: 0;
         padding-top: $space-m;
         padding-bottom: $space-m;
-        border-bottom: solid 1px $color-d;
         @extend %singleline;
     }
-    @media(max-width: $screen-xs-max) {
-        .subtitle {
-            display: none;
-        }
-    }
+
     > [data-collapse], > [data-collapse-load] {
         padding-right: $line-l;
+        border-bottom: solid 1px $color-d;
         &:before {
             position: absolute;
             right: 0;
             top: 50%;
             @extend %icon;
             @extend .icon-caret-left;
+            font-size: $font-size-5;
             width: $line-l;
             height: $line-l;
             line-height: $line-l;
             margin-top: $line-l/-2;
         }
         + div {
-            padding: $space-l 0;
+            border-bottom: solid 1px transparent;
+            padding-bottom: 0.618rem;
+            display: none;
+        }
+        &.shown {
+            border-bottom-color: transparent;
+            + div {
+                border-bottom-color: $color-d;
+                display: block;
+            }
         }
     }
 }

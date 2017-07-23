@@ -12,18 +12,6 @@
 }
 
 @font-face {
-    font-family: 'robotoblack';
-    src: url('fonts/roboto-black-webfont.eot');
-    src: url('fonts/roboto-black-webfont.eot?#iefix') format('embedded-opentype'),
-    url('fonts/roboto-black-webfont.woff2') format('woff2'),
-    url('fonts/roboto-black-webfont.woff') format('woff'),
-    url('fonts/roboto-black-webfont.ttf') format('truetype'),
-    url('fonts/roboto-black-webfont.svg#robotoblack') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
     font-family: 'robotolight';
     src: url('fonts/roboto-light-webfont.eot');
     src: url('fonts/roboto-light-webfont.eot?#iefix') format('embedded-opentype'),
@@ -55,6 +43,27 @@
     url('fonts/roboto-thin-webfont.woff') format('woff'),
     url('fonts/roboto-thin-webfont.ttf') format('truetype'),
     url('fonts/roboto-thin-webfont.svg#robotothin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'lantinglight';
+    src: url('fonts/lanting_l.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'lantingthin';
+    src: url('fonts/lanting_t.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'lantingmedium';
+    src: url('fonts/lanting_m.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }

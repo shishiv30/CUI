@@ -65,5 +65,7 @@
 	"The text color": "The text color",
 	"Lightgray color": "Lightgray color",
 	"the disable color": "the disable color",
-	"The default web font-size is 16px, we consider <b>16px</b> as a basic measurement And we use <b>0.618</b> as the basic increase/decrease rate. font level, title level, padding, margin are all accroding to the default setting above.": "The default web font-size is 16px, we consider <b>16px</b> as a basic measurement And we use <b>0.618</b> as the basic increase/decrease rate. font level, title level, padding, margin are all accroding to the default setting above."
+	"The default web font-size is 16px, we consider <b>16px</b> as a basic measurement And we use <b>0.618</b> as the basic increase/decrease rate. font level, title level, padding, margin are all accroding to the default setting above.": "The default web font-size is 16px, we consider <b>16px</b> as a basic measurement And we use <b>0.618</b> as the basic increase/decrease rate. font level, title level, padding, margin are all accroding to the default setting above.",
+	"layout": "layout",
+	"new layout style": "new layout style"
 }

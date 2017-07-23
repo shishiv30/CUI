@@ -94,15 +94,6 @@
     @extend %text-bold;
 }
 
-%text-light {
-    font-weight: normal;
-    font-family: $font-light !important;
-}
-
-.text-light {
-    @extend %text-light;
-}
-
 .text-left {
     text-align: left;
 }
