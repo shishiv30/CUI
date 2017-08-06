@@ -7,7 +7,7 @@
     background-color: $menu-bg-color;
     min-width: $screen-xs-min;
     height: 50px;
-    transition: top .5s;
+    transition: top .5s ease-in-out;
 }
 
 .header,
@@ -124,7 +124,7 @@
         right: -300px;
         width: 300px;
         overflow-y: auto;
-        transition: right 0.2s;
+        transition: right 0.2s ease-in-out;
         background-color: $menu-bg-color;
         border-top: solid $color-main-l3 1px;
         box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
@@ -158,14 +158,14 @@
             display: block;
         }
         > ul {
-            transition: height 0.2s linear 0.4s;
+            transition: height 0.2s linear 0.4s ease-in-out;
             &.active {
                 > li {
                     opacity: 1;
                 }
             }
             > li {
-                transition: opacity 0.4s;
+                transition: opacity 0.4s ease-in-out;
                 background-color: $color-f;
                 padding: 0;
                 text-align: left;

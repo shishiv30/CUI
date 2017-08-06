@@ -26,11 +26,11 @@
     }
     > .prev {
         left: 15px;
-        transition: left 0.5s .5s ease, opacity 0.5s .5s ease;
+        transition: left 0.5s .5s ease-in-out, opacity 0.5s .5s ease-in-out;
     }
     > .next {
         right: 15px;
-        transition: right 0.5s .5s ease, opacity 0.5s .5s ease;
+        transition: right 0.5s .5s ease-in-out, opacity 0.5s .5s ease-in-out;
     }
     &.loading {
         > .prev {

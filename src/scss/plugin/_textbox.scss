@@ -27,7 +27,7 @@
             z-index: 1;
             text-align: left;
             @extend %singleline;
-
+            transition: all .2s ease-in-out;
         }
         .tooltip.error {
             top: 0 !important;
@@ -44,16 +44,16 @@
             left: 10px;
             right: auto;
             top: 50%;
-            max-width: calc(100% - 10px);
+            width: calc(100% - 10px);
         }
         &.right, &.left {
             > label {
-                max-width: calc(100% - 40px);
+                width: calc(100% - 40px);
             }
         }
         &.right.left {
             > label {
-                max-width: calc(100% - 70px);
+                width: calc(100% - 70px);
             }
         }
         > input {
@@ -150,7 +150,7 @@
                 right: auto;
                 transform: scale(0.8) translateY(0);
                 transform-origin: left;
-                max-width: 100%;
+                width: 100%;
             }
         }
         .input {

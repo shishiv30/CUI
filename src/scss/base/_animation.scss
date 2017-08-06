@@ -34,7 +34,7 @@
 
 %animation-img-hover {
   img {
-    transition: width 1s;
+    transition: width 1s ease-in-out;
   }
   &:hover {
     img {
@@ -49,7 +49,7 @@
 .cube-up,
 .cube-down {
   transform-style: preserve-3d;
-  transition: transform 0.5s;
+  transition: transform 0.5s ease-in-out;
 }
 .cube-up {
   transform: rotateY(0deg) rotateX(-90deg) translateZ(-25px);
@@ -86,7 +86,7 @@
     top: 50%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
-    transition: transform 0.5s;
+    transition: transform 0.5s ease-in-out;
     animation: rotate 1s infinite steps(8);
   }
 }

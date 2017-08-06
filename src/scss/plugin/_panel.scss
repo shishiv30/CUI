@@ -8,8 +8,8 @@
             color: $color-7;
         }
         margin: 0;
-        padding-top: $space-m;
-        padding-bottom: $space-m;
+        padding-top: $space-l;
+        padding-bottom: $space-l;
         @extend %singleline;
     }
 
@@ -30,7 +30,7 @@
         }
         + div {
             border-bottom: solid 1px transparent;
-            padding-bottom: 0.618rem;
+            padding-bottom: $space-l;
             display: none;
         }
         &.shown {

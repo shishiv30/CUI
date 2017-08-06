@@ -14,7 +14,7 @@
             float: left;
             overflow: hidden;
             position: relative;
-            transition: opacity 1s 0.5s;
+            transition: opacity 1s 0.5s ease-in-out;
             > div, > img {
                 min-width: 100%;
                 @extend %block-center;
@@ -43,14 +43,14 @@
     }
     .prev {
         left: 15px;
-        transition: left 0.5s ease;
+        transition: left 0.5s ease-in-out;
         i {
             margin-left: -5px;
         }
     }
     .next {
         right: 15px;
-        transition: right 0.5s ease;
+        transition: right 0.5s ease-in-out;
         i {
             margin-left: 5px;
         }

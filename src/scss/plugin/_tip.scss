@@ -9,7 +9,7 @@
     filter: alpha(opacity=0);
     min-width: 150px;
     max-width: 320px;
-    transition: opacity .5s;
+    transition: opacity .5s ease-in-out;
     &.in {
         opacity: 1;
         filter: alpha(opacity=100);
@@ -130,6 +130,7 @@
             border: 1px solid $color-danger-l1;
             @include border-bottom-radius(2px);
             box-shadow: none;
+            padding: 0;
             &:before {
                 @extend %icon;
                 @extend .icon-warning;
