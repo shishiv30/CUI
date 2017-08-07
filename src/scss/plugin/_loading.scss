@@ -1,0 +1,16 @@
+[data-img], [data-img-load] {
+    transition: opacity .5s ease-in-out;
+    opacity: 0;
+    &.img-loading {
+        opacity: .5;
+        background: black;
+    }
+    &.data-img-load-success {
+        opacity: 1;
+    }
+    &.data-img-load-error {
+        background: red;
+        opacity: 1;
+    }
+}
+

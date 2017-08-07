@@ -67,5 +67,7 @@
 	"the disable color": "不可使用提示色",
 	"The default web font-size is 16px, we consider <b>16px</b> as a basic measurement And we use <b>0.618</b> as the basic increase/decrease rate. font level, title level, padding, margin are all accroding to the default setting above.": "浏览器默认的字体大小为16px, 我们视<b>16px</b>为基础测量单位, 并使用<b>0.618</b>为基本递增/递减倍率. 字体大小, 标题大小, 内边距, 外边距 都是根据基本字体乘以倍率得到的黄金分割比例排版.",
 	"layout": "布局",
-	"new layout style": "布局规格"
+	"new layout style": "布局规格",
+	"loadimage": "加载图片",
+	"new loadimage style": "延迟加载图片"
 }
