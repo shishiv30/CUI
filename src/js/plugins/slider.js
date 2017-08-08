@@ -96,7 +96,7 @@
                 }
             }
             $this.css('height', opt.height);
-            $list = $this.find('.slider-list');
+            $list = $this.children('ul');
             $items = $list.find('li');
             length = $items.length;
             $items.each(function(index, item) {
