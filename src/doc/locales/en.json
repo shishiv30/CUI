@@ -69,5 +69,7 @@
 	"layout": "layout",
 	"new layout style": "new layout style",
 	"loadimage": "loadimage",
-	"new loadimage style": "lazy load images"
+	"new loadimage style": "lazy load images",
+	"slick": "slick",
+	"new slick plugin": "new slick plugin"
 }
