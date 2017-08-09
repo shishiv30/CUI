@@ -24,12 +24,8 @@
 	"switch table layout to key-value grid when screen is smaller": "在小屏幕下切换到键值对列表布局",
 	"rangesilder": "滑动条",
 	"the rangesilder plugin": "滑动条插件",
-	"slider": "幻灯片",
-	"the slider plugin": "幻灯片插件",
 	"shifter": "切换廊",
 	"the shifter plugin": "切换廊插件",
-	"carousel": "走马灯",
-	"The responsive carousel.": "走马灯插件",
 	"data table": "数据表格",
 	"the table render by standard data": "数据表单插件",
 	"sprites css": "雪碧图",
@@ -70,6 +66,6 @@
 	"new layout style": "布局规格",
 	"loadimage": "加载图片",
 	"new loadimage style": "延迟加载图片",
-	"slick": "slick",
-	"new slick plugin": "new slick plugin"
+	"slick": "幻灯片",
+	"new slick plugin": "幻灯片插件"
 }

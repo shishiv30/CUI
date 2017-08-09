@@ -43,7 +43,7 @@
             };
             $container.on('scroll', $.debounce(context._load, 100));
             $container.on('dom.scroll', context._load);
-            $(document).on('dom.load', $.throttle(context._load), 200);
+            $(document).on('dom.load', context._load);
         },
         exports: {
             load: function () {

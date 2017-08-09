@@ -112,7 +112,9 @@
     display: none;
 }
 
-.slick {
+[data-slicker], [data-slicker-load] {
+    height: 300px;
+    overflow: hidden;
     li {
         width: 375;
         height: 250px;
@@ -120,6 +122,63 @@
             height: 100%;
             width: 100%;
             object-fit: cover;
+        }
+    }
+    .slick-arrow {
+        z-index: 2;
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: $color-e;
+        opacity: 0.6;
+        background-color: $color-3;
+        border-radius: 100%;
+        font-size: 0;
+        color: transparent;
+        border-width: 0;
+        padding: 0;
+        @extend %icon;
+        &:hover {
+            color: $color-f;
+        }
+        &.disable {
+            opacity: 0 !important;
+            pointer-events: none;
+        }
+        &:before {
+            font-size: 40px;
+            color: $color-f;
+        }
+    }
+    .slick-prev {
+        left: 15px;
+        transition: opacity, left 0.5s ease-in-out;
+        @extend .icon-angle-left;
+        i {
+            margin-left: -5px;
+        }
+    }
+    .slick-next {
+        right: 15px;
+        transition: opacity, right 0.5s ease-in-out;
+        @extend .icon-angle-right;
+        i {
+            margin-left: 5px;
+        }
+    }
+    &:hover {
+        .slick-prev {
+            left: 5px;
+            opacity: 1;
+        }
+        .slick-next {
+            right: 5px;
+            opacity: 1;
         }
     }
 }
