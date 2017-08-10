@@ -1,4 +1,7 @@
 .shifter {
+    &.shifter-moving {
+        pointer-events: none;
+    }
     overflow: hidden;
     position: relative;
     .wrap {

@@ -4,8 +4,7 @@
             duration: 300,
             height: 250,
             width: 375,
-            clickable: true,
-            lazingload: true,
+            lazingload: 1,
             autoscroll: 0,
             onchange: null,
             onbefore: null,
@@ -26,12 +25,27 @@
         var prevLink = $('<a href="javascript:;" class="prev"><i class="icon-angle-left"></i></a>');
         var nextLink = $('<a href="javascript:;" class="next"><i class="icon-angle-right"></i></a>');
         var ratio = opt.height / opt.width;
-
+        var _loadimage = function(cache) {
+            var activeItems = $items.filter('.active');
+            if (activeItems.length === 0) {
+                activeItems = $items;
+            }
+            var firstActiveItem = activeItems.eq(0);
+            var itemWidth = $items.last().outerWidth();
+            var wrapWidth = $wrap.outerWidth();
+            var loadingCount = Math.ceil(wrapWidth * (1 + cache) / itemWidth);
+            var loadImageItems = firstActiveItem.nextAll().addBack().slice(0, loadingCount);
+            loadImageItems.each(function(index, item) {
+                $(item).find('[data-src]').each(function(index, img) {
+                    $(img).loadImg('src');
+                });
+            });
+        };
         var _getImageSize = function() {
             var maxHeight = $(window).height() - 100;
             var screenheight = opt.height > maxHeight ? maxHeight : opt.height;
             var screenwidth = $this.width() || $(window).width();
-            var tmpWidth = screenwidth > opt.width ? opt.width : screenwidth - 2;
+            var tmpWidth = screenwidth > opt.width ? opt.width : screenwidth;
             var tmpHeight = tmpWidth * ratio;
             tmpHeight = screenheight > tmpHeight ? tmpHeight : screenheight;
             return {
@@ -68,14 +82,6 @@
                 var left = $item.position().left;
                 var right = left + $item.outerWidth();
                 if (left >= 0 && left <= maxwidth || right >= 0 && right <= maxwidth) {
-                    if (opt.lazingload) {
-                        $item.find('img').each(function(index, img) {
-                            if ($(img).data('src')) {
-                                $(img).attr('src', $(img).data('src'));
-                                $(img).data('src', null);
-                            }
-                        });
-                    }
                     list.push({
                         isFull: left >= 0 && right <= maxwidth,
                         element: $item
@@ -124,18 +130,28 @@
                 prevLink.removeClass('disable');
                 nextLink.removeClass('disable');
             }
+            if (opt.lazingload) {
+                _loadimage(opt.lazingload);
+            }
         };
         var _shift = function(index, disableAnimation) {
             var left;
             var ismove = false;
-            var timer = disableAnimation ? 0 : opt.duration;
+            var duration = disableAnimation ? 0 : opt.duration;
             if ($.isInt(index)) {
+                if (index > $items.length) {
+                    index = index % $items.length;
+                    duration = 0;
+                }
                 var item = $items.eq(index - 1);
                 var offset = ($wrap.outerWidth() - item.outerWidth()) / 2;
                 left = $wrap.scrollLeft() + $(item).position().left - offset;
+                $this.addClass('shifter-moving');
                 $wrap.stop().animate({
                     'scrollLeft': left
-                }, timer);
+                }, duration, function() {
+                    $this.removeClass('shifter-moving');
+                });
                 return index;
             } else {
                 var begin = $wrap.scrollLeft();
@@ -145,11 +161,14 @@
                     $items.each(function(j, item) {
                         left = $(item).position().left;
                         width = $(item).outerWidth();
-                        if (left > 0 && left < end && (left + width) > end) {
+                        if (left >= 0 && left <= end && (left + width) > end) {
                             ismove = true;
+                            $this.addClass('shifter-moving');
                             $wrap.stop().animate({
                                 'scrollLeft': begin + $(item).position().left
-                            }, timer);
+                            }, duration, function() {
+                                $this.removeClass('shifter-moving');
+                            });
                             return false;
                         }
                     });
@@ -158,11 +177,15 @@
                     $items.each(function(j, item) {
                         left = $(item).position().left;
                         width = $(item).outerWidth();
-                        if (left <= 0 && (left + width) > 0) {
+                        if (left < 0 && (left + width) >= 0) {
+                            ismove = true;
+                            $this.addClass('shifter-moving');
                             $wrap.stop().animate({
                                 'scrollLeft': begin - end + ($(item).width() + $(item).position().left)
-                            }, timer);
-                            return true;
+                            }, duration, function() {
+                                $this.removeClass('shifter-moving');
+                            });
+                            return false;
                         }
                     });
                     return ismove;
@@ -182,6 +205,20 @@
             opt = $.extend(opt, option);
             return opt;
         };
+        var _adjust = function() {
+            var currentScrollLeft = $wrap.scrollLeft();
+            var isScrollLeft = lastScrollLeft < currentScrollLeft;
+            var offset = Math.abs(lastScrollLeft - currentScrollLeft);
+            var passed = $list.find('.active').outerWidth() * 1 / 5;
+            var isrevert = offset < passed;
+            if (offset != 0) {
+                if (isScrollLeft) {
+                    _next();
+                } else {
+                    _prev();
+                }
+            }
+        }
         var _init = function() {
             obj = {
                 prev: function() {
@@ -208,25 +245,6 @@
             $items = $list.find('li');
             $items.each(function(index, item) {
                 $(item).attr('shift-index', index + 1);
-                if (opt.clickable) {
-                    var i = index + 2;
-                    $(item).click(function() {
-                        obj.go(i);
-                    });
-                }
-                if (opt.lazingload) {
-                    var img = $(item).find('img[src]');
-                    img.data('src', img.attr('src'));
-                    img.attr('src', 'data:image/gif;base64,R0lGODlhAQABAJEAAAAAAP///////wAAACH5BAEAAAIALAAAAAABAAEAAAICVAEAOw==');
-                    $(item).addClass('img-loading');
-                    img.on('load', function() {
-                        if (img.data('src') == null) {
-                            $(item).removeClass('img-loading');
-                        } else {
-                            $(item).addClass('img-loading');
-                        }
-                    });
-                }
             });
             if (opt.autoscroll && $.isNumeric(opt.autoscroll)) {
                 setInterval(function() {
@@ -247,20 +265,25 @@
             });
             $this.append(prevLink);
             $this.append(nextLink);
-            if ($.isMobile()) {
-                $list.on('swipeleft', obj.next);
-                $list.on('swiperight', obj.prev);
-            }
+
             $(document).on('dom.resize.shifter', function() {
                 _resize();
                 _scroll();
+
             });
             $wrap.on('scroll', function() {
                 if (timer) {
                     clearTimeout(timer);
                 }
                 timer = setTimeout(_scroll, 500);
+
             });
+            if ($.isMobile()) {
+                $wrap.on('touchstart', function() {
+                    lastScrollLeft = $wrap.scrollLeft();
+                });
+                $wrap.on('touchend', _adjust);
+            }
             $(document).on('dom.keydown', function(ctx, e) {
                 if (e.keyCode == '37') {
                     obj.prev();
