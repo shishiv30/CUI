@@ -112,17 +112,27 @@
     display: none;
 }
 
-[data-slicker], [data-slicker-load] {
-    height: 300px;
+//overwrite for slicker plugin
+
+.slicker {
     overflow: hidden;
-    li {
-        width: 375;
-        height: 250px;
+    .slick-slider {
+        height: 100%;
+    }
+    .slick-slide {
+        height: 100%;
+        outline: none;
         img {
             height: 100%;
             width: 100%;
             object-fit: cover;
         }
+    }
+    .slick-list {
+        height: 100%;
+    }
+    .slick-track {
+        height: 100%;
     }
     .slick-arrow {
         z-index: 2;
@@ -132,9 +142,8 @@
         transform: translateY(-50%);
         width: 40px;
         height: 40px;
-        line-height: 40px;
+        line-height: 38px;
         text-align: center;
-        color: $color-e;
         opacity: 0.6;
         background-color: $color-3;
         border-radius: 100%;
@@ -143,6 +152,7 @@
         border-width: 0;
         padding: 0;
         @extend %icon;
+        cursor: pointer;
         &:hover {
             color: $color-f;
         }
@@ -159,7 +169,7 @@
         left: 15px;
         transition: opacity, left 0.5s ease-in-out;
         @extend .icon-angle-left;
-        i {
+        &:before {
             margin-left: -5px;
         }
     }
@@ -167,7 +177,7 @@
         right: 15px;
         transition: opacity, right 0.5s ease-in-out;
         @extend .icon-angle-right;
-        i {
+        &:before {
             margin-left: 5px;
         }
     }
@@ -179,6 +189,18 @@
         .slick-next {
             right: 5px;
             opacity: 1;
+        }
+    }
+}
+
+//default slicker setting can be overwrite
+.slicker {
+    height: 250px;
+    li {
+        max-width: 375px;
+        border-left: 1px solid $color-border;
+        &:first-of-type {
+            border-left: none;
         }
     }
 }

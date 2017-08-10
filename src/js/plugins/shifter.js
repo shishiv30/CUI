@@ -2,8 +2,8 @@
     $.fn.shifter = function(options) {
         var defaultOpt = {
             duration: 300,
-            height: 300,
-            width: 425,
+            height: 250,
+            width: 375,
             clickable: true,
             lazingload: true,
             autoscroll: 0,

@@ -1,15 +1,10 @@
 .shifter {
     overflow: hidden;
     position: relative;
-    height: 300;
     .wrap {
         overflow-x: scroll;
         overflow-y: hidden;
         @include hidescrollbar();
-        &::-webkit-scrollbar {
-            width: 0;
-            height: 0;
-        }
     }
     ul {
         overflow: hidden;
@@ -33,7 +28,7 @@
         font-size: 40px;
         width: 40px;
         height: 40px;
-        line-height: 40px;
+        line-height: 38px;
         text-align: center;
         color: $color-e;
         opacity: 0.6;
@@ -77,14 +72,18 @@
     }
 }
 
-//default slider height
+//default shifter setting can be overwrite
 .shifter {
-    height: 300px;
+    height: 250px;
     .wrap {
-        height: 321px;
+        height: 271px;
     }
     li {
-        height: 300px;
-        width: 425px;
+        height: 250px;
+        width: 375px;
+        border-left: 1px solid $color-border;
+        &:first-of-type {
+            border-left: none;
+        }
     }
 }
