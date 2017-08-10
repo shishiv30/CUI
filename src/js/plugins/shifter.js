@@ -209,8 +209,6 @@
             var currentScrollLeft = $wrap.scrollLeft();
             var isScrollLeft = lastScrollLeft < currentScrollLeft;
             var offset = Math.abs(lastScrollLeft - currentScrollLeft);
-            var passed = $list.find('.active').outerWidth() * 1 / 5;
-            var isrevert = offset < passed;
             if (offset != 0) {
                 if (isScrollLeft) {
                     _next();
