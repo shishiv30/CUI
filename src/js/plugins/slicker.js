@@ -5,13 +5,15 @@
     var slickerConfig = {
         name: 'slicker',
         defaultOpt: {
+            lazyload: 1,
             arrows: true,
             centerMode: true,
             slidesToShow: 3,
             slidesToScroll: 1,
             autoscroll: 0,
             width: 375,
-            padding: 50
+            padding: 50,
+            index: 0
         },
         init: function(context) {
             var opt = context.opt;
@@ -67,9 +69,36 @@
                 }
             ];
             opt.centerPadding = opt.padding + 'px';
+            opt.initialSlide = opt.index;
+            delete opt.index;
             delete opt.padding;
             delete opt.width;
             delete opt.autoscroll;
+
+
+            if (opt.lazyload) {
+                var loadImage = function() {
+                    var width = $this.width();
+                    var min = width * -1 * opt.lazyload;
+                    var max = width * (1 + opt.lazyload);
+                    var loadImageItems = [];
+                    $this.find('.slick-slide').each(function(index, item) {
+                        var offsetLeft = $(item).offset().left;
+                        var offsetRight = offsetLeft + $(item).outerWidth();
+                        if (offsetRight > min && offsetLeft < max) {
+                            loadImageItems.push($(item));
+                        }
+                    });
+                    $.each(loadImageItems, function(index, item) {
+                        $(item).find('[data-src]').each(function(index, img) {
+                            $(img).loadImg('src');
+                        });
+                    });
+                };
+                $this.on('setPosition', $.debounce(function() {
+                    loadImage();
+                }, 200));
+            }
             $this.slick(opt);
         },
         exports: {
