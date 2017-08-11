@@ -122,11 +122,6 @@
     .slick-slide {
         height: 100%;
         outline: none;
-        img {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-        }
     }
     .slick-list {
         height: 100%;
@@ -193,14 +188,32 @@
     }
 }
 
+[data-slicker] {
+    ul {
+        white-space: nowrap;
+    }
+    li {
+        display: inline-block;
+        min-width: 320px;
+        max-width: 375px;
+
+    }
+}
+
 //default slicker setting can be overwrite
 .slicker {
     height: 250px;
     li {
-        max-width: 375px;
+        height: 250px;
         border-left: 1px solid $color-border;
         &:first-of-type {
             border-left: none;
         }
+    }
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
     }
 }

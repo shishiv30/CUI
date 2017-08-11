@@ -6,10 +6,12 @@
         var imgsrc = $img.data(key);
         if ($img.is('img') && imgsrc) {
             $img.one('load', function() {
+                $img.off('error');
                 $img.addClass('data-img-load-success');
                 $(document).trigger('img.load.success', [$img]);
             });
             $img.one('error', function() {
+                $img.off('load');
                 $img.attr('src', 'data:image/gif;base64,R0lGODlhAQABAJEAAAAAAP///////wAAACH5BAEAAAIALAAAAAABAAEAAAICVAEAOw==');
                 $img.addClass('data-img-load-error');
                 $(document).trigger('img.load.error', [$img]);
@@ -18,7 +20,6 @@
             $img.data(key, null);
             $img.removeAttr('data-' + key);
             $img.attr('data-img-load', '');
-            $img.addClass('img-loading');
         }
     };
     var loadimageConfig = {

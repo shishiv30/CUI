@@ -1,92 +1,109 @@
 @keyframes iconZoom {
-  0% {
-    font-size: 21px;
-  }
-  30% {
-    font-size: 27px;
-  }
-  75% {
-    font-size: 27px;
-  }
-  100% {
-    font-size: 21px;
-  }
+    0% {
+        font-size: 21px;
+    }
+    30% {
+        font-size: 27px;
+    }
+    75% {
+        font-size: 27px;
+    }
+    100% {
+        font-size: 21px;
+    }
 }
+
 @keyframes imageZoom {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.24);
-  }
-  100% {
-    transform: scale(1);
-  }
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.24);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
+
 %animation-zoom {
-  animation: imageZoom linear 50s;
-  animation-iteration-count: infinite;
+    animation: imageZoom linear 50s;
+    animation-iteration-count: infinite;
 }
 
 .animation-zoom {
-  @extend %animation-zoom;
+    @extend %animation-zoom;
 }
 
 %animation-img-hover {
-  img {
-    transition: width 1s ease-in-out;
-  }
-  &:hover {
     img {
-      width: 150% !important;
+        transition: width 1s ease-in-out;
     }
-  }
+    &:hover {
+        img {
+            width: 150% !important;
+        }
+    }
 }
+
 .animation-img-hover {
-  @extend %animation-img-hover;
+    @extend %animation-img-hover;
 }
 
 .cube-up,
 .cube-down {
-  transform-style: preserve-3d;
-  transition: transform 0.5s ease-in-out;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease-in-out;
 }
+
 .cube-up {
-  transform: rotateY(0deg) rotateX(-90deg) translateZ(-25px);
+    transform: rotateY(0deg) rotateX(-90deg) translateZ(-25px);
 }
+
 .cube-down {
-  transform: rotateY(0deg) rotateX(90deg) translateZ(-25px);
+    transform: rotateY(0deg) rotateX(90deg) translateZ(-25px);
 }
+
 .cube-show {
-  transform: rotateY(0deg) rotateX(0deg) translateZ(-25px);
+    transform: rotateY(0deg) rotateX(0deg) translateZ(-25px);
 }
+
 .cube-clear {
-  transform: none !important;
-  transform-style: flat !important;
+    transform: none !important;
+    transform-style: flat !important;
 }
-
-
 
 @keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(359deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(359deg);
+    }
 }
 
 %img-loading {
-  position: relative;
-  &:before{
-    @extend %icon;
-    @extend .icon-spinner;
-    font-size: 18px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
-    transition: transform 0.5s ease-in-out;
-    animation: rotate 1s infinite steps(8);
-  }
+    position: relative;
+    &:before {
+        @extend %icon;
+        @extend .icon-spinner;
+        font-size: 18px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+        transition: transform 0.5s ease-in-out;
+        animation: rotate 1s infinite steps(8);
+        z-index: 2;
+        color: $color-f;
+    }
+    &:after {
+        content: '';
+        background: $color-0;
+        opacity: .6;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
 }
