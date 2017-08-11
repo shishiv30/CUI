@@ -161,11 +161,11 @@
                     $items.each(function(j, item) {
                         left = $(item).position().left;
                         width = $(item).outerWidth();
-                        if (left >= 0 && left <= end && (left + width) > end) {
+                        if (left >= 0 && (left + width) > end) {
                             ismove = true;
                             $this.addClass('shifter-moving');
                             $wrap.stop().animate({
-                                'scrollLeft': begin + $(item).position().left
+                                'scrollLeft': begin + left
                             }, duration, function() {
                                 $this.removeClass('shifter-moving');
                             });
@@ -181,7 +181,7 @@
                             ismove = true;
                             $this.addClass('shifter-moving');
                             $wrap.stop().animate({
-                                'scrollLeft': begin - end + ($(item).width() + $(item).position().left)
+                                'scrollLeft': begin - end + (left + width)
                             }, duration, function() {
                                 $this.removeClass('shifter-moving');
                             });
