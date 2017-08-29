@@ -24,8 +24,8 @@
 .header-form {
     position: relative;
     height: 50px;
-    > .input {
-        margin-top: 10px;
+    .input {
+        margin-top: 5px;
         margin-bottom: 0;
         input {
             border-color: transparent;
@@ -187,6 +187,7 @@
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
     }
     .header-form {
+        padding-left: 50px;
         float: left;
         > .header-form-btn {
             display: none !important;
