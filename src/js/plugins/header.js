@@ -3,24 +3,20 @@
     $.fn.header = function (options) {
         var defaultOpt = {
             button: '.header-form-btn',
-            menu: '.header-menu-list'
+            menu: '.header-menu-list',
+            container: 'body'
         };
         var opt = $.extend(defaultOpt, options);
         var $this = $(this);
         var $button = $this.find(opt.button);
         var $menu = $this.find(opt.menu);
+        var $container = $(opt.container);
         var $overlay = $('<div class="header-overlay"></div>');
         var _show = function () {
-            $button.addClass('shown');
-            $overlay.show();
-            $menu.addClass('active');
-            $('body,html').css('overflowY', 'hidden');
+            $container.addClass('header-menu-show');
         };
         var _hide = function () {
-            $('body,html').css('overflowY', 'auto');
-            $button.removeClass('shown');
-            $menu.removeClass('active');
-            $overlay.hide();
+            $container.removeClass('header-menu-show');
         };
         $this.prepend($overlay);
         $button.on('click', function () {
