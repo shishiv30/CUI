@@ -68,7 +68,6 @@
                             };
                             $container.addClass('{0}-right'.format(opt.placement));
                         } else if ((offset.left + (tWidth + cWidth) / 2) > $(window).width()) {
-
                             css = {
                                 left: '',
                                 right: pWidth - tWidth - position.left
