@@ -1,4 +1,5 @@
-CUI [![Build Status](https://travis-ci.org/shishiv30/CUI.svg?branch=master)](https://travis-ci.org/shishiv30/CUI)
+[![Build Status](https://travis-ci.org/shishiv30/CUI.svg?branch=master)](https://travis-ci.org/shishiv30/CUI)
+CUI
 =======================
 
 A framework for responsive UI
