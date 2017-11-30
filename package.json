@@ -4,8 +4,9 @@
     "description": "A responsive ui framework",
     "main": "index.js",
     "scripts": {
-        "dev": "grunt dev  && nodemon app.js",
-        "deploy": "grunt && node html.js && node publish.js "
+        "dev": "grunt dev && nodemon app.js",
+        "build": "grunt && node html.js",
+        "deploy": "npm run build && node publish.js"
     },
     "repository": {
         "type": "git",
