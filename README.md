@@ -1,4 +1,6 @@
-# CUI
+CUI
+=======================
+
 A framework for responsive UI
 
 The framework belong two parts.
@@ -7,8 +9,9 @@ The framework belong two parts.
 2. javascript
 
 
-How to Use?
+## How to Use?
 
+```bash
 git clone https://github.com/shishiv30/CUI.git
 
 cd CUI
@@ -16,4 +19,8 @@ cd CUI
 npm install
 
 grunt dev
+```
 
+## Why grunt?
+
+TBD
