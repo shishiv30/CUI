@@ -216,7 +216,7 @@
                     _prev();
                 }
             }
-        }
+        };
         var _init = function() {
             obj = {
                 prev: function() {

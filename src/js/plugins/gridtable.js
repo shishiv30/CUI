@@ -28,7 +28,7 @@
                     colIndex = colIndex + 1;
                     $list.each(function() {
                         $(this).find('td').eq(i).attr('data-th', column.text);
-                    })
+                    });
                     if (column.colspan > 1) {
                         colIndex = colIndex + column.colspan - 1;
                     }

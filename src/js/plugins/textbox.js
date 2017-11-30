@@ -8,7 +8,7 @@
             } else {
                 $this.removeClass('focus');
             }
-        }
+        };
         if (!$input.size()) {
             $input = $this.find('textarea');
         }

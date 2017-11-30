@@ -12,7 +12,7 @@
                     start: 'touchstart',
                     moveing: 'touchmove',
                     end: 'touchend'
-                }
+                };
                 _getPonitInfo = function(e) {
                     return {
                         x: e.originalEvent.touches[0].pageX,
@@ -24,7 +24,7 @@
                     start: 'moursedown',
                     moveing: 'mousemove',
                     end: 'mourseup'
-                }
+                };
                 _getPonitInfo = function(e) {
                     return {
                         x: e.originalEvent.pageX,
@@ -32,7 +32,7 @@
                     };
                 };
             }
-        }
+        };
 
         var _getWebviewInfo = function() {
             webviewInfo['maxTop'] = $this.outerHeight() + $this.prop('scrollHeight');
