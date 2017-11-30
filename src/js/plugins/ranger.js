@@ -73,7 +73,7 @@
                 var values = [];
                 $input.each(function() {
                     values.push($(this).val());
-                })
+                });
                 context._set(values);
             });
 
