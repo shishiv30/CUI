@@ -11,7 +11,7 @@ var setLang = function (req, res) {
     var languageInBrowser = req.headers['accept-language'];
     languageInBrowser = languageInBrowser.length ? languageInBrowser.split(',')[0] : '';
     i18n.setLocale([req, res.locals], req.params.lang || languageInBrowser);
-}
+};
 
 app.get('/:lang', function (req, res) {
     setLang(req, res);
