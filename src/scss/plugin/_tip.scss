@@ -130,7 +130,6 @@
             border: 1px solid $color-danger-l1;
             @include border-bottom-radius(2px);
             box-shadow: none;
-            padding: 0;
             &:before {
                 @extend %icon;
                 @extend .icon-warning;

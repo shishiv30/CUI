@@ -1,29 +1,30 @@
 a {
     text-decoration: none;
     cursor: pointer;
-    color: $color-link-default;
     opacity: 0.95;
     outline: none;
+    &:link {
+        color: $color-link-default;
+    }
     &:hover,
     &:active {
         opacity: 1;
-        color: $color-link-default-hover;
+        color: inherit;
         text-decoration: none;
     }
     &:visited {
-        color: $color-link-default;
+        color: inherit;
     }
     &.link {
+        color: $color-info;
         &:hover,
         &:active {
+            color: $color-link-default-hover;
             text-decoration: underline;
         }
     }
     &[disable] {
         color: $color-disable;
         pointer-events: none;
-    }
-    &[href='javascript:;'] {
-        color: $color-text-default;
     }
 }

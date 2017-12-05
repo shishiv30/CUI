@@ -94,7 +94,7 @@
             return !(str === '' || str === null || str === 'undefined');
         },
         isEmail: function(str) {
-            var reg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+            var reg = /^([\w-]+@([\w-]+\.)+[\w-]{2,4})?$/;
             return reg.test(str);
         },
         isFloat: function(str) {

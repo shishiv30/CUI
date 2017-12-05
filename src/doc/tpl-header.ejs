@@ -2,31 +2,37 @@
     <div class="header-form">
         <a class="header-form-logo" href="javascript:;"> <i class="icon-github"></i></a>
         <a class="header-form-btn" href="javascript:;" id="menuButton"><i class="icon-bars"></i></a>
-        <div class="input right">
-            <input id="headerInput" type="text">
-            <a href="javascript:;" class="btn pink"><i class="icon-search"></i></a>
+        <div data-textbox>
+            <div data-textbox="" class="input large right">
+                <label for="headerInput">Search for ...</label>
+                <input id="headerInput" type="text">
+                <a href="javascript:;" class="btn"><i class="icon-search"></i></a>
+            </div>
         </div>
     </div>
     <div class="header-menu-list right">
         <div class="header-menu-list-wrap">
-            <div class="header-menu-item">
+            <div class="header-menu-item right">
                 <a href="/ch"><%= __('API Document') %></a>
             </div>
-            <div class="header-menu-item right" data-menu="expand">
-                <a href="javascript:;"><%= __('Demo') %> <i class="caret"></i></a>
+            <div class="header-menu-item" data-headermenu>
+                <a href="javascript:;"><%= __('Demo') %></a>
                 <ul>
-                    <li>
-                        <a href="javascript:;"><%= __('Recommendation') %></a>
-                        <a href="javascript:;"><%= __('Portals') %></a>
-                        <a href="javascript:;"><%= __('Commerce') %></a>
-                        <a href="javascript:;"><%= __('Blog') %></a>
-                    </li>
+                    <li><a href="javascript:;"><%= __('Recommendation') %></a></li>
+                    <li><a href="javascript:;"><%= __('Portals') %></a></li>
+                    <li><a href="javascript:;"><%= __('Commerce') %></a></li>
+                    <li class="splict"><a href="javascript:;"><%= __('Blog') %></a></li>
+                    <li><a href="javascript:;">Link1</a></li>
+                    <li><a href="javascript:;">Link2</a></li>
+                    <li><a href="javascript:;">Link3</a></li>
+                    <li><a href="javascript:;">Link4</a></li>
                 </ul>
             </div>
-            <div class="header-menu-item right">
+            <div class="header-menu-item">
                 <a href="javascript:;"><%= __('Design Document') %></a>
             </div>
         </div>
     </div>
+    <div class="header-overlay"></div>
 </div>
 <div style="height:50px;"></div>

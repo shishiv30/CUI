@@ -12,7 +12,7 @@ $screen-xs-min: 320px;
 $screen-phone: $screen-xs-min;
 
 // Small screen / tablet
-$screen-sm: 640px;
+$screen-sm: 768px;
 $screen-sm-min: $screen-sm;
 $screen-tablet: $screen-sm-min;
 
@@ -60,7 +60,7 @@ $color-info-l2: lighten($color-info, 30%);
 $color-info-l3: lighten($color-info, 45%);
 
 //orange
-$color-warning: #c05b00;
+$color-warning: #ff8000;
 $color-warning-l1: lighten($color-warning, 15%);
 $color-warning-l2: lighten($color-warning, 30%);
 $color-warning-l3: lighten($color-warning, 45%);
@@ -108,8 +108,8 @@ $color-text-default: $color-3;
 $color-placeholder: $color-9;
 
 //color for link
-$color-link-default: $color-blue;
-$color-link-default-hover: $color-main-l1;
+$color-link-default: $color-text-default;
+$color-link-default-hover: $color-warning;
 
 //color for disable
 $color-disable: $color-b;
@@ -145,7 +145,7 @@ $font-size-7: $font-size-base * $increse;
 //button & input & select
 $form-size-small: 36px;
 $form-size-normal: 40px;
-$form-size-large: 45px;
+$form-size-large: 50px;
 
 //the basic value is 0.618
 $space-s: 0.309rem;
@@ -155,12 +155,8 @@ $line-s: 1.309rem;
 $line-m: 1.618rem;
 $line-l: 1.927rem;
 //header
-$header-height: 45px;
-$menu-height: $header-height;
-$menu-bg-color: $color-main;
-$menu-padding: 8px;
-$menu-text-color: $color-f;
-$menu-icon-link-size: 18px;
+$header-height: 50px;
+$header-padding: 15px;
 
 //aside
 $aside-bg-color: $color-main;
@@ -174,11 +170,6 @@ $aside-list-item-border: solid 1px $color-e;
 $aside-footer-margin: 10px;
 
 //dialog
-$menu-link-height: 40px;
-$menu-link-padding: 10px;
-$menu-link-color-hover: $color-main-l2;
-$menu-link-color-hover-bg: $color-main-l3;
-$menu-list-min-width: 160px;
 
 //z-index
 $main-index: 1;
