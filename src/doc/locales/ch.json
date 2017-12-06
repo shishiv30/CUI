@@ -67,5 +67,7 @@
 	"loadimage": "加载图片",
 	"new loadimage style": "延迟加载图片",
 	"slick": "幻灯片",
-	"new slick plugin": "幻灯片插件"
+	"new slick plugin": "幻灯片插件",
+	"flex": "弹性布局",
+	"new flex style": "使用弹性布局对页面空间区域进行标准化分割"
 }

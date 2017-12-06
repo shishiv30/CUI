@@ -1,0 +1,150 @@
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    &.left {
+        justify-content: flex-start;
+    }
+    &.right {
+        justify-content: flex-end;
+    }
+    &.center {
+        justify-content: center;
+    }
+    &.middle {
+        align-items: center
+    }
+    &.bottom {
+        align-items: flex-end;
+    }
+    &.nowrap {
+        .flex-fixed {
+            width: fit-content;
+        }
+    }
+}
+
+@media (min-width: $screen-sm-min) {
+    .flex {
+        overflow: hidden;
+        > div {
+            width: 100%;
+            padding: 0 $flex-gutter-width/2;
+            //we need set min-width:0 to avoid the context overflow.
+            min-width: 0px;
+            &.flex-fixed {
+                flex-shrink: 0;
+                width: fit-content;
+            }
+        }
+    }
+}
+
+@media (max-width: $screen-xs-max) {
+    .flex {
+        flex-wrap: wrap;
+        > div {
+            width: 100%!important;
+            margin-bottom: $flex-gutter-width/2;
+        }
+        > div:last-of-type{
+            margin-bottom: 0;
+        }
+        &.nowrap {
+            flex-wrap: nowrap;
+        }
+    }
+}
+
+.flex-gs, .flex-gs-fixed {
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    > div {
+        min-width: 0px;
+        padding: 0 $flex-gutter-width/2;
+    }
+}
+
+.flex-xs-12 {
+    width: 100%;
+}
+
+.flex-xs-6 {
+    width: 50%;
+}
+
+.flex-xs-4 {
+    width: 33.333333%;
+
+}
+
+.flex-xs-3 {
+    width: 25%;
+}
+
+.flex-xs-2 {
+    width: 16.666666%;
+}
+
+@media (min-width: $screen-sm-min) {
+    .flex-sm-12 {
+        width: 100%;
+    }
+    .flex-sm-6 {
+        width: 50%;
+    }
+    .flex-sm-4 {
+        width: 33.333333%;
+    }
+    .flex-sm-3 {
+        width: 25%;
+    }
+    .flex-sm-2 {
+        width: 16.666666%;
+    }
+}
+
+@media (min-width: $screen-md-min) {
+    .flex-gs-fixed {
+        width: $screen-sm-max;
+    }
+    .flex-md-12 {
+        width: 100%;
+    }
+    .flex-md-6 {
+        width: 50%;
+    }
+    .flex-md-4 {
+        width: 33.333333%;
+    }
+    .flex-md-3 {
+        width: 25%;
+    }
+    .flex-md-2 {
+        width: 16.666666%;
+    }
+}
+
+@media (min-width: $screen-lg-min) {
+    .flex-gs-fixed {
+        width: $screen-md-max;
+    }
+    .flex-lg-12 {
+        width: 100%;
+    }
+    .flex-lg-6 {
+        width: 50%;
+    }
+    .flex-lg-4 {
+        width: 33.333333%;
+    }
+    .flex-lg-3 {
+        width: 25%;
+    }
+    .flex-lg-2 {
+        width: 16.666666%;
+    }
+}

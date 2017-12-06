@@ -71,5 +71,7 @@
 	"loadimage": "loadimage",
 	"new loadimage style": "lazy load images",
 	"slick": "slick",
-	"new slick plugin": "new slick plugin"
+	"new slick plugin": "new slick plugin",
+	"flex": "flex",
+	"new flex style": "new flex style"
 }
