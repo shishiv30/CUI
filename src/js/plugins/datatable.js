@@ -11,9 +11,9 @@
         },
         initBefore: null,
         init: function(context) {
-            var opt = context.opt
+            var opt = context.opt;
             var $this = context.$element;
-            var $thead = $("<thead></thead>");
+            var $thead = $('<thead></thead>');
             var $colgroup = $('<colgroup></colgroup>');
             var $tbody = $('<tbody></tbody>');
             var $tfoot = $('<tfoot></tfoot>');

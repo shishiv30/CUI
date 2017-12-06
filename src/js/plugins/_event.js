@@ -117,7 +117,7 @@
             var $this = $(this);
             $this.off('webkitTransitionEnd.cui otransitionend.cui oTransitionEnd.cui msTransitionEnd.cui transitionend.cui');
         }
-    }
+    };
     $.event.special.transitionend = eventSetting;
 }(jQuery));
 
@@ -140,7 +140,7 @@
                 $this.one('touchmove.cui.draggable', function () {
                     $this.trigger('dragging');
                 });
-            }
+            };
             var onDragEnd = function () {
                 $this.trigger('dragged');
             };
@@ -150,7 +150,7 @@
             } else {
                 $this.on('mousedown.cui.draggable', onDragStart);
                 $this.on('dragstart.cui.draggable selectstart.cui.draggable', function () {
-                    return false
+                    return false;
                 });
             }
         },
@@ -162,7 +162,7 @@
             } else {
                 this.$this.off('mousedown.cui.draggable');
                 this.$this.off('dragstart.cui.draggable selectstart.cui.draggable', function () {
-                    return false
+                    return false;
                 });
             }
             $this.off('touchstart.cui.draggable mousedown.cui.draggable');

@@ -3,7 +3,6 @@ input[type='text'], input[type='password'], input[type='email'], input[type='tel
     height: 100%;
     line-height: 100%;
     border: 1px solid $color-border;
-    font-family: $font-thin;
 }
 
 input[type='text']::-ms-clear {
