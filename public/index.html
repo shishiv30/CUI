@@ -29,6 +29,13 @@
         text-align: center
     }
 
+    .flexSystem .flex > div, .flexSystem .flex-gs > [class^=flex-] {
+        background: #eee;
+        border: 2px solid white;
+        padding: 10px;
+        text-align: center
+    }
+
     .table.responsive th {
         color: #a4a4a4
     }
@@ -54,36 +61,42 @@
     <div class="header-form">
         <a class="header-form-logo" href="javascript:;"> <i class="icon-github"></i></a>
         <a class="header-form-btn" href="javascript:;" id="menuButton"><i class="icon-bars"></i></a>
-        <div class="input right">
-            <input id="headerInput" type="text">
-            <a href="javascript:;" class="btn pink"><i class="icon-search"></i></a>
+        <div data-textbox>
+            <div data-textbox="" class="input large right">
+                <label for="headerInput">Search for ...</label>
+                <input id="headerInput" type="text">
+                <a href="javascript:;" class="btn"><i class="icon-search"></i></a>
+            </div>
         </div>
     </div>
     <div class="header-menu-list right">
         <div class="header-menu-list-wrap">
-            <div class="header-menu-item">
+            <div class="header-menu-item right">
                 <a href="/ch">应用借口文档</a>
             </div>
-            <div class="header-menu-item right" data-menu="expand">
-                <a href="javascript:;">案例 <i class="caret"></i></a>
+            <div class="header-menu-item" data-headermenu>
+                <a href="javascript:;">案例</a>
                 <ul>
-                    <li>
-                        <a href="javascript:;">推荐</a>
-                        <a href="javascript:;">站点</a>
-                        <a href="javascript:;">商务</a>
-                        <a href="javascript:;">博客</a>
-                    </li>
+                    <li><a href="javascript:;">推荐</a></li>
+                    <li><a href="javascript:;">站点</a></li>
+                    <li><a href="javascript:;">商务</a></li>
+                    <li class="splict"><a href="javascript:;">博客</a></li>
+                    <li><a href="javascript:;">Link1</a></li>
+                    <li><a href="javascript:;">Link2</a></li>
+                    <li><a href="javascript:;">Link3</a></li>
+                    <li><a href="javascript:;">Link4</a></li>
                 </ul>
             </div>
-            <div class="header-menu-item right">
+            <div class="header-menu-item">
                 <a href="javascript:;">设计文档</a>
             </div>
         </div>
     </div>
+    <div class="header-overlay"></div>
 </div>
 <div style="height:50px;"></div>
 
-<body id="body">
+<body id="body" class="classic">
 
 <div class="gs-fixed">
     <div class="row">
@@ -297,6 +310,39 @@
     <div id="layoutPanel">
         <div>the responsive layout will have a limitation of height, which always equal increste rate of width </div>
 
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#flexPanel">
+        弹性布局
+        <span class="subtitle"> 使用弹性布局对页面空间区域进行标准化分割</span>
+    </a>
+    <div id="flexPanel" class="flexSystem">
+        <div class="flex middle">
+            <div>Col 1</div>
+            <div>Col 2</div>
+            <div class="flex-fixed" style="height:100px;line-height:76px;">Fixed</div>
+            <div>Col 4</div>
+        </div>
+        <div class="flex-gs">
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">1</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">2</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">3</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">4</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">5</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">6</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">7</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">8</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">9</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">10</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">11</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">12</div>
+        </div>
     </div>
 </div>
 
