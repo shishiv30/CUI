@@ -164,7 +164,6 @@
             $this.off('change.validate');
         },
         initAfter: null,
-        isThirdPart: false,
     };
     $.CUI.plugin(validateConfig);
     $(document).on('dom.load.validate', function () {

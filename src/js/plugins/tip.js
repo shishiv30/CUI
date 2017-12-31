@@ -38,9 +38,7 @@
                 var $this = this.$element;
                 var $container = this.$container;
                 clearTimeout(opt._timer);
-                if (opt.showbefore) {
-                    $.CUI.addEvent(opt.showbefore, this);
-                }
+                opt.showbefore&&  $.CUI.addEvent(opt.showbefore, this);
                 $container.find('.tooltip-inner').html(opt.content);
                 var cWidth = $container.outerWidth();
                 var cHeight = $container.outerHeight();
@@ -101,7 +99,7 @@
                         break;
                 }
                 if (opt.showafter) {
-                    $.CUI.addEvent(opt.showafter, this);
+                    opt.showafter &&  $.CUI.addEvent(opt.showafter, this);
                 }
             },
             hide: function() {
@@ -109,15 +107,11 @@
                 var that = this;
                 var $container = this.$container;
                 var exports = this.exports;
-                if (opt.hidebefore) {
-                    $.CUI.addEvent(opt.hidebefore, this);
-                }
+                opt.hidebefore&&  $.CUI.addEvent(opt.hidebefore, this);
                 $container.removeClass('in');
                 opt._timer = setTimeout(function() {
                     $container.hide();
-                    if (opt.hideafter) {
-                        $.CUI.addEvent(opt.hideafter, that);
-                    }
+                    opt.hideafter && $.CUI.addEvent(opt.hideafter, that);
                     if (opt.once) {
                         exports.destroy();
                     }

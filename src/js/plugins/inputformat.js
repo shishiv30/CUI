@@ -58,7 +58,7 @@
             };
 
             _set();
-            $this.on('input', function (e, a, b) {
+            $this.on('input', function () {
                 var $this = $(this);
                 if (timer) {
                     clearTimeout(timer);
@@ -76,7 +76,6 @@
         setOptionsAfter: null,
         destroyBefore: null,
         initAfter: null,
-        isThirdPart: false,
     };
     $.CUI.plugin(inputformatConfig);
     $(document).on('dom.load.inputformat', function () {

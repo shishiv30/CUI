@@ -1,9 +1,9 @@
 //seed code for create a plugin
-//replace all of the "submit" with the plugin name. (the plugin name should be same as the js file name);
+//replace all of the "request" with the plugin name. (the plugin name should be same as the js file name);
 
 (function($) {
-    var submitConfig = {
-        name: 'submit',
+    var requestConfig = {
+        name: 'request',
         defaultOpt: {
             target: '',
             type: null,
@@ -55,30 +55,21 @@
             };
             $this.click(send);
         },
-
         setOptionsBefore: null,
         setOptionsAfter: null,
         initBefore: null,
-        initAfter: function(context) {
-            var $this = context.$element;
-            var $target = context.$target;
-            var opt = context.opt;
-            var exports = context.exports;
-
-        },
-        destroyBefore: function(context) {
-            var $this = context.$element;
-        }
+        initAfter: null,
+        destroyBefore: null
     };
-    $.CUI.plugin(submitConfig);
-    $(document).on('dom.load.submit', function() {
-        $('[data-submit]').each(function(index, item) {
+    $.CUI.plugin(requestConfig);
+    $(document).on('dom.load.request', function() {
+        $('[data-request]').each(function(index, item) {
             var $this = $(item);
             var data = $this.data();
-            $this.submit(data);
-            $this.removeAttr('data-submit');
-            $this.attr('data-submit-load', '');
-            $this.attr('role', 'submit');
+            $this.request(data);
+            $this.removeAttr('data-request');
+            $this.attr('data-request-load', '');
+            $this.attr('role', 'request');
         });
     });
 })(jQuery);

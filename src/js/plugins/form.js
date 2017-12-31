@@ -97,7 +97,6 @@
         setOptionsAfter: null,
         destroyBefore: null,
         initAfter: null,
-        isThirdPart: false,
     };
     $.CUI.plugin(formConfig);
     $(document).on('dom.load', function () {

@@ -57,7 +57,6 @@
         setOptionsAfter: null,
         destroyBefore: null,
         initAfter: null,
-        isThirdPart: false,
     };
     $.CUI.plugin(gridtableConfig);
     $(document).on('dom.load', function() {

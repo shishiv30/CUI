@@ -1,17 +1,28 @@
-(function($) {
+(function ($) {
     var tmpdiv = null;
     $.extend({
-        htmlencode: function(s) {
+        scrollTo: function ($target, $scroll, offsettop, time) {
+            if (offsettop && offsettop.indexOf('#') >= 0) {
+                offsettop = $(offsettop).height() + $('#header').height();
+            } else {
+                offsettop = (offsettop !== undefined) ? offsettop : $('#header').height();
+            }
+            $scroll = $scroll || $('body, html');
+            $scroll.animate({
+                scrollTop: $target.offset().top - offsettop - 10
+            }, time >= 0 ? time : 200);
+        },
+        htmlencode: function (s) {
             var div = document.createElement('div');
             div.appendChild(document.createTextNode(s));
             return div.innerHTML;
         },
-        htmldecode: function(s) {
+        htmldecode: function (s) {
             var div = document.createElement('div');
             div.innerHTML = s;
             return div.innerText || div.textContent;
         },
-        getTextWidth: function(text, fontsize) {
+        getTextWidth: function (text, fontsize) {
             var $body = $('body');
             fontsize = fontsize || $body.css('fontSize').replace(/[a-z]/g, '') * 1;
             if (!tmpdiv) {
@@ -28,21 +39,21 @@
             tmpdiv.text(text);
             return tmpdiv.width();
         },
-        isMobile: function() {
+        isMobile: function () {
             return !!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         },
-        throttle: function(func, wait, options) {
-            var context, args, result, wait = wait || 200;
+        throttle: function (func, waitTime, options) {
+            var context, args, result, wait = waitTime || 200;
             var timeout = null;
             var previous = 0;
             if (!options) options = {};
-            var later = function() {
+            var later = function () {
                 previous = options.leading === false ? 0 : +new Date();
                 timeout = null;
                 result = func.apply(context, args);
                 if (!timeout) context = args = null;
             };
-            return function() {
+            return function () {
                 var now = +new Date();
                 if (!previous && options.leading === false) previous = now;
                 var remaining = wait - (now - previous);
@@ -62,9 +73,9 @@
                 return result;
             };
         },
-        debounce: function(func, wait, immediate) {
-            var timeout, args, context, timestamp, result, wait = wait || 200;
-            var later = function() {
+        debounce: function (func, waitTime, immediate) {
+            var timeout, args, context, timestamp, result, wait = waitTime || 200;
+            var later = function () {
                 var last = +new Date() - timestamp;
 
                 if (last < wait && last >= 0) {
@@ -77,7 +88,7 @@
                     }
                 }
             };
-            return function() {
+            return function () {
                 context = this;
                 args = arguments;
                 timestamp = +new Date();
@@ -90,30 +101,30 @@
                 return result;
             };
         },
-        isNotEmpty: function(str) {
+        isNotEmpty: function (str) {
             return !(str === '' || str === null || str === 'undefined');
         },
-        isEmail: function(str) {
+        isEmail: function (str) {
             var reg = /^([\w-]+@([\w-]+\.)+[\w-]{2,4})?$/;
             return reg.test(str);
         },
-        isFloat: function(str) {
+        isFloat: function (str) {
             var reg = /^([-]){0,1}([0-9]){1,}([.]){0,1}([0-9]){0,}$/;
             return reg.test(str);
         },
-        isInt: function(str) {
+        isInt: function (str) {
             var reg = /^-?\d+$/;
             return reg.test(str);
         },
-        isPhone: function(str) {
-            var reg = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/im;
+        isPhone: function (str) {
+            var reg = /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/;
             return reg.test(str);
         },
-        isZipCode: function(str) {
+        isZipCode: function (str) {
             var reg = /^([0-9]){5}$/;
             return reg.test(str);
         },
-        isPrice: function(str) {
+        isPrice: function (str) {
             var reg = /^(([$])?((([0-9]{1,3},)+([0-9]{3},)*[0-9]{3})|[0-9]+)(\.[0-9]+)?)$/;
             return reg.test(str);
         }

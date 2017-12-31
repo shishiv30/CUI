@@ -49,13 +49,9 @@
             },
             setZoom: function(step) {
                 var opt = this.opt;
-                if (opt.zoombefore) {
-                    $.CUI.addEvent(opt.zoombefore, this);
-                }
+                opt.zoombefore &&    $.CUI.addEvent(opt.zoombefore, this);
                 this._zoom(step);
-                if (opt.zoomafter) {
-                    $.CUI.addEvent(opt.zoomafter, this);
-                }
+                opt.zoomafter&&    $.CUI.addEvent(opt.zoomafter, this);
             }
         },
         setOptionsBefore: null,

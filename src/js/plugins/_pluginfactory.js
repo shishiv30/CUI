@@ -24,11 +24,11 @@
                     defaultOpt: null,
                     initBefore: null,
                     init: null,
-                    exports: {},
+                    initAfter: null,
                     setOptionsBefore: null,
                     setOptionsAfter: null,
                     destroyBefore: null,
-                    initAfter: null,
+                    exports: {},
                     isThirdPart: false,
                 }, pluginContext);
 
@@ -66,7 +66,7 @@
         handleInit: function(context) {
             var that = this;
             var opt = context.opt;
-            var exports = context.exports;
+            context.exports = context.exports || {};
             //before plugin initial event
             $.CUI.addEvent('cui.init.before.' + context.name, context);
             opt.initbefore && $.CUI.addEvent(opt.initbefore, context);
@@ -93,7 +93,6 @@
                 //destroy export for the plugin
                 context.exports.destroy = $.proxy($.CUI.handleDestroy, that)(context);
             }
-            console.log(context.name);
             //after plugin initial custom event
             context.initAfter && $.proxy(context.initAfter, that)(context);
             opt.initafter && $.CUI.addEvent(opt.initafter, context);

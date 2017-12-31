@@ -54,9 +54,7 @@
                 setTimeout(function() {
                     $dialog.addClass('dialog-active');
                     _reposition();
-                    if (opt.showafter) {
-                        $.CUI.addEvent(opt.showafter, context);
-                    }
+                    opt.showafter&&  $.CUI.addEvent(opt.showafter, context);
                 }, 50);
             };
             var _hide = context._hide = function() {
@@ -135,7 +133,6 @@
                 context._reposition();
             });
         },
-        isThirdPart: false,
     };
     $.CUI.plugin(dialogConfig);
     $(document).on('dom.load.dialog', function() {

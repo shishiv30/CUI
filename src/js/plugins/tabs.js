@@ -1,43 +1,49 @@
-//tab
+//seed code for create a plugin
+//replace all of the "tabs" with the plugin name. (the plugin name should be same as the js file name);
+
 (function ($) {
-    $.fn.tabs = function () {
-        var $this = $(this);
-
-        function toggle($item) {
-            //hide all
-            var item = $this.find('[data-tab]');
-            item.removeClass('active');
-            item.each(function (index, item) {
-                var target = $(item).attr('data-target');
-                $(target).hide();
-            });
-            //show click one
-            var target = $item.attr('data-target');
-            $item.addClass('active');
-            $(target).show();
-        }
-
-        $this.find('[data-tab]').each(function (index, item) {
-            var $item = $(item);
-            if ($($item.attr('data-target')).length > 0) {
-
-                if ($item.hasClass('active')) {
-                    toggle($item);
-                }
-                $item.click(function () {
-                    toggle($(this));
+    var tabsConfig = {
+        name: 'tabs',
+        defaultOpt: {},
+        init: function (context) {
+            var $this = context.$element;
+            var $items = $this.find('[data-tab]');
+            var _switchActiveTab = function () {
+                $items.each(function (index, item) {
+                    var $item = $(item);
+                    var $target = $($item.attr('data-target')).hide();
+                    if ($item.hasClass('active')) {
+                        $target.show();
+                    } else {
+                        $target.hide();
+                    }
                 });
-            } else {
-                $item.hide();
-            }
-        });
-        $this.attr('role', 'Tabs');
+            };
+            $items.each(function () {
+                $(this).click(function () {
+                    $items.removeClass('active');
+                    $(this).addClass('active');
+                    _switchActiveTab();
+                });
+            });
+            _switchActiveTab();
+        },
+        exports: null,
+        setOptionsBefore: null,
+        setOptionsAfter: null,
+        initBefore: null,
+        initAfter: null,
+        destroyBefore: null
     };
-
+    $.CUI.plugin(tabsConfig);
     $(document).on('dom.load.tabs', function () {
         $('[data-tabs]').each(function (index, item) {
-            $(item).tabs();
-            $(item).removeAttr('data-tabs');
+            var $this = $(item);
+            var data = $this.data();
+            $this.tabs(data);
+            $this.removeAttr('data-tabs');
+            $this.attr('data-tabs-load', '');
+            $this.attr('role', 'tabs');
         });
     });
 })(jQuery);

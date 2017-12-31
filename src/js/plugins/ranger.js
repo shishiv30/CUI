@@ -8,15 +8,13 @@
             max: 100,
             min: 0,
             step: 0,
-            onChange: null,
-            onUpdate: null,
             decimals: 0,
             connect: null,
             orientation: 'horizontal',
             start: null,
             range: null,
-            afterupdate: null,
-            afterchange: null,
+            changebefore: null,
+            changeafter: null,
         },
         init: function(context) {
             var opt = context.opt;
@@ -77,20 +75,16 @@
                 context._set(values);
             });
 
-            if (opt.onUpdate) {
+            if (opt.changebefore) {
                 context.range.on('update', function(e, t) {
-                    if (opt.afterupdate) {
-                        $.CUI.addEvent(opt.afterupdate, this, e, t);
-                    }
+                    opt.changebefore&&    $.CUI.addEvent(opt.changebefore, this, e, t);
                 });
             }
             context.range.on('change', function(e, t) {
                 $input.each(function(index) {
                     $(this).val(e[index]).trigger('input');
                 });
-                if (opt.afterchange) {
-                    $.CUI.addEvent(opt.afterchange, this, e, t);
-                }
+                opt.changeafter &&  $.CUI.addEvent(opt.changeafter, this, e, t);
             });
         },
         exports: {

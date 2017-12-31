@@ -31,5 +31,6 @@ i18n.configure({
 app.use(i18n.init);
 
 app.listen(port, hostname, () => {
+    /*eslint no-console: ["error", { allow: ["log"] }] */
     console.log(`Server running at http://${hostname}:${port}/`);
 });

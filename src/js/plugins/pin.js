@@ -1,91 +1,102 @@
-//pin
+//seed code for create a plugin
+//replace all of the "pin" with the plugin name. (the plugin name should be same as the js file name);
+
 (function ($) {
-    $.fn.pin = function (option) {
-        var defaultOpt = {
+    var pinConfig = {
+        name: 'pin',
+        defaultOpt: {
             top: 50,
             bottom: 0,
             target: ''
-        };
-        var opt = $.extend({}, defaultOpt, option);
-
-        var $this = $(this);
-        var $target = $(opt.target);
-        $this.css('position', 'relative');
-        $target.addClass('pin');
-
-        var offsetTop = 0;
-        var offsetBottom = 0;
-        var reposition = function () {
-            offsetTop = $this.offset().top - opt.top;
-            offsetBottom = offsetTop + $this.height() - $target.height() - opt.bottom;
-        };
-        var pin = function () {
-            $target.css({
-                position: 'fixed',
-                'top': opt.top,
-                bottom: 'auto'
-            });
-        };
-        var unpin = function (isTop) {
-            if (isTop) {
+        },
+        init: function (context) {
+            var opt = context.opt;
+            var $this = context.$element;
+            var $target = context.$target = $(opt.target);
+            $this.css('position', 'relative');
+            $target.addClass('pin');
+            var offsetTop = 0;
+            var offsetBottom = 0;
+            var reposition = function () {
+                offsetTop = $this.offset().top - opt.top;
+                offsetBottom = offsetTop + $this.height() - $target.height() - opt.bottom;
+            };
+            var _pin = function () {
                 $target.css({
-                    position: 'absolute',
-                    top: 0,
+                    position: 'fixed',
+                    'top': opt.top,
                     bottom: 'auto'
                 });
-            } else {
-                $target.css({
-                    position: 'absolute',
-                    top: 'auto',
-                    bottom: 0
-                });
-            }
-        };
-        var setpin = function (scrollTop, isReposition) {
-            if (isReposition) {
-                reposition();
-            }
-            if (scrollTop < offsetTop) {
-                unpin(true);
-            } else {
-                if (scrollTop > offsetBottom) {
-                    unpin(false);
+            };
+            var _unpin = function (isTop) {
+                if (isTop) {
+                    $target.css({
+                        position: 'absolute',
+                        top: 0,
+                        bottom: 'auto'
+                    });
                 } else {
-                    pin();
+                    $target.css({
+                        position: 'absolute',
+                        top: 'auto',
+                        bottom: 0
+                    });
                 }
-            }
-        };
-        $this.data('pin', {
-            pin: pin,
-            unpin: unpin,
-            setpin: setpin
-        });
-        $target.attr('role', 'PinPanel');
-        return $this.data('pin');
+            };
+            var _setpin = function (scrollTop, isReposition) {
+                if (isReposition) {
+                    reposition();
+                }
+                if (scrollTop < offsetTop) {
+                    _unpin(true);
+                } else {
+                    if (scrollTop > offsetBottom) {
+                        _unpin(false);
+                    } else {
+                        _pin();
+                    }
+                }
+            };
+            context = $.extend(context, {
+                _pin: _pin,
+                _unpin: _unpin,
+                _setpin: _setpin
+            });
+            $(window).on('scroll', function () {
+                var scrollTop = $(window).scrollTop();
+                _setpin(scrollTop, false);
+            });
+            $(document).on('dom.resize', function () {
+                var scrollTop = $(window).scrollTop();
+                _setpin(scrollTop, true);
+            });
+        },
+        exports: {
+            pin: function () {
+                this._pin();
+            },
+            unpin: function () {
+                this._unpin();
+            },
+            setpin: function () {
+                this._setpin();
+            },
+        },
+        setOptionsBefore: null,
+        setOptionsAfter: null,
+        initBefore: null,
+        initAfter: null,
+        destroyBefore: null
     };
-
-
-    function initial(isReposition) {
-        var scrollTop = $(window).scrollTop();
-
-        $('[data-pin]').each(function () {
-            if ($(this).data('pin') && $(this).data('pin').setpin) {
-                $(this).data('pin').setpin(scrollTop, isReposition);
-            } else {
-                $(this).pin({
-                    top: $(this).attr('data-top'),
-                    bottom: $(this).attr('data-bottom'),
-                    target: $(this).attr('data-target')
-                }).setpin(scrollTop, true);
-            }
+    $.CUI.plugin(pinConfig);
+    $(document).on('dom.load.pin', function () {
+        $('[data-pin]').each(function (index, item) {
+            var $this = $(item);
+            var data = $this.data();
+            $this.pin(data);
+            $this.removeAttr('data-pin');
+            $this.attr('data-pin-load', '');
+            $this.attr('role', 'pin');
         });
-    }
-
-    $(window).on('scroll', function () {
-        initial(false);
     });
-    $(window).on('dom.resize', function () {
-        initial(true);
-    });
-
 })(jQuery);

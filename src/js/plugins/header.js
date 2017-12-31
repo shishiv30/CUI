@@ -1,65 +1,92 @@
-//favorite
+//seed code for create a plugin
+//replace all of the "header" with the plugin name. (the plugin name should be same as the js file name);
+
 (function ($) {
-    $.fn.header = function (options) {
-        var defaultOpt = {
+    var headerConfig = {
+        name: 'header',
+        defaultOpt: {
             button: '.header-form-btn',
             container: 'html',
             autoclose: true,
-        };
-        var opt = $.extend(defaultOpt, options);
-        var $this = $(this);
-        var $button = $this.find(opt.button);
-        var $container = $(opt.container);
-        var $menus = $this.find('[data-headermenu]');
-        var $overlay = $this.find('.header-overlay');
-        var _close = function () {
-            $this.addClass('header-close');
-        };
-        var _open = function () {
-            $this.removeClass('header-close');
-        };
-        var _show = function () {
-            $container.addClass('header-menu-show');
-        };
-        var _hide = function () {
-            $container.removeClass('header-menu-show');
-        };
-        $button.on('click', function () {
-            if ($container.hasClass('header-menu-show')) {
-                _hide();
-            } else {
-                _show();
-            }
-        });
-        $menus.children('a').click(function () {
-            $(this).parent().toggleClass('active');
-        });
-        $overlay.on('click', _hide);
-        $this.data('header', {
-            show: _show,
-            hide: _hide,
-            close: _close,
-            open: _open,
-        });
-        $(document).on('dom.resize', function () {
-            if ($container.hasClass('header-menu-show')) {
-                _hide();
-            }
-        });
-        $(document).on('dom.scroll', function (e, t, isDown) {
-            if (isDown) {
-                _close();
-            } else {
-                _open();
-            }
-        });
+        },
+        init: function (context) {
+            var opt = context.opt;
+            var $this = context.$element;
+            var $button = $this.find(opt.button);
+            var $container = $(opt.container);
+            var $menus = $this.find('[data-headermenu]');
+            var $overlay = $this.find('.header-overlay');
+            var _close = function () {
+                $this.addClass('header-close');
+            };
+            var _open = function () {
+                $this.removeClass('header-close');
+            };
+            var _show = function () {
+                $container.addClass('header-menu-show');
+            };
+            var _hide = function () {
+                $container.removeClass('header-menu-show');
+            };
+            $button.on('click', function () {
+                if ($container.hasClass('header-menu-show')) {
+                    _hide();
+                } else {
+                    _show();
+                }
+            });
+            $menus.children('a').click(function () {
+                $(this).parent().toggleClass('active');
+            });
+            $overlay.on('click', _hide);
+            context = $.extend(context, {
+                _show: _show,
+                _hide: _hide,
+                _close: _close,
+                _open: _open,
+            });
+            $(document).on('dom.resize', function () {
+                if ($container.hasClass('header-menu-show')) {
+                    _hide();
+                }
+            });
+            $(document).on('dom.scroll', function (e, t, isDown) {
+                if (isDown) {
+                    _close();
+                } else {
+                    _open();
+                }
+            });
+        },
+        exports: {
+            show: function () {
+                this._show();
+            },
+            hide: function () {
+                this._hide();
+            },
+            close: function () {
+                this._close();
+            },
+            open: function () {
+                this._open();
+            },
+        },
+        setOptionsBefore: null,
+        setOptionsAfter: null,
+        initBefore: null,
+        initAfter: null,
+        destroyBefore: null
     };
-    $(document).on('dom.load', function () {
-        $('[data-header]').each(function () {
-            $(this).header();
-            $(this).removeAttr('data-header');
+    $.CUI.plugin(headerConfig);
+    $(document).on('dom.load.header', function () {
+        $('[data-header]').each(function (index, item) {
+            var $this = $(item);
+            var data = $this.data();
+            $this.header(data);
+            $this.removeAttr('data-header');
+            $this.attr('data-header-load', '');
+            $this.attr('role', 'header');
         });
     });
-
-
 })(jQuery);
