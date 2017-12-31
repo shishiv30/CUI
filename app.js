@@ -2,7 +2,7 @@ const ejs = require('ejs');
 const express = require('express');
 const i18n = require('i18n');
 const hostname = '127.0.0.1';
-const port = 8080;
+const port = 3025;
 const ejsUrl = __dirname + '/src/doc/';
 
 var app = express();

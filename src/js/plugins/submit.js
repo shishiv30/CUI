@@ -1,8 +1,10 @@
-//form submit
+//seed code for create a plugin
+//replace all of the "submit" with the plugin name. (the plugin name should be same as the js file name);
+
 (function($) {
-    $.fn.submitForm = function(options) {
-        var $this = $(this);
-        var defaultOpt = {
+    var submitConfig = {
+        name: 'submit',
+        defaultOpt: {
             target: '',
             type: null,
             beforesend: null,
@@ -10,28 +12,24 @@
             onerror: null,
             datatype: null,
             lock: 1,
-        };
-        var opt = $.extend({}, defaultOpt, options);
-        var obj = {
-            send: function() {
-                if ($this.is('[disabled]')) {
-                    return false;
-                }
+        },
+        init: function(context) {
+            var opt = context.opt;
+            var $this = context.$element;
+            var $target = context.$target = $(opt.target);
+            var send= function() {
                 var params = {
                     type: opt.type,
                     dataType: opt.datatype,
                     lock: opt.lock
                 };
-
-                if (opt.target) {
-                    var $target = $(opt.target);
+                if ($target) {
                     if ($target.isValid()) {
-                        params.data = $target.formValue();
+                        params.data = $target.getValue();
                     } else {
                         return false;
                     }
                 }
-
                 params.beforeSend = function() {
                     if ($.isFunction(opt.beforesend)) {
                         opt.beforesend(opt);
@@ -54,42 +52,33 @@
                     }
                 };
                 $.ajax(params);
-            },
-            setOption: function(key, value) {
-                opt[key] = value;
-            },
-            setOptions: function(options) {
-                $.extend(opt, options);
-            }
-        };
+            };
+            $this.click(send);
+        },
 
-        $this.click(obj.send);
-        $this.data('submit', obj);
-        $this.attr('role', 'SubmitForm');
-        return obj;
+        setOptionsBefore: null,
+        setOptionsAfter: null,
+        initBefore: null,
+        initAfter: function(context) {
+            var $this = context.$element;
+            var $target = context.$target;
+            var opt = context.opt;
+            var exports = context.exports;
+
+        },
+        destroyBefore: function(context) {
+            var $this = context.$element;
+        }
     };
+    $.CUI.plugin(submitConfig);
     $(document).on('dom.load.submit', function() {
-        $('[data-submit]').each(function() {
-            var $this = $(this);
-            if ($this.attr('data-target')) {
-                var $form = $($this.attr('data-target'));
-                $form.on('keyup', function(e) {
-                    if (e.keyCode === 13) {
-                        //when focus on textarea will not auto submit
-                        if ($('textarea:focus').length === 0) {
-                            $this.click();
-                        }
-                    }
-                });
-            }
-        });
-    });
-
-    $(document).on('dom.load', function() {
         $('[data-submit]').each(function(index, item) {
-            var $item = item;
-            $item.submitForm($item.data());
-            $item.removeAttr('data-submit');
+            var $this = $(item);
+            var data = $this.data();
+            $this.submit(data);
+            $this.removeAttr('data-submit');
+            $this.attr('data-submit-load', '');
+            $this.attr('role', 'submit');
         });
     });
 })(jQuery);
