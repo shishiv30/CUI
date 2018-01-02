@@ -93,8 +93,8 @@
         $('[data-pin]').each(function (index, item) {
             var $this = $(item);
             var data = $this.data();
-            $this.pin(data);
             $this.removeAttr('data-pin');
+            $this.pin(data);
             $this.attr('data-pin-load', '');
             $this.attr('role', 'pin');
         });

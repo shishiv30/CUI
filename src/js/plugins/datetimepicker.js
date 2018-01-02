@@ -58,8 +58,8 @@
     $(document).on('focus', '[data-picker]', function() {
         var $this = $(this);
         var opt = $this.data();
-        $this.picker(opt);
         $this.removeAttr('data-picker');
+        $this.picker(opt);
         $this.attr('data-picker-load', '');
         $this.attr('role', 'Datepicker');
     });

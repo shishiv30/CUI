@@ -174,8 +174,8 @@
         $('[data-datatable]').each(function() {
             var $this = $(this);
             var data = $this.data();
-            $this.datatable(data);
             $this.removeAttr('data-datatable');
+            $this.datatable(data);
             $this.attr('data-datatable-load', '');
             $this.attr('role', 'Datatable');
         });

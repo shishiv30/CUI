@@ -66,8 +66,8 @@
         $('[data-request]').each(function(index, item) {
             var $this = $(item);
             var data = $this.data();
-            $this.request(data);
             $this.removeAttr('data-request');
+            $this.request(data);
             $this.attr('data-request-load', '');
             $this.attr('role', 'request');
         });

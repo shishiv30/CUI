@@ -302,8 +302,8 @@
         $('[data-shifter]').each(function(index, item) {
             var $this = $(item);
             var data = $this.data();
-            $this.shifter(data);
             $this.removeAttr('data-shifter');
+            $this.shifter(data);
             $this.attr('data-shifter-load', '');
             $this.attr('role', 'shifter');
         });

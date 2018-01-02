@@ -56,23 +56,16 @@
         setOptionsBefore: null,
         setOptionsAfter: null,
         initBefore: null,
-        initAfter: function(context) {
-            var $this = context.$element;
-            var $container = context.$container;
-            var opt = context.opt;
-            var exports = context.exports;
-        },
-        destroyBefore: function(context) {
-            var $this = context.$element;
-        }
+        initAfter: null,
+        destroyBefore: null
     };
     $.CUI.plugin(loadimageConfig);
     $(document).on('dom.load.loadimage', function() {
         $('[data-loadimage]').each(function(index, item) {
             var $this = $(item);
             var data = $this.data();
-            $this.loadimage(data).load();
             $this.removeAttr('data-loadimage');
+            $this.loadimage(data).load();
             $this.attr('data-loadimage-load', '');
             $this.attr('role', 'loadimage');
         });

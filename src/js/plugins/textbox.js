@@ -42,8 +42,8 @@
         $('[data-textbox]').each(function (index, item) {
             var $this = $(item);
             var data = $this.data();
-            $this.textbox(data);
             $this.removeAttr('data-textbox');
+            $this.textbox(data);
             $this.attr('data-textbox-load', '');
             $this.attr('role', 'textbox');
         });

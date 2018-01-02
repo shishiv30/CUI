@@ -27,10 +27,10 @@
     };
     $(document).on('dom.load', function() {
         $('[data-stick]').each(function(index, item) {
+            $(item).removeAttr('data-stick');
             $(item).stick({
                 offset: $(item).attr('data-offset') * 1 || 50
             });
-            $(item).removeAttr('data-stick');
         });
     });
 })(jQuery);

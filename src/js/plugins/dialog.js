@@ -138,6 +138,7 @@
     $(document).on('dom.load.dialog', function() {
         $('[data-dialog]').each(function() {
             var $this = $(this);
+            $this.removeAttr('data-dialog');
             $this.click(function() {
                 var $this = $(this);
                 var data = $this.data();
@@ -146,7 +147,6 @@
                 $target.dialog(data).show();
                 return false;
             });
-            $this.removeAttr('data-dialog');
             $this.attr('data-dialog-load', '');
             $this.attr('role', 'Dialog');
         });

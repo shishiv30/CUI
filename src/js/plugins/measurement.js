@@ -66,8 +66,8 @@
         $('[data-measurement]').each(function (index, item) {
             var $this = $(item);
             var data = $this.data();
-            $this.measurement(data);
             $this.removeAttr('data-measurement');
+            $this.measurement(data);
             $this.attr('data-measurement-load', '');
             $this.attr('role', 'measurement');
         });

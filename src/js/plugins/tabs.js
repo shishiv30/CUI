@@ -40,8 +40,8 @@
         $('[data-tabs]').each(function (index, item) {
             var $this = $(item);
             var data = $this.data();
-            $this.tabs(data);
             $this.removeAttr('data-tabs');
+            $this.tabs(data);
             $this.attr('data-tabs-load', '');
             $this.attr('role', 'tabs');
         });

@@ -169,8 +169,8 @@
     $(document).on('dom.load.validate', function () {
         $('[data-validate]').each(function (index, item) {
             var $item = $(item);
-            $item.validate($item.data());
             $item.removeAttr('data-validate');
+            $item.validate($item.data());
             $item.attr('data-validate-load', '');
         });
     });

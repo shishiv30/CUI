@@ -62,8 +62,8 @@
     $(document).on('dom.load', function() {
         $('[data-gridtable]').each(function(index, item) {
             var data = $(item).data();
-            $(item).gridtable(data);
             $(item).removeAttr('data-gridtable');
+            $(item).gridtable(data);
             $(item).attr('data-gridtable-load', '');
             $(item).attr('role', 'Gridtable');
         });

@@ -83,8 +83,8 @@
         $('[data-header]').each(function (index, item) {
             var $this = $(item);
             var data = $this.data();
-            $this.header(data);
             $this.removeAttr('data-header');
+            $this.header(data);
             $this.attr('data-header-load', '');
             $this.attr('role', 'header');
         });

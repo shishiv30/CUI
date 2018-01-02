@@ -98,8 +98,8 @@
         $('[data-ranger]').each(function(index, item) {
             var $this = $(item);
             var data = $this.data();
-            $this.ranger(data);
             $this.removeAttr('data-ranger');
+            $this.ranger(data);
             $this.attr('data-ranger-load', '');
             $this.attr('role', 'ranger');
         });

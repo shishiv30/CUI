@@ -117,9 +117,9 @@
     $(document).on('dom.load.slicker', function() {
         $('[data-slicker]').each(function(index, item) {
             var $this = $(item);
+            $this.removeAttr('data-slicker');
             var data = $this.data();
             $this.slicker(data);
-            $this.removeAttr('data-slicker');
             $this.attr('data-slicker-load', '');
             $this.attr('role', 'slicker');
         });

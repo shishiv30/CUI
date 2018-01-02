@@ -156,8 +156,8 @@
     $(document).on('dom.load.tip', function() {
         $('[data-tip]').each(function() {
             var options = $(this).data();
-            $(this).tip(options);
             $(this).removeAttr('data-tip');
+            $(this).tip(options);
             $(this).attr('role', 'Tip');
         });
     });

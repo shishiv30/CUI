@@ -76,8 +76,8 @@
             var $this = $(item);
             var data = $this.data();
             $this.imgzoom(data);
-            $this.removeAttr('data-imgzoom');
             $this.attr('data-imgzoom-load', '');
+            $this.removeAttr('data-imgzoom');
             $this.attr('role', 'Imgzoom');
         });
     });
