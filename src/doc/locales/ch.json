@@ -69,5 +69,9 @@
 	"slick": "幻灯片",
 	"new slick plugin": "幻灯片插件",
 	"flex": "弹性布局",
-	"new flex style": "使用弹性布局对页面空间区域进行标准化分割"
+	"new flex style": "使用弹性布局对页面空间区域进行标准化分割",
+	"skeleton": "预览",
+	"new skeleton style": "预加载的占位符",
+	"tabs": "标签页",
+	"new tabs style": "可以切换面板的标签栏"
 }

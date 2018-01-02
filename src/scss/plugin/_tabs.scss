@@ -1,7 +1,32 @@
-[data-tab].active {
-    font-weight: bold;
-}
-
 .tab-panel {
     display: none;
+}
+
+.tabs {
+    &.default {
+        [data-tab] {
+            &.active {
+                background: $color-6;
+                color:$color-f;
+                margin-bottom: -1px;
+            }
+
+            background: $color-e;
+            min-width: 100px;
+            padding: 0 10px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-top:1px solid $color-c;
+            border-right:1px solid $color-c;
+            border-left:1px solid $color-c;
+            margin-right:2px;
+        }
+        ul{
+            border-bottom: 1px solid $color-c;
+        }
+        .tab-panel{
+            border: 1px solid $color-e;
+            padding: 10px;
+        }
+    }
 }
