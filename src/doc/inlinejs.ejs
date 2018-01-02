@@ -47,7 +47,9 @@
     $("#eventDiv").on('swipeup', function (t, start, end) {
         $(this).html('swipeup <br>' + getMoveText(start, end));
     });
-
+    $('#loadingSection').on('click',function(){
+        $('.skeleton').html('After Content Loaded, It will show the real content with real height');
+    })
     $(document).one('datatable.inital', function (e, element, obj) {
         obj.setOptions({
             columns: [{
