@@ -73,5 +73,16 @@
 	"skeleton": "预览",
 	"new skeleton style": "预加载的占位符",
 	"tabs": "标签页",
-	"new tabs style": "可以切换面板的标签栏"
+	"new tabs style": "可以切换面板的标签栏",
+	"Link1": "Link1",
+	"Link2": "Link2",
+	"Link3": "Link3",
+	"Link4": "Link4",
+	"level 0 title": "特级标题",
+	"level 1 title": "一级标题",
+	"level 2 title": "二级标题",
+	"level 3 title": "三级标题",
+	"level 4 title": "四级标题",
+	"level 5 title": "五级标题",
+	"level 6 title": "六级标题"
 }

@@ -19,8 +19,11 @@ function ejs2html(ejsName) {
         if (!err) {
             var htmlName = ejsName.replace('.ejs', '.html');
             fs.writeFile(htmlPath + htmlName, result, function (err) {
+                /*eslint no-console: ["error", { allow: ["log"] }] */
+                console.log(err);
             });
         } else {
+            /*eslint no-console: ["error", { allow: ["log"] }] */
             console.log(err);
         }
     });
