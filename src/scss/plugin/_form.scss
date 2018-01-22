@@ -1,6 +1,6 @@
 .form {
     @extend %clearfix;
-    .input {
+    .input, .select-textbox {
         width: 100%;
         margin: $space-l 0;
     }

@@ -6,11 +6,10 @@ table.gridtable {
         background-color: $color-e;
         font-weight: bold;
         text-align: left;
-
     }
-    td,
-    th {
+    td, th {
         text-align: left;
+        line-height: 1.1em;
     }
     tbody tr {
         max-height: 500px;
@@ -19,8 +18,7 @@ table.gridtable {
 
 @media (min-width: $screen-sm-min) {
     table.gridtable {
-        td,
-        th {
+        td, th {
             border: 1px solid $color-c;
             padding: $space-m !important;
         }
@@ -39,11 +37,7 @@ table.gridtable {
     table.gridtable {
         display: block;
         position: relative;
-        tbody,
-        td,
-        th,
-        thead,
-        tr {
+        tbody, td, th, thead, tr {
             display: block;
         }
         thead tr {
@@ -69,7 +63,7 @@ table.gridtable {
                 position: relative;
             }
             &.close {
-                max-height: 38px;
+                max-height: 36px;
                 position: relative;
                 cursor: pointer;
                 opacity: .8;
@@ -98,4 +92,3 @@ table.gridtable {
         }
     }
 }
-
