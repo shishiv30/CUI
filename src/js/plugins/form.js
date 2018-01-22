@@ -102,8 +102,9 @@
     $(document).on('dom.load', function () {
         $('[data-form]').each(function (index, item) {
             var $this = $(item);
+            var data = $this.data();
             $this.removeAttr('data-form');
-            $this.form();
+            $this.form(data);
             $this.attr('data-form-load', '');
             $this.attr('role', 'Form');
         });

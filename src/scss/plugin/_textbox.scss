@@ -1,4 +1,3 @@
-
 [data-textbox], [data-textbox-load] {
     position: relative;
     input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
@@ -11,7 +10,7 @@
         color: transparent;
     }
     .input, .textarea {
-        > label {
+        >label {
             margin: 0;
             position: absolute;
             line-height: 20px;
@@ -37,86 +36,85 @@
         }
     }
     .input {
-        > label {
+        >label {
             left: 10px;
             right: auto;
             top: 50%;
             width: calc(100% - 10px);
         }
         &.right, &.left {
-            > label {
+            >label {
                 width: calc(100% - 40px);
             }
         }
         &.right.left {
-            > label {
+            >label {
                 width: calc(100% - 70px);
             }
         }
-        > input {
+        >input {
             padding: 15px 10px 0 10px;
         }
-        > i {
-            line-height: 35px;
+        >i {
+            line-height: 38px;
         }
-        > a {
+        >a {
             line-height: 52px;
         }
         &.large {
-            > label {
+            >label {
                 right: auto;
                 top: 50%;
                 font-size: 18px;
             }
-            > input {
+            >input {
                 padding: 15px 10px 0 10px;
             }
-            > i {
+            >i {
                 font-size: 18px;
                 line-height: $form-size-large;
             }
-            > a {
+            >a {
                 line-height: $form-size-large;
             }
         }
         &.small {
-            > label {
+            >label {
                 right: auto;
                 top: 50%;
                 font-size: 11px;
             }
-            > input {
+            >input {
                 padding: 8px 10px 0 10px
             }
-            > i {
+            >i {
                 font-size: 12px;
                 line-height: 35px;
             }
-            > a {
+            >a {
                 line-height: 52px;
             }
         }
         &.right {
-            > input {
+            >input {
                 padding-right: 30px;
             }
-            > i, > a {
+            >i, >a {
                 width: 30px;
             }
         }
         &.left {
-            > label {
+            >label {
                 left: 30px;
             }
-            > input {
+            >input {
                 padding-left: 30px;
             }
-            > i, > a {
+            >i, >a {
                 width: 30px;
             }
         }
     }
-
     .textarea {
         background-color: $color-f;
         border: 1px solid $color-border;
@@ -141,7 +139,7 @@
             color: inherit;
         }
         .input, .textarea {
-            > label {
+            >label {
                 top: 0;
                 left: 5px;
                 right: auto;
@@ -151,19 +149,19 @@
             }
         }
         .input {
-            > i {
+            >i {
                 line-height: 52px;
             }
             &.small {
-                > label {
+                >label {
                     top: -2px;
                 }
-                > i {
+                >i {
                     line-height: 42px;
                 }
             }
             &.large {
-                > i {
+                >i {
                     line-height: 65px;
                 }
             }
@@ -178,4 +176,3 @@
         }
     }
 }
-

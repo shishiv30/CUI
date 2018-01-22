@@ -38,8 +38,8 @@
 //         $('[data-example]').each(function(index, item) {
 //             var $this = $(item);
 //             var data = $this.data();
-//             $this.example(data);
 //             $this.removeAttr('data-example');
+//             $this.example(data);
 //             $this.attr('data-example-load', '');
 //             $this.attr('role', 'example');
 //         });

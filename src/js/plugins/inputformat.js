@@ -81,8 +81,9 @@
     $(document).on('dom.load.inputformat', function () {
         $('[data-inputformat]').each(function (index, item) {
             var $this = $(item);
+            var data = $this.data();
             $this.removeAttr('data-inputformat');
-            $this.inputformat($this.data());
+            $this.inputformat(data);
             $this.removeAttr('data-inputformat-load', '');
         });
 

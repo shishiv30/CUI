@@ -50,10 +50,12 @@
     &.dialog-default {
         padding-top: 20px;
         .dialog-title {
-            @extend .h3;
             @extend %singleline;
+            font-size: $font-size-3;
+            line-height: 1em;
+            margin-bottom: 15px;
             position: relative;
-            padding-right: 30px;
+            padding-right: 20px;
             .dialog-title-close {
                 position: absolute;
                 font-size: 25px;
@@ -95,7 +97,7 @@
         }
         .dialog-body {
             margin: 0;
-            > div {
+            >div {
                 padding: 15px 15px 0 15px;
             }
         }
@@ -103,13 +105,13 @@
             margin: 0;
             padding: 0;
             z-index: 10;
-            > li {
+            >li {
                 margin: 0;
                 padding: 0;
                 text-align: left;
                 font-size: $font-size-4;
                 a {
-                    > i {
+                    >i {
                         float: left;
                         margin-right: 10px;
                         font-size: $font-size-3;

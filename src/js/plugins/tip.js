@@ -1,5 +1,5 @@
 //tip
-(function($) {
+(function ($) {
     var animationDuration = 500;
 
     var tipConfig = {
@@ -19,13 +19,15 @@
             hideafter: null,
             _timer: null
         },
-        init: function(context) {
+        init: function (context) {
             var opt = context.opt;
             var $this = context.$element;
             var $container = $('<div class="tooltip ' + opt.type + ' ' + opt.placement + '" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>');
-            $this.parent().css({position: 'relative'});
+            $this.parent().css({
+                position: 'relative'
+            });
             $this.after($container);
-            $container.click(function(e) {
+            $container.click(function (e) {
                 e.stopPropagation();
             });
             context.$container = $container;
@@ -33,12 +35,12 @@
         },
         destroy: null,
         exports: {
-            show: function() {
+            show: function () {
                 var opt = this.opt;
                 var $this = this.$element;
                 var $container = this.$container;
                 clearTimeout(opt._timer);
-                opt.showbefore&&  $.CUI.addEvent(opt.showbefore, this);
+                opt.showbefore && $.CUI.addEvent(opt.showbefore, this);
                 $container.find('.tooltip-inner').html(opt.content);
                 var cWidth = $container.outerWidth();
                 var cHeight = $container.outerHeight();
@@ -51,7 +53,7 @@
                 var y = 0;
                 var css = {};
                 $container.show();
-                setTimeout(function() {
+                setTimeout(function () {
                     $container.addClass('in');
                 }, 10);
                 switch (opt.placement) {
@@ -99,17 +101,17 @@
                         break;
                 }
                 if (opt.showafter) {
-                    opt.showafter &&  $.CUI.addEvent(opt.showafter, this);
+                    opt.showafter && $.CUI.addEvent(opt.showafter, this);
                 }
             },
-            hide: function() {
+            hide: function () {
                 var opt = this.opt;
                 var that = this;
                 var $container = this.$container;
                 var exports = this.exports;
-                opt.hidebefore&&  $.CUI.addEvent(opt.hidebefore, this);
+                opt.hidebefore && $.CUI.addEvent(opt.hidebefore, this);
                 $container.removeClass('in');
-                opt._timer = setTimeout(function() {
+                opt._timer = setTimeout(function () {
                     $container.hide();
                     opt.hideafter && $.CUI.addEvent(opt.hideafter, that);
                     if (opt.once) {
@@ -119,31 +121,31 @@
             }
         },
         setOptionsBefore: null,
-        setOptionsAfter: function(context) {
+        setOptionsAfter: function (context) {
             var opt = context.opt;
             var $container = context.$container;
             $container.find('.tooltip-inner').html(opt.content);
         },
         initBefore: null,
-        initAfter: function(context) {
+        initAfter: function (context) {
             var opt = context.opt;
             var $this = context.$element;
             var exports = context.exports;
             switch (opt.trigger) {
-                case 'click' :
-                    $this.on('click.' + exports.name, function() {
+                case 'click':
+                    $this.on('click.' + exports.name, function () {
                         exports.show();
                         $(document).one('click', exports.hide);
                         return false;
                     });
                     break;
-                case 'focus' :
+                case 'focus':
                     $this.on('focusin.' + exports.name, exports.show);
                     $this.on('focusout.' + exports.name, exports.hide);
                     break;
             }
         },
-        destroyBefore: function(context) {
+        destroyBefore: function (context) {
             var exports = context.exports;
             var $this = $(this);
             $this.off('click.' + exports.name);
@@ -153,12 +155,13 @@
         },
     };
     $.CUI.plugin(tipConfig);
-    $(document).on('dom.load.tip', function() {
-        $('[data-tip]').each(function() {
-            var options = $(this).data();
-            $(this).removeAttr('data-tip');
-            $(this).tip(options);
-            $(this).attr('role', 'Tip');
+    $(document).on('dom.load.tip', function () {
+        $('[data-tip]').each(function () {
+            var $this = $(this);
+            var options = $this.data();
+            $this.removeAttr('data-tip');
+            $this.tip(options);
+            $this.attr('role', 'Tip');
         });
     });
 })(jQuery);

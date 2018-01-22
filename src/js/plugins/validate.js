@@ -167,11 +167,12 @@
     };
     $.CUI.plugin(validateConfig);
     $(document).on('dom.load.validate', function () {
-        $('[data-validate]').each(function (index, item) {
-            var $item = $(item);
-            $item.removeAttr('data-validate');
-            $item.validate($item.data());
-            $item.attr('data-validate-load', '');
+        $('[data-validate]').each(function () {
+            var $this = $(this);
+            var option = $this.data();
+            $this.removeAttr('data-validate');
+            $this.validate(option);
+            $this.attr('data-validate-load', '');
         });
     });
 })(jQuery);

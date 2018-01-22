@@ -1,5 +1,5 @@
-(function($) {
-    $.fn.stick = function(option) {
+(function ($) {
+    $.fn.stick = function (option) {
         var defaultOpt = {
             offset: 50
         };
@@ -12,7 +12,7 @@
         }
         var opt = $.extend(option, defaultOpt);
         var top = $this.offset().top;
-        var _stick = function() {
+        var _stick = function () {
             if ($(document).scrollTop() > (top - opt.offset)) {
                 $this.addClass('stick');
                 $this.css('top', opt.offset);
@@ -25,12 +25,12 @@
         _stick();
         $this.attr('role', 'Stick');
     };
-    $(document).on('dom.load', function() {
-        $('[data-stick]').each(function(index, item) {
-            $(item).removeAttr('data-stick');
-            $(item).stick({
-                offset: $(item).attr('data-offset') * 1 || 50
-            });
+    $(document).on('dom.load', function () {
+        $('[data-stick]').each(function () {
+            var $this = $(this);
+            var data = $this.data();
+            $this.removeAttr('data-stick');
+            $this.stick(data);
         });
     });
 })(jQuery);
