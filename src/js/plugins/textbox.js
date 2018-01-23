@@ -15,7 +15,7 @@
                     $this.removeClass('focus');
                 }
             };
-            if (!$input.size()) {
+            if (!$input.length) {
                 $input = $this.find('textarea');
             }
             $input.on('focusin', function () {

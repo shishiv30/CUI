@@ -3,7 +3,7 @@
         background-color: #666;
     }
     .header-menu-item {
-        > a {
+        >a {
             color: $color-f;
             &:hover {
                 color: $color-f;
@@ -13,9 +13,7 @@
     .header-form-logo, .header-form-btn {
         color: $color-f;
     }
-    .header-form {
-
-    }
+    .header-form {}
 }
 
 .header {
@@ -44,7 +42,6 @@
             font-size: $font-size-4;
         }
     }
-
 }
 
 .header-form-logo, .header-form-btn {
@@ -84,13 +81,12 @@
             color: $color-link-default-hover;
         }
     }
-    > ul {
+    >ul {
         min-width: 150px;
         background-color: $color-f;
     }
-
     &[data-headermenu] {
-        > a {
+        >a {
             padding-right: ($header-padding + 5px);
             &:before {
                 transition: transform .2s ease-in-out;
@@ -106,7 +102,7 @@
 }
 
 //mobile
-@media (max-width: $screen-sm-max) {
+@media (max-width: $screen-xs-max) {
     .header-form {
         padding: 0 $header-height;
         box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
@@ -151,9 +147,9 @@
         overflow: hidden;
         max-height: $header-height;
         border-bottom: #999 solid 1px;
-        > ul {
-            > li {
-                > a {
+        >ul {
+            >li {
+                >a {
                     border-bottom: 1px solid $color-e;
                 }
             }
@@ -161,7 +157,7 @@
         &.active {
             max-height: 999px;
             &[data-headermenu] {
-                > a:before {
+                >a:before {
                     transform: translateY(-50%) rotateZ(-90deg);
                 }
             }
@@ -170,14 +166,14 @@
 }
 
 //desktop
-@media (min-width: $screen-md-min) {
+@media (min-width: $screen-sm-min) {
     .header {
         box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
     }
     .header-form {
         padding-left: $header-height;
         float: left;
-        > .header-form-btn {
+        >.header-form-btn {
             display: none !important;
         }
         .input {
@@ -196,10 +192,10 @@
         &.right {
             float: right;
         }
-        > a {
+        >a {
             display: inline-block;
         }
-        > ul {
+        >ul {
             position: absolute;
             top: $header-height;
             transition: opacity .1s ease-in-out;
@@ -210,7 +206,7 @@
         }
         &:hover {
             overflow: visible;
-            > ul {
+            >ul {
                 opacity: 1;
                 &:before {
                     content: ' ';
@@ -227,7 +223,7 @@
                 border: 1px solid $color-e;
             }
             &[data-headermenu] {
-                > a:before {
+                >a:before {
                     transform: translateY(-50%) rotateZ(-90deg);
                 }
             }
@@ -245,7 +241,7 @@
             @extend .icon-close;
         }
     }
-    @media (max-width: $screen-sm-max) {
+    @media (max-width: $screen-xs-max) {
         .header-menu-list {
             right: 0;
         }
