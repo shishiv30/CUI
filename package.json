@@ -43,5 +43,8 @@
         "grunt-spritesmith": "^6.5.1",
         "i18n": "^0.8.3",
         "nodemon": "^1.12.1"
+    },
+    "devDependencies": {
+        "grunt-contrib-htmlmin": "^2.4.0"
     }
 }
