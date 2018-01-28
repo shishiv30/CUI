@@ -98,4 +98,8 @@
             }]
         })
     });
+    $('.circle-item').each(function(index,item){
+        var $item =$(item);
+        $item.text($item.css('backgroundColor').replace('rgb',''));
+    });
 </script>

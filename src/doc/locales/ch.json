@@ -46,7 +46,7 @@
     "Blog": "博客",
     "Design Document": "设计文档",
     "The color solution can be group by emotion.": "配色方案能够按照情景进行分组.",
-    "the main color is pink. Use these color to make user feeling earnest.": "主色调为紫色,它是一种能够使人专注的颜色",
+    "the main color is the basic emotion of website.": "主色调是WEB的情感表述基调,它是一种能够使人专注，提高辨识度的颜色",
     "Reference: link color, default button background, header background,footer background and some important case.": "用途: 链接的颜色, 默认按钮底色, 表头底色,页脚底色以及一些需要阐述观点亮明主题的地方.",
     "the warning color is orange. Use these color to make user feeling curious.": "警告色是橙色,使用这种颜色让用户感到好奇或兴奋.",
     "Reference: highlighted text, submit button, movoto listing, hover style, price reduce listing, and some special case which is outstanding.": "用途: 高亮文字, 提交按钮, 悬停状态以及一些特殊的超出常规的场景.",
@@ -85,5 +85,6 @@
     "level 4 title": "四级标题",
     "level 5 title": "五级标题",
     "level 6 title": "六级标题",
-    "label": "标签"
+    "label": "标签",
+    "the main color is warm. Use these color to make user feeling earnest.": "the main color is warm. Use these color to make user feeling earnest."
 }

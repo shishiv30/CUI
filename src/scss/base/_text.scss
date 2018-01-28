@@ -1,10 +1,4 @@
-.h0,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6 {
+.h0, .h1, .h2, .h3, .h4, .h5, .h6 {
     line-height: initial;
 }
 
@@ -12,8 +6,7 @@
     font-size: $font-size-0;
 }
 
-.h0,
-.f0 {
+.h0, .f0 {
     @extend %f0;
 }
 
@@ -21,8 +14,7 @@
     font-size: $font-size-1;
 }
 
-.h1,
-.f1 {
+.h1, .f1 {
     @extend %f1;
 }
 
@@ -30,8 +22,7 @@
     font-size: $font-size-2;
 }
 
-.h2,
-.f2 {
+.h2, .f2 {
     @extend %f2;
 }
 
@@ -39,8 +30,7 @@
     font-size: $font-size-3;
 }
 
-.h3,
-.f3 {
+.h3, .f3 {
     @extend %f3;
 }
 
@@ -48,8 +38,7 @@
     font-size: $font-size-4;
 }
 
-.h4,
-.f4 {
+.h4, .f4 {
     @extend %f4;
 }
 
@@ -57,8 +46,7 @@
     font-size: $font-size-5;
 }
 
-.h5,
-.f5 {
+.h5, .f5 {
     @extend %f5;
 }
 
@@ -66,13 +54,11 @@
     font-size: $font-size-6;
 }
 
-.h6,
-.f6 {
+.h6, .f6 {
     @extend %f6;
 }
 
-%f7
-.f7 {
+%f7 .f7 {
     font-size: $font-size-7;
 }
 
@@ -107,7 +93,7 @@
 }
 
 .text-shadow {
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.7);
 }
 
 .text-white {
