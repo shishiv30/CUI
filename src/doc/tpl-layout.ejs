@@ -7,24 +7,46 @@
         <div>the responsive layout will have a limitation of height, which always equal increste rate of width </div>
         <div class="gr-v">
             <div class="gr-v-1">
-
+              <div class="gr-h-1"></div>
+               <div class="gr-h-2"></div>
+         
             </div>
             <div class="gr-v-2">
-                
+               <div class="gr-h-2"></div>
+               <div class="gr-h-1"></div>
             </div>
-        </div>
+         </div>
     </div>
 </div>
 <style>
     .gr-v{
         display: flex;
-        padding-top:100%;    
     }
-
+    .gr-v > div{
+      height:100vw;
+    }
+    .gr-v div{
+      opacity:0.6
+      
+    }
     .gr-v-1{
-
+      flex:0.618;
+      background:red;
+      height:100%;
+       
     }
     .gr-v-2{
-
+      flex:0.382;
+      background:green;
+      height:100vw;
+    }
+    
+    .gr-h-1{
+       height:61.8%;
+       background:yellow; 
+    }
+    .gr-h-2{
+      height:38.2%;
+      background: deepskyblue;
     }
 </style>
