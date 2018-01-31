@@ -1,11 +1,11 @@
 /*frame layout*/
+
 html, body {
     height: 100%;
 }
 
 body {
     min-width: $screen-xs-min;
-    overflow-x: hidden;
     padding-top: 50px;
 }
 

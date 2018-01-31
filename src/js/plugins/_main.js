@@ -33,9 +33,7 @@ window.context = {};
             $(document).trigger('dom.scroll', [e, isScrollDown, originalScrollTop, causeByKeyboard]);
         };
         var _eventScrollListener = function () {
-            $(window).on('scroll', $.throttle(function (e) {
-                _scrollTrigger(e);
-            }, 100));
+            document.addEventListener('scroll', _scrollTrigger, true);
         };
 
         var _oringalWindowWidth = $(window).width();

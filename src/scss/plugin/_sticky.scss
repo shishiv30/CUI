@@ -1,0 +1,26 @@
+.sticky {
+    &.xs, &.sm, &.md, &.lg {
+        position: static;
+        top: 0;
+    }
+    @media(max-width:$screen-xs-max) {
+        &.xs {
+            position: sticky;
+        }
+    }
+    @media (max-width:$screen-sm-max) {
+        &.sm {
+            position: sticky;
+        }
+    }
+    @media (min-width:$screen-md-min) {
+        &.md {
+            position: sticky;
+        }
+    }
+    @media (min-width:$screen-lg-min) {
+        &.lg {
+            position: sticky;
+        }
+    }
+}

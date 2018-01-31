@@ -5,14 +5,14 @@
     height: 100px;
     overflow: hidden;
     box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.5);
-transition(height 0.3 s);
+    transition(height 0.3 s);
 }
 
 #btPrivatenote input {
     cursor: default;
 }
 
-.privateNoteWrapper > textarea {
+.privateNoteWrapper>textarea {
     border: none;
     background-color: transparent;
     overflow-x: hidden;
