@@ -64,6 +64,17 @@
     .skeleton {
         padding: 10px;
     }
+
+    .sticky-container{
+        height:1000px;
+        background:#eee;
+    }
+
+    .sticky-box{
+        height:100px;
+        background: #666;
+    }
+
 </style>
 </head>
 <div data-header class="header">
@@ -1348,6 +1359,22 @@
         <div><img data-img="dist/src/img/download-2.jpg" style="height:200px;width:300px;"></div>
         <div><img data-img="dist/src/img/download-3.jpg" style="height:200px;width:300px;"></div>
         <div><img data-img="dist/src/img/404.jpg" style="height:200px;width:300px;"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#stickyPanel">
+        粘性贴
+        <span class="subtitle"> new sticky style</span>
+    </a>
+    <div id="stickyPanel">
+        <div class="sticky-container">
+            <div data-sticky class="sticky-box"></div>
+        </div>
     </div>
 </div>
 
