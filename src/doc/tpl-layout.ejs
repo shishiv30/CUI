@@ -1,52 +1,62 @@
 <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#layoutPanel">
         <%= __('layout') %>
-        <span class="subtitle"> <%= __('new layout style') %></span>
+            <span class="subtitle"> <%= __('new layout style') %></span>
     </a>
     <div id="layoutPanel">
         <div>the responsive layout will have a limitation of height, which always equal increste rate of width </div>
-        <div class="gr-v">
-            <div class="gr-v-1">
-              <div class="gr-h-1"></div>
-               <div class="gr-h-2"></div>
-         
+        <div class="gr-panel">
+            <div class="gr">
+                <div class="gr-item" >
+                    <div class="gr-item">
+                        <div class="gr-item"></div>
+                        <div class="gr-item"></div>
+                    </div>
+                    <div class="gr-item">
+                        <div class="gr-item"></div>
+                        <div class="gr-item"></div>
+                    </div>
+                </div>
+                <div class="gr-item">
+                    <div class="gr-item">
+                        <div class="gr-item"></div>
+                        <div class="gr-item"></div>
+                    </div>
+                    <div class="gr-item">
+                        <div class="gr-item"></div>
+                        <div class="gr-item"></div>
+                    </div>
+                </div>
             </div>
-            <div class="gr-v-2">
-               <div class="gr-h-2"></div>
-               <div class="gr-h-1"></div>
-            </div>
-         </div>
+        </div>
     </div>
 </div>
 <style>
-    .gr-v{
-        display: flex;
-    }
-    .gr-v > div{
-      height:100vw;
-    }
-    .gr-v div{
-      opacity:0.6
-      
-    }
-    .gr-v-1{
-      flex:0.618;
-      background:red;
-      height:100%;
-       
-    }
-    .gr-v-2{
-      flex:0.382;
-      background:green;
-      height:100vw;
-    }
     
-    .gr-h-1{
-       height:61.8%;
-       background:yellow; 
+    .gr div {
+        opacity: 0.6
     }
-    .gr-h-2{
-      height:38.2%;
-      background: deepskyblue;
+    .gr>div:first-child {
+        background: red;
+    }
+
+    .gr>div:last-child {
+        background: green;
+    }
+
+    .gr>div>div:first-child {
+        background: yellow;
+    }
+
+    .gr>div>div:last-child {
+        background: deepskyblue;
+    }
+
+    .gr>div>div>div:first-child {
+        background: #eee;
+    }
+
+    .gr>div>div>div:last-child {
+        background: #aaa;
     }
 </style>
