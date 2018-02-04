@@ -1,0 +1,65 @@
+.circle-item {
+    font-size: 11px;
+}
+
+@media (max-width: 767px) {
+    .highlight-mobile {
+        color: #78004E;
+        font-weight: 700;
+    }
+}
+
+@media (min-width: 768px) {
+    .highlight-desktop {
+        color: #78004E;
+        font-weight: 700;
+    }
+}
+
+.girdSystem [class^=col-] {
+    background: #eee;
+    border: 2px solid white;
+    padding: 10px 0;
+    text-align: center
+}
+
+.flexSystem .flex>div, .flexSystem .flex-gs>[class^=flex-] {
+    background: #eee;
+    border: 2px solid white;
+    padding: 10px;
+    text-align: center
+}
+
+.table.responsive th {
+    color: #a4a4a4
+}
+
+.table.responsive td {
+    border: solid 1px #d7d7d7
+}
+
+.table.responsive .is-hidden {
+    color: #666
+}
+
+.table.responsive .is-visible {
+    background-color: #dff0d8
+}
+
+.table.responsive .container td {
+    background-color: #fff4d0
+}
+
+.skeleton {
+    padding: 10px;
+}
+
+.sticky-container {
+    min-height: 1000px;
+    background: #eee;
+}
+
+.sticky-box {
+    height: 100px;
+    background: #666;
+}

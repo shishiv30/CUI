@@ -13,10 +13,12 @@
 //         },
 //         exports: {
 //             show: function() {
-//
+//                  var $this = this.$element;
+//                  var opt = this.opt;
 //             },
 //             hide: function() {
-//
+//                  var $this = this.$element;
+//                  var opt = this.opt;
 //             }
 //         },
 //         setOptionsBefore: null,

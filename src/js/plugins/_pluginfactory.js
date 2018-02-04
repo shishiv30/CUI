@@ -1,13 +1,13 @@
-(function($) {
+(function ($) {
     $.CUI = {
-        plugin: function(pluginContext) {
+        plugin: function (pluginContext) {
             var name = pluginContext.name;
             if ($.fn[name]) {
                 window.console.log('the plugin is exists: ' + name);
                 return null;
             }
 
-            $.fn[name] = function(options) {
+            $.fn[name] = function (options) {
                 var $this = $(this);
                 var cache = $this.data(name);
                 if (cache && typeof (cache) !== 'string') {
@@ -42,7 +42,7 @@
                 return obj;
             };
         },
-        create: function(context) {
+        create: function (context) {
             var that = this;
             //initial export options of plugin
             context.opt = $.extend(true, {}, context.defaultOpt, context.options);
@@ -51,9 +51,9 @@
 
             return context.exports;
         },
-        handleOptions: function(context) {
+        handleOptions: function (context) {
             var that = this;
-            return function(options) {
+            return function (options) {
                 //before set options
                 context.setOptionsBefore && $.proxy(context.setOptionsBefore, that)(context, options);
 
@@ -63,7 +63,7 @@
                 context.setOptionsAfter && $.proxy(context.setOptionsAfter, that)(context, options);
             };
         },
-        handleInit: function(context) {
+        handleInit: function (context) {
             var that = this;
             var opt = context.opt;
             context.exports = context.exports || {};
@@ -83,7 +83,7 @@
                 //add exports for the plugin
                 $.proxy($.CUI.handleExports, that)(context);
                 //initial get options of plugin
-                context.exports.getOptions = function() {
+                context.exports.getOptions = function () {
                     return opt;
                 };
 
@@ -100,9 +100,9 @@
             //after plugin initial event
             $.CUI.addEvent('cui.init.after.' + context.name, context);
         },
-        handleDestroy: function(context) {
+        handleDestroy: function (context) {
             var that = this;
-            return function() {
+            return function () {
                 //before plugin destroy event
                 $.CUI.addEvent('cui.before.destroy.' + context.name, context);
                 //before plugin destroy custom event
@@ -110,10 +110,10 @@
                 context.$element.data(context.name, null);
             };
         },
-        handleExports: function(context) {
+        handleExports: function (context) {
             if (context.exports) {
                 var obj = {};
-                $.each(context.exports, function(key, value) {
+                $.each(context.exports, function (key, value) {
                     if ($.isFunction(value)) {
                         //export method for the plugin
                         obj[key] = $.proxy(value, context);
@@ -123,7 +123,7 @@
                 context.exports = obj;
             }
         },
-        addEvent: function(name, context) {
+        addEvent: function (name, context) {
             var params = [context.$element, context.exports];
             var array = Array.prototype.slice.call(arguments);
             params.concat(array.slice(2, array.length));
@@ -133,7 +133,7 @@
                 $(document).trigger(name, params);
             }
         },
-        loadJs: function() {
+        loadJs: function () {
 
         }
     };

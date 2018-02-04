@@ -51,8 +51,8 @@
             template: '<img >',
             breakpoint: [414, 640, 992, 1200],
             colCount: -1,
-            reloadbefore:null,
-            reloadafter:null,
+            reloadbefore: null,
+            reloadafter: null,
         },
         init: function (context) {
             var opt = context.opt;
@@ -205,17 +205,18 @@
             };
             context._reload = _reload;
             _reload(true);
-            $container.on('scroll', $.throttle(function () {
+            $container.length && $container[0].addEventListener('scroll', function () {
                 var currentPositionInfo = _getpositionInfo();
                 var isDown = positionInfo.scrollTop < currentPositionInfo.scrollTop;
                 positionInfo = currentPositionInfo;
                 _moveByScroll(isDown);
                 _loadImage();
-            }));
-            $(document).on('dom.resize', function () {
+            }, true);
+
+            document.addEventListener('resize', function () {
                 positionInfo = _getpositionInfo();
                 _reload();
-            });
+            }, true);
         },
         exports: {
 

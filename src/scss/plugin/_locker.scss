@@ -1,0 +1,19 @@
+.locked {
+    pointer-events: none;
+    position: relative;
+    &:after {
+        content: 'locked';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 999999;
+        background-color: $color-0;
+        color: $color-f;
+        line-height: 100vh;
+        text-align: center;
+        opacity: .9;
+        font-size: 100px;
+    }
+}
