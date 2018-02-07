@@ -8,7 +8,9 @@ var url = locals.url || '';
     <title><%= __('CUI framewrok') %></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
-    <link href="dist/src/cui.css" type="text/css" rel="stylesheet" />
+    <link href="<%=url + 'dist/src/cui.css'%>" type="text/css" rel="stylesheet" />
+    <link rel="shortcut icon" href="<%=url + 'dist/src/img/favicon.ico'%>" type="image/x-icon">
+    <link rel="icon" href="<%=url + 'dist/src/img/favicon.ico'%>" type="image/x-icon">
 </head>
 <%- include('tpl-header') %>
 <body id="body" class="classic">
@@ -21,16 +23,16 @@ var url = locals.url || '';
 <script src="<%= url + 'dist/src/cui.lib.js' %>" type="text/javascript"></script>
 <script src="<%= url + 'dist/src/cui.js' %>" type="text/javascript"></script>
 <script>    
-var x =$('body').locker({
-    onbeforelock:function(){
-        $.preload({
-            files:['dist/src/doc/src/doc.css','dist/src/doc/src/doc.js'],
-            callback:function(){
-                x.unlock();
-            }
-        });
-    }
-});
+// var x =$('body').locker({
+//     onbeforelock:function(){
+//         $.preload({
+//             files:['dist/src/doc/src/doc.css','dist/src/doc/src/doc.js'],
+//             callback:function(){
+//                 x.unlock();
+//             }
+//         });
+//     }
+// });
 
 </script>
 </html>

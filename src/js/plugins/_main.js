@@ -33,7 +33,9 @@ window.context = {};
             $(document).trigger('dom.scroll', [e, isScrollDown, originalScrollTop, causeByKeyboard]);
         };
         var _eventScrollListener = function () {
-            document.addEventListener('scroll', _scrollTrigger, true);
+            document.addEventListener('scroll', $.throttle(function (e) {
+                _scrollTrigger(e);
+            }, 100), true);
         };
 
         var _oringalWindowWidth = $(window).width();
@@ -43,9 +45,9 @@ window.context = {};
             $(document).trigger('dom.resize', [e, causeByKeyboard, isWidthChange]);
         };
         var _eventResizeListener = function () {
-            $(window).on('resize', $.throttle(function (e) {
+            document.addEventListener('resize', $.throttle(function (e) {
                 _resizeTrigger(e);
-            }, 200));
+            }, 100));
         };
         //dom load
         _isMobile();

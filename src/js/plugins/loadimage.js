@@ -26,27 +26,33 @@
         name: 'loadimage',
         defaultOpt: {
             buffer: 0,
-            container: null,
+            delay: 100,
         },
         init: function (context) {
             var opt = context.opt;
             var $this = context.$element;
-            var $container = context.$container = opt.container ? $(opt.container) : $(window);
+            var $window = $(window);
             context._load = function () {
-                var height = $container.outerHeight();
-                var top = $container.scrollTop() - height * opt.buffer;
+                var height = $window.outerHeight();
+                var top = $window.scrollTop() - height * opt.buffer;
                 var bottom = top + height * (1 + opt.buffer);
+                var width = $window.outerWidth();
+                var left = $window.scrollLeft() - width * opt.buffer;
+                var right = left + width * (1 + opt.buffer);
                 $this.find('[data-img]').each(function (index, item) {
                     var $img = $(item);
-                    var base = $img.offset().top;
-                    if (base < bottom && (base + $img.height()) > top) {
+                    var offset = $img.offset();
+                    var baseY = offset.top;
+                    var baseX = offset.left;
+                    if (baseY < bottom &&
+                        (baseY + $img.height()) > top &&
+                        baseX < right &&
+                        (baseX + $img.width()) > left) {
                         $img.loadImg('img');
                     }
                 });
             };
-            $container.on('scroll', $.debounce(context._load, 100));
-            $container.on('dom.scroll', context._load);
-            $(document).on('dom.load', context._load);
+            $this && $this[0].addEventListener('scroll', $.throttle(context._load, opt.delay));
         },
         exports: {
             load: function () {
@@ -70,4 +76,5 @@
             $this.attr('role', 'loadimage');
         });
     });
+    $.loadImage = $(document).loadimage().load;
 })(jQuery);

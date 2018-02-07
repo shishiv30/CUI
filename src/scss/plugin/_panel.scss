@@ -1,9 +1,6 @@
 .panel {
     position: relative;
-    .h1, .h2, .h3, .h4,.h5{
-        font-family: $font-thin;
-    }
-    > .h1, > .h2, > .h3, > .h4, > .h5 {
+    >.h1, >.h2, >.h3, >.h4, >.h5 {
         position: relative;
         display: block;
         .subtitle {
@@ -15,8 +12,7 @@
         padding-bottom: $space-l;
         @extend %singleline;
     }
-
-    > [data-collapse], > [data-collapse-load] {
+    >[data-collapse], >[data-collapse-load] {
         padding-right: $line-l;
         border-bottom: solid 1px $color-d;
         &:before {
@@ -31,14 +27,14 @@
             line-height: $line-l;
             margin-top: $line-l/-2;
         }
-        + div {
+        +div {
             border-bottom: solid 1px transparent;
             padding-bottom: $space-l;
             display: none;
         }
         &.shown {
             border-bottom-color: transparent;
-            + div {
+            +div {
                 border-bottom-color: $color-d;
                 display: block;
             }

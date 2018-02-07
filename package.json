@@ -4,7 +4,7 @@
     "description": "A responsive ui framework",
     "main": "index.js",
     "scripts": {
-        "dev": "concurrently \"grunt dev\" \"nodemon app.js\"",
+        "dev": "concurrently 'grunt dev' 'nodemon app.js'",
         "build": "grunt && node html.js",
         "deploy": "npm run build && node publish.js"
     },
