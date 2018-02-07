@@ -47,7 +47,8 @@
                     if (baseY < bottom &&
                         (baseY + $img.height()) > top &&
                         baseX < right &&
-                        (baseX + $img.width()) > left) {
+                        (baseX + $img.width()) > left &&
+                        !$img.is(':hidden')) {
                         $img.loadImg('img');
                     }
                 });
@@ -77,4 +78,8 @@
         });
     });
     $.loadImage = $(document).loadimage().load;
+    $(document).on('dom.load', function () {
+        $.loadImage();
+    });
+
 })(jQuery);

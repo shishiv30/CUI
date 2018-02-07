@@ -14,6 +14,7 @@
                     var $target = $($item.attr('data-target')).hide();
                     if ($item.hasClass('active')) {
                         $target.show();
+                        $(document).trigger('dom.load');
                     } else {
                         $target.hide();
                     }

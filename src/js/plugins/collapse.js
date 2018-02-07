@@ -77,15 +77,16 @@
         exports: {
             show: function () {
                 var opt = this.opt;
-                opt.showbefore&&$.CUI.addEvent(opt.showbefore, this);
+                opt.showbefore && $.CUI.addEvent(opt.showbefore, this);
                 this._show();
-                opt.showafter&&    $.CUI.addEvent(opt.showafter, this);
+                opt.showafter && $.CUI.addEvent(opt.showafter, this);
+                $(document).trigger('dom.load');
             },
             hide: function () {
                 var opt = this.opt;
-                opt.hidebefore&&  $.CUI.addEvent(opt.hidebefore, this);
+                opt.hidebefore && $.CUI.addEvent(opt.hidebefore, this);
                 this._hide();
-                opt.hideafter&&$.CUI.addEvent(opt.hideafter, this);
+                opt.hideafter && $.CUI.addEvent(opt.hideafter, this);
             },
             toggle: function () {
                 if (this.$element.hasClass('shown')) {
