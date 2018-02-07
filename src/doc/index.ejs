@@ -23,16 +23,16 @@ var url = locals.url || '';
 <script src="<%= url + 'dist/src/cui.lib.js' %>" type="text/javascript"></script>
 <script src="<%= url + 'dist/src/cui.js' %>" type="text/javascript"></script>
 <script>    
-// var x =$('body').locker({
-//     onbeforelock:function(){
-//         $.preload({
-//             files:['dist/src/doc/src/doc.css','dist/src/doc/src/doc.js'],
-//             callback:function(){
-//                 x.unlock();
-//             }
-//         });
-//     }
-// });
+var x =$('body').locker({
+    onbeforelock:function(){
+        $.preload({
+            files:['dist/src/doc/src/doc.css','dist/src/doc/src/doc.js'],
+            callback:function(){
+                x.unlock();
+            }
+        });
+    }
+});
 
 </script>
 </html>
