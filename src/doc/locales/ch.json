@@ -49,7 +49,7 @@
 	"the main color is the basic emotion of website.": "主色调是WEB的情感表述基调,它是一种能够使人专注，提高辨识度的颜色",
 	"Reference: link color, default button background, header background,footer background and some important case.": "用途: 链接的颜色, 默认按钮底色, 表头底色,页脚底色以及一些需要阐述观点亮明主题的地方.",
 	"the warning color is orange. Use these color to make user feeling curious.": "警告色是橙色,使用这种颜色让用户感到好奇或兴奋.",
-	"Reference: highlighted text, submit button, movoto listing, hover style, price reduce listing, and some special case which is outstanding.": "用途: 高亮文字, 提交按钮, 悬停状态以及一些特殊的超出常规的场景.",
+	"Reference: highlighted text, submit button hover style, price reduce listing, and some special case which is outstanding.": "用途: 高亮文字, 提交按钮, 悬停状态以及一些特殊的超出常规的场景.",
 	"the safe color is green.Use these color to make user feeling fulfillment.": "安全色是绿色,使用这种颜色让用户感到快乐充满成就感.",
 	"Reference: success info, high rank, new listing and something good to know.": "用途: 操作成功提示,值得信任的消息,利好消息,值得奖励的场景.",
 	"the danger color is red.Use these color to make user feeling serious.": "危险色是红色.使用这种颜色让用户感到警惕严肃.",
@@ -89,5 +89,9 @@
 	"the main color is warm. Use these color to make user feeling earnest.": "the main color is warm. Use these color to make user feeling earnest.",
 	"sticky": "粘性贴",
 	"made the panel stick on the page": "让面板可以固定在页面",
-	"new sticky style": "new sticky style"
+	"new sticky style": "new sticky style",
+	"map": "地图",
+	"new map style": "谷歌地图插件地图",
+	"Dynamic Map": "动态地图",
+	"Static Map": "静态地图"
 }

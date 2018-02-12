@@ -18,10 +18,7 @@ function ejs2html(ejsName) {
     ejs.renderFile(ejsPath, {}, function (err, result) {
         if (!err) {
             var htmlName = ejsName.replace('.ejs', '.html');
-            fs.writeFile(htmlPath + htmlName, result, function (err) {
-                /*eslint no-console: ["error", { allow: ["log"] }] */
-                console.log(err);
-            });
+            fs.writeFile(htmlPath + htmlName, result, function () {});
         } else {
             /*eslint no-console: ["error", { allow: ["log"] }] */
             console.log(err);

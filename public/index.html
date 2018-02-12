@@ -873,6 +873,23 @@
     <div class="row">
     <div class="col-xs-12">
         <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#mapPanel">
+        地图
+            <span class="subtitle"> 谷歌地图插件地图</span>
+    </a>
+    <div id="mapPanel">
+        <h3>动态地图</h3>
+        <div data-gmap data-lat="-34.397" data-lng="150.644" style="height:400px;"> </div>
+        <h3>静态地图</h3>
+        <div data-gsmap data-type="streetview" data-address="san mateo, ca" style="height:400px;"> </div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
     <a href="javascript:;" class="h2" data-collapse data-target="#dialogPanel">
         对话框
         <span class="subtitle"> 对话框插件</span>
@@ -1341,12 +1358,15 @@
 
     </div>
 </div>
-
 </div>
 </body>
 <script src="dist/src/cui.lib.js" type="text/javascript"></script>
 <script src="dist/src/cui.js" type="text/javascript"></script>
-<script>    
+<script>
+window.context = {
+    url:'',
+    googleMapKey:'key=AIzaSyAYhIz6xpe-HBVYdWvkCY0EnWfQgoeHHwI'
+};
 var x =$('body').locker({
     onbeforelock:function(){
         $.preload({

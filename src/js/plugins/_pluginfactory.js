@@ -1,9 +1,15 @@
 (function ($) {
     $.CUI = {
+        dependenceHandler: function (key, callback) {
+            if (key == 'googlemap') {
+                $.loadGMap(callback);
+            }
+        },
         plugin: function (pluginContext) {
             var name = pluginContext.name;
             if ($.fn[name]) {
-                window.console.log('the plugin is exists: ' + name);
+                /*eslint no-console: ["error", { allow: ["log"] }] */
+                console.log('the plugin is exists: ' + name);
                 return null;
             }
 
@@ -34,12 +40,16 @@
 
                 context.options = options;
                 context.$element = $this;
-
-                var obj = $.proxy($.CUI.create, this)(context);
-
-                $this.data(name, obj);
-
-                return obj;
+                var excutePlugin = function () {
+                    var obj = $.proxy($.CUI.create, this)(context);
+                    $this.data(name, obj);
+                    return obj;
+                };
+                if (pluginContext.dependence) {
+                    return $.CUI.dependenceHandler(pluginContext.dependence, excutePlugin);
+                } else {
+                    return excutePlugin();
+                }
             };
         },
         create: function (context) {
@@ -68,11 +78,11 @@
             var opt = context.opt;
             context.exports = context.exports || {};
             //before plugin initial event
-            $.CUI.addEvent('cui.init.before.' + context.name, context);
-            opt.initbefore && $.CUI.addEvent(opt.initbefore, context);
+            $.CUI.trigger('cui.init.before.' + context.name, context);
+            opt.initbefore && $.CUI.trigger(opt.initbefore, context);
 
             //before plugin initial custom event
-            context.initBefore && $.CUI.addEvent(context.initBefore, context);
+            context.initBefore && $.CUI.trigger(context.initBefore, context);
 
             context.init && $.proxy(context.init, that)(context);
 
@@ -95,16 +105,16 @@
             }
             //after plugin initial custom event
             context.initAfter && $.proxy(context.initAfter, that)(context);
-            opt.initafter && $.CUI.addEvent(opt.initafter, context);
+            opt.initafter && $.CUI.trigger(opt.initafter, context);
 
             //after plugin initial event
-            $.CUI.addEvent('cui.init.after.' + context.name, context);
+            $.CUI.trigger('cui.init.after.' + context.name, context);
         },
         handleDestroy: function (context) {
             var that = this;
             return function () {
                 //before plugin destroy event
-                $.CUI.addEvent('cui.before.destroy.' + context.name, context);
+                $.CUI.trigger('cui.before.destroy.' + context.name, context);
                 //before plugin destroy custom event
                 $.proxy(context.destroyBefore, that)(context);
                 context.$element.data(context.name, null);
@@ -123,7 +133,7 @@
                 context.exports = obj;
             }
         },
-        addEvent: function (name, context) {
+        trigger: function (name, context) {
             var params = [context.$element, context.exports];
             var array = Array.prototype.slice.call(arguments);
             params.concat(array.slice(2, array.length));

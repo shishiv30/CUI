@@ -1,6 +1,6 @@
 //todo: somuch jquery dependency need to remove such as each
 (function ($) {
-    //1:loading //2load 
+    //1:loading //2load
     var resource = {
         js: {
             load: function (src) {
@@ -35,32 +35,34 @@
         }
         return filename.substring(filename.lastIndexOf('.') + 1, filename.length);
     };
-    var _loadResource = function (key, success) {
-        var type = _getFiletype(key);
+    var _loadResource = function (url, filetype, success) {
+        var type = filetype || _getFiletype(url);
         var loader = resource[type];
         if (loader && loader.cache) {
-            if (loader.cache[key]) {
+            if (loader.cache[url]) {
                 if (typeof success === 'function') {
-                    if (loader.cache[key] === 1) {
-                        $(document).one(key, success);
-                    } else if (loader.cache[key] === 2) {
+                    if (loader.cache[url] === 1) {
+                        $(document).one(url, success);
+                    } else if (loader.cache[url] === 2) {
                         success();
                     }
                 }
             } else {
-                $(document).one(key, success);
-                loader.cache[key] = 1;
-                loader.load(key).then(
+                $(document).one(url, success);
+                loader.cache[url] = 1;
+                loader.load(url).then(
                     function () {
-                        $(document).trigger(key, []);
+                        $(document).trigger(url, []);
                     },
                     function () {
-                        window.console.log('load error: ' + key);
+                        /*eslint no-console: ["error", { allow: ["log"] }] */
+                        console.log('load error: ' + url);
                     }
                 );
             }
         } else {
-            window.console.log('do not support load' + type);
+            /*eslint no-console: ["error", { allow: ["log"] }] */
+            console.log('do not support load' + type);
         }
     };
     $.preload = function (options) {
@@ -71,7 +73,7 @@
         var opt = $.extend(defaultOpt, options);
         if (opt.files && opt.files.length) {
             opt.files.forEach(function (item) {
-                _loadResource(item, opt.callback);
+                _loadResource(item, opt.type, opt.callback);
             });
         }
     };

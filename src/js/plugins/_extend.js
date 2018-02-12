@@ -1,6 +1,9 @@
 (function ($) {
     var tmpdiv = null;
     $.extend({
+        renderHtml: function (template, data) {
+            return Mustache.render(template, data);
+        },
         scrollTo: function ($target, $scroll, offsettop, time) {
             if (offsettop && offsettop.indexOf('#') >= 0) {
                 offsettop = $(offsettop).height() + $('#header').height();
@@ -39,8 +42,12 @@
             tmpdiv.text(text);
             return tmpdiv.width();
         },
+        _isMobile: null,
         isMobile: function () {
-            return !!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            if (this._isMobile !== null) {
+                return this._isMobile;
+            }
+            return this._isMobile = !!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         },
         throttle: function (func, waitTime, options) {
             var context, args, result, wait = waitTime || 200;

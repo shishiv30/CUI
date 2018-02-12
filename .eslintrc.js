@@ -14,7 +14,9 @@ module.exports = {
     },
     "extends": "eslint:recommended",
     "rules": {
-        "indent": ["error", 4, {"VariableDeclarator": 1, "SwitchCase": 1}],
+        "indent": ["error", 4, {
+            "VariableDeclarator": 1
+        }],
         "quotes": [
             "error",
             "single"

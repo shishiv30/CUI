@@ -1,4 +1,3 @@
-window.context = {};
 //initial event
 (function ($) {
     $(document).ready(function ($) {

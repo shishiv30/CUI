@@ -4,7 +4,10 @@
     $.fn.loadImg = function (key) {
         var $img = $(this);
         var imgsrc = $img.data(key);
-        if ($img.is('img') && imgsrc) {
+        if (!imgsrc) {
+            return;
+        }
+        if ($img.is('img')) {
             $img.one('load', function () {
                 $img.off('error');
                 $img.addClass('data-img-load-success');
@@ -16,10 +19,16 @@
                 $img.addClass('data-img-load-error');
                 $(document).trigger('img.load.error', [$img]);
             });
-            imgsrc && $img.attr('src', imgsrc);
+            $img.attr('src', imgsrc);
             $img.data(key, null);
             $img.removeAttr('data-' + key);
             $img.attr('data-img-load', '');
+        } else {
+            $img.css({
+                backgroundImage: 'url(' + imgsrc + ')'
+            });
+            $img.addClass('data-img-load-success');
+            $(document).trigger('img.load.success', [$img]);
         }
     };
     var loadimageConfig = {

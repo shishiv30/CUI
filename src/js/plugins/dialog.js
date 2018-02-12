@@ -54,7 +54,7 @@
                 setTimeout(function() {
                     $dialog.addClass('dialog-active');
                     _reposition();
-                    opt.showafter&&  $.CUI.addEvent(opt.showafter, context);
+                    opt.showafter&&  $.CUI.trigger(opt.showafter, context);
                 }, 50);
             };
             var _hide = context._hide = function() {

@@ -77,14 +77,14 @@
 
             if (opt.changebefore) {
                 context.range.on('update', function(e, t) {
-                    opt.changebefore&&    $.CUI.addEvent(opt.changebefore, this, e, t);
+                    opt.changebefore&&    $.CUI.trigger(opt.changebefore, this, e, t);
                 });
             }
             context.range.on('change', function(e, t) {
                 $input.each(function(index) {
                     $(this).val(e[index]).trigger('input');
                 });
-                opt.changeafter &&  $.CUI.addEvent(opt.changeafter, this, e, t);
+                opt.changeafter &&  $.CUI.trigger(opt.changeafter, this, e, t);
             });
         },
         exports: {

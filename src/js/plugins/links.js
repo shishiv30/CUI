@@ -30,7 +30,7 @@
 //         var $this = $(this);
 //         var namespace = {
 //             go: function() {
-//                 window.open('http://twitter.com/share?text=Check out this house I found on @MovotoRealEstate&url=' + encodeURIComponent(location.href));
+//                 window.open('http://twitter.com/share?text=Check out this house I found on @Conjee&url=' + encodeURIComponent(location.href));
 //             }
 //         };
 //         $this.click(namespace.go);

@@ -41,7 +41,7 @@
                         left: position + '%'
                     });
                     if (opt.onclick) {
-                        opt.onclick && $.CUI.addEvent(opt.onclick, context, $item);
+                        opt.onclick && $.CUI.trigger(opt.onclick, context, $item);
                     }
                     $container.append($item);
                 });

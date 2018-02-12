@@ -14,14 +14,14 @@
             var opt = context.opt;
             var $this = context.$element;
             context._lock = function () {
-                opt.onbeforelock && $.CUI.addEvent(opt.onbeforelock, $this);
+                opt.onbeforelock && $.CUI.trigger(opt.onbeforelock, $this);
                 $this.addClass('locked');
-                opt.onafterlock && $.CUI.addEvent(opt.onafterlock, $this);
+                opt.onafterlock && $.CUI.trigger(opt.onafterlock, $this);
             };
             context._unlock = function () {
-                opt.onbeforeunlock && $.CUI.addEvent(opt.onbeforeunlock, $this);
+                opt.onbeforeunlock && $.CUI.trigger(opt.onbeforeunlock, $this);
                 $this.removeClass('locked');
-                opt.onafterunlock && $.CUI.addEvent(opt.onafterunlock, $this);
+                opt.onafterunlock && $.CUI.trigger(opt.onafterunlock, $this);
             };
         },
         exports: {

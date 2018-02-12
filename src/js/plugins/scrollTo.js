@@ -15,9 +15,9 @@
             var opt = context.opt;
             var $this = context.$element;
             $this.click(function () {
-                opt.scrollbefore&&  $.CUI.addEvent(opt.scrollbefore, this);
+                opt.scrollbefore&&  $.CUI.trigger(opt.scrollbefore, this);
                 $.scrollTo(opt.target, $(opt.container), opt.offsettop);
-                opt.scrollafter&&  $.CUI.addEvent(opt.scrollafter, this);
+                opt.scrollafter&&  $.CUI.trigger(opt.scrollafter, this);
             });
         },
         exports: null,

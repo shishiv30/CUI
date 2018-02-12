@@ -53,7 +53,7 @@
 	"the main color is the basic emotion of website.": "the main color is the basic emotion of website. Use these color to make user feeling earnest and it's the identify of website.",
 	"Reference: link color, default button background, header background,footer background and some important case.": "Reference: link color, default button background, header background,footer background and some important case.",
 	"the warning color is orange. Use these color to make user feeling curious.": "the warning color is orange. Use these color to make user feeling curious.",
-	"Reference: highlighted text, submit button, movoto listing, hover style, price reduce listing, and some special case which is outstanding.": "Reference: highlighted text, submit button, hover style, price reduce listing, and some special case which is outstanding.",
+	"Reference: highlighted text, submit button hover style, price reduce listing, and some special case which is outstanding.": "Reference: highlighted text, submit button, hover style, price reduce listing, and some special case which is outstanding.",
 	"the safe color is green.Use these color to make user feeling fulfillment.": "the safe color is green.Use these color to make user feeling fulfillment.",
 	"Reference: success info, high rank, new listing and something good to know.": "Reference: success info, high rank, new listing and something good to know.",
 	"the danger color is red.Use these color to make user feeling serious.": "the danger color is red.Use these color to make user feeling serious.",
@@ -93,5 +93,9 @@
 	"the main color is warm. Use these color to make user feeling earnest.": "the main color is warm. Use these color to make user feeling earnest.",
 	"sticky": "sticky",
 	"made the panel stick on the page": "made the panel stick on the page",
-	"new sticky style": "new sticky style"
+	"new sticky style": "new sticky style",
+	"map": "map",
+	"new map style": "google map plugin",
+	"Dynamic Map": "Dynamic Map",
+	"Static Map": "Static Map"
 }

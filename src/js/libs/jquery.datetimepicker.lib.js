@@ -21,8 +21,8 @@
         // when page switch the datetimepicker div will be removed also.
         this.container = options.container || 'body';
 
-        this.language = options.language || this.element.data('date-language') || "en";
-        this.language = this.language in dates ? this.language : "en";
+        this.language = options.language || this.element.data('date-language') || 'en';
+        this.language = this.language in dates ? this.language : 'en';
         this.isRTL = dates[this.language].rtl || false;
         this.formatType = options.formatType || this.element.data('format-type') || 'standard';
         this.format = DPGlobal.parseFormat(options.format || this.element.data('date-format') || dates[this.language].format || DPGlobal.getDefaultFormat(this.formatType, 'input'), this.formatType);
@@ -34,7 +34,7 @@
         this.bootcssVer = options.bootcssVer || (this.isInput ? (this.element.is('.form-control') ? 3 : 2) : (this.bootcssVer = this.element.is('.input-group') ? 3 : 2));
 
         this.component = this.element.is('.date') ? (this.bootcssVer == 3 ? this.element.find('.input-group-addon .glyphicon-th, .input-group-addon .glyphicon-time, .input-group-addon .glyphicon-calendar, .input-group-addon .glyphicon-calendar, .input-group-addon .fa-calendar, .input-group-addon .fa-clock-o').parent() : this.element.find('.add-on .icon-th, .add-on .icon-time, .add-on .icon-calendar .fa-calendar .fa-clock-o').parent()) : false;
-        this.componentReset = this.element.is('.date') ? (this.bootcssVer == 3 ? this.element.find(".input-group-addon .glyphicon-remove, .input-group-addon .fa-times").parent() : this.element.find(".add-on .icon-remove, .add-on .fa-times").parent()) : false;
+        this.componentReset = this.element.is('.date') ? (this.bootcssVer == 3 ? this.element.find('.input-group-addon .glyphicon-remove, .input-group-addon .fa-times').parent() : this.element.find('.add-on .icon-remove, .add-on .fa-times').parent()) : false;
         this.hasInput = this.component && this.element.find('input').length;
         if (this.component && this.component.length === 0) {
             this.component = false;
@@ -55,7 +55,7 @@
 
         this._attachEvents();
 
-        this.formatViewType = "datetime";
+        this.formatViewType = 'datetime';
         if ('formatViewType' in options) {
             this.formatViewType = options.formatViewType;
         } else if ('formatViewType' in this.element.data()) {
@@ -135,10 +135,10 @@
         }
         this.picker = $(template)
             .appendTo(this.isInline ? this.element : this.container) // 'body')
-        .on({
-            click: $.proxy(this.click, this),
-            mousedown: $.proxy(this.mousedown, this)
-        });
+            .on({
+                click: $.proxy(this.click, this),
+                mousedown: $.proxy(this.mousedown, this)
+            });
 
         if (this.wheelViewModeNavigation) {
             if ($.fn.mousewheel) {
@@ -146,7 +146,8 @@
                     mousewheel: $.proxy(this.mousewheel, this)
                 });
             } else {
-                console.log("Mouse Wheel event is not supported. Please include the jQuery Mouse Wheel plugin before enabling this option");
+                /*eslint no-console: ["error", { allow: ["log"] }] */
+                console.log('Mouse Wheel event is not supported. Please include the jQuery Mouse Wheel plugin before enabling this option');
             }
         }
 
@@ -436,7 +437,7 @@
             if (!this.zIndex) {
                 var index_highest = 0;
                 $('div').each(function() {
-                    var index_current = parseInt($(this).css("zIndex"), 10);
+                    var index_current = parseInt($(this).css('zIndex'), 10);
                     if (index_current > index_highest) {
                         index_highest = index_current;
                     }
@@ -475,7 +476,7 @@
             top = top - containerOffset.top;
             left = left - containerOffset.left;
 
-            if (this.container != 'body') top = top + document.body.scrollTop
+            if (this.container != 'body') top = top + document.body.scrollTop;
 
             this.picker.css({
                 top: top,
@@ -552,7 +553,7 @@
                 today = new Date();
             this.picker.find('.datetimepicker-days thead th:eq(1)')
                 .text(dates[this.language].months[month] + ' ' + year);
-            if (this.formatViewType == "time") {
+            if (this.formatViewType == 'time') {
                 var formatted = this.getFormattedDate();
                 this.picker.find('.datetimepicker-hours thead th:eq(1)').text(formatted);
                 this.picker.find('.datetimepicker-minutes thead th:eq(1)').text(formatted);
@@ -833,7 +834,7 @@
 
             setTimeout($.proxy(function() {
 
-                this.wheelPause = false
+                this.wheelPause = false;
 
             }, this), this.wheelViewModeNavigationDelay);
 
@@ -1086,14 +1087,14 @@
                 test = dir == -1
                 // If going back one month, make sure month is not current month
                 // (eg, Mar 31 -> Feb 31 == Feb 28, not Mar 02)
-                ? function() {
-                    return new_date.getUTCMonth() == month;
-                }
-                // If going forward one month, make sure month is as expected
-                // (eg, Jan 31 -> Feb 31 == Feb 28, not Mar 02)
-                : function() {
-                    return new_date.getUTCMonth() != new_month;
-                };
+                    ? function() {
+                        return new_date.getUTCMonth() == month;
+                    }
+                    // If going forward one month, make sure month is as expected
+                    // (eg, Jan 31 -> Feb 31 == Feb 28, not Mar 02)
+                    : function() {
+                        return new_date.getUTCMonth() != new_month;
+                    };
                 new_month = month + dir;
                 new_date.setUTCMonth(new_month);
                 // Dec -> Jan (12) or Jan -> Dec (-1) -- limit expected date to 0-11
@@ -1331,14 +1332,14 @@
     $.fn.datetimepicker.Constructor = Datetimepicker;
     var dates = $.fn.datetimepicker.dates = {
         en: {
-            days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-            daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
-            months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-            monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-            meridiem: ["am", "pm"],
-            suffix: ["st", "nd", "rd", "th"],
-            today: "Today"
+            days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+            daysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            daysMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+            months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            meridiem: ['am', 'pm'],
+            suffix: ['st', 'nd', 'rd', 'th'],
+            today: 'Today'
         }
     };
 
@@ -1365,33 +1366,33 @@
             navStep: 10
         }],
         isLeapYear: function(year) {
-            return (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0))
+            return (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0));
         },
         getDaysInMonth: function(year, month) {
-            return [31, (DPGlobal.isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month]
+            return [31, (DPGlobal.isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
         },
         getDefaultFormat: function(type, field) {
-            if (type == "standard") {
+            if (type == 'standard') {
                 if (field == 'input')
                     return 'yyyy-mm-dd hh:ii';
                 else
                     return 'yyyy-mm-dd hh:ii:ss';
-            } else if (type == "php") {
+            } else if (type == 'php') {
                 if (field == 'input')
                     return 'Y-m-d H:i';
                 else
                     return 'Y-m-d H:i:s';
             } else {
-                throw new Error("Invalid format type.");
+                throw new Error('Invalid format type.');
             }
         },
         validParts: function(type) {
-            if (type == "standard") {
+            if (type == 'standard') {
                 return /hh?|HH?|p|P|ii?|ss?|dd?|DD?|mm?|MM?|yy(?:yy)?/g;
-            } else if (type == "php") {
+            } else if (type == 'php') {
                 return /[dDjlNwzFmMnStyYaABgGhHis]/g;
             } else {
-                throw new Error("Invalid format type.");
+                throw new Error('Invalid format type.');
             }
         },
         nonpunctuation: /[^ -\/:-@\[-`{-~\t\n\rTZ]+/g,
@@ -1401,7 +1402,7 @@
             var separators = format.replace(this.validParts(type), '\0').split('\0'),
                 parts = format.match(this.validParts(type));
             if (!separators || !separators.length || !parts || parts.length == 0) {
-                throw new Error("Invalid date format.");
+                throw new Error('Invalid date format.');
             }
             return {
                 separators: separators,
@@ -1540,7 +1541,7 @@
                 for (var i = 0, s; i < setters_order.length; i++) {
                     s = setters_order[i];
                     if (s in parsed && !isNaN(parsed[s]))
-                        setters_map[s](date, parsed[s])
+                        setters_map[s](date, parsed[s]);
                 }
             }
             return date;
@@ -1619,7 +1620,7 @@
                 val.i = (val.i < 10 ? '0' : '') + val.i;
                 val.s = (val.s < 10 ? '0' : '') + val.s;
             } else {
-                throw new Error("Invalid format type.");
+                throw new Error('Invalid format type.');
             }
             var date = [],
                 seps = $.extend([], format.separators);
