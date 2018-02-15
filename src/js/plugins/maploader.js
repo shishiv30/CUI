@@ -9,7 +9,7 @@
             popData: null,
             popTmp: null,
             popHeight: null,
-            onClick: null,
+            onclick: null,
             popTheme: 'marker',
             zIndex: null
         };
@@ -21,7 +21,7 @@
         this.popTmp = opt.popTmp;
         this.popHeight = opt.popHeight;
         this.showPop = !!(opt.popData && opt.popTmp);
-        this.onClick = opt.onClick;
+        this.onclick = opt.onclick;
         this.popTheme = opt.popTheme;
         this.zIndex = opt.zIndex;
         this.setMap(opt.map);
@@ -32,30 +32,28 @@
             var self = this;
             if (self.showPop) {
                 var $pin = $(div);
-                $pin.on('shown.bs.popover', function () {
-                    $(document).trigger('dom.load');
-                });
-                var html = new $.renderHtml(self.popTmp, self.popData);
+                var html = $.renderHtml(self.popTmp, self.popData);
                 var topOffset = $pin.outerHeight() * -1 - 10;
                 var $content = $('<div class="pop-content "><div>' + html + '</div></div>');
                 $content.click(function (e) {
                     e.stopPropagation();
                 });
-                var showInBottom = $(window).width() < 640 && self.popTheme === 'plain';
-                var tippopover = $pin.tippopover({
+                var tippopover = $pin.tip({
                     content: $content,
                     placement: 'top',
-                    trigger: 'manual',
+                    trigger: 'click',
+                    html:true,
                     once: true,
-                    theme: self.popTheme,
-                    container: showInBottom ? '#dppMapview' : undefined
+                    type: self.popTheme,
+                    traget: null,
+                    onload:function(){
+                        $(document).trigger('dom.load');
+                    },
+                    container: self.map
                 });
                 self.reposition();
                 setTimeout(function () {
                     tippopover.show();
-                    if (self.onClick) {
-                        self.onClick(div);
-                    }
                     window.google.maps.event.addListener(self.map, 'zoom_changed', function () {
                         tippopover.hide();
                     });
@@ -74,7 +72,7 @@
                     });
                 }, 150);
             } else {
-                self.onClick(div);
+                self.onclick(div);
             }
         };
         window.CustomMarker.prototype.draw = function () {
@@ -84,13 +82,27 @@
                 div = this.div = $(this.html)[0];
                 var panes = this.getPanes();
                 panes.overlayMouseTarget.appendChild(div);
-                if (this.showPop || this.onClick) {
+                if (this.showPop || this.onclick) {
                     if (this.zIndex) {
                         $(div).css('zIndex', this.zIndex);
                     }
-                    window.google.maps.event.addDomListener($(div).children()[0], 'click', function () {
-                        self.poppanel(div);
-                    });
+
+                    if($.isMobile()) {
+                        window.google.maps.event.addDomListener($(div).children()[0], 'touchstart', function () {
+                            if (self.onclick) {
+                                self.onclick(div);
+                            }
+                            self.poppanel(div);
+                        });
+                    } else {
+                        window.google.maps.event.addDomListener($(div).children()[0], 'click', function () {
+                            if (self.onclick) {
+                                self.onclick(div);
+                            }
+                            self.poppanel(div);
+                        });
+                    }
+
                 }
             }
             var point = this.getProjection().fromLatLngToDivPixel(this.latlng);
@@ -166,11 +178,11 @@
         window.CustomMarker.prototype.getPosition = function () {
             return this.latlng;
         };
-        window.CustomMarker.prototype.refreshPop = function (popData, popTmp, onClick) {
+        window.CustomMarker.prototype.refreshPop = function (popData, popTmp, onclick) {
             this.popData = popData;
             this.popTmp = popTmp;
             this.showPop = popData && popTmp;
-            this.onClick = onClick;
+            this.onclick = onclick;
         };
     };
     $.loadGMap = function (callback, option) {

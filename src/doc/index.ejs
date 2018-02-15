@@ -8,7 +8,7 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <link href="<%=url + 'dist/src/cui.css'%>" type="text/css" rel="stylesheet" />
     <link rel="shortcut icon" href="<%=url + 'dist/src/img/favicon.ico'%>" type="image/x-icon">
-    <link rel="icon" href="<%=url + 'dist/src/img/favicon.ico'%>" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <%- include('tpl-header') %>
 <body id="body" class="classic">
@@ -23,6 +23,7 @@
 <script>
 window.context = {
     url:'<%= url%>',
+    cdnUrl:'<%= url + "dist/src/" %>',
     googleMapKey:'key=AIzaSyAYhIz6xpe-HBVYdWvkCY0EnWfQgoeHHwI'
 };
 var x =$('body').locker({

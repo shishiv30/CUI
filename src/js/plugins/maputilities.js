@@ -123,11 +123,11 @@
         default:
             url = type;
         }
-        return window.context.url + url;
+        return url;
     };
     $.getIcon = function (type) {
         var icon = {
-            url: window.context.url
+            url: window.context.cdnUrl
         };
         switch (type) {
         case $.iconType.home:

@@ -101,3 +101,17 @@ $('.circle-item').each(function (index, item) {
     var $item = $(item);
     $item.text($item.css('backgroundColor').replace('rgb', ''));
 });
+$(document).one('initialMap', function (d, e, t) {
+    t.addMarker({
+        lat: -34.397,
+        lng: 150.644,
+        html: true,
+        popTmp:'<div><h1>{{words}}</h1></div>',
+        popData:{
+            words:'hello'
+        },
+        onclick: function () {
+            console.log('click!!!!!');
+        }
+    });
+});

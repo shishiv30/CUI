@@ -15,6 +15,7 @@
             ondraged: null,
             onzoom: null,
             onclick: null,
+            onload: null,
             onresize: null,
             autoresize: false,
             clickableicons: true,
@@ -322,35 +323,38 @@
         initAfter: function (context) {
             var map = context.map;
             var opt = context.opt;
+            var exports = context.exports;
             window.google.maps.event.addListenerOnce(map, 'tilesloaded', function () {
                 //click event
-                opt.onclick && $.CUI.trigger(opt.onclick, [map]);
+                opt.onclick && $.CUI.trigger(opt.onclick, context);
 
                 //drag event
                 if (opt.draggable) {
                     if (opt.ondrag) {
                         window.google.maps.event.addListener(map, 'dragstart', function () {
-                            $.CUI.trigger(opt.ondrag, [map]);
+                            $.CUI.trigger(opt.ondrag, context);
                         });
                     }
                     if (opt.ondraged) {
                         window.google.maps.event.addListener(map, 'dragend', function () {
-                            $.CUI.trigger(opt.ondraged, [map]);
+                            $.CUI.trigger(opt.ondraged, context);
                         });
                     }
                 }
 
-                //
-                $(document).trigger('gmap.tilesloaded', [map]);
                 if (opt.zoomable && opt.onzoom) {
                     window.google.maps.event.addListener(map, 'zoom_changed', function () {
-                        $.CUI.trigger(opt.onzoom, [map]);
+                        $.CUI.trigger(opt.onzoom, context);
                     });
+                }
+
+                if (opt.onload) {
+                    $.CUI.trigger(opt.onload, context);
                 }
             });
             if (opt.onresize) {
                 window.google.maps.event.addListener(map, 'resize', function () {
-                    $.CUI.trigger(opt.onresize, [map]);
+                    $.CUI.trigger(opt.onresize, context);
                 });
             }
             if (opt.autoresize) {

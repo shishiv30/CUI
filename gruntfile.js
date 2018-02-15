@@ -35,13 +35,13 @@ module.exports = function (grunt) {
         sprite: ['img'].reduce((config, k) => Object.assign(config, {
             [k]: generateSpriteConfig(k)
         }), {}),
-        htmlmin: { // Task 
-            dist: { // Target 
-                options: { // Target options 
+        htmlmin: { // Task
+            dist: { // Target
+                options: { // Target options
                     removeComments: true,
                     collapseWhitespace: true
                 },
-                files: { // Dictionary of files 
+                files: { // Dictionary of files
                     'public/index.html': 'public/index.html',
                 }
             }
@@ -75,8 +75,13 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'src/',
-                    src: ['img/*.*', 'fonts/*.*', 'doc/src/*.*'],
+                    src: ['img/*.*', 'img/pin/*.*', 'fonts/*.*', 'doc/src/*.*', 'favicon.ico'],
                     dest: 'public/dist/src/'
+                }, {
+                    expand: true,
+                    cwd: '',
+                    src: ['favicon.ico'],
+                    dest: 'public/'
                 }]
             }
         },
@@ -105,11 +110,11 @@ module.exports = function (grunt) {
         },
         watch: {
             script: {
-                files: ['src/js/plugins/*.js'],
+                files: ['src/js/plugins/*.js','src/doc/src/*.js'],
                 tasks: ['concat:dist']
             },
             scss: {
-                files: ['src/scss/*.scss', 'src/scss/**/*.scss'],
+                files: ['src/scss/*.scss', 'src/scss/**/*.scss','src/doc/src/*.css'],
                 tasks: ['sass']
             },
             css: {

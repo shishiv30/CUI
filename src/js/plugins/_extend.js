@@ -1,6 +1,9 @@
 (function ($) {
     var tmpdiv = null;
     $.extend({
+        isIE: function () {
+            return false;
+        },
         renderHtml: function (template, data) {
             return Mustache.render(template, data);
         },
