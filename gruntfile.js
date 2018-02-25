@@ -1,7 +1,6 @@
 const fs = require('fs');
 const crypto = require('crypto');
 const grunt = require('grunt');
-
 const generateSpriteConfig = function (imgDir) {
     imgDir = `s-${imgDir}`;
 
@@ -14,7 +13,6 @@ const generateSpriteConfig = function (imgDir) {
         md5sum.update(collectiveContent);
         return md5sum.digest('hex').slice(0, 10);
     }
-
     const hash = getCollectiveMd5(`src/img/${imgDir}/*.png`);
     const imgName = `${imgDir}-${hash}`;
     return {
@@ -110,11 +108,11 @@ module.exports = function (grunt) {
         },
         watch: {
             script: {
-                files: ['src/js/plugins/*.js','src/doc/src/*.js'],
+                files: ['src/js/plugins/*.js', 'src/doc/src/*.js'],
                 tasks: ['concat:dist']
             },
             scss: {
-                files: ['src/scss/*.scss', 'src/scss/**/*.scss','src/doc/src/*.css'],
+                files: ['src/scss/*.scss', 'src/scss/**/*.scss', 'src/doc/src/*.css'],
                 tasks: ['sass']
             },
             css: {
@@ -122,7 +120,8 @@ module.exports = function (grunt) {
                     debounceDelay: 250,
                     livereload: true
                 },
-                files: ['public/dist/src/cui.css'],
+                files: ['public/dist/src/*.css'],
+                task: ['autoprefixer']
             }
         }
     });
@@ -135,8 +134,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-spritesmith');
     grunt.loadNpmTasks('grunt-sass');
-
-
     grunt.registerTask('default', ['copy', 'concat', 'sprite', 'sass', 'autoprefixer', 'cssmin', 'uglify', 'htmlmin']);
     grunt.registerTask('dev', ['copy', 'concat', 'sprite', 'sass', 'autoprefixer', 'cssmin', 'watch']);
 };
