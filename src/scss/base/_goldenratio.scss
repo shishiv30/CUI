@@ -4,20 +4,20 @@
 
 .gr {
     position: absolute;
+    right: 0;
     top: 0;
     bottom: 0;
     left: 0;
-    right: 0;
     display: flex;
     .gr-item {
         display: flex;
-        height: 100%;
         width: 100%;
+        height: 100%;
         &:first-child {
-            flex: 0.38196601125;
+            flex: .38196601125;
         }
         &:last-child {
-            flex: 0.61803398875;
+            flex: .61803398875;
         }
     }
 }
@@ -26,10 +26,10 @@
     .gr-panel {
         padding-top: 61.803398875%;
     }
-    .gr, .gr>div>div {
+    .gr, .gr > div > div {
         flex-direction: row-reverse;
     }
-    .gr>div, .gr>div>div>div {
+    .gr > div, .gr > div > div > div {
         flex-direction: column;
     }
 }
@@ -38,10 +38,10 @@
     .gr-panel {
         padding-top: 100%;
     }
-    .gr, .gr>div>div {
+    .gr, .gr > div > div {
         flex-direction: column-reverse;
     }
-    .gr>div, .gr>div>div>div {
+    .gr > div, .gr > div > div > div {
         flex-direction: row;
     }
 }
@@ -50,10 +50,10 @@
     .gr-panel {
         padding-top: 161.803398875%;
     }
-    .gr, .gr>div>div {
+    .gr, .gr > div > div {
         flex-direction: column-reverse;
     }
-    .gr>div, .gr>div>div>div {
+    .gr > div, .gr > div > div > div {
         flex-direction: row;
     }
 }

@@ -49,10 +49,9 @@
     @extend %animation-img-hover;
 }
 
-.cube-up,
-.cube-down {
+.cube-up, .cube-down {
+    transition: transform .5s ease-in-out;
     transform-style: preserve-3d;
-    transition: transform 0.5s ease-in-out;
 }
 
 .cube-up {
@@ -84,26 +83,27 @@
 %img-loading {
     position: relative;
     &:before {
-        @extend %icon;
-        @extend .icon-spinner;
         font-size: 18px;
         position: absolute;
+        z-index: 2;
         top: 50%;
         left: 50%;
+        transition: transform .5s ease-in-out;
         transform: translateY(-50%) translateX(-50%);
-        transition: transform 0.5s ease-in-out;
         animation: rotate 1s infinite steps(8);
-        z-index: 2;
         color: $color-f;
+
+        @extend %icon;
+        @extend .icon-spinner;
     }
     &:after {
-        content: '';
-        background: $color-0;
-        opacity: .6;
         position: absolute;
         top: 0;
-        left: 0;
         right: 0;
         bottom: 0;
+        left: 0;
+        content: "";
+        opacity: .6;
+        background: $color-0;
     }
 }

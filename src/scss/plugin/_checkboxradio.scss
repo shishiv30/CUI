@@ -4,40 +4,41 @@
         cursor: pointer;
         padding: 0;
         user-select: none;
-        >input {
+         > input {
             display: none;
         }
-        >i, >span {
+         > i,  > span {
             vertical-align: bottom;
         }
-        >i {
+         > i {
             @extend %icon;
             display: inline-block;
             width: 18px;
             font-size: $font-size-5;
             color: $color-8;
         }
-        input:checked+i {}
-        input:disabled+i {
+        input:checked + i {
+        }
+        input:disabled + i {
             color: $color-disable;
         }
     }
 }
 
 .checkbox {
-    input+i:before {
+    input + i:before {
         @extend .icon-square-o;
     }
-    input:checked+i:before {
+    input:checked + i:before {
         @extend .icon-check-square;
     }
 }
 
 .radio {
-    input+i:before {
+    input + i:before {
         @extend .icon-circle-thin;
     }
-    input:checked+i:before {
+    input:checked + i:before {
         @extend .icon-check-circle;
     }
 }
