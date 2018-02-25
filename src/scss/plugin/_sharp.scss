@@ -5,6 +5,7 @@
     display: block;
     margin: 10px auto;
     color: $color-f;
+    border: 1px solid $color-f;
     line-height: 80px;
     text-align: center;
     @extend .text-shadow;
