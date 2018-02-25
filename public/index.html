@@ -285,7 +285,7 @@
     </div>
 </div>
 <style>
-    
+
     .gr div {
         opacity: 0.6
     }
@@ -1371,10 +1371,9 @@ window.context = {
 var x =$('body').locker({
     onbeforelock:function(){
         $.preload({
-            files:['dist/src/doc/src/doc.css','dist/src/doc/src/doc.js'],
-            callback:function(){
-                x.unlock();
-            }
+            files:['dist/src/doc/src/doc.css','dist/src/doc/src/doc.js']
+        }).then(function(){
+            x.unlock();
         });
     }
 });

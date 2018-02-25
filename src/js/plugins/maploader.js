@@ -30,7 +30,7 @@
         window.CustomMarker.prototype = new window.google.maps.OverlayView();
         window.CustomMarker.prototype.poppanel = function (div) {
             var self = this;
-            if (self.showPop) {
+            if(self.showPop) {
                 var $pin = $(div);
                 var html = $.renderHtml(self.popTmp, self.popData);
                 var topOffset = $pin.outerHeight() * -1 - 10;
@@ -42,11 +42,11 @@
                     content: $content,
                     placement: 'top',
                     trigger: 'click',
-                    html:true,
+                    html: true,
                     once: true,
                     type: self.popTheme,
                     traget: null,
-                    onload:function(){
+                    onload: function () {
                         $(document).trigger('dom.load');
                     },
                     container: self.map
@@ -61,7 +61,7 @@
                         tippopover.hide();
                     });
                     $(document).trigger('dom.load');
-                    if ($pin.next('.popover')) {
+                    if($pin.next('.popover')) {
                         $pin.next('.popover').css({
                             marginTop: topOffset,
                             zIndex: 999
@@ -78,99 +78,89 @@
         window.CustomMarker.prototype.draw = function () {
             var self = this;
             var div = this.div;
-            if (!div) {
+            if(!div) {
                 div = this.div = $(this.html)[0];
                 var panes = this.getPanes();
                 panes.overlayMouseTarget.appendChild(div);
-                if (this.showPop || this.onclick) {
-                    if (this.zIndex) {
+                if(this.showPop || this.onclick) {
+                    if(this.zIndex) {
                         $(div).css('zIndex', this.zIndex);
                     }
-
                     if($.isMobile()) {
                         window.google.maps.event.addDomListener($(div).children()[0], 'touchstart', function () {
-                            if (self.onclick) {
+                            if(self.onclick) {
                                 self.onclick(div);
                             }
                             self.poppanel(div);
                         });
                     } else {
                         window.google.maps.event.addDomListener($(div).children()[0], 'click', function () {
-                            if (self.onclick) {
+                            if(self.onclick) {
                                 self.onclick(div);
                             }
                             self.poppanel(div);
                         });
                     }
-
                 }
             }
             var point = this.getProjection().fromLatLngToDivPixel(this.latlng);
-            if (point) {
+            if(point) {
                 div.style.left = point.x + 'px';
                 div.style.top = point.y + 'px';
             }
         };
-
         //if the pin current position out of screen, call the method to move map and make sure we can see pin in the screen
         window.CustomMarker.prototype.reposition = function () {
             var popover = this.div;
             var container = this.map.getDiv();
-
-            if (popover && container) {
+            if(popover && container) {
                 var bounds = this.map.getBounds();
-                if (!bounds) {
+                if(!bounds) {
                     return;
                 }
                 var proj = this.getProjection();
-                if (!proj) {
+                if(!proj) {
                     return;
                 }
                 var $popover = $(popover);
                 var $container = $(container);
                 var offset = $popover.position();
-
                 var topRight = proj.fromLatLngToDivPixel(bounds.getNorthEast());
                 var bottomLeft = proj.fromLatLngToDivPixel(bounds.getSouthWest());
                 var top = offset.top - (this.popHeight || 0) - topRight.y;
                 var left = offset.left - bottomLeft.x;
-
                 var width = $popover.width();
                 var height = $popover.height();
                 var containerHeight = $container.height();
                 var containerWidth = $container.width();
-
                 var minTop = height * 2;
                 var maxTop = containerHeight - height * 2;
                 var minLeft = width * 2;
                 var maxLeft = containerWidth - width * 2;
-
                 var offsetX = 0;
                 var offsetY = 0;
-
-                if (top > maxTop) {
+                if(top > maxTop) {
                     //move up +YYY
                     offsetY = maxTop - top;
-                } else if (top < minTop) {
+                } else if(top < minTop) {
                     //move down -YYY
                     offsetY = top - minTop;
                 }
-
-                if (left > maxLeft) {
+                if(left > maxLeft) {
                     // move right +XXX
                     offsetX = left - maxLeft;
-                } else if (left < minLeft) {
+                } else if(left < minLeft) {
                     // move left -XXX
                     offsetX = left - minLeft;
                 }
-                if (offsetX !== 0 || offsetY !== 0) {
+                if(offsetX !== 0 || offsetY !== 0) {
                     this.map.panBy(offsetX, offsetY);
                     this.draw();
                 }
             }
         };
         window.CustomMarker.prototype.remove = function () {
-            if (this.div) {
+            if(this.div) {
                 this.div.parentNode.removeChild(this.div);
                 this.div = null;
             }
@@ -185,40 +175,40 @@
             this.onclick = onclick;
         };
     };
-    $.loadGMap = function (callback, option) {
-        //has load
-        if (mapLoaded === 2 || (window.google && window.google.map)) {
-            callback();
-            return;
-        }
-
-        $(document).one('gMapLoaded', callback);
-
-        //is loading
-        if (mapLoaded !== 0) {
-            return;
-        }
-
-        //get ready to load
-        var defaultOption = {
-            callback: 'googleMapLoadCallBack'
-        };
-        var opt = $.extend({}, defaultOption, option);
-        var mapUrl = 'https://maps.googleapis.com/maps/api/js?' + window.context.googleMapKey;
-        $.each(opt, function (key, value) {
-            mapUrl += ('&' + key + '=' + value);
-        });
-
-        window.googleMapLoadCallBack = function () {
-            initialCustomMarker();
-            mapLoaded = 2;
-            $(document).trigger('gMapLoaded');
-        };
-        mapLoaded = 1;
-        $.preload({
-            files: [mapUrl],
-            type: 'js',
-            callback: null,
+    $.loadGMap = function () {
+        return new Promise(function (resolve, reject) {
+            try {
+                //has load
+                if(mapLoaded === 2) {
+                    return resolve(window.google && window.google.map);
+                } else {
+                    $(document).one('gMapLoaded', function () {
+                        resolve(window.google && window.google.map);
+                    });
+                    if(mapLoaded === 0) {
+                        mapLoaded = 1;
+                        //get ready to load
+                        var config = {
+                            callback: 'googlemapcallback'
+                        };
+                        var mapUrl = 'https://maps.googleapis.com/maps/api/js?' + window.context.googleMapKey;
+                        $.each(config, function (key, value) {
+                            mapUrl += ('&' + key + '=' + value);
+                        });
+                        return $.preload({
+                            files: [mapUrl],
+                            type: 'js',
+                            callback: 'googlemapcallback',
+                        }).then(function () {
+                            initialCustomMarker();
+                            mapLoaded = 2;
+                            $(document).trigger('gMapLoaded');
+                        });
+                    }
+                }
+            } catch(e) {
+                reject(e);
+            }
         });
     };
 })(jQuery);
