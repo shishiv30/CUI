@@ -16,35 +16,33 @@
             var opt = context.opt;
             var $this = context.$element;
             var $target = context.$target = $(opt.target);
-
             //record the traget's height
             var height = 0;
-            if ($target.offset() && $target.offset().top < $this.offset().top) {
+            if($target.offset() && $target.offset().top < $this.offset().top) {
                 height = $target.height();
             }
-
             var _showtext = function () {
-                if (opt.showtext) {
-                    if ($this.find('span').length > 0) {
+                if(opt.showtext) {
+                    if($this.find('span').length > 0) {
                         $this.find('span').text(opt.showtext);
                     } else {
                         $this.text(opt.showtext);
                     }
                 }
-                if (opt.once) {
+                if(opt.once) {
                     $this.hide();
                 }
             };
             var _hidetext = function () {
-                if (opt.hidetext) {
-                    if ($this.find('span').length > 0) {
+                if(opt.hidetext) {
+                    if($this.find('span').length > 0) {
                         $this.find('span').text(opt.hidetext);
                     } else {
                         $this.text(opt.hidetext);
                     }
                 }
             };
-            if (opt.isexpand) {
+            if(opt.isexpand) {
                 context._show = function () {
                     $this.addClass('shown');
                     $target.addClass('collapse-expand');
@@ -53,7 +51,7 @@
                 context._hide = function () {
                     $this.removeClass('shown');
                     $target.removeClass('collapse-expand');
-                    if (height && height > 0) {
+                    if(height && height > 0) {
                         $(document).scrollTop($(document).scrollTop() - $target.prop('scrollHeight') + height);
                     }
                     _hidetext();
@@ -67,7 +65,7 @@
                 context._hide = function () {
                     $this.removeClass('shown');
                     $target.hide();
-                    if (height && height > 0) {
+                    if(height && height > 0) {
                         $(document).scrollTop($(document).scrollTop() - height);
                     }
                     _hidetext();
@@ -80,7 +78,7 @@
                 opt.showbefore && $.CUI.trigger(opt.showbefore, this);
                 this._show();
                 opt.showafter && $.CUI.trigger(opt.showafter, this);
-                $(document).trigger('dom.load');
+                //todo $(document).trigger('dom.load');
             },
             hide: function () {
                 var opt = this.opt;
@@ -89,7 +87,7 @@
                 opt.hideafter && $.CUI.trigger(opt.hideafter, this);
             },
             toggle: function () {
-                if (this.$element.hasClass('shown')) {
+                if(this.$element.hasClass('shown')) {
                     this._hide();
                 } else {
                     this._show();
@@ -105,20 +103,20 @@
             var opt = context.opt;
             var exports = context.exports;
             var _resetForExpand = function () {
-                if (!$this.hasClass('shown')) {
-                    if ($target.prop('scrollHeight') > $target.prop('offsetHeight')) {
+                if(!$this.hasClass('shown')) {
+                    if($target.prop('scrollHeight') > $target.prop('offsetHeight')) {
                         $this.css('visibility', 'visible');
                     } else {
                         $this.css('visibility', 'hidden');
                     }
                 }
             };
-            if (opt.isexpand) {
+            if(opt.isexpand) {
                 $(document).on('dom.resize.collapse', _resetForExpand);
                 _resetForExpand();
             }
-            if (!opt.isexpand) {
-                if ($target.is(':hidden')) {
+            if(!opt.isexpand) {
+                if($target.is(':hidden')) {
                     exports.hide();
                 } else {
                     exports.show();

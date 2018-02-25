@@ -47,7 +47,7 @@
                     type: self.popTheme,
                     traget: null,
                     onload: function () {
-                        $(document).trigger('dom.load');
+                        // $(document).trigger('dom.load');
                     },
                     container: self.map
                 });
@@ -60,7 +60,7 @@
                     window.google.maps.event.addListener(self.map, 'dragstart', function () {
                         tippopover.hide();
                     });
-                    $(document).trigger('dom.load');
+                    // $(document).trigger('dom.load');
                     if($pin.next('.popover')) {
                         $pin.next('.popover').css({
                             marginTop: topOffset,

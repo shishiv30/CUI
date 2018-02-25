@@ -72,7 +72,7 @@
                 var streetViewLocation = new window.google.maps.LatLng(opt.lat, opt.lng);
                 var sv = new window.google.maps.StreetViewService();
                 sv.getPanoramaByLocation(streetViewLocation, 50, function (data, status) {
-                    if (status == 'OK') {
+                    if(status == 'OK') {
                         panorama = map.getStreetView();
                         panorama.setPosition(streetViewLocation);
                         panorama.setVisible(true);
@@ -107,28 +107,28 @@
                     isNeedMobileCard: null
                 };
                 var opt = $.extend({}, defaultOption, option);
-                if (!opt.lat || !opt.lng) {
+                if(!opt.lat || !opt.lng) {
                     return;
                 }
                 var addedMark = context._getMarkerById(opt.id);
-                if (addedMark) {
+                if(addedMark) {
                     addedMark.setMap(map);
                     return addedMark;
                 }
                 var marker = null;
-                if (opt.html) {
+                if(opt.html) {
                     var latlng = new window.google.maps.LatLng({
                         lat: opt.lat,
                         lng: opt.lng
                     });
-                    if (opt.html === true) {
+                    if(opt.html === true) {
                         var icon = $.getIcon(opt.icontype);
-                        if (opt.icontype === 0) {
+                        if(opt.icontype === 0) {
                             opt.html = '<div class="map-marker"><a href="javascript:;" class="img-pin"><img src="' + icon.url + '"  style="height:48px"></a></div>';
                         } else {
                             opt.html = '<div class="map-marker"><a href="javascript:;" class="img-pin"><img src="' + icon.url + '"></a></div>';
                         }
-                        if (icon.zIndex) {
+                        if(icon.zIndex) {
                             opt.zIndex = icon.zIndex;
                         }
                     }
@@ -157,33 +157,33 @@
                         draggable: false,
                         position: new window.google.maps.LatLng(opt.lat, opt.lng)
                     });
-                    if (opt.onclick) {
+                    if(opt.onclick) {
                         window.google.maps.event.addListener(marker, 'click', function (e) {
                             //return false, will stop to pop 'click' event
                             return opt.onclick(context.map, marker, e);
                         });
                     }
                     $($.isMobile);
-                    if (opt.onmouseover) {
+                    if(opt.onmouseover) {
                         marker.addListener('mouseover', function (e) {
                             return opt.onmouseover(context.map, marker, e);
                         }, true);
                     }
-                    if (opt.onmouseout) {
+                    if(opt.onmouseout) {
                         marker.addListener('mouseout', function (e) {
                             return opt.onmouseout(context.map, marker, e);
                         }, true);
                     }
                 }
-                if (opt.id) {
+                if(opt.id) {
                     marker.id = opt.id;
                 }
                 markers.push(marker);
                 return marker;
             };
             context._findItem = function (id) {
-                for (var i = 0; i < markers.length; i++) {
-                    if (markers[i].id == id) {
+                for(var i = 0; i < markers.length; i++) {
+                    if(markers[i].id == id) {
                         return {
                             element: markers[i],
                             index: i
@@ -199,7 +199,7 @@
                 return context._findItem(id).element;
             };
             context._setAllMap = function (map) {
-                for (var i = 0; i < markers.length; i++) {
+                for(var i = 0; i < markers.length; i++) {
                     markers[i].setMap(map);
                 }
             };
@@ -211,9 +211,9 @@
             };
             context._deleteMarker = function (id) {
                 var item = context._findItem(id);
-                if (item.element) {
+                if(item.element) {
                     item.element.setMap(null);
-                    if (item.index > -1) {
+                    if(item.index > -1) {
                         markers.splice(item.index, 1);
                     }
                 }
@@ -229,13 +229,13 @@
                 return map.getBounds();
             };
             context._setZoom = function (level) {
-                if ($.isNumeric(level)) {
+                if($.isNumeric(level)) {
                     map.setZoom(level);
                 }
             };
             context._fitBounds = function (poiList) {
                 var list = [];
-                if (markers && markers.length) {
+                if(markers && markers.length) {
                     list = markers.map(function (e) {
                         return {
                             lat: e.lat || e.latlng.lat(),
@@ -243,8 +243,7 @@
                         };
                     });
                 }
-
-                if (poiList && poiList.length > 0) {
+                if(poiList && poiList.length > 0) {
                     list = list.concat(poiList.map(function (e) {
                         return {
                             lat: e.lat,
@@ -252,18 +251,17 @@
                         };
                     }));
                 }
-
-                if (list && list.length) {
+                if(list && list.length) {
                     var bounds = new window.google.maps.LatLngBounds();
-                    for (var i = 0; i < list.length; i++) {
-                        if (list[i].lat && list[i].lng) {
+                    for(var i = 0; i < list.length; i++) {
+                        if(list[i].lat && list[i].lng) {
                             bounds.extend(new window.google.maps.LatLng(list[i].lat, list[i].lng));
                         }
                     }
                     map.fitBounds(bounds);
                 }
             };
-            if (opt.streetView !== false) {
+            if(opt.streetView !== false) {
                 context._showStreetView();
             }
         },
@@ -327,37 +325,34 @@
             window.google.maps.event.addListenerOnce(map, 'tilesloaded', function () {
                 //click event
                 opt.onclick && $.CUI.trigger(opt.onclick, context);
-
                 //drag event
-                if (opt.draggable) {
-                    if (opt.ondrag) {
+                if(opt.draggable) {
+                    if(opt.ondrag) {
                         window.google.maps.event.addListener(map, 'dragstart', function () {
                             $.CUI.trigger(opt.ondrag, context);
                         });
                     }
-                    if (opt.ondraged) {
+                    if(opt.ondraged) {
                         window.google.maps.event.addListener(map, 'dragend', function () {
                             $.CUI.trigger(opt.ondraged, context);
                         });
                     }
                 }
-
-                if (opt.zoomable && opt.onzoom) {
+                if(opt.zoomable && opt.onzoom) {
                     window.google.maps.event.addListener(map, 'zoom_changed', function () {
                         $.CUI.trigger(opt.onzoom, context);
                     });
                 }
-
-                if (opt.onload) {
+                if(opt.onload) {
                     $.CUI.trigger(opt.onload, context);
                 }
             });
-            if (opt.onresize) {
+            if(opt.onresize) {
                 window.google.maps.event.addListener(map, 'resize', function () {
                     $.CUI.trigger(opt.onresize, context);
                 });
             }
-            if (opt.autoresize) {
+            if(opt.autoresize) {
                 window.google.maps.event.addDomListener(window, 'resize', function () {
                     context.reset();
                 });
@@ -371,9 +366,13 @@
             var $this = $(item);
             var data = $this.data();
             $this.removeAttr('data-gmap');
-            $this.gmap(data);
-            $this.attr('data-gmap-load', '');
-            $this.attr('role', 'gmap');
+            $this.onscroll({
+                callback: function () {
+                    $this.gmap(data);
+                    $this.attr('data-gmap-load', '');
+                    $this.attr('role', 'gmap');
+                }
+            });
         });
     });
 })(jQuery);

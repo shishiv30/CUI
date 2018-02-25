@@ -1,6 +1,5 @@
 //seed code for create a plugin
 //replace all of the "tabs" with the plugin name. (the plugin name should be same as the js file name);
-
 (function ($) {
     var tabsConfig = {
         name: 'tabs',
@@ -12,9 +11,9 @@
                 $items.each(function (index, item) {
                     var $item = $(item);
                     var $target = $($item.attr('data-target')).hide();
-                    if ($item.hasClass('active')) {
+                    if($item.hasClass('active')) {
                         $target.show();
-                        $(document).trigger('dom.load');
+                        //todo $(document).trigger('dom.load');
                     } else {
                         $target.hide();
                     }
