@@ -48,7 +48,7 @@
                     $dialogBody.html($this.html());
                     _addCloseButton();
                 }
-                $(document).trigger('dom.load');
+                //todo $(document).trigger('dom.load');
                 $('html').addClass('model-dialog');
                 $dialog.show();
                 setTimeout(function () {
