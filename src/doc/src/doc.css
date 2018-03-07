@@ -1,3 +1,32 @@
+.gr div {
+    opacity: 0.6;
+    color:#000;
+    padding:10px;
+    overflow: hidden;
+}
+.gr>div:first-child {
+    background: red;
+}
+
+.gr>div:last-child {
+    background: green;
+}
+
+.gr>div>div:first-child {
+    background: yellow;
+}
+
+.gr>div>div:last-child {
+    background: deepskyblue;
+}
+
+.gr>div>div>div:first-child {
+    background: #eee;
+}
+
+.gr>div>div>div:last-child {
+    background: #aaa;
+}
 .circle-item {
     font-size: 11px;
 }

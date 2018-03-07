@@ -78,4 +78,28 @@
         }
         return Promise.all(resources);
     };
+    $.getPreLoadFiles = function (key) {
+        var cache = [];
+        switch(key) {
+        case 'js':
+            $.each(resource.js.cache,function(key){
+                cache.push(key);
+            });
+            break;
+        case 'css':
+            $.each(resource.css.cache,function(key){
+                cache.push(key);
+            });
+            break;
+        default :
+            $.each(resource.js.cache,function(key){
+                cache.push(key);
+            });
+            $.each(resource.css.cache,function(key){
+                cache.push(key);
+            });
+            break;
+        }
+        return cache;
+    };
 })(jQuery);

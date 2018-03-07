@@ -109,11 +109,11 @@ module.exports = function (grunt) {
         watch: {
             script: {
                 files: ['src/js/plugins/*.js', 'src/doc/src/*.js'],
-                tasks: ['concat:dist']
+                tasks: ['concat:dist','copy']
             },
             scss: {
                 files: ['src/scss/*.scss', 'src/scss/**/*.scss', 'src/doc/src/*.css'],
-                tasks: ['sass']
+                tasks: ['sass','copy']
             },
             css: {
                 options: {
