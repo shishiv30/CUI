@@ -11,14 +11,14 @@ var getMoveText = function (startPoint, endPoint) {
     var str2;
     if (startPoint.touches.length) {
         var start = Array.prototype.slice.call(startPoint.touches);
-        str1 = start.reduce(function (pre, next, index) {
+        str1 = start.reduce(function (pre, next) {
 
             return pre + 'Y:' + next.pageY + 'X:' + next.pageX + ' ';
         }, '(Start) ');
     }
     if (endPoint.touches.length) {
         var end = Array.prototype.slice.call(endPoint.touches);
-        str2 = end.reduce(function (pre, next, index) {
+        str2 = end.reduce(function (pre, next) {
             return pre + 'Y:' + next.pageY + 'X:' + next.pageX + ' ';
         }, '(End) - ');
     }

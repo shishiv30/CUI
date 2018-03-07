@@ -18,7 +18,6 @@
             var $this = context.$element;
             var sign_isAuto = false;
             var lastScrollLeft = 0;
-            var timer = null;
             var $list;
             var $wrap;
             var $items;
@@ -237,12 +236,7 @@
                 _resize();
                 _scroll();
             });
-            $wrap.on('scroll', function () {
-                if (timer) {
-                    clearTimeout(timer);
-                }
-                timer = setTimeout(_scroll, 500);
-            });
+            $wrap[0] && $wrap[0].addEventListener('scroll', $.debounce(_scroll,100),true);
             if ($.isMobile()) {
                 $wrap.on('touchstart', function () {
                     lastScrollLeft = $wrap.scrollLeft();

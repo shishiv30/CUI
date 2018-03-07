@@ -62,10 +62,10 @@
                 _unpin: _unpin,
                 _setpin: _setpin
             });
-            $(window).on('scroll', function () {
+            window.addEventListener('scroll', function () {
                 var scrollTop = $(window).scrollTop();
                 _setpin(scrollTop, false);
-            });
+            }, true);
             $(document).on('dom.resize', function () {
                 var scrollTop = $(window).scrollTop();
                 _setpin(scrollTop, true);

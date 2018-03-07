@@ -1,0 +1,12 @@
+{
+  "short_name": "CUI",
+  "name": "C? UI framework",
+  "icons": [
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    }
+  ],
+  "start_url": "/"
+}

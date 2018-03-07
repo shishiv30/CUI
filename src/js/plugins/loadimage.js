@@ -62,7 +62,7 @@
                     }
                 });
             };
-            $this && $this[0].addEventListener('scroll', $.throttle(context._load, opt.delay));
+            $this && $this[0].addEventListener('scroll', $.throttle(context._load, opt.delay),true);
         },
         exports: {
             load: function () {
