@@ -49,34 +49,38 @@
     background: #eee;
     border: 2px solid white;
     padding: 10px 0;
-    text-align: center
+    text-align: center;
 }
 
 .flexSystem .flex>div, .flexSystem .flex-gs>[class^=flex-] {
     background: #eee;
     border: 2px solid white;
     padding: 10px;
-    text-align: center
+    text-align: center;
+}
+
+.table.responsive{
+    min-width:640px;
 }
 
 .table.responsive th {
-    color: #a4a4a4
+    color: #a4a4a4;
 }
 
 .table.responsive td {
-    border: solid 1px #d7d7d7
+    border: solid 1px #d7d7d7;
 }
 
 .table.responsive .is-hidden {
-    color: #666
+    color: #666;
 }
 
 .table.responsive .is-visible {
-    background-color: #dff0d8
+    background-color: #dff0d8;
 }
 
 .table.responsive .container td {
-    background-color: #fff4d0
+    background-color: #fff4d0;
 }
 
 .skeleton {

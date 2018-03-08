@@ -1,4 +1,7 @@
-<%var url = locals.url || '';%>
+<%
+    var url = locals.url || '';
+    var cdnUrl =  url + "dist/src/"
+%>
 <!DOCTYPE html>
 <html>
 
@@ -8,27 +11,38 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta description='the documation of UI framework' />
     <meta name="Description" content="Author: Conjee Zou, UI framework, Category: Document, Lisence: MIT">
-    <link rel="manifest" href="<%= url + 'dist/src/doc/src/manifest.json' %>">
-    <link href="<%=url + 'dist/src/cui.css'%>" type="text/css" rel="stylesheet" />
-    <link rel="shortcut icon" href="<%=url + 'dist/src/img/favicon.ico'%>" type="image/x-icon">
-    <link rel="icon" href="<%=url + 'dist/src/favicon.ico'%>" type="image/x-icon">
+    <link rel="manifest" href="<%= cdnUrl +'doc/src/manifest.json' %>">
+    <link href="<%=cdnUrl + 'cui.css'%>" type="text/css" rel="stylesheet" />
+    <link rel="shortcut icon" href="<%=cdnUrl +'img/favicon.ico'%>" type="image/x-icon">
+    <link rel="icon" href="<%=cdnUrl +'favicon.ico'%>" type="image/x-icon">
 </head>
 <%- include('tpl-header') %>
 <body id="body" class="classic">
 
 <div class="gs-fixed">
-    <%- include('tpl') %>
-    <%- include('plugin') %>
+    <%- include('views/tpl') %>
+    <%- include('views/plugin') %>
 </div>
 </body>
-<script src="<%= url + 'dist/src/cui.lib.js' %>" type="text/javascript"></script>
-<script src="<%= url + 'dist/src/cui.js' %>" type="text/javascript"></script>
 <script>
-window.context = {
-    url:'<%= url%>',
-    cdnUrl:'<%= url + "dist/src/" %>',
-    googleMapKey:'key=AIzaSyAYhIz6xpe-HBVYdWvkCY0EnWfQgoeHHwI'
-};
+    window.context = {
+        url:'<%= url%>',
+        cdnUrl:'<%= cdnUrl %>',
+        googleMapKey:'key=AIzaSyAYhIz6xpe-HBVYdWvkCY0EnWfQgoeHHwI'
+    };
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/serviceworker.js')
+      .then(function(registration) {
+        console.log('Registration successful, scope is:', registration.scope);
+      })
+      .catch(function(error) {
+        console.log('Service worker registration failed, error:', error);
+      });
+    }
+</script>
+<script src="<%= cdnUrl +'cui.lib.js' %>" type="text/javascript"></script>
+<script src="<%= cdnUrl +'cui.js' %>" type="text/javascript"></script>
+<script>
 var x =$('body').locker({
     onbeforelock:function(){
         $.preload({
@@ -38,6 +52,5 @@ var x =$('body').locker({
         });
     }
 });
-
 </script>
 </html>

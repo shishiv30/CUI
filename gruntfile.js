@@ -78,7 +78,7 @@ module.exports = function (grunt) {
                 }, {
                     expand: true,
                     cwd: '',
-                    src: ['favicon.ico'],
+                    src: ['favicon.ico','serviceworker.js'],
                     dest: 'public/'
                 }]
             }
@@ -108,7 +108,7 @@ module.exports = function (grunt) {
         },
         watch: {
             script: {
-                files: ['src/js/plugins/*.js', 'src/doc/src/*.js'],
+                files: ['src/js/plugins/*.js', 'src/doc/src/*.js','serviceworker.js'],
                 tasks: ['concat:dist','copy']
             },
             scss: {

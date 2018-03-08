@@ -220,7 +220,7 @@
             var data = {
                 url: metaDataUrl
             };
-            $.post(data.url, function (res) {
+            $.get(data.url, function (res) {
                 $.streetViewCheckList[key] = res && res.status === 'OK';
                 opt.callback($.streetViewCheckList[key]);
                 $(document).trigger('hasStreetView.' + key, [$.streetViewCheckList[key]]);

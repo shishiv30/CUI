@@ -8,6 +8,7 @@
             zoom: 8,
             type: 0,
             streetview: false,
+            inline:false,
             zoomable: true,
             draggable: true,
             scrollwheel: true,
@@ -33,6 +34,7 @@
             distancecontrol: true,
             distancecontrolpos: 'BOTTOM_LEFT',
         },
+
         init: function (context) {
             var opt = context.opt;
             var $this = context.$element;
@@ -60,6 +62,15 @@
                 distanceControl: opt.distancecontrol,
                 distanceControlPos: opt.distancecontrolpos,
             };
+            if(opt.inline){
+                mapOptions =$.extend(mapOptions,{
+                    scrollwheel: false,
+                    navigationControl: false,
+                    mapTypeControl: false,
+                    scaleControl: false,
+                    draggable: false
+                });
+            }
             var map = new window.google.maps.Map($this.get(0), mapOptions);
             context.map = map;
             context.markers = markers;
