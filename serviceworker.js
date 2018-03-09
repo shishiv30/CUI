@@ -1,11 +1,29 @@
+var expectedCaches = ['version-4'];
 
 self.addEventListener('install', function(event) {
     console.log('WORKER: install event in progress.');
     event.waitUntil(
         caches
-            .open('version-1').then(function() {
+            .open('version-4').then(function() {
                 console.log('WORKER: install completed');
             })
+    );
+});
+
+self.addEventListener('activate', event => {
+    // delete any caches that aren't in expectedCaches
+    // which will get rid of static-v1
+    event.waitUntil(
+        caches.keys().then(keys => Promise.all(
+            keys.map(key => {
+                if (!expectedCaches.includes(key)) {
+                    console.log('delete cache'+ key);
+                    return caches.delete(key);
+                }
+            })
+        )).then(() => {
+            console.log('V4 now ready to handle fetches!');
+        })
     );
 });
 

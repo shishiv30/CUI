@@ -1,30 +1,1360 @@
-<!DOCTYPE html><html><head><title>CUI 框架</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name="viewport"><meta description="the documation of UI framework"><meta name="Description" content="Author: Conjee Zou, UI framework, Category: Document, Lisence: MIT"><link rel="manifest" href="dist/src/doc/src/manifest.json"><link href="dist/src/cui.css" type="text/css" rel="stylesheet"><link rel="shortcut icon" href="dist/src/img/favicon.ico" type="image/x-icon"><link rel="icon" href="dist/src/favicon.ico" type="image/x-icon"></head><div data-header class="header"><div class="header-form"><a class="header-form-logo" href="javascript:;"><i class="icon-cui"></i></a> <a class="header-form-btn" href="javascript:;" id="menuButton"><i class="icon-bars"></i></a><div data-textbox><div data-textbox="" class="input large right"><label for="headerInput">Search for ...</label><input id="headerInput" type="text"> <a href="javascript:;" class="btn"><i class="icon-search"></i></a></div></div></div><div class="header-menu-list right"><div class="header-menu-list-wrap"><div class="header-menu-item right"><a href="/ch">应用借口文档</a></div><div class="header-menu-item" data-headermenu><a href="javascript:;">案例</a><ul><li><a href="javascript:;">推荐</a></li><li><a href="javascript:;">站点</a></li><li><a href="javascript:;">商务</a></li><li class="splict"><a href="javascript:;">博客</a></li><li><a href="javascript:;">Link1</a></li><li><a href="javascript:;">Link2</a></li><li><a href="javascript:;">Link3</a></li><li><a href="javascript:;">Link4</a></li></ul></div><div class="header-menu-item"><a href="javascript:;">设计文档</a></div></div></div><div class="header-overlay"></div></div><div style="height:50px;"></div><body id="body" class="classic"><div class="gs-fixed"><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-collapse data-target="#cssColor">配色方案 <span class="subtitle">一套可扩展的标准配色法则.</span></a><div id="cssColor"><div class="row"><div class="col-xs-12"><p class="f4">配色方案能够按照情景进行分组.</p></div></div><div class="row"><div class="col-xs-12"><p>主色调是WEB的情感表述基调,它是一种能够使人专注，提高辨识度的颜色</p><p>用途: 链接的颜色, 默认按钮底色, 表头底色,页脚底色以及一些需要阐述观点亮明主题的地方.</p></div></div><div class="row colors"><div class="col-xs-3"><div class="circle-item color-main">(0,0,0)</div></div><div class="col-xs-3"><div class="circle-item color-main-l1">(0,0,0)</div></div><div class="col-xs-3"><div class="circle-item color-main-l2">(0,0,0)</div></div><div class="col-xs-3"><div class="circle-item color-main-l3">(0,0,0)</div></div></div><div class="row"><div class="col-xs-12"><p>常用灰色: 线框线条分割线灰色; 文字灰色; 文字轻灰色; 不可使用提示色;</p></div></div><div class="row colors"><div class="col-xs-3"><div class="circle-item color-d">(0,0,0)</div></div><div class="col-xs-3"><div class="circle-item color-4">(0,0,0)</div></div><div class="col-xs-3"><div class="circle-item color-a">(0,0,0)</div></div><div class="col-xs-3"><div class="circle-item color-a">(0,0,0)</div></div></div><div class="row"><div class="col-xs-12"><p>警告色是橙色,使用这种颜色让用户感到好奇或兴奋.</p><p>用途: 高亮文字, 提交按钮, 悬停状态以及一些特殊的超出常规的场景.</p></div></div><div class="row colors"><div class="col-xs-3"><div class="circle-item color-warning">(0,0,0)</div></div><div class="col-xs-3"><div class="circle-item color-warning-l1">(0,0,0)</div></div><div class="col-xs-3"><div class="circle-item color-warning-l2">(0,0,0)</div></div><div class="col-xs-3"><div class="circle-item color-warning-l3">(0,0,0)</div></div></div><div class="row"><div class="col-xs-12"><p>安全色是绿色,使用这种颜色让用户感到快乐充满成就感.</p><p>用途: 操作成功提示,值得信任的消息,利好消息,值得奖励的场景.</p></div></div><div class="row colors"><div class="col-xs-3"><div class="circle-item color-safe">(0,0,0)</div></div><div class="col-xs-3"><div class="circle-item color-safe-l1">(0,0,0)</div></div><div class="col-xs-3"><div class="circle-item color-safe-l2">(0,0,0)</div></div><div class="col-xs-3"><div class="circle-item color-safe-l3">(0,0,0)</div></div></div><div class="row"><div class="col-xs-12"><p>危险色是红色.使用这种颜色让用户感到警惕严肃.</p><p>用途: 错误信息, 危险提示, 超出预期的突发场景.</p></div></div><div class="row colors"><div class="col-xs-3"><div class="circle-item color-danger">(0,0,0)</div></div><div class="col-xs-3"><div class="circle-item color-danger-l1">(0,0,0)</div></div><div class="col-xs-3"><div class="circle-item color-danger-l2">(0,0,0)</div></div><div class="col-xs-3"><div class="circle-item color-danger-l3">(0,0,0)</div></div></div><div class="row"><div class="col-xs-12"><p>提示信息是淡黄色.使用这种颜色让用户感到放松清闲.</p><p>用途: 友情提示信息,辅助阅读信息,无需集中注意力查阅的小贴士.</p></div></div><div class="row colors"><div class="col-xs-3"><div class="circle-item color-tip">(0,0,0)</div></div><div class="col-xs-3"><div class="circle-item color-tip-l1">(0,0,0)</div></div><div class="col-xs-3"><div class="circle-item color-tip-l2">(0,0,0)</div></div><div class="col-xs-3"><div class="circle-item color-tip-l3">(0,0,0)</div></div></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-collapse data-target="#typographPanel">文字排版 <span class="subtitle">文体设计,以及以标准字体为基准的排版设计</span></a><div id="typographPanel"><p>浏览器默认的字体大小为16px, 我们视<b>16px</b>为基础测量单位, 并使用<b>0.618</b>为基本递增/递减倍率. 字体大小, 标题大小, 内边距, 外边距 都是根据基本字体乘以倍率得到的黄金分割比例排版.</p><div class="s-img-typograph" style="display:none"></div><div class="h0">特级标题</div><div class="h1">一级标题</div><div class="h2">二级标题</div><div class="h3">三级标题</div><div class="h4">四级标题</div><div class="h5">五级标题</div><div class="h6">六级标题</div><div class="paragraph"><p>$font-size-base: 1rem;</p><p>$increse: 0.618;</p><p>$font-size-0: ($font-size-base + $increse*4);</p><p>$font-size-1: ($font-size-base + $increse*2.5);</p><p>$font-size-2: ($font-size-base + $increse*1.5);</p><p>$font-size-3: ($font-size-base + $increse);</p><p>$font-size-4: ($font-size-base + $increse/2);</p><p>$font-size-5: $font-size-base;</p><p>$font-size-6: ($font-size-base - $increse/2);</p><p>$font-size-7: $font-size-base * $increse;</p></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-collapse data-target="#layoutPanel">布局 <span class="subtitle">布局规格</span></a><div id="layoutPanel"><div class="gr-panel"><div class="gr"><div class="gr-item"><div class="gr-item"><div class="gr-item"></div><div class="gr-item"></div></div><div class="gr-item"><div class="gr-item"></div><div class="gr-item"></div></div></div><div class="gr-item"><div class="gr-item"><div class="gr-item">which always equal increste rate of width</div><div class="gr-item">the responsive layout will have a limitation of height</div></div><div class="gr-item"><div class="gr-item"></div><div class="gr-item"></div></div></div></div></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-collapse data-target="#flexPanel">弹性布局 <span class="subtitle">使用弹性布局对页面空间区域进行标准化分割</span></a><div id="flexPanel" class="flexSystem"><div class="flex middle"><div>Col 1</div><div>Col 2</div><div class="flex-fixed" style="height:100px;line-height:76px;">Fixed</div><div>Col 4</div></div><div class="flex-gs"><div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">1</div><div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">2</div><div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">3</div><div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">4</div><div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">5</div><div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">6</div><div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">7</div><div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">8</div><div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">9</div><div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">10</div><div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">11</div><div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">12</div></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-target="#girdSystem" data-collapse>栅格布局 <span class="subtitle">使用栅格布局对页面空间区域进行标准化分割</span></a><div id="girdSystem" class="girdSystem collapse-appear"><div class="gs"><div class="row"><div class="col-xs-1">1</div><div class="col-xs-1">1</div><div class="col-xs-1">1</div><div class="col-xs-2">2</div><div class="col-xs-1">1</div><div class="col-xs-2">2</div><div class="col-xs-1">1</div><div class="col-xs-3">3</div></div><div class="row"><div class="col-xs-3">3</div><div class="col-xs-3">3</div><div class="col-xs-3">3</div><div class="col-xs-3">3</div></div><div class="row"><div class="col-xs-4">4</div><div class="col-xs-4">4</div><div class="col-xs-4">4</div></div><div class="row"><div class="col-xs-8">8</div><div class="col-xs-4">4</div></div><div class="row"><div class="col-xs-6">6</div><div class="col-xs-6">6</div></div></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-target="#cssResponsive" data-collapse>响应式 <span class="subtitle">针对不同的设备进行布局调整的辅助工具</span></a><div id="cssResponsive" class="collapse-appear"><div class="row"><div class="col-xs-12"><p class="f4">Responsive css defined</p></div><div class="col-xs-6"><p>For all the mobile device</p><p>Extra small devices (phones, less than 768px)</p><p>@media (max-width: @screen-sm-max) { ... }</p><p>Small devices (tablets, 768px and up)</p><p>@media (min-width: @screen-sm-min) { ... }</p></div><div class="col-xs-6"><p>For all the PC device</p><p>Medium devices (desktops, 992px and up)</p><p>@media (min-width: @screen-md-min) { ... }</p><p>Large devices (large desktops, 1200px and up)</p><p>@media (min-width: @screen-lg-min) { ... }</p></div></div><div class="row"><div class="col-xs-12"><div class="table-scroll"><table class="table responsive"><colgroup><col style="width: 135px;"><col><col><col><col></colgroup><thead><tr><th></th><th>Extra small <span class="f6">Phones (&lt;640px)</span></th><th>Small <span class="f6">Tablets (≥640px)</span></th><th>Medium <span class="f6">Desktops (≥992px)</span></th><th>Large <span class="f6">Desktops (≥1200px)</span></th></tr></thead><tbody><tr><th>Device</th><td>Phone</td><td>Pad or Landscape phone</td><td>Desktop or Landscape Pad</td><td>Large Desktop</td></tr><tr><th>Grid behavior</th><td>Horizontal at all times</td><td colspan="3">Collapsed to start, horizontal above breakpoints</td></tr><tr><th>Class prefix</th><td><code>.col-xs-</code></td><td><code>.col-sm-</code></td><td><code>.col-md-</code></td><td><code>.col-lg-</code></td></tr><tr><th># of columns</th><td colspan="4">12</td></tr></tbody><tbody class="container"><tr><th><code>.gs-fixed</code></th><td colspan="4">Gutter width: 30px (15px on each side of a column)</td></tr><tr class="no-topborder"><th></th><td>100%</td><td>100%</td><td>970px</td><td>1170px</td></tr><tr><th><code>.gs</code></th><td colspan="4">Gutter width: 30px (15px on each side of a column)</td></tr><tr class="no-topborder"><th></th><td>100%</td><td>100%</td><td>100%</td><td>100%</td></tr><tr><th><code>.gs-sin</code></th><td colspan="4">Gutter width: 0</td></tr><tr class="no-topborder"><th></th><td>100%</td><td>100%</td><td>100%</td><td>100%</td></tr></tbody><tbody><tr><th><code>.visible-xs-*</code></th><td class="is-visible">Visible</td><td class="is-hidden">Hidden</td><td class="is-hidden">Hidden</td><td class="is-hidden">Hidden</td></tr><tr><th><code>.visible-sm-*</code></th><td class="is-hidden">Hidden</td><td class="is-visible">Visible</td><td class="is-hidden">Hidden</td><td class="is-hidden">Hidden</td></tr><tr><th><code>.visible-md-*</code></th><td class="is-hidden">Hidden</td><td class="is-hidden">Hidden</td><td class="is-visible">Visible</td><td class="is-hidden">Hidden</td></tr><tr><th><code>.visible-lg-*</code></th><td class="is-hidden">Hidden</td><td class="is-hidden">Hidden</td><td class="is-hidden">Hidden</td><td class="is-visible">Visible</td></tr></tbody><tbody><tr><th><code>.hidden-xs</code></th><td class="is-hidden">Hidden</td><td class="is-visible">Visible</td><td class="is-visible">Visible</td><td class="is-visible">Visible</td></tr><tr><th><code>.hidden-sm</code></th><td class="is-visible">Visible</td><td class="is-hidden">Hidden</td><td class="is-visible">Visible</td><td class="is-visible">Visible</td></tr><tr><th><code>.hidden-md</code></th><td class="is-visible">Visible</td><td class="is-visible">Visible</td><td class="is-hidden">Hidden</td><td class="is-visible">Visible</td></tr><tr><th><code>.hidden-lg</code></th><td class="is-visible">Visible</td><td class="is-visible">Visible</td><td class="is-visible">Visible</td><td class="is-hidden">Hidden</td></tr></tbody></table></div></div></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-collapse data-target="#buttonPanel">按钮 <span class="subtitle">基本按钮风格</span></a><div id="buttonPanel"><div class="row"><div class="col-xs-6 col-sm-3"><a href="javascript:;" class="btn ghost-green small"><i class="icon-check"></i> <span>small</span></a><div class="blank-xs"></div></div><div class="col-xs-6 col-sm-3"><a href="javascript:;" class="btn orange small"><i class="icon-check"></i> <span>small</span></a><div class="blank-xs"></div></div><div class="col-xs-6 col-sm-3"><a href="javascript:;" class="btn ghost-blue"><i class="icon-check"></i> <span>normal</span></a><div class="blank-xs"></div></div><div class="col-xs-6 col-sm-3"><a href="javascript:;" class="btn red"><i class="icon-check"></i> <span>normal</span></a><div class="blank-xs"></div></div><div class="col-xs-6 col-sm-3"><a href="javascript:;" class="btn ghost-cyan large"><i class="icon-check"></i> <span>large</span></a><div class="blank-xs"></div></div><div class="col-xs-6 col-sm-3"><a href="javascript:;" class="btn yellow large"><i class="icon-check"></i> <span>large</span></a><div class="blank-xs"></div></div><div class="col-xs-6 col-sm-3"><a href="javascript:;" class="btn ghost-main loading"><i class="icon-check"></i> <span>loading...</span></a><div class="blank-xs"></div></div><div class="col-xs-6 col-sm-3"><a href="javascript:;" class="btn ghost-black" disabled="disabled"><i class="icon-check"></i> <span>disabled</span></a><div class="blank-xs"></div></div></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-collapse data-target="#tipPanel">提示 <span class="subtitle">提示框风格</span></a><div id="tipPanel"><div class="row"><div class="col-xs-6 col-sm-3"><a href="javascript:;" data-tip data-content="show on bottom side">top</a></div><div class="col-xs-6 col-sm-3 text-right"><a href="javascript:;" data-tip data-placement="left" data-content="show on left side">left</a></div><div class="col-xs-6 col-sm-3"><a href="javascript:;" data-tip data-placement="right" data-content="show on right side">right</a></div><div class="col-xs-6 col-sm-3 text-right"><a href="javascript:;" data-tip data-placement="bottom" data-content="show on top side">bottom</a></div></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-collapse data-target="#formPanel">表单 <span class="subtitle">标准的表单风格</span></a><div id="formPanel"><div id="form" data-form><div class="form row"><div class="col-xs-12 col-sm-6"><label for="txtReq">Required Box</label><div class="input left right"><i class="icon-user"></i> <input type="text" id="txtReq" name="name" placeholder="name" data-validate="required"> <i class="icon-asterisk"></i></div></div><div class="col-xs-12 col-sm-6"><label for="txtMail">Mail Box</label><div class="input right"><input type="email" id="txtMail" name="email" placeholder="email" data-validate="email"> <i class="icon-envelope"></i></div></div><div class="col-xs-12 col-sm-6"><label for="txtPhone">Phone Box</label><div class="input left right"><i class="icon-phone"></i> <input type="tel" id="txtPhone" name="phone" value="1234567890" data-validate="required,phone" data-inputformat data-type="phone"> <i class="icon-asterisk"></i></div></div><div class="col-xs-12 col-sm-6"><label for="ddlFequence">Fequence</label><div class="select-textbox"><label for="ddlFequence">Fequence</label><select id="ddlFequence" name="fequence" data-validate="required"><option value="" selected="selected" disabled="disabled">select a fequence</option><option value="Weekly">Weekly</option><option value="Daily">Daily</option><option value="Monthly">Monthly</option></select><i class="icon-caret-down"></i></div></div><div class="col-xs-12 col-sm-6"><label for="date">Date picker</label><div class="input right"><input type="text" id="date" name="date" data-picker="date" readonly="readonly" data-validate="required"><label for="date" class="icon-calendar"></label></div></div><div class="col-xs-12 col-sm-6"><label for="time">Time picker</label><div class="input right"><input type="text" id="time" name="time" data-picker="time" readonly="readonly" data-validate="required"><label for="time" class="icon-clock-o"></label></div></div><div class="col-xs-12 col-sm-6"><label>Select Gender</label><div class="radio"><label for="chMale"><input id="chMale" name="gender" type="radio" checked="checked" value="Male"> <i></i> <span>Male</span></label><label for="chkFemal"><input id="chkFemal" name="gender" type="radio" value="Female"> <i></i> <span>Female</span></label></div></div><div class="col-xs-12 col-sm-6"><label>Select Favor</label><div class="checkbox"><label for="rbtnFavor1"><input id="rbtnFavor1" name="favor" checked="checked" type="checkbox" value="Dance"> <i></i> <span>Dance</span></label><label for="rbtnFavor2"><input id="rbtnFavor2" name="favor" type="checkbox" value="Sing"> <i></i> <span>Sing</span></label><label for="rbtnFavor3"><input id="rbtnFavor3" name="favor" type="checkbox" value="Paint"> <i></i> <span>Paint</span></label></div></div><div class="col-xs-12"><a class="btn black" href="javascript:;" onclick="submit()">Submit</a></div></div></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-collapse data-target="#texboxPanel">输入框 <span class="subtitle">输入框风格</span></a><div id="texboxPanel"><div class="form row" data-form><div class="col-xs-12 col-sm-6"><div data-textbox><div class="input small left right"><label for="txtReq1">标签</label><i>@</i> <input type="email" id="txtReq1" name="name" value="" data-validate="required,email"> <i class="icon-envelope"></i></div></div></div><div class="col-xs-12 col-sm-6"><div data-textbox><div class="input left right"><label for="txtReq2">标签</label><i>@</i> <input type="email" id="txtReq2" name="name" value="" data-validate="required,email"> <i class="icon-envelope"></i></div></div></div><div class="col-xs-12 col-sm-6"><div data-textbox><div class="input large left right"><label for="txtReq3">标签</label><i>@</i> <input type="email" id="txtReq3" name="name" value="" data-validate="required,email"> <i class="icon-envelope"></i></div></div></div><div class="col-xs-12 col-sm-6"><div data-textbox><div class="textarea"><label for="textReq4">标签</label><textarea name="标签" id="textReq4" data-validate="required"></textarea></div></div></div></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-collapse data-target="#skeletonPanel">预览 <span class="subtitle">预加载的占位符</span></a><div id="skeletonPanel"><div class="flex-gs"><div class="flex-xs-12"><a href="javascript:;" id="loadingSection" class="btn orange">Loading</a><div class="blank-xs"></div></div><div class="flex-xs-6 flex-md-3"><div class="skeleton"></div></div><div class="flex-xs-6 flex-md-3"><div class="skeleton"></div></div><div class="flex-xs-6 flex-md-3"><div class="skeleton"></div></div><div class="flex-xs-6 flex-md-3"><div class="skeleton"></div></div></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-collapse data-target="#mapPanel">地图 <span class="subtitle">谷歌地图插件地图</span></a><div id="mapPanel"><h3>动态地图</h3><div data-gmap data-lat="-34.397" data-lng="150.644" data-onload="initialMap" data-inline="true" style="height:400px;"></div><h3>静态地图</h3><div data-gsmap data-type="streetview" data-address="san mateo, ca" style="height:400px;"></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-collapse data-target="#dialogPanel">对话框 <span class="subtitle">对话框插件</span></a><div id="dialogPanel"><p><a href="javascript:void(0)" data-dialog data-target="#popupPanel1">open dialog as default</a></p><script id="popupPanel1" type="text/template"><div class="dialog-title">Welcome to CUI!</div>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CUI 框架</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta description='the documation of UI framework' />
+    <meta name="Description" content="Author: Conjee Zou, UI framework, Category: Document, Lisence: MIT">
+    <link rel="manifest" href="dist/src/doc/src/manifest.json">
+    <link href="dist/src/cui.css" type="text/css" rel="stylesheet" />
+    <link rel="shortcut icon" href="dist/src/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="dist/src/favicon.ico" type="image/x-icon">
+</head>
+<div data-header class="header">
+    <div class="header-form">
+        <a class="header-form-logo" href="javascript:;"> <i class="icon-cui"></i></a>
+        <a class="header-form-btn" href="javascript:;" id="menuButton"><i class="icon-bars"></i></a>
+        <div data-textbox>
+            <div data-textbox="" class="input large right">
+                <label for="headerInput">Search for ...</label>
+                <input id="headerInput" type="text">
+                <a href="javascript:;" class="btn"><i class="icon-search"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="header-menu-list right">
+        <div class="header-menu-list-wrap">
+            <div class="header-menu-item right">
+                <a href="/ch">应用借口文档</a>
+            </div>
+            <div class="header-menu-item" data-headermenu>
+                <a href="javascript:;">案例</a>
+                <ul>
+                    <li><a href="javascript:;">推荐</a></li>
+                    <li><a href="javascript:;">站点</a></li>
+                    <li><a href="javascript:;">商务</a></li>
+                    <li class="splict"><a href="javascript:;">博客</a></li>
+                    <li><a href="javascript:;">Link1</a></li>
+                    <li><a href="javascript:;">Link2</a></li>
+                    <li><a href="javascript:;">Link3</a></li>
+                    <li><a href="javascript:;">Link4</a></li>
+                </ul>
+            </div>
+            <div class="header-menu-item">
+                <a href="javascript:;">设计文档</a>
+            </div>
+        </div>
+    </div>
+    <div class="header-overlay"></div>
+</div>
+<div style="height:50px;"></div>
+
+<body id="body" class="classic">
+
+<div class="gs-fixed">
+    <div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#cssColor">
+        配色方案
+        <span class="subtitle"> 一套可扩展的标准配色法则.</span>
+    </a>
+    <div id="cssColor">
+        <div class="row ">
+            <div class="col-xs-12">
+                <p class="f4">
+                    配色方案能够按照情景进行分组.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <p>
+                    主色调是WEB的情感表述基调,它是一种能够使人专注，提高辨识度的颜色
+                </p>
+                <p>
+                    用途: 链接的颜色, 默认按钮底色, 表头底色,页脚底色以及一些需要阐述观点亮明主题的地方.
+                </p>
+
+            </div>
+        </div>
+        <div class="row colors">
+            <div class="col-xs-3">
+                <div class="circle-item color-main">(0,0,0)</div>
+            </div>
+            <div class="col-xs-3">
+                <div class="circle-item color-main-l1">(0,0,0)</div>
+            </div>
+            <div class="col-xs-3">
+                <div class="circle-item color-main-l2">(0,0,0)</div>
+            </div>
+            <div class="col-xs-3">
+                <div class="circle-item color-main-l3">(0,0,0)</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <p>常用灰色: 线框线条分割线灰色; 文字灰色; 文字轻灰色; 不可使用提示色;</p>
+            </div>
+        </div>
+        <div class="row colors">
+            <div class="col-xs-3">
+                <div class="circle-item color-d">(0,0,0)</div>
+            </div>
+            <div class="col-xs-3">
+                <div class="circle-item color-4">(0,0,0)</div>
+            </div>
+            <div class="col-xs-3">
+                <div class="circle-item color-a">(0,0,0)</div>
+            </div>
+            <div class="col-xs-3">
+                <div class="circle-item color-a">(0,0,0)</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <p>
+                    警告色是橙色,使用这种颜色让用户感到好奇或兴奋.
+                </p>
+                <p>
+                    用途: 高亮文字, 提交按钮, 悬停状态以及一些特殊的超出常规的场景.
+                </p>
+            </div>
+        </div>
+        <div class="row colors">
+            <div class="col-xs-3">
+                <div class="circle-item color-warning">(0,0,0)</div>
+            </div>
+            <div class="col-xs-3">
+                <div class="circle-item color-warning-l1">(0,0,0)</div>
+            </div>
+            <div class="col-xs-3">
+                <div class="circle-item color-warning-l2">(0,0,0)</div>
+            </div>
+            <div class="col-xs-3">
+                <div class="circle-item color-warning-l3">(0,0,0)</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <p>
+                    安全色是绿色,使用这种颜色让用户感到快乐充满成就感.
+                </p>
+                <p>
+                    用途: 操作成功提示,值得信任的消息,利好消息,值得奖励的场景.
+                </p>
+            </div>
+
+        </div>
+        <div class="row colors">
+            <div class="col-xs-3">
+                <div class="circle-item color-safe">(0,0,0)</div>
+            </div>
+            <div class="col-xs-3">
+                <div class="circle-item color-safe-l1">(0,0,0)</div>
+            </div>
+            <div class="col-xs-3">
+                <div class="circle-item color-safe-l2">(0,0,0)</div>
+            </div>
+            <div class="col-xs-3">
+                <div class="circle-item color-safe-l3">(0,0,0)</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <p>
+                    危险色是红色.使用这种颜色让用户感到警惕严肃.
+                </p>
+                <p>
+                    用途: 错误信息, 危险提示, 超出预期的突发场景.
+                </p>
+            </div>
+        </div>
+        <div class="row colors">
+            <div class="col-xs-3">
+                <div class="circle-item color-danger">(0,0,0)</div>
+            </div>
+            <div class="col-xs-3">
+                <div class="circle-item color-danger-l1">(0,0,0)</div>
+            </div>
+
+            <div class="col-xs-3">
+                <div class="circle-item color-danger-l2">(0,0,0)</div>
+            </div>
+            <div class="col-xs-3">
+                <div class="circle-item color-danger-l3">(0,0,0)</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <p>
+                    提示信息是淡黄色.使用这种颜色让用户感到放松清闲.
+                </p>
+                <p>
+                    用途: 友情提示信息,辅助阅读信息,无需集中注意力查阅的小贴士.
+                </p>
+            </div>
+
+        </div>
+        <div class="row colors">
+            <div class="col-xs-3">
+                <div class="circle-item color-tip">(0,0,0)</div>
+            </div>
+            <div class="col-xs-3">
+                <div class="circle-item color-tip-l1">(0,0,0)</div>
+            </div>
+            <div class="col-xs-3">
+                <div class="circle-item color-tip-l2">(0,0,0)</div>
+            </div>
+            <div class="col-xs-3">
+                <div class="circle-item color-tip-l3">(0,0,0)</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#typographPanel">
+        文字排版
+        <span class="subtitle"> 文体设计,以及以标准字体为基准的排版设计</span>
+    </a>
+    <div id="typographPanel">
+        <p>浏览器默认的字体大小为16px, 我们视<b>16px</b>为基础测量单位, 并使用<b>0.618</b>为基本递增/递减倍率. 字体大小, 标题大小, 内边距, 外边距 都是根据基本字体乘以倍率得到的黄金分割比例排版.</p>
+        <div class="s-img-typograph" style="display:none"></div>
+        <div class="h0">特级标题</div>
+        <div class="h1">一级标题</div>
+        <div class="h2">二级标题</div>
+        <div class="h3">三级标题</div>
+        <div class="h4">四级标题</div>
+        <div class="h5">五级标题</div>
+        <div class="h6">六级标题</div>
+        <div class="paragraph">
+            <p>$font-size-base: 1rem;</p>
+            <p>$increse: 0.618;</p>
+            <p> $font-size-0: ($font-size-base + $increse*4);</p>
+            <p> $font-size-1: ($font-size-base + $increse*2.5);</p>
+            <p> $font-size-2: ($font-size-base + $increse*1.5);</p>
+            <p> $font-size-3: ($font-size-base + $increse);</p>
+            <p> $font-size-4: ($font-size-base + $increse/2);</p>
+            <p> $font-size-5: $font-size-base;</p>
+            <p> $font-size-6: ($font-size-base - $increse/2);</p>
+            <p> $font-size-7: $font-size-base * $increse;</p>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#layoutPanel">
+        布局
+            <span class="subtitle"> 布局规格</span>
+    </a>
+    <div id="layoutPanel">
+        <div class="gr-panel">
+            <div class="gr">
+                <div class="gr-item" >
+                    <div class="gr-item">
+                        <div class="gr-item"></div>
+                        <div class="gr-item"></div>
+                    </div>
+                    <div class="gr-item">
+                        <div class="gr-item"></div>
+                        <div class="gr-item"></div>
+                    </div>
+                </div>
+                <div class="gr-item">
+                    <div class="gr-item">
+                        <div class="gr-item">which always equal increste rate of width</div>
+                        <div class="gr-item">the responsive layout will have a limitation of height</div>
+                    </div>
+                    <div class="gr-item">
+                        <div class="gr-item"></div>
+                        <div class="gr-item"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#flexPanel">
+        弹性布局
+        <span class="subtitle"> 使用弹性布局对页面空间区域进行标准化分割</span>
+    </a>
+    <div id="flexPanel" class="flexSystem">
+        <div class="flex middle">
+            <div>Col 1</div>
+            <div>Col 2</div>
+            <div class="flex-fixed" style="height:100px;line-height:76px;">Fixed</div>
+            <div>Col 4</div>
+        </div>
+        <div class="flex-gs">
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">1</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">2</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">3</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">4</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">5</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">6</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">7</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">8</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">9</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">10</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">11</div>
+            <div class="flex-xs-6 flex-sm-3 flex-md-4 flex-lg-2">12</div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-target="#girdSystem" data-collapse>
+        栅格布局
+        <span class="subtitle"> 使用栅格布局对页面空间区域进行标准化分割</span>
+    </a>
+    <div id="girdSystem" class="girdSystem collapse-appear" >
+        <div class="gs">
+            <div class="row">
+                <div class="col-xs-1">1</div>
+                <div class="col-xs-1">1</div>
+                <div class="col-xs-1">1</div>
+                <div class="col-xs-2">2</div>
+                <div class="col-xs-1">1</div>
+                <div class="col-xs-2">2</div>
+                <div class="col-xs-1">1</div>
+                <div class="col-xs-3">3</div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-3">3</div>
+                <div class="col-xs-3">3</div>
+                <div class="col-xs-3">3</div>
+                <div class="col-xs-3">3</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">4</div>
+                <div class="col-xs-4">4</div>
+                <div class="col-xs-4">4</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">8</div>
+                <div class="col-xs-4">4</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">6</div>
+                <div class="col-xs-6">6</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-target="#cssResponsive" data-collapse>
+        响应式
+        <span class="subtitle"> 针对不同的设备进行布局调整的辅助工具</span>
+    </a>
+    <div id="cssResponsive" class="collapse-appear">
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="f4">
+                    Responsive css defined
+                </p>
+            </div>
+            <div class="col-xs-6">
+                <p>For all the mobile device</p>
+                <p>Extra small devices (phones, less than 768px)</p>
+                <p>@media (max-width: @screen-sm-max) { ... }</p>
+                <p>Small devices (tablets, 768px and up)</p>
+                <p>@media (min-width: @screen-sm-min) { ... }</p>
+            </div>
+            <div class="col-xs-6">
+                <p>For all the PC device</p>
+                <p>Medium devices (desktops, 992px and up)</p>
+                <p>@media (min-width: @screen-md-min) { ... }</p>
+                <p>Large devices (large desktops, 1200px and up)</p>
+                <p>@media (min-width: @screen-lg-min) { ... }</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="table-scroll">
+                    <table class="table responsive">
+                        <colgroup>
+                            <col style="width: 135px;">
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th> Extra small
+                                <span class="f6">Phones (&lt;640px)</span>
+                            </th>
+                            <th> Small
+                                <span class="f6">Tablets (≥640px)</span>
+                            </th>
+                            <th> Medium
+                                <span class="f6">Desktops (≥992px)</span>
+                            </th>
+                            <th> Large
+                                <span class="f6">Desktops (≥1200px)</span>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th>
+                                Device
+                            </th>
+                            <td>Phone</td>
+                            <td>Pad or Landscape phone</td>
+                            <td>Desktop or Landscape Pad</td>
+                            <td>Large Desktop</td>
+                        </tr>
+                        <tr>
+                            <th>Grid behavior</th>
+                            <td>Horizontal at all times</td>
+                            <td colspan="3">Collapsed to start, horizontal above breakpoints</td>
+                        </tr>
+                        <tr>
+                            <th>Class prefix</th>
+                            <td><code>.col-xs-</code></td>
+                            <td><code>.col-sm-</code></td>
+                            <td><code>.col-md-</code></td>
+                            <td><code>.col-lg-</code></td>
+                        </tr>
+                        <tr>
+                            <th># of columns</th>
+                            <td colspan="4">12</td>
+                        </tr>
+                        </tbody>
+                        <tbody class="container">
+                        <tr>
+                            <th><code>.gs-fixed</code></th>
+                            <td colspan="4">Gutter width: 30px (15px on each side of a column)</td>
+                        </tr>
+                        <tr class="no-topborder">
+                            <th></th>
+                            <td>100%</td>
+                            <td>100%</td>
+                            <td>970px</td>
+                            <td>1170px</td>
+                        </tr>
+                        <tr>
+                            <th><code>.gs</code></th>
+                            <td colspan="4">Gutter width: 30px (15px on each side of a column)</td>
+                        </tr>
+                        <tr class="no-topborder">
+                            <th></th>
+                            <td>100%</td>
+                            <td>100%</td>
+                            <td>100%</td>
+                            <td>100%</td>
+                        </tr>
+                        <tr>
+                            <th><code>.gs-sin</code></th>
+                            <td colspan="4">Gutter width: 0</td>
+                        </tr>
+                        <tr class="no-topborder">
+                            <th></th>
+                            <td>100%</td>
+                            <td>100%</td>
+                            <td>100%</td>
+                            <td>100%</td>
+                        </tr>
+                        </tbody>
+                        <tbody>
+                        <tr>
+                            <th>
+                                <code>.visible-xs-*</code>
+                            </th>
+                            <td class="is-visible">Visible</td>
+                            <td class="is-hidden">Hidden</td>
+                            <td class="is-hidden">Hidden</td>
+                            <td class="is-hidden">Hidden</td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>.visible-sm-*</code>
+                            </th>
+                            <td class="is-hidden">Hidden</td>
+                            <td class="is-visible">Visible</td>
+                            <td class="is-hidden">Hidden</td>
+                            <td class="is-hidden">Hidden</td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>.visible-md-*</code>
+                            </th>
+                            <td class="is-hidden">Hidden</td>
+                            <td class="is-hidden">Hidden</td>
+                            <td class="is-visible">Visible</td>
+                            <td class="is-hidden">Hidden</td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>.visible-lg-*</code>
+                            </th>
+                            <td class="is-hidden">Hidden</td>
+                            <td class="is-hidden">Hidden</td>
+                            <td class="is-hidden">Hidden</td>
+                            <td class="is-visible">Visible</td>
+                        </tr>
+                        </tbody>
+                        <tbody>
+                        <tr>
+                            <th>
+                                <code>.hidden-xs</code>
+                            </th>
+                            <td class="is-hidden">Hidden</td>
+                            <td class="is-visible">Visible</td>
+                            <td class="is-visible">Visible</td>
+                            <td class="is-visible">Visible</td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>.hidden-sm</code>
+                            </th>
+                            <td class="is-visible">Visible</td>
+                            <td class="is-hidden">Hidden</td>
+                            <td class="is-visible">Visible</td>
+                            <td class="is-visible">Visible</td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>.hidden-md</code>
+                            </th>
+                            <td class="is-visible">Visible</td>
+                            <td class="is-visible">Visible</td>
+                            <td class="is-hidden">Hidden</td>
+                            <td class="is-visible">Visible</td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <code>.hidden-lg</code>
+                            </th>
+                            <td class="is-visible">Visible</td>
+                            <td class="is-visible">Visible</td>
+                            <td class="is-visible">Visible</td>
+                            <td class="is-hidden">Hidden</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#buttonPanel">
+        按钮
+        <span class="subtitle"> 基本按钮风格</span>
+    </a>
+    <div id="buttonPanel">
+        <div class="row">
+            <div class="col-xs-6 col-sm-3">
+                <a href="javascript:;" class="btn ghost-green small"><i class="icon-check"></i> <span>small</span></a>
+                <div class="blank-xs"></div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <a href="javascript:;" class="btn orange small"><i class="icon-check"></i> <span>small</span></a>
+                <div class="blank-xs"></div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <a href="javascript:;" class="btn ghost-blue"><i class="icon-check"></i> <span>normal</span></a>
+                <div class="blank-xs"></div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <a href="javascript:;" class="btn red"><i class="icon-check"></i> <span>normal</span></a>
+                <div class="blank-xs"></div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <a href="javascript:;" class="btn ghost-cyan large"><i class="icon-check"></i> <span>large</span></a>
+                <div class="blank-xs"></div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <a href="javascript:;" class="btn yellow large"><i class="icon-check"></i> <span>large</span></a>
+                <div class="blank-xs"></div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <a href="javascript:;" class="btn ghost-main loading"><i class="icon-check"></i> <span>loading...</span></a>
+                <div class="blank-xs"></div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <a href="javascript:;" class="btn ghost-black" disabled><i class="icon-check"></i> <span>disabled</span></a>
+                <div class="blank-xs"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#tipPanel">
+        提示
+        <span class="subtitle"> 提示框风格</span>
+    </a>
+    <div id="tipPanel">
+        <div class="row">
+            <div class="col-xs-6 col-sm-3">
+                <a href="javascript:;"
+                   data-tip
+                   data-content="show on bottom side">
+                    top</a>
+            </div>
+            <div class="col-xs-6 col-sm-3 text-right">
+                <a href="javascript:;"
+                   data-tip
+                   data-placement="left"
+                   data-content="show on left side">
+                    left</a>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+
+                <a href="javascript:;"
+                   data-tip
+                   data-placement="right"
+                   data-content="show on right side">
+                    right</a>
+            </div>
+            <div class="col-xs-6 col-sm-3 text-right">
+                <a href="javascript:;"
+                   data-tip
+                   data-placement="bottom"
+                   data-content="show on top side">
+                    bottom</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#formPanel">
+        表单
+        <span class="subtitle"> 标准的表单风格</span>
+    </a>
+    <div id="formPanel">
+        <div id="form" data-form>
+            <div class="form row">
+                <div class="col-xs-12 col-sm-6">
+                    <label for="txtReq">Required Box</label>
+                    <div class="input left right">
+                        <i class="icon-user"></i>
+                        <input type="text" id="txtReq" name='name' placeholder="name" data-validate='required'>
+                        <i class="icon-asterisk"></i>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <label for="txtMail">Mail Box</label>
+                    <div class="input right">
+                        <input type="email" id="txtMail" name='email' placeholder="email" data-validate='email'>
+                        <i class="icon-envelope"></i>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <label for="txtPhone">Phone Box</label>
+                    <div class="input left right">
+                        <i class="icon-phone"></i>
+                        <input type="tel" id="txtPhone" name='phone' value="1234567890" data-validate='required,phone' data-inputformat
+                               data-type="phone">
+                        <i class="icon-asterisk"></i>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <label for="ddlFequence">Fequence</label>
+                    <div class="select-textbox">
+                        <label for="ddlFequence">Fequence</label>
+                        <select id="ddlFequence" name="fequence" data-validate="required">
+                            <option value="" selected disabled>select a fequence</option>
+                            <option value="Weekly">Weekly</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Monthly">Monthly</option>
+                        </select>
+                        <i class="icon-caret-down"></i>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <label for="date">Date picker</label>
+                    <div class="input right">
+                        <input type="text" id="date" name='date' data-picker="date" readonly data-validate="required">
+                        <label for="date" class="icon-calendar"></label>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <label for="time">Time picker</label>
+                    <div class="input right">
+                        <input type="text" id="time" name='time' data-picker="time" readonly data-validate="required">
+                        <label for="time" class="icon-clock-o"></label>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <label>Select Gender</label>
+                    <div class="radio">
+                        <label for="chMale">
+                            <input id="chMale" name="gender" type="radio" checked value="Male">
+                            <i></i>
+                            <span>Male</span>
+                        </label>
+                        <label for="chkFemal">
+                            <input id="chkFemal" name="gender" type="radio" value="Female">
+                            <i></i>
+                            <span>Female</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <label>Select Favor</label>
+                    <div class="checkbox">
+                        <label for="rbtnFavor1">
+                            <input id="rbtnFavor1" name="favor" checked type="checkbox" value="Dance">
+                            <i></i>
+                            <span>Dance</span>
+                        </label>
+
+                        <label for="rbtnFavor2">
+                            <input id="rbtnFavor2" name="favor" type="checkbox" value="Sing">
+                            <i></i>
+                            <span>Sing</span>
+                        </label>
+
+                        <label for="rbtnFavor3">
+                            <input id="rbtnFavor3" name="favor" type="checkbox" value="Paint">
+                            <i></i>
+                            <span>Paint</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <a class="btn black" href="javascript:;" onclick="submit()">Submit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#texboxPanel">
+        输入框
+        <span class="subtitle"> 输入框风格</span>
+    </a>
+    <div id="texboxPanel">
+        <div class="form row" data-form>
+            <div class="col-xs-12 col-sm-6">
+                <div data-textbox>
+                    <div class="input small left right">
+                        <label for="txtReq1">标签</label>
+                        <i>@</i>
+                        <input type="email" id="txtReq1" name='name' value="" data-validate='required,email'>
+                        <i class="icon-envelope"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div data-textbox>
+                    <div class="input left right">
+                        <label for="txtReq2">标签</label>
+                        <i>@</i>
+                        <input type="email" id="txtReq2" name='name' value="" data-validate='required,email'>
+                        <i class="icon-envelope"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div data-textbox>
+                    <div class="input large left right">
+                        <label for="txtReq3">标签</label>
+                        <i>@</i>
+                        <input type="email" id="txtReq3" name='name' value="" data-validate='required,email'>
+                        <i class="icon-envelope"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div data-textbox>
+                    <div class="textarea">
+                        <label for="textReq4">标签</label>
+                        <textarea name="标签" id="textReq4" data-validate='required'></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#skeletonPanel">
+        预览
+        <span class="subtitle"> 预加载的占位符</span>
+    </a>
+    <div id="skeletonPanel">
+        <div class="flex-gs">
+            <div class="flex-xs-12">
+                <a href="javascript:;" id="loadingSection" class="btn orange">Loading</a>
+                <div class="blank-xs"></div>
+            </div>
+            <div class="flex-xs-6 flex-md-3"><div class="skeleton"></div></div>
+            <div class="flex-xs-6 flex-md-3"><div class="skeleton"></div></div>
+            <div class="flex-xs-6 flex-md-3"><div class="skeleton"></div></div>
+            <div class="flex-xs-6 flex-md-3"><div class="skeleton"></div></div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+    <div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#mapPanel">
+        地图
+            <span class="subtitle"> 谷歌地图插件地图</span>
+    </a>
+    <div id="mapPanel">
+        <h3>动态地图</h3>
+        <div data-gmap data-lat="-34.397" data-lng="150.644" data-onload="initialMap" data-inline="true" style="height:400px;"> </div>
+        <h3>静态地图</h3>
+        <div data-gsmap data-type="streetview" data-address="san mateo, ca" style="height:400px;"> </div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#dialogPanel">
+        对话框
+        <span class="subtitle"> 对话框插件</span>
+    </a>
+    <div id="dialogPanel" >
+        <p>
+            <a href="javascript:void(0)" data-dialog data-target="#popupPanel1">open dialog as default</a>
+        </p>
+        <script id="popupPanel1" type="text/template">
+            <div class="dialog-title">Welcome to CUI!</div>
             <p>
                 A modal dialog is a window that forces the user to interact with it before they can go back to using the parent application.
-            </p></script><p><a href="javascript:void(0)" data-dialog data-target="#popupPanel0" data-theme="fullscreen">open dialog as fullscreen</a></p><script id="popupPanel0" type="text/template"><div class="block-center text-center" dialog-close>
+            </p>
+        </script>
+        <p>
+            <a href="javascript:void(0)" data-dialog data-target="#popupPanel0" data-theme="fullscreen">open dialog as fullscreen</a>
+        </p>
+        <script id="popupPanel0" type="text/template">
+            <div class="block-center text-center" dialog-close>
                 <div class="text-white">Welcome to CUI!</div>
                 <p class=" text-white">A modal dialog is a window that forces the user to interact with it before they can go back to using the
                     parent application.</p>
-            </div></script><p><a href="javascript:void(0)" data-dialog data-target="#popupPanel" data-theme="dropdown">open dialog as dropdown</a></p><script id="popupPanel" type="text/template"><div class="f3">Hello World!</div>
+            </div>
+        </script>
+        <p>
+            <a href="javascript:void(0)" data-dialog data-target="#popupPanel" data-theme="dropdown">open dialog as dropdown</a>
+        </p>
+        <script id="popupPanel" type="text/template">
+            <div class="f3">Hello World!</div>
             <div class="blank-xs"></div>
             <ul>
                 <li><a href="javascript:;">Apple</a></li>
                 <li><a href="javascript:;">Banana</a></li>
                 <li><a href="javascript:;">Cat</a></li>
-            </ul></script></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-collapse data-target="#collapsePanel">折叠 <span class="subtitle">折叠插件</span></a><div id="collapsePanel"><div class="row"><div class="col-xs-12 col-sm-3"><dl style="position: relative;"><dt><a href="javascript:void(0)" class="collapse-more" data-collapse data-target="#plusPanel" data-once="true" data-isexpand="true"><span>... show more</span></a></dt><dd id="plusPanel" style="height: 58px; overflow: hidden;">jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.</dd></dl></div><div class="col-xs-12 col-sm-3"><dl><dd id="anglePanel" style="height: 37px; overflow: hidden;">jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.</dd><dt><a href="javascript:;" data-collapse data-target="#anglePanel" data-isexpand="true" data-showtext="open" data-hidetext="collapsed"><i class="icon-angle-down"></i> <span>collapsed</span></a></dt></dl></div><div class="col-xs-12 col-sm-3"><dl><dt><a href="javascript:;" data-collapse data-target="#eyePanel" data-isexpand="true" data-showtext="shown" data-hidetext="hidden"><i class="icon-eye-slash"></i> <span>hidden</span></a></dt><dd id="eyePanel" style="height: 0; overflow: hidden;">jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.</dd></dl></div><div class="col-xs-12 col-sm-3"><dl style="position: relative;"><dt><a href="javascript:;" data-collapse data-target="#caretPanel"><span>dropdown menu</span> <i class="icon-caret-right"></i></a></dt><dd id="caretPanel" class="collapse-menu">jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.</dd></dl></div></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-collapse data-target="#tabsPanel">标签页 <span class="subtitle">可以切换面板的标签栏</span></a><div id="tabsPanel"><div class="tabs default" data-tabs><ul class="flex-gs"><li data-tab data-target="#tabA" class="flex-gs-4 active"><a href="javascript:;" class="btn">A</a></li><li data-tab data-target="#tabB" class="flex-gs-4"><a href="javascript:;" class="btn">B</a></li><li data-tab data-target="#tabC" class="flex-gs-4"><a href="javascript:;" class="btn">C</a></li></ul><div id="tabA" class="tab-panel">show content of A panel</div><div id="tabB" class="tab-panel">show content of B panel</div><div id="tabC" class="tab-panel">show content of C panel</div></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-collapse data-target="#gridtablePanel">响应式表格 <span class="subtitle">在小屏幕下切换到键值对列表布局</span></a><div id="gridtablePanel"><table class="gridtable" data-gridtable><thead><tr><th>Name</th><th>Age</th><th>Email</th><th>Sex</th><th>Phone</th></tr></thead><tbody><tr><td>Conjee</td><td>30</td><td>shishiv30@live.cn</td><td>Male</td><td>18049****48</td></tr><tr><td>Tom</td><td>28</td><td>Tom@gmail.com</td><td>Male</td><td>13696****93</td></tr><tr><td>Lily</td><td>25</td><td>Lily@gmail.com</td><td>Female</td><td>16934****26</td></tr></tbody></table></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-collapse data-target="#rangesilderPanel">滑动条 <span class="subtitle">滑动条插件</span></a><div id="rangesilderPanel"><div class="form"><div class="row" data-ranger data-max="10000" data-min="100" data-decimals="1" data-step="100" data-target="#ranger" data-onupdate="ranger.update" data-onchang="ranger.change"><div id="ranger" class="col-xs-12"></div><div class="col-xs-6" data-textbox><div class="input left"><label for="txtPriceMin">Min price</label><i>$</i> <input type="text" id="txtPriceMin" name="min" value="3000"></div></div><div class="col-xs-6" data-textbox><div class="input left"><label for="txtPriceMax">Max price</label><i>$</i> <input type="text" id="txtPriceMax" name="max" value="6000"></div></div></div></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2 shown" data-collapse data-target="#shifterPanel">切换廊 <span class="subtitle">切换廊插件</span></a><div id="shifterPanel"><div class="shifter" data-shifter><ul><li><img data-img="dist/src/img/01.jpg" alt="This is a image."></li><li><img data-img="dist/src/img/02.jpg" alt="This is a image."></li><li><img data-img="dist/src/img/03.jpg" alt="This is a image."></li><li><img data-img="dist/src/img/04.jpg" alt="This is a image."></li><li><img data-img="dist/src/img/05.jpg" alt="This is a image."></li><li><img data-img="dist/src/img/06.jpg" alt="This is a image."></li><li><img data-img="dist/src/img/07.jpg" alt="This is a image."></li><li><img data-img="dist/src/img/404.jpg" alt="This is a image."></li></ul></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2 shown" data-collapse data-target="#slickPanel">幻灯片 <span class="subtitle">幻灯片插件</span></a><div id="slickPanel"><div class="slicker" data-slicker><ul><li><img data-img="dist/src/img/01.jpg" alt="This is a image."></li><li><img data-img="dist/src/img/02.jpg" alt="This is a image."></li><li><img data-img="dist/src/img/03.jpg" alt="This is a image."></li><li><img data-img="dist/src/img/04.jpg" alt="This is a image."></li><li><img data-img="dist/src/img/05.jpg" alt="This is a image."></li><li><img data-img="dist/src/img/06.jpg" alt="This is a image."></li><li><img data-img="dist/src/img/07.jpg" alt="This is a image."></li><li><img data-img="dist/src/img/404.jpg" alt="This is a image."></li></ul></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-collapse data-target="#dataTable">数据表格 <span class="subtitle">数据表单插件</span></a><div id="dataTable"><div data-datatable data-initafter="datatable.inital" data-maxcount="2"></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-collapse data-target="#spritesImage">雪碧图 <span class="subtitle">将多张图片合成一张图片</span></a><div id="spritesImage" style="display:none"><div class="s-img-cn"></div><div class="s-img-jp"></div><div class="s-img-us"></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-collapse data-target="#eventPanel">手势 <span class="subtitle">扩展手势</span></a><div id="eventPanel"><div class="row"><div class="col-xs-12"><div id="eventDiv" style="height:300px;padding:100px 50px; text-align:center;background-color:#ddd;">try to move on the panel with your finger.</div></div></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-target="#measurement" data-collapse>刻度尺 <span class="subtitle">比较数据的刻度</span></a><div id="measurement" class="collapse-appear"><div data-measurement data-min="0" data-max="1000"></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-collapse data-target="#imgzoomPanel">图片缩放 <span class="subtitle">图片缩放</span></a><div id="imgzoomPanel"><div class="row"><div class="col-xs-6"><a href="javascript:;" class="btn" data-imgzoom data-max="100" data-step="10" data-target="#imgzoomView"><i class="icon-plus"></i> zoom in</a></div><div class="col-xs-6"><a href="javascript:;" class="btn" data-imgzoom data-min="50" data-step="-10" data-target="#imgzoomView"><i class="icon-minus">zoom out</i></a></div><div class="col-xs-12"><div id="imgzoomView" class="imgzoom" style="max-height:300px; overflow:scroll;"><li><img data-img="dist/src/img/01.jpg" alt="This is a image."></li><li><img data-img="dist/src/img/02.jpg" alt="This is a image."></li><li><img data-img="dist/src/img/03.jpg" alt="This is a image."></li><li><img data-img="dist/src/img/04.jpg" alt="This is a image."></li><li><img data-img="dist/src/img/05.jpg" alt="This is a image."></li></div></div></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2 shown" data-collapse data-target="#loadimagePanel">加载图片 <span class="subtitle">延迟加载图片</span></a><div id="loadimagePanel"><div><img data-img="dist/src/img/download-1.jpg" style="height:200px;width:300px;"></div><div><img data-img="dist/src/img/download-2.jpg" style="height:200px;width:300px;"></div><div><img data-img="dist/src/img/download-3.jpg" style="height:200px;width:300px;"></div><div><img data-img="dist/src/img/404.jpg" style="height:200px;width:300px;"></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2" data-collapse data-target="#stickyPanel">粘性贴 <span class="subtitle">new sticky style</span></a><div id="stickyPanel"><div class="sticky-container"><div data-sticky class="sticky-box"></div></div></div></div></div></div><div class="row"><div class="col-xs-12"><div class="panel"><a href="javascript:;" class="h2 shown" data-collapse data-target="#gridviewPanel">瀑布流 <span class="subtitle">适合海量图片展示的瀑布流布局</span></a><div id="gridviewPanel"><div class="row"><div class="col-xs-12"><div data-gridview></div></div></div></div></div></div></div></div></body><script>window.context = {
+            </ul>
+        </script>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#collapsePanel">
+        折叠
+        <span class="subtitle"> 折叠插件</span>
+    </a>
+    <div id="collapsePanel">
+        <div class="row">
+            <div class="col-xs-12 col-sm-3">
+                <dl style="position: relative;">
+                    <dt>
+                        <a href="javascript:void(0)"
+                           class="collapse-more"
+                           data-collapse
+                           data-target="#plusPanel"
+                           data-once="true"
+                           data-isexpand="true"
+                        >
+                            <span>... show more</span>
+                        </a>
+                    </dt>
+                    <dd id="plusPanel" style="height: 58px; overflow: hidden;">
+                        jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation,
+                        event handling,
+                        animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination
+                        of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <dl>
+                    <dd id="anglePanel" style="height: 37px; overflow: hidden;">jQuery is a fast, small, and feature-rich JavaScript library. It makes
+                        things like
+                        HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works
+                        across a multitude
+                        of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write
+                        JavaScript.
+                    </dd>
+                    <dt><a href="javascript:;" data-collapse data-target="#anglePanel" data-isexpand="true" data-showtext="open"
+                           data-hidetext="collapsed"><i
+                                    class="icon-angle-down"></i> <span>collapsed</span> </a></dt>
+                </dl>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <dl>
+                    <dt><a href="javascript:;" data-collapse data-target="#eyePanel" data-isexpand="true" data-showtext="shown"
+                           data-hidetext="hidden"><i
+                                    class="icon-eye-slash"></i> <span>hidden</span></a></dt>
+                    <dd id="eyePanel" style="height: 0; overflow: hidden;">jQuery is a fast, small, and feature-rich JavaScript library. It makes
+                        things like HTML
+                        document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across
+                        a multitude
+                        of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write
+                        JavaScript.
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <dl style="position: relative;">
+                    <dt>
+                        <a href="javascript:;" data-collapse data-target="#caretPanel">
+                            <span>dropdown menu</span> <i class="icon-caret-right"></i>
+                        </a>
+                    </dt>
+                    <dd id="caretPanel" class="collapse-menu">jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML
+                        document
+                        traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a
+                        multitude
+                        of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write
+                        JavaScript.
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#tabsPanel">
+        标签页
+            <span class="subtitle"> 可以切换面板的标签栏</span>
+    </a>
+    <div id="tabsPanel">
+        <div class="tabs default" data-tabs>
+            <ul class="flex-gs">
+                <li data-tab data-target="#tabA" class="flex-gs-4 active"><a href="javascript:;" class="btn">A</a></li>
+                <li data-tab data-target="#tabB" class="flex-gs-4"><a href="javascript:;" class="btn">B</a></li>
+                <li data-tab data-target="#tabC" class="flex-gs-4"><a href="javascript:;" class="btn">C</a></li>
+            </ul>
+            <div id="tabA" class="tab-panel">show content of A panel</div>
+            <div id="tabB" class="tab-panel">show content of B panel</div>
+            <div id="tabC" class="tab-panel">show content of C panel</div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#gridtablePanel">
+        响应式表格
+        <span class="subtitle"> 在小屏幕下切换到键值对列表布局</span>
+    </a>
+    <div id="gridtablePanel" >
+        <table class="gridtable" data-gridtable>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Sex</th>
+                <th>Phone</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Conjee</td>
+                <td>30</td>
+                <td>shishiv30@live.cn</td>
+                <td>Male</td>
+                <td>18049****48</td>
+            </tr>
+
+            <tr>
+                <td>Tom</td>
+                <td>28</td>
+                <td>Tom@gmail.com</td>
+                <td>Male</td>
+                <td>13696****93</td>
+            </tr>
+            <tr>
+                <td>Lily</td>
+                <td>25</td>
+                <td>Lily@gmail.com</td>
+                <td>Female</td>
+                <td>16934****26</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#rangesilderPanel">
+        滑动条
+        <span class="subtitle"> 滑动条插件</span>
+    </a>
+    <div id="rangesilderPanel">
+        <div class="form">
+            <div class="row"
+                 data-ranger
+                 data-max="10000"
+                 data-min="100"
+                 data-decimals="1"
+                 data-step="100"
+                 data-target="#ranger"
+                 data-onupdate="ranger.update"
+                 data-onchang="ranger.change">
+                <div id="ranger" class="col-xs-12"></div>
+                <div class="col-xs-6" data-textbox>
+                    <div class="input left">
+                        <label for="txtPriceMin">Min price</label>
+                        <i>$</i>
+                        <input type="text"
+                               id="txtPriceMin"
+                               name="min"
+                               value="3000"/>
+                    </div>
+                </div>
+                <div class="col-xs-6" data-textbox>
+                    <div class="input left">
+                        <label for="txtPriceMax">Max price</label>
+                        <i>$</i>
+                        <input type="text"
+                               id="txtPriceMax"
+                               name="max"
+                               value="6000"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2 shown" data-collapse data-target="#shifterPanel">
+        切换廊
+        <span class="subtitle"> 切换廊插件</span>
+    </a>
+    <div id="shifterPanel">
+        <div class="shifter" data-shifter>
+            <ul>
+                <li>
+                    <img data-img="dist/src/img/01.jpg" alt="This is a image.">
+                </li>
+                <li>
+                    <img data-img="dist/src/img/02.jpg" alt="This is a image.">
+                </li>
+                <li>
+                    <img data-img="dist/src/img/03.jpg" alt="This is a image.">
+                </li>
+                <li>
+                    <img data-img="dist/src/img/04.jpg" alt="This is a image.">
+                </li>
+                <li>
+                    <img data-img="dist/src/img/05.jpg" alt="This is a image.">
+                </li>
+                <li>
+                    <img data-img="dist/src/img/06.jpg" alt="This is a image.">
+                </li>
+                <li>
+                    <img data-img="dist/src/img/07.jpg" alt="This is a image.">
+                </li>
+                <li>
+                    <img data-img="dist/src/img/404.jpg" alt="This is a image.">
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2 shown" data-collapse data-target="#slickPanel">
+        幻灯片
+        <span class="subtitle"> 幻灯片插件</span>
+    </a>
+    <div id="slickPanel">
+        <div class="slicker" data-slicker>
+            <ul>
+                <li>
+                    <img data-img="dist/src/img/01.jpg" alt="This is a image.">
+                </li>
+                <li>
+                    <img data-img="dist/src/img/02.jpg" alt="This is a image.">
+                </li>
+                <li>
+                    <img data-img="dist/src/img/03.jpg" alt="This is a image.">
+                </li>
+                <li>
+                    <img data-img="dist/src/img/04.jpg" alt="This is a image.">
+                </li>
+                <li>
+                    <img data-img="dist/src/img/05.jpg" alt="This is a image.">
+                </li>
+                <li>
+                    <img data-img="dist/src/img/06.jpg" alt="This is a image.">
+                </li>
+                <li>
+                    <img data-img="dist/src/img/07.jpg" alt="This is a image.">
+                </li>
+                <li>
+                    <img data-img="dist/src/img/404.jpg"  alt="This is a image.">
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#dataTable">
+       数据表格
+        <span class="subtitle"> 数据表单插件</span>
+    </a>
+    <div id="dataTable" >
+        <div data-datatable data-initafter="datatable.inital" data-maxcount="2"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#spritesImage">
+        雪碧图
+        <span class="subtitle"> 将多张图片合成一张图片</span>
+    </a>
+    <div id="spritesImage" style="display:none" >
+        <div class="s-img-cn"></div>
+        <div class="s-img-jp"></div>
+        <div class="s-img-us"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#eventPanel">
+        手势
+        <span class="subtitle"> 扩展手势</span>
+    </a>
+    <div id="eventPanel">
+        <div class="row">
+            <div class="col-xs-12">
+                <div id="eventDiv" style="height:300px;padding:100px 50px; text-align:center;background-color:#ddd;">
+                    try to move on the panel with your finger.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-target="#measurement" data-collapse>
+        刻度尺
+        <span class="subtitle"> 比较数据的刻度</span>
+    </a>
+    <div id="measurement" class=" collapse-appear" >
+        <div data-measurement data-min="0" data-max="1000"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#imgzoomPanel">
+        图片缩放
+        <span class="subtitle"> 图片缩放</span>
+    </a>
+    <div id="imgzoomPanel">
+        <div class="row">
+            <div class="col-xs-6">
+                <a href="javascript:;" class="btn" data-imgzoom data-max="100" data-step="10" data-target="#imgzoomView"><i class="icon-plus"></i> zoom
+                    in</a>
+            </div>
+            <div class="col-xs-6">
+                <a href="javascript:;" class="btn" data-imgzoom data-min="50" data-step="-10" data-target="#imgzoomView"><i class="icon-minus"> zoom
+                        out</i></a>
+            </div>
+            <div class="col-xs-12">
+                <div id="imgzoomView" class="imgzoom" style="max-height:300px; overflow:scroll;">
+                    <li><img data-img="dist/src/img/01.jpg" alt="This is a image."></li>
+                    <li><img data-img="dist/src/img/02.jpg" alt="This is a image."></li>
+                    <li><img data-img="dist/src/img/03.jpg" alt="This is a image."></li>
+                    <li><img data-img="dist/src/img/04.jpg" alt="This is a image."></li>
+                    <li><img data-img="dist/src/img/05.jpg" alt="This is a image."></li>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2 shown" data-collapse data-target="#loadimagePanel">
+        加载图片
+        <span class="subtitle"> 延迟加载图片</span>
+    </a>
+    <div id="loadimagePanel">
+        <div><img data-img="dist/src/img/download-1.jpg" style="height:200px;width:300px;"></div>
+        <div><img data-img="dist/src/img/download-2.jpg" style="height:200px;width:300px;"></div>
+        <div><img data-img="dist/src/img/download-3.jpg" style="height:200px;width:300px;"></div>
+        <div><img data-img="dist/src/img/404.jpg" style="height:200px;width:300px;"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2" data-collapse data-target="#stickyPanel">
+        粘性贴
+        <span class="subtitle"> new sticky style</span>
+    </a>
+    <div id="stickyPanel">
+        <div class="sticky-container">
+            <div data-sticky class="sticky-box"></div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel">
+    <a href="javascript:;" class="h2 shown" data-collapse data-target="#gridviewPanel">
+        瀑布流
+        <span class="subtitle"> 适合海量图片展示的瀑布流布局</span>
+    </a>
+    <div id="gridviewPanel">
+        <div class="row">
+            <div class="col-xs-12">
+                <div data-gridview></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+</div>
+</body>
+<script>
+    window.context = {
         url:'',
         cdnUrl:'dist/src/',
         googleMapKey:'key=AIzaSyAYhIz6xpe-HBVYdWvkCY0EnWfQgoeHHwI'
     };
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./serviceworker.js')
+      navigator.serviceWorker.register('/serviceworker.js')
       .then(function(registration) {
         console.log('Registration successful, scope is:', registration.scope);
       })
       .catch(function(error) {
         console.log('Service worker registration failed, error:', error);
       });
-    }</script><script src="dist/src/cui.lib.js" type="text/javascript"></script><script src="dist/src/cui.js" type="text/javascript"></script><script>var x =$('body').locker({
+    }
+</script>
+<script src="dist/src/cui.min.js" type="text/javascript"></script>
+<script>
+var x =$('body').locker({
     onbeforelock:function(){
         $.preload({
             files:['dist/src/doc/src/doc.css','dist/src/doc/src/doc.js']
@@ -32,4 +1362,6 @@
             x.unlock();
         });
     }
-});</script></html>
+});
+</script>
+</html>

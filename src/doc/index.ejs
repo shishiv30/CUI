@@ -16,12 +16,12 @@
     <link rel="shortcut icon" href="<%=cdnUrl +'img/favicon.ico'%>" type="image/x-icon">
     <link rel="icon" href="<%=cdnUrl +'favicon.ico'%>" type="image/x-icon">
 </head>
-<%- include('tpl-header') %>
+<%- include('./views/tpl-header') %>
 <body id="body" class="classic">
 
 <div class="gs-fixed">
-    <%- include('views/tpl') %>
-    <%- include('views/plugin') %>
+    <%- include('./views/tpl') %>
+    <%- include('./views/plugin') %>
 </div>
 </body>
 <script>
@@ -40,8 +40,7 @@
       });
     }
 </script>
-<script src="<%= cdnUrl +'cui.lib.js' %>" type="text/javascript"></script>
-<script src="<%= cdnUrl +'cui.js' %>" type="text/javascript"></script>
+<script src="<%= cdnUrl +'cui.min.js' %>" type="text/javascript"></script>
 <script>
 var x =$('body').locker({
     onbeforelock:function(){
