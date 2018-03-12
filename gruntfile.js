@@ -134,6 +134,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-spritesmith');
     grunt.loadNpmTasks('grunt-sass');
-    grunt.registerTask('default', ['copy', 'concat', 'sprite', 'sass', 'autoprefixer', 'cssmin', 'uglify', 'htmlmin']);
+    grunt.registerTask('default', ['copy', 'concat', 'sprite', 'sass', 'autoprefixer', 'cssmin', 'uglify']);
     grunt.registerTask('dev', ['copy', 'concat', 'sprite', 'sass', 'autoprefixer', 'cssmin', 'watch']);
 };

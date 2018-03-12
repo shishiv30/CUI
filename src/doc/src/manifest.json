@@ -15,9 +15,13 @@
             "src": "dist/src/doc/src/launcher-icon-4x.png",
             "type": "image/png",
             "sizes": "192x192"
+        },{
+            "src": "dist/src/doc/src/launcher-icon-6x.png",
+            "type": "image/png",
+            "sizes": "768x768"
         }
     ],
-    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
     "display": "fullscreen",
     "scope_url": "https://shishiv30.github.io/CUI/",
     "start_url": "https://shishiv30.github.io/CUI/"
