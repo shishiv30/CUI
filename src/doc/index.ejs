@@ -1,6 +1,4 @@
 <%
-if ( window.location.protocol != "https:")
-    window.location.protocol = "https";
     var url = locals.url || '';
     var cdnUrl =  url + "dist/src/"
 %>
@@ -8,6 +6,10 @@ if ( window.location.protocol != "https:")
 <html lang="<%=locals.lang||'ch'%>">
 
 <head>
+    <script>
+    if ( window.location.protocol != "https:")
+        window.location.protocol = "https";
+    </script>
     <title><%= __('CUI framewrok') %></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
