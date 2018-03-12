@@ -1,5 +1,5 @@
 var cacheConfig = {
-    versionName: (+new Date() / 6000).toString(),
+    versionName: Math.floor((+new Date() / 36000)).toString(),
     whiteList: [],
     blackList: []
 };
