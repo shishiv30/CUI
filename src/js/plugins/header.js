@@ -86,7 +86,6 @@
             $this.removeAttr('data-header');
             $this.header(data);
             $this.attr('data-header-load', '');
-            $this.attr('role', 'header');
         });
     });
 })(jQuery);

@@ -12,7 +12,6 @@
 //         };
 //         $this.click(namespace.go);
 //         $this.data('facebooklink', namespace);
-//         $this.attr('role', 'Facebooklink');
 //         return namespace;
 //     };
 //     $.fn.googlepluslink = function() {
@@ -23,7 +22,6 @@
 //             }
 //         };
 //         $this.data('googlepluslink', namespace);
-//         $this.attr('role', 'Googlepluslink');
 //         return namespace;
 //     };
 //     $.fn.twitterlink = function() {
@@ -35,7 +33,6 @@
 //         };
 //         $this.click(namespace.go);
 //         $this.data('twitterlink', namespace);
-//         $this.attr('role', 'Twitterlink');
 //         return namespace;
 //     };
 //     $.fn.phonecall = function() {
@@ -48,7 +45,6 @@
 //         };
 //         $this.click(namespace.go);
 //         $this.data('phonecall', namespace);
-//         $this.attr('role', 'Phonecall');
 //         return namespace;
 //     };
 //     $.fn.mailto = function() {
@@ -66,7 +62,6 @@
 //         };
 //         $this.click(namespace.go);
 //         $this.data('mailto', namespace);
-//         $this.attr('role', 'Mailto');
 //         return namespace;
 //     };
 //     $.fn.msgto = function() {
@@ -80,7 +75,6 @@
 //         };
 //         $this.click(namespace.go);
 //         $this.data('msgto', namespace);
-//         $this.attr('role', 'Msgto');
 //         return namespace;
 //     };
 //     $(document).on('click', '[data-link]', function() {

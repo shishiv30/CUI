@@ -83,7 +83,6 @@
             $this.removeAttr('data-loadimage');
             $this.loadimage(data).load();
             $this.attr('data-loadimage-load', '');
-            $this.attr('role', 'loadimage');
         });
     });
     $.loadImage = $(document).loadimage().load;

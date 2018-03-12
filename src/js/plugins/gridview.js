@@ -48,7 +48,7 @@
             }],
             target: null,
             container: null,
-            template: '<img >',
+            template: '<img alt="demo image">',
             breakpoint: [414, 640, 992, 1200],
             colCount: -1,
             reloadbefore: null,
@@ -236,7 +236,6 @@
             $this.removeAttr('data-gridview');
             $this.gridview(data);
             $this.attr('data-gridview-load', '');
-            $this.attr('role', 'gridview');
         });
     });
 })(jQuery);

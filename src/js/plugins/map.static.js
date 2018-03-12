@@ -150,7 +150,6 @@
             $this.removeAttr('data-gsmap');
             $this.gsmap(data);
             $this.attr('data-gsmap-load', '');
-            $this.attr('role', 'gsmap');
         });
     });
 })(jQuery);

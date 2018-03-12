@@ -148,7 +148,6 @@
                 return false;
             });
             $this.attr('data-dialog-load', '');
-            $this.attr('role', 'Dialog');
         });
     });
 })(jQuery);

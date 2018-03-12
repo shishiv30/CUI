@@ -17,29 +17,29 @@
                 viewSelect: 4,
             };
             switch (type) {
-                case 'date':
-                    $.extend(opt, {
-                        format: 'yyyy-mm-dd',
-                        startView: 2,
-                        minView: 2,
-                        maxView: 4
-                    });
-                    break;
-                case 'time':
-                    $.extend(opt, {
-                        showMeridian: true,
-                        format: 'hh:ii',
-                        startView: 1,
-                        minView: 0,
-                        maxView: 1,
-                        keyboardNavigation: false
-                    });
-                    break;
-                default:
-                    $.extend(opt, {
-                        format: 'yyyy-mm-dd hh:ii',
-                    });
-                    break;
+            case 'date':
+                $.extend(opt, {
+                    format: 'yyyy-mm-dd',
+                    startView: 2,
+                    minView: 2,
+                    maxView: 4
+                });
+                break;
+            case 'time':
+                $.extend(opt, {
+                    showMeridian: true,
+                    format: 'hh:ii',
+                    startView: 1,
+                    minView: 0,
+                    maxView: 1,
+                    keyboardNavigation: false
+                });
+                break;
+            default:
+                $.extend(opt, {
+                    format: 'yyyy-mm-dd hh:ii',
+                });
+                break;
             }
             $this.datetimepicker(opt);
         },
@@ -61,6 +61,5 @@
         $this.removeAttr('data-picker');
         $this.picker(opt);
         $this.attr('data-picker-load', '');
-        $this.attr('role', 'Datepicker');
     });
 })(jQuery);

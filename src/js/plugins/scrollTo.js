@@ -35,7 +35,6 @@
             $this.scrollto(data);
             $this.removeAttr('data-scrollto');
             $this.attr('data-scrollto-load', '');
-            $this.attr('role', 'scrollto');
         });
     });
 })(jQuery);

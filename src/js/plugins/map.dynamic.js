@@ -135,9 +135,9 @@
                     if(opt.html === true) {
                         var icon = $.getIcon(opt.icontype);
                         if(opt.icontype === 0) {
-                            opt.html = '<div class="map-marker"><a href="javascript:;" class="img-pin"><img src="' + icon.url + '"  style="height:48px"></a></div>';
+                            opt.html = '<div class="map-marker"><a href="javascript:;" class="img-pin"><img alt="map image" src="' + icon.url + '"  style="height:48px"></a></div>';
                         } else {
-                            opt.html = '<div class="map-marker"><a href="javascript:;" class="img-pin"><img src="' + icon.url + '"></a></div>';
+                            opt.html = '<div class="map-marker"><a href="javascript:;" class="img-pin"><img alt="map image" src="' + icon.url + '"></a></div>';
                         }
                         if(icon.zIndex) {
                             opt.zIndex = icon.zIndex;
@@ -381,7 +381,6 @@
                 callback: function () {
                     $this.gmap(data);
                     $this.attr('data-gmap-load', '');
-                    $this.attr('role', 'gmap');
                 }
             });
         });

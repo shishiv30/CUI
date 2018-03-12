@@ -49,7 +49,6 @@
             $this.removeAttr('data-locker');
             $this.locker(data);
             $this.attr('data-locker-load', '');
-            $this.attr('role', 'locker');
         });
     });
 })(jQuery);

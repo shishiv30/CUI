@@ -137,7 +137,6 @@
             $this.removeAttr('data-collapse');
             $this.collapse(data);
             $this.attr('data-collapse-load', '');
-            $this.attr('role', 'Collapse');
         });
     });
 })(jQuery);

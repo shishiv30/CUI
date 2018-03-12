@@ -10,14 +10,17 @@ var app = express();
 var setLang = function (req, res) {
     var languageInBrowser = req.headers['accept-language'];
     languageInBrowser = languageInBrowser.length ? languageInBrowser.split(',')[0] : '';
-    i18n.setLocale([req, res.locals], req.params.lang || languageInBrowser);
+    var lang = req.params.lang || languageInBrowser;
+    i18n.setLocale([req, res.locals], lang);
+    return lang;
 };
 
 app.get('/:lang', function (req, res) {
-    setLang(req, res);
+    var lang = setLang(req, res);
     var ejsPath = ejsUrl + 'index.ejs';
     ejs.renderFile(ejsPath, {
-        url: 'http://' + hostname + ':' + port + '/'
+        url: 'http://' + hostname + ':' + port + '/',
+        lang:lang
     }, function (err, result) {
         res.send(result);
     });

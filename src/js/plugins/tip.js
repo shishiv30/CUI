@@ -22,7 +22,7 @@
         init: function (context) {
             var opt = context.opt;
             var $this = context.$element;
-            var $container = $('<div class="tooltip ' + opt.type + ' ' + opt.placement + '" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>');
+            var $container = $('<div class="tooltip ' + opt.type + ' ' + opt.placement + '"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>');
             $this.parent().css({
                 position: 'relative'
             });
@@ -162,7 +162,6 @@
             var options = $this.data();
             $this.removeAttr('data-tip');
             $this.tip(options);
-            $this.attr('role', 'Tip');
         });
     });
 })(jQuery);

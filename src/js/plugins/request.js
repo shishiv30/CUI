@@ -69,7 +69,6 @@
             $this.removeAttr('data-request');
             $this.request(data);
             $this.attr('data-request-load', '');
-            $this.attr('role', 'request');
         });
     });
 })(jQuery);

@@ -69,7 +69,6 @@
             $this.removeAttr('data-measurement');
             $this.measurement(data);
             $this.attr('data-measurement-load', '');
-            $this.attr('role', 'measurement');
         });
     });
 })(jQuery);

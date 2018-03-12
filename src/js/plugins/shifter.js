@@ -283,7 +283,6 @@
             $this.removeAttr('data-shifter');
             $this.shifter(data);
             $this.attr('data-shifter-load', '');
-            $this.attr('role', 'shifter');
         });
     });
 })(jQuery);

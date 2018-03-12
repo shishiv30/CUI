@@ -80,7 +80,6 @@
             $this.removeAttr('data-imgzoom');
             $this.imgzoom(data);
             $this.attr('data-imgzoom-load', '');
-            $this.attr('role', 'Imgzoom');
         });
     });
 })(jQuery);

@@ -103,7 +103,6 @@
             var data = $this.data();
             $this.slicker(data);
             $this.attr('data-slicker-load', '');
-            $this.attr('role', 'slicker');
         });
     });
 })(jQuery);

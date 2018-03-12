@@ -49,7 +49,6 @@
             $this.removeAttr('data-onscroll');
             $this.onscroll(data);
             $this.attr('data-onscroll-load', '');
-            $this.attr('role', 'onscroll');
         });
     });
 })(jQuery);

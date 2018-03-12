@@ -20,32 +20,32 @@
             var $table;
             var _getRawValue = function (value, column) {
                 switch (column.type) {
-                    case 'date':
-                        return +new Date(value) || 0;
-                    case 'number':
-                        if (value.replace) {
-                            value = value.replace(/[^0-9.]/g, '');
-                        }
-                        return value * 1 || 0;
-                    default:
-                        return value;
+                case 'date':
+                    return +new Date(value) || 0;
+                case 'number':
+                    if (value.replace) {
+                        value = value.replace(/[^0-9.]/g, '');
+                    }
+                    return value * 1 || 0;
+                default:
+                    return value;
                 }
             };
             var _getDisplayText = function (value, column) {
                 switch (column.type) {
-                    case 'number':
-                        if ($.isNumeric(value)) {
-                            return column.format ? value.toFixed(column.format * 1) : value;
-                        } else {
-                            return '';
-                        }
-                    case 'string':
-                        return $.htmlencode(value);
-                    case 'date':
-                        var time = new Date(value);
-                        return time.valueOf() ? time.format(column.format || 'M/D/Y') : '';
-                    default:
-                        return value;
+                case 'number':
+                    if ($.isNumeric(value)) {
+                        return column.format ? value.toFixed(column.format * 1) : value;
+                    } else {
+                        return '';
+                    }
+                case 'string':
+                    return $.htmlencode(value);
+                case 'date':
+                    var time = new Date(value);
+                    return time.valueOf() ? time.format(column.format || 'M/D/Y') : '';
+                default:
+                    return value;
                 }
             };
 
@@ -175,7 +175,6 @@
             $this.removeAttr('data-datatable');
             $this.datatable(data);
             $this.attr('data-datatable-load', '');
-            $this.attr('role', 'Datatable');
         });
     });
 })(jQuery);

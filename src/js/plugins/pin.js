@@ -96,7 +96,6 @@
             $this.removeAttr('data-pin');
             $this.pin(data);
             $this.attr('data-pin-load', '');
-            $this.attr('role', 'pin');
         });
     });
 })(jQuery);

@@ -43,7 +43,6 @@
             $this.removeAttr('data-tabs');
             $this.tabs(data);
             $this.attr('data-tabs-load', '');
-            $this.attr('role', 'tabs');
         });
     });
 })(jQuery);

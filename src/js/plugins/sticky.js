@@ -29,7 +29,6 @@
             $this.removeAttr('data-sticky');
             $this.sticky(data);
             $this.attr('data-sticky-load', '');
-            $this.attr('role', 'sticky');
         });
     });
 })(jQuery);

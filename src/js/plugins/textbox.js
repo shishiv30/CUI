@@ -45,7 +45,6 @@
             $this.removeAttr('data-textbox');
             $this.textbox(data);
             $this.attr('data-textbox-load', '');
-            $this.attr('role', 'textbox');
         });
     });
 })(jQuery);

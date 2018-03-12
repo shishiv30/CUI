@@ -43,7 +43,6 @@
 //             $this.removeAttr('data-example');
 //             $this.example(data);
 //             $this.attr('data-example-load', '');
-//             $this.attr('role', 'example');
 //         });
 //     });
 // })(jQuery);

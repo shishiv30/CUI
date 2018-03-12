@@ -50,7 +50,6 @@
             });
 
             $this.addClass(inital());
-            $this.attr('role', 'grid table');
         },
         exports: {},
         setOptionsBefore: null,
@@ -65,7 +64,6 @@
             $(item).removeAttr('data-gridtable');
             $(item).gridtable(data);
             $(item).attr('data-gridtable-load', '');
-            $(item).attr('role', 'Gridtable');
         });
     });
 })(jQuery);

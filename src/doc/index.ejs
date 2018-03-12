@@ -3,7 +3,7 @@
     var cdnUrl =  url + "dist/src/"
 %>
 <!DOCTYPE html>
-<html>
+<html lang="<%=locals.lang||'ch'%>">
 
 <head>
     <title><%= __('CUI framewrok') %></title>
@@ -31,13 +31,7 @@
         googleMapKey:'key=AIzaSyAYhIz6xpe-HBVYdWvkCY0EnWfQgoeHHwI'
     };
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./serviceworker.js')
-      .then(function(registration) {
-        console.log('Registration successful, scope is:', registration.scope);
-      })
-      .catch(function(error) {
-        console.log('Service worker registration failed, error:', error);
-      });
+      navigator.serviceWorker.register('./serviceworker.js');
     }
 </script>
 <script src="<%= cdnUrl +'cui.min.js' %>" type="text/javascript"></script>

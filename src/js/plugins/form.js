@@ -106,7 +106,6 @@
             $this.removeAttr('data-form');
             $this.form(data);
             $this.attr('data-form-load', '');
-            $this.attr('role', 'Form');
         });
     });
 })(jQuery);

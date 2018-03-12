@@ -101,7 +101,6 @@
             $this.removeAttr('data-ranger');
             $this.ranger(data);
             $this.attr('data-ranger-load', '');
-            $this.attr('role', 'ranger');
         });
     });
 })(jQuery);
