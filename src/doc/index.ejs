@@ -1,4 +1,6 @@
 <%
+if ( window.location.protocol != "https:")
+    window.location.protocol = "https";
     var url = locals.url || '';
     var cdnUrl =  url + "dist/src/"
 %>
