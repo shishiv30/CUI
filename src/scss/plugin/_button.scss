@@ -58,9 +58,10 @@
     opacity: 1;
     border-width: 1px;
     border-style: solid;
+    border-color: transparent;
     box-shadow: 0 0 1px $color-a;
     &:focus, &:hover {
-        opacity: .8;
+        opacity: .9;
     }
     @extend %btn-color;
     &.large {
