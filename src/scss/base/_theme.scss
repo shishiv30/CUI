@@ -86,7 +86,7 @@ $color-text-default: $color-3;
 //color for textbox place holder
 $color-placeholder: $color-9;
 //color for link
-$color-link-default: $color-text-default;
+$color-link-default: $color-blue;
 $color-link-default-hover: $color-warning;
 //color for disable
 $color-disable: $color-b;
@@ -139,31 +139,22 @@ $aside-list-item-border: solid 1px $color-e;
 $aside-footer-margin: 10px;
 //dialog
 //z-index
-$main-index: 1;
-$footer-index: 100;
-$ui-navbar-menu: 1700;
-$ui-tip-index: 1800;
-$ui-popover-index: 1850;
-$map-morefilters: 1900;
+$ui-tip-index: 1000;
+$ui-popover-index: 1050;
+$ui-buttongroup-index:1100;
 $ui-pin-index: 1930;
 $ui-pin-hover-index: 1940;
 $ui-map-popover: 1950;
 $ui-sticky-submenu-index: 1950;
 $ui-stick-index: 1960;
-$header-overlay: 1990;
-$header-index: 2000;
+$ui-header-overlay: 1990;
+$ui-header-index: 2000;
 $ui-socialbar-index: 2010;
-$header-list-index: 2010;
-$header-logo-index: 2020;
-$ui-showallphotos-index: 2050;
+$ui-header-list-index: 2010;
 $ui-datepicker-index: 2100;
 $ui-gautocomplete-index: 3000;
 $ui-dropdown-index: 3100;
 $ui-menu-index: 3200;
-$aside-index: 4000;
-$modal-index: 5000;
-$mask-index: 9000;
+$ui-aside-index: 4000;
 $ui-dialog-overlay: 10000;
 $ui-dialog-index: 10010;
-$ui-messagebox-index: 11000;
-$ui-loading-index: 20000;

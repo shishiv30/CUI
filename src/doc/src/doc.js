@@ -115,3 +115,6 @@ $(document).one('initialMap', function (d, e, t) {
         }
     });
 });
+$('.btn').click(function(){
+    $(this).toggleClass('active');
+});

@@ -1,4 +1,51 @@
-.btn {
+%btn-color{
+    &.white {
+        background-color: $color-f;
+        color: $color-3;
+        border-color: $color-3;
+    }
+    &.orange {
+        &.active {
+            background-color: $color-warning;
+            color: $color-f;
+        }
+        border-color: $color-warning;
+        color: $color-warning;
+    }
+    &.blue {
+        &.active {
+            background-color: $color-blue;
+            color: $color-f;
+        }
+        border-color: $color-blue;
+        color: $color-blue;
+    }
+    &.black {
+        &.active {
+            background-color: $color-3;
+            color: $color-f;
+        }
+        border-color: $color-3;
+        color: $color-3;
+    }
+    &.red {
+        &.active {
+            background-color: $color-danger;
+            color: $color-f;
+        }
+        border-color: $color-danger;
+        color: $color-danger;
+    }
+    &.green {
+        &.active {
+            background-color: $color-safe;
+            color: $color-f;
+        }
+        border-color: $color-safe;
+        color: $color-safe;
+    }
+}
+%btn {
     @include singleline();
     height: $form-size-normal;
     line-height: $form-size-normal - 18;
@@ -6,21 +53,16 @@
     display: block;
     text-align: center;
     vertical-align: middle;
-    border: 1px solid transparent;
     border-radius: 5px;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity .1s ease-in-out;
     opacity: 1;
-    >* {
-        display: inline;
-    }
-    &:link, &:visited {
-        color: inherit;
-    }
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: 0 0 1px $color-a;
     &:focus, &:hover {
-        text-decoration: none;
-        opacity: 0.8;
-        color: inherit;
+        opacity: .8;
     }
+    @extend %btn-color;
     &.large {
         height: $form-size-large;
         line-height: $form-size-large - 18;
@@ -33,193 +75,11 @@
         font-size: $font-size-5;
         padding: 0 8px;
         border-radius: 4px;
-        >* {
+         > * {
             line-height: $form-size-small - 2;
         }
     }
-    &.white {
-        background-color: $color-f;
-        color: $color-3;
-        border-color: $color-3;
-        &:link, &:visited {
-            color: $color-3;
-        }
-        &:focus, &:hover {
-            color: $color-3;
-        }
-    }
-    &.orange {
-        background-color: $color-warning-l1;
-        &:link, &:visited {
-            color: $color-f;
-        }
-        &:focus, &:hover {
-            color: $color-f;
-        }
-    }
-    &.yellow {
-        background-color: $color-tip-l1;
-        &:link, &:visited {
-            color: $color-0;
-        }
-        &:focus, &:hover {
-            color: $color-0;
-        }
-    }
-    &.cyan {
-        background-color: $color-info-l1;
-        &:link, &:visited {
-            color: $color-f;
-        }
-        &:focus, &:hover {
-            color: $color-f;
-        }
-    }
-    &.main {
-        background-color: $color-main-l1;
-        &:link, &:visited {
-            color: $color-f;
-        }
-        &:focus, &:hover {
-            color: $color-f;
-        }
-    }
-    &.blue {
-        background-color: $color-blue-l1;
-        &:link, &:visited {
-            color: $color-f;
-        }
-        &:focus, &:hover {
-            color: $color-f;
-        }
-    }
-    &.gray {
-        background-color: $color-9;
-        &:link, &:visited {
-            color: $color-f;
-        }
-        &:focus, &:hover {
-            color: $color-f;
-        }
-    }
-    &.black {
-        background-color: $color-3;
-        &:link, &:visited {
-            color: $color-f;
-        }
-        &:focus, &:hover {
-            color: $color-f;
-        }
-    }
-    &.red {
-        background-color: $color-danger-l1;
-        background-color: black;
-        &:link, &:visited {
-            color: $color-f;
-        }
-        &:focus, &:hover {
-            color: $color-f;
-        }
-    }
-    &.green {
-        background-color: $color-safe-l1;
-        &:link, &:visited {
-            color: $color-f;
-        }
-        &:focus, &:hover {
-            color: $color-f;
-        }
-    }
-    &.ghost-white {
-        border-color: $color-f;
-        background-color: transparent;
-        &:link, &:visited {
-            color: $color-f;
-        }
-        &:focus, &:hover {
-            color: $color-f;
-        }
-    }
-    &.ghost-black {
-        border-color: $color-1;
-        background-color: transparent;
-        &:link, &:visited {
-            color: $color-1;
-        }
-        &:focus, &:hover {
-            color: $color-1;
-        }
-    }
-    &.ghost-red {
-        border-color: $color-danger;
-        background-color: transparent;
-        &:link, &:visited {
-            color: $color-danger;
-        }
-        &:focus, &:hover {
-            color: $color-danger;
-        }
-    }
-    &.ghost-yellow {
-        border-color: $color-tip;
-        background-color: transparent;
-        &:link, &:visited {
-            color: $color-tip;
-        }
-        &:focus, &:hover {
-            color: $color-tip;
-        }
-    }
-    &.ghost-cyan {
-        border-color: $color-info;
-        background-color: transparent;
-        &:link, &:visited {
-            color: $color-info;
-        }
-        &:focus, &:hover {
-            color: $color-info;
-        }
-    }
-    &.ghost-orange {
-        border-color: $color-warning;
-        background-color: transparent;
-        &:link, &:visited {
-            color: $color-warning;
-        }
-        &:focus, &:hover {
-            color: $color-warning;
-        }
-    }
-    &.ghost-main {
-        border-color: $color-main;
-        background-color: transparent;
-        &:link, &:visited {
-            color: $color-main;
-        }
-        &:focus, &:hover {
-            color: $color-main;
-        }
-    }
-    &.ghost-green {
-        border-color: $color-safe;
-        background-color: transparent;
-        &:link, &:visited {
-            color: $color-safe;
-        }
-        &:focus, &:hover {
-            color: $color-safe;
-        }
-    }
-    &.ghost-blue {
-        border-color: $color-blue;
-        background-color: transparent;
-        &:link, &:visited {
-            color: $color-blue;
-        }
-        &:focus, &:hover {
-            color: $color-blue;
-        }
-    }
+
     &.circle {
         display: inline-block;
         height: 40px;
@@ -227,15 +87,6 @@
         line-height: 38px;
         border-radius: 100%;
         font-size: 17px;
-        &.blue {
-            background-color: $color-blue;
-            &:link, &:visited {
-                color: $color-f;
-            }
-            &:focus, &:hover {
-                color: $color-f;
-            }
-        }
     }
     &[disabled] {
         background-color: $color-c !important;
@@ -246,5 +97,45 @@
     &.loading {
         opacity: .5 !important;
         cursor: wait !important;
+    }
+}
+.btn {
+    @extend %btn;
+}
+.dropdown-button {
+    display: flex;
+    position: relative;
+    a {
+        @extend %btn;
+    }
+    & > a:first-of-type {
+        width: 100%;
+        border-right: none;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+    }
+    & > a:last-of-type {
+        width: 50px;
+        flex-shrink: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    .dropdown-button-list {
+        position: absolute;
+        background: $color-f;
+        top: $form-size-normal;
+        left: 5px;
+        right: 5px;
+        z-index: $ui-buttongroup-index;
+        box-shadow: 0 0 1px $color-0;
+        display: none;
+         > a {
+            color: $color-0;
+            background: $color-f;
+            border-color: $color-e;
+            box-shadow: none;
+            border-radius: 0;
+            border-top: 0;
+        }
     }
 }

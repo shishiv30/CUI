@@ -4,7 +4,7 @@ a {
     opacity: 0.95;
     outline: none;
     &:link {
-        color: $color-link-default;
+        color: inherit;
     }
     &:hover,
     &:active {
@@ -16,7 +16,7 @@ a {
         color: inherit;
     }
     &.link {
-        color: $color-info;
+        color: $color-link-default;
         &:hover,
         &:active {
             color: $color-link-default-hover;

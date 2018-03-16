@@ -96,3 +96,6 @@
     height: 100px;
     background: #666;
 }
+#buttonPanel .btn, #buttonPanel .dropdown-button{
+    margin: 5px 0;
+}

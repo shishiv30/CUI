@@ -22,7 +22,7 @@
     width: 100%;
     min-width: $screen-xs-min;
     height: $header-height;
-    z-index: $header-index;
+    z-index: $ui-header-index;
     height: $header-height;
     transition: transform .5s ease-in-out;
 }
@@ -111,7 +111,7 @@
         }
     }
     .header-menu-list {
-        z-index: $header-list-index;
+        z-index: $ui-header-list-index;
         position: fixed;
         padding-bottom: 60px;
         top: $header-height;
@@ -140,7 +140,7 @@
         right: 0;
         background-color: $color-0;
         opacity: 0.5;
-        z-index: $header-overlay;
+        z-index: $ui-header-overlay;
     }
     .header-menu-item {
         transition: max-height .2s ease-in-out;
