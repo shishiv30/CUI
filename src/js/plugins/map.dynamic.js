@@ -103,7 +103,7 @@
                     lat: 0,
                     lng: 0,
                     draggable: false,
-                    icontype: 0,
+                    icon: 'icon-home',
                     onclick: null,
                     onmouseover: null,
                     onmouseout: null,
@@ -115,7 +115,6 @@
                     popTmp: null,
                     popHeight: 100,
                     zIndex: null,
-                    isNeedMobileCard: null
                 };
                 var opt = $.extend({}, defaultOption, option);
                 if(!opt.lat || !opt.lng) {
@@ -126,66 +125,22 @@
                     addedMark.setMap(map);
                     return addedMark;
                 }
-                var marker = null;
-                if(opt.html) {
-                    var latlng = new window.google.maps.LatLng({
-                        lat: opt.lat,
-                        lng: opt.lng
-                    });
-                    if(opt.html === true) {
-                        var icon = $.getIcon(opt.icontype);
-                        if(opt.icontype === 0) {
-                            opt.html = '<div class="map-marker"><a href="javascript:;" class="img-pin"><img alt="map image" src="' + icon.url + '"  style="height:48px"></a></div>';
-                        } else {
-                            opt.html = '<div class="map-marker"><a href="javascript:;" class="img-pin"><img alt="map image" src="' + icon.url + '"></a></div>';
-                        }
-                        if(icon.zIndex) {
-                            opt.zIndex = icon.zIndex;
-                        }
-                    }
-                    marker = new window.CustomMarker({
-                        latlng: latlng,
-                        map: map,
-                        html: opt.html,
-                        popData: opt.popData,
-                        popTmp: opt.popTmp,
-                        popHeight: opt.popHeight,
-                        onclick: opt.onclick,
-                        popTheme: opt.popTheme,
-                        zIndex: opt.zIndex,
-                        isNeedMobileCard: opt.isNeedMobileCard,
-                    });
-                } else {
-                    marker = new window.google.maps.Marker({
-                        map: map,
-                        icon: $.getIcon(opt.icontype),
-                        lat: opt.lat,
-                        lng: opt.lng,
-                        size: new window.google.maps.Size({
-                            height: 25,
-                            width: 17
-                        }),
-                        draggable: false,
-                        position: new window.google.maps.LatLng(opt.lat, opt.lng)
-                    });
-                    if(opt.onclick) {
-                        window.google.maps.event.addListener(marker, 'click', function (e) {
-                            //return false, will stop to pop 'click' event
-                            return opt.onclick(context.map, marker, e);
-                        });
-                    }
-                    $($.isMobile);
-                    if(opt.onmouseover) {
-                        marker.addListener('mouseover', function (e) {
-                            return opt.onmouseover(context.map, marker, e);
-                        }, true);
-                    }
-                    if(opt.onmouseout) {
-                        marker.addListener('mouseout', function (e) {
-                            return opt.onmouseout(context.map, marker, e);
-                        }, true);
-                    }
-                }
+                var latlng = new window.google.maps.LatLng({
+                    lat: opt.lat,
+                    lng: opt.lng
+                });
+                var html = '<div class="map-marker"><a class="pin" ><i class="' + opt.icon + '"></i></div></div>';
+                var marker = new window.CustomMarker({
+                    latlng: latlng,
+                    map: map,
+                    html: html,
+                    popData: opt.popdata,
+                    popTmp: opt.poptmp,
+                    popHeight: opt.popheight,
+                    onclick: opt.onclick,
+                    popTheme: opt.poptheme,
+                    zIndex: opt.zindex,
+                });
                 if(opt.id) {
                     marker.id = opt.id;
                 }
@@ -272,7 +227,7 @@
                     map.fitBounds(bounds);
                 }
             };
-            if(opt.streetView !== false) {
+            if(opt.streetview !== false) {
                 context._showStreetView();
             }
         },

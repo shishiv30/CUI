@@ -1,0 +1,29 @@
+.map-marker {
+    position: absolute;
+    &.removed {
+        display: none;
+    }
+    color: $color-f;
+    .pin {
+        cursor: pointer;
+        position: relative;
+        border: 1px solid white;
+        background:$color-5;
+        border-radius: 50%;
+        display: block;
+        font-size:16px;
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        text-align: center;
+        transform: translateY(-50%) translateX(-50%);
+        i {
+            color: inherit;
+        }
+    }
+    &.on .pin, .pin:hover{
+        box-shadow: 0 0 0 5px rgba($color-warning, 0.35);
+        background-color:  $color-warning;
+        z-index: $ui-pin-hover-index;
+    }
+}

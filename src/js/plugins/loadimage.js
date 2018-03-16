@@ -21,8 +21,6 @@
             });
             $img.attr('src', imgsrc);
             $img.data(key, null);
-            $img.removeAttr('data-' + key);
-            $img.attr('data-img-load', '');
         } else {
             $img.css({
                 backgroundImage: 'url(' + imgsrc + ')'
@@ -30,6 +28,8 @@
             $img.addClass('data-img-load-success');
             $(document).trigger('img.load.success', [$img]);
         }
+        $img.removeAttr('data-' + key);
+        $img.attr('data-img-load', '');
     };
     var loadimageConfig = {
         name: 'loadimage',

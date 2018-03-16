@@ -103,8 +103,8 @@ $('.circle-item').each(function (index, item) {
 });
 $(document).one('initialMap', function (d, e, t) {
     t.addMarker({
-        lat: -34.397,
-        lng: 150.644,
+        lat: 37.819929,
+        lng: -122.478255,
         html: true,
         popTmp:'<div><h1>{{words}}</h1></div>',
         popData:{
