@@ -1,7 +1,6 @@
 //tip
 (function ($) {
     var animationDuration = 500;
-
     var tipConfig = {
         name: 'tip',
         defaultOpt: {
@@ -17,16 +16,18 @@
             showafter: null,
             hidebefore: null,
             hideafter: null,
-            _timer: null
+            _timer: null,
+            parent: null
         },
         init: function (context) {
             var opt = context.opt;
             var $this = context.$element;
             var $container = $('<div class="tooltip ' + opt.type + ' ' + opt.placement + '"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>');
-            $this.parent().css({
-                position: 'relative'
-            });
-            $this.after($container);
+            var $parent = opt.parent ? $(opt.parent) : $this;
+            if($parent.css('position') === 'static') {
+                $parent.css('position', 'static');
+            }
+            $parent.append($container);
             $container.click(function (e) {
                 e.stopPropagation();
             });
@@ -41,14 +42,16 @@
                 var $container = this.$container;
                 clearTimeout(opt._timer);
                 opt.showbefore && $.CUI.trigger(opt.showbefore, this);
-                $container.find('.tooltip-inner').html(opt.content);
+                $container.find('.tooltip-inner')
+                    .html(opt.content);
                 var cWidth = $container.outerWidth();
                 var cHeight = $container.outerHeight();
                 var tWidth = $this.outerWidth();
                 var tHeight = $this.outerHeight();
                 var offset = $this.offset();
                 var position = $this.position();
-                var pWidth = $this.parent().outerWidth(true);
+                var pWidth = $this.parent()
+                    .outerWidth(true);
                 var x = 0;
                 var y = 0;
                 var css = {};
@@ -67,7 +70,8 @@
                             right: ''
                         };
                         $container.addClass('{0}-right'.format(opt.placement));
-                    } else if((offset.left + (tWidth + cWidth) / 2) > $(window).width()) {
+                    } else if((offset.left + (tWidth + cWidth) / 2) > $(window)
+                        .width()) {
                         css = {
                             left: '',
                             right: pWidth - tWidth - position.left
@@ -124,7 +128,8 @@
         setOptionsAfter: function (context) {
             var opt = context.opt;
             var $container = context.$container;
-            $container.find('.tooltip-inner').html(opt.content);
+            $container.find('.tooltip-inner')
+                .html(opt.content);
         },
         initBefore: null,
         initAfter: function (context) {
@@ -135,7 +140,8 @@
             case 'click':
                 $this.on('click.' + exports.name, function () {
                     exports.show();
-                    $(document).one('click', exports.hide);
+                    $(document)
+                        .one('click', exports.hide);
                     return false;
                 });
                 break;
@@ -144,7 +150,7 @@
                 $this.on('focusout.' + exports.name, exports.hide);
                 break;
             }
-            opt.onload &&  $.CUI.trigger(opt.onload, this);
+            opt.onload && $.CUI.trigger(opt.onload, this);
         },
         destroyBefore: function (context) {
             var exports = context.exports;
@@ -156,12 +162,14 @@
         },
     };
     $.CUI.plugin(tipConfig);
-    $(document).on('dom.load.tip', function () {
-        $('[data-tip]').each(function () {
-            var $this = $(this);
-            var options = $this.data();
-            $this.removeAttr('data-tip');
-            $this.tip(options);
+    $(document)
+        .on('dom.load.tip', function () {
+            $('[data-tip]')
+                .each(function () {
+                    var $this = $(this);
+                    var options = $this.data();
+                    $this.removeAttr('data-tip');
+                    $this.tip(options);
+                });
         });
-    });
 })(jQuery);

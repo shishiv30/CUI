@@ -33,25 +33,19 @@
             if(self.showPop) {
                 var $pin = $(div);
                 var html = $.renderHtml(self.popTmp, self.popData);
-                var topOffset = $pin.outerHeight() * -1 - 10;
-                var $content = $('<div class="pop-content "><div>' + html + '</div></div>');
-                $content.click(function (e) {
-                    e.stopPropagation();
-                });
-                var tippopover = $pin.tip({
+                var $content = $('<div class="pop-content"><div>' + html + '</div></div>');
+                var tippopover = $pin.find('.pin').tip({
                     content: $content,
                     placement: 'top',
                     trigger: 'click',
                     html: true,
                     once: true,
                     type: self.popTheme,
-                    traget: null,
                     onload: function () {
                         // $(document).trigger('dom.load');
                     },
-                    container: self.map
+
                 });
-                self.reposition();
                 setTimeout(function () {
                     tippopover.show();
                     window.google.maps.event.addListener(self.map, 'zoom_changed', function () {
@@ -60,13 +54,6 @@
                     window.google.maps.event.addListener(self.map, 'dragstart', function () {
                         tippopover.hide();
                     });
-                    // $(document).trigger('dom.load');
-                    if($pin.next('.popover')) {
-                        $pin.next('.popover').css({
-                            marginTop: topOffset,
-                            zIndex: 999
-                        });
-                    }
                     $(window).one('click', function () {
                         tippopover.hide();
                     });
@@ -107,56 +94,6 @@
             if(point) {
                 div.style.left = point.x + 'px';
                 div.style.top = point.y + 'px';
-            }
-        };
-        //if the pin current position out of screen, call the method to move map and make sure we can see pin in the screen
-        window.CustomMarker.prototype.reposition = function () {
-            var popover = this.div;
-            var container = this.map.getDiv();
-            if(popover && container) {
-                var bounds = this.map.getBounds();
-                if(!bounds) {
-                    return;
-                }
-                var proj = this.getProjection();
-                if(!proj) {
-                    return;
-                }
-                var $popover = $(popover);
-                var $container = $(container);
-                var offset = $popover.position();
-                var topRight = proj.fromLatLngToDivPixel(bounds.getNorthEast());
-                var bottomLeft = proj.fromLatLngToDivPixel(bounds.getSouthWest());
-                var top = offset.top - (this.popHeight || 0) - topRight.y;
-                var left = offset.left - bottomLeft.x;
-                var width = $popover.width();
-                var height = $popover.height();
-                var containerHeight = $container.height();
-                var containerWidth = $container.width();
-                var minTop = height * 2;
-                var maxTop = containerHeight - height * 2;
-                var minLeft = width * 2;
-                var maxLeft = containerWidth - width * 2;
-                var offsetX = 0;
-                var offsetY = 0;
-                if(top > maxTop) {
-                    //move up +YYY
-                    offsetY = maxTop - top;
-                } else if(top < minTop) {
-                    //move down -YYY
-                    offsetY = top - minTop;
-                }
-                if(left > maxLeft) {
-                    // move right +XXX
-                    offsetX = left - maxLeft;
-                } else if(left < minLeft) {
-                    // move left -XXX
-                    offsetX = left - minLeft;
-                }
-                if(offsetX !== 0 || offsetY !== 0) {
-                    this.map.panBy(offsetX, offsetY);
-                    this.draw();
-                }
             }
         };
         window.CustomMarker.prototype.remove = function () {

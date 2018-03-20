@@ -1,4 +1,88 @@
 (function ($) {
+    var markManager = function (options) {
+        this.markers = [];
+        this.map = options.map;
+        this.defaultOpt = $.extend({}, {
+            map: options.map
+        }, options.defaultOpt);
+        this.create = options.create;
+        this.destory = options.destory;
+    };
+    markManager.prototype.getAllMarkers = function () {
+        return this.markers;
+    };
+    markManager.prototype.getMarkerWithIndexById = function (id) {
+        for(var i = 0; i < this.markers.length; i++) {
+            if(this.markers[i].id == id) {
+                return {
+                    element: this.markers[i],
+                    index: i
+                };
+            }
+        }
+        return {
+            element: null,
+            index: -1
+        };
+    };
+    markManager.prototype.getMarkerById = function (id) {
+        return this.getMarkerWithIndexById(id)
+            .element;
+    };
+    markManager.prototype.addMarker = function (option) {
+        var opt = $.extend({}, this.defaultOpt, option);
+        var marker =null;
+        if(!opt.lat || !opt.lng) {
+            return null;
+        }
+        if(!option.id) {
+            option.id = $.guid++;
+        }else {
+            marker = this.getMarkerById(opt.id);
+        }
+        if(marker) {
+            marker.setMap(this.map);
+            return marker;
+        }
+        if(this.create) {
+            marker = this.create.apply(this, [opt]);
+        }
+        if(marker) {
+            if(opt.id) {
+                marker.id = opt.id;
+            }
+            this.markers.push(marker);
+            return marker;
+        }
+        return null;
+    };
+    markManager.prototype.addMarkers = function (options) {
+        var self = this;
+        if(options && options.length) {
+            return options.map(function (option) {
+                return self.addMarker(option);
+            });
+        }
+        return [];
+    };
+    markManager.prototype.removeMarker = function (id) {
+        var item = this.getMarkerWithIndexById(id);
+        if(item.element) {
+            if(this.destory) {
+                id = this.destory.apply(this, [item.element]);
+                this.markers.splice(item.index);
+            }
+        }
+        return id;
+    };
+    markManager.prototype.removeMarkers = function (ids) {
+        if(ids && ids.length) {
+            return ids.map(function (id) {
+                return this.removeMarker(id);
+            });
+        }
+        return [];
+    };
     var gmapConfig = {
         name: 'gmap',
         dependence: 'googlemap',
@@ -8,7 +92,7 @@
             zoom: 8,
             type: 0,
             streetview: false,
-            inline:false,
+            inline: false,
             zoomable: true,
             draggable: true,
             scrollwheel: true,
@@ -34,11 +118,9 @@
             distancecontrol: true,
             distancecontrolpos: 'BOTTOM_LEFT',
         },
-
         init: function (context) {
             var opt = context.opt;
             var $this = context.$element;
-            var markers = [];
             var mapOptions = {
                 disableDefaultUI: opt.disabledefaultui,
                 gestureHandling: 'greedy',
@@ -62,8 +144,8 @@
                 distanceControl: opt.distancecontrol,
                 distanceControlPos: opt.distancecontrolpos,
             };
-            if(opt.inline){
-                mapOptions =$.extend(mapOptions,{
+            if(opt.inline) {
+                mapOptions = $.extend(mapOptions, {
                     scrollwheel: false,
                     navigationControl: false,
                     mapTypeControl: false,
@@ -73,7 +155,52 @@
             }
             var map = new window.google.maps.Map($this.get(0), mapOptions);
             context.map = map;
-            context.markers = markers;
+            var markers = new markManager({
+                defaultOpt: {
+                    draggable: false,
+                    icon: 'icon-home',
+                    onclick: null,
+                    onmouseover: null,
+                    onmouseout: null,
+                    onhover: null,
+                    html: null,
+                    popTheme: null,
+                    popData: null,
+                    popTmp: null,
+                    popHeight: 100,
+                    zIndex: null,
+                },
+                map: context.map,
+                create: function (markerOpt) {
+                    var latlng = new window.google.maps.LatLng({
+                        lat: markerOpt.lat,
+                        lng: markerOpt.lng
+                    });
+                    var marker = new window.CustomMarker({
+                        latlng: latlng,
+                        map: markerOpt.map,
+                        html: '<div class="map-marker"><a class="pin" ><i class="' + markerOpt.icon + '"></i></div></div>',
+                        popData: markerOpt.popData,
+                        popTmp: markerOpt.popTmp,
+                        popHeight: markerOpt.popHeight,
+                        onclick: markerOpt.onclick,
+                        popTheme: markerOpt.popTheme,
+                        zIndex: markerOpt.zIndex,
+                    });
+                    if(markerOpt.id) {
+                        marker.id = markerOpt.id;
+                    }
+                    return marker;
+                },
+                destory: function (marker) {
+                    $(marker)
+                        .addClass('removeing');
+                    $(document)
+                        .one('mouseup', function () {
+                            marker.setMap(null);
+                        });
+                }
+            });
             context._setCenter = function (lat, lng) {
                 var center = new window.google.maps.LatLng(lat, lng);
                 return map.setCenter(center);
@@ -88,7 +215,8 @@
                         panorama.setPosition(streetViewLocation);
                         panorama.setVisible(true);
                     } else {
-                        $(document).trigger('gmap.streetview.error');
+                        $(document)
+                            .trigger('gmap.streetview.error');
                     }
                 });
             };
@@ -99,53 +227,7 @@
                 map.setMapTypeId($.getMapTypeId(id));
             };
             context._addMarker = function (option) {
-                var defaultOption = {
-                    lat: 0,
-                    lng: 0,
-                    draggable: false,
-                    icon: 'icon-home',
-                    onclick: null,
-                    onmouseover: null,
-                    onmouseout: null,
-                    onhover: null,
-                    id: $.guid++,
-                    html: null,
-                    popTheme: null,
-                    popData: null,
-                    popTmp: null,
-                    popHeight: 100,
-                    zIndex: null,
-                };
-                var opt = $.extend({}, defaultOption, option);
-                if(!opt.lat || !opt.lng) {
-                    return;
-                }
-                var addedMark = context._getMarkerById(opt.id);
-                if(addedMark) {
-                    addedMark.setMap(map);
-                    return addedMark;
-                }
-                var latlng = new window.google.maps.LatLng({
-                    lat: opt.lat,
-                    lng: opt.lng
-                });
-                var html = '<div class="map-marker"><a class="pin" ><i class="' + opt.icon + '"></i></div></div>';
-                var marker = new window.CustomMarker({
-                    latlng: latlng,
-                    map: map,
-                    html: html,
-                    popData: opt.popdata,
-                    popTmp: opt.poptmp,
-                    popHeight: opt.popheight,
-                    onclick: opt.onclick,
-                    popTheme: opt.poptheme,
-                    zIndex: opt.zindex,
-                });
-                if(opt.id) {
-                    marker.id = opt.id;
-                }
-                markers.push(marker);
-                return marker;
+                return markers.addMarker(option);
             };
             context._findItem = function (id) {
                 for(var i = 0; i < markers.length; i++) {
@@ -162,11 +244,12 @@
                 };
             };
             context._getMarkerById = function (id) {
-                return context._findItem(id).element;
+                return markers.getMarkerById(id);
             };
             context._setAllMap = function (map) {
-                for(var i = 0; i < markers.length; i++) {
-                    markers[i].setMap(map);
+                var markerList = markers.getAllMarkers();
+                for(var i = 0; i < markerList.length; i++) {
+                    markerList[i].setMap(map);
                 }
             };
             context._hideMarkers = function () {
@@ -176,17 +259,10 @@
                 context._setAllMap(map);
             };
             context._deleteMarker = function (id) {
-                var item = context._findItem(id);
-                if(item.element) {
-                    item.element.setMap(null);
-                    if(item.index > -1) {
-                        markers.splice(item.index, 1);
-                    }
-                }
+                return markers.deleteMarker(id);
             };
-            context._deleteMarkers = function () {
-                context._hideMarkers();
-                markers = [];
+            context._deleteMarkers = function (ids) {
+                markers.deleteMarkers(ids);
             };
             context._getMarkers = function () {
                 return markers;
@@ -199,23 +275,23 @@
                     map.setZoom(level);
                 }
             };
-            context._fitBounds = function (poiList) {
+            context._fitBounds = function (latlngs) {
                 var list = [];
-                if(markers && markers.length) {
-                    list = markers.map(function (e) {
-                        return {
-                            lat: e.lat || e.latlng.lat(),
-                            lng: e.lng || e.latlng.lng()
-                        };
-                    });
-                }
-                if(poiList && poiList.length > 0) {
-                    list = list.concat(poiList.map(function (e) {
+                if(latlngs && latlngs.length) {
+                    list = list.concat(latlngs.map(function (e) {
                         return {
                             lat: e.lat,
                             lng: e.lng
                         };
                     }));
+                } else {
+                    var markerList = markers.getAllMarkers();
+                    list = markerList.map(function (e) {
+                        return {
+                            lat: e.lat || e.latlng.lat(),
+                            lng: e.lng || e.latlng.lng()
+                        };
+                    });
                 }
                 if(list && list.length) {
                     var bounds = new window.google.maps.LatLngBounds();
@@ -227,9 +303,6 @@
                     map.fitBounds(bounds);
                 }
             };
-            if(opt.streetview !== false) {
-                context._showStreetView();
-            }
         },
         exports: {
             setCenter: function (lat, lng) {
@@ -323,21 +396,26 @@
                     context.reset();
                 });
             }
+            if(opt.streetview) {
+                exports.showStreetView();
+            }
         },
         destroyBefore: null
     };
     $.CUI.plugin(gmapConfig);
-    $(document).on('dom.load.gmap', function () {
-        $('[data-gmap]').each(function (index, item) {
-            var $this = $(item);
-            var data = $this.data();
-            $this.removeAttr('data-gmap');
-            $this.onscroll({
-                callback: function () {
-                    $this.gmap(data);
-                    $this.attr('data-gmap-load', '');
-                }
-            });
+    $(document)
+        .on('dom.load.gmap', function () {
+            $('[data-gmap]')
+                .each(function (index, item) {
+                    var $this = $(item);
+                    var data = $this.data();
+                    $this.removeAttr('data-gmap');
+                    $this.onscroll({
+                        callback: function () {
+                            $this.gmap(data);
+                            $this.attr('data-gmap-load', '');
+                        }
+                    });
+                });
         });
-    });
 })(jQuery);

@@ -101,19 +101,32 @@ $('.circle-item').each(function (index, item) {
     var $item = $(item);
     $item.text($item.css('backgroundColor').replace('rgb', ''));
 });
-$(document).one('initialMap', function (d, e, t) {
-    t.addMarker({
-        lat: 37.819929,
-        lng: -122.478255,
-        html: true,
-        popTmp:'<div><h1>{{words}}</h1></div>',
-        popData:{
-            words:'hello'
-        },
-        onclick: function () {
-            console.log('click!!!!!');
-        }
+var mockPin = function(count){
+    var list=[];
+    for(var i = 0; i<count;i++){
+        var pin ={
+            lat:  ('37.8' + Math.floor(Math.random() * 99999)) *1,
+            lng :  ('122.4' + Math.floor(Math.random() * 99999))*-1
+        };
+        list.push(pin);
+    }
+    return list;
+};
+
+$(document).one('initialMap', function (d, e, map) {
+    var list = mockPin(100);
+    list.forEach(function(e){
+        map.addMarker({
+            lat:e.lat,
+            lng: e.lng,
+            html: true,
+            popTmp:'<div><h1>{{words}}</h1></div>',
+            popData:{
+                words:'hello'
+            }
+        });
     });
+    map.fitBounds();
 });
 $('.btn').click(function(){
     $(this).toggleClass('active');
