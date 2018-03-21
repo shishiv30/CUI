@@ -38,7 +38,7 @@ module.exports = function (grunt) {
                 cacheId: '<%= pkg.name %>',
                 baseDir:'./public/',
                 workerFileName: 'sw.js',
-                verbose: true,
+                verbose: false,
             },
             'default': {
                 staticFileGlobs: [
