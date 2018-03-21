@@ -19,12 +19,13 @@ app.get('/:lang', function (req, res) {
     var lang = setLang(req, res);
     var ejsPath = ejsUrl + 'index.ejs';
     ejs.renderFile(ejsPath, {
-        url: 'http://' + hostname + ':' + port + '/',
+        url: '//' + hostname + ':' + port + '/',
         lang:lang
     }, function (err, result) {
         res.send(result);
     });
 });
+app.use(express.static('/'));
 
 app.use(express.static('public'));
 

@@ -96,7 +96,7 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: '',
                     src: ['favicon.ico','serviceworker.js'],
-                    dest: 'public/'
+                    dest: 'public'
                 }]
             }
         },
