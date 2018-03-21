@@ -33,21 +33,22 @@ module.exports = function (grunt) {
         sprite: ['img'].reduce((config, k) => Object.assign(config, {
             [k]: generateSpriteConfig(k)
         }), {}),
-        swprecache: {
+        'sw-precache': {
             options: {
                 cacheId: '<%= pkg.name %>',
-                baseDir:'./dist/src/',
+                baseDir:'./public/',
                 workerFileName: 'sw.js',
                 verbose: true,
             },
             'default': {
                 staticFileGlobs: [
-                    'cui.lib.min.js',
-                    'cui.min.js',
-                    'cui.min.css',
-                    'img/*.{gif,png,jpg}',
-                    'fonts/*.{woff,ttf,svg,eot}',
+                    'dist/src/cui.lib.min.js',
+                    'dist/src/cui.min.js',
+                    'dist/src/cui.min.css',
+                    'dist/src/img/*.{gif,png,jpg}',
+                    'dist/src/fonts/*.{woff,ttf,svg,eot}',
                 ],
+                stripPrefix:'./public',
             }
         },
         htmlmin: { // Task
@@ -155,6 +156,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-spritesmith');
     grunt.loadNpmTasks('grunt-sass');
-    grunt.registerTask('default', ['copy', 'concat', 'sprite', 'sass', 'autoprefixer', 'cssmin', 'uglify']);
+    grunt.registerTask('default', ['copy', 'concat', 'sprite', 'sass', 'autoprefixer', 'cssmin', 'uglify','sw-precache']);
     grunt.registerTask('dev', ['copy', 'concat', 'sprite', 'sass', 'autoprefixer', 'watch']);
 };
