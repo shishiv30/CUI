@@ -50,7 +50,8 @@ module.exports = function (grunt) {
                     'dist/src/fonts/*.{woff,ttf,svg,eot}',
                     'dist/src/doc/src/*.{js,ico,png,json,png,css}'
                 ],
-                stripPrefix:'./public',
+                replacePrefix: './',
+                stripPrefix:'./public/',
             }
         },
         htmlmin: { // Task
