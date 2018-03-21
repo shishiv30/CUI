@@ -33,6 +33,23 @@ module.exports = function (grunt) {
         sprite: ['img'].reduce((config, k) => Object.assign(config, {
             [k]: generateSpriteConfig(k)
         }), {}),
+        swprecache: {
+            options: {
+                cacheId: '<%= pkg.name %>',
+                baseDir:'./dist/src/',
+                workerFileName: 'sw.js',
+                verbose: true,
+            },
+            'default': {
+                staticFileGlobs: [
+                    'cui.lib.min.js',
+                    'cui.min.js',
+                    'cui.min.css',
+                    'img/*.{gif,png,jpg}',
+                    'fonts/*.{woff,ttf,svg,eot}',
+                ],
+            }
+        },
         htmlmin: { // Task
             dist: { // Target
                 options: { // Target options
@@ -50,7 +67,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: [{
-                    'public/dist/src/cui.css': 'src/scss/cui.scss'
+                    'public/dist/src/cui.min.css': 'src/scss/cui.scss'
                 }]
             }
         },
@@ -64,7 +81,7 @@ module.exports = function (grunt) {
                     dest: 'public/dist/src/<%= pkg.name %>.min.js'
                 }, {
                     src: ['src/js/libs/*.js'],
-                    dest: 'public/dist/src/<%= pkg.name %>.lib.js'
+                    dest: 'public/dist/src/<%= pkg.name %>.lib.min.js'
                 }]
             }
         },
@@ -86,14 +103,14 @@ module.exports = function (grunt) {
         autoprefixer: {
             dist: {
                 files: {
-                    'public/dist/src/<%= pkg.name %>.css': 'public/dist/src/<%= pkg.name %>.css'
+                    'public/dist/src/<%= pkg.name %>.min.css': 'public/dist/src/<%= pkg.name %>.min.css'
                 }
             }
         },
         cssmin: {
             dist: {
                 files: [{
-                    src: ['public/dist/src/<%= pkg.name %>.css'],
+                    src: ['public/dist/src/<%= pkg.name %>.min.css'],
                     dest: 'public/dist/src/<%= pkg.name %>.min.css'
                 }]
             }
@@ -101,8 +118,8 @@ module.exports = function (grunt) {
         uglify: {
             dist: {
                 files: [{
-                    src: ['public/dist/src/<%= pkg.name %>.lib.js'],
-                    dest: 'public/dist/src/<%= pkg.name %>.lib.js'
+                    src: ['public/dist/src/<%= pkg.name %>.lib.min.js'],
+                    dest: 'public/dist/src/<%= pkg.name %>.lib.min.js'
                 },{
                     src: ['public/dist/src/<%= pkg.name %>.min.js'],
                     dest: 'public/dist/src/<%= pkg.name %>.min.js'
@@ -128,6 +145,7 @@ module.exports = function (grunt) {
             }
         }
     });
+    grunt.loadNpmTasks('grunt-sw-precache');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-concat');
@@ -138,5 +156,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-spritesmith');
     grunt.loadNpmTasks('grunt-sass');
     grunt.registerTask('default', ['copy', 'concat', 'sprite', 'sass', 'autoprefixer', 'cssmin', 'uglify']);
-    grunt.registerTask('dev', ['copy', 'concat', 'sprite', 'sass', 'autoprefixer', 'cssmin', 'watch']);
+    grunt.registerTask('dev', ['copy', 'concat', 'sprite', 'sass', 'autoprefixer', 'watch']);
 };

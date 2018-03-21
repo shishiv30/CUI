@@ -44,5 +44,8 @@
         "i18n": "^0.8.3",
         "nodemon": "^1.12.1",
         "grunt-contrib-htmlmin": "^2.4.0"
+    },
+    "devDependencies": {
+        "grunt-sw-precache": "^1.0.3"
     }
 }
