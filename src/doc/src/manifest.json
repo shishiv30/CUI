@@ -24,6 +24,6 @@
     "theme_color": "#333333",
     "background_color": "#ffffff",
     "display": "fullscreen",
-    "scope_url": "https://shishiv30.github.io/CUI/",
-    "start_url": "https://shishiv30.github.io/CUI/"
+    "scope_url": "https://shishiv30.github.io/CUI/index.html",
+    "start_url": "https://shishiv30.github.io/CUI/index.html"
 }
