@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "concurrently 'grunt dev' 'nodemon app.js'",
-        "build": "grunt default && node html.js && grunt htmlmin",
+        "build": "grunt default && node html.js && grunt htmlmin && grunt sw-precache",
         "deploy": "npm run build && node publish.js"
     },
     "repository": {
