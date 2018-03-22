@@ -15,7 +15,10 @@ function ejs2html(ejsName) {
     ejsPath = __dirname + ejsPath + ejsName;
     i18n.setLocale('ch');
     htmlPath = __dirname + htmlPath;
-    ejs.renderFile(ejsPath, {}, function (err, result) {
+    if (!fs.existsSync(htmlPath)){
+        fs.mkdirSync(htmlPath);
+    }
+    ejs.renderFile(ejsPath, {rootUrl:'%RootUrl%'}, function (err, result) {
         if (!err) {
             var htmlName = ejsName.replace('.ejs', '.html');
             fs.writeFile(htmlPath + htmlName, result, function () {});

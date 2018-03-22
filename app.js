@@ -18,7 +18,7 @@ app.get('/:lang', function (req, res) {
     var lang = setLang(req, res);
     var ejsPath = ejsUrl + 'index.ejs';
     ejs.renderFile(ejsPath, {
-        url: '//' + hostname + ':' + port + '/',
+        rootUrl: '//' + hostname + ':' + port + '/',
         lang: lang
     }, function (err, result) {
         res.send(result);

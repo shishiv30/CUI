@@ -4,8 +4,8 @@
     "description": "A responsive ui framework",
     "main": "index.js",
     "scripts": {
-        "dev": "concurrently 'grunt dev' 'nodemon app.js'",
-        "build": "grunt default && node html.js && grunt htmlmin && grunt sw-precache",
+        "dev": "concurrently 'grunt dev --fakedomain' 'nodemon app.js'",
+        "build": "node html.js  && grunt default",
         "deploy": "npm run build && node publish.js"
     },
     "repository": {
@@ -36,14 +36,15 @@
         "grunt-contrib-concat": "^1.0.0",
         "grunt-contrib-copy": "^1.0.0",
         "grunt-contrib-cssmin": "^1.0.2",
+        "grunt-contrib-htmlmin": "^2.4.0",
         "grunt-contrib-jshint": "^1.1.0",
         "grunt-contrib-uglify": "^1.0.2",
         "grunt-contrib-watch": "^0.6.1",
         "grunt-sass": "^2.0.0",
         "grunt-spritesmith": "^6.5.1",
+        "grunt-text-replace": "^0.4.0",
         "i18n": "^0.8.3",
-        "nodemon": "^1.12.1",
-        "grunt-contrib-htmlmin": "^2.4.0"
+        "nodemon": "^1.12.1"
     },
     "devDependencies": {
         "grunt-sw-precache": "^1.0.3"
