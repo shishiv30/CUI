@@ -47,6 +47,7 @@
         "nodemon": "^1.12.1"
     },
     "devDependencies": {
-        "grunt-sw-precache": "^1.0.3"
+        "grunt-sw-precache": "^1.0.3",
+        "sw-precache": "^5.2.1"
     }
 }
