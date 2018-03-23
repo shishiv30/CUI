@@ -4,7 +4,7 @@
     "description": "A responsive ui framework",
     "main": "index.js",
     "scripts": {
-        "dev": "concurrently 'grunt dev --fakedomain' 'nodemon app.js'",
+        "dev": "concurrently 'node html.js && grunt dev --fakedomain' 'nodemon app.js'",
         "build": "node html.js  && grunt default",
         "deploy": "npm run build && node publish.js"
     },
@@ -47,7 +47,6 @@
         "nodemon": "^1.12.1"
     },
     "devDependencies": {
-        "grunt-sw-precache": "^1.0.3",
-        "sw-precache": "^5.2.1"
+        "workbox-build": "^3.0.0"
     }
 }

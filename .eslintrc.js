@@ -10,7 +10,9 @@ module.exports = {
         "moment": true,
         "browser": true,
         "console": true,
-        "noUiSlider": true
+        "noUiSlider": true,
+        "workbox": true,
+        "importScripts":true,
     },
     "extends": "eslint:recommended",
     "rules": {
