@@ -9,10 +9,9 @@ i18n.configure({
     directory: ejsUrl + 'locales/'
 });
 
-function ejs2html(ejsName) {
+function ejs2html(ejsName,ejsFolder) {
     var htmlPath = '/public/',
-        ejsPath = '/src/doc/';
-    ejsPath = __dirname + ejsPath + ejsName;
+        ejsPath = __dirname + ejsFolder + ejsName;
     i18n.setLocale('ch');
     htmlPath = __dirname + htmlPath;
     if (!fs.existsSync(htmlPath)){
@@ -29,4 +28,5 @@ function ejs2html(ejsName) {
     });
 }
 
-ejs2html('index.ejs');
+ejs2html('index.ejs','/src/doc/');
+ejs2html('demo1.ejs','/src/demo1/');

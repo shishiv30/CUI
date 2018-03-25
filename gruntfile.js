@@ -118,7 +118,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'src/',
-                    src: ['img/*.*', 'img/pin/*.*', 'fonts/*.*', 'doc/src/*.*'],
+                    src: ['img/*.*', 'img/pin/*.*', 'fonts/*.*', 'doc/src/*.*','demo1/src/*.*'],
                     dest: 'public/dist/src/'
                 }, {
                     expand: true,
@@ -175,7 +175,7 @@ module.exports = function (grunt) {
         replace: {
             publish: {
                 src: [
-                    'public/index.html',
+                    'public/*.html',
                     'public/workbox.sw.js'
                 ],
                 overwrite: true,
@@ -186,7 +186,7 @@ module.exports = function (grunt) {
             },
             dev: {
                 src: [
-                    'public/index.html',
+                    'public/*.html',
                     'public/workbox.sw.js'
                 ],
                 overwrite: true,
