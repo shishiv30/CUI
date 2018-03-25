@@ -86,6 +86,7 @@ module.exports = function (grunt) {
                 },
                 files: { // Dictionary of files
                     'public/index.html': 'public/index.html',
+                    'public/demo1.html': 'public/demo1.html'
                 }
             }
         },
@@ -118,12 +119,17 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'src/',
-                    src: ['img/*.*', 'img/pin/*.*', 'fonts/*.*', 'doc/src/*.*','demo1/src/*.*'],
+                    src: ['img/*.*', 'img/pin/*.*', 'fonts/*.*', 'doc/src/*.*','demo1/src/*.*','visual/src/*.*'],
                     dest: 'public/dist/src/'
                 }, {
                     expand: true,
                     cwd: '',
                     src: ['favicon.ico','workbox.sw.js'],
+                    dest: 'public'
+                },{
+                    expand: true,
+                    cwd: 'src/visual/',
+                    src: ['*.html'],
                     dest: 'public'
                 }]
             }
@@ -155,6 +161,10 @@ module.exports = function (grunt) {
             }
         },
         watch: {
+            html:{
+                files: ['src/visual/*.html'],
+                tasks: ['copy','replace:dev']
+            },
             script: {
                 files: ['src/js/plugins/*.js', 'src/doc/src/*.js'],
                 tasks: ['concat:dist', 'copy']
