@@ -212,6 +212,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-spritesmith');
     grunt.loadNpmTasks('grunt-sass');
-    grunt.registerTask('default', ['copy', 'concat', 'sprite', 'sass', 'autoprefixer', 'cssmin', 'uglify', 'htmlmin','swPrecache','replace:publish']);
-    grunt.registerTask('dev', ['copy', 'concat', 'sprite', 'sass', 'autoprefixer', 'swPrecache','replace:dev', 'watch']);
+    grunt.registerTask('default', ['copy', 'concat', 'sprite', 'sass', 'autoprefixer', 'cssmin', 'uglify', 'htmlmin','replace:publish']);
+    grunt.registerTask('dev', ['copy', 'concat', 'sprite', 'sass', 'autoprefixer','replace:dev', 'watch']);
 };
