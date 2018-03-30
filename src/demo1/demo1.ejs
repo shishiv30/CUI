@@ -34,7 +34,7 @@ body{
     height:70px;
     overflow:hidden;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     text-align:center;
     align-items: center;
     box-shadow:0 0 1px 1px #eee;
@@ -71,6 +71,9 @@ body{
 }
 .footer{
     text-align:center;
+    line-height:2em;
+}
+.linklist li{
     line-height:2em;
 }
 </style>
@@ -177,29 +180,34 @@ body{
     <div class="h1">
         <img src="dist/src/demo1/src/a-bar.jpg" alt="a-bar" style="width:100%;">
     </div>
-    <div class="content-panel">
-        <div class="gs-fixed">
-            <div class="row">
-                <div class="col-xs-12 col-sm-6">
+    <div class="content-panel linklist">
+        <div class="flex-gs-fixed">
+                <div class="flex-xs-12 flex-sm-6">
                     <p class="h4">QUICKLINKS 快速链接</p>
                     <ul>
                         <li>
                             <a class="link" href="#">2018暑假游学</a>
+                        </li>
+                        <li>
                             <a class="link" href="#">2019寒假游学</a>
+                        </li>
+                        <li>
                             <a class="link" href="#">新西兰签证办理</a>
                         </li>
                     </ul>
                 </div>
-                <div class="col-xs-12 col-sm-6">
-                    <p class="h4">FOLLOW US关注我们</p>
+                <div class="flex-xs-12 flex-sm-6">
+                    <p class="h4">FOLLOW US 关注我们</p>
+                    <img  src="dist/src/demo1/src/code.jpg"alt="code id" style="height:50px;">
                     <ul>
                         <li>
-                            <a href="#" class="link"><i class="icon-wechat"></i> 微信 Wechat</a>
                             <a href="#" class="link"><i class="icon-weibo"></i> 微博 Webo</a>
+                        </li>
+                        <li>
+                            <a href="#" class="link"><i class="icon-wechat"></i> 微信 Wechat</a>
                         </li>
                     </ul>
                 </div>
-            </div>
         </div>
     </div>
     <div class="content-panel">

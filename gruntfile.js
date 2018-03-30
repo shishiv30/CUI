@@ -121,24 +121,16 @@ module.exports = function (grunt) {
         },
         watch: {
             html:{
-                files: ['src/visual/*.html'],
+                files: ['public/*.html','src/visual/*.html'],
                 tasks: ['copy','replace:dev']
             },
             script: {
                 files: ['src/js/plugins/*.js', 'src/doc/src/*.js'],
-                tasks: ['concat:dist', 'copy']
+                tasks: ['concat:dist', 'copy','replace:dev']
             },
             scss: {
                 files: ['src/scss/*.scss', 'src/scss/**/*.scss', 'src/doc/src/*.css'],
-                tasks: ['sass', 'copy']
-            },
-            css: {
-                options: {
-                    debounceDelay: 250,
-                    livereload: true
-                },
-                files: ['public/dist/src/*.css'],
-                task: ['autoprefixer']
+                tasks: ['sass', 'copy','autoprefixer','replace:dev']
             }
         },
         replace: {

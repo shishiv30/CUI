@@ -1,4 +1,4 @@
-.flex {
+.flex,.flex-gs, .flex-gs-fixed {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -58,7 +58,7 @@
 }
 
 .flex-gs, .flex-gs-fixed {
-    display: flex;
+    width: 100%;
     margin: 0 auto;
     flex-wrap: wrap;
     > div {
