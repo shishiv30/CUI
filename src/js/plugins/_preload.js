@@ -4,41 +4,32 @@
     var resource = {
         js: {
             load: function (src, callback) {
-                return new Promise(function (resolve, reject) {
-                    try {
-                        var script = document.createElement('script');
-                        if(callback) {
-                            window[callback] = function () {
-                                resolve();
-                            };
-                        } else {
-                            script.onload = resolve;
-                            script.onerror = reject;
-                        }
-                        script.src = src;
-                        document.getElementsByTagName('head')[0].appendChild(script);
-                    } catch(e) {
-                        reject(e);
-                    }
-                });
+                var dfd = $.Deferred();
+                var script = document.createElement('script');
+                if(callback) {
+                    window[callback] = function () {
+                        dfd.resolve();
+                    };
+                } else {
+                    script.onload = dfd.resolve;
+                    script.onerror = dfd.reject;
+                }
+                script.src = src;
+                document.getElementsByTagName('head')[0].appendChild(script);
+                return dfd;
             },
             cache: {}
         },
         css: {
             load: function (src) {
-                return new Promise(function (resolve, reject) {
-                    try {
-                        var link = document.createElement('link');
-                        link.rel = 'stylesheet';
-                        link.type = 'text/css';
-                        link.href = src;
-                        link.onload = resolve;
-                        link.onerror = reject;
-                        document.getElementsByTagName('head')[0].appendChild(link);
-                    } catch(e) {
-                        reject(e);
-                    }
-                });
+                var dfd = $.Deferred();
+                var link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = src;
+                link.onload = dfd.resolve;
+                link.onerror = dfd.reject;
+                return dfd;
             },
             cache: {}
         },
@@ -82,20 +73,20 @@
         var cache = [];
         switch(key) {
         case 'js':
-            $.each(resource.js.cache,function(key){
+            $.each(resource.js.cache, function (key) {
                 cache.push(key);
             });
             break;
         case 'css':
-            $.each(resource.css.cache,function(key){
+            $.each(resource.css.cache, function (key) {
                 cache.push(key);
             });
             break;
-        default :
-            $.each(resource.js.cache,function(key){
+        default:
+            $.each(resource.js.cache, function (key) {
                 cache.push(key);
             });
-            $.each(resource.css.cache,function(key){
+            $.each(resource.css.cache, function (key) {
                 cache.push(key);
             });
             break;

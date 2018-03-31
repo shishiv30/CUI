@@ -139,21 +139,17 @@
             return reg.test(str);
         },
         sendMessage: function(message) {
-            return new Promise(function(resolve, reject) {
-                var messageChannel = new MessageChannel();
-                messageChannel.port1.onmessage = function(event) {
-                    if (event.data.error) {
-                        reject(event.data.error);
-                    } else {
-                        resolve(event.data);
-                    }
-                };
-
-                navigator.serviceWorker.controller.postMessage(message,
-                    [messageChannel.port2]);
-            });
+            var dfd = $.Deferred();
+            var messageChannel = new MessageChannel();
+            messageChannel.port1.onmessage = function(event) {
+                if (event.data.error) {
+                    dfd.reject(event.data.error);
+                } else {
+                    dfd.resolve(event.data);
+                }
+            };
+            navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
+            return dfd;
         }
-
     });
-
 })(jQuery);
