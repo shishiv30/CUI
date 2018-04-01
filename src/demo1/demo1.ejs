@@ -21,9 +21,11 @@ body{
     align-items: center;
 }
 .logo img{
-    height:80px;
+    height: 50px;
+    padding: 10px;
 }
 .logo a{
+    display:block;
     flex-shrink: 0;
 }
 .navigator{
@@ -31,7 +33,6 @@ body{
     z-index: 999999;
     top: 0;
     display:flex;
-    height:70px;
     overflow:hidden;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -40,10 +41,10 @@ body{
     box-shadow:0 0 1px 1px #eee;
     background: darkgreen;
     color: #fff;
+    padding:10px;
 }
 .navigator > a {
     display:block;
-    padding:10px;
     color:inherit;
     opacity:0.7;
 }
@@ -53,10 +54,10 @@ body{
 .content-panel{
     text-align:center;
     display:flex;
-    min-height:20vw;
+    min-height:150px;
     align-items: center;
     justify-content: center;
-    padding:5px 30px;
+    padding:15px 30px;
 }
 .content-list li{
     line-height: 2em;
@@ -76,9 +77,14 @@ body{
 .linklist li{
     line-height:2em;
 }
+.welcomeimg{
+    width: 100%;
+    max-height: calc(100vh - 300px);
+    object-fit: cover;
+}
 </style>
 <body id="body" class="classic">
-    <div class=" logo">
+    <div class="logo">
         <div>
             <a href="#" class="navigator-logo">
                 <img src="dist/src/demo1/src/logo.jpg" alt="logo">
@@ -110,20 +116,7 @@ body{
             <p>联系我们</p>
         </a>
     </div>
-    <div class="gs-sin">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="slicker" data-slicker data-responsive="false">
-                        <ul>
-                            <li><img data-img="dist/src/demo1/src/a-1.jpg" alt="a-1"></li>
-                            <li><img data-img="dist/src/demo1/src/a-2.jpg" alt="a-2"></li>
-                            <li><img data-img="dist/src/demo1/src/a-3.jpg" alt="a-3"></li>
-                            <li><img data-img="dist/src/demo1/src/a-4.jpg" alt="a-4"></li>
-                        </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+    <img src="dist/src/demo1/src/a-bar.jpg" alt="a-bar" class="welcomeimg">
     <div class="content-panel">
         <div class="h2">
             FOUR REASONS TO CHOOSE “STUDY TOUR” IN New Zealand
@@ -177,8 +170,20 @@ body{
             </div>
         </div>
     </div>
-    <div class="h1">
-        <img src="dist/src/demo1/src/a-bar.jpg" alt="a-bar" style="width:100%;">
+
+    <div class="gs-sin">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="slicker" data-slicker data-responsive="false">
+                        <ul>
+                            <li><img data-img="dist/src/demo1/src/a-5.jpg" alt="a-5"></li>
+                            <li><img data-img="dist/src/demo1/src/a-6.jpg" alt="a-6"></li>
+                            <li><img data-img="dist/src/demo1/src/a-7.jpg" alt="a-7"></li>
+                            <li><img data-img="dist/src/demo1/src/a-8.jpg" alt="a-8"></li>
+                        </ul>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="content-panel linklist">
         <div class="flex-gs-fixed">
@@ -220,12 +225,12 @@ body{
         <div class="row">
             <div class="col-xs-12">
                 <div class="slicker" data-slicker data-responsive="false">
-                        <ul>
-                            <li><img data-img="dist/src/demo1/src/a-5.jpg" alt="a-5"></li>
-                            <li><img data-img="dist/src/demo1/src/a-6.jpg" alt="a-6"></li>
-                            <li><img data-img="dist/src/demo1/src/a-7.jpg" alt="a-7"></li>
-                            <li><img data-img="dist/src/demo1/src/a-8.jpg" alt="a-8"></li>
-                        </ul>
+                    <ul>
+                        <li><img data-img="dist/src/demo1/src/a-1.jpg" alt="a-1"></li>
+                        <li><img data-img="dist/src/demo1/src/a-2.jpg" alt="a-2"></li>
+                        <li><img data-img="dist/src/demo1/src/a-3.jpg" alt="a-3"></li>
+                        <li><img data-img="dist/src/demo1/src/a-4.jpg" alt="a-4"></li>
+                    </ul>
                 </div>
             </div>
         </div>

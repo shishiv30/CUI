@@ -132,7 +132,7 @@ $social-list: socialbar-email $socialbar-email, socialbar-facebook $socialbar-fa
             &:first-child:nth-last-child(2),
             &:first-child:nth-last-child(2) ~ li {
                 a {
-                    font-size: 16px;
+                    font-size: $font-size-base;
                 }
             }
 

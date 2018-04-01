@@ -13,10 +13,19 @@ ol, ul {
 
 //CUI Setting
 html {
-    font-size: 16px;
+
     line-height: 1em;
     font-family: $font, "Helvetica Neue", Arial, sans-serif;
     font-style: normal;
+    @media(max-width:$screen-xs-max){
+        font-size: 12px;
+    }
+    @media(min-width:$screen-sm-min) and (max-width:$screen-sm-max){
+        font-size: 14px;
+    }
+    @media(min-width:$screen-md-min){
+        font-size: 16px;
+    }
 }
 
 body, html {
