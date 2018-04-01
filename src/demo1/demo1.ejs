@@ -5,7 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Demo1</title>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
     <link href="<%=cdnUrl + 'cui.min.css'%>" type="text/css" rel="stylesheet" />
     <link href="<%=cdnUrl + 'demo1/src/demo1.css'%>" type="text/css" rel="stylesheet" />
 </head>
@@ -33,8 +34,8 @@ body{
     z-index: 999999;
     top: 0;
     display:flex;
-    overflow:hidden;
-    flex-wrap: wrap;
+    overflow:auto;
+    flex-wrap: nowrap;
     justify-content: space-around;
     text-align:center;
     align-items: center;
@@ -47,6 +48,10 @@ body{
     display:block;
     color:inherit;
     opacity:0.7;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width:fit-content;
 }
 .navigator > a:hover {
     opacity:1;
@@ -96,29 +101,29 @@ body{
     </div>
     <div class="navigator">
         <a href="#">
-            <p>WHY NZ</p>
-            <p>选择新西兰</p>
+            WHY NZ <br>
+            选择新西兰
         </a>
         <a href="#">
-            <p>STUDY TOUR</p>
-            <p>游学新西兰</p>
+            STUDY TOUR <br>
+            游学新西兰
         </a>
         <a href="#">
-            <p>STUDY OPTION</p>
-            <p>留学新西兰</p>
+            STUDY OPTION <br>
+            留学新西兰
         </a>
         <a href="#">
-            <p>LIVING IN NZ</p>
-            <p>探索新西兰</p>
+            LIVING IN NZ <br>
+            探索新西兰
         </a>
         <a href="#">
-            <p>CONTACT US</p>
-            <p>联系我们</p>
+            CONTACT US <br>
+            联系我们
         </a>
     </div>
     <img src="dist/src/demo1/src/a-bar.jpg" alt="a-bar" class="welcomeimg">
     <div class="content-panel">
-        <div class="h2">
+        <div class="h3">
             FOUR REASONS TO CHOOSE “STUDY TOUR” IN New Zealand
             <br>
             选择游学新西兰的四大理由
@@ -216,7 +221,7 @@ body{
         </div>
     </div>
     <div class="content-panel">
-        <div class="h2">
+        <div class="h3">
             DUNEDIN IN NEW ZEALAND <br>
             新西兰唯一的大学城——达尼丁
         </div>
