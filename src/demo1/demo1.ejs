@@ -45,12 +45,11 @@ body{
     padding:10px;
 }
 .navigator > a {
+    padding:5px;
+    line-height:1.5em;
     display:block;
     color:inherit;
     opacity:0.7;
-    overflow:hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     min-width:fit-content;
 }
 .navigator > a:hover {
@@ -64,12 +63,21 @@ body{
     justify-content: center;
     padding:15px 30px;
 }
+@media(max-width:768px){
+    .content-panel{
+        padding:15px;
+    }
+}
+.content-panel.highlight{
+    background:darkgreen;
+    color:#eee;
+}
 .content-list li{
     line-height: 2em;
     text-align:left;
 }
 .content-list li.link{
-    color:#4facfe;
+    color:inherit;
     text-align:right;
 }
 .dropdown-button{
@@ -84,7 +92,7 @@ body{
 }
 .welcomeimg{
     width: 100%;
-    max-height: calc(100vh - 300px);
+    max-height: calc(100vh - 250px);
     object-fit: cover;
 }
 </style>
@@ -129,7 +137,7 @@ body{
             选择游学新西兰的四大理由
         </div>
     </div>
-    <div class="content-panel">
+    <div class="content-panel highlight">
         <ul class="content-list">
             <li>The only country who has a law to protect student vistor on Earth</li>
             <li>全世界唯一颁布游学生保护法的国家</li>
