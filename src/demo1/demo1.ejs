@@ -1,153 +1,35 @@
-<%
-    var url =  rootUrl;
-    var cdnUrl =  url + 'dist/src/';
-%>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Demo1</title>
-    <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
-    <link href="<%=cdnUrl + 'cui.min.css'%>" type="text/css" rel="stylesheet" />
-    <link href="<%=cdnUrl + 'demo1/src/demo1.css'%>" type="text/css" rel="stylesheet" />
-</head>
-<style>
-body{
-    background:#fff;
-}
-.slicker{
-    height:50vw;
-}
-.logo {
-    display:flex;
-    align-items: center;
-}
-.logo img{
-    height: 50px;
-    padding: 10px;
-}
-.logo a{
-    display:block;
-    flex-shrink: 0;
-}
-.navigator{
-    position: sticky;
-    z-index: 999999;
-    top: 0;
-    display:flex;
-    overflow:auto;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    text-align:center;
-    align-items: center;
-    box-shadow:0 0 1px 1px #eee;
-    background: darkgreen;
-    color: #fff;
-    padding:10px;
-}
-.navigator > a {
-    padding:5px;
-    line-height:1.5em;
-    display:block;
-    color:inherit;
-    opacity:0.7;
-    min-width:fit-content;
-}
-.navigator > a:hover {
-    opacity:1;
-}
-.content-panel{
-    text-align:center;
-    display:flex;
-    min-height:150px;
-    align-items: center;
-    justify-content: center;
-    padding:15px 30px;
-}
-@media(max-width:768px){
-    .content-panel{
-        padding:15px;
-    }
-}
-.content-panel.highlight{
-    background:darkgreen;
-    color:#eee;
-}
-.content-list li{
-    line-height: 2em;
-    text-align:left;
-}
-.content-list li.link{
-    color:inherit;
-    text-align:right;
-}
-.dropdown-button{
-    margin:5px 0;
-}
-.footer{
-    text-align:center;
-    line-height:2em;
-}
-.linklist li{
-    line-height:2em;
-}
-.welcomeimg{
-    width: 100%;
-    max-height: calc(100vh - 250px);
-    object-fit: cover;
-}
-</style>
-<body id="body" class="classic">
-    <div class="logo">
-        <div>
-            <a href="#" class="navigator-logo">
-                <img src="dist/src/demo1/src/logo.jpg" alt="logo">
-            </a>
-        </div>
-        <div>
-            Dream Chaser—Chase Dream With You, Together!
+<%- include('./views/header') %>
+    <div class="gs-sin">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="slicker" data-slicker data-responsive="false">
+                    <ul>
+                        <li><img data-img="<%= url + 'dist/src/demo1/src/a-1.jpg'%>" alt="a-1"></li>
+                        <li><img data-img="<%= url + 'dist/src/demo1/src/a-2.jpg'%>" alt="a-2"></li>
+                        <li><img data-img="<%= url + 'dist/src/demo1/src/a-3.jpg'%>" alt="a-3"></li>
+                        <li><img data-img="<%= url + 'dist/src/demo1/src/a-4.jpg'%>" alt="a-4"></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="navigator">
-        <a href="#">
-            WHY NZ <br>
-            选择新西兰
-        </a>
-        <a href="#">
-            STUDY TOUR <br>
-            游学新西兰
-        </a>
-        <a href="#">
-            STUDY OPTION <br>
-            留学新西兰
-        </a>
-        <a href="#">
-            LIVING IN NZ <br>
-            探索新西兰
-        </a>
-        <a href="#">
-            CONTACT US <br>
-            联系我们
-        </a>
-    </div>
-    <img src="dist/src/demo1/src/a-bar.jpg" alt="a-bar" class="welcomeimg">
     <div class="content-panel">
         <div class="h3">
-            FOUR REASONS TO CHOOSE “STUDY TOUR” IN New Zealand
-            <br>
-            选择游学新西兰的四大理由
+            <div class="hidden-ch">FOUR REASONS TO CHOOSE “STUDY TOUR” IN New Zealand</div>
+            <div class="hidden-en">选择游学新西兰的四大理由</div>
         </div>
     </div>
     <div class="content-panel highlight">
         <ul class="content-list">
-            <li>The only country who has a law to protect student vistor on Earth</li>
-            <li>全世界唯一颁布游学生保护法的国家</li>
-            <li>New Zealand’s education system has established on and developed from the Brithish one, which is viewed as one of the best systems in the world</li>
-            <li>新西兰的教育体系传承、发展了英国教育体系，被视为全世界最好的教育体制之一</li>
-            <li>New Zeanland is the second safest country in the world</li>
-            <li>新西兰的国家安全性居世界第二</li>
-            <li>New Zealand is a pearl located in the South Pacific, and it is a window to open a world full with adventure</li>
-            <li>新西兰是南太平洋上的一颗明珠，更是一扇打开纯净、健康生活方式的窗户</li>
-            <li class="link"><a href="#">More 更多</a></li>
+            <li class="hidden-ch">The only country who has a law to protect student vistor on Earth</li>
+            <li class="hidden-en">全世界唯一颁布游学生保护法的国家</li>
+            <li class="hidden-ch">New Zealand’s education system has established on and developed from the Brithish one, which is viewed as one of the best systems in the world</li>
+            <li class="hidden-en">新西兰的教育体系传承、发展了英国教育体系，被视为全世界最好的教育体制之一</li>
+            <li class="hidden-ch">New Zeanland is the second safest country in the world</li>
+            <li class="hidden-en">新西兰的国家安全性居世界第二</li>
+            <li class="hidden-ch">New Zealand is a pearl located in the South Pacific, and it is a window to open a world full with adventure</li>
+            <li class="hidden-en">新西兰是南太平洋上的一颗明珠，更是一扇打开纯净、健康生活方式的窗户</li>
+            <li class="link"><a href="#"><span class="hidden-ch">More</span> <span class="hidden-en">更多</span></a></li>
         </ul>
     </div>
     <div class="content-panel">
@@ -155,28 +37,28 @@ body{
             <div class="row">
                 <div class="col-xs-12">
                     <div class="h4">
-                        FIND PROGRAMME <br>
-                        搜索适合您孩子的游学项目
+                        <div class="hidden-ch">FIND PROGRAMME</div>
+                        <div class="hidden-en">搜索适合您孩子的游学项目</div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
                     <div class="dropdown-button" data-dropdownbutton>
-                        <a href="javascript:;" class="black">Age 学龄</a>
+                        <a href="javascript:;" class="black"><span class="hidden-ch">Age</span> <span class="hidden-en">学龄</span></a>
                         <a href="javascript:;" class="black"><i class="icon-graduation-cap"></i></a>
                         <div class="dropdown-button-list">
-                            <a href="javascript:;" class="black">小学 Primary School</a>
-                            <a href="javascript:;" class="black">初中 Intermediate</a>
-                            <a href="javascript:;" class="black">高中 High School</a>
+                            <a href="javascript:;" class="black"><span class="hidden-ch">Primary School</span> <span class="hidden-en">小学</span> </a>
+                            <a href="javascript:;" class="black"><span class="hidden-ch">Intermediate</span> <span class="hidden-en">初中</span> </a>
+                            <a href="javascript:;" class="black"><span class="hidden-ch">High School</span> <span class="hidden-en">高中</span> </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
                     <div class="dropdown-button" data-dropdownbutton>
-                        <a href="javascript:;" class="black"> Time 游学时间</a>
+                        <a href="javascript:;" class="black"> <span class="hidden-ch">Time</span> <span class="hidden-en">游学时间</span></a>
                         <a href="javascript:;" class="black"><i class="icon-calendar"></i></a>
                         <div class="dropdown-button-list">
-                            <a href="javascript:;" class="black"><i class="icon-date"></i> 暑假 Summer</a>
-                            <a href="javascript:;" class="black"><i class="icon-date"></i> 寒假 Winter</a>
+                            <a href="javascript:;" class="black"><i class="icon-date"></i><span class="hidden-ch">Summer</span> <span class="hidden-en">暑假</span> </a>
+                            <a href="javascript:;" class="black"><i class="icon-date"></i><span class="hidden-ch">Winter</span> <span class="hidden-en">寒假</span> </a>
                         </div>
                     </div>
                 </div>
@@ -184,24 +66,19 @@ body{
         </div>
     </div>
 
-    <div class="gs-sin">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="slicker" data-slicker data-responsive="false">
-                        <ul>
-                            <li><img data-img="dist/src/demo1/src/a-5.jpg" alt="a-5"></li>
-                            <li><img data-img="dist/src/demo1/src/a-6.jpg" alt="a-6"></li>
-                            <li><img data-img="dist/src/demo1/src/a-7.jpg" alt="a-7"></li>
-                            <li><img data-img="dist/src/demo1/src/a-8.jpg" alt="a-8"></li>
-                        </ul>
-                </div>
-            </div>
+    <a class="link-video">
+        <div class="link-video-title f2">
+            <span class="hidden-ch">STUDENT STORIES</span>
+            <span class="hidden-en">学生故事</span>
         </div>
-    </div>
+
+        <i class="icon-play-circle"></i>
+        <img src="<%=url+ 'dist/src/demo1/src/a-bar.jpg'%>" alt="a-bar" class="welcomeimg">
+    </a>
     <div class="content-panel linklist">
         <div class="flex-gs-fixed">
                 <div class="flex-xs-12 flex-sm-6">
-                    <p class="h4">QUICKLINKS 快速链接</p>
+                    <p class="h4"><span class="hidden-ch">QUICKLINKS</span> <span class="hidden-en">快速链接</span></p>
                     <ul>
                         <li>
                             <a class="link" href="#">2018暑假游学</a>
@@ -215,14 +92,14 @@ body{
                     </ul>
                 </div>
                 <div class="flex-xs-12 flex-sm-6">
-                    <p class="h4">FOLLOW US 关注我们</p>
-                    <img  src="dist/src/demo1/src/code.jpg"alt="code id" style="height:50px;">
+                    <p class="h4"><span class="hidden-ch">FOLLOW US</span> <span class="hidden-en">关注我们</span></p>
+                    <img src="<%=url+ 'dist/src/demo1/src/code.jpg'%>"alt="code id" style="height:50px;">
                     <ul>
                         <li>
-                            <a href="#" class="link"><i class="icon-weibo"></i> 微博 Webo</a>
+                            <a href="#" class="link"><i class="icon-weibo"></i> <span class="hidden-ch">Webo</span> <span class="hidden-en">微博</span></a>
                         </li>
                         <li>
-                            <a href="#" class="link"><i class="icon-wechat"></i> 微信 Wechat</a>
+                            <a href="#" class="link"><i class="icon-wechat"></i> <span class="hidden-ch"> Wechat</span> <span class="hidden-en">微信</span></a>
                         </li>
                     </ul>
                 </div>
@@ -230,29 +107,30 @@ body{
     </div>
     <div class="content-panel">
         <div class="h3">
-            DUNEDIN IN NEW ZEALAND <br>
-            新西兰唯一的大学城——达尼丁
+            <div class="hidden-ch">DUNEDIN IN NEW ZEALAND</div>
+            <div class="hidden-en">新西兰唯一的大学城——达尼丁</div>
         </div>
     </div>
     <div class="gs-sin">
         <div class="row">
             <div class="col-xs-12">
                 <div class="slicker" data-slicker data-responsive="false">
-                    <ul>
-                        <li><img data-img="dist/src/demo1/src/a-1.jpg" alt="a-1"></li>
-                        <li><img data-img="dist/src/demo1/src/a-2.jpg" alt="a-2"></li>
-                        <li><img data-img="dist/src/demo1/src/a-3.jpg" alt="a-3"></li>
-                        <li><img data-img="dist/src/demo1/src/a-4.jpg" alt="a-4"></li>
-                    </ul>
+                        <ul>
+                            <li><img data-img="<%= url + 'dist/src/demo1/src/a-5.jpg'%>" alt="a-5"></li>
+                            <li><img data-img="<%= url + 'dist/src/demo1/src/a-6.jpg'%>" alt="a-6"></li>
+                            <li><img data-img="<%= url + 'dist/src/demo1/src/a-7.jpg'%>" alt="a-7"></li>
+                            <li><img data-img="<%= url + 'dist/src/demo1/src/a-8.jpg'%>" alt="a-8"></li>
+                        </ul>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="gs-sin footer">
         <div class="row text-center">
             <div class="col-xs-12 col-sm-4">
                 <p class="h4">ABOUT DREAM CHASER</p>
-                <img src="dist/src/demo1/src/logo.jpg" alt="logo" style="height:45px;">
+                <img src="<%=url+ 'dist/src/demo1/src/nz-logo.png'%>" alt="logo" style="height:45px;">
             </div>
             <div class="col-xs-12 col-sm-4">
                 <p class="h4">OPTION FOR STUDY TOUR</p>
@@ -268,15 +146,4 @@ body{
             </div>
         </div class="row text-center">
     </div>
-</body>
-<script>
-    window.context = {
-        url: '<%=url%>',
-        cdnUrl: '<%=cdnUrl%>',
-        googleMapKey:'key=AIzaSyBtspK44Jc-DabkyA6knFuQ6LSp_8VXZgc'
-    };
-</script>
-<script src="<%= cdnUrl +'cui.lib.min.js' %>" type="text/javascript"></script>
-<script src="<%= cdnUrl +'cui.min.js' %>" type="text/javascript"></script>
-<script src="<%= cdnUrl +'demo1/src/demo1.js' %>" type="text/javascript"></script>
-</html>
+<%- include('./views/footer') %>
