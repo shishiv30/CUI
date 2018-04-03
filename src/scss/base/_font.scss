@@ -30,3 +30,18 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'robotomono';
+    src: url('fonts/robotomono-thin-webfont.eot');
+    src: url('fonts/robotomono-thin-webfont.eot') format('embedded-opentype'), url('fonts/robotomono-thin-webfont.woff') format('woff'), url('fonts/robotomono-thin-webfont.ttf') format('truetype'), url('fonts/robotomono-thin-webfont.svg#robotomonothin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'print';
+    src: url('fonts/trana-webfont.eot');
+    src: url('fonts/trana-webfont.eot') format('embedded-opentype'), url('fonts/trana-webfont.woff') format('woff'), url('fonts/trana-webfont.ttf') format('truetype'), url('fonts/trana-webfont.svg#trana') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

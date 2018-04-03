@@ -79,6 +79,21 @@
     @extend %text-bold;
 }
 
+%text-mono {
+    font-weight: normal;
+    font-family: $font-mono !important;
+}
+.text-mono{
+    @extend %text-mono;
+}
+
+%text-print {
+    font-weight: normal;
+    font-family: $font-print !important;
+}
+.text-print{
+    @extend %text-print;
+}
 .text-left {
     text-align: left;
 }

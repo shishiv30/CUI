@@ -7,58 +7,163 @@
     <title>Goden Layout</title>
     <link href="%RootUrl%dist/src/cui.min.css" type="text/css" rel="stylesheet" />
     <style>
-    .b{
-        width:100%;
-    }
-    .b > div{
-        width:100%;
-        height:100vh;
-        position:relative;
-    }
-        span{
+
+        .note{
+            width:100%;
+        }
+        .note-item{
+            width:100%;
+            height:100vh;
+            position:relative;
+        }
+        .note-item img{
+           width: 100%;
+           height: 100%;
+           object-fit: cover;
+       }
+        .note-item-label{
             position: sticky;
+            z-index: 2;
             top:0;
             left:0;
             right:0;
             display:block;
             background:rgba(0,0,0,0.9);
             color:#fff;
-            height: 100px;
-            line-height: 100px;
+            line-height:2em;
+            padding:15px;
+            display:flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .note-item-label > div {
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
-         img{
+        .note-item-label > a{
+            flex-shrink: 0;
+            padding:0 5px;
+        }
+        .note-item-label > a > i,.note-item-label > a > span{
+            line-height:25px;
+        }
+        .note-item-label  .icon-heart:hover{
+            color: red;
+        }
+        .note-item-label  .icon-comment:hover{
+            color: green;
+        }
+        .mask{
+            position:relative;
+        }
+        .mask:hover:after{
+            opacity:.1;
+        }
+        .mask:after{
+            opacity:.8;
+            transition: opacity .5s;
+            content: '';
+            position:absolute;
+            left:0;
+            top:0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            background: radial-gradient(circle, transparent 50%, transparent 50%),
+            radial-gradient(circle, transparent 20%, white 50%) 30px 30px;
+            background-size:4px 4px;
+            z-index:1;
         }
     </style>
 </head>
 <body>
-
-
-    <div class="b">
-        <div>
-            <span>Jump in San Mateo Half Moon Bay</span>
+    <div class="note">
+        <div class="note-item mask">
+            <div class="note-item-label">
+                <div class="f4">Jump in San Mateo Half Moon Bay</div>
+                <a href="javascript:;" class="f3 text-print">
+                    <i class="icon-heart "></i> <br>
+                    <span data-transition data-to="739"></span>
+                </a>
+                <a href="javascript:;" class="f3 text-print">
+                    <i class="icon-comment "></i> <br>
+                    <span data-transition data-to="32"></span>
+                </a>
+                <a href="javascript:;" class="f3 text-print">
+                    <span data-transition data-from="2014-06-20" data-to="2018-02-14" data-dateformat='MM - DD - Y' data-type="date"></span>
+                </a>
+            </div>
             <img src="dist/src/visual/src/1_Fotor.jpg" alt="">
         </div>
-        <div>
-            <span>Jump in San Mateo Half Moon Bay</span>
+        <div class="note-item mask">
+            <div class="note-item-label">
+                <div class="f4">Lovely shadow on the beach</div>
+                <a href="javascript:;" class="f3 text-print">
+                    <i class="icon-heart "></i> <br>
+                    <span data-transition data-to="1769"></span>
+                </a>
+                <a href="javascript:;" class="f3 text-print">
+                    <i class="icon-comment "></i> <br>
+                    <span data-transition data-to="74"></span>
+                </a>
+                <a href="javascript:;" class="f3 text-print">
+                    <span data-transition data-from="2015-06-20" data-to="2018-02-17" data-dateformat='MM - DD - Y' data-type="date"></span>
+                </a>
+            </div>
             <img src="dist/src/visual/src/2_Fotor.jpg" alt="">
         </div>
-        <div>
+        <div class="note-item mask">
+            <div class="note-item-label">
+                <div class="f4">Enjoy the back seat.</div>
+                <a href="javascript:;" class="f3 text-print">
+                    <i class="icon-heart "></i> <br>
+                    <span data-transition data-to="1769"></span>
+                </a>
+                <a href="javascript:;" class="f3 text-print">
+                    <i class="icon-comment "></i> <br>
+                    <span data-transition data-to="74"></span>
+                </a>
+                <a href="javascript:;" class="f3 text-print">
+                    <span data-transition data-from="2015-06-20" data-to="2018-02-17" data-dateformat='MM - DD - Y' data-type="date"></span>
+                </a>
+            </div>
             <img src="dist/src/visual/src/3_Fotor.jpg" alt="">
         </div>
-        <div>
+        <div class="note-item mask">
+            <div class="note-item-label">
+                <div class="f4">Caution, Storm is coming! </div>
+                <a href="javascript:;" class="f3 text-print">
+                    <i class="icon-heart "></i> <br>
+                    <span data-transition data-to="1769"></span>
+                </a>
+                <a href="javascript:;" class="f3 text-print">
+                    <i class="icon-comment "></i> <br>
+                    <span data-transition data-to="74"></span>
+                </a>
+                <a href="javascript:;" class="f3 text-print">
+                    <span data-transition data-from="2015-06-20" data-to="2018-02-17" data-dateformat='MM - DD - Y' data-type="date"></span>
+                </a>
+            </div>
             <img src="dist/src/visual/src/4_Fotor.jpg" alt="">
         </div>
-        <div>
+        <div class="note-item mask">
+            <div class="note-item-label">
+                <div class="f4">Puppy stand on the Rock</div>
+                <a href="javascript:;" class="f3 text-print">
+                    <i class="icon-heart "></i> <br>
+                    <span data-transition data-to="1769"></span>
+                </a>
+                <a href="javascript:;" class="f3 text-print">
+                    <i class="icon-comment "></i> <br>
+                    <span data-transition data-to="74"></span>
+                </a>
+                <a href="javascript:;" class="f3 text-print">
+                    <span data-transition data-from="2015-06-20" data-to="2018-02-17" data-dateformat='MM - DD - Y' data-type="date"></span>
+                </a>
+            </div>
             <img src="dist/src/visual/src/5_Fotor.jpg" alt="">
         </div>
     </div>
-
 </body>
 <script src="%RootUrl%dist/src/cui.lib.min.js" type="text/javascript"></script>
 <script src="%RootUrl%dist/src/cui.min.js" type="text/javascript"></script>

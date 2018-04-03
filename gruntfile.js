@@ -1,9 +1,6 @@
 const fs = require('fs');
 const crypto = require('crypto');
 const grunt = require('grunt');
-const path = require('path');
-const fakedomain = grunt.option('fakedomain');
-const domain = fakedomain ? 'http://localhost:3025/' : 'https://shishiv30.github.io/CUI/';
 const generateSpriteConfig = function (imgDir) {
     imgDir = `s-${imgDir}`;
 
@@ -74,7 +71,7 @@ module.exports = function (grunt) {
             }
         },
         copy: {
-            dist: {
+            all: {
                 files: [{
                     expand: true,
                     cwd: 'src/',
@@ -90,6 +87,22 @@ module.exports = function (grunt) {
                     cwd: 'src/visual/',
                     src: ['*.html'],
                     dest: 'public'
+                }]
+            },
+            html: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/visual/',
+                    src: ['*.html'],
+                    dest: 'public'
+                }]
+            },
+            css: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/',
+                    src: ['doc/src/*.css','demo1/src/*.css','visual/src/*.css'],
+                    dest: 'public/dist/src/'
                 }]
             }
         },
@@ -122,15 +135,25 @@ module.exports = function (grunt) {
         watch: {
             html:{
                 files: ['public/*.html','src/visual/*.html'],
-                tasks: ['copy','replace:dev']
+                tasks: ['copy','replace:dev'],
+                options: {
+                    debounceDelay: 10000,
+                }
             },
             script: {
                 files: ['src/js/plugins/*.js', 'src/doc/src/*.js'],
-                tasks: ['concat:dist', 'copy','replace:dev']
+                tasks: ['concat:dist', 'copy','replace:dev'],
+                options: {
+                    debounceDelay: 10000,
+                }
             },
             scss: {
                 files: ['src/scss/*.scss', 'src/scss/**/*.scss', 'src/doc/src/*.css'],
-                tasks: ['sass', 'copy','autoprefixer','replace:dev']
+                tasks: ['sass', 'copy','autoprefixer','replace:dev'],
+                options: {
+                    debounceDelay: 10000,
+                    livereload: true,
+                }
             }
         },
         replace: {
@@ -168,6 +191,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-spritesmith');
     grunt.loadNpmTasks('grunt-sass');
-    grunt.registerTask('default', ['copy', 'concat', 'sprite', 'sass', 'autoprefixer', 'cssmin', 'uglify', 'htmlmin','replace:publish']);
-    grunt.registerTask('dev', ['copy', 'concat', 'sprite', 'sass', 'autoprefixer','replace:dev', 'watch']);
+    grunt.registerTask('default', ['copy:all', 'concat', 'sprite', 'sass', 'autoprefixer', 'cssmin', 'uglify', 'htmlmin','replace:publish']);
+    grunt.registerTask('dev', ['copy:css','copy:html', 'concat', 'sass', 'autoprefixer','replace:dev', 'watch']);
 };

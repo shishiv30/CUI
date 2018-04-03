@@ -43,7 +43,6 @@
     $.CUI.plugin(onscrollConfig);
     $(document).on('dom.load.onscroll', function () {
         $('[data-onscroll]').each(function (index, item) {
-            console.log('data-onscroll');
             var $this = $(item);
             var data = $this.data();
             $this.removeAttr('data-onscroll');
