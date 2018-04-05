@@ -1,13 +1,15 @@
 //lazy load image
-
 (function ($) {
-    $.fn.loadImg = function (key) {
+    $.fn.loadImg = function () {
         var $img = $(this);
-        var imgsrc = $img.data(key);
-        if (!imgsrc) {
+        var imgsrc = $img.data('img');
+        if(!imgsrc) {
             return;
+        } else {
+            $img.removeAttr('data-img');
+            $img.data('img', null);
         }
-        if ($img.is('img')) {
+        if($img.is('img')) {
             $img.one('load', function () {
                 $img.off('error');
                 $img.addClass('data-img-load-success');
@@ -20,7 +22,6 @@
                 $(document).trigger('img.load.error', [$img]);
             });
             $img.attr('src', imgsrc);
-            $img.data(key, null);
         } else {
             $img.css({
                 backgroundImage: 'url(' + imgsrc + ')'
@@ -28,7 +29,6 @@
             $img.addClass('data-img-load-success');
             $(document).trigger('img.load.success', [$img]);
         }
-        $img.removeAttr('data-' + key);
         $img.attr('data-img-load', '');
     };
     var loadimageConfig = {
@@ -36,6 +36,7 @@
         defaultOpt: {
             buffer: 0,
             delay: 100,
+            precache: true,
         },
         init: function (context) {
             var opt = context.opt;
@@ -48,21 +49,22 @@
                 var width = $window.outerWidth();
                 var left = $window.scrollLeft() - width * opt.buffer;
                 var right = left + width * (1 + opt.buffer);
+                var precache = [];
                 $this.find('[data-img]').each(function (index, item) {
                     var $img = $(item);
                     var offset = $img.offset();
                     var baseY = offset.top;
                     var baseX = offset.left;
-                    if (baseY < bottom &&
-                        (baseY + $img.height()) > top &&
-                        baseX < right &&
-                        (baseX + $img.width()) > left &&
-                        !$img.is(':hidden')) {
-                        $img.loadImg('img');
+                    if(baseY < bottom && (baseY + $img.height()) > top && baseX < right && (baseX + $img.width()) > left && !$img.is(':hidden')) {
+                        $img.loadImg();
+                    } else if(opt.precache && $img.attr('data-img') !== 'precache') {
+                        precache.push($img.data('img'));
+                        $img.attr('data-img', 'precache');
                     }
                 });
+                // $.sendMessage(precache);
             };
-            $this && $this[0].addEventListener('scroll', $.throttle(context._load, opt.delay),true);
+            $this && $this[0].addEventListener('scroll', $.throttle(context._load, opt.delay), true);
         },
         exports: {
             load: function () {
@@ -89,5 +91,4 @@
     $(document).on('dom.load', function () {
         $.loadImage();
     });
-
 })(jQuery);

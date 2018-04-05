@@ -1,8 +1,12 @@
 const ejs = require('ejs');
 const express = require('express');
 const i18n = require('i18n');
-const hostname = 'localhost';
-const port = 3025;
+const config = require('./config');
+const hostname = config.dev.hostname;
+const port = config.dev.port;
+const url = config.dev.url;
+const cdnUrl = url + 'dist/src/';
+
 var app = express();
 app.use(express.static(__dirname + '/public'));
 var setLang = function (req, res) {
@@ -12,8 +16,7 @@ var setLang = function (req, res) {
     i18n.setLocale([req, res.locals], lang);
     return lang;
 };
-var url = '//' + hostname + ':' + port + '/';
-var cdnUrl = url + 'dist/src/';
+
 app.get('/demo1', function (req, res) {
     try {
         var lang = setLang(req, res);
