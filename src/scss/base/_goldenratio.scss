@@ -1,6 +1,5 @@
 .gr-panel {
     position: relative;
-    height:1vh;
 }
 
 .gr {
@@ -24,6 +23,9 @@
 }
 
 @media(min-width:992px) {
+    .gr-panel {
+        padding-top: 61.803398875%;
+    }
     .gr, .gr > div > div {
         flex-direction: row-reverse;
     }
@@ -33,6 +35,9 @@
 }
 
 @media (max-width:992px) and (min-width:640px) {
+    .gr-panel {
+        padding-top: 100%;
+    }
     .gr, .gr > div > div {
         flex-direction: column-reverse;
     }
@@ -42,6 +47,9 @@
 }
 
 @media (max-width:639px) {
+    .gr-panel {
+        padding-top: 161.803398875%;
+    }
     .gr, .gr > div > div {
         flex-direction: column-reverse;
     }
