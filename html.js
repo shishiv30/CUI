@@ -2,7 +2,7 @@ const fs = require('fs'),
     ejs = require('ejs'),
     i18n = require('i18n'),
     config = require('./config'),
-    url = config.dev.url,
+    url = config.github.url,
     cdnUrl = url + 'dist/src/',
     ejsUrl = __dirname + '/src/doc/';
 i18n.configure({

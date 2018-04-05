@@ -60,13 +60,8 @@ self.addEventListener('fetch', function (event) {
     }
     event.respondWith(caches.match(event.request.url).then(function (cached) {
         var networked = fetch(event.request).then(fetchedFromNetwork, unableToResolve).catch(unableToResolve);
-        if(cached){
-            console.log('cache'+event.request.url);
-        }
         return cached || networked;
-
         function fetchedFromNetwork(response) {
-            console.log('network'+event.request.url);
             var cacheCopy = response.clone();
             caches.open(cacheConfig.versionName).then(function add(cache) {
                 cache.put(event.request.url, cacheCopy);
