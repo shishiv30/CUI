@@ -21,12 +21,14 @@
             var duration = null;
             var times = null;
             var format = null;
+            var isIncrease = null;
             var _freshNumber = context._freshNumber = function () {
                 start = opt.from;
                 end = opt.to;
                 duration = Math.floor(1000 / opt.frame);
                 times = opt.time * 1000/duration;
                 step = ((end - start) / times);
+                isIncrease = step >0;
             };
             var _freshDate = context._freshDate =function(){
                 start =+new Date(opt.from);
@@ -34,6 +36,7 @@
                 duration = 1000 / opt.frame;
                 times = opt.time * 1000/duration;
                 step = ((end - start) / times);
+                isIncrease = step >0;
             };
             var _fresh = context._fresh = function(){
                 switch(opt.type){
@@ -52,9 +55,9 @@
                     break;
                 }
                 var interval = setInterval(function () {
-                    var rawNumber = Math.min(start, end);
+                    var rawNumber = isIncrease ?  Math.min(start, end) :   Math.max(start, end);
                     $this.text(format(rawNumber));
-                    if(rawNumber >= end) {
+                    if(isIncrease? (rawNumber >= end) : (rawNumber <= end)) {
                         clearInterval(interval);
                     } else {
                         start = rawNumber + step;

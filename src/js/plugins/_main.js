@@ -2,10 +2,21 @@
 (function ($) {
     $(document).ready(function ($) {
         var _isMobile = function () {
+            var $body = $('body');
             if($.isMobile()) {
-                $('#body').addClass('mobile');
+                $body.addClass('mobile');
             } else {
-                $('#body').addClass('desktop');
+                $body.addClass('desktop');
+            }
+        };
+        var _isLandscap = function(){
+            var $body = $('body');
+            if($(window).height() > $(window).width()) {
+                $body.addClass('portrait');
+                $body.removeClass('landscape');
+            } else {
+                $body.addClass('landscape');
+                $body.removeClass('portrait');
             }
         };
         var _eventKeyDownListener = function () {
@@ -43,12 +54,14 @@
             $(document).trigger('dom.resize', [e, causeByKeyboard, isWidthChange]);
         };
         var _eventResizeListener = function () {
-            document.addEventListener('resize', $.throttle(function (e) {
+            window.addEventListener('resize', $.throttle(function (e) {
+                _isLandscap();
                 _resizeTrigger(e);
             }, 100));
         };
         //dom load
         _isMobile();
+        _isLandscap();
         _eventKeyDownListener();
         _eventScrollListener();
         _eventResizeListener();

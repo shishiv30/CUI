@@ -1,12 +1,14 @@
-[data-img], [data-img-load], [data-src], [data-src-load] {}
+[data-img], [data-img-load] {
+    transition: opacity .5s ease-in-out;
+    opacity: .1;
+}
 
 .data-img-load-success {
-    &:before, &.after {
-        display: none;
-    }
+    opacity: 1 !important;
 }
 
 .data-img-load-error {
+    opacity: 1 !important;
     background-image: url('img/noimg.gif');
     background-size: contain;
     background-repeat: no-repeat;

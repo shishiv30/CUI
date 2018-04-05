@@ -58,7 +58,8 @@
                     if(baseY < bottom && (baseY + $img.height()) > top && baseX < right && (baseX + $img.width()) > left && !$img.is(':hidden')) {
                         $img.loadImg();
                     } else if(opt.precache && $img.attr('data-img') !== 'precache') {
-                        precache.push($img.data('img'));
+                        var x = new Image();
+                        x.src = $img.data('img');
                         $img.attr('data-img', 'precache');
                     }
                 });

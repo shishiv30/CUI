@@ -213,7 +213,7 @@
                 _loadImage();
             }, true);
 
-            document.addEventListener('resize', function () {
+            window.addEventListener('resize', function () {
                 positionInfo = _getpositionInfo();
                 _reload();
             }, true);

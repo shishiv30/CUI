@@ -124,7 +124,7 @@
 }
 
 @mixin only-mobile() {
-    #body {
+    body {
         &.mobile {
             @content;
         }
@@ -132,7 +132,7 @@
 }
 
 @mixin only-desktop() {
-    #body {
+    body {
         &.desktop {
             @content;
         }

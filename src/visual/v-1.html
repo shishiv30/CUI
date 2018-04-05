@@ -22,6 +22,8 @@
            object-fit: cover;
        }
         .note-item-label{
+            opacity: .3;
+            transition: opacity 1s;
             position: sticky;
             z-index: 2;
             top:0;
@@ -44,8 +46,12 @@
         .note-item-label > a{
             flex-shrink: 0;
             padding:0 5px;
+            min-width:40px;
         }
         .note-item-label > a > i,.note-item-label > a > span{
+            width:100%;
+            display:inline-block;
+            text-align:center;
             line-height:25px;
         }
         .note-item-label  .icon-heart:hover{
@@ -59,6 +65,9 @@
         }
         .mask:hover:after{
             opacity:.1;
+        }
+        .mask:hover .note-item-label{
+            opacity:1;
         }
         .mask:after{
             opacity:.8;
@@ -83,88 +92,94 @@
                 <div class="f4">Jump in San Mateo Half Moon Bay</div>
                 <a href="javascript:;" class="f3 text-print">
                     <i class="icon-heart "></i> <br>
-                    <span data-transition data-to="739"></span>
+                    <span data-transition data-to="793" data-from="0">0</span>
                 </a>
                 <a href="javascript:;" class="f3 text-print">
                     <i class="icon-comment "></i> <br>
-                    <span data-transition data-to="32"></span>
+                    <span data-transition data-to="32" data-from="0">0</span>
                 </a>
                 <a href="javascript:;" class="f3 text-print">
-                    <span data-transition data-from="2014-06-20" data-to="2018-02-14" data-dateformat='MM - DD - Y' data-type="date"></span>
+                    <span data-transition data-from="2014-06-20" data-to="2018-02-14" data-dateformat='MM - DD - Y' data-type="date">06 - 02 - 2014</span>
                 </a>
             </div>
-            <img src="dist/src/visual/src/1_Fotor.jpg" alt="">
+            <img data-img="dist/src/visual/src/1_Fotor.jpg" alt="">
         </div>
         <div class="note-item mask">
             <div class="note-item-label">
                 <div class="f4">Lovely shadow on the beach</div>
                 <a href="javascript:;" class="f3 text-print">
                     <i class="icon-heart "></i> <br>
-                    <span data-transition data-to="1769"></span>
+                    <span data-transition data-to="1769" data-from="0">0</span>
                 </a>
                 <a href="javascript:;" class="f3 text-print">
                     <i class="icon-comment "></i> <br>
-                    <span data-transition data-to="74"></span>
+                    <span data-transition data-to="74" data-from="0">0</span>
                 </a>
                 <a href="javascript:;" class="f3 text-print">
-                    <span data-transition data-from="2015-06-20" data-to="2018-02-17" data-dateformat='MM - DD - Y' data-type="date"></span>
+                    <span data-transition data-from="2015-06-20" data-to="2018-02-17" data-dateformat='MM - DD - Y' data-type="date">06 - 02 - 2015</span>
                 </a>
             </div>
-            <img src="dist/src/visual/src/2_Fotor.jpg" alt="">
+            <img data-img="dist/src/visual/src/2_Fotor.jpg" alt="">
         </div>
         <div class="note-item mask">
             <div class="note-item-label">
                 <div class="f4">Enjoy the back seat.</div>
                 <a href="javascript:;" class="f3 text-print">
                     <i class="icon-heart "></i> <br>
-                    <span data-transition data-to="1769"></span>
+                    <span data-transition data-to="1769" data-from="0">0</span>
                 </a>
                 <a href="javascript:;" class="f3 text-print">
                     <i class="icon-comment "></i> <br>
-                    <span data-transition data-to="74"></span>
+                    <span data-transition data-to="74" data-from="0">0</span>
                 </a>
                 <a href="javascript:;" class="f3 text-print">
-                    <span data-transition data-from="2015-06-20" data-to="2018-02-17" data-dateformat='MM - DD - Y' data-type="date"></span>
+                    <span data-transition data-from="2015-06-20" data-to="2018-02-17" data-dateformat='MM - DD - Y' data-type="date">06 - 02 - 2015</span>
                 </a>
             </div>
-            <img src="dist/src/visual/src/3_Fotor.jpg" alt="">
+            <img data-img="dist/src/visual/src/3_Fotor.jpg" alt="">
         </div>
         <div class="note-item mask">
             <div class="note-item-label">
                 <div class="f4">Caution, Storm is coming! </div>
                 <a href="javascript:;" class="f3 text-print">
                     <i class="icon-heart "></i> <br>
-                    <span data-transition data-to="1769"></span>
+                    <span data-transition data-to="1769" data-from="0">0</span>
                 </a>
                 <a href="javascript:;" class="f3 text-print">
                     <i class="icon-comment "></i> <br>
-                    <span data-transition data-to="74"></span>
+                    <span data-transition data-to="74" data-from="0">0</span>
                 </a>
                 <a href="javascript:;" class="f3 text-print">
-                    <span data-transition data-from="2015-06-20" data-to="2018-02-17" data-dateformat='MM - DD - Y' data-type="date"></span>
+                    <span data-transition data-from="2015-06-20" data-to="2018-02-17" data-dateformat='MM - DD - Y' data-type="date">06 - 02 - 2015</span>
                 </a>
             </div>
-            <img src="dist/src/visual/src/4_Fotor.jpg" alt="">
+            <img data-img="dist/src/visual/src/4_Fotor.jpg" alt="">
         </div>
         <div class="note-item mask">
             <div class="note-item-label">
                 <div class="f4">Puppy stand on the Rock</div>
                 <a href="javascript:;" class="f3 text-print">
                     <i class="icon-heart "></i> <br>
-                    <span data-transition data-to="1769"></span>
+                    <span data-transition data-to="1769" data-from="0">0</span>
                 </a>
                 <a href="javascript:;" class="f3 text-print">
                     <i class="icon-comment "></i> <br>
-                    <span data-transition data-to="74"></span>
+                    <span data-transition data-to="74" data-from="0">0</span>
                 </a>
                 <a href="javascript:;" class="f3 text-print">
-                    <span data-transition data-from="2015-06-20" data-to="2018-02-17" data-dateformat='MM - DD - Y' data-type="date"></span>
+                    <span data-transition data-from="2015-06-20" data-to="2018-02-17" data-dateformat='MM - DD - Y' data-type="date">06 - 02 - 2015</span>
                 </a>
             </div>
-            <img src="dist/src/visual/src/5_Fotor.jpg" alt="">
+            <img data-img="dist/src/visual/src/5_Fotor.jpg" alt="">
         </div>
     </div>
 </body>
 <script src="%RootUrl%dist/src/cui.lib.min.js" type="text/javascript"></script>
 <script src="%RootUrl%dist/src/cui.min.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function(){
+        var width = $(window).width();
+        var height = $(window).height();
+    });
+</script>
 </html>
