@@ -136,7 +136,7 @@
             var exports = context.exports;
             if (opt.autoresize) {
                 $(document).on('dom.resize', function () {
-                    exports._reload();
+                    exports.reload();
                 });
             }
         },
