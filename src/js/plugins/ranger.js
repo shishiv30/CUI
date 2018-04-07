@@ -1,7 +1,6 @@
 //seed code for create a plugin
 //replace all of the "ranger" with the plugin name. (the plugin name should be same as the js file name);
-
-(function($) {
+(function ($) {
     var rangerConfig = {
         name: 'ranger',
         defaultOpt: {
@@ -16,20 +15,20 @@
             changebefore: null,
             changeafter: null,
         },
-        init: function(context) {
+        init: function (context) {
             var opt = context.opt;
             var $this = context.$element;
             var $input = $this.find('input');
             var $target = context.$target = (opt.target ? $(opt.target) : null);
-            if (!opt.connect) {
+            if(!opt.connect) {
                 opt.connect = [true];
-                $input.each(function(index) {
+                $input.each(function (index) {
                     opt.connect.push((index % 2 === 1));
                 });
             }
-            if (!opt.start) {
+            if(!opt.start) {
                 opt.start = [];
-                $input.each(function() {
+                $input.each(function () {
                     opt.start.push($(this).val());
                 });
             }
@@ -45,46 +44,42 @@
                     'max': opt.max
                 },
                 format: {
-                    'to': function(value) {
+                    'to': function (value) {
                         return value !== undefined && value.toFixed(opt.decimals);
-                    }, 'from': function(value) {
+                    },
+                    'from': function (value) {
                         return value;
                     }
                 }
             });
             context.range = $ele[0].noUiSlider;
-            context._get = function() {
+            context._get = function () {
                 return this.range.get();
             };
-            context._set = function(values) {
+            context._set = function (values) {
                 this.range.set(values);
                 var result = this.range.get();
-                if ($.isNumeric(result)) {
+                if($.isNumeric(result)) {
                     result = [result];
                 }
-                $input.each(function(index) {
+                $input.each(function (index) {
                     $(this).val(result[index]).trigger('input');
                 });
                 return result;
             };
-            $input.on('change', function() {
+            $input.on('change', function () {
                 var values = [];
-                $input.each(function() {
+                $input.each(function () {
                     values.push($(this).val());
                 });
                 context._set(values);
             });
-
-            if (opt.changebefore) {
-                context.range.on('update', function(e, t) {
-                    opt.changebefore&&    $.CUI.trigger(opt.changebefore, this, e, t);
-                });
-            }
-            context.range.on('change', function(e, t) {
-                $input.each(function(index) {
+            context.range.on('update', function (e, t) {
+                opt.changebefore && $.CUI.trigger(opt.changebefore, this, e, t);
+                $input.each(function (index) {
                     $(this).val(e[index]).trigger('input');
                 });
-                opt.changeafter &&  $.CUI.trigger(opt.changeafter, this, e, t);
+                opt.changeafter && $.CUI.trigger(opt.changeafter, this, e, t);
             });
         },
         exports: {
@@ -94,8 +89,8 @@
         },
     };
     $.CUI.plugin(rangerConfig);
-    $(document).on('dom.load.ranger', function() {
-        $('[data-ranger]').each(function(index, item) {
+    $(document).on('dom.load.ranger', function () {
+        $('[data-ranger]').each(function (index, item) {
             var $this = $(item);
             var data = $this.data();
             $this.removeAttr('data-ranger');

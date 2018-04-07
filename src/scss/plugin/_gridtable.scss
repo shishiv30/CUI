@@ -1,4 +1,4 @@
-table.gridtable {
+.gridtable {
     width: 100%;
     border-collapse: collapse;
     border: 1px solid $color-border;
@@ -9,7 +9,7 @@ table.gridtable {
     }
     td, th {
         text-align: left;
-        line-height: 1.1em;
+        line-height: 3em;
     }
     tbody tr {
         max-height: 500px;
@@ -51,7 +51,7 @@ table.gridtable {
             overflow: hidden;
             @include clearfix();
             td {
-                margin: $space-m;
+                margin:0 $space-m;
                 padding: 0;
                 word-break: break-all;
                 &:before {
@@ -63,7 +63,7 @@ table.gridtable {
                 position: relative;
             }
             &.close {
-                max-height: 36px;
+                max-height: 3em;
                 position: relative;
                 cursor: pointer;
                 opacity: .8;

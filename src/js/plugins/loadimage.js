@@ -89,7 +89,7 @@
         });
     });
     $.loadImage = $(document).loadimage().load;
-    $(document).on('dom.load', function () {
+    $(document).on('dom.load dom.resize', function () {
         $.loadImage();
     });
 })(jQuery);

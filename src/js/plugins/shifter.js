@@ -236,7 +236,7 @@
                 _resize();
                 _scroll();
             });
-            $wrap[0] && $wrap[0].addEventListener('scroll', $.debounce(_scroll,100),true);
+            $wrap[0] && $wrap[0].addEventListener('scroll', $.throttle(_scroll,100),true);
             if ($.isMobile()) {
                 $wrap.on('touchstart', function () {
                     lastScrollLeft = $wrap.scrollLeft();

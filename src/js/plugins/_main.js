@@ -43,7 +43,7 @@
             $(document).trigger('dom.scroll', [e, isScrollDown, originalScrollTop, causeByKeyboard]);
         };
         var _eventScrollListener = function () {
-            document.addEventListener('scroll', $.throttle(function (e) {
+            window.addEventListener('scroll', $.throttle(function (e) {
                 _scrollTrigger(e);
             }, 100), true);
         };
@@ -54,10 +54,10 @@
             $(document).trigger('dom.resize', [e, causeByKeyboard, isWidthChange]);
         };
         var _eventResizeListener = function () {
-            window.addEventListener('resize', $.throttle(function (e) {
+            window.addEventListener('resize', $.debounce(function (e) {
                 _isLandscap();
                 _resizeTrigger(e);
-            }, 100));
+            }, 100), true);
         };
         //dom load
         _isMobile();
