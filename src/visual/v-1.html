@@ -8,13 +8,34 @@
     <title>Goden Layout</title>
     <link href="%RootUrl%dist/src/cui.min.css" type="text/css" rel="stylesheet" />
     <style>
-        .nextlink {
+        body{
+            overflow: hidden;
+        }
+        .prevlink, .nextlink{
             position:fixed;
             bottom:30px;
             left:50%;
             transform: translateX(-50%);
             z-index:10;
+            font-size:50px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            display: inline-block;
+            text-align: center;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,.8);
         }
+        .prevlink {
+            top:30px;
+        }
+        .nextlink {
+            bottom:30px;
+        }
+        .nextlink:hover{
+            color:dodgerblue;
+        }
+
         .note {
             width: 100%;
         }
@@ -24,12 +45,17 @@
             position: relative;
             background:#333;
             color:#fff;
+            overflow: hidden;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
         }
-        .note-item img {
+        .not-item-content {
             transition: width 1s, height 1s, opacity 1s .5s;
+            opacity: 0;
+        }
+        .note-item-content > img {
             width: 100%;
             height: 100%;
-            opacity: 0;
             object-fit: cover;
         }
         .note-item-label {
@@ -48,7 +74,7 @@
             align-items: center;
             justify-content: space-around;
         }
-        .note-item.x img {
+        .note-item.x .note-item-content  {
             width: 100vw;
             height: 61.8vw;
             opacity: 1;
@@ -59,9 +85,10 @@
             min-height:120px;
             flex-direction: row;
             opacity:1;
+            border-top: 2px solid #eee;
         }
 
-        .note-item.y img {
+        .note-item.y .note-item-content  {
             width: 61.8vh;
             height: 100vh;
             opacity: 1;
@@ -72,6 +99,7 @@
             top: 0;
             flex-direction: column;
             opacity:1;
+            border-left: 2px solid #eee;
         }
         .note-item.y .note-item-label  >div{
             writing-mode: tb;
@@ -110,7 +138,7 @@
             opacity: 1;
         }
         .mask:after {
-            opacity: .8;
+            opacity: .5;
             transition: opacity .5s;
             content: '';
             position: absolute;
@@ -128,7 +156,8 @@
 
 <body>
     <div class="note">
-        <a href="javascript:;" class="nextlink"> <i class="icon-arrow-down"></i></a>
+        <a href="javascript:;" class="prevlink"> <i class="icon-angle-up "></i></a>
+        <a href="javascript:;" class="nextlink"> <i class="icon-angle-down"></i></a>
         <div class="note-item mask">
             <div class="note-item-label">
                 <div class="f4">Jump in San Mateo Half Moon Bay</div>
@@ -144,7 +173,9 @@
                     <span data-transition data-from="2014-06-20" data-to="2018-02-14" data-dateformat='MM - DD - Y' data-type="date">06 - 02 - 2014</span>
                 </a>
             </div>
-            <img data-img="dist/src/visual/src/1_Fotor.jpg" alt="">
+            <div class="note-item-content">
+                <img data-img="dist/src/visual/src/1_Fotor.jpg" alt="">
+            </div>
         </div>
         <div class="note-item mask">
             <div class="note-item-label">
@@ -161,7 +192,9 @@
                     <span data-transition data-from="2015-06-20" data-to="2018-02-17" data-dateformat='MM - DD - Y' data-type="date">06 - 02 - 2015</span>
                 </a>
             </div>
-            <img data-img="dist/src/visual/src/2_Fotor.jpg" alt="">
+            <div class="note-item-content">
+                <img data-img="dist/src/visual/src/2_Fotor.jpg" alt="">
+            </div>
         </div>
         <div class="note-item mask">
             <div class="note-item-label">
@@ -178,7 +211,9 @@
                     <span data-transition data-from="2015-06-20" data-to="2018-02-17" data-dateformat='MM - DD - Y' data-type="date">06 - 02 - 2015</span>
                 </a>
             </div>
-            <img data-img="dist/src/visual/src/3_Fotor.jpg" alt="">
+            <div class="note-item-content">
+                <img data-img="dist/src/visual/src/3_Fotor.jpg" alt="">
+            </div>
         </div>
         <div class="note-item mask">
             <div class="note-item-label">
@@ -195,7 +230,9 @@
                     <span data-transition data-from="2015-06-20" data-to="2018-02-17" data-dateformat='MM - DD - Y' data-type="date">06 - 02 - 2015</span>
                 </a>
             </div>
-            <img data-img="dist/src/visual/src/4_Fotor.jpg" alt="">
+            <div class="note-item-content">
+                <img data-img="dist/src/visual/src/4_Fotor.jpg" alt="">
+            </div>
         </div>
         <div class="note-item mask">
             <div class="note-item-label">
@@ -212,7 +249,9 @@
                     <span data-transition data-from="2015-06-20" data-to="2018-02-17" data-dateformat='MM - DD - Y' data-type="date">06 - 02 - 2015</span>
                 </a>
             </div>
-            <img data-img="dist/src/visual/src/5_Fotor.jpg" alt="">
+            <div class="note-item-content">
+                <img data-img="dist/src/visual/src/5_Fotor.jpg" alt="">
+            </div>
         </div>
     </div>
 </body>
@@ -228,6 +267,16 @@
             }
         }
     });
+    var next = function(){
+        var scropTop  = $(window).scrollTop() +  $(window).height();
+        $(window).scrollTop(scropTop);
+    }
+    var prev = function(){
+        var scropTop  = $(window).scrollTop() -  $(window).height();
+        $(window).scrollTop(scropTop);
+    }
+    $('.nextlink').on('click',next);
+    $('.prevlink').on('click',prev);
 </script>
 
 </html>
