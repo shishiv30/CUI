@@ -65,6 +65,5 @@
         _eventKeyDownListener();
         _eventScrollListener();
         _eventResizeListener();
-        $(document).trigger('dom.load');
     });
 })(jQuery);

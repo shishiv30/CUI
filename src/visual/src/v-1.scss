@@ -1,0 +1,194 @@
+
+.portrait {
+    .prevlink {
+        left: 30px;
+        top: 30.9vw;
+        transform: translateY(-50%) rotateZ(-90deg);
+    }
+    .nextlink {
+        right: 30px;
+        bottom: calc(100vh - 30.9vw);
+        transform: translateY(50%) rotateZ(-90deg);
+    }
+}
+
+
+.landscape {
+    .prevlink {
+        left: 30.9vh;
+        top: 30px;
+        transform: translateX(-50%) rotateZ(0deg);
+    }
+    .nextlink {
+        bottom: 30px;
+        right: calc(100vw - 30.9vh);
+        transform: translateX(50%) rotateZ(0deg);
+    }
+}
+
+
+.prevlink, .nextlink {
+    transition: top .5s, left .5s ease-in-out, right .5s ease-in-out, bottom .5s ease-in-out;
+    position: fixed;
+    z-index: 10;
+    font-size: 50px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, .8);
+    &:hover{
+        color: dodgerblue;
+
+    }
+}
+
+.note {
+    width: 100%;
+}
+
+.note-item {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: #333333;
+    color: #ffffff;
+    overflow: hidden;
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+    position: relative;
+    &:after {
+        opacity: .5;
+        transition: opacity .5s ease-in-out;
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, transparent 50%, transparent 50%),
+        radial-gradient(circle, transparent 20%, #331f04 60%) 30px 30px;
+        background-size: 4px 4px;
+        z-index: 1;
+    }
+    &.active{
+        &:after {
+            opacity: 0;
+        }
+    }
+}
+
+.note-item-content {
+    transition: width .5s ease-in-out, height .5s ease-in-out, opacity .5s .5s ease-in-out, transform .5s ease-in-out;
+    opacity: 0;
+    position: relative;
+    > img {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+   }
+}
+
+
+.note-item-label {
+    transition: opacity .5s ease-in-out, height .5s ease-in-out, width .5s ease-in-out;
+    z-index: 2;
+    right: 0;
+    top: 0;
+    display: block;
+    background: inherit;
+    color: inherit;
+    line-height: 2em;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    > div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    > a {
+        flex-shrink: 0;
+        padding: 0 5px;
+        min-width: 40px;
+        > i, > span {
+           width: 100%;
+           display: inline-block;
+           text-align: center;
+           line-height: 25px;
+       }
+    }
+    .icon-heart:hover {
+        color: red;
+    }
+    .icon-comment:hover {
+        color: green;
+    }
+}
+.landscape .note-item-label{
+    position: absolute;
+}
+
+.portrait {
+    .note-item-content {
+        width: 100vw;
+        height: 61.8vw;
+        opacity: 1;
+    }
+    .note-item-label {
+        left: 0;
+        height: calc(100vh - 61.8vw);
+        min-height: 120px;
+        flex-direction: row;
+        border-top: 2px solid #eeeeee;
+    }
+    .load.active{
+        .note-item-label {
+            height: calc(100vh - 161.8vw);
+        }
+    }
+    .load.y.active {
+        .note-item-content {
+            height: 161.8vw;
+        }
+    }
+    .load.x.active{
+        .note-item-content {
+            transform: rotateZ(90deg);
+            height: 100vw;
+            width: 161.8vw;
+            transform-origin: 50vw 50%;
+        }
+
+    }
+}
+
+.landscape {
+    .note-item-content {
+        width: 61.8vh;
+        height: 100vh;
+        opacity: 1;
+    }
+    .note-item-label {
+       width: calc(100vw - 61.8vh);
+       min-width: 120px;
+       top: 0;
+       flex-direction: column;
+       border-left: 2px solid #eeeeee;
+   }
+   .load.x.active {
+       .note-item-content {
+           width: 161.8vh;
+       }
+       .note-item-label {
+           width: 120px;
+       }
+   }
+   .note-item-label > div {
+       writing-mode: tb;
+   }
+}

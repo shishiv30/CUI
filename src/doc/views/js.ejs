@@ -113,7 +113,6 @@
         }
         return list;
     };
-
     $(document).one('initialMap', function (d, e, map) {
         var list = mockPin(100);
         list.forEach(function(e){
@@ -132,4 +131,5 @@
     $('.btn').click(function(){
         $(this).toggleClass('active');
     });
+    $(document).trigger('dom.load');
 </script>

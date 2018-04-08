@@ -7,328 +7,38 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Goden Layout</title>
     <link href="%RootUrl%dist/src/cui.min.css" type="text/css" rel="stylesheet" />
-    <style>
-
-        .portrait .prevlink {
-            left: 30px;
-            top: 30.9vw;
-            transform: translateY(-50%) rotateZ(-90deg);
-        }
-
-        .portrait .nextlink {
-            right: 30px;
-            bottom: calc(100vh - 30.9vw);
-            transform: translateY(50%) rotateZ(-90deg);
-        }
-
-        .landscape .prevlink {
-            left: 30.9vh;
-            top: 30px;
-            transform: translateX(-50%) rotateZ(0deg);
-        }
-
-        .landscape .nextlink {
-            bottom: 30px;
-            right: calc(100vw - 30.9vh);
-            transform: translateX(50%) rotateZ(0deg);
-        }
-
-        .prevlink,
-        .nextlink {
-            transition: top .5s, left .5s, right .5s, bottom .5s;
-            position: fixed;
-            z-index: 10;
-            font-size: 50px;
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
-            display: inline-block;
-            text-align: center;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, .8);
-        }
-
-        .prevlink:hover,
-        .nextlink:hover {
-            color: dodgerblue;
-        }
-
-        .note {
-            width: 100%;
-        }
-
-        .note-item {
-            width: 100%;
-            height: 100vh;
-            position: relative;
-            background: #333;
-            color: #fff;
-            overflow: hidden;
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-            position: relative;
-        }
-        .note-item:after {
-            opacity: .5;
-            transition: opacity .5s;
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, transparent 50%, transparent 50%),
-            radial-gradient(circle, transparent 20%, white 50%) 30px 30px;
-            background-size: 4px 4px;
-            z-index: 1;
-        }
-        .note-item:hover:after {
-            opacity: .1;
-        }
-        .mask:hover .note-item-label {
-            opacity: 0;
-        }
-
-        .note-item-content {
-            transition: width 1s, height 1s, opacity 1s .5s;
-            opacity: 0;
-            position: relative;
-        }
-
-        .note-item-content>img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .note-item-label {
-            transition: opacity .5s, height .5s, width .5s;
-            opacity: 0;
-            position: absolute;
-            z-index: 2;
-            right: 0;
-            bottom: 0;
-            display: block;
-            background: inherit;
-            color: inherit;
-            line-height: 2em;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-        }
-
-        .portrait .note-item-content {
-            width: 100vw;
-            height: 61.8vw;
-            opacity: 1;
-        }
-
-        .portrait .note-item-label {
-            left: 0;
-            height: calc(100vh - 61.8vw);
-            min-height: 120px;
-            flex-direction: row;
-            opacity: 1;
-            border-top: 2px solid #eee;
-        }
-        .portrait .load.y:hover .note-item-content {
-            height: 161.8vw;
-        }
-
-        .portrait .load.y:hover .note-item-label {
-            height: 120px;
-        }
-
-        .landscape .note-item-content {
-            width: 61.8vh;
-            height: 100vh;
-            opacity: 1;
-        }
-
-        .landscape .note-item-label {
-            width: calc(100vw - 61.8vh);
-            min-width: 120px;
-            top: 0;
-            flex-direction: column;
-            opacity: 1;
-            border-left: 2px solid #eee;
-        }
-
-        .landscape .load.x:hover .note-item-content {
-            width: 161.8vh;
-        }
-
-        .landscape .load.x:hover .note-item-label {
-            width: 120px;
-        }
-
-        .landscape .note-item-label>div {
-            writing-mode: tb;
-        }
-
-        .note-item-label>div {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .note-item-label>a {
-            flex-shrink: 0;
-            padding: 0 5px;
-            min-width: 40px;
-        }
-
-        .note-item-label>a>i,
-        .note-item-label>a>span {
-            width: 100%;
-            display: inline-block;
-            text-align: center;
-            line-height: 25px;
-        }
-
-        .note-item-label .icon-heart:hover {
-            color: red;
-        }
-
-        .note-item-label .icon-comment:hover {
-            color: green;
-        }
-    </style>
+    <link href="%RootUrl%dist/src//visual/src/v-1.min.css" type="text/css" rel="stylesheet" />
 </head>
 
 <body>
-    <a href="javascript:;" class="prevlink"> <i class="icon-angle-up "></i></a>
-    <a href="javascript:;" class="nextlink"> <i class="icon-angle-down"></i></a>
-    <div class="note">
-        <div class="note-item">
-            <div class="note-item-label">
-                <div class="f4">Jump in San Mateo Half Moon Bay</div>
-                <a href="javascript:;" class="f3 text-print">
-                    <i class="icon-heart "></i> <br>
-                    <span data-transition data-to="793" data-from="0">0</span>
-                </a>
-                <a href="javascript:;" class="f3 text-print">
-                    <i class="icon-comment "></i> <br>
-                    <span data-transition data-to="32" data-from="0">0</span>
-                </a>
-                <a href="javascript:;" class="f3 text-print">
-                    <span data-transition data-from="2014-06-20" data-to="2018-02-14" data-dateformat='MM - DD - Y' data-type="date">06 - 02 - 2014</span>
-                </a>
-            </div>
-            <div class="note-item-content">
-                <img data-img="dist/src/visual/src/1_Fotor.jpg" alt="">
-            </div>
-        </div>
-        <div class="note-item">
-            <div class="note-item-label">
-                <div class="f4">Lovely shadow on the beach</div>
-                <a href="javascript:;" class="f3 text-print">
-                    <i class="icon-heart "></i> <br>
-                    <span data-transition data-to="1769" data-from="0">0</span>
-                </a>
-                <a href="javascript:;" class="f3 text-print">
-                    <i class="icon-comment "></i> <br>
-                    <span data-transition data-to="74" data-from="0">0</span>
-                </a>
-                <a href="javascript:;" class="f3 text-print">
-                    <span data-transition data-from="2015-06-20" data-to="2018-02-17" data-dateformat='MM - DD - Y' data-type="date">06 - 02 - 2015</span>
-                </a>
-            </div>
-            <div class="note-item-content">
-                <img data-img="dist/src/visual/src/2_Fotor.jpg" alt="">
-            </div>
-        </div>
-        <div class="note-item">
-            <div class="note-item-label">
-                <div class="f4">Caution, Storm is coming! </div>
-                <a href="javascript:;" class="f3 text-print">
-                    <i class="icon-heart "></i> <br>
-                    <span data-transition data-to="1769" data-from="0">0</span>
-                </a>
-                <a href="javascript:;" class="f3 text-print">
-                    <i class="icon-comment "></i> <br>
-                    <span data-transition data-to="74" data-from="0">0</span>
-                </a>
-                <a href="javascript:;" class="f3 text-print">
-                    <span data-transition data-from="2015-06-20" data-to="2018-02-17" data-dateformat='MM - DD - Y' data-type="date">06 - 02 - 2015</span>
-                </a>
-            </div>
-            <div class="note-item-content">
-                <img data-img="dist/src/visual/src/4_Fotor.jpg" alt="">
-            </div>
-        </div>
-        <div class="note-item">
-            <div class="note-item-label">
-                <div class="f4">Enjoy the back seat.</div>
-                <a href="javascript:;" class="f3 text-print">
-                    <i class="icon-heart "></i> <br>
-                    <span data-transition data-to="1769" data-from="0">0</span>
-                </a>
-                <a href="javascript:;" class="f3 text-print">
-                    <i class="icon-comment "></i> <br>
-                    <span data-transition data-to="74" data-from="0">0</span>
-                </a>
-                <a href="javascript:;" class="f3 text-print">
-                    <span data-transition data-from="2015-06-20" data-to="2018-02-17" data-dateformat='MM - DD - Y' data-type="date">06 - 02 - 2015</span>
-                </a>
-            </div>
-            <div class="note-item-content">
-                <img data-img="dist/src/visual/src/3_Fotor.jpg" alt="">
-            </div>
-        </div>
-        <div class="note-item">
-            <div class="note-item-label">
-                <div class="f4">Puppy stand on the Rock</div>
-                <a href="javascript:;" class="f3 text-print">
-                    <i class="icon-heart "></i> <br>
-                    <span data-transition data-to="1769" data-from="0">0</span>
-                </a>
-                <a href="javascript:;" class="f3 text-print">
-                    <i class="icon-comment "></i> <br>
-                    <span data-transition data-to="74" data-from="0">0</span>
-                </a>
-                <a href="javascript:;" class="f3 text-print">
-                    <span data-transition data-from="2015-06-20" data-to="2018-02-17" data-dateformat='MM - DD - Y' data-type="date">06 - 02 - 2015</span>
-                </a>
-            </div>
-            <div class="note-item-content">
-                <img data-img="dist/src/visual/src/5_Fotor.jpg" alt="">
-            </div>
+    <div id="app">
+        <a href="javascript:;" class="prevlink"> <i class="icon-angle-up "></i></a>
+        <a href="javascript:;" class="nextlink"> <i class="icon-angle-down"></i></a>
+        <div class="note">
+              <div class="note-item" v-for="(note, index)  in notes"  v-bind:data-id='index'>
+                  <div class="note-item-label">
+                      <div class="f4">{{ note.title }}</div>
+                      <a href="javascript:;" class="f3 text-print">
+                          <i class="icon-heart "></i> <br>
+                          <span data-transition v-bind:data-to="note.heartTo" v-bind:data-from="note.heartFrom">{{ note.heartFrom }}</span>
+                      </a>
+                      <a href="javascript:;" class="f3 text-print">
+                          <i class="icon-comment "></i> <br>
+                          <span data-transition v-bind:data-to="note.commentTo" v-bind:data-from="note.commentFrom">{{ note.commentFrom }}</span>
+                      </a>
+                      <a href="javascript:;" class="f3 text-print">
+                          <span data-transition v-bind:data-from="note.dateFrom" v-bind:data-to="note.dateTo" data-dateformat='MM - DD - Y' data-type="date">{{ note.dateFromStr }}</span>
+                      </a>
+                  </div>
+                  <div class="note-item-content">
+                      <img v-bind:data-img="note.img" alt="">
+                  </div>
+              </div>
         </div>
     </div>
 </body>
 <script src="%RootUrl%dist/src/cui.lib.min.js" type="text/javascript"></script>
 <script src="%RootUrl%dist/src/cui.min.js" type="text/javascript"></script>
-<script>
-    $(document).on('img.load.success', function(e, $img) {
-        if ($img.length) {
-            $img.closest('.note-item').addClass('load');
-            if ($img[0].naturalHeight > $img[0].naturalWidth) {
-                $img.closest('.note-item').addClass('y');
-            } else {
-                $img.closest('.note-item').addClass('x');
-            }
-        }
-    });
-    $(document).on('dom.scroll',$.debounce(function(a,b,c,d,e){
-        var index = Math.round(d / $(window).height());
-        // go(index);
-    },500));
-    var next = function() {
-        var scropTop = $(window).scrollTop() + $(window).height();
-        $('html,body').animate({scrollTop: scropTop}, 800);
-    }
-    var prev = function() {
-        var scropTop = $(window).scrollTop() - $(window).height();
-        $('html,body').animate({scrollTop: scropTop}, 800);
-    }
-    var go =function(index){
-        var scropTop = $(window).height()*index;
-        $('html,body').animate({scrollTop: scropTop}, 800);
-    }
-    $('.nextlink').on('click', next);
-    $('.prevlink').on('click', prev);
-</script>
-
+<script src="%RootUrl%dist/src/visual/src/vue.js" type="text/javascript"></script>
+<script src="%RootUrl%dist/src/visual/src/v-1.js" type="text/javascript"></script>
 </html>

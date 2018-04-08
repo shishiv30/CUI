@@ -21,7 +21,8 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: [{
-                    'public/dist/src/cui.min.css': 'src/scss/cui.scss'
+                    'public/dist/src/cui.min.css': 'src/scss/cui.scss',
+                    'public/dist/src/visual/src/v-1.min.css': 'src/visual/src/v-1.scss'
                 }]
             }
         },
@@ -56,6 +57,14 @@ module.exports = function (grunt) {
                     cwd: 'src/visual/',
                     src: ['*.html'],
                     dest: 'public'
+                }]
+            },
+            js:{
+                files: [{
+                    expand: true,
+                    cwd: 'src/',
+                    src: ['visual/src/*.js'],
+                    dest: 'public/dist/src/'
                 }]
             },
             html: {
@@ -110,14 +119,14 @@ module.exports = function (grunt) {
                 }
             },
             script: {
-                files: ['src/js/plugins/*.js'],
-                tasks: ['concat:dist','replace:dev'],
+                files: ['src/js/plugins/*.js','src/visual/src/v-1.js'],
+                tasks: ['concat:dist','copy:js','replace:dev'],
                 options: {
                     debounceDelay: 10000,
                 }
             },
             scss: {
-                files: ['src/scss/cui.scss', 'src/scss/**/*.scss'],
+                files: ['src/scss/cui.scss', 'src/scss/**/*.scss', 'src/visual/src/*.scss'],
                 tasks: ['sass','autoprefixer','replace:dev'],
                 options: {
                     debounceDelay: 10000,
