@@ -45,7 +45,7 @@
         var _eventScrollListener = function () {
             window.addEventListener('scroll', $.throttle(function (e) {
                 _scrollTrigger(e);
-            }, 100), true);
+            }, 500), true);
         };
         var _oringalWindowWidth = $(window).width();
         var _resizeTrigger = function (e) {
