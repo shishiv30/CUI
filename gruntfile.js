@@ -113,17 +113,11 @@ module.exports = function (grunt) {
         watch: {
             html:{
                 files: ['public/*.html','src/visual/*.html'],
-                tasks: ['copy:html','replace:dev'],
-                options: {
-                    debounceDelay: 10000,
-                }
+                tasks: ['copy:html','replace:dev']
             },
             script: {
                 files: ['src/js/plugins/*.js','src/visual/src/v-1.js'],
-                tasks: ['concat:dist','copy:js','replace:dev'],
-                options: {
-                    debounceDelay: 10000,
-                }
+                tasks: ['concat:dist','copy:js','replace:dev']
             },
             scss: {
                 files: ['src/scss/cui.scss', 'src/scss/**/*.scss', 'src/visual/src/*.scss'],

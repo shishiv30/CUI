@@ -12,21 +12,37 @@
 
 <body>
     <div id="app">
-        <a href="javascript:;" class="prevlink"> <i class="icon-angle-up "></i></a>
-        <a href="javascript:;" class="nextlink"> <i class="icon-angle-down"></i></a>
+        <div class="nav-link">
+            <a href="javascript:;" class="prevlink"> <i class="icon-angle-up "></i></a>
+            <a href="javascript:;" class="nextlink"> <i class="icon-angle-down"></i></a>
+        </div>
+        <div class="comment">
+            <div class="comment-input">
+                <div class="input large left right">
+                    <i class="icon-close" v-on:click='toggleComment(false)'></i>
+                    <input id="headerInput" v-model="comment" type="text">
+                    <i class="icon-check" v-on:click='addComment(false)'></i>
+                </div>
+            </div>
+            <ul>
+                <li v-for="(comment,index) in comments">
+                    <a href="javascript:;" v-on:click="addComment(comment.text)"> <span>{{comment.text}}</span> <span>{{comment.count}}</span></a>
+                </li>
+            </ul>
+        </div>
         <div class="note">
               <div class="note-item" v-for="(note, index)  in notes"  v-bind:data-id='index'>
                   <div class="note-item-label">
                       <div class="f4">{{ note.title }}</div>
-                      <a href="javascript:;" class="f3 text-print">
+                      <a href="javascript:;" class="f3 text-print" v-on:click="toggleFavorite(note)" v-bind:class="{ checked: note.isFavorite }">
                           <i class="icon-heart "></i> <br>
                           <span data-transition v-bind:data-to="note.heartTo" v-bind:data-from="note.heartFrom">{{ note.heartFrom }}</span>
                       </a>
-                      <a href="javascript:;" class="f3 text-print">
+                      <a href="javascript:;" class="f3 text-print" v-on:click="toggleComment(true)">
                           <i class="icon-comment "></i> <br>
                           <span data-transition v-bind:data-to="note.commentTo" v-bind:data-from="note.commentFrom">{{ note.commentFrom }}</span>
                       </a>
-                      <a href="javascript:;" class="f3 text-print">
+                      <a href="javascript:;" class="f5 text-print">
                           <span data-transition v-bind:data-from="note.dateFrom" v-bind:data-to="note.dateTo" data-dateformat='MM - DD - Y' data-type="date">{{ note.dateFromStr }}</span>
                       </a>
                   </div>
