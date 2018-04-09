@@ -3,6 +3,9 @@
         background-color: #666;
     }
     .header-menu-item {
+        li.splict{
+            border-top: 1px solid $color-e;
+        }
         >a {
             color: $color-f;
             &:hover {
@@ -70,6 +73,7 @@
 
 .header-menu-item {
     position: relative;
+
     a {
         height: $header-height;
         line-height: $header-height;
@@ -79,6 +83,20 @@
         @include singleline();
         &:hover {
             color: $color-link-default-hover;
+        }
+        &.hightlight{
+          position:relative;
+          &:after{
+            content:' ';
+            display:block;
+            width:5px;
+            height:5px;
+            background-color: $color-link-default-hover;
+            border-radius:50%;
+            position:absolute;
+            top:15px;
+            right:15px;
+          }
         }
     }
     >ul {
