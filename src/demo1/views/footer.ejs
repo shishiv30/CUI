@@ -1,3 +1,32 @@
+<div class="gs-sin footer">
+    <div class="row text-center">
+        <div class="col-xs-12 col-sm-4">
+            <p class="h4"><span class="hidden-ch">ABOUT DREAM CHASER</span> <span class="hidden-en">合作伙伴</span></p>
+            <ul>
+                <li>
+                    <img src="<%=url+ 'dist/src/demo1/src/nz-logo.png'%>" alt="logo" style="height:40px;">
+                </li>
+                <li>
+                    <a href="<%=url+'demo1-6.html'%>"><img src="<%=url+ 'dist/src/demo1/src/logo.jpg'%>" alt="logo" style="height:40px;"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <p class="h4"><span class="hidden-ch">OPTION FOR STUDY TOUR</span><span class="hidden-en">游学分类</span></p>
+                <ul>
+                    <li><a class="link" href="#"><span class="hidden-ch">Primary School</span><span class="hidden-en">10岁以下小学游学</span></a></li>
+                    <li><a class="link" href="#"><span class="hidden-ch">Intermediate</span><span class="hidden-en">初中生游学</span></a></li>
+                    <li><a class="link" href="#"><span class="hidden-ch">High School</span><span class="hidden-en">高中生游学</span></a></li>
+                </ul>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <p class="h4"><span class="hidden-ch">CONTACT US</span> <span class="hidden-en">联系我们</span></p>
+            <ul>
+                <li><img src="//localhost:3025/dist/src/demo1/src/code.jpg" alt="code id" style="height:80px;"></li>
+            </ul>
+        </div>
+    </div class="row text-center">
+</div>
 </body>
 <script>
     window.context = {
@@ -10,5 +39,13 @@
 <script src="<%= cdnUrl +'cui.min.js' %>" type="text/javascript"></script>
 <script>
     $(document).trigger('dom.load');
+    $('.link-en').click(function(){
+        $('body').removeClass('ch');
+        $('body').addClass('en');
+    });
+    $('.link-ch').click(function(){
+        $('body').removeClass('en');
+        $('body').addClass('ch');
+    });
 </script>
 </html>

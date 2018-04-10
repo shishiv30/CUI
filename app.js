@@ -32,6 +32,23 @@ app.get('/demo1', function (req, res) {
         console.log(e);
     }
 });
+
+app.get('/demo1-1', function (req, res) {
+    try {
+        var lang = setLang(req, res);
+        var ejsPath = __dirname + '/src/demo1/' + 'demo1-1.ejs';
+        ejs.renderFile(ejsPath, {
+            url: url,
+            cdnUrl: cdnUrl,
+            lang: lang
+        }, function (err, result) {
+            res.send(result);
+        });
+    } catch(e) {
+        console.log(e);
+    }
+});
+
 app.get('/demo1-2', function (req, res) {
     try {
         var lang = setLang(req, res);
@@ -47,6 +64,70 @@ app.get('/demo1-2', function (req, res) {
         console.log(e);
     }
 });
+
+app.get('/demo1-3', function (req, res) {
+    try {
+        var lang = setLang(req, res);
+        var ejsPath = __dirname + '/src/demo1/' + 'demo1-3.ejs';
+        ejs.renderFile(ejsPath, {
+            url: url,
+            cdnUrl: cdnUrl,
+            lang: lang
+        }, function (err, result) {
+            res.send(result);
+        });
+    } catch(e) {
+        console.log(e);
+    }
+});
+app.get('/demo1-4', function (req, res) {
+    try {
+        var lang = setLang(req, res);
+        var ejsPath = __dirname + '/src/demo1/' + 'demo1-4.ejs';
+        ejs.renderFile(ejsPath, {
+            url: url,
+            cdnUrl: cdnUrl,
+            lang: lang
+        }, function (err, result) {
+            res.send(result);
+        });
+    } catch(e) {
+        console.log(e);
+    }
+});
+
+app.get('/demo1-5', function (req, res) {
+    try {
+        var lang = setLang(req, res);
+        var ejsPath = __dirname + '/src/demo1/' + 'demo1-5.ejs';
+        ejs.renderFile(ejsPath, {
+            url: url,
+            cdnUrl: cdnUrl,
+            lang: lang
+        }, function (err, result) {
+            res.send(result);
+        });
+    } catch(e) {
+        console.log(e);
+    }
+});
+
+app.get('/demo1-6', function (req, res) {
+    try {
+        var lang = setLang(req, res);
+        var ejsPath = __dirname + '/src/demo1/' + 'demo1-6.ejs';
+        ejs.renderFile(ejsPath, {
+            url: url,
+            cdnUrl: cdnUrl,
+            lang: lang
+        }, function (err, result) {
+            res.send(result);
+        });
+    } catch(e) {
+        console.log(e);
+    }
+});
+
 app.get('/:lang', function (req, res) {
     try {
         var lang = setLang(req, res);

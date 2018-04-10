@@ -34,4 +34,9 @@ function ejs2html(ejsName, ejsFolder) {
 }
 ejs2html('index.ejs', '/src/doc/');
 ejs2html('demo1.ejs', '/src/demo1/');
+ejs2html('demo1-1.ejs', '/src/demo1/');
 ejs2html('demo1-2.ejs', '/src/demo1/');
+ejs2html('demo1-3.ejs', '/src/demo1/');
+ejs2html('demo1-4.ejs', '/src/demo1/');
+ejs2html('demo1-5.ejs', '/src/demo1/');
+ejs2html('demo1-6.ejs', '/src/demo1/');
