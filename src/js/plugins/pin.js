@@ -67,8 +67,7 @@
                 _setpin(scrollTop, false);
             }, true);
             $(document).on('dom.resize', function () {
-                var scrollTop = $(window).scrollTop();
-                _setpin(scrollTop, true);
+                _setpin($.CUI.scrollTop, true);
             });
         },
         exports: {

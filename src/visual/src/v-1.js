@@ -13,9 +13,10 @@ var inital = function () {
     var $prevlink = $('.prevlink');
     var index = 0;
     var length = $('.note-item').length;
-    $(document).on('dom.load dom.scroll', function (a, b, c, d) {
-        var scrollTop = d || $(window).scrollTop();
-        index = Math.round(scrollTop / $(window).height());
+    $(document).on('dom.load dom.scroll', function () {
+        var status = $.CUI.status;
+        var scrollTop = status.scrollTop;
+        index = Math.round(scrollTop / status.height);
         if(index <= 0) {
             $prevlink.hide();
         } else if(index >= (length - 1)) {

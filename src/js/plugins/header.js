@@ -50,8 +50,9 @@
                     _hide();
                 }
             });
-            $(document).on('dom.scroll', function (e, t, isDown) {
-                if (isDown) {
+            $(document).on('dom.scroll', function () {
+                var status = $.CUI.status;
+                if (status.isScrollDown) {
                     _close();
                 } else {
                     _open();

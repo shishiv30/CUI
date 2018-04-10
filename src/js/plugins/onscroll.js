@@ -14,12 +14,13 @@
             var opt = context.opt;
             var $this = context.$element;
             var eventName = 'dom.scroll.' + $.guid++;
-            var _checkScreen = function (ignoreCache) {
+            var _checkScreen = function (force) {
+                var status = $.CUI.status;
                 if(opt.callback) {
-                    var scrolltop = $(window).scrollTop();
-                    var wheight = $(window).height();
+                    var scrolltop = status.scrollTop;
+                    var wheight = status.height;
                     var offsetTop = $this.offset().top;
-                    if(offsetTop >= scrolltop && offsetTop <= (scrolltop + wheight + (ignoreCache === true ? 0 : opt.reserve))) {
+                    if(offsetTop >= scrolltop && offsetTop <= (scrolltop + wheight + (force === true ? 0 : opt.reserve))) {
                         $.CUI.trigger(opt.callback, [opt.params]);
                         if(opt.once) {
                             opt.callback = null;

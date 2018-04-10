@@ -40,16 +40,18 @@
 })(jQuery);
 
 (function ($) {
-    $(document).on('dom.scroll.scrollSpy', function (e, t, isDown, initTop) {
+    $(document).on('dom.scroll.scrollSpy', function () {
+        var status = $.CUI.status;
         $('[data-scrollspy]').each(function () {
-            var offset = $($(this).attr('data-offsettop'));
-            var target = $($(this).data('target'));
-            var top = offset ? (initTop + offset.height()) : initTop;
+            var $item = $(this);
+            var offset = $($item.attr('data-offsettop'));
+            var target = $($item.data('target'));
+            var top = offset ? (status.scrollTop + offset.height()) : status.scrollTop;
             top += 50;
             var targetTop = target.offset().top;
             var targetBottom = target.offset().top + target.height();
             if (targetTop <= top && targetBottom > top) {
-                $(document).trigger($(this).data('onscroll'), [$(this)]);
+                $(document).trigger($item.data('onscroll'), [$(this)]);
                 return false;
             }
         });
