@@ -32,51 +32,58 @@ var inital = function () {
         }
         $('.note-item').eq(index).addClass('active');
     });
+    $(document).on('dom.resize', function () {
+        go(index, true);
+    });
     var next = function () {
         go(++index);
     };
     var prev = function () {
         go(--index);
     };
-    var go = function (index) {
-        var scropTop = $(window).height() * index;
-        $('html,body').stop().animate({
-            scrollTop: scropTop
-        }, 500);
+    var go = function (index, disableScroll) {
+        var scropTop = $.CUI.status.height * index;
+        if(disableScroll) {
+            $(window).scrollTop(scropTop);
+        } else {
+            $('html,body').stop().animate({
+                scrollTop: scropTop
+            }, 500);
+        }
     };
     $nextlink.on('click', next);
     $prevlink.on('click', prev);
     $(document).trigger('dom.load');
 };
-var fakeComments =function(){
+var fakeComments = function () {
     return [
         {
-            text:'looks nice',
-            count:4
+            text: 'looks nice',
+            count: 4
         },
         {
-            text:'awesome picture',
-            count:123
+            text: 'awesome picture',
+            count: 123
         },
         {
-            text:'so sweet',
-            count:23
+            text: 'so sweet',
+            count: 23
         },
         {
             text: 'agree with that',
-            count:16
+            count: 16
         },
         {
-            text:'have fun on this',
-            count:18
+            text: 'have fun on this',
+            count: 18
         },
         {
-            text:'best regards to you',
-            count:5
+            text: 'best regards to you',
+            count: 5
         },
         {
-            text:'hope you can doing better',
-            count:29
+            text: 'hope you can doing better',
+            count: 29
         },
     ];
 };
@@ -92,7 +99,7 @@ var fakeNotes = function () {
             dateFromStr: '2014 - 06 - 20',
             dateTo: '2018-02-14',
             img: 'dist/src/visual/src/1_Fotor.jpg',
-            isFavorite:false
+            isFavorite: false
         }, {
             title: 'Jump in San Mateo Half Moon Bay',
             heartTo: 437,
@@ -103,7 +110,7 @@ var fakeNotes = function () {
             dateFromStr: '2013 - 11 - 20',
             dateTo: '2016-02-14',
             img: 'dist/src/visual/src/2_Fotor.jpg',
-            isFavorite:false
+            isFavorite: false
         }, {
             title: 'Lovely shadow on the beach',
             heartTo: 130,
@@ -114,7 +121,7 @@ var fakeNotes = function () {
             dateFromStr: '2011 - 05 - 13',
             dateTo: '2015-07-09',
             img: 'dist/src/visual/src/3_Fotor.jpg',
-            isFavorite:false
+            isFavorite: false
         }, {
             title: 'Enjoy the back seat.',
             heartTo: 1793,
@@ -125,7 +132,7 @@ var fakeNotes = function () {
             dateFromStr: '2008 - 03 - 15',
             dateTo: '2012-09-05',
             img: 'dist/src/visual/src/4_Fotor.jpg',
-            isFavorite:false
+            isFavorite: false
         }, {
             title: 'Puppy stand on the Rock',
             heartTo: 2793,
@@ -136,7 +143,7 @@ var fakeNotes = function () {
             dateFromStr: '2005 - 12 - 30',
             dateTo: '2006-08-27',
             img: 'dist/src/visual/src/5_Fotor.jpg',
-            isFavorite:false
+            isFavorite: false
         }
     ];
     var notes = [];
@@ -151,7 +158,7 @@ new window.Vue({
         text: 'hello',
         notes: fakeNotes(),
         comments: fakeComments(),
-        comment:'',
+        comment: '',
     },
     mounted: function () {
         setTimeout(function () {
@@ -160,25 +167,25 @@ new window.Vue({
     },
     methods: {
         addComment: function (words) {
-            words = words||this.comment;
-            if(words){
+            words = words || this.comment;
+            if(words) {
                 words = words.trim().toLowerCase();
-                var item = this.comments.find(function(e){
+                var item = this.comments.find(function (e) {
                     return words === e.text;
                 });
-                if(item){
+                if(item) {
                     item.count += 1;
+                } else {
+                    this.comments.unshift({
+                        text: words,
+                        count: 1
+                    });
                 }
-            } else if(words){
-                this.comments.push({
-                    text: words,
-                    count: 1
-                });
-                this.comment='';
+                this.comment = '';
             }
             this.toggleComment(close);
         },
-        toggleComment:function(isOpen){
+        toggleComment: function (isOpen) {
             var $body = $('body');
             if(isOpen) {
                 $body.addClass('comment-shown');
@@ -186,7 +193,7 @@ new window.Vue({
                 $body.removeClass('comment-shown');
             }
         },
-        toggleFavorite:function(note){
+        toggleFavorite: function (note) {
             note.isFavorite = !note.isFavorite;
         }
     }

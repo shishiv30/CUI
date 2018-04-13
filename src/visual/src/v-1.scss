@@ -1,4 +1,6 @@
-
+html, body {
+    overflow: hidden;
+}
 .portrait {
     .nav-link {
         top: calc(50vh - 50vw);
@@ -186,12 +188,23 @@
         border-left: 2px solid #eeeeee;
         position: absolute;
     }
+    .load.active {
+        .note-item-label {
+            width: calc(100vw - 161.8vh);
+        }
+    }
+    .load.y.active {
+        .note-item-content {
+            transform: rotateZ(-90deg);
+            width: 100vh;
+            height: 161.8vh;
+            transform-origin: 50% 50vh;
+        }
+    }
     .load.x.active {
         .note-item-content {
+            height: 100vh;
             width: 161.8vh;
-        }
-        .note-item-label {
-            width: 120px;
         }
     }
     .note-item-label > div {
@@ -234,11 +247,11 @@
         margin: -1px;
         width: 100%;
         line-height: 1em;
-        background: #000;
-        color:#fff;
+        background: #000000;
+        color: #ffffff;
         input {
             border-radius: 0;
-            color:inherit;
+            color: inherit;
             background: transparent;
         }
     }
