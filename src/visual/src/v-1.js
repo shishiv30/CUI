@@ -13,6 +13,28 @@ var inital = function () {
     var $prevlink = $('.prevlink');
     var index = 0;
     var length = $('.note-item').length;
+    var next = function () {
+        go(++index);
+    };
+    var prev = function () {
+        go(--index);
+    };
+    var go = function (index, disableScroll) {
+        var scropTop = $.CUI.status.height * index;
+        if(disableScroll) {
+            $(window).scrollTop(scropTop);
+        } else {
+            $('html,body').stop().animate({
+                scrollTop: scropTop
+            }, 500);
+        }
+    };
+    $nextlink.on('click', next);
+    $prevlink.on('click', prev);
+    $(document).on('swipeleft', prev);
+    $(document).on('swiperight', next);
+    $(document).on('swipedown', next);
+    $(document).on('swipeup', prev);
     $(document).on('dom.load dom.scroll', function () {
         var status = $.CUI.status;
         var scrollTop = status.scrollTop;
@@ -35,24 +57,6 @@ var inital = function () {
     $(document).on('dom.resize', function () {
         go(index, true);
     });
-    var next = function () {
-        go(++index);
-    };
-    var prev = function () {
-        go(--index);
-    };
-    var go = function (index, disableScroll) {
-        var scropTop = $.CUI.status.height * index;
-        if(disableScroll) {
-            $(window).scrollTop(scropTop);
-        } else {
-            $('html,body').stop().animate({
-                scrollTop: scropTop
-            }, 500);
-        }
-    };
-    $nextlink.on('click', next);
-    $prevlink.on('click', prev);
     $(document).trigger('dom.load');
 };
 var fakeComments = function () {
