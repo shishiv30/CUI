@@ -31,7 +31,7 @@
         }
     };
     var _isScrollDown = function () {
-        $.CUI.status.scrollTop = $(document).scrollTop();
+        $.CUI.status.scrollTop = $(window).scrollTop();
         if($.CUI.status.scrollTop > $.CUI.status.originalScrollTop) {
             $.CUI.status.isScrollDown = true;
         } else if($.CUI.status.scrollTop < $.CUI.status.originalScrollTop) {
@@ -61,16 +61,16 @@
         return status;
     };
     var _eventScrollListener = function () {
-        window.addEventListener('scroll', $.debounce(function () {
+        $(window).on('scroll', $.throttle(function () {
             _updateWindowStatus('scroll');
             $(document).trigger('dom.scroll');
-        }, 200), true);
+        }, 200));
     };
     var _eventResizeListener = function () {
-        window.addEventListener('resize', $.throttle(function () {
+        $(window).on('resize', $.debounce(function () {
             _updateWindowStatus('resize');
             $(document).trigger('dom.resize');
-        }, 500), true);
+        }, 500));
     };
     _updateWindowStatus('inital');
     //dom load

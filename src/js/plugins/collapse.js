@@ -52,7 +52,7 @@
                     $this.removeClass('shown');
                     $target.removeClass('collapse-expand');
                     if(height && height > 0) {
-                        $(document).scrollTop($(document).scrollTop() - $target.prop('scrollHeight') + height);
+                        $(window).scrollTop($(window).scrollTop() - $target.prop('scrollHeight') + height);
                     }
                     _hidetext();
                 };
@@ -66,7 +66,7 @@
                     $this.removeClass('shown');
                     $target.hide();
                     if(height && height > 0) {
-                        $(document).scrollTop($(document).scrollTop() - height);
+                        $(window).scrollTop($(window).scrollTop() - height);
                     }
                     _hidetext();
                 };

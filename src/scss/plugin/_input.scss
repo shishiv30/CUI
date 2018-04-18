@@ -31,6 +31,7 @@ input[type='text']::-ms-clear {
     > .btn {
         margin: 0;
         padding: 0;
+        border:none;
     }
     > label {
         color: inherit;
@@ -46,17 +47,6 @@ input[type='text']::-ms-clear {
         line-height: $form-size-normal;
         @include singleline();
     }
-    &.right {
-        > input {
-            padding-right: $form-size-normal;
-            ~ label, ~ i, ~ a {
-                right: 0;
-                left: auto;
-                @include border-left-radius(0px);
-                @include border-right-radius(3px);
-            }
-        }
-    }
     &.left {
         > input {
             padding-left: $form-size-normal;
@@ -67,16 +57,15 @@ input[type='text']::-ms-clear {
             @include border-left-radius(3px);
             @include border-right-radius(0px);
         }
-        &.right {
-            > input {
-                ~ label, ~ i, ~ a {
-                    &:last-of-type {
-                        right: 0;
-                        left: auto;
-                        @include border-right-radius(3px);
-                        @include border-left-radius(0px);
-                    }
-                }
+    }
+    &.right {
+        > input {
+            padding-right: $form-size-normal;
+            ~ label, ~ i, ~ a {
+                right: 0;
+                left: auto;
+                @include border-right-radius(3px);
+                @include border-left-radius(0px);
             }
         }
     }
@@ -118,7 +107,7 @@ input[type='text']::-ms-clear {
         &.right {
             > input {
                 padding-left: 10px;
-                padding-right: $form-size-large + 10;
+                padding-right: $form-size-large;
             }
             > label, > i, > a {
                 @include border-left-radius(0px);
@@ -127,7 +116,7 @@ input[type='text']::-ms-clear {
         }
         &.left {
             > input {
-                padding-left: $form-size-large + 10;
+                padding-left: $form-size-large;
                 padding-right: 10px;
             }
             > label, > i, > a {

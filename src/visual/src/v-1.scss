@@ -213,6 +213,9 @@ html, body {
 }
 .comment-shown {
     overflow: hidden;
+    .note{
+        pointer-events: none;
+    }
     .comment {
         top: 0;
     }
@@ -232,12 +235,18 @@ html, body {
         line-height: 4em;
         padding: 0 15px;
         border-bottom: 1px solid;
-    }
-    a {
-        width: 100%;
         display: flex;
         justify-content: space-between;
-        color: inherit;
+        a {
+            width: 30px;
+            color: inherit;
+            flex-shrink: 0;
+            &.text{
+                flex-shrink: 1;
+                width: 100%;
+                
+            }
+        }
     }
 }
 .comment-input {

@@ -20,21 +20,26 @@
 
 <body>
     <div id="app">
-        <div class="nav-link">
+        <div class="nav-link hidden-mobile">
             <a href="javascript:;" class="prevlink hidden-mobile"> <i class="icon-angle-up "></i></a>
             <a href="javascript:;" class="nextlink hidden-mobile"> <i class="icon-angle-down"></i></a>
         </div>
         <div class="comment">
-            <div class="comment-input">
+            <div class="comment-input" data-textbox>
                 <div class="input large left right">
+                    <label for="headerInput">New comments</label>
                     <i class="icon-close" v-on:click='toggleComment(false)'></i>
                     <input id="headerInput" v-model="comment" type="text">
-                    <i class="icon-check" v-on:click='addComment(false)'></i>
+                    <a v-on:click='addComment()' class="btn icon-check">
+                    </a>
                 </div>
             </div>
             <ul>
-                <li v-for="(comment,index) in comments">
-                    <a href="javascript:;" v-on:click="addComment(comment.text)"> <span>{{comment.text}}</span> <span>{{comment.count}}</span></a>
+                <li v-for="(comment,index) in updateComment.comments">
+                    <a href="javascript:;" class="rate" v-on:click="sortBy('count')"><span>{{comment.count}}</span></a>
+                    <a href="javascript:;" class="text" v-on:click="sortBy('text')"><span>{{comment.text}}</span></a>
+                    <a href="javascript:;" v-on:click="addComment(comment.text,true)"><i class="icon-thumbs-up"></i></a>
+                    <a href="javascript:;" v-on:click="addComment(comment.text,false)"><i class="icon-thumbs-down"></i></a>
                 </li>
             </ul>
         </div>
@@ -44,11 +49,11 @@
                       <div class="f4">{{ note.title }}</div>
                       <a href="javascript:;" class="f3 text-print" v-on:click="toggleFavorite(note)" v-bind:class="{ checked: note.isFavorite }">
                           <i class="icon-heart "></i> <br>
-                          <span data-transition v-bind:data-to="note.heartTo" v-bind:data-from="note.heartFrom">{{ note.heartFrom }}</span>
+                          <span data-transition data-once="false" v-bind:data-to="note.heartTo" v-bind:data-from="0">0</span>
                       </a>
-                      <a href="javascript:;" class="f3 text-print" v-on:click="toggleComment(true)">
+                      <a href="javascript:;" class="f3 text-print" v-on:click="toggleComment(true, note.id)">
                           <i class="icon-comment "></i> <br>
-                          <span data-transition v-bind:data-to="note.commentTo" v-bind:data-from="note.commentFrom">{{ note.commentFrom }}</span>
+                          <span data-transition data-once="false" v-bind:data-to="note.comments.length" v-bind:data-from="0">0</span>
                       </a>
                       <a href="javascript:;" class="f5 text-print">
                           <span data-transition v-bind:data-from="note.dateFrom" v-bind:data-to="note.dateTo" data-dateformat='MM - DD - Y' data-type="date">{{ note.dateFromStr }}</span>
@@ -73,11 +78,11 @@
     };
 
     navigator.serviceWorker.register(window.context.url + 'sw.js')
-        .then(function(registration) {
-            console.log("Service worker registered, scope: " + registration.scope);
-        })
-        .catch(function(error) {
-            console.log("Service worker registration failed: " + error.message);
-        });
+    .then(function(registration) {
+        console.log("Service worker registered, scope: " + registration.scope);
+    })
+    .catch(function(error) {
+        console.log("Service worker registration failed: " + error.message);
+    });
 </script>
 </html>

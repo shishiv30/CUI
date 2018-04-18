@@ -7,6 +7,7 @@
         left: 10px;
         color: $color-a;
         font-size: 12px;
+        pointer-events: none;
     }
     select {
         padding: 8px 0 0 10px;
@@ -24,5 +25,6 @@
         top: 10px;
         font-size: 25px;
         color: $color-a;
+        pointer-events: none;
     }
 }

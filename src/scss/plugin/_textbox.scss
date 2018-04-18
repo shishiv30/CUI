@@ -59,7 +59,7 @@
             line-height: 38px;
         }
         >a {
-            line-height: 52px;
+            line-height: $form-size-normal;
         }
         &.large {
             >label {
@@ -92,7 +92,7 @@
                 line-height: 35px;
             }
             >a {
-                line-height: 52px;
+                line-height: $form-size-small;
             }
         }
         &.right {
