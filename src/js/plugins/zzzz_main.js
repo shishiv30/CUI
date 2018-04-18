@@ -1,14 +1,6 @@
 //initial event
 (function ($) {
-    $.CUI.status = {
-        originalScrollTop: null,
-        isLandscape: null,
-        scrollTop: null,
-        causeByKeyboard: null,
-        isScrollDown: null,
-        height: null,
-        width: null
-    };
+    $.CUI.status = {};
     var _isMobile = function () {
         var $body = $('body');
         if($.isMobile()) {
@@ -77,4 +69,16 @@
     _isMobile();
     _eventScrollListener();
     _eventResizeListener();
+    $(document).one('cui.inital',function(){
+        $.CUI.status = {
+            originalScrollTop: $(window).scrollTop(),
+            isLandscape: $(window).width() >$(window).height(),
+            scrollTop: $(window).scrollTop(),
+            causeByKeyboard: false,
+            isScrollDown: false,
+            height: $(window).height(),
+            width: $(window).width()
+        };
+        $(document).trigger('dom.load');
+    });
 })(jQuery);

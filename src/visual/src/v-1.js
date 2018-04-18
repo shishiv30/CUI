@@ -57,7 +57,7 @@ var inital = function () {
     $(document).on('dom.resize', function () {
         go(index, true);
     });
-    $(document).trigger('dom.load');
+    $(document).trigger('cui.inital');
 };
 var fakeComments = function () {
     return [{
@@ -208,7 +208,7 @@ new window.Vue({
     mounted: function () {
         setTimeout(function () {
             inital();
-        }, 10);
+        }, 1);
     },
     methods: {
         sortBy:function(type){

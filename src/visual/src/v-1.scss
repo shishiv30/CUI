@@ -43,10 +43,10 @@ html, body {
         }
     }
     .prevlink {
-        top: 0;
+        top: 5px;
     }
     .nextlink {
-        bottom: 0;
+        bottom: 5px;
     }
 }
 
@@ -244,7 +244,7 @@ html, body {
             &.text{
                 flex-shrink: 1;
                 width: 100%;
-                
+
             }
         }
     }
