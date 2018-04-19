@@ -23,16 +23,16 @@ var inital = function () {
     var go = function (index, disableScroll) {
         var scropTop = $.CUI.status.height * index * -1;
         if(disableScroll) {
-            $container.data('dragable').go(scropTop, disableScroll);
+            $container.data('view').go(scropTop, disableScroll);
         } else {
-            $container.data('dragable').go(scropTop, disableScroll);
+            $container.data('view').go(scropTop, disableScroll);
         }
     };
     $nextlink.on('click', next);
     $prevlink.on('click', prev);
     $(document).on('dom.load dom.scroll', function () {
         var status = $.CUI.status;
-        var scrollTop = $container.data('dragable').getScrollInfo()[1];
+        var scrollTop = $container.data('view').getScrollInfo()[1];
         index = Math.round(scrollTop / status.height);
         if(index <= 0) {
             $prevlink.hide();
@@ -55,39 +55,39 @@ var inital = function () {
 };
 var fakeComments = function () {
     return [{
-        text: 'ha ha',
-        count: 123,
+            text: 'ha ha',
+            count: 123,
     },
-    {
-        text: 'looks nice',
-        count: 4
+        {
+            text: 'looks nice',
+            count: 4
     },
-    {
-        text: 'awesome picture',
-        count: 123
+        {
+            text: 'awesome picture',
+            count: 123
     },
-    {
-        text: 'so sweet',
-        count: 23
+        {
+            text: 'so sweet',
+            count: 23
     },
-    {
-        text: 'agree with that',
-        count: 16
+        {
+            text: 'agree with that',
+            count: 16
     },
-    {
-        text: 'have fun on this',
-        count: 18
+        {
+            text: 'have fun on this',
+            count: 18
     },
-    {
-        text: 'best regards to you',
-        count: 5
+        {
+            text: 'best regards to you',
+            count: 5
     },
-    {
-        text: 'hope you can doing better',
-        count: 29
+        {
+            text: 'hope you can doing better',
+            count: 29
     }, {
-        text: '"I use to think',
-        count: 12
+            text: '"I use to think',
+            count: 12
     }
     ];
 };
@@ -138,14 +138,14 @@ var fakeNotes = function () {
         }
     ];
     var notes = [];
-    if(localStorage.length){
-        for(var key in localStorage){
-            var noteString =localStorage.getItem(key);
-            if(noteString){
+    if(localStorage.length) {
+        for(var key in localStorage) {
+            var noteString = localStorage.getItem(key);
+            if(noteString) {
                 notes.push(JSON.parse(noteString));
             }
         }
-    }else{
+    } else {
         for(var i = 0; i < notesDemo.length; i++) {
             var item = notesDemo[i];
             item.id = 'note' + i;
@@ -154,7 +154,6 @@ var fakeNotes = function () {
             notes.push(item);
         }
     }
-
     return notes;
 };
 var db = {
@@ -196,7 +195,10 @@ new window.Vue({
     data: {
         text: 'hello',
         notes: notes,
-        updateComment: {id:null,comments:[]},
+        updateComment: {
+            id: null,
+            comments: []
+        },
         comment: '',
     },
     mounted: function () {
@@ -205,9 +207,12 @@ new window.Vue({
         }, 1);
     },
     methods: {
-        sortBy:function(type){
-            if(this.updateComment.comments && this.updateComment.comments.length){
-                this.updateComment.comments.sort(function(a,b){
+        loadNext: function () {
+
+        },
+        sortBy: function (type) {
+            if(this.updateComment.comments && this.updateComment.comments.length) {
+                this.updateComment.comments.sort(function (a, b) {
                     return a[type] > b[type];
                 });
             }
@@ -217,24 +222,24 @@ new window.Vue({
             if(words) {
                 words = words.trim().toLowerCase();
                 var updateItem = this.updateComment;
-                db.get(updateItem.id).then(function(note){
+                db.get(updateItem.id).then(function (note) {
                     var item = null;
                     var index = -1;
-                    for(var i = 0; i< updateItem.comments.length;i++){
-                        if(words === updateItem.comments[i].text ){
+                    for(var i = 0; i < updateItem.comments.length; i++) {
+                        if(words === updateItem.comments[i].text) {
                             item = updateItem.comments[i];
                             index = i;
                             break;
                         }
                     }
                     if(item) {
-                        if(isIncrease){
+                        if(isIncrease) {
                             item.count += 1;
-                        }else{
+                        } else {
                             item.count -= 1;
                         }
-                        if(item.count<=0){
-                            updateItem.comments.splice(index,1);
+                        if(item.count <= 0) {
+                            updateItem.comments.splice(index, 1);
                         }
                     } else {
                         updateItem.comments.unshift({
@@ -243,7 +248,7 @@ new window.Vue({
                         });
                     }
                     note.comments = updateItem.comments;
-                    db.set(note.id, note).then(function(){
+                    db.set(note.id, note).then(function () {
                         $(document).trigger('dom.load.transition');
                     });
                 });
@@ -254,11 +259,11 @@ new window.Vue({
             var $body = $('body');
             if(isOpen) {
                 var vm = this;
-                var item = vm.notes.find(function(e){
+                var item = vm.notes.find(function (e) {
                     return id === e.id;
                 });
                 if(item) {
-                    vm.$set(vm.updateComment, 'comments', item.comments||[]);
+                    vm.$set(vm.updateComment, 'comments', item.comments || []);
                     vm.$set(vm.updateComment, 'id', item.id);
                     $body.addClass('comment-shown');
                 }

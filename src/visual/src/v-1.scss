@@ -47,6 +47,39 @@ html, body {
         bottom: 5px;
     }
 }
+
+.nav-notes{
+  position:fixed;
+  width:100vw;
+  height:100vh;
+  background-color:#ccc;
+  color:#fff;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  > a {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    &:first-of-type{
+        flex-direction: column;
+    }
+    &:last-of-type{
+        flex-direction: column-reverse;
+    }
+    > i{
+        font-size: 10rem;
+    }
+    > span{
+        font-size: 3rem;
+    }
+    a.loading{
+
+    }
+  }
+
+}
 .notes {
     width: 100%;
 }

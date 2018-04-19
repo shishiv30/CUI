@@ -1,8 +1,8 @@
 //seed code for create a plugin
-//replace all of the "dragable" with the plugin name. (the plugin name should be same as the js file name);
+//replace all of the "view" with the plugin name. (the plugin name should be same as the js file name);
 (function ($) {
-    var dragableConfig = {
-        name: 'dragable',
+    var viewConfig = {
+        name: 'view',
         defaultOpt: {
             direction: 'x'
         },
@@ -98,14 +98,14 @@
         initAfter: null,
         destroyBefore: null
     };
-    $.CUI.plugin(dragableConfig);
-    $(document).on('dom.load.dragable', function () {
-        $('[data-dragable]').each(function (index, item) {
+    $.CUI.plugin(viewConfig);
+    $(document).on('dom.load.view', function () {
+        $('[data-view]').each(function (index, item) {
             var $this = $(item);
             var data = $this.data();
-            $this.removeAttr('data-dragable');
-            $this.dragable(data);
-            $this.attr('data-dragable-load', '');
+            $this.removeAttr('data-view');
+            $this.view(data);
+            $this.attr('data-view-load', '');
         });
     });
 })(jQuery);

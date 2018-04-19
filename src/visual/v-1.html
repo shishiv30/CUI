@@ -20,6 +20,15 @@
 
 <body>
     <div id="app">
+        <div class=nav-notes>
+            <a href="javscript:;">
+                <i class="icon-home"></i> <br>
+                <span>Back to Home</span></a>
+            <a href="javscript:;" v-on:click="loadNext">
+                <i class="icon-download"></i> <br>
+                <span>View More</span>
+            </a>
+        </div>
         <div class="nav-link hidden-mobile">
             <a href="javascript:;" class="prevlink"> <i class="icon-angle-up "></i></a>
             <a href="javascript:;" class="nextlink"> <i class="icon-angle-down"></i></a>
@@ -43,7 +52,7 @@
                 </li>
             </ul>
         </div>
-        <div class="notes" data-dragable data-direction='y'>
+        <div class="notes" data-view data-direction='y'>
             <ul>
                 <li class="note-item" v-for="(note, index)  in notes" v-bind:data-id='index'>
                     <div class="note-item-label">
