@@ -28,7 +28,7 @@ var inital = function () {
                 scrollTop: scropTop
             }, 500);
         }
-    };
+    };    
     $nextlink.on('click', next);
     $prevlink.on('click', prev);
     $('.note').on('swipeleft', prev);

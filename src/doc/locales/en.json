@@ -99,5 +99,7 @@
 	"Dynamic Map": "Dynamic Map",
 	"Static Map": "Static Map",
 	"Static Street Map": "Static Street Map",
-	"Note": "Note"
+	"Note": "Note",
+	"drag": "drag",
+	"new drag style": "new drag style"
 }

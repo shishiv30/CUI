@@ -1,6 +1,6 @@
 {
     "name": "cui",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "A responsive ui framework",
     "main": "index.js",
     "scripts": {

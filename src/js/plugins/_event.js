@@ -19,6 +19,12 @@
     var eventSetting = {
         setup: function () {
             var $this = $(this);
+            // bind event once for all the gesture
+            // if(!$this._gesture){
+            //     $this._gesture =true;
+            // }else{
+            //     return;
+            // }
             $this.off('gesturestart').on('gesturestart', function (e) {
                 e.preventDefault();
             });
@@ -46,7 +52,6 @@
                 $ele.trigger('moving', [$ele.data('_touchStart'), event]);
                 return true;
             }, 100));
-
             $this.off('touchend.cui.gesture').on('touchend.cui.gesture', function () {
                 var $ele = $(this);
                 var start = $ele.data('_touchStart');
@@ -91,7 +96,6 @@
             $this.off('touchstart.cui.gesture');
             $this.off('touchmove.cui.gesture');
             $this.off('touchend.cui.gesture');
-
         }
     };
     $.event.special.swipeleft =
@@ -103,75 +107,131 @@
                             $.event.special.pinchout = eventSetting;
 })(jQuery);
 
-//Extend transistion event
-(function ($) {
-    var eventSetting = {
-        setup: function () {
-            var $this = $(this);
-            $this.off('webkitTransitionEnd.cui otransitionend.cui oTransitionEnd.cui msTransitionEnd.cui transitionend.cui')
-            .on('webkitTransitionEnd.cui otransitionend.cui oTransitionEnd.cui msTransitionEnd.cui transitionend.cui', function () {
-                $this.trigger('transitionend', []);
-            });
-        },
-        teardown: function () {
-            var $this = $(this);
-            $this.off('webkitTransitionEnd.cui otransitionend.cui oTransitionEnd.cui msTransitionEnd.cui transitionend.cui');
-        }
-    };
-    $.event.special.transitionend = eventSetting;
-}(jQuery));
 
 //draggable
 (function ($) {
+    var hasTouch = 'ontouchstart' in window,
+        startEvent = hasTouch ? 'touchstart' : 'mousedown',
+        moveEvent = hasTouch ? 'touchmove' : 'mousemove',
+        endEvent = hasTouch ? 'touchend' : 'mouseup';
     var eventSetting = {
-        setting: function () {
+        setup: function () {
             var $this = $(this);
-            var onDragStart = function () {
-                if ($.isMobile()) {
-                    $this.on('touchend.cui.draggable', onDragEnd);
-                    $this.one('touchmove.cui.draggable', onDragMove);
-                } else {
-                    $this.on('mouseup.cui.draggable', onDragEnd);
-                    $this.one('mousemove.cui.draggable', onDragMove);
-                }
-                $this.trigger('drag');
-            };
-            var onDragMove = function () {
-                $this.one('touchmove.cui.draggable', function () {
-                    $this.trigger('dragging');
-                });
-            };
-            var onDragEnd = function () {
-                $this.trigger('dragged');
-            };
-            if ($.isMobile()) {
-                $this.on('touchstart.cui.draggable', onDragStart);
-                $this.on('touchcancel.cui.draggable', onDragEnd);
-            } else {
-                $this.on('mousedown.cui.draggable', onDragStart);
-                $this.on('dragstart.cui.draggable selectstart.cui.draggable', function () {
-                    return false;
-                });
+            // bind event once for all the drag
+            if(!$this._drag){
+                $this._drag =true;
+            }else{
+                return;
             }
+            var _config = {
+                start : null,
+                end : null,
+                trackDistance : null,
+                swipeDistance : null,
+                currPos : null,
+                startTime : null,
+                endTime : null,
+                currTime : null,
+                direction : null,
+                duration : null
+            };
+            var _resetConfig = function () {
+                _config.start = null;
+                _config.end = null;
+                _config.trackDistance = null;
+                _config.swipeDistance = null;
+                _config.currPos = null;
+                _config.startTime = null;
+                _config.endTime = null;
+                _config.currTime = null;
+                _config.direction = null;
+                _config.duration = null;
+            };
+            var _trackSwipe = function(){
+                _config.direction =[
+                    (_config.start[0] > _config.currPos[0]) ? 'left' : 'right',
+                    (_config.start[1] > _config.currPos[1]) ?  'down':'up'
+                ];
+                _config.trackDistance = [
+                    ('left' === _config.direction[0]) ? (_config.start[0] - _config.currPos[0]) : (_config.currPos[0] - _config.start[0]),
+                    ('top' === _config.direction[1]) ? (_config.start[1] - _config.currPos[1]) : (_config.currPos[1] - _config.start[1])
+                ];
+                // Run the tracking callback.
+                $this.trigger('dragging',[
+                    _config.direction,
+                    _config.trackDistance,
+                    _config.currPos,
+                    _config.start,
+                    parseInt(_config.currTime - _config.startTime)
+                ]);
+            };
+            var _confirmSwipe = function () {
+                // Set up the direction property.
+                _config.direction =[
+                    (_config.start[0] > _config.currPos[0]) ? 'left' : 'right',
+                    (_config.start[1] > _config.currPos[1]) ?  'down':'up'
+                ];
+                // Set up the duration property.
+                _config.duration = parseInt(_config.endTime - _config.startTime);
+                // Work out the distance based on the direction of the swipe.
+                _config.swipeDistance = [
+                    ('left' === _config.direction[0]) ? (_config.start[0] - _config.end[0]) : (_config.end[0] - _config.start[0]),
+                    ('top' === _config.direction[1]) ? (_config.start[1] - _config.end[1]) : (_config.end[1] - _config.start[1])
+                ];
+                // This is where we determine whether it was a swipe or not.
+                $this.trigger('dragged',[
+                    _config.direction,
+                    _config.swipeDistance,
+                    _config.duration
+                ]);
+                // Reset the variables.
+                _resetConfig();
+            };
+            $this.on(startEvent + '.cui.draggable', function(t){
+                var e = t.originalEvent;
+                if ((e.targetTouches && 1 === e.targetTouches.length )|| !hasTouch) {
+                    var eventObj = hasTouch ? e.targetTouches[0] : e;
+                    _config.startTime = Date.now();
+                    _config.start = [parseInt(eventObj.pageX), parseInt(eventObj.pageY)];
+                    $this.trigger('drag');
+                }
+                $this.off('mouseout.cui.draggable').one('mouseout.cui.draggable',function(){
+                    _resetConfig();
+                });
+                // e.preventDefault();
+            });
+            $this.on(moveEvent + '.cui.draggable', function(t){
+                var e = t.originalEvent;
+                if (_config.start && ((e.targetTouches && 1 === e.targetTouches.length) || !hasTouch)) {
+                    var eventObj = hasTouch ? e.targetTouches[0] : e;
+                    _config.currTime = Date.now();
+                    _config.currPos =[parseInt(eventObj.pageX), parseInt(eventObj.pageY)] ;
+                    _trackSwipe();
+                }
+                e.preventDefault();
+            });
+            $this.on(endEvent + '.cui.draggable', function(t){
+                $this.off('mouseout.cui.draggable');
+                var e = t.originalEvent;
+                var eventObj = hasTouch ? e.changedTouches[0] : e;
+                // Set the end event related properties.
+                _config.endTime = Date.now();
+                _config.end = [parseInt(eventObj.pageX), parseInt(eventObj.pageY)];
+                // Run the confirm swipe method.
+                _confirmSwipe();
+                // e.preventDefault();
+            });
+
         },
         teardown: function () {
             var $this = $(this);
-            if ($.isMobile()) {
-                $this.off('touchstart.cui.draggable');
-                $this.off('touchcancel.cui.draggable');
-            } else {
-                this.$this.off('mousedown.cui.draggable');
-                this.$this.off('dragstart.cui.draggable selectstart.cui.draggable', function () {
-                    return false;
-                });
-            }
-            $this.off('touchstart.cui.draggable mousedown.cui.draggable');
-            $this.off('touchcancel.cui.draggable mousedown.cui.draggable');
-
-            $this.off('touchmove.cui.draggable mousemove.cui.draggable');
-            $this.off('touchend.cui.draggable mouseup.cui.draggable');
+            $this.on(startEvent + '.cui.draggable');
+            $this.on(moveEvent + '.cui.draggable');
+            $this.on(endEvent + '.cui.draggable');
         }
     };
-    $.event.special.swipeleft =
-        $.event.special.swiperight = eventSetting;
+    $.event.special.drag =
+        $.event.special.dragging =
+            $.event.special.dragged =
+                $.event.special.dragout = eventSetting;
 }(jQuery));

@@ -1,0 +1,27 @@
+[data-dragable], [data-dragable-load] {
+    width: 100%;
+    overflow: hidden;
+    &[data-direction='x'] {
+        width: 100%;
+        cursor: ew-resize;
+         > ul {
+            font-size: 0;
+            width: fit-content;
+            white-space: nowrap;
+             > li {
+                font-size: 1rem;
+                display: inline-block;
+            }
+        }
+    }
+    &[data-direction='y']  {
+        height: 100vh;
+        cursor: ns-resize;
+    }
+    > ul {
+        transition: transform .5s ease;
+        &.is-dragging {
+            transition: none;
+        }
+    }
+}

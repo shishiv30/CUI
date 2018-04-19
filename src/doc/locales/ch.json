@@ -95,5 +95,7 @@
 	"Dynamic Map": "动态地图",
 	"Static Map": "静态地图",
 	"Static Street Map": "Static Street Map",
-	"Note": "日记"
+	"Note": "日记",
+	"drag": "drag",
+	"new drag style": "new drag style"
 }
