@@ -68,8 +68,14 @@
                     currPos = 0;
                 } else if((max + currPos) <= 0) {
                     currPos = max * -1;
-                } else if(time / 100 > Math.abs(distance)) {
-                    currPos = prePos;
+                } else if( Math.abs(distance)/time > 0.1) {
+                    if(opt.direction === 'x') {
+                        offset = currPos % width;
+                        currPos = dir[0]==='left' ? currPos - (width + offset) : currPos - offset;
+                    } else {
+                        offset = currPos % height;
+                        currPos = dir[1]==='up' ? currPos - offset : currPos - (height + offset);
+                    }
                 } else {
                     var offset;
                     if(opt.direction === 'x') {
