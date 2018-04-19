@@ -43,26 +43,28 @@
                 </li>
             </ul>
         </div>
-        <div class="note">
-              <div class="note-item" v-for="(note, index)  in notes"  v-bind:data-id='index'>
-                  <div class="note-item-label">
-                      <div class="f4">{{ note.title }}</div>
-                      <a href="javascript:;" class="f3 text-print" v-on:click="toggleFavorite(note)" v-bind:class="{ checked: note.isFavorite }">
+        <div class="notes" data-dragable data-direction='y'>
+            <ul>
+                <li class="note-item" v-for="(note, index)  in notes" v-bind:data-id='index'>
+                    <div class="note-item-label">
+                        <div class="f4">{{ note.title }}</div>
+                        <a href="javascript:;" class="f3 text-print" v-on:click="toggleFavorite(note)" v-bind:class="{ checked: note.isFavorite }">
                           <i class="icon-heart "></i> <br>
                           <span data-transition data-once="false" v-bind:data-to="note.heartTo" v-bind:data-from="0">0</span>
                       </a>
-                      <a href="javascript:;" class="f3 text-print" v-on:click="toggleComment(true, note.id)">
+                        <a href="javascript:;" class="f3 text-print" v-on:click="toggleComment(true, note.id)">
                           <i class="icon-comment "></i> <br>
                           <span data-transition data-once="false" v-bind:data-to="note.comments.length" v-bind:data-from="0">0</span>
                       </a>
-                      <a href="javascript:;" class="f5 text-print">
+                        <a href="javascript:;" class="f5 text-print">
                           <span data-transition v-bind:data-from="note.dateFrom" v-bind:data-to="note.dateTo" data-dateformat='MM - DD - Y' data-type="date">{{ note.dateFromStr }}</span>
                       </a>
-                  </div>
-                  <div class="note-item-content">
-                      <img v-bind:data-img="note.img" alt="">
-                  </div>
-              </div>
+                    </div>
+                    <div class="note-item-content">
+                        <img v-bind:data-img="note.img" alt="">
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </body>
@@ -74,15 +76,16 @@
     window.context = {
         url: '%RootUrl%',
         cdnUrl: '%RootUrl%dist/src/',
-        googleMapKey:'key=AIzaSyBtspK44Jc-DabkyA6knFuQ6LSp_8VXZgc'
+        googleMapKey: 'key=AIzaSyBtspK44Jc-DabkyA6knFuQ6LSp_8VXZgc'
     };
 
     navigator.serviceWorker.register(window.context.url + 'sw.js')
-    .then(function(registration) {
-        console.log("Service worker registered, scope: " + registration.scope);
-    })
-    .catch(function(error) {
-        console.log("Service worker registration failed: " + error.message);
-    });
+        .then(function(registration) {
+            console.log("Service worker registered, scope: " + registration.scope);
+        })
+        .catch(function(error) {
+            console.log("Service worker registration failed: " + error.message);
+        });
 </script>
+
 </html>

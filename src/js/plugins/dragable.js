@@ -13,6 +13,34 @@
             var $slides = $wrapper.children('li');
             var prePos = 0;
             var currPos = 0;
+            context._go = function (currPos, disableScroll) {
+                if(disableScroll) {
+                    $wrapper.addClass('is-dragging');
+                }
+                if(opt.direction === 'x') {
+                    $wrapper.css({
+                        transform: 'translateX(' + currPos + 'px)'
+                    });
+                } else {
+                    $wrapper.css({
+                        transform: 'translateY(' + currPos + 'px)'
+                    });
+                }
+                if(disableScroll) {
+                    $wrapper.removeClass('is-dragging');
+                }
+                prePos = currPos;
+                setTimeout(function(){
+                    $(document).trigger('dom.scroll');
+                },200);
+            };
+            context._getScrollInfo = function () {
+                if(opt.direction === 'x') {
+                    return [prePos * -1, 0];
+                } else {
+                    return [0, prePos * -1];
+                }
+            };
             $this.on('drag', function () {
                 $wrapper.addClass('is-dragging');
             });
@@ -30,7 +58,6 @@
                     });
                 }
             });
-
             $this.on('dragged', function (e, dir, dist, time) {
                 $wrapper.removeClass('is-dragging');
                 var max = opt.direction === 'x' ? $wrapper.outerWidth() - $this.outerWidth() : $wrapper.outerHeight() - $this.outerHeight();
@@ -53,19 +80,18 @@
                         currPos = Math.abs(offset) > height / 2 ? currPos - (height + offset) : currPos - offset;
                     }
                 }
-                if(opt.direction === 'x') {
-                    $wrapper.css({
-                        transform: 'translateX(' + currPos + 'px)'
-                    });
-                } else {
-                    $wrapper.css({
-                        transform: 'translateY(' + currPos + 'px)'
-                    });
-                }
-                prePos = currPos;
+                context._go(currPos);
             });
+
         },
-        exports: null,
+        exports: {
+            getScrollInfo: function () {
+                return this._getScrollInfo();
+            },
+            go: function (currPos, disableScroll) {
+                return this._go(currPos, disableScroll);
+            }
+        },
         setOptionsBefore: null,
         setOptionsAfter: null,
         initBefore: null,

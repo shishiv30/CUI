@@ -49,7 +49,6 @@
                 var width = $window.outerWidth();
                 var left = $window.scrollLeft() - width * opt.buffer;
                 var right = left + width * (1 + opt.buffer);
-                var precache = [];
                 $this.find('[data-img]').each(function (index, item) {
                     var $img = $(item);
                     var offset = $img.offset();
@@ -63,9 +62,8 @@
                         $img.attr('data-img', 'precache');
                     }
                 });
-                // $.sendMessage(precache);
             };
-            $this && $this[0].addEventListener('scroll', $.throttle(context._load, opt.delay), true);
+            $this.is(document) ? $this.on('dom.scroll', context._load) :  $this.on('scroll', $.throttle(context._load, opt.delay));
         },
         exports: {
             load: function () {

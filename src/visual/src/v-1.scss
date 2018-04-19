@@ -10,7 +10,6 @@ html, body {
         transform: rotateZ(-90deg);
     }
 }
-
 .landscape {
     .nav-link {
         top: 0;
@@ -20,7 +19,6 @@ html, body {
         transform: rotateZ(0deg);
     }
 }
-
 .nav-link {
     position: fixed;
     z-index: 10;
@@ -49,13 +47,9 @@ html, body {
         bottom: 5px;
     }
 }
-
-
-
-.note {
+.notes {
     width: 100%;
 }
-
 .note-item {
     width: 100%;
     height: 100vh;
@@ -86,7 +80,6 @@ html, body {
         }
     }
 }
-
 .note-item-content {
     transition: width .5s ease-in-out, height .5s ease-in-out, opacity .5s .5s ease-in-out, transform .5s ease-in-out;
     opacity: 0;
@@ -97,8 +90,6 @@ html, body {
         object-fit: cover;
     }
 }
-
-
 .note-item-label {
     transition: opacity .5s ease-in-out, height .5s ease-in-out, width .5s ease-in-out;
     z-index: 2;
@@ -136,7 +127,6 @@ html, body {
         color: green;
     }
 }
-
 .portrait {
     .note-item-content {
         width: 100vw;
@@ -172,7 +162,6 @@ html, body {
         }
     }
 }
-
 .landscape {
     .note-item-content {
         width: 61.8vh;

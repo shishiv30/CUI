@@ -9,6 +9,7 @@ var inital = function () {
             }
         }
     });
+    var $container = $('.notes');
     var $nextlink = $('.nextlink');
     var $prevlink = $('.prevlink');
     var index = 0;
@@ -20,24 +21,18 @@ var inital = function () {
         go(--index);
     };
     var go = function (index, disableScroll) {
-        var scropTop = $.CUI.status.height * index;
+        var scropTop = $.CUI.status.height * index * -1;
         if(disableScroll) {
-            $(window).scrollTop(scropTop);
+            $container.data('dragable').go(scropTop, disableScroll);
         } else {
-            $('html,body').stop().animate({
-                scrollTop: scropTop
-            }, 500);
+            $container.data('dragable').go(scropTop, disableScroll);
         }
-    };    
+    };
     $nextlink.on('click', next);
     $prevlink.on('click', prev);
-    $('.note').on('swipeleft', prev);
-    $('.note').on('swiperight', next);
-    $('.note').on('swipedown', next);
-    $('.note').on('swipeup', prev);
     $(document).on('dom.load dom.scroll', function () {
         var status = $.CUI.status;
-        var scrollTop = status.scrollTop;
+        var scrollTop = $container.data('dragable').getScrollInfo()[1];
         index = Math.round(scrollTop / status.height);
         if(index <= 0) {
             $prevlink.hide();
@@ -52,7 +47,6 @@ var inital = function () {
             $('.note-item.active').removeClass('active');
             $item.addClass('active');
         }
-        $('.note-item').eq(index).addClass('active');
     });
     $(document).on('dom.resize', function () {
         go(index, true);

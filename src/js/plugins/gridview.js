@@ -205,13 +205,13 @@
             };
             context._reload = _reload;
             _reload(true);
-            $container.length && $container[0].addEventListener('scroll', function () {
+            $container.on('scroll', $.throttle(function () {
                 var currentPositionInfo = _getpositionInfo();
                 var isDown = positionInfo.scrollTop < currentPositionInfo.scrollTop;
                 positionInfo = currentPositionInfo;
                 _moveByScroll(isDown);
                 _loadImage();
-            }, true);
+            },50));
 
             window.addEventListener('resize', function () {
                 positionInfo = _getpositionInfo();
