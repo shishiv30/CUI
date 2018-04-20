@@ -64,9 +64,9 @@ var inital = function () {
             transform: ('rotateZ(' + offset * -1 + 'deg)')
         });
         if(offset > 180){
-            $navNotes.addClass('load');
+            $body.addClass('load');
         }else{
-            $navNotes.removeClass('load');
+            $body.removeClass('load');
         }
     });
     $(document).on('notes.overbottom', function (e, currPos, offset) {
