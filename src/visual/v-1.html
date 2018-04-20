@@ -52,7 +52,7 @@
                 </li>
             </ul>
         </div>
-        <div class="notes" data-view data-direction='y' data-onovertop='notes.overtop' data-onoverbottom='notes.overbottom' data-onpushtop='notes.pushtop' data-onpushbottom='notes.pushbottom'>
+        <div class="notes" data-view data-direction="y" data-oninital='notes.inital' data-onovertop="notes.overtop" data-onoverbottom="notes.overbottom" data-onpushtop="notes.pushtop" data-onpushbottom="notes.pushbottom" data-onchange="notes.change">
             <ul>
                 <li class="note-item" v-for="(note, index)  in notes" v-bind:data-id='index'>
                     <div class="note-item-label">

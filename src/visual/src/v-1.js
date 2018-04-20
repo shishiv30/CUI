@@ -9,6 +9,7 @@ var inital = function () {
             }
         }
     });
+    var $body = $('body');
     var $container = $('.notes');
     var $nextlink = $('.nextlink');
     var $prevlink = $('.prevlink');
@@ -16,7 +17,6 @@ var inital = function () {
     var $topIcon = $('.nav-notes-top .icon-spinner');
     var $bottomIcon = $('.nav-notes-bottom .icon-spinner');
     var index = 0;
-    var length = $('.note-item').length;
     var next = function () {
         go(++index);
     };
@@ -31,15 +31,11 @@ var inital = function () {
             $container.data('view').go(scropTop, disableScroll);
         }
     };
-    $nextlink.on('click', next);
-    $prevlink.on('click', prev);
-    $(document).on('dom.load dom.scroll', function () {
-        var status = $.CUI.status;
-        var scrollTop = $container.data('view').getScrollInfo()[1];
-        index = Math.round(scrollTop / status.height);
+    var updateActive = function(i){
+        index = i;
         if(index <= 0) {
             $prevlink.hide();
-        } else if(index >= (length - 1)) {
+        } else if(index >= ($('.note-item ').length - 1)) {
             $nextlink.hide();
         } else {
             $prevlink.show();
@@ -50,6 +46,14 @@ var inital = function () {
             $('.note-item.active').removeClass('active');
             $item.addClass('active');
         }
+    }
+    $nextlink.on('click', next);
+    $prevlink.on('click', prev);
+    $(document).one('notes.inital',function(e,info){
+        updateActive(info.index);
+    });
+    $(document).on('notes.change',function(e, info){
+        updateActive(info.index);
     });
     $(document).on('dom.resize', function () {
         go(index, true);
@@ -57,7 +61,7 @@ var inital = function () {
     $(document).trigger('cui.inital');
     $(document).on('notes.overtop', function (e, currPos, offset) {
         $topIcon.css({
-            transform: ('rotateZ(' + offset*-1 + 'deg)')
+            transform: ('rotateZ(' + offset * -1 + 'deg)')
         });
         if(offset > 180){
             $navNotes.addClass('load');
@@ -70,26 +74,26 @@ var inital = function () {
             transform: ('rotateZ(' + offset + 'deg)')
         });
         if(offset > 180){
-            $navNotes.addClass('load');
+            $body.addClass('load');
         }else{
-            $navNotes.removeClass('load');
+            $body.removeClass('load');
         }
     });
     $(document).on('notes.pushtop',function(e, currPos, offset){
         if(offset > 180){
             alert('go back!!!');
             setTimeout(function(){
-                $navNotes.removeClass('load');
+                $body.removeClass('load');
             },200);
         }
     });
-    $(document).one('notes.pushbottom',function(e, currPos, offset){
+    $(document).on('notes.pushbottom',function(e, currPos, offset){
         if(offset > 180){
             $('.nav-notes-bottom')[0].click();
             setTimeout(function(){
-                $navNotes.removeClass('load');
-                $(document).trigger('dom.resize');
-                next();
+                $body.removeClass('load');
+                $container.data('view').updateInfo();
+                $(document).trigger('dom.load');
             },500);
         }
     });
@@ -179,21 +183,12 @@ var fakeNotes = function () {
         }
     ];
     var notes = [];
-    if(localStorage.length) {
-        for(var key in localStorage) {
-            var noteString = localStorage.getItem(key);
-            if(noteString) {
-                notes.push(JSON.parse(noteString));
-            }
-        }
-    } else {
-        for(var i = 0; i < notesDemo.length; i++) {
-            var item = notesDemo[i];
-            item.id = 'note' + +new Date();
-            item.comments = fakeComments();
-            db.set(item.id, item);
-            notes.push(item);
-        }
+    for(var i = 0; i < notesDemo.length; i++) {
+        var item = notesDemo[i];
+        item.id = 'note' + +new Date();
+        item.comments = fakeComments();
+        db.set(item.id, item);
+        notes.push(item);
     }
     return notes;
 };
@@ -230,12 +225,11 @@ var db = {
         return dfd;
     }
 };
-var notes = fakeNotes();
 new window.Vue({
     el: '#app',
     data: {
         text: 'hello',
-        notes: notes,
+        notes:  fakeNotes(),
         updateComment: {
             id: null,
             comments: []
@@ -249,7 +243,7 @@ new window.Vue({
     },
     methods: {
         loadNext: function () {
-            this.$set(this, 'notes', notes.concat(fakeNotes()));
+            this.$set(this, 'notes', this.notes.concat(fakeNotes()));
         },
         sortBy: function (type) {
             if(this.updateComment.comments && this.updateComment.comments.length) {

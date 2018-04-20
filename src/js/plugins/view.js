@@ -14,6 +14,8 @@
             onpushbottom: null,
             onpushleft: null,
             onpushright: null,
+            onchange:null,
+            oninital:null,
         },
         init: function (context) {
             var opt = context.opt;
@@ -23,7 +25,10 @@
             var prePos = 0;
             var currPos = 0;
             var info = null;
-            var _updateInfo = function () {
+            context._getInfo = function(){
+                return info;
+            };
+            context._updateInfo = function () {
                 var outerHeight = $this.outerHeight();
                 var outerWidth = $this.outerWidth();
                 info = {
@@ -32,8 +37,15 @@
                     sheight: $slides.outerHeight(),
                     cWidth: outerWidth,
                     cHeight: outerHeight,
-                    limitation: (opt.direction === 'x' ? outerWidth : outerHeight) * opt.limitation
+                    limitation: (opt.direction === 'x' ? outerWidth : outerHeight) * opt.limitation,
+                    scroll: [0,0],
                 };
+                if(opt.direction === 'x') {
+                    info.scroll = [prePos * -1, 0];
+                    info.index =  Math.round(prePos*-1/info.swidth);
+                } else {
+                    info.index =  Math.round(prePos*-1/info.sheight);
+                }
             };
             context._go = function (currPos, disableScroll) {
                 if(disableScroll) {
@@ -52,20 +64,24 @@
                     $wrapper.removeClass('is-dragging');
                 }
                 prePos = currPos;
+                context._updateInfo();
+                if(opt.onchange){
+                    if($.isFunction(opt.onchange)) {
+                        opt.onchange(info);
+                    } else if(opt.onchange) {
+                        $(document).trigger(opt.onchange, [info]);
+                    }
+                }
                 setTimeout(function () {
                     $(document).trigger('dom.scroll');
                 }, 200);
             };
-            context._getScrollInfo = function () {
-                if(opt.direction === 'x') {
-                    return [prePos * -1, 0];
-                } else {
-                    return [0, prePos * -1];
-                }
+            context._geInfo = function () {
+                return info;
             };
             $this.on('drag', function () {
                 $wrapper.addClass('is-dragging');
-                info || _updateInfo();
+                info || context._updateInfo();
             });
             var _outRange = function (isDragged) {
                 var max = opt.direction === 'x' ? info.max[0] : info.max[1];
@@ -166,11 +182,22 @@
                 }
                 context._go(currPos);
             });
-            $(document).on('dom.resize', _updateInfo);
+            $(document).on('dom.resize', context._updateInfo);
+            context._updateInfo();
+            if(opt.oninital){
+                if($.isFunction(opt.oninital)) {
+                    opt.oninital(info);
+                } else if(opt.oninital) {
+                    $(document).trigger(opt.oninital, [info]);
+                }
+            }
         },
         exports: {
-            getScrollInfo: function () {
-                return this._getScrollInfo();
+            updateInfo:function(){
+                return this._updateInfo();
+            },
+            getInfo:function(){
+                return this._getInfo();
             },
             go: function (currPos, disableScroll) {
                 return this._go(currPos, disableScroll);
