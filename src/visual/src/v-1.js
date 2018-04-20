@@ -59,7 +59,7 @@ var inital = function () {
         $topIcon.css({
             transform: ('rotateZ(' + offset*-1 + 'deg)')
         });
-        if(offset > 360){
+        if(offset > 180){
             $navNotes.addClass('load');
         }else{
             $navNotes.removeClass('load');
@@ -69,27 +69,28 @@ var inital = function () {
         $bottomIcon.css({
             transform: ('rotateZ(' + offset + 'deg)')
         });
-        if(offset > 360){
+        if(offset > 180){
             $navNotes.addClass('load');
         }else{
             $navNotes.removeClass('load');
         }
     });
     $(document).on('notes.pushtop',function(e, currPos, offset){
-        if(offset > 360){
+        if(offset > 180){
             alert('go back!!!');
             setTimeout(function(){
                 $navNotes.removeClass('load');
             },200);
         }
     });
-    $(document).on('notes.pushbottom',function(e, currPos, offset){
-        if(offset > 360){
+    $(document).one('notes.pushbottom',function(e, currPos, offset){
+        if(offset > 180){
             $('.nav-notes-bottom')[0].click();
             setTimeout(function(){
                 $navNotes.removeClass('load');
                 $(document).trigger('dom.resize');
-            },200);
+                next();
+            },500);
         }
     });
 };
@@ -248,7 +249,7 @@ new window.Vue({
     },
     methods: {
         loadNext: function () {
-            this.$set(this, 'notes', this.notes.concat(fakeNotes()));
+            this.$set(this, 'notes', notes.concat(fakeNotes()));
         },
         sortBy: function (type) {
             if(this.updateComment.comments && this.updateComment.comments.length) {
