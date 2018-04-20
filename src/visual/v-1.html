@@ -20,12 +20,12 @@
 
 <body>
     <div id="app">
-        <div class=nav-notes>
-            <a href="javscript:;">
-                <i class="icon-home"></i> <br>
+        <div class="nav-notes">
+            <a href="javscript:;" class="nav-notes-top">
+                <i class="icon-spinner"></i> <br>
                 <span>Back to Home</span></a>
-            <a href="javscript:;" v-on:click="loadNext">
-                <i class="icon-download"></i> <br>
+            <a href="javscript:;" class="nav-notes-bottom" v-on:click="loadNext()">
+                <i class="icon-spinner"></i> <br>
                 <span>View More</span>
             </a>
         </div>
@@ -52,7 +52,7 @@
                 </li>
             </ul>
         </div>
-        <div class="notes" data-view data-direction='y'>
+        <div class="notes" data-view data-direction='y' data-onovertop='notes.overtop' data-onoverbottom='notes.overbottom' data-onpushtop='notes.pushtop' data-onpushbottom='notes.pushbottom'>
             <ul>
                 <li class="note-item" v-for="(note, index)  in notes" v-bind:data-id='index'>
                     <div class="note-item-label">

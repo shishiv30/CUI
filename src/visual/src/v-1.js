@@ -12,6 +12,9 @@ var inital = function () {
     var $container = $('.notes');
     var $nextlink = $('.nextlink');
     var $prevlink = $('.prevlink');
+    var $navNotes = $('.nav-notes');
+    var $topIcon = $('.nav-notes-bottom .icon-spinner');
+    var $bottomIcon = $('.nav-notes-bottom .icon-spinner');
     var index = 0;
     var length = $('.note-item').length;
     var next = function () {
@@ -52,42 +55,80 @@ var inital = function () {
         go(index, true);
     });
     $(document).trigger('cui.inital');
+    $(document).on('notes.overtop', function (e, currPos, offset) {
+        $topIcon.css({
+            transform: ('rotateZ(' + offset + 'deg)')
+        });
+        if(offset > 360){
+            $navNotes.addClass('load');
+        }else{
+            $navNotes.removeClass('load');
+        }
+    });
+    $(document).on('notes.overbottom', function (e, currPos, offset) {
+        console.log(currPos, offset);
+        $bottomIcon.css({
+            transform: ('rotateZ(' + offset + 'deg)')
+        });
+        if(offset > 360){
+            $navNotes.addClass('load');
+        }else{
+            $navNotes.removeClass('load');
+        }
+    });
+    $(document).on('notes.pushtop',function(e, currPos, offset){
+        if(offset > 360){
+            alert('go back!!!');
+            setTimeout(function(){
+                $navNotes.removeClass('load');
+            },200);
+        }
+    });
+    $(document).on('notes.pushbottom',function(e, currPos, offset){
+        if(offset > 360){
+            $('.nav-notes-bottom')[0].click();
+            setTimeout(function(){
+                $navNotes.removeClass('load');
+                $(document).trigger('dom.resize');
+            },200);
+        }
+    });
 };
 var fakeComments = function () {
     return [{
-            text: 'ha ha',
-            count: 123,
+        text: 'ha ha',
+        count: 123,
     },
-        {
-            text: 'looks nice',
-            count: 4
+    {
+        text: 'looks nice',
+        count: 4
     },
-        {
-            text: 'awesome picture',
-            count: 123
+    {
+        text: 'awesome picture',
+        count: 123
     },
-        {
-            text: 'so sweet',
-            count: 23
+    {
+        text: 'so sweet',
+        count: 23
     },
-        {
-            text: 'agree with that',
-            count: 16
+    {
+        text: 'agree with that',
+        count: 16
     },
-        {
-            text: 'have fun on this',
-            count: 18
+    {
+        text: 'have fun on this',
+        count: 18
     },
-        {
-            text: 'best regards to you',
-            count: 5
+    {
+        text: 'best regards to you',
+        count: 5
     },
-        {
-            text: 'hope you can doing better',
-            count: 29
+    {
+        text: 'hope you can doing better',
+        count: 29
     }, {
-            text: '"I use to think',
-            count: 12
+        text: '"I use to think',
+        count: 12
     }
     ];
 };
@@ -148,7 +189,7 @@ var fakeNotes = function () {
     } else {
         for(var i = 0; i < notesDemo.length; i++) {
             var item = notesDemo[i];
-            item.id = 'note' + i;
+            item.id = 'note' + +new Date();
             item.comments = fakeComments();
             db.set(item.id, item);
             notes.push(item);
@@ -208,7 +249,7 @@ new window.Vue({
     },
     methods: {
         loadNext: function () {
-
+            this.$set(this, 'notes', this.notes.concat(fakeNotes()));
         },
         sortBy: function (type) {
             if(this.updateComment.comments && this.updateComment.comments.length) {

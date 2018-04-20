@@ -4,7 +4,16 @@
     var viewConfig = {
         name: 'view',
         defaultOpt: {
-            direction: 'x'
+            direction: 'x',
+            limitation:0.5,
+            onovertop:null,
+            onoverbottom:null,
+            onoverleft:null,
+            onoverright:null,
+            onpushtop:null,
+            onpushbottom:null,
+            onpushleft:null,
+            onpushright:null,
         },
         init: function (context) {
             var opt = context.opt;
@@ -13,6 +22,19 @@
             var $slides = $wrapper.children('li');
             var prePos = 0;
             var currPos = 0;
+            var info =null;
+            var _updateInfo = function() {
+                var outerHeight = $this.outerHeight();
+                var outerWidth = $this.outerWidth();
+                info = {
+                    max: [$wrapper.outerWidth() - outerWidth, $wrapper.outerHeight() - outerHeight],
+                    swidth: $slides.outerWidth(),
+                    sheight: $slides.outerHeight(),
+                    cWidth: outerWidth,
+                    cHeight: outerHeight,
+                    limitation: (opt.direction === 'x' ? outerWidth : outerHeight) * opt.limitation
+                };
+            };
             context._go = function (currPos, disableScroll) {
                 if(disableScroll) {
                     $wrapper.addClass('is-dragging');
@@ -43,7 +65,35 @@
             };
             $this.on('drag', function () {
                 $wrapper.addClass('is-dragging');
+                info || _updateInfo();
             });
+            var _outRange = function(currPos, isDragged){
+                var max = opt.direction === 'x' ? info.max[0] : info.max[1];
+                var eventName = '';
+                if(currPos>0){
+                    if(isDragged){
+                        eventName = opt.direction === 'x' ?  opt.onpushleft : opt.onpushtop ;
+                    }else{
+                        eventName = opt.direction === 'x' ?  opt.onoverleft : opt.onovertop ;
+                    }
+                    if ($.isFunction(eventName)) {
+                        eventName(currPos, -currPos);
+                    } else if(eventName){
+                        $(document).trigger(eventName,[currPos, currPos]);
+                    }
+                }else if(Math.abs(currPos) > max){
+                    if(isDragged){
+                        eventName = opt.direction === 'x' ?  opt.onpushright : opt.onpushbottom;
+                    }else{
+                        eventName = opt.direction === 'x' ? opt.onoverright : opt.onoverbottom;
+                    }
+                    if ($.isFunction(eventName)) {
+                        eventName(currPos, Math.abs(currPos+max));
+                    } else if(eventName){
+                        $(document).trigger(eventName,[currPos, Math.abs(currPos+max)]);
+                    }
+                }
+            };
             $this.on('dragging', function (e, dir, dist) {
                 // Create a callback to determine whether the user has tracked enough to move onto the next slide.
                 if(opt.direction === 'x') {
@@ -57,12 +107,15 @@
                         transform: ('translateY(' + currPos + 'px)')
                     });
                 }
+                _outRange(currPos);
             });
+
             $this.on('dragged', function (e, dir, dist, time) {
                 $wrapper.removeClass('is-dragging');
-                var max = opt.direction === 'x' ? $wrapper.outerWidth() - $this.outerWidth() : $wrapper.outerHeight() - $this.outerHeight();
-                var width = $slides.width();
-                var height = $slides.height();
+                var max = opt.direction === 'x' ? info.max[0]:info.max[1];
+                _outRange(currPos,true);
+                var width = info.swidth;
+                var height = info.sheight;
                 var distance = opt.direction === 'x' ? dist[0] : dist[1];
                 if(currPos >= 0 || max <= 0) {
                     currPos = 0;
@@ -88,7 +141,7 @@
                 }
                 context._go(currPos);
             });
-
+            $(document).on('dom.resize',_updateInfo);
         },
         exports: {
             getScrollInfo: function () {
