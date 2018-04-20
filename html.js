@@ -40,3 +40,7 @@ ejs2html('demo1-3.ejs', '/src/demo1/');
 ejs2html('demo1-4.ejs', '/src/demo1/');
 ejs2html('demo1-5.ejs', '/src/demo1/');
 ejs2html('demo1-6.ejs', '/src/demo1/');
+ejs2html('demo1-1-1.ejs', '/src/demo1/');
+ejs2html('demo1-1-2.ejs', '/src/demo1/');
+ejs2html('demo1-1-3.ejs', '/src/demo1/');
+ejs2html('demo1-1-4.ejs', '/src/demo1/');
