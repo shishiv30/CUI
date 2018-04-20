@@ -5,15 +5,15 @@
         name: 'view',
         defaultOpt: {
             direction: 'x',
-            limitation:0.5,
-            onovertop:null,
-            onoverbottom:null,
-            onoverleft:null,
-            onoverright:null,
-            onpushtop:null,
-            onpushbottom:null,
-            onpushleft:null,
-            onpushright:null,
+            limitation: 0.5,
+            onovertop: null,
+            onoverbottom: null,
+            onoverleft: null,
+            onoverright: null,
+            onpushtop: null,
+            onpushbottom: null,
+            onpushleft: null,
+            onpushright: null,
         },
         init: function (context) {
             var opt = context.opt;
@@ -22,8 +22,8 @@
             var $slides = $wrapper.children('li');
             var prePos = 0;
             var currPos = 0;
-            var info =null;
-            var _updateInfo = function() {
+            var info = null;
+            var _updateInfo = function () {
                 var outerHeight = $this.outerHeight();
                 var outerWidth = $this.outerWidth();
                 info = {
@@ -52,9 +52,9 @@
                     $wrapper.removeClass('is-dragging');
                 }
                 prePos = currPos;
-                setTimeout(function(){
+                setTimeout(function () {
                     $(document).trigger('dom.scroll');
-                },200);
+                }, 200);
             };
             context._getScrollInfo = function () {
                 if(opt.direction === 'x') {
@@ -67,30 +67,54 @@
                 $wrapper.addClass('is-dragging');
                 info || _updateInfo();
             });
-            var _outRange = function(currPos, isDragged){
+            var _outRange = function (isDragged) {
                 var max = opt.direction === 'x' ? info.max[0] : info.max[1];
                 var eventName = '';
-                if(currPos>0){
-                    if(isDragged){
-                        eventName = opt.direction === 'x' ?  opt.onpushleft : opt.onpushtop ;
-                    }else{
-                        eventName = opt.direction === 'x' ?  opt.onoverleft : opt.onovertop ;
+                if(currPos > 0) {
+                    if(isDragged) {
+                        eventName = opt.direction === 'x' ? opt.onpushleft : opt.onpushtop;
+                    } else {
+                        eventName = opt.direction === 'x' ? opt.onoverleft : opt.onovertop;
                     }
-                    if ($.isFunction(eventName)) {
+                    if($.isFunction(eventName)) {
                         eventName(currPos, -currPos);
-                    } else if(eventName){
-                        $(document).trigger(eventName,[currPos, currPos]);
+                    } else if(eventName) {
+                        $(document).trigger(eventName, [currPos, currPos]);
                     }
-                }else if(Math.abs(currPos) > max){
-                    if(isDragged){
-                        eventName = opt.direction === 'x' ?  opt.onpushright : opt.onpushbottom;
-                    }else{
+                } else if(Math.abs(currPos) > max) {
+                    if(isDragged) {
+                        eventName = opt.direction === 'x' ? opt.onpushright : opt.onpushbottom;
+                    } else {
                         eventName = opt.direction === 'x' ? opt.onoverright : opt.onoverbottom;
                     }
-                    if ($.isFunction(eventName)) {
-                        eventName(currPos, Math.abs(currPos+max));
-                    } else if(eventName){
-                        $(document).trigger(eventName,[currPos, Math.abs(currPos+max)]);
+                    if($.isFunction(eventName)) {
+                        eventName(currPos, Math.abs(currPos + max));
+                    } else if(eventName) {
+                        $(document).trigger(eventName, [currPos, Math.abs(currPos + max)]);
+                    }
+                }
+            };
+            var _limitation = function (dir) {
+                var max = opt.direction === 'x' ? info.max[0] : info.max[1];
+                if(opt.direction === 'x') {
+                    if('left' === dir[0]) {
+                        if(currPos > (info.limitation)) {
+                            currPos = info.limitation;
+                        }
+                    } else {
+                        if(Math.abs(currPos) > (info.limitation + max)) {
+                            currPos = (info.limitation + max) * -1;
+                        }
+                    }
+                } else {
+                    if('up' === dir[1]) {
+                        if(currPos > (info.limitation)) {
+                            currPos = info.limitation;
+                        }
+                    } else {
+                        if(Math.abs(currPos) > (info.limitation + max)) {
+                            currPos = (info.limitation + max) * -1;
+                        }
                     }
                 }
             };
@@ -98,22 +122,23 @@
                 // Create a callback to determine whether the user has tracked enough to move onto the next slide.
                 if(opt.direction === 'x') {
                     currPos = ('left' === dir[0]) ? (prePos - dist[0]) : (prePos + dist[0]);
+                    _limitation(dir);
                     $wrapper.css({
                         transform: ('translateX(' + currPos + 'px)')
                     });
                 } else {
                     currPos = ('top' === dir[1]) ? (prePos - dist[1]) : (prePos + dist[1]);
+                    _limitation(dir);
                     $wrapper.css({
                         transform: ('translateY(' + currPos + 'px)')
                     });
                 }
-                _outRange(currPos);
+                _outRange();
             });
-
             $this.on('dragged', function (e, dir, dist, time) {
                 $wrapper.removeClass('is-dragging');
-                var max = opt.direction === 'x' ? info.max[0]:info.max[1];
-                _outRange(currPos,true);
+                var max = opt.direction === 'x' ? info.max[0] : info.max[1];
+                _outRange(true);
                 var width = info.swidth;
                 var height = info.sheight;
                 var distance = opt.direction === 'x' ? dist[0] : dist[1];
@@ -121,13 +146,13 @@
                     currPos = 0;
                 } else if((max + currPos) <= 0) {
                     currPos = max * -1;
-                } else if( Math.abs(distance)/time > 0.1) {
+                } else if(Math.abs(distance) / time > 0.1) {
                     if(opt.direction === 'x') {
                         offset = currPos % width;
-                        currPos = dir[0]==='left' ? currPos - (width + offset) : currPos - offset;
+                        currPos = dir[0] === 'left' ? currPos - (width + offset) : currPos - offset;
                     } else {
                         offset = currPos % height;
-                        currPos = dir[1]==='up' ? currPos - offset : currPos - (height + offset);
+                        currPos = dir[1] === 'up' ? currPos - offset : currPos - (height + offset);
                     }
                 } else {
                     var offset;
@@ -141,7 +166,7 @@
                 }
                 context._go(currPos);
             });
-            $(document).on('dom.resize',_updateInfo);
+            $(document).on('dom.resize', _updateInfo);
         },
         exports: {
             getScrollInfo: function () {

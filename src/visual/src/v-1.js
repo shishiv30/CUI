@@ -13,7 +13,7 @@ var inital = function () {
     var $nextlink = $('.nextlink');
     var $prevlink = $('.prevlink');
     var $navNotes = $('.nav-notes');
-    var $topIcon = $('.nav-notes-bottom .icon-spinner');
+    var $topIcon = $('.nav-notes-top .icon-spinner');
     var $bottomIcon = $('.nav-notes-bottom .icon-spinner');
     var index = 0;
     var length = $('.note-item').length;
@@ -57,7 +57,7 @@ var inital = function () {
     $(document).trigger('cui.inital');
     $(document).on('notes.overtop', function (e, currPos, offset) {
         $topIcon.css({
-            transform: ('rotateZ(' + offset + 'deg)')
+            transform: ('rotateZ(' + offset*-1 + 'deg)')
         });
         if(offset > 360){
             $navNotes.addClass('load');
@@ -66,7 +66,6 @@ var inital = function () {
         }
     });
     $(document).on('notes.overbottom', function (e, currPos, offset) {
-        console.log(currPos, offset);
         $bottomIcon.css({
             transform: ('rotateZ(' + offset + 'deg)')
         });
