@@ -219,7 +219,21 @@ app.get('/demo1-1-6', function (req, res) {
         console.log(e);
     }
 });
-
+app.get('/demo1-1-7', function (req, res) {
+    try {
+        var lang = setLang(req, res);
+        var ejsPath = __dirname + '/src/demo1/' + 'demo1-1-7.ejs';
+        ejs.renderFile(ejsPath, {
+            url: url,
+            cdnUrl: cdnUrl,
+            lang: lang
+        }, function (err, result) {
+            res.send(result);
+        });
+    } catch(e) {
+        console.log(e);
+    }
+});
 app.get('/:lang', function (req, res) {
     try {
         var lang = setLang(req, res);
