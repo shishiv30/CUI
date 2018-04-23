@@ -234,6 +234,111 @@ app.get('/demo1-1-7', function (req, res) {
         console.log(e);
     }
 });
+app.get('/demo1-2-1', function (req, res) {
+    try {
+        var lang = setLang(req, res);
+        var ejsPath = __dirname + '/src/demo1/' + 'demo1-2-1.ejs';
+        ejs.renderFile(ejsPath, {
+            url: url,
+            cdnUrl: cdnUrl,
+            lang: lang
+        }, function (err, result) {
+            res.send(result);
+        });
+    } catch(e) {
+        console.log(e);
+    }
+});
+app.get('/demo1-2-2', function (req, res) {
+    try {
+        var lang = setLang(req, res);
+        var ejsPath = __dirname + '/src/demo1/' + 'demo1-2-2.ejs';
+        ejs.renderFile(ejsPath, {
+            url: url,
+            cdnUrl: cdnUrl,
+            lang: lang
+        }, function (err, result) {
+            res.send(result);
+        });
+    } catch(e) {
+        console.log(e);
+    }
+});
+app.get('/demo1-2-3', function (req, res) {
+    try {
+        var lang = setLang(req, res);
+        var ejsPath = __dirname + '/src/demo1/' + 'demo1-2-3.ejs';
+        ejs.renderFile(ejsPath, {
+            url: url,
+            cdnUrl: cdnUrl,
+            lang: lang
+        }, function (err, result) {
+            res.send(result);
+        });
+    } catch(e) {
+        console.log(e);
+    }
+});
+app.get('/demo1-3-1', function (req, res) {
+    try {
+        var lang = setLang(req, res);
+        var ejsPath = __dirname + '/src/demo1/' + 'demo1-3-1.ejs';
+        ejs.renderFile(ejsPath, {
+            url: url,
+            cdnUrl: cdnUrl,
+            lang: lang
+        }, function (err, result) {
+            res.send(result);
+        });
+    } catch(e) {
+        console.log(e);
+    }
+});
+app.get('/demo1-3-2', function (req, res) {
+    try {
+        var lang = setLang(req, res);
+        var ejsPath = __dirname + '/src/demo1/' + 'demo1-3-2.ejs';
+        ejs.renderFile(ejsPath, {
+            url: url,
+            cdnUrl: cdnUrl,
+            lang: lang
+        }, function (err, result) {
+            res.send(result);
+        });
+    } catch(e) {
+        console.log(e);
+    }
+});
+app.get('/demo1-3-3', function (req, res) {
+    try {
+        var lang = setLang(req, res);
+        var ejsPath = __dirname + '/src/demo1/' + 'demo1-3-3.ejs';
+        ejs.renderFile(ejsPath, {
+            url: url,
+            cdnUrl: cdnUrl,
+            lang: lang
+        }, function (err, result) {
+            res.send(result);
+        });
+    } catch(e) {
+        console.log(e);
+    }
+});
+app.get('/demo1-4-1', function (req, res) {
+    try {
+        var lang = setLang(req, res);
+        var ejsPath = __dirname + '/src/demo1/' + 'demo1-4-1.ejs';
+        ejs.renderFile(ejsPath, {
+            url: url,
+            cdnUrl: cdnUrl,
+            lang: lang
+        }, function (err, result) {
+            res.send(result);
+        });
+    } catch(e) {
+        console.log(e);
+    }
+});
 app.get('/:lang', function (req, res) {
     try {
         var lang = setLang(req, res);

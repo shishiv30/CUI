@@ -9,6 +9,9 @@
     &.right {
         justify-content: flex-end;
     }
+    &.around{
+        justify-content:space-around;
+    }
     &.center {
         justify-content: center;
     }
@@ -21,6 +24,11 @@
     &.nowrap {
         .flex-fixed {
             width: fit-content;
+        }
+    }
+    &.sin{
+        > div {
+            padding: 0;
         }
     }
 }

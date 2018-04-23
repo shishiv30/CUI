@@ -12,6 +12,80 @@
         background: #fff;
     }
 
+    .tip {
+        position: relative;
+        text-align: center;
+    }
+
+    .tip.img {
+        padding: 15px
+    }
+
+    .tip.img img {
+        height: 90px;
+        width: 90px;
+        border-radius: 50%;
+        border: 3px solid #aaa;
+        margin-bottom: 30px;
+    }
+
+    .tip .img-title {
+        position: absolute;
+        line-height: 1.5rem;
+        font-size: 1.5rem;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .tip.date {
+        min-height: 150px;
+        max-width: 150px;
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+        background-color: #eee;
+    }
+
+    .tip.date:after {
+        content: '';
+        display: block;
+        top: 0;
+        bottom: 50%;
+        left: 0;
+        right: 0;
+        background-color: #333;
+        position: absolute;
+        opacity: .3;
+    }
+
+    .tip-label {
+        color: #fff;
+        font-size: 1.2rem;
+        line-height: 3rem;
+        position: relative;
+        z-index: 2;
+    }
+
+    .tip-number {
+        font-size: 6rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        text-shadow: 0 0 2px darkgreen;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    .tip-desc {
+        width: 100%;
+        position: absolute;
+        bottom: 5px;
+        white-space: nowrap;
+        left: 0;
+        right: 0;
+    }
+
     .link-video {
         display: block;
         position: relative;
@@ -78,7 +152,6 @@
         z-index: 999999;
         top: 0;
         display: flex;
-        overflow: auto;
         flex-wrap: nowrap;
         justify-content: space-around;
         text-align: center;
@@ -86,6 +159,39 @@
         background: darkgreen;
         color: #fff;
         padding: 10px;
+    }
+    .navigator:hover .navigator-list{
+        display:flex;
+        opacity:1;
+        z-index:10;
+    }
+    .navigator-list {
+        z-index:-1;
+        transition: opacity .5s .5s;
+        opacity:0;
+        display: none;
+        position: absolute;
+        left: 15px;
+        right: 15px;
+        top: 48px;
+        background-color: rgba(255, 255, 255, 0.95);
+        color: #333;
+        box-shadow: 0 0 1px #eee;
+        border-radius-left-bottom: 5px;
+        border-radius-right-bottom: 5px;
+    }
+
+    .navigator-list ul {
+        flex: 1;
+        border-left: 1px solid #eee;
+    }
+
+    .navigator-list li {
+        padding: 15px;
+        border-bottom: 1px solid #fff;
+    }
+    .navigator-list li:hover{
+        background:#eee;
     }
 
     .navigator>a {
@@ -169,32 +275,36 @@
         margin: 30px;
         line-height: 2em;
     }
-    .article .h2{
-        position:relative;
-        display:flex;
-        align-items:center;
+
+    .article .h2 {
+        position: relative;
+        display: flex;
+        align-items: center;
         justify-content: space-between;
-        padding:15px;
-        background:#f0f0f0;
+        padding: 15px;
+        background: #f0f0f0;
     }
-    .article .h2 > div{
+
+    .article .h2>div {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         width: calc(100% - 100px);
         border-bottom: 1px solid #ddd;
-        text-align:right;
+        text-align: right;
     }
-    .article sub{
+
+    .article sub {
         background: #333;
         color: #fff;
         padding: 5px;
         border-radius: 6px;
         position: absolute;
         left: 50px;
-        bottom:5px;
-        font-size:12px;
+        bottom: 5px;
+        font-size: 12px;
     }
+
     .article img {
         width: 100px;
         height: 100px;
@@ -210,6 +320,18 @@
 
     .en .hidden-en {
         display: none;
+    }
+
+    .table-scroll table thead {
+        background: #eee;
+    }
+
+    .table-scroll table td {
+        padding: 15px;
+    }
+
+    .table-scroll table tbody tr:nth-child(even) {
+        background: #f4f4f4;
     }
 </style>
 
