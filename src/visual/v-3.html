@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>The Answer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-control" content="public">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta description='the note UI base on CUI framework' />
+    <meta name="Description" content="Author: Conjee Zou, note">
+    <meta name="background-color" content="#333333">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="manifest" href="%RootUrl%dist/src/visual/src/v-1.json">
+    <link rel="shortcut icon" href="%RootUrl%favicon.ico" type="image/x-icon">
+    <link href="%RootUrl%dist/src/cui.min.css" type="text/css" rel="stylesheet" />
+    <link href="%RootUrl%dist/src/visual/src/v-3.min.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="app">
+        <div class="paper form">
+            <ul class="question" data-view data-direction="y"  data-onovertop="notes.overtop" data-onoverbottom="notes.overbottom">
+                <li  v-for="item in questions">
+                    <div class="question-title">{{item.title}}</div>
+                    <div class="radio">
+                        <label v-for="item.id">
+                            <input v-id="item.id" name="item.id" type="radio" checked value="Male">
+                            <i></i>
+                            <span>Male</span>
+                        </label><br>
+                    </div>
+                    <div class="" v-for="item">
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="%RootUrl%dist/src/cui.lib.min.js" type="text/javascript"></script>
+<script src="%RootUrl%dist/src/cui.min.js" type="text/javascript"></script>
+<script src="%RootUrl%dist/src/visual/src/vue.js" type="text/javascript"></script>
+<script src="%RootUrl%dist/src/visual/src/v-3.js" type="text/javascript"></script>
+<script>
+    window.context = {
+        url: '%RootUrl%',
+        cdnUrl: '%RootUrl%dist/src/',
+        googleMapKey: 'key=AIzaSyBtspK44Jc-DabkyA6knFuQ6LSp_8VXZgc'
+    };
+
+    navigator.serviceWorker.register(window.context.url + 'sw.js')
+        .then(function(registration) {
+            console.log("Service worker registered, scope: " + registration.scope);
+        })
+        .catch(function(error) {
+            console.log("Service worker registration failed: " + error.message);
+        });
+</script>
+
+</html>

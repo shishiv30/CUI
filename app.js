@@ -6,7 +6,6 @@ const hostname = config.dev.hostname;
 const port = config.dev.port;
 const url = config.dev.url;
 const cdnUrl = url + 'dist/src/';
-
 var app = express();
 app.use(express.static(__dirname + '/public'));
 var setLang = function (req, res) {
@@ -16,7 +15,6 @@ var setLang = function (req, res) {
     i18n.setLocale([req, res.locals], lang);
     return lang;
 };
-
 app.get('/demo1', function (req, res) {
     try {
         var lang = setLang(req, res);
@@ -32,7 +30,6 @@ app.get('/demo1', function (req, res) {
         console.log(e);
     }
 });
-
 app.get('/demo1-1', function (req, res) {
     try {
         var lang = setLang(req, res);
@@ -48,7 +45,6 @@ app.get('/demo1-1', function (req, res) {
         console.log(e);
     }
 });
-
 app.get('/demo1-2', function (req, res) {
     try {
         var lang = setLang(req, res);
@@ -64,7 +60,6 @@ app.get('/demo1-2', function (req, res) {
         console.log(e);
     }
 });
-
 app.get('/demo1-3', function (req, res) {
     try {
         var lang = setLang(req, res);
@@ -95,7 +90,6 @@ app.get('/demo1-4', function (req, res) {
         console.log(e);
     }
 });
-
 app.get('/demo1-5', function (req, res) {
     try {
         var lang = setLang(req, res);
@@ -111,7 +105,6 @@ app.get('/demo1-5', function (req, res) {
         console.log(e);
     }
 });
-
 app.get('/demo1-6', function (req, res) {
     try {
         var lang = setLang(req, res);
@@ -127,7 +120,6 @@ app.get('/demo1-6', function (req, res) {
         console.log(e);
     }
 });
-
 app.get('/demo1-1-1', function (req, res) {
     try {
         var lang = setLang(req, res);
@@ -143,7 +135,6 @@ app.get('/demo1-1-1', function (req, res) {
         console.log(e);
     }
 });
-
 app.get('/demo1-1-2', function (req, res) {
     try {
         var lang = setLang(req, res);

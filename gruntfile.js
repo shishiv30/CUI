@@ -22,7 +22,9 @@ module.exports = function (grunt) {
             dist: {
                 files: [{
                     'public/dist/src/cui.min.css': 'src/scss/cui.scss',
-                    'public/dist/src/visual/src/v-1.min.css': 'src/visual/src/v-1.scss'
+                    'public/dist/src/visual/src/v-1.min.css': 'src/visual/src/v-1.scss',
+                    'public/dist/src/visual/src/v-3.min.css': 'src/visual/src/v-3.scss',
+                    'public/dist/src/visual/src/v-4.min.css': 'src/visual/src/v-4.scss'
                 }]
             }
         },
@@ -116,7 +118,7 @@ module.exports = function (grunt) {
                 tasks: ['copy:html','replace:dev']
             },
             script: {
-                files: ['src/js/plugins/*.js','src/visual/src/v-1.js'],
+                files: ['src/js/plugins/*.js','src/visual/src/*.js'],
                 tasks: ['concat:dist','copy:js','replace:dev']
             },
             scss: {

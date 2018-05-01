@@ -17,3 +17,24 @@ if (!Number.isNaN) {
         return typeof value === 'number' && value !== value;
     };
 }
+
+window.requestAnimFrame = (function(fn){
+    return  window.requestAnimationFrame       ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame    ||
+          window.oRequestAnimationFrame      ||
+          window.msRequestAnimationFrame     ||
+          function(){
+              setTimeout(fn, 17);
+          };
+})(),
+window.cancelAnimFrame =(function(id){
+    return window.cancelAnimationFrame       ||
+          window.webkitCancelAnimationFrame ||
+          window.mozCancelAnimationFrame    ||
+          window.oCancelAnimationFrame      ||
+          window.msCancelAnimationFrame     ||
+          function() {
+              clearTimeout(id);
+          };
+})();
