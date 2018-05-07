@@ -138,16 +138,26 @@
                 _config.direction = null;
                 _config.duration = null;
             };
+            var _getDist = function(start, curr){
+                return  [
+                    start[0]-curr[0],
+                    start[1]-curr[1],
+                ];
+            };
+            var _getDir = function(start,curr){
+                return [
+                    (start[0] < curr[0]) ? 'left' : 'right',
+                    (start[1] > curr[1]) ? 'down' : 'up'
+                ];
+            };
+            var _getPoint = function(eventObj){
+                return [parseInt(eventObj.pageX), parseInt(eventObj.pageY)]
+            }
             var _trackSwipe = function () {
                 if(_config.start && _config.currPos){
-                    _config.direction = [
-                        (_config.start[0] > _config.currPos[0]) ? 'left' : 'right',
-                        (_config.start[1] > _config.currPos[1]) ? 'down' : 'up'
-                    ];
-                    _config.trackDistance = [
-                        ('left' === _config.direction[0]) ? (_config.start[0] - _config.currPos[0]) : (_config.currPos[0] - _config.start[0]),
-                        ('top' === _config.direction[1]) ? (_config.start[1] - _config.currPos[1]) : (_config.currPos[1] - _config.start[1])
-                    ];
+                    _config.direction = _getDir(_config.start, _config.currPos);
+                    _config.trackDistance = _getDist(_config.start, _config.currPos);
+
                     // Run the tracking callback.
                     $this.trigger('dragging', [
                         _config.direction,
@@ -161,22 +171,12 @@
             var _confirmSwipe = function () {
                 // Set up the direction property.
                 if(_config.start && _config.currPos){
-                    _config.direction = [
-                        (_config.start[0] > _config.currPos[0]) ? 'left' : 'right',
-                        (_config.start[1] > _config.currPos[1]) ? 'down' : 'up'
-                    ];
-                    // Set up the duration property.
-                    _config.duration = parseInt(_config.endTime - _config.startTime);
-                    // Work out the distance based on the direction of the swipe.
-                    _config.swipeDistance = [
-                        ('left' === _config.direction[0]) ? (_config.start[0] - _config.end[0]) : (_config.end[0] - _config.start[0]),
-                        ('top' === _config.direction[1]) ? (_config.start[1] - _config.end[1]) : (_config.end[1] - _config.start[1])
-                    ];
-                    // This is where we determine whether it was a swipe or not.
+                    _config.direction =_getDir(_config.start, _config.currPos);
+                    _config.swipeDistance = _getDist(_config.start, _config.end);
                     $this.trigger('dragged', [
                         _config.direction,
                         _config.swipeDistance,
-                        _config.duration
+                        parseInt(_config.endTime - _config.startTime)
                     ]);
                     // Reset the variables.
                     _resetConfig();
@@ -187,7 +187,7 @@
                 if((e.targetTouches && 1 === e.targetTouches.length) || !hasTouch) {
                     var eventObj = hasTouch ? e.targetTouches[0] : e;
                     _config.startTime = Date.now();
-                    _config.start = [parseInt(eventObj.pageX), parseInt(eventObj.pageY)];
+                    _config.start = _getPoint(eventObj);
                     $this.trigger('drag');
                 }
             });
@@ -196,7 +196,7 @@
                 if(_config.start && ((e.targetTouches && 1 === e.targetTouches.length) || !hasTouch)) {
                     var eventObj = hasTouch ? e.targetTouches[0] : e;
                     _config.currTime = Date.now();
-                    _config.currPos = [parseInt(eventObj.pageX), parseInt(eventObj.pageY)];
+                    _config.currPos = _getPoint(eventObj);
                     _trackSwipe();
                 }
                 e.preventDefault();
@@ -206,7 +206,7 @@
                 var eventObj = hasTouch ? e.changedTouches[0] : e;
                 // Set the end event related properties.
                 _config.endTime = Date.now();
-                _config.end = [parseInt(eventObj.pageX), parseInt(eventObj.pageY)];
+                _config.end = _getPoint(eventObj);
                 // Run the confirm swipe method.
                 _confirmSwipe();
                 // e.preventDefault();

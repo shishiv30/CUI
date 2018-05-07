@@ -11,8 +11,6 @@ var inital = function () {
     });
     var $body = $('body');
     var $container = $('.notes');
-    var $nextlink = $('.nextlink');
-    var $prevlink = $('.prevlink');
     var $navNotes = $('.nav-notes');
     var $topIcon = $('.nav-notes-top .icon-spinner');
     var $bottomIcon = $('.nav-notes-bottom .icon-spinner');
@@ -33,33 +31,24 @@ var inital = function () {
     };
     var updateActive = function(i){
         index = i;
-        if(index <= 0) {
-            $prevlink.hide();
-        } else if(index >= ($('.note-item ').length - 1)) {
-            $nextlink.hide();
-        } else {
-            $prevlink.show();
-            $nextlink.show();
-        }
         var $item = $('[data-id="' + index + '"]');
         if(!$item.hasClass('active')) {
             $('.note-item.active').removeClass('active');
             $item.addClass('active');
         }
-    }
-    $nextlink.on('click', next);
-    $prevlink.on('click', prev);
+    };
     $(document).one('notes.inital',function(e,info){
         updateActive(info.index);
     });
-    $(document).on('notes.change',function(e, info){
+    $(document).on('notes.change',function(e,  currPos, prePos, info){
         updateActive(info.index);
     });
     $(document).on('dom.resize', function () {
         go(index, true);
     });
     $(document).trigger('cui.inital');
-    $(document).on('notes.overtop', function (e, currPos, offset) {
+    $(document).on('notes.overtop', function (e, currPos) {
+        var  offset = Math.abs(currPos);
         $topIcon.css({
             transform: ('rotateZ(' + offset * -1 + 'deg)')
         });
@@ -69,7 +58,8 @@ var inital = function () {
             $body.removeClass('load');
         }
     });
-    $(document).on('notes.overbottom', function (e, currPos, offset) {
+    $(document).on('notes.overbottom', function (e, currPos, prePos,info) {
+        var  offset = Math.abs(currPos + info.max);
         $bottomIcon.css({
             transform: ('rotateZ(' + offset + 'deg)')
         });
@@ -79,7 +69,8 @@ var inital = function () {
             $body.removeClass('load');
         }
     });
-    $(document).on('notes.pushtop',function(e, currPos, offset){
+    $(document).on('notes.pushtop',function(e, currPos){
+        var  offset = Math.abs(currPos);
         if(offset > 180){
             alert('go back!!!');
             setTimeout(function(){
@@ -87,7 +78,8 @@ var inital = function () {
             },200);
         }
     });
-    $(document).on('notes.pushbottom',function(e, currPos, offset){
+    $(document).on('notes.pushbottom',function(e, currPos, prePos,info){
+        var  offset = Math.abs(currPos + info.max);
         if(offset > 180){
             $('.nav-notes-bottom')[0].click();
             setTimeout(function(){

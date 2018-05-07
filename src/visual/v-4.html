@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <div class="megalist photoview" id="photoview">
+    <div class="photoview" data-view data-direction="y" id="photoview">
         <ul>
             <li><img src="%RootUrl%dist/src/visual/src/1_fotor.jpg"></li>
             <li><img src="%RootUrl%dist/src/visual/src/2_fotor.jpg"></li>
@@ -71,38 +71,36 @@
             <li><img src="%RootUrl%dist/src/visual/src/6_fotor.jpg"></li>
             <li><img src="%RootUrl%dist/src/visual/src/7_fotor.jpg"></li>
             <li><img src="%RootUrl%dist/src/visual/src/1_fotor.jpg"></li>
-            <li>
-                <div class="from">
-                    <form data-form="">
-                        <div data-textbox>
-                            <div class="input">
-                                <label for="textReq1">Name</label>
-                                <input type="text" id="textReq1" data-validate='required'>
-                            </div>
-                        </div>
-                        <div data-textbox>
-                            <div class="input">
-                                <label for="textReq2">Phone</label>
-                                <input type="text" id="textReq2" data-validate='required'>
-                            </div>
-                        </div>
-                        <div data-textbox>
-                            <div class="input">
-                                <label for="textReq3">Email</label>
-                                <input type="text" id="textReq3" data-validate='required'>
-                            </div>
-                        </div>
-                        <div data-textbox>
-                            <div class="textarea">
-                                <label for="textReq4">Comment</label>
-                                <textarea name="comment" id="textReq4" ></textarea>
-                            </div>
-                        </div>
-                        <a href="javascript:;" class="btn orange active"> Submit</a>
-                    </form>
-                </div>
-            </li>
         </ul>
+        <div class="from">
+            <form data-form="">
+                <div data-textbox>
+                    <div class="input">
+                        <label for="textReq1">Name</label>
+                        <input type="text" id="textReq1" data-validate='required'>
+                    </div>
+                </div>
+                <div data-textbox>
+                    <div class="input">
+                        <label for="textReq2">Phone</label>
+                        <input type="text" id="textReq2" data-validate='required'>
+                    </div>
+                </div>
+                <div data-textbox>
+                    <div class="input">
+                        <label for="textReq3">Email</label>
+                        <input type="text" id="textReq3" data-validate='required'>
+                    </div>
+                </div>
+                <div data-textbox>
+                    <div class="textarea">
+                        <label for="textReq4">Comment</label>
+                        <textarea name="comment" id="textReq4" ></textarea>
+                    </div>
+                </div>
+                <a href="javascript:;" class="btn orange active"> Submit</a>
+            </form>
+        </div>
     </div>
 </body>
 <script src="%RootUrl%dist/src/cui.lib.min.js" type="text/javascript"></script>

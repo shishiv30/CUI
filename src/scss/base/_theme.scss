@@ -32,37 +32,37 @@ $font-thin: "robotothin";
 $font-mono: robotomono, Consolas, Monaco, monospace;
 $font-print: print, Consolas, Monaco, monospace;
 //legacy main
-$color-main: #4facfe;
+$color-main: #06799F;
 $color-main-l1: lighten($color-main, 6.18%);
 $color-main-l2: lighten($color-main-l1, 6.18%);
 $color-main-l3: lighten($color-main-l2, 6.18%);
 //blue
-$color-blue: #4facfe;
+$color-blue: #06799F;
 $color-blue-l1: lighten($color-blue, 6.18%);
 $color-blue-l2: lighten($color-blue-l1, 6.18%);
 $color-blue-l3: lighten($color-blue-l2, 6.18%);
 //lake
-$color-info: #34f1ff;
+$color-info: #8B42D6;
 $color-info-l1: lighten($color-info, 6.18%);
 $color-info-l2: lighten($color-info-l1, 6.18%);
 $color-info-l3: lighten($color-info-l2, 6.18%);
 //orange
-$color-warning: #ffa057;
+$color-warning: #FFA200;
 $color-warning-l1: lighten($color-warning, 6.18%);
 $color-warning-l2: lighten($color-warning-l1, 6.18%);
 $color-warning-l3: lighten($color-warning-l2, 6.18%);
 // yellow
-$color-tip: #fffb7e;
+$color-tip: #FFDB00;
 $color-tip-l1: lighten($color-tip, 6.18%);
 $color-tip-l2: lighten($color-tip-l1, 6.18%);
 $color-tip-l3: lighten($color-tip-l2, 6.18%);
 //green
-$color-safe: #96e6a1;
+$color-safe: #00A480;
 $color-safe-l1: lighten($color-safe, 6.18%);
 $color-safe-l2: lighten($color-safe-l1, 6.18%);
 $color-safe-l3: lighten($color-safe-l2, 6.18%);
 //color for error
-$color-danger: #ff6464;
+$color-danger: #EC0033;
 $color-danger-l1: lighten($color-danger, 6.18%);
 $color-danger-l2: lighten($color-danger-l1, 6.18%);
 $color-danger-l3: lighten($color-danger-l1, 6.18%);
