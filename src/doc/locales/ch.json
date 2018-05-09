@@ -94,10 +94,13 @@
 	"new map style": "谷歌地图插件地图",
 	"Dynamic Map": "动态地图",
 	"Static Map": "静态地图",
-	"Static Street Map": "Static Street Map",
+	"Static Street Map": "静态街景图",
 	"Note": "日记",
 	"drag": "drag",
 	"new drag style": "new drag style",
-	"view": "view",
-	"new view style": "new view style"
+	"view": "视图",
+	"new view style": "新的视图容器",
+	"textbox select": "选择输入",
+	"textbox iput": "文本输入",
+	"textbox textarea": "复选框输入"
 }
