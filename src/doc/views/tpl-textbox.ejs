@@ -5,40 +5,31 @@
     </a>
     <div id="texboxPanel">
         <div class="form row" data-form>
-            <div class="col-xs-12 col-sm-6">
-                <div data-textbox>
-                    <div class="input small left right">
-                        <label for="txtReq1"><%=__('label')%></label>
-                        <i>@</i>
-                        <input type="email" id="txtReq1" name='name' value="" data-validate='required,email'>
-                        <a href="javascript:;" class="icon-envelope btn black"></a>
-                    </div>
+            <div class="col-xs-6">
+                <div class="select-textbox">
+                    <label for="selectS"><%=__('textbox select')%></label>
+                    <select id="selectS" name="fequence" data-validate="required">
+                        <option value="" selected disabled>select a Option</option>
+                        <option value="Weekly">Option 1</option>
+                        <option value="Daily">Option 1</option>
+                        <option value="Monthly">Option 1</option>
+                    </select>
+                    <i class="icon-caret-down"></i>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-6">
                 <div data-textbox>
-                    <div class="input left right">
-                        <label for="txtReq2"><%=__('label')%></label>
-                        <i>@</i>
+                    <div class="input right">
+                        <label for="txtReq2"><%=__('textbox iput')%></label>
                         <input type="email" id="txtReq2" name='name' value="" data-validate='required,email'>
                         <a href="javascript:;" class="icon-envelope btn black"></a>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6">
-                <div data-textbox>
-                    <div class="input large left right">
-                        <label for="txtReq3"><%=__('label')%></label>
-                        <i>@</i>
-                        <input type="email" id="txtReq3" name='name' value="" data-validate='required,email'>
-                        <a href="javascript:;" class="icon-envelope btn black"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-12">
                 <div data-textbox>
                     <div class="textarea">
-                        <label for="textReq4"><%=__('label')%></label>
+                        <label for="textReq4"><%=__('textbox textarea')%></label>
                         <textarea name="<%=__('label')%>" id="textReq4" data-validate='required'></textarea>
                     </div>
                 </div>

@@ -47,17 +47,34 @@ label[for] {
 }
 
 input, select, textarea, button {
-    font-size: 100%;
     outline: none;
     color: $color-text-default;
 }
 
-img {
-    border: 0;
+input::-ms-clear {
+    width: 0;
+    height: 0;
 }
 
-[readonly] {
-    cursor: not-allowed;
+select {
+    border: 1px solid $color-border;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+input, select{
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+img {
+    border: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {

@@ -32,33 +32,34 @@
                 </div>
                 <div class="col-xs-12 col-sm-6">
                     <label for="ddlFequence">Fequence</label>
-                    <div class="select-textbox">
-                        <label for="ddlFequence">Fequence</label>
+                    <div class="input left right">
+                        <i class="icon-phone"></i>
                         <select id="ddlFequence" name="fequence" data-validate="required">
                             <option value="" selected disabled>select a fequence</option>
                             <option value="Weekly">Weekly</option>
                             <option value="Daily">Daily</option>
                             <option value="Monthly">Monthly</option>
                         </select>
-                        <i class="icon-caret-down"></i>
+                        <a class="btn black active icon-check"></a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
                     <label for="date">Date picker</label>
                     <div class="input right">
-                        <input type="text" id="date" name='date' data-picker="date" readonly data-validate="required">
+                        <input type="text" id="date" name='date' data-picker="date" readonly placeholder="select date" data-validate="required">
                         <label for="date" class="icon-calendar"></label>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
                     <label for="time">Time picker</label>
                     <div class="input right">
-                        <input type="text" id="time" name='time' data-picker="time" readonly data-validate="required">
+                        <input type="text" id="time" name='time' data-picker="time" readonly placeholder="select time" data-validate="required">
                         <label for="time" class="icon-clock-o"></label>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
                     <label>Select Gender</label>
+                    <br>
                     <div class="radio">
                         <label for="chMale">
                             <input id="chMale" name="gender" type="radio" checked value="Male">
@@ -74,6 +75,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6">
                     <label>Select Favor</label>
+                    <br>
                     <div class="checkbox">
                         <label for="rbtnFavor1">
                             <input id="rbtnFavor1" name="favor" checked type="checkbox" value="Dance">

@@ -51,6 +51,28 @@
     @extend %block-center;
 }
 
+%block-center-x {
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.block-center-x {
+    @extend %block-center-x;
+}
+
+%block-center-y {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.block-center-y {
+    @extend %block-center-y;
+}
+
 %img-center {
     position: absolute;
     top: 50%;

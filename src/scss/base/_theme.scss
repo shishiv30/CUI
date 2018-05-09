@@ -67,7 +67,7 @@ $color-danger-l1: lighten($color-danger, 6.18%);
 $color-danger-l2: lighten($color-danger-l1, 6.18%);
 $color-danger-l3: lighten($color-danger-l1, 6.18%);
 //gray level
-$color-0: black;
+$color-0: #000000;
 $color-1: #111111;
 $color-2: #222222;
 $color-3: #333333;
@@ -82,7 +82,7 @@ $color-b: #bbbbbb;
 $color-c: #cccccc;
 $color-d: #dddddd;
 $color-e: #eeeeee;
-$color-f: white;
+$color-f: #ffffff;
 //reference color
 $color-text-default: $color-3;
 //color for textbox place holder
@@ -115,11 +115,21 @@ $font-size-5: $font-size-base;
 $font-size-6: ($font-size-base - $increse/2);
 //11px
 $font-size-7: $font-size-base * $increse;
-//button & input & select
-$form-size-small: 36px;
-$form-size-normal: 40px;
-$form-size-large: 50px;
+
 //the basic value is 0.618
+$gap-0: $font-size-base * 0.5;
+$gap-1: $font-size-base * 1;
+$gap-2: $font-size-base * 1.5;
+$gap-3: $font-size-base * 2.5;
+$gap-4: $font-size-base * 4;
+$gap-5: $font-size-base * 6.5;
+$gap-6: $font-size-base * 10.5;
+
+//button & input & select
+$form-size-small: $gap-3;
+$form-size-normal: $gap-4;
+$form-size-large: $gap-5;
+
 $space-s: 0.309rem;
 $space-m: 0.618rem;
 $space-l: 0.927rem;

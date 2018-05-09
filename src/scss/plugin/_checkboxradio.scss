@@ -1,26 +1,33 @@
 .checkbox, .radio {
     display: inline-block;
     label {
+        display: inline-flex;
+        align-items: center;
         cursor: pointer;
         padding: 0;
         user-select: none;
-         > input {
+        > input {
             display: none;
         }
-         > i,  > span {
-            vertical-align: bottom;
-        }
-         > i {
+        > i {
             @extend %icon;
             display: inline-block;
-            width: 18px;
-            font-size: $font-size-5;
+            width: $font-size-3;
+            font-size:$font-size-3;
             color: $color-8;
         }
         input:checked + i {
         }
         input:disabled + i {
             color: $color-disable;
+        }
+    }
+    &.small{
+        label{
+            > i{
+                width: $font-size-4;
+                font-size:$font-size-4;
+            }
         }
     }
 }

@@ -13,12 +13,12 @@
         >label {
             margin: 0;
             position: absolute;
-            line-height: 20px;
-            height: 20px;
+            line-height: $gap-2;
+            height: $gap-2;
             transform: translateY(-50%);
-            padding: 0 2px;
+            // padding: 0 2px;
             border: none;
-            font-size: $font-size-5;
+            font-size: $font-size-4;
             z-index: 1;
             opacity: 0.5;
             text-align: left;
@@ -37,81 +37,47 @@
     }
     .input {
         >label {
-            left: 10px;
+            left: $gap-0;
             right: auto;
             top: 50%;
-            width: calc(100% - 10px);
+            width: calc(100% - #{$gap-0});
         }
         &.right, &.left {
             >label {
-                width: calc(100% - 40px);
+                width: calc(100% - #{$form-size-normal});
             }
         }
         &.right.left {
             >label {
-                width: calc(100% - 70px);
+                width: calc(100% - #{$form-size-normal});
             }
         }
         >input {
-            padding: 15px 10px 0 10px;
+            padding: $gap-2 $gap-0 $gap-0 $gap-0;
         }
         >i {
-            line-height: 38px;
+            line-height: $form-size-normal;
         }
         >a {
             line-height: $form-size-normal;
         }
-        &.large {
-            >label {
-                right: auto;
-                top: 50%;
-                font-size: 18px;
-            }
-            >input {
-                padding: 15px 10px 0 10px;
-            }
-            >i {
-                font-size: 18px;
-                line-height: $form-size-large;
-            }
-            >a {
-                line-height: $form-size-large;
-            }
-        }
-        &.small {
-            >label {
-                right: auto;
-                top: 50%;
-                font-size: 11px;
-            }
-            >input {
-                padding: 8px 10px 0 10px
-            }
-            >i {
-                font-size: 12px;
-                line-height: 35px;
-            }
-            >a {
-                line-height: $form-size-small;
-            }
-        }
         &.right {
             >input {
-                padding-right: 30px;
+                padding-right: $form-size-normal;
             }
             >i, >a {
-                width: 30px;
+                width: $form-size-normal;
             }
         }
         &.left {
             >label {
-                left: 30px;
+                left: $form-size-normal;
             }
             >input {
-                padding-left: 30px;
+                padding-left: $form-size-normal;
             }
             >i, >a {
-                width: 30px;
+                width: $form-size-normal;
             }
         }
     }
@@ -119,19 +85,16 @@
         background-color: $color-f;
         border: 1px solid $color-border;
         label {
-            left: 5px;
+            left: $gap-0;
             right: auto;
-            top: 12px;
+            top: $gap-1;
         }
         textarea {
             border: none;
-            margin: 19px 0 10px 0;
-            padding: 0 10px 0 10px;
-            min-height: 2em;
+            margin: $gap-2 0 $gap-0 0;
+            padding:0 $gap-0;
+            min-height: $form-size-large;
             overflow: hidden;
-        }
-        .tooltip.error {
-            margin-top: -2px;
         }
     }
     &.focus {
@@ -141,29 +104,11 @@
         .input, .textarea {
             >label {
                 top: 0;
-                left: 5px;
                 right: auto;
-                transform: scale(0.8) translateY(0);
+                transform: translateY(0);
                 transform-origin: left;
                 width: 100%;
-            }
-        }
-        .input {
-            >i {
-                line-height: 52px;
-            }
-            &.small {
-                >label {
-                    top: -2px;
-                }
-                >i {
-                    line-height: 42px;
-                }
-            }
-            &.large {
-                >i {
-                    line-height: 65px;
-                }
+                font-size: $font-size-6;
             }
         }
     }
