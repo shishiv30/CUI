@@ -73,11 +73,11 @@
 
     &.circle {
         display: inline-block;
-        height: 40px;
-        width: 40px;
-        line-height: 38px;
+        height: $form-size-normal;
+        width: $form-size-normal;
+        line-height: calc(#{$form-size-normal} - 2px);
         border-radius: 100%;
-        font-size: 17px;
+        font-size: $font-size-4;
     }
     &[disabled] {
         background-color: $color-c !important;
@@ -115,8 +115,8 @@
         position: absolute;
         background: $color-f;
         top: $form-size-normal;
-        left: 5px;
-        right: 5px;
+        left: $gap-0;
+        right: $gap-0;
         z-index: $ui-buttongroup-index;
         box-shadow: 0 0 1px $color-0;
         display: none;

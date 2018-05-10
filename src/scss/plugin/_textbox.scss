@@ -13,8 +13,8 @@
         >label {
             margin: 0;
             position: absolute;
-            line-height: $gap-2;
-            height: $gap-2;
+            line-height: $gap-1;
+            height: $gap-1;
             transform: translateY(-50%);
             // padding: 0 2px;
             border: none;
@@ -24,6 +24,9 @@
             text-align: left;
             @extend %singleline;
             transition: all .2s ease-in-out;
+        }
+        > input {
+            line-height: 2rem;
         }
         .tooltip.error {
             top: 0 !important;
@@ -49,7 +52,7 @@
         }
         &.right.left {
             >label {
-                width: calc(100% - #{$form-size-normal});
+                width: calc(100% - #{$form-size-normal*2});
             }
         }
         >input {
@@ -103,11 +106,10 @@
         }
         .input, .textarea {
             >label {
-                top: 0;
+                top: $gap-0;
                 right: auto;
                 transform: translateY(0);
                 transform-origin: left;
-                width: 100%;
                 font-size: $font-size-6;
             }
         }

@@ -22,11 +22,10 @@
 .header {
     position: fixed;
     top: 0;
-    width: 100%;
-    min-width: $screen-xs-min;
+    left:0;
+    right:0;
     height: $header-height;
     z-index: $ui-header-index;
-    height: $header-height;
     transition: transform .5s ease-in-out;
 }
 
