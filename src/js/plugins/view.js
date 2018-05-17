@@ -30,7 +30,7 @@
             var currPos = 0;
             var info = null;
             var isAnimating = false;
-            var animateTime = $wrapper.css('transition-duration').replace('s','')*1;
+            var animateTime = 0.2;
             var _updateInfo = context._updateInfo = function () {
                 var outerHeight = $this.outerHeight();
                 var outerWidth = $this.outerWidth();

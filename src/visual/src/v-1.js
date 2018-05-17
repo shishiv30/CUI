@@ -77,7 +77,6 @@ var inital = function () {
     $(document).on('notes.pushtop',function(e, currPos){
         var  offset = Math.abs(currPos);
         if(offset > 180){
-            alert('go back!!!');
             switchPanel();
             setTimeout(function(){
                 $body.removeClass('load');
