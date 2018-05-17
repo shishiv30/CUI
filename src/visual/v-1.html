@@ -29,7 +29,7 @@
                 <span>View More</span>
             </a>
         </div>
-        
+
         <div class="comment">
             <div class="comment-input" data-textbox>
                 <div class="input large left right">
@@ -49,7 +49,7 @@
                 </li>
             </ul>
         </div>
-        <div class="notes" data-view data-direction="y" data-oninital='notes.inital' data-onovertop="notes.overtop" data-onoverbottom="notes.overbottom" data-onpushtop="notes.pushtop" data-onpushbottom="notes.pushbottom" data-onchange="notes.change">
+        <div class="notes detail" data-view data-jumpback="true" data-snapable="true" data-direction="y" data-oninital='notes.inital' data-onovertop="notes.overtop" data-onoverbottom="notes.overbottom" data-onpushtop="notes.pushtop" data-onpushbottom="notes.pushbottom" data-onchange="notes.change">
             <ul>
                 <li class="note-item" v-for="(note, index)  in notes" v-bind:data-id='index'>
                     <div class="note-item-label">

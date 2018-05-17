@@ -53,29 +53,41 @@
                     info.index =  Math.round(prePos*-1/info.sheight);
                 }
             };
-            var _go = context._go = function (distance) {
-                var dfd = $.Deferred();
+            var dfd = null;
+            var _go = context._go = function (distance, animation) {
+                dfd = $.Deferred();
                 if(isAnimating){
+                    console.log('ing....');
                     dfd.reject();
-                    return dfd;
-                }
-                if(opt.direction === 'x') {
-                    $wrapper.css({
-                        transform: 'translateX(' + distance + 'px)'
+                }else if(animation){
+                    console.log('start....');
+                    isAnimating = true;
+                    $wrapper.addClass('animating');
+                    $wrapper.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+                        isAnimating = false;
+                        $wrapper.removeClass('animating');
+                        dfd && dfd.resolve();
                     });
-                } else {
-                    $wrapper.css({
-                        transform: 'translateY(' + distance + 'px)'
-                    });
-                }
-
-                if(!$wrapper.is('.is-dragging')){
-                    isAnimating =true;
-                    setTimeout(function(){
-                        isAnimating =false;
-                        dfd.resolve();
-                    },animateTime * 1000);
+                    if(opt.direction === 'x') {
+                        $wrapper.css({
+                            transform: 'translateX(' + distance + 'px)'
+                        });
+                    } else {
+                        $wrapper.css({
+                            transform: 'translateY(' + distance + 'px)'
+                        });
+                    }
                 }else{
+                    console.log('dragging....');
+                    if(opt.direction === 'x') {
+                        $wrapper.css({
+                            transform: 'translateX(' + distance + 'px)'
+                        });
+                    } else {
+                        $wrapper.css({
+                            transform: 'translateY(' + distance + 'px)'
+                        });
+                    }
                     dfd.resolve();
                 }
                 return dfd;
@@ -83,7 +95,7 @@
             context._geInfo = function () {
                 return info;
             };
-            var _outRange = function (moved) {
+            var _onMoving = function (moved) {
                 var eventName = '';
                 if(currPos > 0) {
                     if(moved) {
@@ -120,7 +132,7 @@
                 }
             };
             var _limitation = function (direction) {
-                console.log(direction,currPos);
+                // console.log(direction,currPos);
                 if('left' === direction || 'up' === direction) {
                     currPos =Math.min(currPos, info.maxLimit);
                 } else {
@@ -128,6 +140,7 @@
                 }
             };
             var _moving =function(direction, distance,isRelativeValue){
+                $wrapper.addClass('dragging');
                 // console.log(distance,direction);
                 if(isRelativeValue){
                     currPos = currPos - distance;
@@ -135,19 +148,20 @@
                     currPos = prePos - distance;
                 }
                 _limitation(direction);
-                _go(currPos).then(function(){
-                    _outRange(false);
-                });
+                _go(currPos, false).then($.throttle(function(){
+                    _onMoving(false);
+                },200));
             };
             var _moved = function(direction, distance, time){
-                $wrapper.removeClass('is-dragging');
-                var isOutRange = _outRange(true);
-
+                $wrapper.removeClass('dragging');
+                var origin = currPos;
+                var isOutRange = _onMoving(true);
                 var width = info.swidth;
                 var height = info.sheight;
-                if(time){
-                    _scrollWithInertia(distance, time);
-                    if(opt.snapable){
+                if(opt.snapable){
+                    if(time){
+                        _scrollWithInertia(distance, time);
+
                         if(Math.abs(distance) / time > 0.1) {
                             if(opt.direction === 'x') {
                                 offset = currPos % width;
@@ -166,6 +180,14 @@
                                 currPos = Math.abs(offset) > height / 2 ? currPos - (height + offset) : currPos - offset;
                             }
                         }
+                    }else{
+                        if(opt.direction === 'x') {
+                            offset = currPos % width;
+                            currPos = direction === 'left' ? currPos - (width + offset) : currPos - offset;
+                        } else {
+                            offset = currPos % height;
+                            currPos = direction === 'up' ? currPos - offset : currPos - (height + offset);
+                        }
                     }
                 }
 
@@ -179,21 +201,25 @@
                         }
                     }
                 }
-                _go(currPos).then(function(){
-                    prePos = currPos;
-                    _updateInfo();
-                    if(opt.onchange){
-                        if($.isFunction(opt.onchange)) {
-                            opt.onchange(currPos, prePos, info);
-                        } else if(opt.onchange) {
-                            $(document).trigger(opt.onchange, [currPos, prePos, info]);
+                if(currPos !== origin){
+                    _go(currPos, true).then(function(){
+                        prePos = currPos;
+                        _updateInfo();
+                        if(opt.onchange){
+                            if($.isFunction(opt.onchange)) {
+                                opt.onchange(currPos, prePos, info);
+                            } else if(opt.onchange) {
+                                $(document).trigger(opt.onchange, [currPos, prePos, info]);
+                            }
                         }
-                    }
+                    }).always(function(){
+                        $(document).trigger('dom.scroll');
+                    });
+                }else{
                     $(document).trigger('dom.scroll');
-                });
+                }
             };
             $this.on('drag', function () {
-                $wrapper.addClass('is-dragging');
                 info || _updateInfo();
             });
             var wheeling = null;
@@ -205,12 +231,7 @@
                     $this.off('mousewheel');
                     return;
                 }
-                // console.log(delta);
-                if(isAnimating){
-                    $wrapper.removeClass('is-dragging');
-                }else{
-                    $wrapper.addClass('is-dragging');
-                }
+
                 var distance = null;
                 var direction = null;
                 // Webkit
@@ -222,7 +243,7 @@
                     direction = distance < 0 ? 'up':'down';
                 }
                 _moving(direction, distance, true);
-                if(currPos>info.minLimit &&currPos<info.maxLimit){
+                if(currPos>info.minLimit && currPos<info.maxLimit){
                     wheeling && clearTimeout(wheeling);
                     wheeling = setTimeout( function(){
                         _moved(direction, distance, null);
@@ -231,6 +252,7 @@
                 return false;
             });
             $this.on('dragging', function (e, dir, dist) {
+
                 var distance = opt.direction === 'x' ? dist[0] : dist[1];
                 var direction =  opt.direction === 'x' ?  dir[0] : dir[1];
                 _moving(direction, distance, false);
@@ -257,8 +279,8 @@
             getInfo: function(){
                 return this._getInfo();
             },
-            go: function (currPos) {
-                return this._go(currPos);
+            go: function (currPos, animation) {
+                return this._go(currPos, animation);
             }
         },
         setOptionsBefore: null,

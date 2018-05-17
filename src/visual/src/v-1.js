@@ -15,19 +15,20 @@ var inital = function () {
     var $topIcon = $('.nav-notes-top .icon-spinner');
     var $bottomIcon = $('.nav-notes-bottom .icon-spinner');
     var index = 0;
-    var next = function () {
-        go(++index);
+    var next =window.next = function (animate) {
+        go(++index,animate);
     };
-    var prev = function () {
-        go(--index);
+    var prev = window.prev =function (animate) {
+        go(--index,animate);
     };
-    var go = function (index, disableScroll) {
+    var go =  window.go = function (index, disableScroll) {
         var scropTop = $.CUI.status.height * index * -1;
-        if(disableScroll) {
-            $container.data('view').go(scropTop, disableScroll);
-        } else {
-            $container.data('view').go(scropTop, disableScroll);
-        }
+        $container.data('view').go(scropTop, disableScroll).then(function(){
+            setTimeout(function(){
+                updateActive(index);
+                $(document).trigger('dom.scroll');
+            },200);
+        });
     };
     var updateActive = function(i){
         index = i;
@@ -36,6 +37,10 @@ var inital = function () {
             $('.note-item.active').removeClass('active');
             $item.addClass('active');
         }
+    };
+    var switchPanel = function(){
+        $container.toggleClass('list');
+        $container.toggleClass('detail');
     };
     $(document).one('notes.inital',function(e,info){
         updateActive(info.index);
@@ -73,6 +78,7 @@ var inital = function () {
         var  offset = Math.abs(currPos);
         if(offset > 180){
             alert('go back!!!');
+            switchPanel();
             setTimeout(function(){
                 $body.removeClass('load');
             },200);
@@ -84,9 +90,8 @@ var inital = function () {
             $('.nav-notes-bottom')[0].click();
             setTimeout(function(){
                 $body.removeClass('load');
-                $container.data('view').updateInfo();
                 $(document).trigger('dom.load');
-            },500);
+            },1000)
         }
     });
 };
@@ -171,6 +176,42 @@ var fakeNotes = function () {
             dateFromStr: '2005 - 12 - 30',
             dateTo: '2006-08-27',
             img: 'dist/src/visual/src/5_Fotor.jpg',
+            isFavorite: false
+        }, {
+            type: 'image',
+            title: 'Sea with Rock',
+            heartTo: 6328,
+            dateFrom: '2013-07-30',
+            dateFromStr: '2013 - 07 - 30',
+            dateTo: '2016-11-23',
+            img: 'dist/src/visual/src/6_Fotor.jpg',
+            isFavorite: false
+        }, {
+            type: 'image',
+            title: 'the shadow of Golden Bridge',
+            heartTo: 3749,
+            dateFrom: '2015-06-21',
+            dateFromStr: '2015 - 06 - 21',
+            dateTo: '2015-01-23',
+            img: 'dist/src/visual/src/8_Fotor.jpg',
+            isFavorite: false
+        },{
+            type: 'image',
+            title: 'sun of the beach',
+            heartTo: 3749,
+            dateFrom: '2015-06-21',
+            dateFromStr: '2015 - 06 - 21',
+            dateTo: '2015-01-23',
+            img: 'dist/src/visual/src/9_Fotor.jpg',
+            isFavorite: false
+        }, {
+            type: 'image',
+            title: 'the wild duck',
+            heartTo: 3749,
+            dateFrom: '2013-07-30',
+            dateFromStr: '2013 - 07 - 30',
+            dateTo: '2016-11-23',
+            img: 'dist/src/visual/src/10_Fotor.jpg',
             isFavorite: false
         }
     ];

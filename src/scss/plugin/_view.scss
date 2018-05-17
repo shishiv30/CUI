@@ -19,8 +19,11 @@
         cursor: ns-resize;
     }
     > ul {
-        transition: transform .2s ease-in-out;
-        &.is-dragging {
+        &.animating{
+            pointer-events: none;
+            transition: transform .1s ease-in-out;
+        }
+        &.dragging {
             transition: none;
         }
     }
