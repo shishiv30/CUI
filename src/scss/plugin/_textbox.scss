@@ -18,7 +18,7 @@
             transform: translateY(-50%);
             // padding: 0 2px;
             border: none;
-            font-size: $font-size-4;
+            font-size: $font-size-5;
             z-index: 1;
             opacity: 0.5;
             text-align: left;
@@ -26,7 +26,7 @@
             transition: all .2s ease-in-out;
         }
         > input {
-            line-height: 2rem;
+            line-height: 1.5rem;
         }
         .tooltip.error {
             top: 0 !important;

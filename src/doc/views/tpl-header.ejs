@@ -1,7 +1,6 @@
 <div data-header class="header">
-    <div class="header-form">
-        <a class="header-form-logo" href="javascript:;"> <i class="icon-cui"></i></a>
-        <a class="header-form-btn" href="javascript:;" id="menuButton"><i class="icon-bars"></i></a>
+    <div class="header-bar">
+        <a  href="javascript:;" class="f2"> <i class="icon-cui"></i></a>
         <div data-textbox="">
             <div  class="input right">
                 <label for="headerInput">Search for ...</label>
@@ -10,12 +9,12 @@
             </div>
         </div>
     </div>
-    <div class="header-menu-list right">
-        <div class="header-menu-list-wrap">
-            <div class="header-menu-item right">
+    <div class="header-nav">
+        <ul class="header-menu-list">
+            <li>
                 <a href="/ch"><%= __('API Document') %></a>
-            </div>
-            <div class="header-menu-item" data-headermenu>
+            </li>
+            <li>
                 <a href="javascript:;"><%= __('Demo') %></a>
                 <ul>
                     <li><a href="javascript:;"><%= __('Recommendation') %></a></li>
@@ -28,12 +27,12 @@
                         <a href="javascript:;"><%= __('Blog') %></a>
                     </li>
                 </ul>
-            </div>
-            <div class="header-menu-item">
+            </li>
+            <li class="right">
                 <a href="javascript:;"><%= __('Design Document') %></a>
-            </div>
-        </div>
+            </li>
+        </ul>
+        <a href="javascript:;" class=" header-switch-link f2"><i class="icon-bars"></i></a>
     </div>
-    <div class="header-overlay"></div>
+
 </div>
-<div style="height:50px;"></div>

@@ -9,7 +9,7 @@ $screen-xs: 320px;
 $screen-xs-min: 320px;
 $screen-phone: $screen-xs-min;
 // Small screen / tablet
-$screen-sm: 768px;
+$screen-sm: 460px;
 $screen-sm-min: $screen-sm;
 $screen-tablet: $screen-sm-min;
 // Medium screen / desktop
@@ -17,7 +17,7 @@ $screen-md: 992px;
 $screen-md-min: $screen-md;
 $screen-desktop: $screen-md-min;
 // Large screen / wide desktop
-$screen-lg: 1200px;
+$screen-lg: 1400px;
 $screen-lg-min: $screen-lg;
 $screen-lg-desktop: $screen-lg-min;
 $screen-xs-max: $screen-sm-min - 1;
@@ -127,7 +127,7 @@ $gap-6: $font-size-base * 10.5;
 
 //button & input & select
 $form-size-small: $gap-3;
-$form-size-normal: $gap-4;
+$form-size-normal: 3.5rem;
 $form-size-large: $gap-5;
 
 $space-s: 0.309rem;

@@ -1,32 +1,31 @@
 .tab-panel {
     display: none;
+    border: 1px solid $color-blue;
+    padding: $gap-0;
 }
 
-.tabs {
-    &.default {
-        [data-tab] {
-            &.active {
-                background: $color-6;
-                color:$color-f;
-                margin-bottom: -1px;
-            }
+[data-tab],[data-tabs-load] {
+    &.active {
+        margin-bottom: -1px;
+    }
+    .btn {
+        min-width: 100px;
+        margin-right:2px;
+        display: inline-block;
+        border-bottom:none;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    > ul{
+        margin-bottom: -1px;
+        display: flex;
+        >li{
 
-            background: $color-e;
-            min-width: 100px;
-            padding: 0 10px;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-            border-top:1px solid $color-c;
-            border-right:1px solid $color-c;
-            border-left:1px solid $color-c;
-            margin-right:2px;
-        }
-        ul{
-            border-bottom: 1px solid $color-c;
-        }
-        .tab-panel{
-            border: 1px solid $color-e;
-            padding: 10px;
         }
     }
+}
+
+
+.tab-panel{
+
 }

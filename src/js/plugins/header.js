@@ -1,21 +1,51 @@
 //seed code for create a plugin
 //replace all of the "header" with the plugin name. (the plugin name should be same as the js file name);
-
 (function ($) {
     var headerConfig = {
         name: 'header',
         defaultOpt: {
-            button: '.header-form-btn',
             container: 'html',
             autoclose: true,
         },
         init: function (context) {
             var opt = context.opt;
             var $this = context.$element;
-            var $button = $this.find(opt.button);
-            var $container = $(opt.container);
-            var $menus = $this.find('[data-headermenu]');
-            var $overlay = $this.find('.header-overlay');
+            var $nav = $this.find('.header-nav');
+            var $list = $this.find('.header-menu-list');
+            var $scrollLinkLeft = $('<a class="header-scroll-link left"><i class="icon-caret-left"></i></a>');
+            var $scrollLinkRight = $('<a class="header-scroll-link right"><i class="icon-caret-right"></i></a>');
+            var $swtichLink = $this.find('.header-switch-link');
+            var $items = $list.children('li');
+            var max = 0;
+            var buffer = 5;
+            $nav.append($scrollLinkLeft);
+            $nav.append($scrollLinkRight);
+            var checkScrollable = function () {
+                max = $list.prop('scrollWidth') - $list.outerWidth();
+                if(max < buffer) {
+                    $nav.removeClass('scrollable');
+                } else {
+                    $nav.addClass('scrollable');
+                }
+            };
+            var checkScrollLink = function () {
+                var scroll = $list.scrollLeft();
+                if(scroll <= buffer) {
+                    $scrollLinkLeft.removeClass('visable');
+                    $scrollLinkRight.addClass('visable');
+                } else if(scroll >= (max - buffer)) {
+                    $scrollLinkLeft.addClass('visable');
+                    $scrollLinkRight.removeClass('visable');
+                } else {
+                    $scrollLinkLeft.addClass('visable');
+                    $scrollLinkRight.addClass('visable');
+                }
+            };
+            //nav-list
+            $list.on('scroll', $.throttle(checkScrollLink, 100));
+            $(document).on('dom.resize', checkScrollable);
+            checkScrollable();
+            checkScrollLink();
             var _close = function () {
                 $this.addClass('header-close');
             };
@@ -23,22 +53,38 @@
                 $this.removeClass('header-close');
             };
             var _show = function () {
-                $container.addClass('header-menu-show');
+                $list.addClass('active');
             };
             var _hide = function () {
-                $container.removeClass('header-menu-show');
+                $list.removeClass('active');
             };
-            $button.on('click', function () {
-                if ($container.hasClass('header-menu-show')) {
+            //nav
+            $items.on('touchstart', function () {
+                $nav.toggleClass('active');
+            });
+            $items.on('mouseenter', function () {
+                $nav.addClass('active');
+            });
+            $items.on('mouseleave', function () {
+                $nav.removeClass('active');
+            });
+            $swtichLink.on('click', function () {
+                if($list.hasClass('active')) {
                     _hide();
                 } else {
                     _show();
                 }
             });
-            $menus.children('a').click(function () {
-                $(this).parent().toggleClass('active');
+            $scrollLinkLeft.on('click', function () {
+                $list.stop().animate({
+                    scrollLeft: '-=100px'
+                });
             });
-            $overlay.on('click', _hide);
+            $scrollLinkRight.on('click', function () {
+                $list.stop().animate({
+                    scrollLeft: '+=100px'
+                });
+            });
             context = $.extend(context, {
                 _show: _show,
                 _hide: _hide,
@@ -46,13 +92,13 @@
                 _open: _open,
             });
             $(document).on('dom.resize', function () {
-                if ($container.hasClass('header-menu-show')) {
+                if($container.hasClass('header-menu-show')) {
                     _hide();
                 }
             });
             $(document).on('dom.scroll', function () {
                 var status = $.CUI.status;
-                if (status.isScrollDown) {
+                if(status.isScrollDown) {
                     _close();
                 } else {
                     _open();
@@ -90,3 +136,6 @@
         });
     });
 })(jQuery);
+$(document).ready(function () {
+    $(document).trigger('cui.inital');
+});

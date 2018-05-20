@@ -106,7 +106,7 @@
         border-top-right-radius: 0;
     }
     & > a:last-of-type {
-        width: 50px;
+        width: $form-size-normal;
         flex-shrink: 0;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
