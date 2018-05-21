@@ -19,7 +19,7 @@ b {
 }
 
 p, .paragraph {
-    line-height: 1.618em;
+    line-height: $gap-2;
 }
 
 code {

@@ -47,21 +47,21 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'src/',
-                    src: ['img/*.*', 'img/pin/*.*', 'fonts/*.*', 'doc/src/*.*','demo1/src/*.*','visual/src/*.*'],
+                    src: ['img/*.*', 'img/pin/*.*', 'fonts/*.*', 'doc/src/*.*', 'demo1/src/*.*', 'visual/src/*.*'],
                     dest: 'public/dist/src/'
                 }, {
                     expand: true,
                     cwd: '',
-                    src: ['favicon.ico','sw.js'],
+                    src: ['favicon.ico', 'sw.js'],
                     dest: 'public'
-                },{
+                }, {
                     expand: true,
                     cwd: 'src/visual/',
                     src: ['*.html'],
                     dest: 'public'
                 }]
             },
-            js:{
+            js: {
                 files: [{
                     expand: true,
                     cwd: 'src/',
@@ -81,7 +81,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'src/',
-                    src: ['doc/src/*.css','demo1/src/*.css','visual/src/*.css'],
+                    src: ['doc/src/*.css', 'demo1/src/*.css', 'visual/src/*.css'],
                     dest: 'public/dist/src/'
                 }]
             }
@@ -113,17 +113,25 @@ module.exports = function (grunt) {
             }
         },
         watch: {
-            html:{
-                files: ['public/*.html','src/visual/*.html'],
-                tasks: ['copy:html','replace:dev']
+            html: {
+                files: ['public/*.html', 'src/visual/*.html'],
+                tasks: ['copy:html', 'replace:dev'],
+                options: {
+                    debounceDelay: 10000,
+                    livereload: true,
+                }
             },
             script: {
-                files: ['src/js/plugins/*.js','src/visual/src/*.js'],
-                tasks: ['concat:dist','copy:js','replace:dev']
+                files: ['src/js/plugins/*.js', 'src/visual/src/*.js'],
+                tasks: ['concat:dist', 'copy:js', 'replace:dev'],
+                options: {
+                    debounceDelay: 10000,
+                    livereload: true,
+                }
             },
             scss: {
                 files: ['src/scss/cui.scss', 'src/scss/**/*.scss', 'src/visual/src/*.scss'],
-                tasks: ['sass','autoprefixer','replace:dev'],
+                tasks: ['sass', 'autoprefixer', 'replace:dev'],
                 options: {
                     debounceDelay: 10000,
                     livereload: true,
@@ -164,6 +172,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-sass');
-    grunt.registerTask('default', ['copy:all', 'concat', 'sass', 'autoprefixer', 'cssmin', 'uglify', 'htmlmin','replace:publish']);
-    grunt.registerTask('dev', ['copy:all', 'concat', 'sass', 'autoprefixer','replace:dev', 'watch']);
+    grunt.registerTask('default', ['copy:all', 'concat', 'sass', 'autoprefixer', 'cssmin', 'uglify', 'htmlmin', 'replace:publish']);
+    grunt.registerTask('dev', ['copy:all', 'concat', 'sass', 'autoprefixer', 'replace:dev', 'watch']);
 };
