@@ -9,6 +9,7 @@
         },
         init: function (context) {
             var opt = context.opt;
+            var $body = $(body);
             var $this = context.$element;
             var $nav = $this.find('.header-nav');
             var $list = $this.find('.header-menu-list');
@@ -55,10 +56,10 @@
                 $this.removeClass('header-close');
             };
             var _show = function () {
-                $this.addClass('expand');
+                $body.addClass('expand');
             };
             var _hide = function () {
-                $this.removeClass('expand');
+                $body.removeClass('expand');
             };
             $overlay.on('click', _hide);
             //nav
@@ -75,7 +76,7 @@
                 $(this).closest('li').toggleClass('hover');
             });
             $swtichLink.on('click', function () {
-                if($this.hasClass('expand')) {
+                if($body.hasClass('expand')) {
                     _hide();
                 } else {
                     _show();

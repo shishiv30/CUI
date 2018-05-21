@@ -1,5 +1,5 @@
-$header-background: rgba(255,255,255,.9);
-$header-font: $color-3;
+$header-background: $color-main;
+$header-font: $color-f;
 $border-color: rgba(0, 0, 0, .1);
 .header {
     position: sticky;
@@ -102,6 +102,7 @@ $border-color: rgba(0, 0, 0, .1);
 .header-nav {
     display: flex;
     position: relative;
+    z-index: $ui-header-list-index;
 }
 .header-menu-list {
     position: relative;
@@ -141,8 +142,8 @@ $border-color: rgba(0, 0, 0, .1);
                         height: 8px;
                         background-color: $color-f;
                         transform: rotate(45deg);
-                        border-left: 1px solid $color-e;
-                        border-top: 1px solid $color-e;
+                        border-left: 1px solid $border-color;
+                        border-top: 1px solid $border-color;
                         z-index: 2;
                     }
                 }
@@ -154,8 +155,9 @@ $border-color: rgba(0, 0, 0, .1);
 
 //small screen
 @media(max-width:$screen-xs-max) {
-    .header {
-        &.expand {
+    .expand {
+        overflow: hidden;
+        .header {
             .header-menu-list {
                 visibility: visible;
                 transform: translateX(0);
@@ -164,6 +166,8 @@ $border-color: rgba(0, 0, 0, .1);
                 display: block;
             }
         }
+    }
+    .header {
         .header-menu-list {
             display: flex;
             position: fixed;
