@@ -47,8 +47,9 @@ $level-3-2: $level-3/2;
             align-items: center;
             & > img {
                 height: 61.8%;
-                width: auto;
-                object-fit: content;
+                max-width: auto;
+                max-width: fit-content;
+                object-fit: contain;
                 border-radius: 50%;
                 flex-shrink: 0;
                 margin-right: .5rem;

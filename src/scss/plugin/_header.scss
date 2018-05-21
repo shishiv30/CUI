@@ -1,6 +1,6 @@
-$header-background: $color-main;
-$header-font: $color-f;
-
+$header-background: rgba(255,255,255,.9);
+$header-font: $color-3;
+$border-color: rgba(0, 0, 0, .1);
 .header {
     position: sticky;
     top: 0;
@@ -11,7 +11,8 @@ $header-font: $color-f;
     height: 3.5rem;
     transition: transform .5s;
     transform: translateY(0%);
-    z-index: 1;
+    box-shadow: 0px 1px 1px #eeeeee;
+    z-index: $ui-header-index;
     &.header-close {
         transform: translateY(-100%);
     }
@@ -53,11 +54,11 @@ $header-font: $color-f;
             background: $header-background;
             &.left {
                 left: 0;
-                border-right: rgba(255, 255, 255, .8) 1px solid;
+                border-right: $border-color 1px solid;
             }
             &.right {
                 right: 0;
-                border-left: rgba(255, 255, 255, .8) 1px solid;
+                border-left: $border-color 1px solid;
             }
             min-width: auto;
             i {
@@ -96,6 +97,7 @@ $header-font: $color-f;
     right: 0;
     left: 0;
     bottom: 0;
+    z-index: $ui-header-overlay;
 }
 .header-nav {
     display: flex;
@@ -120,9 +122,9 @@ $header-font: $color-f;
             visibility: hidden;
             background-color: $color-f;
             color: $color-3;
-            border-left: 1px solid $color-e;
-            border-right: 1px solid $color-e;
-            border-bottom: 1px solid $color-e;
+            border-left: 1px solid $border-color;
+            border-right: 1px solid $border-color;
+            border-bottom: 1px solid $border-color;
             max-height: 0;
             min-width: 100%;
             position: relative;
@@ -175,7 +177,7 @@ $header-font: $color-f;
             background: $header-background;
             flex-wrap: wrap;
             flex-direction: column;
-            transition: transform .5s;
+            transition: all .5s;
             transform: translateX(100%);
             height: 100vh;
             & > li {

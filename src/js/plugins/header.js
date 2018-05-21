@@ -75,7 +75,7 @@
                 $(this).closest('li').toggleClass('hover');
             });
             $swtichLink.on('click', function () {
-                if($list.hasClass('active')) {
+                if($this.hasClass('expand')) {
                     _hide();
                 } else {
                     _show();
