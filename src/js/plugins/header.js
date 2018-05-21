@@ -14,12 +14,14 @@
             var $list = $this.find('.header-menu-list');
             var $scrollLinkLeft = $('<a class="header-scroll-link left"><i class="icon-caret-left"></i></a>');
             var $scrollLinkRight = $('<a class="header-scroll-link right"><i class="icon-caret-right"></i></a>');
+            var $overlay = $('<div class="header-overlay"></div>');
             var $swtichLink = $this.find('.header-switch-link');
             var $items = $list.children('li');
             var max = 0;
             var buffer = 5;
             $nav.append($scrollLinkLeft);
             $nav.append($scrollLinkRight);
+            $this.prepend($overlay);
             var checkScrollable = function () {
                 max = $list.prop('scrollWidth') - $list.outerWidth();
                 if(max < buffer) {
@@ -53,11 +55,12 @@
                 $this.removeClass('header-close');
             };
             var _show = function () {
-                $list.addClass('active');
+                $this.addClass('expand');
             };
             var _hide = function () {
-                $list.removeClass('active');
+                $this.removeClass('expand');
             };
+            $overlay.on('click', _hide);
             //nav
             $items.on('touchstart', function () {
                 $nav.toggleClass('active');
@@ -67,6 +70,9 @@
             });
             $items.on('mouseleave', function () {
                 $nav.removeClass('active');
+            });
+            $items.find('a').on('click', function () {
+                $(this).closest('li').toggleClass('hover');
             });
             $swtichLink.on('click', function () {
                 if($list.hasClass('active')) {
@@ -91,11 +97,7 @@
                 _close: _close,
                 _open: _open,
             });
-            $(document).on('dom.resize', function () {
-                if($container.hasClass('header-menu-show')) {
-                    _hide();
-                }
-            });
+            $(document).on('dom.resize', _hide);
             $(document).on('dom.scroll', function () {
                 var status = $.CUI.status;
                 if(status.isScrollDown) {

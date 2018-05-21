@@ -85,6 +85,18 @@ $header-font: $color-f;
         }
     }
 }
+.header-overlay {
+    background: #000000;
+    height: 100vh;
+    width: 100vw;
+    opacity: .3;
+    display: none;
+    position: fixed;
+    top: 3.5rem;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
 .header-nav {
     display: flex;
     position: relative;
@@ -115,13 +127,12 @@ $header-font: $color-f;
             min-width: 100%;
             position: relative;
         }
-        &:hover {
+        &.hover {
             & a {
                 & + ul {
                     &:after {
                         content: "";
                         position: absolute;
-                        display: block;
                         left: calc(50% - 4px);
                         top: -4px;
                         width: 8px;
@@ -134,10 +145,6 @@ $header-font: $color-f;
                     }
                 }
             }
-            & > ul {
-                visibility: visible;
-                max-height: 50vh;
-            }
         }
     }
 }
@@ -146,6 +153,15 @@ $header-font: $color-f;
 //small screen
 @media(max-width:$screen-xs-max) {
     .header {
+        &.expand {
+            .header-menu-list {
+                visibility: visible;
+                transform: translateX(0);
+            }
+            .header-overlay {
+                display: block;
+            }
+        }
         .header-menu-list {
             display: flex;
             position: fixed;
@@ -162,12 +178,14 @@ $header-font: $color-f;
             transition: transform .5s;
             transform: translateX(100%);
             height: 100vh;
-            &.active {
-                visibility: visible;
-                transform: translateX(0);
-            }
             & > li {
                 width: 100%;
+                &.hover {
+                    & > ul {
+                        visibility: visible;
+                        max-height: 50vh;
+                    }
+                }
             }
         }
         .header-switch-link {
@@ -193,8 +211,13 @@ $header-font: $color-f;
             }
             & > li {
                 flex-shrink: 0;
+                &:hover {
+                    & > ul {
+                        visibility: visible;
+                        max-height: 50vh;
+                    }
+                }
                 & > ul {
-                    transition: max-height .5s;
                     position: absolute;
                     top: 3.5rem;
                     left: 0;
