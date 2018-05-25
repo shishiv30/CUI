@@ -63,19 +63,24 @@
             };
             $overlay.on('click', _hide);
             //nav
-            $items.on('touchstart', function() {
+            $items.on('mouseenter touchstart', function() {
                 $nav.toggleClass('active');
             });
-            $items.on('mouseenter', function() {
-                $nav.addClass('active');
-            });
-            $items.on('hover', function() {
-                $nav.addClass('active');
-            }, function() {
+            $items.on('mouseleave', function() {
                 $nav.removeClass('active');
             });
             $items.find('a').on('click', function() {
-                $(this).closest('li').toggleClass('hover');
+                var $li = $(this).closest('li');
+                var $prev = $li.siblings('.hover');
+                $prev.removeClass('hover');
+                $prev.css('height', '');
+                if ($li.hasClass('hover')) {
+                    $li.removeClass('hover');
+                    $li.css('height', '');
+                } else {
+                    $li.addClass('hover');
+                    $li.css('height', $li.prop('scrollHeight'));
+                }
             });
             $swtichLink.on('click', function() {
                 if ($body.hasClass('expand')) {

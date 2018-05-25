@@ -1,7 +1,7 @@
 $header-background: $color-warning;
 $header-font: $color-f;
 $border-color: rgba(0, 0, 0, .1);
-$highlight-link:$color-main-l1;
+$highlight-link: $color-main-l1;
 .header {
     position: sticky;
     top: 0;
@@ -110,9 +110,26 @@ $highlight-link:$color-main-l1;
     & > li {
         position: relative;
         display: inline-block;
-        & > a {
-            position: relative;
+        &.list {
+            & > a {
+                position: relative;
+                &:after {
+                    display: none;
+                    content: "";
+                    position: absolute;
+                    left: calc(50% - 4px);
+                    bottom: -4px;
+                    width: 8px;
+                    height: 8px;
+                    background-color: $color-f;
+                    transform: rotate(45deg);
+                    border-left: 1px solid $border-color;
+                    border-top: 1px solid $border-color;
+                    z-index: 2;
+                }
+            }
         }
+
         &.right {
             margin-left: auto;
         }
@@ -121,7 +138,6 @@ $highlight-link:$color-main-l1;
             max-width: fit-content;
         }
         & > ul {
-            visibility: hidden;
             background-color: $color-f;
             color: $color-3;
             border-left: 1px solid $border-color;
@@ -129,27 +145,8 @@ $highlight-link:$color-main-l1;
             border-bottom: 1px solid $border-color;
             min-width: 100%;
             position: relative;
-            a:hover{
+            a:hover {
                 color: $highlight-link;
-            }
-        }
-        &.hover {
-            & a {
-                & + ul {
-                    &:after {
-                        content: "";
-                        position: absolute;
-                        left: calc(50% - 4px);
-                        top: -4px;
-                        width: 8px;
-                        height: 8px;
-                        background-color: $color-f;
-                        transform: rotate(45deg);
-                        border-left: 1px solid $border-color;
-                        border-top: 1px solid $border-color;
-                        z-index: 2;
-                    }
-                }
             }
         }
     }
@@ -162,7 +159,6 @@ $highlight-link:$color-main-l1;
         overflow: hidden;
         .header {
             .header-menu-list {
-                visibility: visible;
                 transform: translateX(0);
             }
             .header-overlay {
@@ -189,13 +185,12 @@ $highlight-link:$color-main-l1;
             height: 100vh;
             & > li {
                 width: 100%;
-                &>ul{
-                    height:0;
-                }
-                &.hover {
-                    & > ul {
-                        height:auto;
-                        visibility: visible;
+                height: 3.5rem;
+                transition: height .5s;
+                overflow: hidden;
+                &.hover.list {
+                    & > a:after {
+                        display: block;
                     }
                 }
             }
@@ -223,12 +218,19 @@ $highlight-link:$color-main-l1;
             }
             & > li {
                 flex-shrink: 0;
+                height: fit-content;
                 &:hover {
+                    a {
+                        &:after {
+                            display: block;
+                        }
+                    }
                     & > ul {
                         visibility: visible;
                     }
                 }
                 & > ul {
+                    visibility: hidden;
                     position: absolute;
                     top: 3.5rem;
                     left: 0;
