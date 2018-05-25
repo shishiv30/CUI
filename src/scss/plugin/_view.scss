@@ -1,7 +1,7 @@
 [data-view], [data-view-load] {
     width: 100%;
     overflow: hidden;
-    &[data-direction='x'] {
+    &[data-direction="x"] {
         width: 100%;
         cursor: ew-resize;
          > ul {
@@ -14,12 +14,12 @@
             }
         }
     }
-    &[data-direction='y']  {
+    &[data-direction="y"] {
         height: 100vh;
         cursor: ns-resize;
     }
-    > ul {
-        &.animating{
+     > ul {
+        &.animating {
             pointer-events: none;
             transition: transform .2s ease-in-out;
         }
