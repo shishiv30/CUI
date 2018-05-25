@@ -140,7 +140,7 @@ var fakeNotes = function() {
         heartTo: 793,
         dateFromStr: '2014 - 06 - 20',
         dateTo: '2018-02-14',
-        img: 'dist/src/visual/src/1_Fotor.jpg',
+        img: 'dist/src/visual/src/1_fotor.jpg',
         isFavorite: false
     }, {
         type: 'image',
@@ -148,7 +148,7 @@ var fakeNotes = function() {
         heartTo: 437,
         dateFromStr: '2013 - 11 - 20',
         dateTo: '2016-02-14',
-        img: 'dist/src/visual/src/2_Fotor.jpg',
+        img: 'dist/src/visual/src/2_fotor.jpg',
         isFavorite: false
     }, {
         type: 'image',
@@ -156,7 +156,7 @@ var fakeNotes = function() {
         heartTo: 130,
         dateFromStr: '2011 - 05 - 13',
         dateTo: '2015-07-09',
-        img: 'dist/src/visual/src/3_Fotor.jpg',
+        img: 'dist/src/visual/src/3_fotor.jpg',
         isFavorite: false
     }, {
         type: 'image',
@@ -165,7 +165,7 @@ var fakeNotes = function() {
         dateFrom: '2008-03-15',
         dateFromStr: '2008 - 03 - 15',
         dateTo: '2012-09-05',
-        img: 'dist/src/visual/src/4_Fotor.jpg',
+        img: 'dist/src/visual/src/4_fotor.jpg',
         isFavorite: false
     }, {
         type: 'image',
@@ -174,7 +174,7 @@ var fakeNotes = function() {
         dateFrom: '2005-12-30',
         dateFromStr: '2005 - 12 - 30',
         dateTo: '2006-08-27',
-        img: 'dist/src/visual/src/5_Fotor.jpg',
+        img: 'dist/src/visual/src/5_fotor.jpg',
         isFavorite: false
     }, {
         type: 'image',
@@ -183,7 +183,7 @@ var fakeNotes = function() {
         dateFrom: '2013-07-30',
         dateFromStr: '2013 - 07 - 30',
         dateTo: '2016-11-23',
-        img: 'dist/src/visual/src/6_Fotor.jpg',
+        img: 'dist/src/visual/src/6_fotor.jpg',
         isFavorite: false
     }, {
         type: 'image',
@@ -192,7 +192,7 @@ var fakeNotes = function() {
         dateFrom: '2015-06-21',
         dateFromStr: '2015 - 06 - 21',
         dateTo: '2015-01-23',
-        img: 'dist/src/visual/src/8_Fotor.jpg',
+        img: 'dist/src/visual/src/8_fotor.jpg',
         isFavorite: false
     }, {
         type: 'image',
@@ -201,7 +201,7 @@ var fakeNotes = function() {
         dateFrom: '2015-06-21',
         dateFromStr: '2015 - 06 - 21',
         dateTo: '2015-01-23',
-        img: 'dist/src/visual/src/9_Fotor.jpg',
+        img: 'dist/src/visual/src/9_fotor.jpg',
         isFavorite: false
     }, {
         type: 'image',
@@ -210,7 +210,7 @@ var fakeNotes = function() {
         dateFrom: '2013-07-30',
         dateFromStr: '2013 - 07 - 30',
         dateTo: '2016-11-23',
-        img: 'dist/src/visual/src/10_Fotor.jpg',
+        img: 'dist/src/visual/src/10_fotor.jpg',
         isFavorite: false
     }];
     var notes = [];
