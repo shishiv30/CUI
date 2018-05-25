@@ -159,6 +159,7 @@ $highlight-link: $color-main-l1;
         overflow: hidden;
         .header {
             .header-menu-list {
+                display: flex;
                 transform: translateX(0);
             }
             .header-overlay {
@@ -168,7 +169,7 @@ $highlight-link: $color-main-l1;
     }
     .header {
         .header-menu-list {
-            display: flex;
+            display: none;
             position: fixed;
             top: 3.5rem;
             bottom: 0;
