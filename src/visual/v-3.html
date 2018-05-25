@@ -17,22 +17,33 @@
     <link href="%RootUrl%dist/src/cui.min.css" type="text/css" rel="stylesheet" />
     <link href="%RootUrl%dist/src/visual/src/v-3.min.css" type="text/css" rel="stylesheet" />
 </head>
+<style>
+    .question > li{
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        padding:.5rem;
+        font-size: 1.5rem;
+        line-height: 1.5em;
+    }
+    .question  .radio > * {
+        display: block;
+        margin: 1.5rem 0;
+    }
 
+</style>
 <body>
     <div id="app">
-        <div class="paper form">
-            <ul class="question" data-view data-direction="y"  data-onovertop="notes.overtop" data-onoverbottom="notes.overbottom">
-                <li  v-for="item in questions">
-                    <div class="question-title">{{item.title}}</div>
+        <div id="papertest" class="paper form">
+            <ul class="question">
+                <li  v-for="question in questions" >
                     <div class="radio">
-                        <label v-for="item.id">
-                            <input v-id="item.id" name="item.id" type="radio" checked value="Male">
+                        <div class="question-title">{{question.title}}</div>
+                        <label v-for="answer in question.answers">
+                            <input v-name="question.id" type="radio"  v-value="answer.value" v-on:change='next(question,answer)'>
                             <i></i>
-                            <span>Male</span>
-                        </label><br>
-                    </div>
-                    <div class="" v-for="item">
-
+                            <span>{{answer.text}}</span>
+                        </label>
                     </div>
                 </li>
             </ul>

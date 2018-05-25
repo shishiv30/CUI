@@ -10,6 +10,7 @@ var inital = function() {
         }
     });
     var $body = $('body');
+    '';
     var $container = $('.notes');
     var $navNotes = $('.nav-notes');
     var $topIcon = $('.nav-notes-top .icon-spinner');
