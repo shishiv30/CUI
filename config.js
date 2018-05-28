@@ -6,8 +6,7 @@ module.exports = {
         hostname: 'localhost'
     },
     github: {
-        url: '//localhost:3025/',
-        port: '3025',
-        hostname: 'localhost'
+        url: '//shishiv30.github.io/CUI/',
+        port: '',
     }
 };
