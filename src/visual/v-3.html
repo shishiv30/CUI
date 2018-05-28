@@ -40,7 +40,7 @@
                     <div class="radio">
                         <div class="question-title">{{question.title}}</div>
                         <label v-for="answer in question.answers">
-                            <input v-name="question.id" type="radio"  v-value="answer.value" v-on:change='next(question,answer)'>
+                            <input v-bind:name="question.id" type="radio"  v-bind:value="answer.value" v-on:change='next(question,answer)'>
                             <i></i>
                             <span>{{answer.text}}</span>
                         </label>

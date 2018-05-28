@@ -41,7 +41,7 @@ $highlight-link: $color-main-l1;
                 display: block;
                 width: 5px;
                 height: 5px;
-                background-color: $color-warning;
+                background-color: inherit;
                 border-radius: 50%;
                 position: absolute;
                 top: 15px;
@@ -52,7 +52,7 @@ $highlight-link: $color-main-l1;
             display: none;
             position: absolute;
             top: 0;
-            background: $header-background;
+            background: inherit;
             &.left {
                 left: 0;
                 border-right: $border-color 1px solid;
@@ -68,12 +68,12 @@ $highlight-link: $color-main-l1;
         }
     }
 }
-
 .header-bar {
     display: flex;
     min-width: 320px;
     width: 100%;
     max-width: 460px;
+    align-items: center;
     & > div {
         width: 100%;
         min-width: 1px;
@@ -104,6 +104,7 @@ $highlight-link: $color-main-l1;
     display: flex;
     position: relative;
     z-index: $ui-header-list-index;
+    background-color: inherit;
 }
 .header-menu-list {
     position: relative;
@@ -178,7 +179,7 @@ $highlight-link: $color-main-l1;
             min-width: 200px;
             overflow-y: scroll;
             z-index: 2;
-            background: $header-background;
+            background: inherit;
             flex-wrap: nowrap;
             flex-direction: column;
             transition: all .5s;
@@ -189,9 +190,37 @@ $highlight-link: $color-main-l1;
                 height: 3.5rem;
                 transition: height .5s;
                 overflow: hidden;
+                border-bottom: 1px solid rgba(255,255,255,.1);
+                a {
+                    text-align: left;
+                    padding-left: 1.5rem;
+                    padding-right: 1.5rem;
+                }
+                &.list a:first-of-type {
+                    margin-right: 3.5rem;
+                }
+
+                .header-expand {
+                    background-color: rgba(255,255,255,.2);
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    padding-left: 0;
+                    padding-right: 0;
+                    i {
+                        width: 100%;
+                        transition: transform .25s;
+                    }
+                }
                 &.hover.list {
-                    & > a:after {
-                        display: block;
+                    .header-expand {
+                        i {
+                            transform: rotateZ(-90deg);
+                        }
+                        &:after {
+                            left: calc(100% - 2rem);
+                            display: block;
+                        }
                     }
                 }
             }
