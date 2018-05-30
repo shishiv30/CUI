@@ -60,14 +60,6 @@
         cdnUrl: '%RootUrl%dist/src/',
         googleMapKey: 'key=AIzaSyBtspK44Jc-DabkyA6knFuQ6LSp_8VXZgc'
     };
-
-    navigator.serviceWorker.register(window.context.url + 'sw.js')
-        .then(function(registration) {
-            console.log("Service worker registered, scope: " + registration.scope);
-        })
-        .catch(function(error) {
-            console.log("Service worker registration failed: " + error.message);
-        });
 </script>
 
 </html>
