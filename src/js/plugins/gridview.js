@@ -1,51 +1,10 @@
 //seed code for create a plugin
 //replace all of the "gridview" with the plugin name. (the plugin name should be same as the js file name);
-
 (function ($) {
     var gridviewConfig = {
         name: 'gridview',
         defaultOpt: {
-            items: [{
-                src: 'dist/src/img/ex_1.jpg',
-                height: 640,
-                width: 400
-            }, {
-                src: 'dist/src/img/ex_2.jpg',
-                height: 250,
-                width: 400
-            }, {
-                src: 'dist/src/img/ex_3.jpg',
-                height: 250,
-                width: 400
-            }, {
-                src: 'dist/src/img/ex_4.jpg',
-                height: 640,
-                width: 400
-            }, {
-                src: 'dist/src/img/ex_5.jpg',
-                height: 250,
-                width: 400
-            }, {
-                src: 'dist/src/img/ex_6.jpg',
-                height: 250,
-                width: 400
-            }, {
-                src: 'dist/src/img/ex_7.jpg',
-                height: 640,
-                width: 400
-            }, {
-                src: 'dist/src/img/ex_8.jpg',
-                height: 250,
-                width: 400
-            }, {
-                src: 'dist/src/img/ex_9.jpg',
-                height: 250,
-                width: 400
-            }, {
-                src: 'dist/src/img/ex_1.jpg',
-                height: 640,
-                width: 400
-            }],
+            items: [],
             target: null,
             container: null,
             template: '<img alt="demo image">',
@@ -70,9 +29,9 @@
             var _getColumnByBreakPoint = function (newBreakPoint) {
                 opt.breakpoint = newBreakPoint || opt.breakpoint;
                 var containerWidth = $this.width();
-                if (opt.breakpoint && opt.breakpoint.length) {
+                if(opt.breakpoint && opt.breakpoint.length) {
                     return opt.breakpoint.reduce(function (pre, next) {
-                        if (containerWidth > next) {
+                        if(containerWidth > next) {
                             return pre + 1;
                         } else {
                             return pre;
@@ -83,7 +42,7 @@
             };
             var _getSmallestColumn = function (array) {
                 return array.reduce(function (pre, next) {
-                    if (pre) {
+                    if(pre) {
                         return pre.data('ratio') <= next.data('ratio') ? pre : next;
                     } else {
                         return next;
@@ -93,7 +52,7 @@
             var _createColumns = function (count) {
                 var columns = [];
                 var columnswidth = (100 / count) + '%';
-                while (count > 0) {
+                while(count > 0) {
                     var $ul = $('<ul class="gridview-ul"></ul>').css({
                         width: columnswidth
                     });
@@ -120,7 +79,7 @@
                     var $item = $(item);
                     var offsetTop = $item.offset().top;
                     var offsetBottom = offsetTop + $item.outerHeight();
-                    if (offsetTop < positionInfo.scrollBottom && offsetBottom > positionInfo.scrollTop) {
+                    if(offsetTop < positionInfo.scrollBottom && offsetBottom > positionInfo.scrollTop) {
                         var src = $item.data('src');
                         var $img = $item.find('img');
                         $item.addClass('gridview-loading');
@@ -143,19 +102,19 @@
                 });
                 var needMove = false;
                 var minHeight = $this.height() - Math.min.apply(this, heightList);
-                if (isScrollDown) {
+                if(isScrollDown) {
                     minHeight = !verticalBottom ? minHeight : 0;
-                    if (positionInfo.scrollTop > (positionInfo.offsetTop + minHeight) && positionInfo.scrollBottom < positionInfo.offsetBottom) {
+                    if(positionInfo.scrollTop > (positionInfo.offsetTop + minHeight) && positionInfo.scrollBottom < positionInfo.offsetBottom) {
                         needMove = true;
                     }
                 } else {
                     minHeight = verticalBottom ? minHeight : 0;
-                    if (positionInfo.scrollTop > positionInfo.offsetTop && positionInfo.scrollBottom < (positionInfo.offsetBottom - minHeight)) {
+                    if(positionInfo.scrollTop > positionInfo.offsetTop && positionInfo.scrollBottom < (positionInfo.offsetBottom - minHeight)) {
                         needMove = true;
                     }
                 }
-                if (needMove) {
-                    if (isScrollDown) {
+                if(needMove) {
+                    if(isScrollDown) {
                         $this.removeClass('scrollUP');
                         var containerHeight = $this.height();
                         $this.find('.gridview-ul').each(function (index, item) {
@@ -173,7 +132,6 @@
                         $this.removeClass('verticalBottom');
                     }
                 }
-
             };
             var _render = function () {
                 var ulList = _createColumns(opt.colCount);
@@ -192,12 +150,12 @@
                 _loadImage();
             };
             var _reload = function (force) {
-                if (force) {
+                if(force) {
                     opt.colCount = -1;
                 }
-                if (opt.items && opt.items.length) {
+                if(opt.items && opt.items.length) {
                     var newColCount = _getColumnByBreakPoint();
-                    if (opt.colCount !== newColCount) {
+                    if(opt.colCount !== newColCount) {
                         opt.colCount = newColCount;
                         _render();
                     }
@@ -211,16 +169,13 @@
                 positionInfo = currentPositionInfo;
                 _moveByScroll(isDown);
                 _loadImage();
-            },50));
-
+            }, 50));
             window.addEventListener('resize', function () {
                 positionInfo = _getpositionInfo();
                 _reload();
             }, true);
         },
-        exports: {
-
-        },
+        exports: {},
         setOptionsBefore: null,
         setOptionsAfter: null,
         initBefore: null,
