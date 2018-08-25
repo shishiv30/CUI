@@ -40,8 +40,7 @@ var questions = [{
         value: 'D',
         text: '如果是大爷违规在先,该怎么罚就怎么罚,至于愿不愿意原谅大爷是人家自己的事,我就不评论了',
         map: ['Reason', 'ego']
-    }
-    ]
+    }]
 }, {
     id: 'q2',
     title: '你是否相信鬼神',
@@ -91,35 +90,27 @@ var questions = [{
     }
     ]
 }];
-
-var inital = function() {
+var inital = function () {
     $(document).trigger('cui.inital');
-    var papertest = $('#papertest').data('view');
-    var index = 0;
-    var noteHeight = $('.note-item').outerHeight();
-    var next = window.next = function() {
-        go(++index);
-    };
-    var prev = window.prev = function() {
-        go(--index);
-    };
 };
 new window.Vue({
     el: '#app',
     data: {
-        notes: questions,
-        comment: scroe,
+        questions: questions,
         result: {}
     },
-    mounted: function() {
-        setTimeout(function() {
+    mounted: function () {
+        setTimeout(function () {
             inital();
         }, 1);
     },
     methods: {
-        next: function(q, a) {
+        next: function (q, a, index) {
             this.result[q.id] = a.map;
-            window.next();
+            var nextIndex = index + 1;
+            if(this.questions.length > nextIndex) {
+                location.href = ('#' + this.questions[nextIndex].id);
+            }
         }
     }
 });
