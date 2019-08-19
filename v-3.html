@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>The Answer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-control" content="public">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta description='the note UI base on CUI framework' />
+    <meta name="Description" content="Author: Conjee Zou, note">
+    <meta name="background-color" content="#333333">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="manifest" href="//shishiv30.github.io/CUI/dist/src/visual/src/v-1.json">
+    <link rel="shortcut icon" href="//shishiv30.github.io/CUI/favicon.ico" type="image/x-icon">
+    <link href="//shishiv30.github.io/CUI/dist/src/cui.min.css" type="text/css" rel="stylesheet" />
+    <link href="//shishiv30.github.io/CUI/dist/src/visual/src/v-3.min.css" type="text/css" rel="stylesheet" />
+</head>
+<style>
+    .paper{
+        overflow:hidden;
+        position:relative;
+    }
+    .question > li{
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        padding:.5rem;
+        font-size: 1.5rem;
+        line-height: 1.5em;
+    }
+    .question  .radio > * {
+        display: block;
+        margin: 1.5rem 0;
+    }
+
+</style>
+<body>
+    <div id="app">
+        <div id="papertest" class="paper form">
+            <ul class="question">
+                <li  v-for="(question, index) in questions" v-bind:id="question.id" >
+                    <div class="radio">
+                        <div class="question-title">{{question.title}}</div>
+                        <label v-for="answer in question.answers">
+                            <input v-bind:name="question.id" type="radio"  v-bind:value="answer.value" v-on:change='next(question,answer,index)'>
+                            <i></i>
+                            <span>{{answer.text}}</span>
+                        </label>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="//shishiv30.github.io/CUI/dist/src/cui.lib.min.js" type="text/javascript"></script>
+<script src="//shishiv30.github.io/CUI/dist/src/cui.min.js" type="text/javascript"></script>
+<script src="//shishiv30.github.io/CUI/dist/src/visual/src/vue.js" type="text/javascript"></script>
+<script src="//shishiv30.github.io/CUI/dist/src/visual/src/v-3.js" type="text/javascript"></script>
+<script>
+    window.context = {
+        url: '//shishiv30.github.io/CUI/',
+        cdnUrl: '//shishiv30.github.io/CUI/dist/src/',
+        googleMapKey: 'key=AIzaSyBtspK44Jc-DabkyA6knFuQ6LSp_8VXZgc'
+    };
+</script>
+
+</html>

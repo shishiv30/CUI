@@ -1,0 +1,29 @@
+{
+    "short_name": "Note UI",
+    "name": "Note UI",
+    "icons": [{
+            "src": "https://shishiv30.github.io/CUI/dist/src/doc/src/launcher-icon-1x.png",
+            "type": "image/png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "https://shishiv30.github.io/CUI/dist/src/doc/src/launcher-icon-2x.png",
+            "type": "image/png",
+            "sizes": "96x96"
+        },
+        {
+            "src": "https://shishiv30.github.io/CUI/dist/src/doc/src/launcher-icon-4x.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },{
+            "src": "https://shishiv30.github.io/CUI/dist/src/doc/src/launcher-icon-6x.png",
+            "type": "image/png",
+            "sizes": "768x768"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#333333",
+    "display": "fullscreen",
+    "scope_url": "https://shishiv30.github.io/CUI/v-1.html",
+    "start_url": "https://shishiv30.github.io/CUI/v-1.html"
+}

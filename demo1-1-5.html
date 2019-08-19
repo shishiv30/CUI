@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Demo1</title>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport' />
+    <link href="//shishiv30.github.io/CUI/dist/src/cui.min.css" type="text/css" rel="stylesheet" />
+    <link href="//shishiv30.github.io/CUI/dist/src/demo1/src/demo1.css" type="text/css" rel="stylesheet" />
+</head>
+<style>
+    body {
+        background: #fff;
+    }
+
+    .tip {
+        position: relative;
+        text-align: center;
+    }
+
+    .tip.img {
+        padding: 15px
+    }
+
+    .tip.img img {
+        height: 90px;
+        width: 90px;
+        border-radius: 50%;
+        border: 3px solid #aaa;
+        margin-bottom: 30px;
+    }
+
+    .tip .img-title {
+        position: absolute;
+        line-height: 1.5rem;
+        font-size: 1.5rem;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .tip.date {
+        min-height: 150px;
+        max-width: 150px;
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+        background-color: #eee;
+    }
+
+    .tip.date:after {
+        content: '';
+        display: block;
+        top: 0;
+        bottom: 50%;
+        left: 0;
+        right: 0;
+        background-color: #333;
+        position: absolute;
+        opacity: .3;
+    }
+
+    .tip-label {
+        color: #fff;
+        font-size: 1.2rem;
+        line-height: 3rem;
+        position: relative;
+        z-index: 2;
+    }
+
+    .tip-number {
+        font-size: 6rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        text-shadow: 0 0 2px darkgreen;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    .tip-desc {
+        width: 100%;
+        position: absolute;
+        bottom: 5px;
+        white-space: nowrap;
+        left: 0;
+        right: 0;
+    }
+
+    .link-video {
+        display: block;
+        position: relative;
+    }
+
+    .link-video i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        display: block;
+        color: #fff;
+        background: #333;
+        border-radius: 50%;
+        z-index: 2;
+        opacity: .9;
+        font-size: 120px;
+        height: 120px;
+        line-height: 120px;
+        width: 120px;
+        background:
+    }
+
+    .link-video-title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        height: 1.5em;
+        line-height: 1.5em;
+        text-align: center;
+    }
+
+    .slicker {
+        height: 50vw;
+    }
+
+    .content-panel {
+        text-align: center;
+        display: flex;
+        min-height: 150px;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 30px;
+    }
+
+    @media(max-width:768px) {
+        .content-panel {
+            padding: 15px;
+        }
+    }
+
+    .content-panel.highlight {
+        background: darkgreen;
+        color: #eee;
+    }
+
+    .content-list li {
+        line-height: 2em;
+        text-align: left;
+    }
+
+    .content-list li.link {
+        color: inherit;
+        text-align: right;
+    }
+
+    .dropdown-button {
+        margin: 5px 0;
+    }
+
+    .footer {
+        padding: 30px 0;
+
+        text-align: center;
+        line-height: 2em;
+        background: #eee;
+        border-top: 1px solid #fff;
+    }
+
+    .linklist li {
+        line-height: 2em;
+    }
+
+    .welcomeimg {
+        width: 100%;
+        max-height: calc(100vh - 250px);
+        object-fit: cover;
+    }
+
+    .info-card {
+        margin-bottom: 30px;
+        line-height: 2em;
+    }
+
+    .info-card img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+    }
+
+    .article {
+        margin: 30px;
+        line-height: 2em;
+    }
+
+    .article .h2 {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+        background: #f0f0f0;
+    }
+
+    .article .h2>div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: calc(100% - 100px);
+        border-bottom: 1px solid #ddd;
+        text-align: right;
+    }
+
+    .article sub {
+        background: #333;
+        color: #fff;
+        padding: 5px;
+        border-radius: 6px;
+        position: absolute;
+        left: 50px;
+        bottom: 5px;
+        font-size: 12px;
+    }
+
+    .article img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 1px solid #ddd;
+        object-fit: cover;
+        display: inline-block;
+    }
+
+    .ch .hidden-ch {
+        display: none;
+    }
+
+    .en .hidden-en {
+        display: none;
+    }
+
+    .table-scroll table thead {
+        background: #eee;
+    }
+
+    .table-scroll table td {
+        padding: 15px;
+    }
+
+    .table-scroll table tbody tr:nth-child(even) {
+        background: #f4f4f4;
+    }
+</style>
+
+<body id="body" class="classic ch">
+    <style>
+    .header .header-logo{
+        padding: 0 1rem;
+        flex-shrink: 1;
+        width: 16rem;
+    }
+    .header .header-logo img{
+        height:100%;
+    }
+    .header a.header-scroll-link{
+
+    }
+</style>
+<div data-header class="header" style="background-color:black">
+    <div class="header-bar">
+        <a class="header-logo" href="//shishiv30.github.io/CUI/demo1.html"  class="f2"> <img src="//shishiv30.github.io/CUI/dist/src/demo1/src/logo_black.png" alt="logo"></a>
+        <div>Chase Dream With You, Together!</div>
+    </div>
+    <div class="header-nav">
+        <ul class="header-menu-list">
+            <li class="list">
+                <a href="//shishiv30.github.io/CUI/demo1-1.html">
+                    <div class="hidden-ch">WHY NZ</div>
+                    <div class="hidden-en">选择新西兰</div>
+                </a>
+                <ul>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-1-1.html">Student Stories</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-1-1.html">学生故事</a></li>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-1-2.html">Dunedin in NZ</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-1-2.html">新西兰之达尼丁</a></li>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-1-3.html">QLiving in NZ</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-1-3.html">生活在新西兰</a></li>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-1-4.html">Education System</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-1-4.html">新西兰教育体系</a></li>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-1-5.html">Information for Parents</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-1-5.html">父母指南</a></li>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-1-7.html">Quality and Standards</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-1-7.html">教育质量与标准</a></li>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-1-7.html">Work Ready</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-1-7.html">事业规划</a></li>
+                </ul>
+            </li>
+            <li class="list">
+                <a href="//shishiv30.github.io/CUI/demo1-2.html">
+                    <div class="hidden-ch">STUDY TOUR </div>
+                    <div class="hidden-en">游学新西兰</div>
+                </a>
+                <ul>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-2-1.html">What is Study Tour</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-2-1.html">学生故事</a></li>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-2-2.html">Why to Have A Study Tour</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-2-2.html">为什么选择游学</a></li>
+                    <li class="hidden-ch highlight"><a href="//shishiv30.github.io/CUI/demo1-2-3.html">Study Tour</a></li>
+                    <li class="hidden-en highlight"><a href="//shishiv30.github.io/CUI/demo1-2-3.html">游学项目</a></li>
+                </ul>
+            </li>
+            <li class="list">
+                <a href="//shishiv30.github.io/CUI/demo1-3.html">
+                    <div class="hidden-ch">STUDY OPTION </div>
+                    <div class="hidden-en">留学新西兰</div>
+                </a>
+                <ul>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-3-1.html">Schools</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-3-1.html">新西兰初高中</a></li>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-3-2.html">Study Trusteeship</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-3-2.html">留学托管</a></li>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-3-3.html">Universities</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-3-3.html">新西兰大学</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="//shishiv30.github.io/CUI/demo1-4.html">
+                    <div class="hidden-ch">LIVING IN NZ </div>
+                    <div class="hidden-en">探索新西兰</div>
+                </a>
+            </li>
+            <li class="right">
+                <a href="javascript:;" class="hidden-en link-en">English</a>
+                <a href="javascript:;" class="hidden-ch link-ch">中文</a>
+            </li>
+        </ul>
+        <a href="javascript:;" class=" header-switch-link f2"><i class="icon-bars"></i></a>
+    </div>
+</div>
+
+
+
+<div class="content-panel">
+    <div>
+        <div class="h3">
+            <span class="hidden-ch">Information for Parents</span>
+            <span class="hidden-en">父母指南</span>
+        </div>
+        <p class="hidden-ch">Give your child the opportunity to gain a world-class education, making lifelong friendship and learn new ways of thinking! </p>
+        <p class="hidden-en">给孩子一个获得世界一流的教育、陪伴终身的友谊以及创新的思考方式的机会。</p>
+    </div>
+</div>
+<img src="//shishiv30.github.io/CUI/dist/src/demo1/src/a15-1.jpg" alt="a14-1" class="welcomeimg">
+
+<div class="content-panel">
+    <div>
+        <div class="h3">
+            <span class="hidden-ch">World-class Education </span>
+            <span class="hidden-en">世界级的教育水准</span>
+        </div>
+        <p class="hidden-ch">The flexible, supportive New Zealand education system gives students the skills and experience they need to succeed anywhere in the world.</p>
+        <p class="hidden-en">新西兰的教育体制，灵活而又对学生充满关怀和支持，帮助学生获得伴其终身的技能和受用终身的经历，并能在世界范围内收获成功。</p>
+        <p class="hidden-ch">Students gain the ability to work well with people from different cultures and backgrounds, and learn English by living it - not just by learning it from a textbook.</p>
+        <p class="hidden-en">在新西兰，孩子可以培养跨文化的合作技能，且让英语文化扎根其内，而非仅仅学习书本知识。</p>
+    </div>
+</div>
+<img src="//shishiv30.github.io/CUI/dist/src/demo1/src/a15-2.jpg" alt="a14-1" class="welcomeimg">
+
+<div class="content-panel">
+    <div>
+        <div class="h3">
+            <span class="hidden-ch">Safe & Welcome </span>
+            <span class="hidden-en">安全&好客</span>
+        </div>
+        <p class="hidden-ch">Safe, politically stable and culturally diverse, New Zealand is ranked one of the most peaceful and least corrupt countries in the world.</p>
+        <p class="hidden-en">新西兰因其社会安全性、政治稳定性以及文化多样性，被评为世界最和平、最不腐败的国家之一。</p>
+        <p class="hidden-ch">We have a high standard of living, clean air, a healthy lifestyle and quality food and accommodation. </p>
+        <p class="hidden-en">新西兰拥有高质量的生活质量标准、清新干净的空气、健康的生活方式以及高质量的食物供给、居住环境。</p>
+        <p class="hidden-ch">Homestays welcome students into a Kiwi family, while institutions provide pastoral care to help students feel happy and well-supported. </p>
+        <p class="hidden-en">新西兰的寄宿家庭热情地欢迎国际生融入Kiwi家庭，同时政府以及相关机构还会为国际生提供支持和帮助，以保证国际上能在新西兰快乐地学习和生活。</p>
+    </div>
+</div>
+<img src="//shishiv30.github.io/CUI/dist/src/demo1/src/a15-3.jpg" alt="a14-1" class="welcomeimg">
+
+<div class="content-panel">
+    <div>
+        <div class="h3">
+            <span class="hidden-ch">Personal Development </span>
+            <span class="hidden-en">个人的发展</span>
+        </div>
+        <p class="hidden-ch">Studying in New Zealand is an opportunity for personal growth and development.</p>
+        <p class="hidden-en">在新西兰锻炼自我、发展自我</p>
+        <p class="hidden-ch">Gaining skills such as punctuality, time management and confidence help students to become successful and independent adults.</p>
+        <p class="hidden-en">在这里，孩子将成长为一个守时、善于时间管理、充满自信的人才。</p>
+        <p class="hidden-ch">Your son or daughter can experience another culture, have new adventures and make lifelong friendships in one of the world’s cleanest, most beautiful natural environments.</p>
+        <p class="hidden-en">在这里，您的孩子将感受另一种文化、开展一段人生旅程、收获陪伴终身的友谊。</p>
+    </div>
+</div>
+
+<div class="content-panel">
+    <div>
+        <div class="h3">
+            <span class="hidden-ch">Career Success </span>
+            <span class="hidden-en">事业的成功</span>
+        </div>
+        <p class="hidden-ch">The New Zealand education system’s practical, hands-on learning style gives students a head start in the workforce.</p>
+        <p class="hidden-en">新西兰的教育体制保证学生的实践能力的成长，为孩子的职业之路奠定坚实的基础。</p>
+        <p class="hidden-ch">Graduates gain internationally-recognised qualifications and valuable personal skills such as the ability to think critically, communicate well and lead a team; a well-rounded combination valued by global employers.  </p>
+        <p class="hidden-en">完成高等教育的学子将获得被国际认可的教育资历以及宝贵的个人技能，如辩证的思考能力、出色的沟通能力以及组织领导能力。而这些技能正是获得职业成功的道路。</p>
+        <p class="hidden-ch">New Zealand universities and other institutions have a high graduate employment rate, and students may be able to work here after graduation.</p>
+        <p class="hidden-en">在新西兰，大学生拥有极高的就业率。您和您的孩子还可以考虑就业新西兰。</p>
+    </div>
+</div>
+
+<div class="content-panel">
+    <div>
+        <div class="h3">
+            <span class="hidden-ch">Hear From Parents </span>
+            <span class="hidden-en">来自父母的心声</span>
+        </div>
+        <p class="hidden-ch">Making new friendships, becoming part of a Kiwi family, learning to surf - students studying abroad have experiences they’ll remember forever. Read parents’ stories of their children’s adventures in New Zealand. </p>
+        <p class="hidden-en">在新西兰，认识新的朋友、成为Kiwi家庭的一分子、学会冲浪…组成了孩子宝贵而又难忘的留学生活的一部分。 听一听父母关于孩子在新西兰学习生活的心声。</p>
+    </div>
+</div>
+
+<ul>
+    <li>
+        <p class="hidden-ch">Real-world learning in New Zealand </p>
+        <p class="hidden-en">一位来自中国的母亲，还原一个真实的新西兰。</p>
+        <a src="https://youtu.be/z1226MwNKDw" target="_blank"><i class="icon-play"></i></a>
+    </li>
+    <li>
+        <p class="hidden-ch">Meet a mother from Japan </p>
+        <p class="hidden-en">来自日本的母亲，讲述她的儿子在新西兰学习的故事。</p>
+        <a src="https://youtu.be/1WE9Ev1iFzs" target="_blank"><i class="icon-play"></i></a>
+    </li>
+    <li>
+        <p class="hidden-ch">Meet a mother from Korea </p>
+        <p class="hidden-en">来自韩国的妈妈，分享属于她的小孩的故事。</p>
+        <a src="https://youtu.be/6bHdRW7jR1E" target="_blank"><i class="icon-play"></i></a>
+    </li>
+    <li>
+        <p class="hidden-ch">Meet a mother from Vietnam </p>
+        <p class="hidden-en">来自越南的母亲，讲述她的儿子在新西兰学习的故事。</p>
+        <a src="https://youtu.be/Rjz5XRnwXuE" target="_blank"><i class="icon-play"></i></a>
+    </li>
+    <li>
+        <p class="hidden-ch">Meet a father from Thailand </p>
+        <p class="hidden-en">来自泰国的父亲，讲述他的小孩在新西兰学习的故事。</p>
+        <a src="https://youtu.be/Z38L3ZKYdaM" target="_blank"><i class="icon-play"></i></a>
+    </li>
+    <li>
+        <p class="hidden-ch">Gain independence with a New Zealand education</p>
+        <p class="hidden-en">在新西兰的收获。</p>
+        <a src="https://youtu.be/7DfL6yq4MAQ" target="_blank"><i class="icon-play"></i></a>
+    </li>
+</ul>
+<div class="gs-sin footer">
+    <div class="row text-center">
+        <div class="col-xs-12 col-sm-4">
+            <p class="h4"><span class="hidden-ch">ABOUT DREAM CHASER</span> <span class="hidden-en">合作伙伴</span></p>
+            <ul>
+                <li>
+                    <img src="//shishiv30.github.io/CUI/dist/src/demo1/src/nz-logo.png" alt="logo" style="height:40px;">
+                </li>
+                <li>
+                    <a href="//shishiv30.github.io/CUI/demo1-6.html"><img src="//shishiv30.github.io/CUI/dist/src/demo1/src/logo.jpg" alt="logo" style="height:40px;"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <p class="h4"><span class="hidden-ch">OPTION FOR STUDY TOUR</span><span class="hidden-en">游学分类</span></p>
+                <ul>
+                    <li><a class="link" href="#"><span class="hidden-ch">Primary School</span><span class="hidden-en">10岁以下小学游学</span></a></li>
+                    <li><a class="link" href="#"><span class="hidden-ch">Intermediate</span><span class="hidden-en">初中生游学</span></a></li>
+                    <li><a class="link" href="#"><span class="hidden-ch">High School</span><span class="hidden-en">高中生游学</span></a></li>
+                </ul>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <p class="h4"><span class="hidden-ch">CONTACT US</span> <span class="hidden-en">联系我们</span></p>
+            <ul>
+                <li><img src="//shishiv30.github.io/CUI/dist/src/demo1/src/code.jpg" alt="code id" style="height:80px;"></li>
+            </ul>
+        </div>
+    </div class="row text-center">
+</div>
+</body>
+<script>
+    window.context = {
+        url: '//shishiv30.github.io/CUI/',
+        cdnUrl: '//shishiv30.github.io/CUI/dist/src/',
+        googleMapKey:'key=AIzaSyBtspK44Jc-DabkyA6knFuQ6LSp_8VXZgc'
+    };
+</script>
+<script src="//shishiv30.github.io/CUI/dist/src/cui.lib.min.js" type="text/javascript"></script>
+<script src="//shishiv30.github.io/CUI/dist/src/cui.min.js" type="text/javascript"></script>
+<script>
+    $(document).trigger('cui.inital');
+    $('.link-en').click(function(){
+        $('body').removeClass('ch');
+        $('body').addClass('en');
+    });
+    $('.link-ch').click(function(){
+        $('body').removeClass('en');
+        $('body').addClass('ch');
+    });
+</script>
+</html>
+

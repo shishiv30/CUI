@@ -1,0 +1,335 @@
+@mixin only-landscape() {
+    body {
+        &.landscape {
+            @content;
+        }
+    }
+}
+
+@mixin only-portrait() {
+    body {
+        &.portrait {
+            @content;
+        }
+    }
+}
+
+
+html, body {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+body {
+    &.load {
+        .nav-notes {
+            background-color: #444444;
+            i {
+                transform: none!important;
+                color: #333333;
+            }
+        }
+    }
+}
+
+.nav-notes {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 50px;
+    background-color: #cccccc;
+    transition: background-color .5s .5s ease-in-out;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+     > a {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+        &:first-of-type {
+            flex-direction: column;
+        }
+        &:last-of-type {
+            flex-direction: column-reverse;
+        }
+         > i {
+            font-size: 5rem;
+            transition: color .5s ease-in-out;
+        }
+         > span {
+            font-size: 1.5rem;
+            color: #eeeeee;
+        }
+    }
+}
+.notes {
+    width: 100%;
+    &.detail {
+        .note-item {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            background: #333333;
+            color: #ffffff;
+            overflow: hidden;
+            border-top: 1px solid #eeeeee;
+            border-bottom: 1px solid #eeeeee;
+            position: relative;
+            &:after {
+                opacity: .8;
+                transition: opacity .5s .5s ease-in-out;
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(circle, transparent 50%, transparent 50%),
+                radial-gradient(circle, transparent 20%, #331f04 60%) 30px 30px;
+                background-size: 4px 4px;
+                z-index: 1;
+            }
+            &.active {
+                &:after {
+                    opacity: 0;
+                }
+            }
+        }
+        .note-item-content {
+            transition: opacity .5s .5s  ease-in-out;
+            opacity: 0;
+            position: relative;
+             > img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .note-item-label {
+            transition: opacity .5s ease-in-out, height .5s ease-in-out, width .5s ease-in-out;
+            z-index: 2;
+            right: 0;
+            top: 0;
+            display: block;
+            background: inherit;
+            color: inherit;
+            line-height: 2em;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+             > div {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+             > a {
+                flex-shrink: 0;
+                padding: 0 5px;
+                min-width: 40px;
+                 > i,  > span {
+                    width: 100%;
+                    display: inline-block;
+                    text-align: center;
+                    line-height: 25px;
+                }
+            }
+            .checked .icon-heart, .icon-heart:hover {
+                color: red;
+            }
+            .checked .icon-comment, .icon-comment:hover {
+                color: green;
+            }
+        }
+    }
+    &.list {
+        .note-item {
+            width: 100%;
+            height: 120px;
+            position: relative;
+            background: #333333;
+            color: #ffffff;
+            overflow: hidden;
+            border-top: 1px solid #eeeeee;
+            border-bottom: 1px solid #eeeeee;
+            position: relative;
+            display: flex;
+            flex-direction: row-reverse;
+        }
+        .note-item-label{
+            width:100%;
+            margin-left: 7.5px;
+            min-width: 1px;
+            .f4{
+                line-height: 80px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                width: 100%;
+                display: inline-block;
+            }
+            a{
+                display: inline-block;
+                margin: 0 7.5px;
+                font-size: 1rem;
+            }
+        }
+        .note-item-content{
+            height:120px;
+            width: 120px;
+            flex-shrink: 0;
+            img{
+                height: 100%;
+                width:100%;
+                object-fit: cover;
+            }
+        }
+    }
+}
+.notes{
+    &.detail{
+        .note-item-content {
+            opacity: 1;
+        }
+    }
+}
+@include only-portrait{
+    .notes{
+        &.detail {
+            .note-item-content {
+                width: 100vw;
+                height: 61.8vw;
+                position: absolute;
+                bottom: 0;
+            }
+            .note-item-label {
+                left: 0;
+                height: calc(100vh - 61.8vw);
+                min-height: 70px;;
+                flex-direction: row;
+                border-bottom: 2px solid #eeeeee;
+                position: relative;
+            }
+            .load.active {
+                .note-item-label {
+                    height: calc(100vh - 161.8vw);
+                }
+            }
+            .load.y.active {
+                .note-item-content {
+                    height: 161.8vw;
+                }
+            }
+            .load.x.active {
+                .note-item-content {
+                    transform: rotateZ(-90deg);
+                    height: 100vw;
+                    width: 161.8vw;
+                    transform-origin: 50vw 50%;
+                }
+            }
+        }
+    }
+}
+@include only-landscape{
+    .notes{
+        &.detail {
+            .note-item-content {
+                width: 61.8vh;
+                height: 100vh;
+            }
+            .note-item-label {
+                width: calc(100vw - 61.8vh);
+                min-width: 120px;
+                height: 100vh;
+                top: 0;
+                flex-direction: column;
+                border-left: 2px solid #eeeeee;
+                position: absolute;
+            }
+            .load.active {
+                .note-item-label {
+                    width: calc(100vw - 161.8vh);
+                }
+            }
+            .load.y.active {
+                .note-item-content {
+                    transform: rotateZ(-90deg);
+                    width: 100vh;
+                    height: 161.8vh;
+                    transform-origin: 50% 50vh;
+                }
+            }
+            .load.x.active {
+                .note-item-content {
+                    height: 100vh;
+                    width: 161.8vh;
+                }
+            }
+            .note-item-label > div {
+                writing-mode: tb;
+            }
+        }
+    }
+}
+.comment-shown {
+    overflow: hidden;
+    .note {
+        pointer-events: none;
+    }
+    .comment {
+        top: 0;
+    }
+}
+.comment {
+    background: rgba(0,0,0,.8);
+    height: 100vh;
+    top: -100vh;
+    width: 100vw;
+    position: fixed;
+    color: #ffffff;
+    position: fixed;
+    z-index: 20;
+    transition: top .5s ease-in-out;
+    overflow-y: scroll;
+    > ul {
+        > li {
+            line-height: 4em;
+            padding: 0 15px;
+            border-bottom: 1px solid;
+            display: flex;
+            justify-content: space-between;
+            a {
+                width: 30px;
+                color: inherit;
+                flex-shrink: 0;
+                &.text {
+                    flex-shrink: 1;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .comment-input {
+        position: sticky;
+        top: 0;
+        .input {
+            margin: -1px;
+            width: 100%;
+            line-height: 1em;
+            background: #000000;
+            color: #ffffff;
+            input {
+                border-radius: 0;
+                color: inherit;
+                background: transparent;
+            }
+        }
+    }
+}

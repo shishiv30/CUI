@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Golden Layout</title>
+    <meta charset="UTF-8">
+    <link href="//shishiv30.github.io/CUI/dist/src/cui.min.css" type="text/css" rel="stylesheet" />
+    <style>
+        .gr-list div {
+            color: #000;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+        .gr-list>div:first-child {
+            background: rgba(255,0,0,0.6);
+        }
+
+        .gr-list>div:last-child {
+            background: rgba(0,255,0,0.6);
+        }
+
+        .gr-list>div>div:first-child {
+            background: rgba(255,255,0,0.6);;
+        }
+
+        .gr-list>div>div:last-child {
+            background: rgba(0,255,255,0.6);;
+        }
+
+        .gr-list>div>div>div:first-child {
+            background: rgba(230,230,230,0.6);
+        }
+
+        .gr-list>div>div>div:last-child {
+            background:rgba(200,200,200,0.6);;
+        }
+    </style>
+</head>
+<body>
+    <div class="gs-fixed">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="gr-panel">
+                    <div class="gr-list">
+                        <div class="gr-item" >
+                            <div class="gr-item">
+                                <div class="gr-item"></div>
+                                <div class="gr-item"></div>
+                            </div>
+                            <div class="gr-item">
+                                <div class="gr-item"></div>
+                                <div class="gr-item"></div>
+                            </div>
+                        </div>
+                        <div class="gr-item">
+                            <div class="gr-item">
+                                <div class="gr-item">which always equal increste rate of width</div>
+                                <div class="gr-item">the responsive layout will have a limitation of height</div>
+                            </div>
+                            <div class="gr-item">
+                                <div class="gr-item"></div>
+                                <div class="gr-item"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="//shishiv30.github.io/CUI/dist/src/cui.lib.min.js" type="text/javascript"></script>
+<script src="//shishiv30.github.io/CUI/dist/src/cui.min.js" type="text/javascript"></script>
+<script>
+    window.context = {
+        url: '//shishiv30.github.io/CUI/',
+        cdnUrl: '//shishiv30.github.io/CUI/dist/src/',
+        googleMapKey: 'key=AIzaSyBtspK44Jc-DabkyA6knFuQ6LSp_8VXZgc'
+    };
+</script>
+</html>

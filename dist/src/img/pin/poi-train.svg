@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 20.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="DPP-PIN-MARKER" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 48 64" style="enable-background:new 0 0 48 64;" width="24" height="36" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+	.st1{fill:#F26223;}
+	.st2{fill:none;stroke:#F26223;stroke-width:2;stroke-miterlimit:10;}
+	.st3{fill:none;stroke:#F26223;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;}
+</style>
+<g>
+	<g>
+		<path class="st0" d="M6.9,35.76c-2.89-3.84-4.4-8.35-4.4-13.11c0-11.98,9.74-21.72,21.72-21.72c11.98,0,21.72,9.74,21.72,21.72
+			c0,4.52-1.38,8.86-3.99,12.54L24.24,62.11L6.9,35.76z"/>
+	</g>
+	<g>
+		<path class="st1" d="M24.22,1.93c11.43,0,20.72,9.3,20.72,20.72c0,4.31-1.32,8.45-3.83,11.99l-0.03,0.05l-16.84,25.6L7.74,35.21
+			l-0.07-0.1C4.94,31.49,3.5,27.19,3.5,22.65C3.5,11.22,12.8,1.93,24.22,1.93 M24.22-0.07C11.7-0.07,1.5,10.12,1.5,22.65
+			c0,4.97,1.58,9.7,4.56,13.66l18.17,27.62l18.51-28.14l0.01-0.02c2.73-3.85,4.18-8.39,4.18-13.12
+			C46.94,10.12,36.75-0.07,24.22-0.07L24.22-0.07z"/>
+	</g>
+</g>
+<g>
+	<g>
+		<path class="st2" d="M18.16,11.52c0,0.44,2.01,2.27,5.84,2.27s5.84-1.82,5.84-2.27S18.16,11.07,18.16,11.52z"/>
+	</g>
+	<path class="st2" d="M33.38,29.06H14.62c-1.3,0-2.36-1.05-2.36-2.36V13.36c0-1.3,1.05-2.36,2.36-2.36h18.76
+		c1.3,0,2.36,1.05,2.36,2.36v13.35C35.73,28.01,34.68,29.06,33.38,29.06z"/>
+	<g>
+		<path class="st1" d="M31.47,18.13v3.2H16.53v-3.2H31.47 M33.47,16.13H14.53v7.2h18.93V16.13L33.47,16.13z"/>
+	</g>
+	<line class="st3" x1="16.8" y1="31.87" x2="31.2" y2="31.87"/>
+	<line class="st3" x1="14.93" y1="34.43" x2="33.07" y2="34.43"/>
+	<line class="st3" x1="12.8" y1="37" x2="35.2" y2="37"/>
+</g>
+</svg>

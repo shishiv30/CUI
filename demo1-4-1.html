@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Demo1</title>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport' />
+    <link href="//shishiv30.github.io/CUI/dist/src/cui.min.css" type="text/css" rel="stylesheet" />
+    <link href="//shishiv30.github.io/CUI/dist/src/demo1/src/demo1.css" type="text/css" rel="stylesheet" />
+</head>
+<style>
+    body {
+        background: #fff;
+    }
+
+    .tip {
+        position: relative;
+        text-align: center;
+    }
+
+    .tip.img {
+        padding: 15px
+    }
+
+    .tip.img img {
+        height: 90px;
+        width: 90px;
+        border-radius: 50%;
+        border: 3px solid #aaa;
+        margin-bottom: 30px;
+    }
+
+    .tip .img-title {
+        position: absolute;
+        line-height: 1.5rem;
+        font-size: 1.5rem;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .tip.date {
+        min-height: 150px;
+        max-width: 150px;
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+        background-color: #eee;
+    }
+
+    .tip.date:after {
+        content: '';
+        display: block;
+        top: 0;
+        bottom: 50%;
+        left: 0;
+        right: 0;
+        background-color: #333;
+        position: absolute;
+        opacity: .3;
+    }
+
+    .tip-label {
+        color: #fff;
+        font-size: 1.2rem;
+        line-height: 3rem;
+        position: relative;
+        z-index: 2;
+    }
+
+    .tip-number {
+        font-size: 6rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        text-shadow: 0 0 2px darkgreen;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    .tip-desc {
+        width: 100%;
+        position: absolute;
+        bottom: 5px;
+        white-space: nowrap;
+        left: 0;
+        right: 0;
+    }
+
+    .link-video {
+        display: block;
+        position: relative;
+    }
+
+    .link-video i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        display: block;
+        color: #fff;
+        background: #333;
+        border-radius: 50%;
+        z-index: 2;
+        opacity: .9;
+        font-size: 120px;
+        height: 120px;
+        line-height: 120px;
+        width: 120px;
+        background:
+    }
+
+    .link-video-title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        height: 1.5em;
+        line-height: 1.5em;
+        text-align: center;
+    }
+
+    .slicker {
+        height: 50vw;
+    }
+
+    .content-panel {
+        text-align: center;
+        display: flex;
+        min-height: 150px;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 30px;
+    }
+
+    @media(max-width:768px) {
+        .content-panel {
+            padding: 15px;
+        }
+    }
+
+    .content-panel.highlight {
+        background: darkgreen;
+        color: #eee;
+    }
+
+    .content-list li {
+        line-height: 2em;
+        text-align: left;
+    }
+
+    .content-list li.link {
+        color: inherit;
+        text-align: right;
+    }
+
+    .dropdown-button {
+        margin: 5px 0;
+    }
+
+    .footer {
+        padding: 30px 0;
+
+        text-align: center;
+        line-height: 2em;
+        background: #eee;
+        border-top: 1px solid #fff;
+    }
+
+    .linklist li {
+        line-height: 2em;
+    }
+
+    .welcomeimg {
+        width: 100%;
+        max-height: calc(100vh - 250px);
+        object-fit: cover;
+    }
+
+    .info-card {
+        margin-bottom: 30px;
+        line-height: 2em;
+    }
+
+    .info-card img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+    }
+
+    .article {
+        margin: 30px;
+        line-height: 2em;
+    }
+
+    .article .h2 {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+        background: #f0f0f0;
+    }
+
+    .article .h2>div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: calc(100% - 100px);
+        border-bottom: 1px solid #ddd;
+        text-align: right;
+    }
+
+    .article sub {
+        background: #333;
+        color: #fff;
+        padding: 5px;
+        border-radius: 6px;
+        position: absolute;
+        left: 50px;
+        bottom: 5px;
+        font-size: 12px;
+    }
+
+    .article img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 1px solid #ddd;
+        object-fit: cover;
+        display: inline-block;
+    }
+
+    .ch .hidden-ch {
+        display: none;
+    }
+
+    .en .hidden-en {
+        display: none;
+    }
+
+    .table-scroll table thead {
+        background: #eee;
+    }
+
+    .table-scroll table td {
+        padding: 15px;
+    }
+
+    .table-scroll table tbody tr:nth-child(even) {
+        background: #f4f4f4;
+    }
+</style>
+
+<body id="body" class="classic ch">
+    <style>
+    .header .header-logo{
+        padding: 0 1rem;
+        flex-shrink: 1;
+        width: 16rem;
+    }
+    .header .header-logo img{
+        height:100%;
+    }
+    .header a.header-scroll-link{
+
+    }
+</style>
+<div data-header class="header" style="background-color:black">
+    <div class="header-bar">
+        <a class="header-logo" href="//shishiv30.github.io/CUI/demo1.html"  class="f2"> <img src="//shishiv30.github.io/CUI/dist/src/demo1/src/logo_black.png" alt="logo"></a>
+        <div>Chase Dream With You, Together!</div>
+    </div>
+    <div class="header-nav">
+        <ul class="header-menu-list">
+            <li class="list">
+                <a href="//shishiv30.github.io/CUI/demo1-1.html">
+                    <div class="hidden-ch">WHY NZ</div>
+                    <div class="hidden-en">选择新西兰</div>
+                </a>
+                <ul>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-1-1.html">Student Stories</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-1-1.html">学生故事</a></li>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-1-2.html">Dunedin in NZ</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-1-2.html">新西兰之达尼丁</a></li>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-1-3.html">QLiving in NZ</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-1-3.html">生活在新西兰</a></li>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-1-4.html">Education System</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-1-4.html">新西兰教育体系</a></li>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-1-5.html">Information for Parents</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-1-5.html">父母指南</a></li>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-1-7.html">Quality and Standards</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-1-7.html">教育质量与标准</a></li>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-1-7.html">Work Ready</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-1-7.html">事业规划</a></li>
+                </ul>
+            </li>
+            <li class="list">
+                <a href="//shishiv30.github.io/CUI/demo1-2.html">
+                    <div class="hidden-ch">STUDY TOUR </div>
+                    <div class="hidden-en">游学新西兰</div>
+                </a>
+                <ul>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-2-1.html">What is Study Tour</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-2-1.html">学生故事</a></li>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-2-2.html">Why to Have A Study Tour</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-2-2.html">为什么选择游学</a></li>
+                    <li class="hidden-ch highlight"><a href="//shishiv30.github.io/CUI/demo1-2-3.html">Study Tour</a></li>
+                    <li class="hidden-en highlight"><a href="//shishiv30.github.io/CUI/demo1-2-3.html">游学项目</a></li>
+                </ul>
+            </li>
+            <li class="list">
+                <a href="//shishiv30.github.io/CUI/demo1-3.html">
+                    <div class="hidden-ch">STUDY OPTION </div>
+                    <div class="hidden-en">留学新西兰</div>
+                </a>
+                <ul>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-3-1.html">Schools</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-3-1.html">新西兰初高中</a></li>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-3-2.html">Study Trusteeship</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-3-2.html">留学托管</a></li>
+                    <li class="hidden-ch"><a href="//shishiv30.github.io/CUI/demo1-3-3.html">Universities</a></li>
+                    <li class="hidden-en"><a href="//shishiv30.github.io/CUI/demo1-3-3.html">新西兰大学</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="//shishiv30.github.io/CUI/demo1-4.html">
+                    <div class="hidden-ch">LIVING IN NZ </div>
+                    <div class="hidden-en">探索新西兰</div>
+                </a>
+            </li>
+            <li class="right">
+                <a href="javascript:;" class="hidden-en link-en">English</a>
+                <a href="javascript:;" class="hidden-ch link-ch">中文</a>
+            </li>
+        </ul>
+        <a href="javascript:;" class=" header-switch-link f2"><i class="icon-bars"></i></a>
+    </div>
+</div>
+
+
+    <div class="content-panel">
+        <div>
+            <div class="h3">
+                <div class="hidden-ch">Accommodation</div>
+                <div class="hidden-en">新西兰的住宿</div>
+            </div>
+            <div class="hidden-ch">New student always feel at home here.</div>
+            <div class="hidden-en">在新西兰，给予孩子家一般的感觉。</div>
+            <div class="hidden-ch">You’ll need somewhere to live while you study, and there are plenty of options available. From apartments in the city to homestays in the countryside, you’ll find something that suits you and your lifestyle.</div>
+            <div class="hidden-en">在新西兰，您的孩子将有多种住宿选择</div>
+        </div>
+    </div>
+    <img src="//shishiv30.github.io/CUI/dist/src/demo1/src/a41-1.jpg" alt="a41-1" class="welcomeimg">
+
+    <div class="content-panel">
+        <div>
+            <div class="h3">
+                <div class="hidden-ch">Halls of Residence (or hostels) </div>
+                <div class="hidden-en">大学宿舍</div>
+            </div>
+            <div class="hidden-ch">Usually just a walk away from campus, halls of residence offer fully furnished single or twin-share rooms with a shared dining hall, lounge and laundry. Meals are often included and you’ll find a lively programme of social activities. A number
+                of the larger institutions also provide private hostels that run in a similar way, and some have self-contained apartments (which we call ‘flats’). </div>
+            <div class="hidden-en">大学宿舍常常毗邻大学校园，宿舍里通常安排单人床或者上下铺。宿舍家具齐全且与其它学生共同使用饭厅、客厅和洗衣区域。一般宿舍还提供三餐，并安排丰富有趣的社交活动。一些比较大型的教育机构还提供独立宿舍，类似于中国的“酒店公寓”管理方式。</div>
+        </div>
+    </div>
+    <img src="//shishiv30.github.io/CUI/dist/src/demo1/src/a41-2.jpg" alt="a41-2" class="welcomeimg">
+
+    <div class="content-panel">
+        <div>
+            <div class="h3">
+                <div class="hidden-ch">Homestay (or private board) </div>
+                <div class="hidden-en">寄宿家庭</div>
+            </div>
+            <div class="hidden-ch">With a homestay you live with a New Zealand family in their home, usually in a fully furnished room of your own. They’ll provide you with meals and help you to settle in to day-to-day life in New Zealand. A homestay is a great way to get to
+                know some friendly New Zealanders, develop your English skills and get a close-up look at New Zealand’s way of life and culture.</div>
+            <div class="hidden-en">选择寄宿家庭意味着您的孩子将会被安排到新西兰当地居民家庭中，通常寄宿家庭会为孩子提供一间独立的且家具齐全的房间。寄宿家庭不仅会为孩子准备餐食，还会在生活的方方面面帮助孩子，以适应在新西兰的生活。寄宿家庭是一个结识友好新西兰人、锻炼孩子英语会话能力以及融入新西兰当文化的一个良好选择。</div>
+        </div>
+    </div>
+    <img src="//shishiv30.github.io/CUI/dist/src/demo1/src/a41-3.jpg" alt="a41-3" class="welcomeimg">
+
+    <div class="content-panel">
+        <div>
+            <div class="h3">
+
+                <div class="hidden-ch">Flatting/Independent Accommodation </div>
+                <div class="hidden-en">租房</div>
+            </div>
+            <img src="//shishiv30.github.io/CUI/dist/src/demo1/src/a41-4.png" alt="a41-4" style="float: left; height: 70px;">
+            <div class="hidden-ch">Flats range from one-bedroom apartments to four or five bedroom homes, and can be found just about anywhere – close to cities and campuses or further out in the surrounding suburbs, where you’re more likely to find gardens and car-parking
+                space. </div>
+            <div class="hidden-en">在新西兰，租房可选择单间公寓、或去他人合租。在租房前或许并不需要找到合租人，而是走进一座房子，与室友成为新的朋友。</div>
+            <div class="hidden-ch">Most flats include basic equipment such as an oven, dishwasher, washing machine and clothes dryer. You and your flatmates will share the cost of rent and usually the phone and energy bills. </div>
+            <div class="hidden-en">大多数的合租房配有基本的家具，如厨房用具、家电等，但或许需要自己准备卧室家具。除了房租以外，也许需要与你的室友分摊其它费用，如电费、网络、电话等。</div>
+            <div class="hidden-ch">Accommodation Cost </div>
+            <div class="hidden-ch">The cost of accommodation will vary depending on how you want to live. The national median rent for a three bedroom house was NZ$340 per week in March 2013, just over NZ$110 a room per week.</div>
+            <div class="hidden-en">在新西兰的住宿成本取决与住宿方式的选取。在2013年的调查中，一座三间房间的房子房租平均价格在340新西兰元每周，也就是约110新西兰元一间房间。</div>
+        </div>
+    </div>
+
+    <div class="gs-sin footer">
+    <div class="row text-center">
+        <div class="col-xs-12 col-sm-4">
+            <p class="h4"><span class="hidden-ch">ABOUT DREAM CHASER</span> <span class="hidden-en">合作伙伴</span></p>
+            <ul>
+                <li>
+                    <img src="//shishiv30.github.io/CUI/dist/src/demo1/src/nz-logo.png" alt="logo" style="height:40px;">
+                </li>
+                <li>
+                    <a href="//shishiv30.github.io/CUI/demo1-6.html"><img src="//shishiv30.github.io/CUI/dist/src/demo1/src/logo.jpg" alt="logo" style="height:40px;"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <p class="h4"><span class="hidden-ch">OPTION FOR STUDY TOUR</span><span class="hidden-en">游学分类</span></p>
+                <ul>
+                    <li><a class="link" href="#"><span class="hidden-ch">Primary School</span><span class="hidden-en">10岁以下小学游学</span></a></li>
+                    <li><a class="link" href="#"><span class="hidden-ch">Intermediate</span><span class="hidden-en">初中生游学</span></a></li>
+                    <li><a class="link" href="#"><span class="hidden-ch">High School</span><span class="hidden-en">高中生游学</span></a></li>
+                </ul>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <p class="h4"><span class="hidden-ch">CONTACT US</span> <span class="hidden-en">联系我们</span></p>
+            <ul>
+                <li><img src="//shishiv30.github.io/CUI/dist/src/demo1/src/code.jpg" alt="code id" style="height:80px;"></li>
+            </ul>
+        </div>
+    </div class="row text-center">
+</div>
+</body>
+<script>
+    window.context = {
+        url: '//shishiv30.github.io/CUI/',
+        cdnUrl: '//shishiv30.github.io/CUI/dist/src/',
+        googleMapKey:'key=AIzaSyBtspK44Jc-DabkyA6knFuQ6LSp_8VXZgc'
+    };
+</script>
+<script src="//shishiv30.github.io/CUI/dist/src/cui.lib.min.js" type="text/javascript"></script>
+<script src="//shishiv30.github.io/CUI/dist/src/cui.min.js" type="text/javascript"></script>
+<script>
+    $(document).trigger('cui.inital');
+    $('.link-en').click(function(){
+        $('body').removeClass('ch');
+        $('body').addClass('en');
+    });
+    $('.link-ch').click(function(){
+        $('body').removeClass('en');
+        $('body').addClass('ch');
+    });
+</script>
+</html>

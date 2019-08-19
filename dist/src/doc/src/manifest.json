@@ -1,0 +1,32 @@
+{
+    "short_name": "CUI",
+    "name": "CUI framework",
+    "icons": [
+        {
+            "src": "https://shishiv30.github.io/CUI/dist/src/doc/src/launcher-icon-1x.png",
+            "type": "image/png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "https://shishiv30.github.io/CUI/dist/src/doc/src/launcher-icon-2x.png",
+            "type": "image/png",
+            "sizes": "96x96"
+        },
+        {
+            "src": "https://shishiv30.github.io/CUI/dist/src/doc/src/launcher-icon-4x.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "https://shishiv30.github.io/CUI/dist/src/doc/src/launcher-icon-6x.png",
+            "type": "image/png",
+            "sizes": "768x768"
+        }
+    ],
+    "theme_color": "#333333",
+    "background_color": "#ffffff",
+    "display": "fullscreen",
+    "scope_url": "https://shishiv30.github.io/CUI/index.html",
+    "start_url": "https://shishiv30.github.io/CUI/index.html",
+    "gcm_sender_id": "103953800507"
+}
